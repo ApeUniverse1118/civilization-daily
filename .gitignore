@@ -16,3 +16,6 @@ Desktop.ini
 build/
 __pycache__/
 *.pyc
+
+# AI input drafts
+input/
