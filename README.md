@@ -58,13 +58,14 @@ python -m http.server 8000
 
 ## GitHub Pages 部署步骤
 
-1. 在 GitHub 新建仓库（Repository），仓库名建议为 **`civilization-daily`**（如使用其他仓库名，需全站替换资源前缀 `/civilization-daily/`，见下文“自定义”）
-2. 将本项目全部文件上传到仓库 `main` 分支根目录
+1. 在 GitHub 新建仓库（Repository），将本项目全部文件上传到仓库 `main` 分支**根目录**（全站资源均为相对路径，可直接根目录部署）
+2. 在仓库根目录放置 `CNAME` 文件（内容为 `civilization-radar.com`），并在域名服务商处将 `civilization-radar.com` 的 DNS 记录指向 GitHub Pages
 3. 进入仓库 **Settings → Pages**
-4. **Source（构建来源）** 选择 **Deploy from a branch**
-5. **Branch** 选择 **`main`**，目录选择 **`/ (root)`**
-6. 点击 **Save**，等待 1–2 分钟
-7. 访问 `https://<你的用户名>.github.io/civilization-daily/`
+4. **Custom domain** 填写 `civilization-radar.com` 并 Save（GitHub 会自动校验 CNAME 与 DNS）
+5. **Source（构建来源）** 选择 **Deploy from a branch**
+6. **Branch** 选择 **`main`**，目录选择 **`/ (root)`**
+7. 点击 **Save**，等待 1–2 分钟
+8. 访问 `https://civilization-radar.com/`
 
 > 也可通过 GitHub Actions（`peaceiris/actions-gh-pages` 等）自动发布到 `gh-pages` 分支，步骤同上。
 
@@ -77,8 +78,8 @@ python -m http.server 8000
 
 ## 自定义
 
-- **仓库名非 `civilization-daily`**：全局替换所有 HTML 中 `/civilization-daily/` 前缀（og:url、og:image、canonical 等）为你的仓库名
-- **robots.txt**：将 `Sitemap` 行中的 `username` 替换为你的 GitHub 用户名
+- **自定义域名已启用**：canonical / og:url / og:image / twitter:image 与 sitemap.xml 均使用完整域名 `https://civilization-radar.com/`（不带子路径前缀）
+- **robots.txt**：Sitemap 行已指向 `https://civilization-radar.com/sitemap.xml`，无需再改
 - **站点配色**：编辑 `assets/css/style.css` 顶部 `:root` 变量即可整体换肤
 
 ## 内容声明

@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://username.github.io/civilization-daily/sitemap.xml
+Sitemap: https://civilization-radar.com/sitemap.xml
