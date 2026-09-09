@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://username.github.io/civilization-daily/sitemap.xml
