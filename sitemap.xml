@@ -1,16 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://civilization-radar.com/index.html</loc><lastmod>2026-09-11</lastmod><changefreq>weekly</changefreq><priority>1.0</priority></url>
-  <url><loc>https://civilization-radar.com/archive.html</loc><lastmod>2026-09-11</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
-  <url><loc>https://civilization-radar.com/radar.html</loc><lastmod>2026-09-11</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://civilization-radar.com/index.html</loc><lastmod>2026-09-12</lastmod><changefreq>weekly</changefreq><priority>1.0</priority></url>
+  <url><loc>https://civilization-radar.com/archive.html</loc><lastmod>2026-09-12</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://civilization-radar.com/radar.html</loc><lastmod>2026-09-12</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://civilization-radar.com/radar/2026-09-12.html</loc><lastmod>2026-09-12</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
   <url><loc>https://civilization-radar.com/radar/2026-09-11.html</loc><lastmod>2026-09-11</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
   <url><loc>https://civilization-radar.com/radar/2026-09-10.html</loc><lastmod>2026-09-10</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
   <url><loc>https://civilization-radar.com/radar/2026-09-08.html</loc><lastmod>2026-09-08</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
   <url><loc>https://civilization-radar.com/radar/2026-09-07.html</loc><lastmod>2026-09-07</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://civilization-radar.com/categories/politics.html</loc><lastmod>2026-09-08</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
-  <url><loc>https://civilization-radar.com/categories/technology.html</loc><lastmod>2026-09-08</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
-  <url><loc>https://civilization-radar.com/categories/science.html</loc><lastmod>2026-09-08</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://civilization-radar.com/categories/politics.html</loc><lastmod>2026-09-12</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://civilization-radar.com/categories/technology.html</loc><lastmod>2026-09-12</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://civilization-radar.com/categories/science.html</loc><lastmod>2026-09-12</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
   <url><loc>https://civilization-radar.com/categories/culture.html</loc><lastmod>2026-09-08</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://civilization-radar.com/daily/2026-09-11.html</loc><lastmod>2026-09-12</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
   <url><loc>https://civilization-radar.com/daily/2026-09-10.html</loc><lastmod>2026-09-10</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
   <url><loc>https://civilization-radar.com/daily/2026-08-11.html</loc><lastmod>2026-09-08</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
   <url><loc>https://civilization-radar.com/daily/2026-08-12.html</loc><lastmod>2026-09-08</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
