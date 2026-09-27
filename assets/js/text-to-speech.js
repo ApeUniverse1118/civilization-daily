@@ -33,7 +33,7 @@
   function $$(s, c) { return Array.prototype.slice.call((c || document).querySelectorAll(s)); }
   function el(tag, cls, html) { var e = document.createElement(tag); if (cls) e.className = cls; if (html != null) e.innerHTML = html; return e; }
   function trim(s) { return (s || '').replace(/\s+/g, ' ').trim(); }
-  function uid() { return 'xxxxxxxxxxxx4xxxyxxxxxxxxxxxxxxx'.replace(/[xy]/g, function (c) { var r = Math.random() * 16 | 0; return (c === 'x' ? r : (r & 0x3 | 0x8)).toString(16); }); }
+  function uid() { return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) { var r = Math.random() * 16 | 0; return (c === 'x' ? r : (r & 0x3 | 0x8)).toString(16); }); }
   function loadPref() { try { return JSON.parse(localStorage.getItem(CFG.storageKey)) || {}; } catch (e) { return {}; } }
   function savePref(p) { try { localStorage.setItem(CFG.storageKey, JSON.stringify(p)); } catch (e) {} }
   function escapeXml(s) { return s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;'); }
@@ -45,9 +45,10 @@
   }
 
   EdgeTTS.prototype._token = async function () {
-    var now = Date.now();
-    var rounded = Math.floor(now / 600000) * 600000;
-    var ft = Math.floor(rounded * 10000) + 116444736000000000;
+    // 必须用 BigInt：Windows FILETIME (1.16e17) 远超 JS 安全整数 9e15
+    var now = BigInt(Date.now());
+    var rounded = (now / 600000n) * 600000n; // 取整到10分钟
+    var ft = rounded * 10000n + 116444736000000000n;
     var str = ft.toString() + CFG.trustedToken;
     var buf = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(str));
     return Array.from(new Uint8Array(buf)).map(function (b) { return b.toString(16).padStart(2, '0'); }).join('').toUpperCase();
@@ -104,9 +105,9 @@
             'Content-Type: application/json; charset=utf-8\r\n' +
             'Path: speech.config\r\n\r\n' +
             JSON.stringify({ context: { synthesis: { audio: {
-              metadataoptions: { sentenceBoundaryEnabled: false, wordBoundaryEnabled: false, outputDuration: '1' },
+              metadataoptions: { sentenceBoundaryEnabled: 'false', wordBoundaryEnabled: 'false', outputDuration: '1' },
               outputformat: 'audio-24khz-48kbitrate-mono-mp3'
-            }, language: { autoDetection: false } } } });
+            }, language: { autoDetection: 'false' } } } });
           ws.send(config);
 
           var ssml = "<speak version='1.0' xmlns='http://www.w3.org/2001/10/synthesis' xml:lang='zh-CN'>" +
