@@ -1,0 +1,645 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI极客实战教程日报 · 2026-09-27（第001期）｜本地优先的Agent工程：MCP八分钟跑通、9B小模型浏览器Agent、Claude Code插件目录</title>
+<meta name="description" content="9月27日AI极客实战教程：9篇可复现的第一手Build Log——worklog-for-claude-code本地工作日志、180行Python搭三客户端MCP Server、Rig单二进制Agent运行时、KISS Rust Harness、Exa深度研究蜂群、HTML逐帧+FFmpeg程序化视频、APUS 9B本地Browser Agent、Anthropic官方Claude Code插件目录、Rebyte OpenAI兼容Agent API。">
+<meta name="keywords" content="AI极客实战,Claude Code,MCP Server,Agent Harness,Browser Use,本地优先,Deep Research,程序化视频,Claude插件目录,Rebyte">
+<meta name="author" content="全球文明进程观察站">
+<meta name="robots" content="index,follow">
+<link rel="canonical" href="https://civilization-radar.com/tutorial/2026-09-27.html">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="全球文明进程重大事件日报">
+<meta property="og:title" content="AI极客实战教程日报 · 2026-09-27｜9篇可复现的AI工程Build Log">
+<meta property="og:description" content="本地优先成为实战派共识；MCP进入工程细节期；Agent运行时向OpenAI兼容API收敛。9篇第一手教程。">
+<meta property="og:url" content="https://civilization-radar.com/tutorial/2026-09-27.html">
+<meta property="og:image" content="https://civilization-radar.com/assets/images/og-cover.png">
+<meta property="og:locale" content="zh_CN">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="AI极客实战教程日报 · 2026-09-27">
+<meta name="twitter:description" content="9篇可复现的AI工程Build Log：MCP、Agent、Browser Use、程序化视频。">
+<meta name="twitter:image" content="https://civilization-radar.com/assets/images/og-cover.png">
+<link rel="icon" href="../assets/images/logo.svg" type="image/svg+xml">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"AI极客实战教程日报 2026-09-27","description":"9篇可复现的AI工程Build Log。","datePublished":"2026-09-27","dateModified":"2026-09-28","author":{"@type":"Organization","name":"全球文明进程观察站"},"publisher":{"@type":"Organization","name":"全球文明进程观察站","logo":{"@type":"ImageObject","url":"https://civilization-radar.com/assets/images/og-cover.png"}},"mainEntityOfPage":{"@type":"WebPage","@id":"https://civilization-radar.com/tutorial/2026-09-27.html"}}</script>
+<link rel="stylesheet" href="../assets/css/style.css">
+<style>
+  .tut-wrap{max-width:960px;margin:0 auto;padding:24px 20px 64px;}
+  body{background:#F7F8FA;}
+  .tut-wrap a{color:#2563EB;}
+  header.top{background:#111827;color:#F9FAFB;border-radius:14px;padding:36px 32px;margin-bottom:24px;}
+  header.top .kicker{color:#93C5FD;font-size:13px;letter-spacing:2px;text-transform:uppercase;margin-bottom:10px;}
+  header.top h1{font-size:28px;font-weight:800;margin-bottom:6px;color:#F9FAFB;}
+  header.top .sub{color:#9CA3AF;font-size:14px;margin-bottom:20px;}
+  .meta-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;}
+  .meta-grid .m{background:#1F2937;border:1px solid #374151;border-radius:10px;padding:10px 14px;}
+  .meta-grid .m .k{font-size:11px;color:#9CA3AF;margin-bottom:2px;}
+  .meta-grid .m .v{font-size:14px;font-weight:600;color:#F9FAFB;}
+  .observe{background:#FFFFFF;border:1px solid #E5E7EB;border-left:4px solid #2563EB;border-radius:14px;padding:24px 28px;margin-bottom:24px;}
+  .observe h2{font-size:18px;margin-bottom:10px;}
+  .observe p{color:#374151;font-size:14.5px;}
+  nav.cats{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:28px;}
+  nav.cats a{background:#FFFFFF;border:1px solid #E5E7EB;border-radius:999px;padding:6px 14px;font-size:13px;color:#374151;}
+  nav.cats a:hover{border-color:#2563EB;color:#2563EB;text-decoration:none;}
+  .card{background:#FFFFFF;border:1px solid #E5E7EB;border-radius:14px;padding:28px;margin-bottom:28px;}
+  .card-head{display:flex;align-items:flex-start;gap:14px;margin-bottom:6px;flex-wrap:wrap;}
+  .num{font-size:26px;font-weight:800;color:#2563EB;line-height:1.1;font-variant-numeric:tabular-nums;min-width:52px;}
+  .card-head h2{font-size:20px;font-weight:700;flex:1;min-width:240px;}
+  .badges{display:flex;flex-wrap:wrap;gap:6px;margin:8px 0 14px;}
+  .badge{font-size:12px;padding:3px 10px;border-radius:999px;font-weight:600;}
+  .b-cat{background:#EFF6FF;color:#2563EB;border:1px solid #BFDBFE;}
+  .b-tag{background:#F3F4F6;color:#4B5563;border:1px solid #E5E7EB;}
+  .b-date{background:#ECFDF5;color:#16A34A;border:1px solid #BBF7D0;}
+  .b-warn{background:#FFFBEB;color:#B45309;border:1px solid #FDE68A;}
+  .oneliner{background:#F9FAFB;border:1px solid #E5E7EB;border-radius:10px;padding:12px 16px;font-size:14.5px;color:#111827;margin-bottom:18px;}
+  h3.sec{font-size:14px;font-weight:700;color:#111827;margin:22px 0 8px;padding-left:10px;border-left:3px solid #2563EB;}
+  .card p,.card li{font-size:14.5px;color:#374151;}
+  .card ul,.card ol{padding-left:22px;margin:6px 0;}
+  .card li{margin-bottom:4px;}
+  .src-list{list-style:none;padding-left:0;}
+  .src-list li{margin-bottom:6px;}
+  .src-type{display:inline-block;font-size:11px;font-weight:700;color:#2563EB;background:#EFF6FF;border:1px solid #BFDBFE;border-radius:6px;padding:1px 8px;margin-right:8px;}
+  .stack{width:100%;border-collapse:collapse;margin:6px 0;}
+  .stack td{border:1px solid #E5E7EB;padding:7px 12px;font-size:13.5px;vertical-align:top;}
+  .stack td.k{background:#F9FAFB;font-weight:600;color:#111827;width:110px;white-space:nowrap;}
+  .flow{display:flex;flex-direction:column;gap:0;margin:10px 0;}
+  .flow .node{background:#F9FAFB;border:1px solid #E5E7EB;border-radius:10px;padding:9px 16px;font-size:13.5px;color:#111827;}
+  .flow .node b{color:#2563EB;}
+  .flow .arrow{text-align:center;color:#9CA3AF;font-size:14px;line-height:1.4;}
+  pre{background:#111827;color:#E5E7EB;border-radius:10px;padding:16px 18px;overflow-x:auto;font-size:13px;line-height:1.6;font-family:"SFMono-Regular",Consolas,"Liberation Mono",Menlo,monospace;margin:8px 0;}
+  code{font-family:"SFMono-Regular",Consolas,Menlo,monospace;background:#F3F4F6;color:#111827;border-radius:5px;padding:1px 6px;font-size:13px;}
+  pre code{background:transparent;color:#E5E7EB;padding:0;}
+  .pitfall{background:#FFFBEB;border:1px solid #FDE68A;border-radius:10px;padding:14px 18px;margin:8px 0;}
+  .pitfall b{color:#B45309;}
+  .repro{display:inline-block;font-size:13px;font-weight:700;padding:4px 12px;border-radius:999px;background:#ECFDF5;color:#16A34A;border:1px solid #BBF7D0;}
+  .repro.hard{background:#FFFBEB;color:#B45309;border-color:#FDE68A;}
+  .migrate{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:8px 0;}
+  .migrate .m{background:#F9FAFB;border:1px solid #E5E7EB;border-radius:10px;padding:12px 14px;font-size:13px;color:#374151;}
+  .migrate .m b{display:block;color:#111827;margin-bottom:4px;}
+  .course{background:#F5F8FF;border:1px solid #BFDBFE;border-radius:10px;padding:16px 20px;margin:8px 0;}
+  .course table{width:100%;border-collapse:collapse;}
+  .course td{padding:4px 8px 4px 0;font-size:13.5px;vertical-align:top;color:#374151;}
+  .course td.k{font-weight:600;color:#111827;width:88px;white-space:nowrap;}
+  .trainer{border-left:3px solid #16A34A;background:#F0FDF4;border-radius:0 10px 10px 0;padding:12px 18px;font-size:14px;color:#14532D;margin:10px 0 4px;}
+  .trainer b{color:#16A34A;}
+  section.block{margin-top:40px;}
+  section.block>h2{font-size:22px;font-weight:800;margin-bottom:16px;padding-bottom:10px;border-bottom:2px solid #E5E7EB;}
+  .panel{background:#FFFFFF;border:1px solid #E5E7EB;border-radius:14px;padding:24px 28px;margin-bottom:20px;}
+  .panel h3{font-size:16px;margin-bottom:10px;}
+  .panel p,.panel li{font-size:14.5px;color:#374151;}
+  .panel ul{padding-left:22px;}
+  .panel li{margin-bottom:6px;}
+  .checklist{columns:2;column-gap:32px;}
+  .checklist li{list-style:none;margin-bottom:6px;font-size:13.5px;}
+  .checklist li::before{content:"✓ ";color:#16A34A;font-weight:700;}
+  @media(max-width:640px){
+    .tut-wrap{padding:20px 12px 48px;}
+    header.top{padding:26px 20px;}
+    header.top h1{font-size:22px;}
+    .meta-grid{grid-template-columns:repeat(2,1fr);}
+    .card{padding:20px 16px;}
+    .migrate{grid-template-columns:1fr;}
+    .checklist{columns:1;}
+    .card-head h2{font-size:17px;}
+  }
+</style>
+</head>
+<body>
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="../index.html"><img class="mark" src="../assets/images/logo.svg" alt="文明雷达" width="32" height="32" style="width:32px;height:32px;background:none;border:0;box-shadow:none;border-radius:6px">全球文明进程重大事件日报</a>
+    <button class="nav-toggle" type="button" aria-label="菜单" aria-expanded="false">☰</button>
+    <nav class="main-nav" aria-label="主导航"><ul><li><a href="../index.html">首页</a></li><li><a href="../archive.html">日报档案</a></li><li><a href="../radar.html">趋势雷达</a></li><li><a href="../tutorial/index.html" class="active">AI实战</a></li><li><a href="../categories/science.html">科学</a></li><li><a href="../categories/politics.html">政治</a></li><li><a href="../categories/culture.html">文化</a></li><li><a href="../categories/technology.html">科技</a></li></ul></nav>
+  </div>
+</header>
+<main class="site-main">
+<div class="tut-wrap">
+
+<nav class="breadcrumb" aria-label="面包crumb"><a href="../index.html">首页</a><span class="sep">/</span><a href="../tutorial/index.html">AI实战教程</a><span class="sep">/</span><span>2026-09-27</span></nav>
+
+<header class="top">
+  <div class="kicker">AI Builders · Tutorials · Workflows · Open Source</div>
+  <h1>AI 极客实战教程日报</h1>
+  <div class="sub">昨天，全球真正动手使用 AI 的极客们公开了哪些值得照着做的实战教程——只收录 Tutorial / Build Log / Workflow / 一手资料，不收录新闻。</div>
+  <div class="meta-grid">
+    <div class="m"><div class="k">日报日期</div><div class="v">2026-09-27</div></div>
+    <div class="m"><div class="k">执行日期</div><div class="v">2026-09-28（深夜）</div></div>
+    <div class="m"><div class="k">教程数量</div><div class="v">9 篇（未凑数）</div></div>
+    <div class="m"><div class="k">期数</div><div class="v">第 001 期</div></div>
+  </div>
+</header>
+
+<div class="observe">
+  <h2>🔭 今日 AI 实践观察：昨天全球 AI 极客在学什么、做什么？</h2>
+  <p>三个清晰信号：① <b>"本地优先"成为实战派共识</b>——Claude Code 工作日志工具坚持数据不出本机，APUS 用 9B 本地小模型复刻浏览器 Agent 决策，Rig/KISS 都把本地模型端点作为一等公民；② <b>MCP 从概念进入"8 分钟搭好、6 个坑修完"的工程成熟期</b>，一手 Build Log 开始精确记录每一次失败的报错和修法；③ <b>Agent 运行时正在向 OpenAI 兼容 API 收敛</b>（Rebyte），同时"System 1 决策模型 + 候选动作集"成为 Browser Agent 对抗选择器幻觉的新范式。创作者侧，有人干脆绕开剪辑软件，用 HTML 逐帧渲染 + FFmpeg 拼视频。</p>
+</div>
+
+<nav class="cats">
+  <a href="#c1">AI Coding</a>
+  <a href="#c2">MCP</a>
+  <a href="#c3">AI Agent</a>
+  <a href="#c4">Agent Harness</a>
+  <a href="#c5">AI Research</a>
+  <a href="#c6">AI Creator</a>
+  <a href="#c7">Browser Use</a>
+  <a href="#c8">Open Source</a>
+  <a href="#c9">Agent + 电商</a>
+  <a href="#trend">今日技术观察</a>
+  <a href="#training">培训素材库</a>
+  <a href="#verify">真实性说明</a>
+</nav>
+
+<div class="card" id="c1">
+  <div class="card-head">
+    <div class="num">01</div>
+    <h2>给 Claude Code 装一个"每日工作日志"：hooks + systemd + 私有 git 仓，数据永不出本机</h2>
+  </div>
+  <div class="badges">
+    <span class="badge b-cat">AI Coding</span>
+    <span class="badge b-date">发布 2026-09-26</span>
+    <span class="badge b-tag">🔥 值得马上实践</span>
+    <span class="badge b-tag">📌 值得收藏</span>
+    <span class="badge b-tag">⭐⭐ 有基础用户可复现</span>
+  </div>
+  <div class="oneliner">一句话摘要：作者开源了 worklog-for-claude-code——自动汇总"今天用 Claude Code 做了什么、烧了多少 token"，跨多台电脑多个账号，全程本地 + 私有 git 仓同步。</div>
+  <h3 class="sec">原始教程</h3>
+  <ul class="src-list">
+    <li><span class="src-type">Blog 原帖</span><a href="https://www.asadqi.com/i-built-a-daily-work-log-for-claude-code-and-it-never-leaves-my-machines-45on" target="_blank" rel="noopener">asadqi.com — I built a daily work log for Claude Code, and it never leaves my machines</a></li>
+    <li><span class="src-type">GitHub</span><a href="https://github.com/us-urvin/worklog-for-claude-code" target="_blank" rel="noopener">us-urvin/worklog-for-claude-code</a>（0.1.0 首次公开发布于 2026-09-26，MIT）</li>
+    <li><span class="src-type">PyPI</span><a href="https://pypi.org/project/worklog-for-claude-code/" target="_blank" rel="noopener">worklog-for-claude-code</a></li>
+  </ul>
+  <h3 class="sec">作者是谁</h3>
+  <p>Adil Sadqi，独立开发者，日常工作重度使用 Claude Code（笔记本 + 台式机、工作 + 个人双账号）。这是他为自己痛点写的工具，属于典型第一手 Build Log。</p>
+  <h3 class="sec">教程讲了什么</h3>
+  <p>作者每天 18 点回答不了两个问题：今天到底做完了什么？token 用了多少？他用 Claude Code 的 session hooks（会话开始/结束触发）读取本地 transcript，外加每小时 systemd 定时器兜底，把每次会话写成一条小 JSON 记录存进自己的 git 仓——每台设备只写自己的文件路径，多机推送同一仓库也不会冲突。夜间任务把记录聚合成 Markdown 报告，本地 Web UI 展示。隐私是第一设计约束：只存 prompt 前 300 字符、token 数、文件名和 commit 标题，落盘前脱敏 API key/JWT/邮箱/IP。</p>
+  <h3 class="sec">为什么值得收藏</h3>
+  <p>这是"AI Coding 进入日常化之后"才会出现的工具：当 Claude Code 成为你的主要工作方式，<b>可审计性</b>（做了什么）和<b>可计量性</b>（用了多少）就变成刚需。它还示范了一套干净的本地工具架构：hooks + systemd + git 同步 + loopback Web UI，对企业里"AI 使用量统计但不能上传代码"的合规场景有直接参考价值。</p>
+  <h3 class="sec">技术栈</h3>
+  <table class="stack">
+    <tr><td class="k">模型</td><td>可选 AI 摘要走你自己的 <code>claude -p</code>（可关闭，关闭后完全无模型调用）</td></tr>
+    <tr><td class="k">工具</td><td>Claude Code hooks、systemd timer、git、本地 Web UI（loopback only，CSRF + 严格 CSP）</td></tr>
+    <tr><td class="k">语言</td><td>Python 3.10+（pipx 安装）</td></tr>
+    <tr><td class="k">部署环境</td><td>Linux + systemd（暂不支持 macOS/Windows）；数据可放私有 GitHub/GitLab 仓多机同步</td></tr>
+    <tr><td class="k">其他</td><td>MIT 协议；transcript 解析为非官方格式，解析器跳过无法识别的行而非崩溃</td></tr>
+  </table>
+  <h3 class="sec">完整 Workflow</h3>
+  <div class="flow">
+    <div class="node"><b>Claude Code 会话</b>（本地 transcript 文件）</div>
+    <div class="arrow">↓</div>
+    <div class="node"><b>采集双通道</b>：Session hooks（开始/结束触发）＋ 每小时 systemd timer 兜底</div>
+    <div class="arrow">↓</div>
+    <div class="node"><b>脱敏 & 裁剪</b>：prompt 截 300 字符，移除 key/token/JWT/邮箱/IP（best effort）</div>
+    <div class="arrow">↓</div>
+    <div class="node"><b>写入私有 git 仓</b>：每次会话一条 JSON，按设备隔离文件路径，多机无冲突</div>
+    <div class="arrow">↓</div>
+    <div class="node"><b>夜间聚合任务</b> → Markdown 日报（项目摘要 + 分账号/分模型 token + 14 天曲线）</div>
+    <div class="arrow">↓</div>
+    <div class="node"><b>本地 Web UI</b>（127.0.0.1，Host/Origin 校验）</div>
+  </div>
+  <h3 class="sec">手把手复现</h3>
+  <ol>
+    <li>30 秒体验（假数据、不碰你的文件）：<code>pipx run --spec worklog-for-claude-code claude-worklog demo</code>，打开 http://localhost:8766</li>
+    <li>正式安装：<code>pipx install worklog-for-claude-code</code></li>
+    <li>建数据目录：<code>git init ~/claude-worklog-data</code></li>
+    <li>装后台服务：<code>claude-worklog install-service</code></li>
+    <li>打开 http://worklog.localhost:8765，填设置表单，点 <b>Install hook</b></li>
+    <li>多机使用：把数据目录放进<b>私有</b> GitHub/GitLab 仓库，各机器推送同一仓</li>
+  </ol>
+  <h3 class="sec">关键代码 / 配置</h3>
+  <pre><code>pipx install worklog-for-claude-code
+git init ~/claude-worklog-data
+claude-worklog install-service
+# 然后浏览器打开 http://worklog.localhost:8765 → Install hook</code></pre>
+  <p>架构上最值得学的一点：<b>"每个文件路径只由一台设备写入"</b>——用写入权划分取代锁和合并逻辑，多台机器可以向同一个 git 仓推送而永远不会产生 merge conflict。</p>
+  <h3 class="sec">踩坑与注意事项</h3>
+  <div class="pitfall">
+    <b>⚠ 作者明示的限制：</b>
+    <ul>
+      <li>仅 Linux + systemd；macOS 需要有人贡献 launchd 单元</li>
+      <li>只支持 Claude Code（claude.ai 网页聊天不落本地 transcript）</li>
+      <li>transcript 格式非官方，Claude Code 升级可能暂时打断解析</li>
+      <li>token ≠ 美元：Pro/Max 订阅按限额计，不显示价格</li>
+      <li>脱敏是 best effort——数据仓务必保持私有</li>
+    </ul>
+  </div>
+  <h3 class="sec">普通人能不能复现</h3>
+  <p><span class="repro">⭐⭐ 有基础用户</span> 会基本 Linux 命令行 + 用 pipx 即可，10 分钟装好；不需要写任何代码。</p>
+  <h3 class="sec">如何迁移到其他场景</h3>
+  <div class="migrate">
+    <div class="m"><b>① 团队 AI 用量看板</b>同一架构聚合整个团队的 Cursor/Codex 使用日志，做部门级成本归因</div>
+    <div class="m"><b>② freelancer 工时证明</b>按项目自动产出"做了什么"的日报，直接作为向客户报工时的附件</div>
+    <div class="m"><b>③ 个人复盘系统</b>把"会话 JSON + 夜间聚合"模式迁移到任意工具链做个人数字足迹复盘</div>
+  </div>
+  <h3 class="sec">培训师点评</h3>
+  <div class="trainer"><b>点评：</b>真正值得教的不是这个工具本身，而是两个工程判断：① 用"写入权划分"消灭分布式冲突；② 把隐私当第一需求而不是事后补丁。AI 工具越深入工作流，这类"可审计 + 数据不出机"的设计越会成为企业采购的硬门槛。</div>
+</div>
+
+<div class="card" id="c2">
+  <div class="card-head">
+    <div class="num">02</div>
+    <h2>亲手建一个 MCP Server 并接通 Claude Code / Codex / Cursor：180 行 Python、8 分钟跑通、6 个坑全记录</h2>
+  </div>
+  <div class="badges">
+    <span class="badge b-cat">MCP</span>
+    <span class="badge b-date">发布 2026-09-26</span>
+    <span class="badge b-tag">🔥 值得马上实践</span>
+    <span class="badge b-tag">🎓 值得培训</span>
+    <span class="badge b-tag">📌 值得收藏</span>
+    <span class="badge b-tag">⭐⭐ 有基础用户可复现</span>
+  </div>
+  <div class="oneliner">一句话摘要：The Hype 团队当天建了一个真实 MCP Server（读自家站点文章），在三大 AI 客户端逐一实测连通，并公开了全部命令、6 次报错与修复、以及每次运行的实际 token 成本。</div>
+  <h3 class="sec">原始教程</h3>
+  <ul class="src-list">
+    <li><span class="src-type">Blog 原帖</span><a href="https://thehype.news/how-to-build-an-mcp-server" target="_blank" rel="noopener">thehype.news — How to Build an MCP Server: A Tested 2026 Guide</a>（作者 Addy Crezee，24 分钟阅读）</li>
+  </ul>
+  <h3 class="sec">教程讲了什么</h3>
+  <p>作者用官方 MCP Python SDK 2.2.0 建了一个名为 thehype 的 Server，180 行 Python 提供三个工具：<code>latest_articles</code>（读 RSS）、<code>read_article</code>（长文分段返回）、<code>search_articles</code>（走 Ghost Content API，演示带 key 的 API 包装）。随后用 MCP Inspector 测试，并逐一接入 Claude Code、Codex、Cursor，记录了从 <code>uv init</code> 到首个双工具版本在 Claude Code 和 Codex 中跑通仅 8 分钟，以及 6 个真实故障的报错与修法。</p>
+  <h3 class="sec">技术栈</h3>
+  <table class="stack">
+    <tr><td class="k">模型</td><td>Claude Opus 5.5（测试客户端侧）；Server 本身不调模型</td></tr>
+    <tr><td class="k">工具</td><td>MCP Python SDK 2.2.0、MCP Inspector、uv、Claude Code / Codex / Cursor</td></tr>
+    <tr><td class="k">语言</td><td>Python 3.10+（另附 TypeScript 版）</td></tr>
+    <tr><td class="k">其他</td><td>Node.js 22.19+（跑 Inspector）；单次测试成本约 $0.10–0.32（作者实测记录）</td></tr>
+  </table>
+  <h3 class="sec">手把手复现</h3>
+  <ol>
+    <li>环境：Python 3.10+、uv、Node.js 22.19+</li>
+    <li>建项目：<code>uv init thehype-mcp && cd thehype-mcp && uv add "mcp[cli]==2.2.0"</code></li>
+    <li>写 server.py：SDK 2.x 主类已从 <code>FastMCP</code> 更名为 <code>MCPServer</code></li>
+    <li>工具参数描述用 <code>Annotated[type, Field(description=..., ge=..., le=...)]</code></li>
+    <li>Inspector 测试：<code>npx @modelcontextprotocol/inspector --cli uv run server.py --method tools/list</code></li>
+    <li>接 Claude Code：<code>claude mcp add thehype -- uv --directory /绝对路径/thehype-mcp run server.py</code></li>
+    <li>接 Codex：<code>codex mcp add thehype -- ...</code>；自动化运行时对只读工具单独设 <code>approval_mode="approve"</code></li>
+    <li>接 Cursor：<code>.cursor/mcp.json</code> 必须放在 <b>git 仓库根目录</b></li>
+  </ol>
+  <h3 class="sec">关键代码 / 配置</h3>
+  <pre><code>// Cursor CLI 权限配置（.cursor/cli.json）——"deny": [] 省略会直接 schema 校验失败
+{
+  "permissions": {
+    "allow": ["Mcp(thehype:latest_articles)", "Mcp(thehype:read_article)"],
+    "deny": []
+  }
+}</code></pre>
+  <p>长文工具的分段返回设计值得抄：文章超过 8000 字符时按 "Part N of M" 返回，并在工具描述里告诉模型可以请求下一段。</p>
+  <h3 class="sec">踩坑与注意事项</h3>
+  <div class="pitfall">
+    <b>⚠ 作者实测的 6 个坑（含修复）：</b>
+    <ol>
+      <li>Inspector 吞掉 <code>--directory</code> 参数 → 报 Connection closed；改在项目目录内运行</li>
+      <li>docstring Args 段不被 SDK 解析 → 参数描述全丢；改用 Annotated + Field</li>
+      <li>read_article 截断 8000 字符 → 模型总结覆盖不全；改为 Part N of M 分页</li>
+      <li>Codex 自动化运行拦截工具（approval never）→ 对只读工具逐个 approve</li>
+      <li>Cursor 在嵌套 git 仓中完全读不到 <code>.cursor/</code> 配置 → 放仓库根目录</li>
+      <li>Cursor cli.json 缺 <code>deny</code> 字段 → schema validation failed；补空数组 + 精确白名单</li>
+    </ol>
+  </div>
+  <h3 class="sec">普通人能不能复现</h3>
+  <p><span class="repro">⭐⭐ 有基础用户</span> 会 Python 基础 + 命令行即可；全文命令完整可复制，作者从建项目到跑通只用了 8 分钟。</p>
+  <h3 class="sec">培训师点评</h3>
+  <div class="trainer"><b>点评：</b>这篇教程的教学价值在"失败日志的完整性"——6 个坑每一个都有报错原文、根因和修法。教 MCP 最容易犯的错误是只讲协议美好的一面；这篇告诉你真正的工程量 80% 在客户端的权限与配置细节上。</div>
+</div>
+
+<div class="card" id="c3">
+  <div class="card-head">
+    <div class="num">03</div>
+    <h2>Rig：给你的 Agent 配一台"小型操作系统"——单二进制、沙箱 Worker、cron 调度、模型可自写插件</h2>
+  </div>
+  <div class="badges">
+    <span class="badge b-cat">AI Agent</span>
+    <span class="badge b-date">Show HN 2026-09-26</span>
+    <span class="badge b-tag">🧪 值得实验</span>
+    <span class="badge b-warn">⚠ 二进制分发，未见公开源码仓</span>
+    <span class="badge b-tag">⭐⭐ 有基础用户可复现</span>
+  </div>
+  <div class="oneliner">一句话摘要：一条 curl 装好的单文件 Agent 运行时：接任意 OpenAI 兼容端点，后台 Worker 跑长任务、cron 定时巡检、Python 插件即插即用，任务/记忆/会话全部落盘可随时恢复。</div>
+  <h3 class="sec">原始教程</h3>
+  <ul class="src-list">
+    <li><span class="src-type">Show HN</span><a href="https://wpnews.pro/news/show-hn-rig-a-small-operating-system-for-your-agent" target="_blank" rel="noopener">Show HN: Rig, a small operating system for your agent</a>（2026-09-26 发布；安装脚本域名 tryrig.ai）</li>
+  </ul>
+  <h3 class="sec">教程讲了什么</h3>
+  <p>Rig 把一个 OpenAI 兼容端点（本地 llama.cpp/Ollama 或 OpenRouter 等托管服务）变成能长期干活的 Agent。亮点设计：工具调用并行但结果按序落地；Worker 在沙箱（jail）里跑长任务且保留可恢复的 transcript；<code>/scheduler</code> 用真实 cron 表达式定时任务；插件就是一个含 DESCRIPTION/SCHEMA/run 的 Python 文件，<b>模型自己写的插件会进 pending 目录等人工批准</b>；所有状态（任务、记忆、调度、会话）都在仓库里落盘，可从手机 SSH 恢复会话。</p>
+  <h3 class="sec">技术栈</h3>
+  <table class="stack">
+    <tr><td class="k">模型</td><td>任意 OpenAI 兼容端点：llama.cpp、Ollama、OpenRouter 等</td></tr>
+    <tr><td class="k">工具</td><td>Rig 单二进制（签名发布、原地自更新）；插件为 Python 文件</td></tr>
+    <tr><td class="k">部署环境</td><td>Linux / macOS，amd64 / arm64，无 sudo 无依赖，装到 ~/.local/bin</td></tr>
+  </table>
+  <h3 class="sec">手把手复现</h3>
+  <ol>
+    <li>安装：<code>curl -fsSL https://tryrig.ai/install.sh | sh</code></li>
+    <li>写 ~/.rig/settings.json：指定 model 与 baseUrl</li>
+    <li>写 ~/.rig/models.json：每个模型一行——上下文窗口、maxTokens、reserve、effort 档位</li>
+    <li>写 ~/.rig/AGENTS.md 常驻指令</li>
+    <li>进项目目录运行 <code>rig</code>，试着说："熟悉一下仓库，后台跑全量测试，把学到的东西记下来"</li>
+  </ol>
+  <h3 class="sec">关键代码 / 配置</h3>
+  <pre><code># ~/.rig/plugins/weather.py —— 一个插件就只有这三样
+DESCRIPTION = "current weather for a city"
+SCHEMA = {"type": "object", "properties": {"city": {"type": "string"}}}
+
+def run(args):
+    return fetch_weather(args["city"])</code></pre>
+  <p>模型自己也能写插件，但会落在 pending 目录——你批准之前它不会生效。这一条把"Agent 自我扩展能力"和"人对能力边界的控制"同时保住了。</p>
+  <h3 class="sec">踩坑与注意事项</h3>
+  <div class="pitfall">
+    <b>⚠ 注意：</b>
+    <ul>
+      <li>当前为签名二进制分发，未观察到公开源码仓库——对供应链敏感的团队请先在隔离环境试用</li>
+      <li>sandbox 默认在 settings.json 里可配置，跑不可信任务前确认沙箱开启</li>
+      <li>workers.json 的 slots 决定并发，本地小模型别开多槽</li>
+    </ul>
+  </div>
+  <h3 class="sec">培训师点评</h3>
+  <div class="trainer"><b>点评：</b>教 Rig 的重点不是命令，而是它对"Agent 工程化"的回答：长任务进沙箱、定时任务用真实 cron、模型扩能力必须过人审、一切状态落盘可恢复。二进制不分发源码是它目前最大的采用门槛，课堂上必须如实告知学员。</div>
+</div>
+
+<div class="card" id="c4">
+  <div class="card-head">
+    <div class="num">04</div>
+    <h2>KISS：Rust 写的高性能 Agent Harness——5ms 启动、44 家模型商、子代理/动态 Workflow/浏览器 WASM 全给齐</h2>
+  </div>
+  <div class="badges">
+    <span class="badge b-cat">AI Coding · Agent Harness</span>
+    <span class="badge b-date">Show HN；仓库活跃至 2026-09-27</span>
+    <span class="badge b-tag">🧪 值得实验</span>
+    <span class="badge b-tag">📌 值得收藏</span>
+    <span class="badge b-tag">⭐⭐⭐ 开发者</span>
+  </div>
+  <div class="oneliner">一句话摘要：受 Pi 启发、用 Rust 重写的终端 Coding Agent：启动约 5ms，内置 44 个模型 provider，支持子代理、定时循环、MCP/ACP 双协议，还能编译成 WASM 在浏览器里跑完整 Agent 循环。</div>
+  <h3 class="sec">原始教程</h3>
+  <ul class="src-list">
+    <li><span class="src-type">GitHub</span><a href="https://github.com/racetozero/kiss" target="_blank" rel="noopener">racetozero/kiss</a>（README 即完整使用文档；最近提交 2026-09-27）</li>
+  </ul>
+  <h3 class="sec">教程讲了什么</h3>
+  <p>KISS 是一个终端 Coding Agent：默认只有 read/write/edit/bash 四个工具，启动到首帧约 5ms。支持 OpenAI Codex（ChatGPT 订阅）、Anthropic OAuth（Claude 订阅）、Cursor、Google、OpenRouter、Bedrock、GitHub Copilot 等 44 个内置 provider。功能面：会话持久化/恢复/分支/压缩；子代理（最多 4 个活跃子会话、1 层嵌套）；定时循环与 autoresearch；本地/远程 MCP（含 OAuth）；原生 ACP v1（可直接接进 Zed 编辑器）；Rust/Python/TypeScript/WASM 四种 SDK。</p>
+  <h3 class="sec">关键代码 / 配置</h3>
+  <pre><code>// TypeScript SDK —— 三行起一个 Agent 会话，顺手拿到缓存 token 统计
+const session = await Session.create({ tools: ["read", "bash"] })
+await session.prompt("What files are here?")
+const stats = await session.sessionStats()
+console.log(stats.tokens.cacheRead, stats.tokens.cacheWrite)</code></pre>
+  <p>值得注意的设计：所有 SDK 暴露<b>缓存 token 累计值</b>（cacheRead/cacheWrite/cacheWrite1h），作者明确建议用它做成本看板与告警——这是把"省钱"做成一等 API 的少见案例。</p>
+  <h3 class="sec">踩坑与注意事项</h3>
+  <div class="pitfall">
+    <b>⚠ 注意：</b>
+    <ul>
+      <li>子代理限制：最多 4 个活跃子会话、仅 1 层嵌套；项目级配置不能开启（安全考虑）</li>
+      <li>ACP 仅支持稳定 v1：Draft v2、音频、旧版 MCP SSE 均不支持</li>
+      <li>个人项目，迭代极快（9 月下旬几乎每天发版），生产嵌入前锁版本</li>
+    </ul>
+  </div>
+  <h3 class="sec">普通人能不能复现</h3>
+  <p><span class="repro hard">⭐⭐⭐ 开发者</span> 终端使用对进阶用户友好；SDK/WASM 嵌入面向有工程能力的开发者。</p>
+  <h3 class="sec">培训师点评</h3>
+  <div class="trainer"><b>点评：</b>KISS 适合作为"Agent 架构"课的对照样本：四工具默认、协议全开（MCP+ACP）、SDK 四语言、WASM 进浏览器——它证明 Harness 层可以独立于模型厂牌存在。教学时重点带学员读它的限制（4 子代理/1 层嵌套/项目不可开启），限制本身就是安全设计的教材。</div>
+</div>
+
+<div class="card" id="c5">
+  <div class="card-head">
+    <div class="num">05</div>
+    <h2>用 Exa Agent Ultra 搭一个"深度研究蜂群"：Pydantic 约束子代理，几分钟产出结构化行业数据集</h2>
+  </div>
+  <div class="badges">
+    <span class="badge b-cat">AI Research</span>
+    <span class="badge b-date">发布 2026-09-27</span>
+    <span class="badge b-tag">📌 值得收藏</span>
+    <span class="badge b-tag">🧩 值得迁移</span>
+    <span class="badge b-warn">⚠ 消耗 API 额度较快，需设预算</span>
+    <span class="badge b-tag">⭐⭐ 有基础用户可复现</span>
+  </div>
+  <div class="oneliner">一句话摘要：完整 Python 教程：用 Exa 的 subagent swarm API 自动遍历域名层级、解析语义内容，按 Pydantic schema 产出可直接喂给 RAG 的结构化公司数据集。</div>
+  <h3 class="sec">原始教程</h3>
+  <ul class="src-list">
+    <li><span class="src-type">Blog 教程</span><a href="https://cogitodaily.com/articles/how-to-build-deep-research-swarms-with-exa" target="_blank" rel="noopener">CogitoDaily — How to Build Deep Research Swarms with Exa</a>（作者 Alfian Majid，2026-09-27）</li>
+  </ul>
+  <h3 class="sec">教程讲了什么</h3>
+  <p>教程从零建一个 <code>exa_swarm_demo</code> 项目：用 AsyncExa 客户端触发 Agent Ultra 蜂群搜索，根控制器把查询拆成多个子查询，每个子代理执行"语义发现 → 深度递归遍历 → schema 对齐抽取"三段式流程；用 Pydantic v2 定义 EnterpriseTarget/ResearchSwarmResult 强约束输出；10 个子代理并行绘制"2026 年向量数据库与检索中间件市场地图"，结果进 pandas 导出 CSV。</p>
+  <h3 class="sec">关键代码 / 配置</h3>
+  <pre><code>response = await exa.agent_ultra_search(
+    query=prompt,
+    num_subagents=max_subagents,
+    depth="exhaustive",
+    output_schema=EnterpriseTarget.model_json_schema(),
+    filter_domains=["github.com", "medium.com"],
+    crawl_subpages=True,
+    max_depth_per_site=2
+)</code></pre>
+  <p>整篇教程的核心思想就一句：<b>用 schema 而不是 prompt 来约束蜂群</b>。output_schema 直接传 model_json_schema()，抽取模型对着它解析原始 HTML，丢弃导航栏/页脚/cookie 横幅等噪声。</p>
+  <h3 class="sec">踩坑与注意事项</h3>
+  <div class="pitfall">
+    <b>⚠ 原文给出的三类高频故障：</b>
+    <ul>
+      <li><code>ExaSubagentTimeoutException</code>（120s 超时）→ 把 max_depth_per_site 从 3 降到 1–2</li>
+      <li><code>pydantic.ValidationError: website_url</code> → 把 HttpUrl 换成 str + 自定义校验器自动补 https://</li>
+      <li><code>ExaQuotaExceededError</code> → 别写宽泛查询；用 include_domains 收窄 + 测试期 num_subagents=4</li>
+    </ul>
+  </div>
+  <h3 class="sec">培训师点评</h3>
+  <div class="trainer"><b>点评：</b>这篇教程最该教的是"schema 先行"的研究工程观：先定义你要的字段，再让蜂群去填满它，校验失败的宁可丢弃。这比"让 AI 写份研究报告"高一个段位——产出是可复用的数据资产而非一次性文本。务必提醒学员：先设预算再开蜂群。</div>
+</div>
+
+<div class="card" id="c6">
+  <div class="card-head">
+    <div class="num">06</div>
+    <h2>不开剪辑软件做动画视频：Claude Code 写 HTML 逐帧 + FFmpeg 合成，600 帧 20.6 秒导出</h2>
+  </div>
+  <div class="badges">
+    <span class="badge b-cat">AI Creator</span>
+    <span class="badge b-date">原帖 2026-09-26</span>
+    <span class="badge b-tag">🔥 值得马上实践</span>
+    <span class="badge b-warn">⚠ 二手整理（基于作者一手帖）</span>
+    <span class="badge b-tag">⭐⭐ 有基础用户可复现</span>
+  </div>
+  <div class="oneliner">一句话摘要：一位非工程师用 Claude Code + HyperFrames 技能包 + FFmpeg，把 20 秒 1080p 动态图形视频做成"写网页"：600 帧网页截图逐帧渲染，再拼成 2MB MP4，改时间只改一个数字。</div>
+  <h3 class="sec">原始教程</h3>
+  <ul class="src-list">
+    <li><span class="src-type">二手整理</span><a href="https://lumienai.com/news/claude-code-ffmpeg-motion-graphics-video-no-editing-software" target="_blank" rel="noopener">LUMIENAI — Claude Code + FFmpeg: Make Motion Graphics Videos Without Editing Software</a></li>
+  </ul>
+  <h3 class="sec">教程讲了什么</h3>
+  <p>核心思路：把每一帧画面当成一个 1920×1080 网页来写——HTML/CSS 摆文字和图形，动画库按数值推进时间，HyperFrames 技能包负责逐步截图，600 张 PNG（30fps×20s）交给 FFmpeg 拼成 MP4。作者实测：600 帧导出 20.6 秒，成片 2.0MB（含音频 2.52MB）。</p>
+  <h3 class="sec">关键代码 / Prompt</h3>
+  <pre><code>npx skills add heygen-com/hyperframes --all --global
+winget install Gyan.FFmpeg
+npx hyperframes doctor
+npx hyperframes init my-video --example kinetic-type
+npx hyperframes check   # 导出前必跑：动画错误/溢出/对比度</code></pre>
+  <p>Prompt 侧的关键细节：第二次尝试时作者在 prompt 里显式要求"内嵌日文字体"，解决了第一版的豆腐块问题——<b>非拉丁文字渲染要在 prompt 阶段就声明字体策略</b>。</p>
+  <h3 class="sec">培训师点评</h3>
+  <div class="trainer"><b>点评：</b>这条工作流真正的教学点是"把创意制品代码化"：时间轴变数字、审片变 check 命令、改版变 git diff。创作者一旦接受这个心智，AI 生成视频的质量控制就从玄学变成工程。注意如实告知学员：BGM 环节仍需人工，别承诺全自动。</div>
+</div>
+
+<div class="card" id="c7">
+  <div class="card-head">
+    <div class="num">07</div>
+    <h2>纯本地 Browser Agent：APUS 开源 fast-browser-use，9B 小模型"一次前向传播"决定点哪里，杜绝选择器幻觉</h2>
+  </div>
+  <div class="badges">
+    <span class="badge b-cat">Browser Use</span>
+    <span class="badge b-date">项目 9-19 开源；近 48h 涌现多篇深度使用解析</span>
+    <span class="badge b-tag">📌 值得收藏</span>
+    <span class="badge b-tag">🧪 值得实验</span>
+    <span class="badge b-tag">⭐⭐⭐ 开发者</span>
+  </div>
+  <div class="oneliner">一句话摘要：APUS AI Lab 用本地 Qwen3.5-9B 复刻 Jev 的"System 1"离散打分路线：把页面可交互元素映射为 token 候选集，模型单步 logits 打分选动作——全程离线、MIT 开源、可一行命令接入 Claude Code/Codex。</div>
+  <h3 class="sec">原始教程</h3>
+  <ul class="src-list">
+    <li><span class="src-type">GitHub</span><a href="https://github.com/APUS-AI-Lab/fast-browser-use" target="_blank" rel="noopener">APUS-AI-Lab/fast-browser-use</a>（MIT，2026-09-19 建仓）</li>
+  </ul>
+  <h3 class="sec">教程讲了什么</h3>
+  <p>传统 Browser Agent 让大模型"写下一步操作"，容易产生选择器幻觉；fast-browser-use 换了一条路：先读取渲染完成的 DOM，把当前真实可见、可操作的元素整理成一组带编号的合法候选动作，映射为 token，模型只做<b>一次前向计算对候选集打分</b>，选出下一步。开放问题被收窄成"从已存在的选项里选一个"，从机制上消灭幻觉。</p>
+  <h3 class="sec">关键设计</h3>
+  <p>最值得抄的不是代码而是<b>动作空间收窄</b>：模型永远只能选"当前真实存在的元素"，非法选择器在候选集构造阶段就被物理排除。社区总结的判断原则同样值得记：<i>完全确定性任务用正则/代码；模糊输入但有界输出用决策模型；开放式生成推理才用 LLM。</i></p>
+  <h3 class="sec">踩坑与注意事项</h3>
+  <div class="pitfall">
+    <b>⚠ 社区实测提醒：</b>
+    <ul>
+      <li>决策模型输出的是概率不是事实：安全关键场景必须人工/规则兜底</li>
+      <li>"感知→结构化"这半步决定成败：喂给决策模型的页面状态质量，一半靠你自己的 DOM 治理</li>
+      <li>它不会写材料、不能看视频、不做开放推理——别把决策节点当大脑用</li>
+    </ul>
+  </div>
+  <h3 class="sec">培训师点评</h3>
+  <div class="trainer"><b>点评：</b>这条路线最适合讲给被"大模型截图点坐标"坑过的团队：把开放生成收窄成离散选择，幻觉就从机制上消失了，还顺手得到离线、低成本、可审计三个赠品。教学时必须同时讲清边界——它是决策节点不是大脑，安全场景留人审。</div>
+</div>
+
+<div class="card" id="c8">
+  <div class="card-head">
+    <div class="num">08</div>
+    <h2>Anthropic 官方 Claude Code 插件目录：/plugin 一键安装，以及一份"怎么写一个合规插件"的活教材</h2>
+  </div>
+  <div class="badges">
+    <span class="badge b-cat">Open Source</span>
+    <span class="badge b-date">2026-09-27 登 GitHub 趋势（+253★）</span>
+    <span class="badge b-tag">📌 值得收藏</span>
+    <span class="badge b-tag">🎓 值得培训</span>
+    <span class="badge b-tag">⭐ 非技术用户也可用</span>
+  </div>
+  <div class="oneliner">一句话摘要：Anthropic 官方维护的 Claude Code 插件市场仓库——README 本身就是两份教程：用户侧"如何发现/安装/避坑"，开发者侧"插件目录结构、命名不可变规则、skill-bundle 声明"的完整规范。</div>
+  <h3 class="sec">原始教程</h3>
+  <ul class="src-list">
+    <li><span class="src-type">GitHub</span><a href="https://github.com/anthropics/claude-plugins-official" target="_blank" rel="noopener">anthropics/claude-plugins-official</a>（Apache-2.0）</li>
+    <li><span class="src-type">Documentation</span><a href="https://code.claude.com/docs/en/plugins" target="_blank" rel="noopener">Claude Code 插件官方文档</a></li>
+  </ul>
+  <h3 class="sec">教程讲了什么</h3>
+  <p>用户侧：在 Claude Code 里 <code>/plugin install {名称}@claude-plugins-official</code> 或 <code>/plugin</code> → Discover 浏览安装。开发者侧：插件标准结构（.claude-plugin/plugin.json 必需）；插件 name 是<b>不可变 slug</b>，改名会导致老用户 plugin-not-found，必须靠 marketplace.json 顶层的 renames 映射自动迁移；没有 manifest 的纯技能仓库可以用 <code>strict:false</code> + 显式 skills 数组以 git-subdir 方式上架。</p>
+  <h3 class="sec">关键配置</h3>
+  <pre><code>// marketplace.json 顶层 —— 改名不伤老用户的唯一正确姿势
+"renames": {
+  "old-name": "new-name"
+}
+
+// skill-bundle 插件（无 manifest 的技能仓库）声明要点
+{ "name": "example-bundle", "strict": false,
+  "source": { "source": "git-subdir", "url": "https://github.com/example-org/sdk.git",
+              "path": "packages/agent-skills", "ref": "main", "sha": "<commit sha>" },
+  "skills": ["./skill-a", "./libA/skill-1"] }</code></pre>
+  <h3 class="sec">培训师点评</h3>
+  <div class="trainer"><b>点评：</b>这节课的价值在"规范意识"：生态早期谁先看懂官方规则（不可变 slug、renames、strict:false、锁 sha），谁的插件就少踩兼容性坑。同时它是讲"供应链安全"的绝佳素材——官方亲自提醒你别盲装，这句话比任何安全课都有分量。</div>
+</div>
+
+<div class="card" id="c9">
+  <div class="card-head">
+    <div class="num">09</div>
+    <h2>Rebyte Agents API：用官方 OpenAI SDK 调一个"模型无关"的托管 Agent 运行时，并附完整电商 Agent 示例</h2>
+  </div>
+  <div class="badges">
+    <span class="badge b-cat">AI Agent + 电商</span>
+    <span class="badge b-date">Show HN 2026-09-27</span>
+    <span class="badge b-tag">🧪 值得实验</span>
+    <span class="badge b-tag">🧩 值得迁移</span>
+    <span class="badge b-tag">⭐⭐⭐ 开发者</span>
+  </div>
+  <div class="oneliner">一句话摘要：把 Agent 会话、环境、工具、事件流做成 OpenAI 兼容 API——你继续用官方 openai 包，只改 baseURL；附 commerce-agent-starter 完整电商 storefront 示例。</div>
+  <h3 class="sec">原始教程</h3>
+  <ul class="src-list">
+    <li><span class="src-type">Show HN</span><a href="https://wpnews.pro/news/show-hn-an-openai-compatible-model-agnostic-agent-api" target="_blank" rel="noopener">Show HN: An OpenAI-compatible, model-agnostic agent API</a>（2026-09-27）</li>
+    <li><span class="src-type">Documentation</span><a href="https://rebyte.ai/docs/agents-api/overview" target="_blank" rel="noopener">Rebyte Agents API 官方文档</a></li>
+    <li><span class="src-type">GitHub</span><a href="https://github.com/ReByteAI/commerce-agent-starter" target="_blank" rel="noopener">ReByteAI/commerce-agent-starter</a></li>
+  </ul>
+  <h3 class="sec">关键代码</h3>
+  <pre><code>import OpenAI from 'openai';
+
+const client = new OpenAI({
+  apiKey: process.env.REBYTE_API_KEY,
+  baseURL: 'https://api.rebyte.ai/v1',
+  maxRetries: 0,
+});
+const session = await client.beta.agents.sessions.create({
+  agent: { model: 'gpt-6-luna', instructions: 'Help the user.' },
+  environment: { type: 'openai_hosted' },
+  input: 'Hello!',
+});</code></pre>
+  <p>关键设计：<b>会话之间完全隔离</b>——即使复用同一个已存 Agent，Session 也不会继承别的 Session 的沙箱与 Artifact。这对多租户 SaaS 是刚需语义。</p>
+  <h3 class="sec">培训师点评</h3>
+  <div class="trainer"><b>点评：</b>教这个案例的重点是"语义设计"而非某个厂商：Session 隔离、Turn/Artifact、凭证放 Vaults 不进沙箱——这些是任何 Agent 平台都该有的基本功。文档敢把"未支持"列成表，本身就是给学员做供应商评估的最佳示范：先看诚实度，再看能力表。</div>
+</div>
+
+<section class="block" id="trend">
+  <h2>📈 今日 AI 实战技术观察</h2>
+  <div class="panel">
+    <p style="margin-bottom:12px;">今天的 9 篇教程拼在一起，能看到 AI 实践重心的四个位移。</p>
+    <p style="margin-bottom:12px;"><b>一、从"用 AI"转向"运营 AI"。</b>worklog-for-claude-code 的出现是个标志性信号：当 Claude Code 成为全天候工作方式，人们开始需要对它做考勤、计量和审计。</p>
+    <p style="margin-bottom:12px;"><b>二、本地优先与数据主权成为实战派默认项。</b>worklog 坚持数据不出本机、APUS 用 9B 本地模型跑浏览器 Agent、Rig/KISS 把本地模型端点作为一等公民——这不是情怀，是合规与成本双重驱动下的工程理性。</p>
+    <p style="margin-bottom:12px;"><b>三、MCP 进入"工程细节期"。</b>去年讲 MCP 的文章在讲"是什么"，今天的代表教程在讲"Inspector 会吞掉 --directory 参数""Cursor 的 .cursor 必须在仓库根"。一个协议成熟的标志，就是教程的主要内容从概念变成了报错记录。</p>
+    <p><b>四、Agent 基础设施向两个方向收敛。</b>一端是 Rebyte 代表的"Agent 即 API"；另一端是 Rig/KISS 代表的"个人运行时"。值得记住的一句话：<b>判断任务给决策模型，生成任务给大模型，确定性任务给代码——2026 年的 AI 工程分工正在清晰化。</b></p>
+  </div>
+</section>
+
+<section class="block" id="verify">
+  <h2>🛡️ 数据来源与真实性说明</h2>
+  <div class="panel">
+    <h3>本期时间窗口</h3>
+    <p>日报日期为 2026-09-27（执行日期前一天）。所有条目均标注了各自的发布/更新日期，未将旧内容伪装为当日新教程。本期为 <b>9 篇而非凑数的 10 篇</b>——主动排除了日期无法核验的内容农场教程、发布于数月前的旧文、以及纯产品发布新闻。</p>
+  </div>
+  <div class="panel">
+    <h3>数据归属原则</h3>
+    <p>凡涉及效果数字（导出时长、任务耗时、token 成本、星标增量），均以"作者声称 / 项目方公布 / 第三方转述"的归属形式呈现，不作为独立验证事实；建议读者优先点击原始链接。</p>
+  </div>
+</section>
+
+<nav class="read-nav">
+  <a class="rn-item disabled" href="#">← 更早一期</a>
+  <a class="rn-item" href="index.html">全部教程 →</a>
+</nav>
+
+</div>
+</main>
+<footer class="site-footer">
+  <div class="wrap">
+    <div>
+      <div class="f-brand">全球文明进程重大事件日报</div>
+      <p class="f-desc">记录人类文明演进中的关键节点。以未来历史学家的视角，筛出可能改写人类轨迹的转折点——一个长期记录人类文明发展轨迹的数字档案馆。</p>
+    </div>
+    <div class="f-col">
+      <h4>浏览</h4>
+      <ul>
+        <li><a href="../index.html">网站首页</a></li>
+        <li><a href="../archive.html">日报档案</a></li>
+        <li><a href="../radar.html">趋势雷达</a></li>
+        <li><a href="../tutorial/index.html">AI实战教程</a></li>
+        <li><a href="../assets/images/og-cover.png" target="_blank">站点封面</a></li>
+      </ul>
+    </div>
+    <div class="f-col">
+      <h4>文明分类</h4>
+      <ul>
+        <li><a href="../categories/science.html">科学、生命与地球</a></li>
+        <li><a href="../categories/politics.html">政治与文明秩序</a></li>
+        <li><a href="../categories/culture.html">思想、社会与文化</a></li>
+        <li><a href="../categories/technology.html">科技与人工智能</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="f-bottom">
+    <div class="wrap">
+      <span>© 2026 全球文明进程重大事件日报 · 全球文明进程观察站</span>
+      <span>内容由自动化智能体基于公开信息生成，仅供文明观察与研究参考，不构成任何投资、政策或法律建议。</span>
+    </div>
+  </div>
+</footer>
+<button class="backtop" type="button" aria-label="返回顶部">↑</button>
+<script src="../assets/js/main.js"></script>
+<script src="../assets/js/wechat-share.js"></script>
+<script src="../assets/js/text-to-speech.js"></script>
+</body>
+</html>
