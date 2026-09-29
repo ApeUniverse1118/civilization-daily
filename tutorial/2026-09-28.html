@@ -1,0 +1,736 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI极客实战教程日报 · 2026-09-28（第002期）｜中国开源生态：Agentic RAG闭环、智谱Infra Agent、Qwen3.6+MCP文件系统、Hello-Agents赛博小镇</title>
+<meta name="description" content="9月28日AI极客实战教程（中国开源专场）：8篇可复现教程——Datawhale All-in-RAG规划-检索-评估-改写闭环、智谱GLM-5.3驱动Infra Agent两周3倍吞吐、Hermes开源个人智能体、Qwen3.6+Qwen-Agent+MCP文件系统、llm-agents-from-scratch手写Agent教材、Happy-LLM从零训LLM、Hello-Agents赛博小镇NPC、easy-vibe旅游规划Agent。">
+<meta name="keywords" content="AI极客实战,Agentic RAG,LangGraph,智谱GLM,Hermes Agent,Qwen3.6,MCP文件系统,Datawhale,Hello-Agents,赛博小镇,Vibe Coding">
+<meta name="author" content="全球文明进程观察站">
+<meta name="robots" content="index,follow">
+<link rel="canonical" href="https://civilization-radar.com/tutorial/2026-09-28.html">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="全球文明进程重大事件日报">
+<meta property="og:title" content="AI极客实战教程日报 · 2026-09-28｜中国开源生态8篇实战教程">
+<meta property="og:description" content="Agent闭环化成为共同语法；MCP变成默认插座；国产模型成为教学第一底座。8篇可复现教程。">
+<meta property="og:url" content="https://civilization-radar.com/tutorial/2026-09-28.html">
+<meta property="og:image" content="https://civilization-radar.com/assets/images/og-cover.png">
+<meta property="og:locale" content="zh_CN">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="AI极客实战教程日报 · 2026-09-28">
+<meta name="twitter:description" content="中国开源生态专场：8篇可复现的AI工程教程。">
+<meta name="twitter:image" content="https://civilization-radar.com/assets/images/og-cover.png">
+<link rel="icon" href="../assets/images/logo.svg" type="image/svg+xml">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"AI极客实战教程日报 2026-09-28","description":"中国开源生态专场：8篇可复现教程。","datePublished":"2026-09-28","dateModified":"2026-09-29","author":{"@type":"Organization","name":"全球文明进程观察站"},"publisher":{"@type":"Organization","name":"全球文明进程观察站","logo":{"@type":"ImageObject","url":"https://civilization-radar.com/assets/images/og-cover.png"}},"mainEntityOfPage":{"@type":"WebPage","@id":"https://civilization-radar.com/tutorial/2026-09-28.html"}}</script>
+<link rel="stylesheet" href="../assets/css/style.css">
+<style>
+  .tut-wrap{max-width:960px;margin:0 auto;padding:24px 20px 64px;}
+  body{background:#F7F8FA;}
+  .tut-wrap a{color:#2563EB;}
+  header.top{background:#111827;color:#F9FAFB;border-radius:14px;padding:36px 32px;margin-bottom:24px;}
+  header.top .kicker{color:#93C5FD;font-size:13px;letter-spacing:2px;text-transform:uppercase;margin-bottom:10px;}
+  header.top h1{font-size:28px;font-weight:800;margin-bottom:6px;color:#F9FAFB;}
+  header.top .sub{color:#9CA3AF;font-size:14px;margin-bottom:20px;}
+  .meta-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;}
+  .meta-grid .m{background:#1F2937;border:1px solid #374151;border-radius:10px;padding:10px 14px;}
+  .meta-grid .m .k{font-size:11px;color:#9CA3AF;margin-bottom:2px;}
+  .meta-grid .m .v{font-size:14px;font-weight:600;color:#F9FAFB;}
+  .observe{background:#FFFFFF;border:1px solid #E5E7EB;border-left:4px solid #2563EB;border-radius:14px;padding:24px 28px;margin-bottom:24px;}
+  .observe h2{font-size:18px;margin-bottom:10px;}
+  .observe p{color:#374151;font-size:14.5px;}
+  nav.cats{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:28px;}
+  nav.cats a{background:#FFFFFF;border:1px solid #E5E7EB;border-radius:999px;padding:6px 14px;font-size:13px;color:#374151;}
+  nav.cats a:hover{border-color:#2563EB;color:#2563EB;text-decoration:none;}
+  .card{background:#FFFFFF;border:1px solid #E5E7EB;border-radius:14px;padding:28px;margin-bottom:28px;}
+  .card-head{display:flex;align-items:flex-start;gap:14px;margin-bottom:6px;flex-wrap:wrap;}
+  .num{font-size:26px;font-weight:800;color:#2563EB;line-height:1.1;font-variant-numeric:tabular-nums;min-width:52px;}
+  .card-head h2{font-size:20px;font-weight:700;flex:1;min-width:240px;}
+  .badges{display:flex;flex-wrap:wrap;gap:6px;margin:8px 0 14px;}
+  .badge{font-size:12px;padding:3px 10px;border-radius:999px;font-weight:600;}
+  .b-cat{background:#EFF6FF;color:#2563EB;border:1px solid #BFDBFE;}
+  .b-tag{background:#F3F4F6;color:#4B5563;border:1px solid #E5E7EB;}
+  .b-date{background:#ECFDF5;color:#16A34A;border:1px solid #BBF7D0;}
+  .b-warn{background:#FFFBEB;color:#B45309;border:1px solid #FDE68A;}
+  .oneliner{background:#F9FAFB;border:1px solid #E5E7EB;border-radius:10px;padding:12px 16px;font-size:14.5px;color:#111827;margin-bottom:18px;}
+  h3.sec{font-size:14px;font-weight:700;color:#111827;margin:22px 0 8px;padding-left:10px;border-left:3px solid #2563EB;}
+  .card p,.card li{font-size:14.5px;color:#374151;}
+  .card ul,.card ol{padding-left:22px;margin:6px 0;}
+  .card li{margin-bottom:4px;}
+  .src-list{list-style:none;padding-left:0;}
+  .src-list li{margin-bottom:6px;}
+  .src-type{display:inline-block;font-size:11px;font-weight:700;color:#2563EB;background:#EFF6FF;border:1px solid #BFDBFE;border-radius:6px;padding:1px 8px;margin-right:8px;}
+  .stack{width:100%;border-collapse:collapse;margin:6px 0;}
+  .stack td{border:1px solid #E5E7EB;padding:7px 12px;font-size:13.5px;vertical-align:top;}
+  .stack td.k{background:#F9FAFB;font-weight:600;color:#111827;width:110px;white-space:nowrap;}
+  .flow{display:flex;flex-direction:column;gap:0;margin:10px 0;}
+  .flow .node{background:#F9FAFB;border:1px solid #E5E7EB;border-radius:10px;padding:9px 16px;font-size:13.5px;color:#111827;}
+  .flow .node b{color:#2563EB;}
+  .flow .arrow{text-align:center;color:#9CA3AF;font-size:14px;line-height:1.4;}
+  pre{background:#111827;color:#E5E7EB;border-radius:10px;padding:16px 18px;overflow-x:auto;font-size:13px;line-height:1.6;font-family:"SFMono-Regular",Consolas,"Liberation Mono",Menlo,monospace;margin:8px 0;}
+  code{font-family:"SFMono-Regular",Consolas,Menlo,monospace;background:#F3F4F6;color:#111827;border-radius:5px;padding:1px 6px;font-size:13px;}
+  pre code{background:transparent;color:#E5E7EB;padding:0;}
+  .pitfall{background:#FFFBEB;border:1px solid #FDE68A;border-radius:10px;padding:14px 18px;margin:8px 0;}
+  .pitfall b{color:#B45309;}
+  .repro{display:inline-block;font-size:13px;font-weight:700;padding:4px 12px;border-radius:999px;background:#ECFDF5;color:#16A34A;border:1px solid #BBF7D0;}
+  .repro.hard{background:#FFFBEB;color:#B45309;border-color:#FDE68A;}
+  .repro.dev{background:#FEF2F2;color:#B91C1C;border-color:#FECACA;}
+  .migrate{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:8px 0;}
+  .migrate .m{background:#F9FAFB;border:1px solid #E5E7EB;border-radius:10px;padding:12px 14px;font-size:13px;color:#374151;}
+  .migrate .m b{display:block;color:#111827;margin-bottom:4px;}
+  .course{background:#F5F8FF;border:1px solid #BFDBFE;border-radius:10px;padding:16px 20px;margin:8px 0;}
+  .course table{width:100%;border-collapse:collapse;}
+  .course td{padding:4px 8px 4px 0;font-size:13.5px;vertical-align:top;color:#374151;}
+  .course td.k{font-weight:600;color:#111827;width:88px;white-space:nowrap;}
+  .trainer{border-left:3px solid #16A34A;background:#F0FDF4;border-radius:0 10px 10px 0;padding:12px 18px;font-size:14px;color:#14532D;margin:10px 0 4px;}
+  .trainer b{color:#16A34A;}
+  section.block{margin-top:40px;}
+  section.block>h2{font-size:22px;font-weight:800;margin-bottom:16px;padding-bottom:10px;border-bottom:2px solid #E5E7EB;}
+  .panel{background:#FFFFFF;border:1px solid #E5E7EB;border-radius:14px;padding:24px 28px;margin-bottom:20px;}
+  .panel h3{font-size:16px;margin-bottom:10px;}
+  .panel p,.panel li{font-size:14.5px;color:#374151;}
+  .panel ul{padding-left:22px;}
+  .panel li{margin-bottom:6px;}
+  .panel table{width:100%;border-collapse:collapse;margin:8px 0;}
+  .panel th,.panel td{border:1px solid #E5E7EB;padding:7px 10px;font-size:13px;text-align:left;vertical-align:top;}
+  .panel th{background:#F9FAFB;color:#111827;}
+  .checklist{columns:2;column-gap:32px;}
+  .checklist li{list-style:none;margin-bottom:6px;font-size:13.5px;}
+  .checklist li::before{content:"✓ ";color:#16A34A;font-weight:700;}
+  @media(max-width:640px){
+    .tut-wrap{padding:20px 12px 48px;}
+    header.top{padding:26px 20px;}
+    header.top h1{font-size:22px;}
+    .meta-grid{grid-template-columns:repeat(2,1fr);}
+    .card{padding:20px 16px;}
+    .migrate{grid-template-columns:1fr;}
+    .checklist{columns:1;}
+    .card-head h2{font-size:17px;}
+  }
+</style>
+</head>
+<body>
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="../index.html"><img class="mark" src="../assets/images/logo.svg" alt="文明雷达" width="32" height="32" style="width:32px;height:32px;background:none;border:0;box-shadow:none;border-radius:6px">全球文明进程重大事件日报</a>
+    <button class="nav-toggle" type="button" aria-label="菜单" aria-expanded="false">☰</button>
+    <nav class="main-nav" aria-label="主导航"><ul><li><a href="../index.html">首页</a></li><li><a href="../archive.html">日报档案</a></li><li><a href="../radar.html">趋势雷达</a></li><li><a href="../tutorial/index.html" class="active">AI实战</a></li><li><a href="../categories/science.html">科学</a></li><li><a href="../categories/politics.html">政治</a></li><li><a href="../categories/culture.html">文化</a></li><li><a href="../categories/technology.html">科技</a></li></ul></nav>
+  </div>
+</header>
+<main class="site-main">
+<div class="tut-wrap">
+
+<nav class="breadcrumb" aria-label="面包crumb"><a href="../index.html">首页</a><span class="sep">/</span><a href="index.html">AI实战教程</a><span class="sep">/</span><span>2026-09-28</span></nav>
+
+<header class="top">
+  <div class="kicker">China Open Source · AI Builders · Tutorials · Workflows</div>
+  <h1>AI 极客实战教程日报</h1>
+  <div class="sub">昨天，中国 AI 开发者和开源社区公开了哪些值得照着做的实战教程——只收录 Tutorial / Build Log / Workflow / 一手资料，不收录新闻。</div>
+  <div class="meta-grid">
+    <div class="m"><div class="k">日报日期</div><div class="v">2026-09-28</div></div>
+    <div class="m"><div class="k">执行日期</div><div class="v">2026-09-29</div></div>
+    <div class="m"><div class="k">教程数量</div><div class="v">8 篇（未凑数）</div></div>
+    <div class="m"><div class="k">期数</div><div class="v">第 002 期</div></div>
+  </div>
+</header>
+
+<div class="observe">
+  <h2>🔭 今日 AI 实践观察：昨天中国 AI 开发者在学什么、做什么？</h2>
+  <p>三个清晰信号：① <b>"闭环"取代"直线"成为 Agent 教学新范式</b>——Datawhale All-in-RAG 最新章节把 RAG 从"一次检索一次生成"升级为"规划—检索—评估—改写"的自主循环，智谱官方 Build Log 则用自家 GLM-5.3 驱动 Infra Agent 优化推理基础设施，闭环反馈设计成为共同关键词；② <b>MCP 已默认成为 Agent 的"工具插座"</b>——Qwen-Agent 挂 MCP filesystem 让模型自主整理文件、llm-agents-from-scratch 把 MCP 列为正式章节，教学重心从"MCP 是什么"彻底转向"MCP 怎么接"；③ <b>国产模型成为开源教程的默认底座</b>——海外开源 Agent 教材默认用 Qwen3:14B 本地跑，海外个人 Agent 框架原生支持 GLM / Kimi / MiniMax。Datawhale 系教程（All-in-RAG / Hello-Agents / happy-llm / easy-vibe）已形成从原理到产品的完整学习矩阵。</p>
+</div>
+
+<nav class="cats">
+  <a href="#c1">Agentic RAG</a>
+  <a href="#c2">Agent 工程</a>
+  <a href="#c3">开源 Agent</a>
+  <a href="#c4">AI Coding + MCP</a>
+  <a href="#c5">Agent 教程</a>
+  <a href="#c6">国产教程</a>
+  <a href="#c7">AI 奇技</a>
+  <a href="#c8">Vibe Coding</a>
+  <a href="#trend">今日技术观察</a>
+  <a href="#training">培训素材库</a>
+  <a href="#verify">真实性说明</a>
+</nav>
+
+<!-- ========== 01 ========== -->
+<div class="card" id="c1">
+  <div class="card-head">
+    <div class="num">01</div>
+    <h2>Datawhale All-in-RAG 新章节：用 LangGraph 手写一个"规划—检索—评估—改写"的 Agentic RAG</h2>
+  </div>
+  <div class="badges">
+    <span class="badge b-cat">AI Agent / RAG</span>
+    <span class="badge b-tag">📌 值得收藏</span>
+    <span class="badge b-tag">🎓 值得培训</span>
+    <span class="badge b-tag">🇨🇳 国产教程</span>
+    <span class="badge b-tag">🔓 开源项目</span>
+    <span class="badge b-tag">🧑‍💻 开发者向</span>
+    <span class="badge b-date">2026-09-28 前后发布</span>
+  </div>
+  <div class="oneliner">一句话摘要：Datawhale《RAG 技术全栈指南》第 7 章第 2 节，带可运行代码把传统 RAG 改造成能自己规划查询、评估检索质量、失败重写的自主检索 Agent。</div>
+
+  <h3 class="sec">原始资料</h3>
+  <ul class="src-list">
+    <li><span class="src-type">作者原文</span><a href="https://blog.gitcode.com/9d9b3360d2387599828ab3b9c2b47dc5.html" target="_blank" rel="noopener">GitCode 博客：Datawhale All-in-RAG 实战 —— Agentic RAG 架构解析与基于 LangGraph 的最小实现</a></li>
+    <li><span class="src-type">项目 Repo</span><a href="https://github.com/datawhalechina/all-in-rag" target="_blank" rel="noopener">github.com/datawhalechina/all-in-rag（配套代码在 code/C7/agentic_rag/）</a></li>
+  </ul>
+
+  <h3 class="sec">作者是谁</h3>
+  <p>Datawhale（国内最大的开源学习社区之一）All-in-RAG 教程项目组，由社区贡献者以 AtomGit 账号发布在 GitCode 博客。属于教程作者本人发布的一手内容。</p>
+
+  <h3 class="sec">教程讲了什么</h3>
+  <p>文章先指出传统 RAG"一次检索、一次生成"的四大局限：无检索质量感知、无法动态调整策略、无工具选择能力、信息融合浅层。随后给出 Agentic RAG 的四大核心能力——查询规划、检索决策、质量自评、迭代改写，并基于仓库 <code>code/C7/agentic_rag/</code> 中的 LangGraph 完整实现，逐节点拆解状态图、提示词设计与条件路由逻辑，最终跑通一个具备"规划—检索—评估—改写—生成"闭环的自主检索 Agent。</p>
+
+  <h3 class="sec">为什么值得收藏</h3>
+  <p>市面上的 RAG 教程大多停在"接个向量库就完事"，这篇是目前中文世界里少见的、把"检索质量自评 + 失败自动改写重查"工程化讲透的教程，且代码就在官方仓库里可以直接跑。学会它等于掌握了把任何 FAQ 问答机器人升级成"会自己判断答案靠不靠谱"的检索系统的方法。</p>
+
+  <h3 class="sec">技术栈</h3>
+  <table class="stack">
+    <tr><td class="k">模型</td><td>OpenAI 兼容接口（可替换为 DeepSeek / Qwen / GLM 任意兼容端点）</td></tr>
+    <tr><td class="k">工具/框架</td><td>LangGraph（状态图编排）、LangChain、向量检索（项目内置）</td></tr>
+    <tr><td class="k">语言</td><td>Python</td></tr>
+    <tr><td class="k">代码位置</td><td>all-in-rag 仓库 code/C7/agentic_rag/</td></tr>
+    <tr><td class="k">部署环境</td><td>本地 Python 环境即可，无需 GPU（调云端 API）</td></tr>
+  </table>
+
+  <h3 class="sec">完整 Workflow</h3>
+  <div class="flow">
+    <div class="node"><b>输入</b>：用户提问</div>
+    <div class="arrow">↓</div>
+    <div class="node"><b>规划节点</b>：LLM 拆解问题，生成检索计划 / 改写查询</div>
+    <div class="arrow">↓</div>
+    <div class="node"><b>检索节点</b>：向量库 top-k 召回相关文档片段</div>
+    <div class="arrow">↓</div>
+    <div class="node"><b>评估节点</b>：LLM 判断检索结果是否相关、是否足够回答</div>
+    <div class="arrow">↓</div>
+    <div class="node"><b>条件路由</b>：质量不合格 → 回到"改写查询"再检索；合格 → 进入生成</div>
+    <div class="arrow">↓</div>
+    <div class="node"><b>生成节点</b>：LLM 基于合格上下文生成最终答案 → <b>输出</b></div>
+  </div>
+
+  <h3 class="sec">手把手复现</h3>
+  <ol>
+    <li>克隆仓库：<code>git clone https://github.com/datawhalechina/all-in-rag.git</code></li>
+    <li>进入 <code>code/C7/agentic_rag/</code> 目录，按章节 README 安装依赖</li>
+    <li>在环境变量中配置 OpenAI 兼容的 API Key 与 base_url（国内可直接填 DeepSeek 或通义千问的兼容端点）</li>
+    <li>先跑通最小示例，观察状态图中"评估→改写"循环何时被触发</li>
+    <li>把示例知识库换成自己的文档集合，调低评估阈值观察重写次数变化</li>
+  </ol>
+
+  <h3 class="sec">关键设计点</h3>
+  <p>教程的核心不在代码量，而在两个提示词：<b>评估提示词</b>（让 LLM 给检索结果打相关性分数并说明理由）和<b>改写提示词</b>（基于"为什么不合格"生成下一轮查询）。条件路由边的阈值决定了系统在"答得不准"和"无限重查"之间的平衡点——这是最值得动手调的部分。</p>
+
+  <h3 class="sec">踩坑与注意事项</h3>
+  <div class="pitfall">
+    <b>注意：</b>① 评估节点本身也是 LLM 调用，知识库小时开 Rerank/评估反而更慢更贵，几十条文档的场景不必上完整闭环；② 一定要给改写循环设最大次数上限，防止检索永远不合格时死循环烧钱；③ 评估提示词里要求"输出结构化分数"比让模型自由发挥稳定得多。
+  </div>
+
+  <h3 class="sec">普通人能不能复现</h3>
+  <p><span class="repro">⭐⭐ 有基础用户可复现</span></p>
+  <p>需要：Python 基础、一个国产大模型 API Key（DeepSeek/通义均可，按量计费成本极低）、无需 GPU、无需付费软件。</p>
+
+  <h3 class="sec">国内替代方案</h3>
+  <p>原文模型层走 OpenAI 兼容协议，国内用户把 <code>base_url</code> 换成 DeepSeek（api.deepseek.com）、通义千问（dashscope 兼容模式）或智谱 GLM 的兼容端点即可，代码无需改动——这正是该教程对国内读者最友好的一点。</p>
+
+  <h3 class="sec">如何迁移到其他场景</h3>
+  <div class="migrate">
+    <div class="m"><b>企业知识库客服</b>把"评估—改写"闭环接到公司产品文档库，检索不到政策原文时自动换问法，而不是硬答。</div>
+    <div class="m"><b>法律 / 医疗文献检索</b>对准确性要求极高的场景，用评估节点强制"引用必须来自检索结果"，降低幻觉。</div>
+    <div class="m"><b>电商售后工单</b>工单问题先经 Agentic RAG 查售后政策，查不到可靠依据自动转人工，天然形成兜底。</div>
+  </div>
+
+  <div class="trainer"><b>培训师点评：</b>这篇教程真正值得教的不是 LangGraph 语法，而是"让系统自己判断答案靠不靠谱"这一工程思想。评估节点和改写提示词是整套系统的灵魂，讲课时 80% 时间应该花在阈值和提示词调参上，而不是画图。</div>
+</div>
+
+<!-- ========== 02 ========== -->
+<div class="card" id="c2">
+  <div class="card-head">
+    <div class="num">02</div>
+    <h2>智谱官方 Build Log：用 GLM-5.3 驱动 Infra Agent，两周把自己的推理基础设施优化到 3 倍吞吐</h2>
+  </div>
+  <div class="badges">
+    <span class="badge b-cat">AI Agent / 工程实践</span>
+    <span class="badge b-tag">📌 值得收藏</span>
+    <span class="badge b-tag">🧩 值得迁移</span>
+    <span class="badge b-tag">🇨🇳 国产模型</span>
+    <span class="badge b-tag">🧑‍💻 开发者向</span>
+    <span class="badge b-date">2026-09-28 前后发布</span>
+  </div>
+  <div class="oneliner">一句话摘要：智谱公开如何用自家模型驱动的 Infra Agent 自动优化推理引擎，把 GLM-5.3-Flash 从模型适配推进到生产可用只用了不到两周，并给出三条可照搬的"反馈设计"原则。</div>
+
+  <h3 class="sec">原始资料</h3>
+  <ul class="src-list">
+    <li><span class="src-type">官方博客</span>Z.ai 博客《Toward Recursive Self-Improvement: How GLM Built Its Own Inference Infrastructure》（经技术媒体转述核实存在）</li>
+    <li><span class="src-type">媒体转述</span><a href="https://news.bpdata.com/article/zhipu-ai-used-glm-5-3-to-automate-parts-of-its-own-2b72ce00" target="_blank" rel="noopener">bpdata：Zhipu AI used GLM-5.3 to automate parts of its own infrastructure development</a></li>
+    <li><span class="src-type">相关官方页</span><a href="https://z.ai/blog/glm-5.3" target="_blank" rel="noopener">GLM-5.3 技术报告（z.ai/blog/glm-5.3）</a></li>
+  </ul>
+
+  <h3 class="sec">作者是谁</h3>
+  <p>智谱 AI（Zhipu AI / Z.ai）官方工程团队，属于基础设施优化的当事方自述，一手程度最高。注意：文中性能数据均为官方自述，第三方无法独立复现验证。</p>
+
+  <h3 class="sec">教程讲了什么</h3>
+  <p>智谱搭建了一个由"工程师 + Infra Agent + 实验环境"组成的优化闭环：工程师定义目标和系统边界，GLM-5.3 驱动的 Infra Agent 负责分析、提出假设、给出代码修改，实验环境提供分层、及时、可验证的反馈。官方自述：闭环运转后 GLM-5.3-Flash 从初始适配到生产可用不到两周，最终端到端吞吐达到初始基线的 3 倍（该数据来自官方自述）。</p>
+
+  <h3 class="sec">技术栈</h3>
+  <table class="stack">
+    <tr><td class="k">模型</td><td>GLM-5.3（智谱自研，驱动 Infra Agent）</td></tr>
+    <tr><td class="k">系统角色</td><td>工程师（定义目标与边界）＋ Infra Agent（分析/假设/改码）＋ 实验环境（反馈）</td></tr>
+    <tr><td class="k">优化对象</td><td>推理基础设施（引擎启动参数、Kernel、线程、执行间隔、代码路径）</td></tr>
+    <tr><td class="k">产出</td><td>GLM-5.3-Flash（更快更低成本的变体，官方称两周内生产可用）</td></tr>
+  </table>
+
+  <h3 class="sec">完整 Workflow</h3>
+  <div class="flow">
+    <div class="node"><b>工程师</b>：定义优化目标（吞吐/延迟）与系统边界（允许改什么）</div>
+    <div class="arrow">↓</div>
+    <div class="node"><b>Infra Agent（GLM-5.3）</b>：分析现状 → 提出假设 → 生成代码修改</div>
+    <div class="arrow">↓</div>
+    <div class="node"><b>实验环境</b>：分层验证（参考实现对比、测试结果、可对比的实验指标）</div>
+    <div class="arrow">↓</div>
+    <div class="node"><b>反馈回环</b>：反馈足够局部、廉价、客观 → Agent 快速修正方向，进入下一轮</div>
+    <div class="arrow">↓</div>
+    <div class="node"><b>输出</b>：验证通过的性能优化合入，GLM-5.3-Flash 达到生产标准</div>
+  </div>
+
+  <h3 class="sec">关键方法：反馈设计三原则（可直接照搬）</h3>
+  <ol>
+    <li><b>反馈必须足够局部</b>：把反馈绑定到具体的引擎启动参数、代码改动、Kernel 状况、输入配置、线程、执行间隔或代码路径上，Agent 才能缩小问题范围。</li>
+    <li><b>反馈必须廉价且及时</b>：验证周期越短，Agent 越快修正方向，在无效假设上浪费的工作量越少。</li>
+    <li><b>反馈必须客观可验证</b>：改动是否正确、性能是否提升，必须由参考实现、测试结果和可对比的实验指标判定，而不是由人或模型"感觉"。</li>
+  </ol>
+
+  <h3 class="sec">踩坑与注意事项</h3>
+  <div class="pitfall">
+    <b>注意：</b>① "3 倍吞吐""两周上线"均为智谱官方自述，外部无法独立验证，引用时请保留"官方称"；② 这套方法的前提是团队已经有完善的测试与基准体系——没有客观度量，Agent 优化就是瞎猜；③ 智谱自己也强调：人类在高层设计决策上仍有比较优势，Agent 负责的是"边界内的执行"。
+  </div>
+
+  <h3 class="sec">如何迁移到其他场景</h3>
+  <div class="migrate">
+    <div class="m"><b>数据库 / SQL 调优</b>Agent 改索引与查询，CI 里跑固定基准查询集，执行计划与耗时即客观反馈。</div>
+    <div class="m"><b>前端性能优化</b>Agent 改打包配置与代码，Lighthouse CI 分数作为可验证指标，形成自动优化循环。</div>
+    <div class="m"><b>提示词 / 工作流调参</b>Agent 改 Prompt，离线评测集打分作为反馈——本质是同一个闭环换了个优化对象。</div>
+  </div>
+
+  <div class="trainer"><b>培训师点评：</b>这篇 Build Log 最值得教的是"先建度量，再放 Agent"。多数团队引入 AI 编程失败，不是模型不行，而是没有局部、廉价、客观的反馈。这三条原则是检验任何 Agent 自动化项目能否落地的试金石。</div>
+</div>
+
+<!-- ========== 03 ========== -->
+<div class="card" id="c3">
+  <div class="card-head">
+    <div class="num">03</div>
+    <h2>Hermes Agent 完全上手指南：一条命令装一个会自己写技能、越用越懂你的开源个人智能体</h2>
+  </div>
+  <div class="badges">
+    <span class="badge b-cat">Open Source / AI Agent</span>
+    <span class="badge b-tag">🔥 值得马上实践</span>
+    <span class="badge b-tag">🧪 值得实验</span>
+    <span class="badge b-tag">🔓 开源项目</span>
+    <span class="badge b-tag">🧑‍💻 开发者向</span>
+    <span class="badge b-date">指南为 2026 年 9 月新版</span>
+  </div>
+  <div class="oneliner">一句话摘要：Nous Research 开源的本地优先个人 Agent，带持久记忆和"自动沉淀技能"的学习循环，原生支持 GLM / Kimi / MiniMax / Ollama，一条 curl 命令装完。</div>
+
+  <h3 class="sec">原始资料</h3>
+  <ul class="src-list">
+    <li><span class="src-type">上手指南</span><a href="https://hermes-ecosystem.vercel.app/guide/" target="_blank" rel="noopener">Hermes Agent: The Complete Beginner's Guide (Sep 2026)</a></li>
+    <li><span class="src-type">项目 Repo</span><a href="https://github.com/NousResearch/hermes-agent" target="_blank" rel="noopener">github.com/NousResearch/hermes-agent</a></li>
+    <li><span class="src-type">官方文档</span><a href="https://hermes-agent.nousresearch.com/docs/" target="_blank" rel="noopener">hermes-agent.nousresearch.com/docs</a></li>
+  </ul>
+
+  <h3 class="sec">教程讲了什么</h3>
+  <p>指南系统讲解了这个项目的核心主张——Harness Engineering：2026 年的关键不是更聪明的模型，而是模型外面更聪明的"套壳"（指令、约束、反馈、记忆、编排五层）。Hermes 常驻在你的电脑或 VPS 上，跨会话记忆，每完成复杂任务就自动把经验写成一个可复用的 Skill（markdown 文件），并通过 CLI / Telegram / Discord / 邮件等 14+ 渠道触达你。</p>
+
+  <h3 class="sec">技术栈</h3>
+  <table class="stack">
+    <tr><td class="k">模型</td><td>任意 OpenAI 兼容端点；原生支持 Anthropic、OpenAI、MiniMax、Kimi/Moonshot、z.ai/GLM、OpenRouter（200+ 模型）、本地 Ollama</td></tr>
+    <tr><td class="k">工具</td><td>40+ 内置工具、Skill 系统（~/.hermes/skills/）、cron 定时、MCP Server 入口、Telegram/Discord/Slack/邮件网关</td></tr>
+    <tr><td class="k">语言</td><td>Python（uv 管理，需 Python 3.11）</td></tr>
+    <tr><td class="k">部署环境</td><td>Linux / macOS / WSL2 / Termux（不支持原生 Windows）；MIT 协议</td></tr>
+  </table>
+
+  <h3 class="sec">手把手复现</h3>
+  <pre><code># 1. 安装（Linux / macOS / WSL2 / Termux）
+curl -fsSL https://raw.githubusercontent.com/NousResearch/hermes-agent/main/scripts/install.sh | bash
+source ~/.bashrc   # 或 source ~/.zshrc
+
+# 2. 选择模型（国内用户可选 GLM / Kimi / MiniMax / Ollama 本地模型）
+hermes model
+
+# 3. 常用命令
+hermes tools      # 配置启用的工具
+hermes setup      # 完整交互式配置向导
+hermes gateway    # 启动消息平台网关（Telegram / Discord 等）
+hermes doctor     # 诊断配置问题
+hermes update     # 升级到最新版</code></pre>
+
+  <h3 class="sec">踩坑与注意事项</h3>
+  <div class="pitfall">
+    <b>注意：</b>① <b>不支持原生 Windows</b>，必须 WSL2；② 指南把"选模型"称为"第一个周末错误"——新手常一上来选最贵的前沿模型，建议先用便宜模型（或国产模型）把 Workflow 跑顺再升级；③ Skill 是 Agent 自动写入本地的 markdown 文件，意味着 Agent 会修改自己的"行为库"，生产环境建议把 skills 目录纳入 Git 管理以便审计；④ 让 Agent 常驻 VPS 时务必做好网关鉴权，别把无保护的 Bot 暴露在公网。
+  </div>
+
+  <h3 class="sec">国内替代方案</h3>
+  <p>模型层：直接用 GLM / Kimi / MiniMax / DeepSeek（OpenAI 兼容），这是官方支持的姿势。框架层：国内同形态的"本地优先 + IM 接入"开源框架可参考 OpenClaw（支持飞书/钉钉/企业微信生态，中文社区更活跃）。</p>
+
+  <div class="trainer"><b>培训师点评：</b>教这个项目时不要陷入安装细节，重点讲"Skill 自动沉淀"这一范式——Agent 把自己的经验写成可复用程序，这是从"用 AI"到"养 AI"的分水岭。</div>
+</div>
+
+<!-- ========== 04 ========== -->
+<div class="card" id="c4">
+  <div class="card-head">
+    <div class="num">04</div>
+    <h2>Qwen3.6 + Qwen-Agent + MCP 文件系统：让国产模型自己整理桌面、生成网站并存盘</h2>
+  </div>
+  <div class="badges">
+    <span class="badge b-cat">AI Coding / MCP</span>
+    <span class="badge b-tag">🔥 值得马上实践</span>
+    <span class="badge b-tag">📌 值得收藏</span>
+    <span class="badge b-tag">🇨🇳 国产模型</span>
+    <span class="badge b-tag">🧑‍💻 开发者向</span>
+    <span class="badge b-date">2026-09-28 前后发布</span>
+  </div>
+  <div class="oneliner">一句话摘要：官方手把手教程：vLLM 部署 Qwen3.6-35B-A3B，用 Qwen-Agent 挂官方 MCP filesystem server，Agent 自主整理文件夹、生成网站并写入磁盘。</div>
+
+  <h3 class="sec">原始资料</h3>
+  <ul class="src-list">
+    <li><span class="src-type">官方教程</span><a href="https://www.hyperstack.cloud/technical-resources/tutorials/how-to-deploy-qwen3.6-on-hyperstack" target="_blank" rel="noopener">Hyperstack：Step-by-Step Guide to Deploying Qwen3.6 on a GPU Cloud for Agentic Coding</a></li>
+    <li><span class="src-type">相关项目</span><a href="https://github.com/QwenLM/Qwen-Agent" target="_blank" rel="noopener">github.com/QwenLM/Qwen-Agent（教程所用官方 Agent 框架）</a></li>
+  </ul>
+
+  <h3 class="sec">教程讲了什么</h3>
+  <p>教程先指导在 GPU 云上用 vLLM 部署 Qwen3.6-35B-A3B 并提供 OpenAI 兼容端点，然后用 Qwen-Agent 的 Assistant 类连接该端点（含 enable_thinking 思考模式配置），再把官方 MCP filesystem server 注册为工具。随后演示两个真实任务：让 Agent 自主整理一个杂乱的工作目录，以及让 Agent 生成一个猫咪主题网站并把 index.html 写入磁盘。</p>
+
+  <h3 class="sec">技术栈</h3>
+  <table class="stack">
+    <tr><td class="k">模型</td><td>Qwen/Qwen3.6-35B-A3B（MoE，开启 thinking 模式）</td></tr>
+    <tr><td class="k">推理</td><td>vLLM（OpenAI 兼容 API，localhost:8000/v1）</td></tr>
+    <tr><td class="k">Agent 框架</td><td>Qwen-Agent（qwen_agent.agents.Assistant）</td></tr>
+    <tr><td class="k">MCP 工具</td><td>@modelcontextprotocol/server-filesystem（官方文件系统 server，npx 启动）</td></tr>
+    <tr><td class="k">部署环境</td><td>GPU 云（可用任意 vLLM 能跑的环境）</td></tr>
+  </table>
+
+  <h3 class="sec">手把手复现（核心代码，来自原教程）</h3>
+  <pre><code>from qwen_agent.agents import Assistant
+
+# 1. 指向本地 vLLM 部署的 Qwen3.6（OpenAI 兼容端点）
+llm_cfg = {
+    'model': 'Qwen/Qwen3.6-35B-A3B',
+    'model_type': 'qwenvl_oai',
+    'model_server': 'http://localhost:8000/v1',
+    'api_key': 'EMPTY',
+    'generate_cfg': {
+        'use_raw_api': True,
+        'extra_body': {
+            'chat_template_kwargs': {'enable_thinking': True}
+        },
+    },
+}
+
+# 2. 通过 MCP 挂载官方文件系统 server（只暴露专用工作目录！）
+tools = [{
+    'mcpServers': {
+        "filesystem": {
+            "command": "npx",
+            "args": [
+                "-y",
+                "@modelcontextprotocol/server-filesystem",
+                "/ephemeral/agent_workspace"
+            ]
+        }
+    }
+}]
+
+# 3. 初始化并运行
+bot = Assistant(llm=llm_cfg, function_list=tools)
+messages = [{'role': 'user', 'content':
+    'Develop a cat website and save it on the /ephemeral/agent_workspace desktop.'}]
+for responses in bot.run(messages=messages):
+    pass
+print(responses)</code></pre>
+
+  <h3 class="sec">踩坑与注意事项</h3>
+  <div class="pitfall">
+    <b>注意：</b>① <b>安全红线</b>：filesystem server 只应暴露专用工作目录，绝不要把整个系统盘挂给 Agent（原教程明确警告）；② MCP server 通过 npx 启动，需要本机有 Node.js；③ 35B-A3B 是 MoE 模型，本地跑仍需相当显存——纯本地体验可换成更小的 Qwen3 dense 模型（如 8B），代码完全一样；④ <code>api_key: 'EMPTY'</code> 只对本地 vLLM 有效，接云端要换真实 Key。
+  </div>
+
+  <h3 class="sec">普通人能不能复现</h3>
+  <p><span class="repro dev">🔴 开发者项目（按原教程需 GPU 云）</span></p>
+  <p>降级路线：没有 GPU 的开发者可以把 <code>model_server</code> 指向阿里云百炼的 Qwen 兼容端点或本地 Ollama 跑的小尺寸 Qwen3，MCP 部分代码不变，零 GPU 也能体验完整流程。</p>
+
+  <div class="trainer"><b>培训师点评：</b>这篇教程的教学价值在于"最小完整的 Agentic Coding 链路"——模型、框架、MCP 三层全部官方开源，没有黑盒。讲清楚 filesystem server 的目录白名单设计，就讲清楚了 Agent 安全的第一课。</div>
+</div>
+
+<!-- ========== 05 ========== -->
+<div class="card" id="c5">
+  <div class="card-head">
+    <div class="num">05</div>
+    <h2>llm-agents-from-scratch：不用现成框架，从_tools 到多智能体_手写一本 Agent 开源教材</h2>
+  </div>
+  <div class="badges">
+    <span class="badge b-cat">Open Source / 教程</span>
+    <span class="badge b-tag">📌 值得收藏</span>
+    <span class="badge b-tag">🎓 值得培训</span>
+    <span class="badge b-tag">🔓 开源项目</span>
+    <span class="badge b-tag">🧑‍💻 开发者向</span>
+    <span class="badge b-date">持续更新中（含最新章节）</span>
+  </div>
+  <div class="oneliner">一句话摘要：一本开源书：从手写工具调用、记忆、规划开始，逐步加上 MCP、Skills、Human-in-the-loop，最后组装多智能体系统——默认用本地 Qwen3:14B 跑全部示例。</div>
+
+  <h3 class="sec">原始资料</h3>
+  <ul class="src-list">
+    <li><span class="src-type">项目 Repo</span><a href="https://github.com/nerdai/llm-agents-from-scratch" target="_blank" rel="noopener">github.com/nerdai/llm-agents-from-scratch</a></li>
+    <li><span class="src-type">云端环境</span><a href="https://lightning.ai/nerdai/templates/build-a-multi-agent-system-from-scratch" target="_blank" rel="noopener">Lightning AI 免费 GPU 模板（预装 Ollama 与模型）</a></li>
+  </ul>
+
+  <h3 class="sec">教程讲了什么</h3>
+  <p>全书三部分十章：Part 1 从零构建 LLM Agent（工具、LLM 封装、Agent 类）；Part 2 增强你的 Agent（MCP 工具、Skills、记忆、Human-in-the-loop）；Part 3 组装多智能体系统（Subagents、A2A 协议互通）。外加 Capstone 项目（蒙特卡洛并行工具调用估算 π）。所有章节是 Jupyter Notebook，默认模型为 Ollama 本地 Qwen3:14B。</p>
+
+  <h3 class="sec">为什么值得收藏</h3>
+  <p>绝大多数 Agent 教程教你"调 LangChain/CrewAI 的 API"，这本教材反过来：让你亲手写出框架背后的机制——工具调用循环、记忆结构、MCP 客户端、HITL 中断恢复。尤为难得的是默认底座是国产开源模型 Qwen3，国内读者本地即可复现全部章节，没有 API 墙。</p>
+
+  <h3 class="sec">技术栈</h3>
+  <table class="stack">
+    <tr><td class="k">模型</td><td>Qwen3:14B（Ollama 本地，默认）；可换 qwen3:4b（小模型工具调用可能不稳）</td></tr>
+    <tr><td class="k">工具</td><td>Ollama、Jupyter、uv（依赖管理）</td></tr>
+    <tr><td class="k">语言</td><td>Python 3.10+</td></tr>
+    <tr><td class="k">覆盖主题</td><td>工具调用 / MCP / Skills / 记忆 / HITL / Subagents / A2A / Capstone</td></tr>
+    <tr><td class="k">硬件要求</td><td>约 16GB 内存 + 能跑 14B 模型的 GPU；无 GPU 可用 Lightning AI 免费模板</td></tr>
+  </table>
+
+  <h3 class="sec">手把手复现</h3>
+  <pre><code># 1. 克隆与安装
+git clone https://github.com/nerdai/llm-agents-from-scratch.git
+cd llm-agents-from-scratch
+uv sync --all-extras --dev
+
+# 2. 拉取默认模型（本地）
+ollama pull qwen3:14b
+
+# 3. 启动章节 Notebook
+uv run --with jupyter jupyter lab
+
+# 无 GPU？用 Lightning AI 模板，Ollama 与模型已预装</code></pre>
+
+  <div class="trainer"><b>培训师点评：</b>这本教材的价值在"祛魅"——Agent 不是魔法，是一个 while 循环加工具分发。用它培训的最大收益是学员之后看任何 Agent 框架源码都不慌，这种底层理解是调参调不出来的。</div>
+</div>
+
+<!-- ========== 06 ========== -->
+<div class="card" id="c6">
+  <div class="card-head">
+    <div class="num">06</div>
+    <h2>Datawhale Happy-LLM 登上 TRAE 官方社区推荐：从 Tokenizer 到亲手训出 LLaMA2 的中文系统教程</h2>
+  </div>
+  <div class="badges">
+    <span class="badge b-cat">国产教程 / Open Source</span>
+    <span class="badge b-tag">📌 值得收藏</span>
+    <span class="badge b-tag">🎓 值得培训</span>
+    <span class="badge b-tag">🇨🇳 国产教程</span>
+    <span class="badge b-tag">🔓 开源项目</span>
+    <span class="badge b-date">TRAE 社区推荐帖为近期发布</span>
+  </div>
+  <div class="oneliner">一句话摘要：Datawhale 开源教程 Happy-LLM 获 TRAE 官方中文社区专题推荐：全中文、从 NLP 基础到预训练、SFT、RAG、Agent、Agentic-RL，附 PDF 与配套 PPT。</div>
+
+  <h3 class="sec">原始资料</h3>
+  <ul class="src-list">
+    <li><span class="src-type">社区推荐帖</span><a href="https://forum.trae.cn/t/topic/182625" target="_blank" rel="noopener">TRAE 官方中文社区：【Learn Agent】Happy-LLM —— 从零开始构建大模型</a></li>
+    <li><span class="src-type">项目 Repo</span><a href="https://github.com/datawhalechina/happy-llm" target="_blank" rel="noopener">github.com/datawhalechina/happy-llm（Releases 含免费 PDF v1.0.2）</a></li>
+    <li><span class="src-type">配套 PPT</span><a href="https://github.com/HZAI-ZJNU/happy-llm-ppt" target="_blank" rel="noopener">github.com/HZAI-ZJNU/happy-llm-ppt</a></li>
+  </ul>
+
+  <h3 class="sec">教程讲了什么</h3>
+  <p>教程分基础篇（NLP 基础、Transformer、预训练语言模型、大语言模型）与实战篇（动手搭建大模型、训练流程实践、大模型应用、Agentic-RL）。目标读者能亲手复现一个 LLaMA2 级别模型：从 Tokenizer 到预训练到 SFT 全流程。</p>
+
+  <h3 class="sec">为什么值得收藏</h3>
+  <p>"会用大模型"和"懂大模型"之间隔着一次亲手训练。这是目前中文世界最完整的"从零训 LLM"开源教程之一，且明确覆盖到当下最前沿的 Agentic-RL。配套 PPT 让它可以直接变成培训课件。</p>
+
+  <h3 class="sec">技术栈</h3>
+  <table class="stack">
+    <tr><td class="k">主题</td><td>Tokenizer / Transformer / 预训练 / SFT / 大模型应用（RAG、Agent）/ Agentic-RL</td></tr>
+    <tr><td class="k">语言</td><td>Python（PyTorch）</td></tr>
+    <tr><td class="k">配套资源</td><td>免费 PDF（v1.0.2）、讲义 PPT、SwanLab 训练可视化记录</td></tr>
+    <tr><td class="k">协议</td><td>CC BY-NC-SA 4.0（署名-非商业-相同方式共享）</td></tr>
+  </table>
+
+  <h3 class="sec">手把手上手</h3>
+  <pre><code>git clone https://github.com/datawhalechina/happy-llm.git
+cd happy-llm
+# 按《学习与环境准备》为对应章节创建独立环境后，
+# 再运行该章节代码（官方强烈建议，避免版本冲突）</code></pre>
+
+  <h3 class="sec">普通人能不能复现</h3>
+  <p><span class="repro dev">🔴 开发者项目（前 4 章阅读 ⭐⭐ 可跟）</span></p>
+  <p>需要：Python + 深度学习基础；动手训练需 GPU（可租 AutoDL 等按小时计费）。阅读与概念学习完全免费。</p>
+
+  <div class="trainer"><b>培训师点评：</b>这套教程最该教的是"祛魅后的敬畏"——学员亲手训过模型后，才会真正理解数据质量、训练配置和评估的意义。有配套 PPT 是它相对其他开源教程的独特培训优势。</div>
+</div>
+
+<!-- ========== 07 ========== -->
+<div class="card" id="c7">
+  <div class="card-head">
+    <div class="num">07</div>
+    <h2>把 LLM 塞进 2D 游戏世界：Datawhale《Hello-Agents》赛博小镇实战——NPC 有性格、有记忆、还记得住你</h2>
+  </div>
+  <div class="badges">
+    <span class="badge b-cat">AI 奇技 / Agent</span>
+    <span class="badge b-tag">🧪 值得实验</span>
+    <span class="badge b-tag">🎓 值得培训</span>
+    <span class="badge b-tag">🇨🇳 国产教程</span>
+    <span class="badge b-tag">🔓 开源项目</span>
+    <span class="badge b-warn">博客园连载笔记，近日发布</span>
+  </div>
+  <div class="oneliner">一句话摘要：Datawhale Hello-Agents 第 15 章实战：Godot + FastAPI + 自研 Agent 三层分离，每个 NPC 一个 Agent 实例，双层记忆 + 好感度，LLM 成本压到 1/3。</div>
+
+  <h3 class="sec">原始资料</h3>
+  <ul class="src-list">
+    <li><span class="src-type">实战笔记</span><a href="https://www.cnblogs.com/test-gang/p/23146005" target="_blank" rel="noopener">博客园：Agent 速成笔记 · 第 15 章 构建赛博小镇</a></li>
+    <li><span class="src-type">原始教程</span><a href="https://github.com/datawhalechina/hello-agents" target="_blank" rel="noopener">Datawhale《Hello-Agents》（GitHub；GitCode 有镜像）</a></li>
+  </ul>
+
+  <h3 class="sec">教程讲了什么</h3>
+  <p>赛博小镇是一个 2D 像素风虚拟办公室：玩家用 WASD 走动，靠近 NPC 按 E 即可自然语言聊天。架构三层分离——Godot 管感知与表现，FastAPI 后端管决策（记忆检索 + LLM 生成 + 好感度结算），每个 NPC 是一个独立的 SimpleAgent 实例。核心机制：人设提示词定义性格；双层记忆（WorkingMemory 容量 10 条/TTL 120 分钟 + EpisodicMemory 用 SQLite + Qdrant 语义检索 top_k=3）；好感度 0–100 连续值，由 LLM 情感分析打分并回写系统提示词。</p>
+
+  <h3 class="sec">为什么值得收藏</h3>
+  <p>最精彩的是成本优化手法：<b>N 个 NPC 的背景闲话合并成 1 次 LLM 调用</b>（要求 JSON 输出），只有玩家真正对话时才走专属 Agent——作者自述此举把 LLM 调用成本压到原来的约 1/3。这种"混合模式"对所有多 Agent 系统都有直接借鉴价值。</p>
+
+  <h3 class="sec">技术栈</h3>
+  <table class="stack">
+    <tr><td class="k">模型</td><td>OpenAI 兼容 LLM（可换 DeepSeek/Qwen）</td></tr>
+    <tr><td class="k">前端/引擎</td><td>Godot（2D 场景、Area2D 感知、气泡对话、四方向动画）</td></tr>
+    <tr><td class="k">后端</td><td>FastAPI + HelloAgents 框架（SimpleAgent）</td></tr>
+    <tr><td class="k">记忆</td><td>WorkingMemory（容量 10、TTL 120min）+ EpisodicMemory（SQLite + Qdrant，top_k=3）</td></tr>
+    <tr><td class="k">关键机制</td><td>好感度评分（LLM 情感分析）+ 合并调用降本（N→1 次）</td></tr>
+  </table>
+
+  <h3 class="sec">关键设计点</h3>
+  <ul>
+    <li><b>一个 NPC 一个 Agent 实例</b>：人格由系统提示词定义，位置/忙闲由后端状态管理器定义，两者解耦。</li>
+    <li><b>记忆分层</b>：WorkingMemory 管对话连贯，EpisodicMemory 管长期"回忆"，语义检索 top_k=3 是实测折中。</li>
+    <li><b>成本核心手法</b>：背景 NPC 的闲话合并为 1 次 LLM 调用（JSON 数组输出），玩家对话才走专属 Agent。</li>
+    <li><b>前后端边界切干净</b>：Godot 只管感知与表现，所有"智能"都在后端。</li>
+  </ul>
+
+  <h3 class="sec">踩坑与注意事项</h3>
+  <div class="pitfall">
+    <b>注意：</b>① "成本降至 1/3"为笔记作者基于教程数据的自述，具体比例取决于 NPC 数量与对话频率；② 合并调用要求模型稳定输出 JSON 数组，小模型容易格式崩，建议用 function calling / JSON mode；③ 好感度由 LLM 打分存在主观波动，关键场景应设打分上下限保护。
+  </div>
+
+  <div class="trainer"><b>培训师点评：</b>这个案例的教学核心不是游戏，而是两个工程模式：记忆如何分层、多 Agent 调用如何降本。学员学会"合并 N 次闲聊为 1 次调用"这一招，就值回全部课时。</div>
+</div>
+
+<!-- ========== 08 ========== -->
+<div class="card" id="c8">
+  <div class="card-head">
+    <div class="num">08</div>
+    <h2>Datawhale easy-vibe Stage 2：按 PRD 用 Vibe Coding 交付一个"能干活"的旅游规划 Agent 平台</h2>
+  </div>
+  <div class="badges">
+    <span class="badge b-cat">AI Coding / Vibe Coding</span>
+    <span class="badge b-tag">🔥 值得马上实践</span>
+    <span class="badge b-tag">🎓 值得培训</span>
+    <span class="badge b-tag">🇨🇳 国产教程</span>
+    <span class="badge b-tag">🔓 开源项目</span>
+    <span class="badge b-warn">原文发布于 2026-09-24（近一周内，如实标注）</span>
+  </div>
+  <div class="oneliner">一句话摘要：CSDN 深度拆解 Datawhale easy-vibe 的 Stage 2 项目：从阅读 PRD 到结构化输入输出、Agent 编排层，再到"生成→保存→重用"闭环，交付可演示的 AI 产品。</div>
+
+  <h3 class="sec">原始资料</h3>
+  <ul class="src-list">
+    <li><span class="src-type">拆解文章</span><a href="https://blog.csdn.net/gitblog_00501/article/details/161654049" target="_blank" rel="noopener">CSDN：easy-vibe 实战项目 —— 智能旅游规划 Agent 平台（2026-09-24 发布）</a></li>
+    <li><span class="src-type">原始教程</span><a href="https://github.com/datawhalechina/easy-vibe" target="_blank" rel="noopener">Datawhale easy-vibe（GitHub 开源教程）</a></li>
+  </ul>
+
+  <h3 class="sec">教程讲了什么</h3>
+  <p>项目要求围绕一份真实 PRD 构建智能旅游规划 Agent 平台：用户输入出发地、目的地、日期、预算和偏好，系统生成每日行程，支持预算拆分、历史保存、再次生成与导出，并含管理后台。文章的核心命题是：<b>如何让 AI 生成结构化、可执行的行程规划，而不是一大段不可操作的长文本</b>。</p>
+
+  <h3 class="sec">为什么值得收藏</h3>
+  <p>大量 Vibe Coding 教程停在"让 AI 写个页面"，这篇讲的是产品化：PRD 驱动、结构化输出约束、任务管理、失败任务监控——正是"演示玩具"与"可用工具"的分水岭。</p>
+
+  <h3 class="sec">完整 Workflow</h3>
+  <div class="flow">
+    <div class="node"><b>PRD</b>：阅读需求文档 → 提炼开发任务清单</div>
+    <div class="arrow">↓</div>
+    <div class="node"><b>结构化输入</b>：出发地/目的地/日期/预算/偏好表单</div>
+    <div class="arrow">↓</div>
+    <div class="node"><b>Agent 编排层</b>：处理输入 → 调用模型 → 约束输出为结构化行程（含预算拆分）</div>
+    <div class="arrow">↓</div>
+    <div class="node"><b>业务闭环</b>：保存历史 → 再次生成 → 导出</div>
+    <div class="arrow">↓</div>
+    <div class="node"><b>管理后台</b>：热门目的地 / 失败任务 / 用户反馈 → 反哺迭代</div>
+  </div>
+
+  <h3 class="sec">踩坑与注意事项</h3>
+  <div class="pitfall">
+    <b>注意：</b>① 原文核心提醒：先定输出结构再写代码，顺序反了会得到"漂亮但不可用"的长文本；② AI 生成代码后必须人工核对预算计算逻辑——数字类输出是幻觉重灾区；③ 管理后台的"失败任务"统计别省，它是你发现 Prompt 缺陷的唯一窗口。
+  </div>
+
+  <div class="trainer"><b>培训师点评：</b>这篇值得教的是"先设计输出结构，再让 AI 写代码"这一个动作——它是 90% 的 Vibe Coding 失败与成功之间的分界线。课程里请让学员亲手体验一次"顺序反了"的痛苦。</div>
+</div>
+
+<section class="block" id="trend">
+  <h2>📈 今日 AI 实战技术观察</h2>
+  <div class="panel">
+    <p><b>① Agent 的"闭环化"成为共同语法。</b>Datawhale 把 RAG 升级为"规划—检索—评估—改写"的循环；智谱用"目标—Agent—实验环境"的反馈闭环优化自家推理引擎；Hello-Agents 用"情感打分→好感度→回写提示词"让 NPC 记住玩家。中文实战内容几乎不再教"一次性调用"，全部在教循环——这标志 Agent 教学从 Prompt 时代进入控制回路时代。</p>
+    <p><b>② MCP 彻底从概念变成默认插座。</b>Qwen-Agent 挂 filesystem server 是 20 行配置的事，llm-agents-from-scratch 把 MCP 列为必修课。教学焦点已从"什么是 MCP"转向"挂什么、怎么挂、边界在哪"。</p>
+    <p><b>③ 国产模型成为教学默认底座。</b>海外开源教材默认 Qwen3:14B 本地跑，海外个人 Agent 框架原生支持 GLM/Kimi/MiniMax，智谱用自家模型优化自家 infra。"用国产模型复现"从替代方案变成了第一方案。</p>
+    <p><b>④ 教程的终点从 Demo 变成产品。</b>easy-vibe 强调 PRD、失败任务监控和业务闭环；Hermes 强调常驻、记忆和技能沉淀。Datawhale 系（All-in-RAG / Hello-Agents / happy-llm / easy-vibe）已形成原理→实战→产品的完整中文学习矩阵。</p>
+  </div>
+</section>
+
+<section class="block" id="verify">
+  <h2>🔍 数据来源与真实性说明</h2>
+  <div class="panel">
+    <h3>本期收录原则执行记录</h3>
+    <ul>
+      <li>日报日期为 2026-09-28（执行日前一天）；优先收录过去 24 小时发布/更新的内容，少数近一周内的高价值内容已用黄色日期标签<b>如实标注</b>（案例 07、08），未包装成"昨日新教程"。</li>
+      <li>检索过程中出现大量 SEO 内容农场站点，<b>已全部剔除</b>，仅保留可追溯到一手作者/官方仓库/官方文档的内容。</li>
+      <li>案例 02 的"3 倍吞吐 / 两周上线"为智谱官方自述，案例 07 的"成本降至 1/3"为笔记作者自述——均已标注"无法独立验证"。</li>
+      <li>本期 8 篇即止，未为凑数降低标准。</li>
+    </ul>
+  </div>
+</section>
+
+<nav class="read-nav">
+  <a class="rn-item" href="2026-09-27.html">← 第 001 期（09-27）</a>
+  <a class="rn-item" href="index.html">全部教程 →</a>
+</nav>
+
+</div>
+</main>
+<footer class="site-footer">
+  <div class="wrap">
+    <div>
+      <div class="f-brand">全球文明进程重大事件日报</div>
+      <p class="f-desc">记录人类文明演进中的关键节点。以未来历史学家的视角，筛出可能改写人类轨迹的转折点。</p>
+    </div>
+    <div class="f-col">
+      <h4>浏览</h4>
+      <ul>
+        <li><a href="../index.html">网站首页</a></li>
+        <li><a href="../archive.html">日报档案</a></li>
+        <li><a href="../radar.html">趋势雷达</a></li>
+        <li><a href="index.html">AI实战教程</a></li>
+        <li><a href="../assets/images/og-cover.png" target="_blank">站点封面</a></li>
+      </ul>
+    </div>
+    <div class="f-col">
+      <h4>文明分类</h4>
+      <ul>
+        <li><a href="../categories/science.html">科学、生命与地球</a></li>
+        <li><a href="../categories/politics.html">政治与文明秩序</a></li>
+        <li><a href="../categories/culture.html">思想、社会与文化</a></li>
+        <li><a href="../categories/technology.html">科技与人工智能</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="f-bottom">
+    <div class="wrap">
+      <span>© 2026 全球文明进程重大事件日报 · 全球文明进程观察站</span>
+      <span>内容由自动化智能体基于公开信息生成，仅供文明观察与研究参考。</span>
+    </div>
+  </div>
+</footer>
+<button class="backtop" type="button" aria-label="返回顶部">↑</button>
+<script src="../assets/js/main.js"></script>
+<script src="../assets/js/wechat-share.js"></script>
+<script src="../assets/js/text-to-speech.js"></script>
+</body>
+</html>
