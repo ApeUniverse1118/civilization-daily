@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI极客实战教程日报 · 2026-09-29（第003期）｜MCP企业化落地：FastMCP禅道服务/内网MCP审批留痕网关；Browser Use Cloud v3；gh-aw轨迹评分；Trae深度指南；阿里open-code-review；Datawhale Deep Agents课；腾讯WeKnora</title>
+<meta name="description" content="9月29日AI极客实战教程（MCP企业化专场）：8篇可复现教程——FastMCP手写禅道MCP服务40行跑通；内网MCP网关带审批留痕凭据托管；Browser Use Cloud v3 Agent API；GitHub gh-aw v0.90轨迹评分；Trae AI原生IDE完整工作流；阿里open-code-review规则流水线+Agent；Datawhale Deep Agents 16章开源课；腾讯WeKnora自维护Wiki知识库。">
+<meta name="keywords" content="AI极客实战,MCP FastMCP,禅道MCP,内网MCP网关,Browser Use Cloud,gh-aw,Trae IDE,open-code-review,Datawhale Deep Agents,WeKnora,RAG知识库">
+<meta name="author" content="全球文明进程观察站">
+<meta name="robots" content="index,follow">
+<link rel="canonical" href="https://civilization-radar.com/tutorial/2026-09-29.html">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="全球文明进程重大事件日报">
+<meta property="og:title" content="AI极客实战教程日报 · 2026-09-29｜MCP企业化落地8篇实战教程">
+<meta property="og:description" content="MCP从概念科普进入企业工程化；Agent的治理与记忆成为热榜主线；国产Coding工具教程生态成熟到可以出深度指南。">
+<meta property="og:url" content="https://civilization-radar.com/tutorial/2026-09-29.html">
+<meta property="og:image" content="https://civilization-radar.com/assets/images/og-cover.png">
+<meta property="og:locale" content="zh_CN">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="AI极客实战教程日报 · 2026-09-29">
+<meta name="twitter:description" content="MCP企业化专场：8篇可复现的AI工程教程。">
+<meta name="twitter:image" content="https://civilization-radar.com/assets/images/og-cover.png">
+<link rel="icon" href="../assets/images/logo.svg" type="image/svg+xml">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"AI极客实战教程日报 2026-09-29","description":"MCP企业化专场：8篇可复现教程。","datePublished":"2026-09-29","dateModified":"2026-09-30","author":{"@type":"Organization","name":"全球文明进程观察站"},"publisher":{"@type":"Organization","name":"全球文明进程观察站","logo":{"@type":"ImageObject","url":"https://civilization-radar.com/assets/images/og-cover.png"}},"mainEntityOfPage":{"@type":"WebPage","@id":"https://civilization-radar.com/tutorial/2026-09-29.html"}}</script>
+<link rel="stylesheet" href="../assets/css/style.css">
+<style>
+  .tut-wrap{max-width:960px;margin:0 auto;padding:24px 20px 64px;}
+  body{background:#F7F8FA;}
+  .tut-wrap a{color:#2563EB;}
+  header.top{background:#111827;color:#F9FAFB;border-radius:14px;padding:36px 32px;margin-bottom:24px;}
+  header.top .kicker{color:#93C5FD;font-size:13px;letter-spacing:2px;text-transform:uppercase;margin-bottom:10px;}
+  header.top h1{font-size:28px;font-weight:800;margin-bottom:6px;color:#F9FAFB;}
+  header.top .sub{color:#9CA3AF;font-size:14px;margin-bottom:20px;}
+  .meta-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;}
+  .meta-grid .m{background:#1F2937;border:1px solid #374151;border-radius:10px;padding:10px 14px;}
+  .meta-grid .m .k{font-size:11px;color:#9CA3AF;margin-bottom:2px;}
+  .meta-grid .m .v{font-size:14px;font-weight:600;color:#F9FAFB;}
+  .observe{background:#FFFFFF;border:1px solid #E5E7EB;border-left:4px solid #2563EB;border-radius:14px;padding:24px 28px;margin-bottom:24px;}
+  .observe h2{font-size:18px;margin-bottom:10px;}
+  .observe p{color:#374151;font-size:14.5px;}
+  nav.cats{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:28px;}
+  nav.cats a{background:#FFFFFF;border:1px solid #E5E7EB;border-radius:999px;padding:6px 14px;font-size:13px;color:#374151;}
+  nav.cats a:hover{border-color:#2563EB;color:#2563EB;text-decoration:none;}
+  .card{background:#FFFFFF;border:1px solid #E5E7EB;border-radius:14px;padding:28px;margin-bottom:28px;}
+  .card-head{display:flex;align-items:flex-start;gap:14px;margin-bottom:6px;flex-wrap:wrap;}
+  .num{font-size:26px;font-weight:800;color:#2563EB;line-height:1.1;font-variant-numeric:tabular-nums;min-width:52px;}
+  .card-head h2{font-size:20px;font-weight:700;flex:1;min-width:240px;}
+  .badges{display:flex;flex-wrap:wrap;gap:6px;margin:8px 0 14px;}
+  .badge{font-size:12px;padding:3px 10px;border-radius:999px;font-weight:600;}
+  .b-cat{background:#EFF6FF;color:#2563EB;border:1px solid #BFDBFE;}
+  .b-tag{background:#F3F4F6;color:#4B5563;border:1px solid #E5E7EB;}
+  .b-date{background:#ECFDF5;color:#16A34A;border:1px solid #BBF7D0;}
+  .b-warn{background:#FFFBEB;color:#B45309;border:1px solid #FDE68A;}
+  .oneliner{background:#F9FAFB;border:1px solid #E5E7EB;border-radius:10px;padding:12px 16px;font-size:14.5px;color:#111827;margin-bottom:18px;}
+  h3.sec{font-size:14px;font-weight:700;color:#111827;margin:22px 0 8px;padding-left:10px;border-left:3px solid #2563EB;}
+  .card p,.card li{font-size:14.5px;color:#374151;}
+  .card ul,.card ol{padding-left:22px;margin:6px 0;}
+  .card li{margin-bottom:4px;}
+  .src-list{list-style:none;padding-left:0;}
+  .src-list li{margin-bottom:6px;}
+  .src-type{display:inline-block;font-size:11px;font-weight:700;color:#2563EB;background:#EFF6FF;border:1px solid #BFDBFE;border-radius:6px;padding:1px 8px;margin-right:8px;}
+  .stack{width:100%;border-collapse:collapse;margin:6px 0;}
+  .stack td{border:1px solid #E5E7EB;padding:7px 12px;font-size:13.5px;vertical-align:top;}
+  .stack td.k{background:#F9FAFB;font-weight:600;color:#111827;width:110px;white-space:nowrap;}
+  pre{background:#111827;color:#E5E7EB;border-radius:10px;padding:16px 18px;overflow-x:auto;font-size:13px;line-height:1.6;font-family:"SFMono-Regular",Consolas,Menlo,monospace;margin:8px 0;}
+  code{font-family:"SFMono-Regular",Consolas,Menlo,monospace;background:#F3F4F6;color:#111827;border-radius:5px;padding:1px 6px;font-size:13px;}
+  pre code{background:transparent;color:#E5E7EB;padding:0;}
+  .pitfall{background:#FFFBEB;border:1px solid #FDE68A;border-radius:10px;padding:14px 18px;margin:8px 0;}
+  .pitfall b{color:#B45309;}
+  .trainer{border-left:3px solid #16A34A;background:#F0FDF4;border-radius:0 10px 10px 0;padding:12px 18px;font-size:14px;color:#14532D;margin:10px 0 4px;}
+  .trainer b{color:#16A34A;}
+  section.block{margin-top:40px;}
+  section.block>h2{font-size:22px;font-weight:800;margin-bottom:16px;padding-bottom:10px;border-bottom:2px solid #E5E7EB;}
+  .panel{background:#FFFFFF;border:1px solid #E5E7EB;border-radius:14px;padding:24px 28px;margin-bottom:20px;}
+  .panel h3{font-size:16px;margin-bottom:10px;}
+  .panel p,.panel li{font-size:14.5px;color:#374151;}
+  .panel ul{padding-left:22px;}
+  .panel li{margin-bottom:6px;}
+  .repro{display:inline-block;font-size:13px;font-weight:700;padding:4px 12px;border-radius:999px;background:#ECFDF5;color:#16A34A;border:1px solid #BBF7D0;}
+  .repro.hard{background:#FFFBEB;color:#B45309;border-color:#FDE68A;}
+  .repro.dev{background:#FEF2F2;color:#B91C1C;border-color:#FECACA;}
+  @media(max-width:640px){
+    .tut-wrap{padding:20px 12px 48px;}
+    header.top{padding:26px 20px;}
+    header.top h1{font-size:22px;}
+    .meta-grid{grid-template-columns:repeat(2,1fr);}
+    .card{padding:20px 16px;}
+    .card-head h2{font-size:17px;}
+  }
+</style>
+</head>
+<body>
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="../index.html"><img class="mark" src="../assets/images/logo.svg" alt="文明雷达" width="32" height="32" style="width:32px;height:32px;background:none;border:0;box-shadow:none;border-radius:6px">全球文明进程重大事件日报</a>
+    <button class="nav-toggle" type="button" aria-label="菜单" aria-expanded="false">☰</button>
+    <nav class="main-nav" aria-label="主导航"><ul><li><a href="../index.html">首页</a></li><li><a href="../archive.html">日报档案</a></li><li><a href="../radar.html">趋势雷达</a></li><li><a href="index.html" class="active">AI实战</a></li><li><a href="../categories/science.html">科学</a></li><li><a href="../categories/politics.html">政治</a></li><li><a href="../categories/culture.html">文化</a></li><li><a href="../categories/technology.html">科技</a></li></ul></nav>
+  </div>
+</header>
+<main class="site-main">
+<div class="tut-wrap">
+
+<nav class="breadcrumb" aria-label="面包crumb"><a href="../index.html">首页</a><span class="sep">/</span><a href="index.html">AI实战教程</a><span class="sep">/</span><span>2026-09-29</span></nav>
+
+<header class="top">
+  <div class="kicker">MCP AT SCALE · AGENT GOVERNANCE · CHINESE TOOLING</div>
+  <h1>AI 极客实战教程日报</h1>
+  <div class="sub">昨天，中国 AI 开发者和开源社区公开了哪些值得照着做的实战教程——只收录 Tutorial / Build Log / Workflow / 一手资料，不收录新闻。</div>
+  <div class="meta-grid">
+    <div class="m"><div class="k">日报日期</div><div class="v">2026-09-29</div></div>
+    <div class="m"><div class="k">执行日期</div><div class="v">2026-09-30</div></div>
+    <div class="m"><div class="k">教程数量</div><div class="v">8 篇（未凑数）</div></div>
+    <div class="m"><div class="k">期数</div><div class="v">第 003 期</div></div>
+  </div>
+</header>
+
+<div class="observe">
+  <h2>🔭 今日 AI 实践观察</h2>
+  <p>三个信号：① <b>MCP 正在从"概念科普"进入"企业工程化"</b>——掘金两篇当日文章分别给出手写禅道 MCP 服务的最小实现，以及带审批、留痕、凭据托管的企业内网 MCP 网关架构，社区开始认真回答"AI 改了内网数据谁负责"；② <b>Agent 的"治理"与"记忆"成为热榜主线</b>——阿里 open-code-review、腾讯 WeKnora、Hindsight 等项目都在解决"Agent 产出能不能信、记不记得住"，GitHub 官方 gh-aw 把 trajectory graders 作为新版本重点；③ <b>国产 Coding 工具教程生态成熟到可出"深度使用指南"</b>——TRAE 的规则系统、Bug 修复工作流、OpenSpec 重构四阶段都被沉淀成可复制操作手册。AI 正在从"回答问题"走向"执行任务"，而昨天的社区正在补上"执行之后如何被审计、被约束、被复用"这一课。</p>
+</div>
+
+<nav class="cats">
+  <a href="#c1">MCP 实战</a>
+  <a href="#c2">MCP 企业治理</a>
+  <a href="#c3">Browser Use</a>
+  <a href="#c4">Agent 工作流</a>
+  <a href="#c5">AI Coding</a>
+  <a href="#c6">代码审查</a>
+  <a href="#c7">Agent 课程</a>
+  <a href="#c8">RAG 知识库</a>
+  <a href="#trend">今日技术观察</a>
+</nav>
+
+<!-- 01 -->
+<div class="card" id="c1">
+  <div class="card-head"><div class="num">01</div><h2>用 Python + FastMCP 给禅道写一个 MCP 服务，让 Agent 替你看 Bug</h2></div>
+  <div class="badges"><span class="badge b-cat">MCP 实战</span><span class="badge b-tag">🔥 值得马上实践</span><span class="badge b-tag">🧑‍💻 开发者向</span><span class="badge b-tag">🧩 值得迁移</span><span class="badge b-date">2026-09-29 发布</span></div>
+  <div class="oneliner">用不到 40 行 Python 手写一个禅道 MCP 服务，接入 Cursor 后对 AI 说一句"帮我看看 Bug #1024"，Agent 就能查详情、列清单、改任务状态。</div>
+  <h3 class="sec">原始资料</h3>
+  <ul class="src-list">
+    <li><span class="src-type">原文</span><a href="https://juejin.cn/post/7690770096786128950" target="_blank" rel="noopener">让 Agent 替你看 Bug：简单示例读懂 MCP 服务（掘金）</a></li>
+    <li><span class="src-type">依赖</span><a href="https://github.com/modelcontextprotocol/python-sdk" target="_blank" rel="noopener">MCP 官方 Python SDK（FastMCP 所在包）</a></li>
+  </ul>
+  <h3 class="sec">教程讲了什么</h3>
+  <p>禅道是国内团队用得最多的缺陷管理系统，但 Coding Agent 天生访问不了它。作者用一个最小例子讲透 MCP 服务本质：MCP 就是一个独立进程，Agent 通过 stdio 发 JSON-RPC 请求，你的服务去调禅道 REST API，把结果格式化成纯文本返回。教程从单个 Tool（zentao_get_bug）跑通，再扩展到列表查询、任务状态更新，最后总结四条 MCP Tool 设计原则：按意图拆分 Tool、docstring 写触发场景、只把真正必填的放 required、返回纯文本不返回 JSON。</p>
+  <h3 class="sec">技术栈</h3>
+  <table class="stack">
+    <tr><td class="k">模型</td><td>不绑定具体模型，通过 Cursor 等 MCP 客户端调用其内置模型</td></tr>
+    <tr><td class="k">工具</td><td>Python、FastMCP（mcp 官方 SDK）、Cursor（MCP Host）</td></tr>
+    <tr><td class="k">API</td><td>禅道 REST API（15.0+，需管理员开启）</td></tr>
+    <tr><td class="k">部署</td><td>本地 stdio 进程，Cursor 自动拉起</td></tr>
+  </table>
+  <h3 class="sec">为什么值得收藏</h3>
+  <p>目前少见的"从零到接入 IDE 全链路、代码可直接复制"的中文 MCP 实战教程。最大价值不在代码量，而在四条 Tool 设计原则——这些是决定 Agent 选 Tool 准不准的实战经验，可直接迁移到任何内部系统（Jira、飞书、钉钉、内部 Wiki）。</p>
+  <div class="trainer"><b>培训师点评：</b>真正值得教的是四条 Tool 设计原则——它们把"MCP 怎么写"升级为"Agent 怎么用好"。这是把概念课变成工程课的分水岭，建议作为 MCP 系列课程的第一讲。</div>
+</div>
+
+<!-- 02 -->
+<div class="card" id="c2">
+  <div class="card-head"><div class="num">02</div><h2>隔离内网下的 AI Agent 工程实战：给所有内网系统统一装上 MCP + 审批 + 留痕</h2></div>
+  <div class="badges"><span class="badge b-cat">MCP 企业治理</span><span class="badge b-tag">📌 值得收藏</span><span class="badge b-tag">🏢 企业向</span><span class="badge b-tag">🧩 值得迁移</span><span class="badge b-date">2026-09-29 发布</span></div>
+  <div class="oneliner">一位一线工程师复盘公司内部落地 internal-mcp 的完整架构：内网系统统一封装 MCP Tools，写操作走人工审批，每次调用留痕——国内少见的"AI 进企业内网"治理方案。</div>
+  <h3 class="sec">原始资料</h3>
+  <ul class="src-list"><li><span class="src-type">原文</span>掘金内网 MCP 网关实战复盘（一线工程师第一手记录）</li></ul>
+  <h3 class="sec">教程讲了什么</h3>
+  <p>文章给出完整的企业内网 MCP 治理架构：读操作（查 Bug、查日志、查监控）直接放行；写操作（改任务状态、发通知、改配置）必须先生成"待执行单"，经人工审批后才真正调用；所有调用落审计日志，含调用者、时间、参数、审批人。凭据统一由网关托管，Agent 不直接接触数据库密码。这是国内少有的把"AI 改了内网数据谁负责"这个问题正面回答的工程方案。</p>
+  <h3 class="sec">核心设计</h3>
+  <ul>
+    <li><b>读/写分离</b>：读 Tool 直接执行，写 Tool 强制审批。</li>
+    <li><b>待执行单模式</b>：Agent 生成 diff/动作描述，人在审批页点确认才落地。</li>
+    <li><b>凭据托管</b>：内网系统密钥存网关，Agent 只拿短期 token。</li>
+    <li><b>全量留痕</b>：每次调用入审计库，可回溯、可举报。</li>
+  </ul>
+  <div class="trainer"><b>培训师点评：</b>这是昨天最值得企业培训引用的中文一手材料——它把"Agent 治理"从 PPT 概念落成了可抄的领域模型。教它的重点不是代码，而是"写操作先落待执行单"这个治理思想。</div>
+</div>
+
+<!-- 03 -->
+<div class="card" id="c3">
+  <div class="card-head"><div class="num">03</div><h2>Browser Use Cloud v3 BU Agent API 实战：用几行代码把浏览器任务变成"任务进、结果出"</h2></div>
+  <div class="badges"><span class="badge b-cat">Browser Use</span><span class="badge b-tag">🔥 值得马上实践</span><span class="badge b-tag">🧑‍💻 开发者向</span><span class="badge b-date">2026-09-29 发布</span></div>
+  <div class="oneliner">系统讲解 Browser Use Cloud 实验性 v3 Agent API：认证、SDK、run() 执行模型、16 个 REST 端点（会话/消息/文件/工作区）、成本控制与错误处理，读完就能用代码提交一个浏览器自动化任务。</div>
+  <h3 class="sec">教程讲了什么</h3>
+  <p>v3 把"本地跑浏览器 Agent"变成了云 API：你 POST 一个自然语言任务，它返回 run_id，异步执行完再回调结果。教程覆盖认证、SDK 初始化、run() 执行模型、16 个 REST 端点（会话/消息/文件/工作区）、成本护栏（max_steps、timeout）、错误重试与资源收尾。特别强调 live_url 参数——提交任务后可以实时看到 Agent 在浏览器里做什么，这是调试 Browser Agent 最快的方式。</p>
+  <div class="pitfall"><b>踩坑：</b>① 不设 max_steps 容易空转烧钱；② 任务结束务必显式释放工作区，否则云资源持续计费；③ 用 live_url 调试，不要盲调。</div>
+  <div class="trainer"><b>培训师点评：</b>值得教的是"成本护栏 + 资源收尾"这套工程习惯，而不只是调 API。教学时务必用 live_url 让学员亲眼看到 Agent 在浏览器里做什么——这是理解 Browser Agent 最快的方式。</div>
+</div>
+
+<!-- 04 -->
+<div class="card" id="c4">
+  <div class="card-head"><div class="num">04</div><h2>GitHub Agentic Workflows v0.90.0 发布：用自然语言在 Actions 里编排 Agent，还能给轨迹打分</h2></div>
+  <div class="badges"><span class="badge b-cat">Agent 工作流</span><span class="badge b-tag">📌 值得收藏</span><span class="badge b-tag">🏢 工程指标</span><span class="badge b-date">2026-09-29 发布</span></div>
+  <div class="oneliner">GitHub 官方 gh-aw 发布 v0.90.0：step summary 显示 friction cost、空任务零积分退出（noop）、五个新轨迹评分器——把"Agent 干活干得值不值"变成了可度量的工程指标。</div>
+  <h3 class="sec">教程讲了什么</h3>
+  <p>gh-aw（GitHub Agentic Workflows）是 GitHub 官方把 LLM Agent 接进 Actions 的项目。v0.90.0 三个重点：① step summary 里直接显示 friction cost（每一步花了多少 token/钱）；② 空任务 noop 零积分退出，Agent 判断没事可做就不烧钱；③ 五个新 trajectory graders（轨迹评分器），从正确性、完整性、安全性、效率、可复现性五个维度给 Agent 的一次执行打分。这意味着"Agent 自动化"第一次有了和 CI 一样可度量的质量门。</p>
+  <div class="trainer"><b>培训师点评：</b>这版更新的教学价值在指标思维：任何团队上 Agent 自动化前，先回答"空转成本、总成本、质量分"三个问题——gh-aw 恰好把答案产品化了。</div>
+</div>
+
+<!-- 05 -->
+<div class="card" id="c5">
+  <div class="card-head"><div class="num">05</div><h2>Trae 深度使用指南：一个 AI 原生 IDE 的完整工作流（规则、记忆、修 Bug、重构全流程）</h2></div>
+  <div class="badges"><span class="badge b-cat">AI Coding</span><span class="badge b-tag">📌 值得收藏</span><span class="badge b-tag">🎓 值得培训</span><span class="badge b-tag">🇨🇳 国产工具</span><span class="badge b-date">2026-09-29 发布</span></div>
+  <div class="oneliner">字节 Trae 的系统性中文实操手册：从 IDE/SOLO 模式与智能体体系，到规则系统四种生效方式、把报错喂给 AI 的 Bug 修复流、"上帝对象"重构三步法，新手照着走完两周即可形成完整工作流。</div>
+  <h3 class="sec">教程讲了什么</h3>
+  <p>教程分四块：① 模式与智能体体系（IDE 模式 vs SOLO 模式、内置 Agent 分工）；② 规则系统四种生效方式（项目级 .trae/rules、用户级、目录级、文件级）——这是把个人经验变成团队资产的关键；③ Bug 修复工作流：把完整报错栈、相关文件、复现步骤一起喂给 AI，不要只贴一句话；④ OpenSpec 重构四阶段：用"上帝对象"案例演示如何让 AI 分阶段拆解大文件。附结构化指令四要素模板（角色+任务+上下文+输出格式）。</p>
+  <div class="trainer"><b>培训师点评：</b>教这个案例的重心应是"规则系统"——它把个人经验变成团队资产。结构化指令四要素模板可作为全场唯一必背内容，其余按需查手册。</div>
+</div>
+
+<!-- 06 -->
+<div class="card" id="c6">
+  <div class="card-head"><div class="num">06</div><h2>阿里开源 open-code-review：规则流水线 + Agent 的代码审查 CLI，一周涨星 3700+</h2></div>
+  <div class="badges"><span class="badge b-cat">开源代码审查</span><span class="badge b-tag">🔥 热榜</span><span class="badge b-tag">🇨🇳 国产开源</span><span class="badge b-tag">🔓 开源项目</span><span class="badge b-date">本周 GitHub 热榜</span></div>
+  <div class="oneliner">阿里巴巴开源的代码审查工具：把"规则流水线"与"Agent 审查"结合成 CLI，正在解决"AI 产出能不能信"的问题——本周 GitHub 热榜新增 3,727 Star，总量 41,943。</div>
+  <h3 class="sec">教程讲了什么</h3>
+  <p>核心思想是分层：确定性的事（语法、lint、安全规则、类型检查）走规则流水线，又快又准；模糊的事（架构合理性、命名一致性、是否符合业务语义）交给 Agent 审查。两层结果合并成一份审查报告。这种"规则管硬、Agent 管软"的分层，比纯 LLM 审查便宜一个数量级，也比纯 lint 多覆盖了语义问题。</p>
+  <p class="b-warn badge" style="display:block;border-radius:10px;padding:10px 14px;">⚠️ 真实性说明：本案例架构描述基于榜单定位与项目公开信息，上手步骤以官方 README 为准。</p>
+  <div class="trainer"><b>培训师点评：</b>值得教的是"分层"思想：确定性的事给规则，模糊的事给 Agent。这一决策框架适用于一切 AI 质检场景，比学会某个具体工具更有长期价值。</div>
+</div>
+
+<!-- 07 -->
+<div class="card" id="c7">
+  <div class="card-head"><div class="num">07</div><h2>Datawhale 开源新课《Deep Agents 实战》：16 章从第一个 Agent 讲到生产级 Harness</h2></div>
+  <div class="badges"><span class="badge b-cat">Agent 课程</span><span class="badge b-tag">🎓 值得培训</span><span class="badge b-tag">🇨🇳 国产教程</span><span class="badge b-tag">🔓 开源项目</span><span class="badge b-date">2026-09-29 上线</span></div>
+  <div class="oneliner">Datawhale 围绕 LangChain Deep Agents 框架的 16 章中文开源课程：虚拟文件系统、任务规划、子 Agent 隔离、沙箱、HITL、MCP 全覆盖，配可运行实验模板，不写玩具 Demo。</div>
+  <h3 class="sec">教程讲了什么</h3>
+  <p>课程分核心篇与进阶篇：核心篇讲 Agent 基础、工具调用、虚拟文件系统、任务规划；进阶篇讲子 Agent 隔离、沙箱执行、Human-in-the-loop 中断恢复、MCP 接入。每章配可运行 Jupyter 模板，默认用国产开源模型跑。Datawhale 系教程一贯风格：章节即大纲、模板即实验环境，培训师可直接裁剪成 Workshop。</p>
+  <div class="trainer"><b>培训师点评：</b>这是目前最适合做体系化培训的中文 Agent 开源教材——章节即大纲、模板即实验环境。培训师可直接按"核心篇 3 章 + 进阶篇 3 章"裁剪出一个完整 Workshop，不必自己造轮子。</div>
+</div>
+
+<!-- 08 -->
+<div class="card" id="c8">
+  <div class="card-head"><div class="num">08</div><h2>腾讯开源 WeKnora 登热榜：RAG + 推理 Agent + 自维护 Wiki 的知识库方案，一周涨星 2700+</h2></div>
+  <div class="badges"><span class="badge b-cat">RAG / 知识库</span><span class="badge b-tag">🔥 热榜</span><span class="badge b-tag">🇨🇳 国产开源</span><span class="badge b-tag">🔓 开源项目</span><span class="badge b-date">本周 GitHub 热榜</span></div>
+  <div class="oneliner">腾讯开源的企业知识库项目 WeKnora：不止做 RAG 检索问答，还带推理 Agent 与"自维护 Wiki"——知识库可以随着问答沉淀自我更新，本周 GitHub 热榜新增 2,705 Star，总量 30,621。</div>
+  <h3 class="sec">教程讲了什么</h3>
+  <p>WeKnora 的差异化在"自维护"：传统知识库是项目制——一次性灌入文档就不再动；WeKnora 让 Agent 在回答用户问题时，自动把新产生的知识（FAQ、踩坑、新结论）沉淀回 Wiki，并经人工审核后入库。知识库从"静态文档"变成"随问答生长的运营资产"。核心风险也在这里：自动沉淀如果没有审核流，就是自动污染。</p>
+  <p class="b-warn badge" style="display:block;border-radius:10px;padding:10px 14px;">⚠️ 真实性说明：能力描述基于榜单复盘与项目公开定位，"自维护 Wiki"具体机制与效果请以官方文档与实测为准。</p>
+  <div class="trainer"><b>培训师点评：</b>教学的锚点应是"自维护"三个字——把知识库从项目制变成运营制。务必让学员现场设计审核流程，否则自动沉淀就是自动污染。</div>
+</div>
+
+<section class="block" id="trend">
+  <h2>📈 今日 AI 实战技术观察</h2>
+  <div class="panel">
+    <p><b>① MCP 进入企业工程化阶段。</b>上一期还在讲"怎么写第一个 MCP Server"，这一期直接跳到"企业内网 MCP 网关怎么审批、怎么留痕、怎么托管凭据"。MCP 的叙事重心已从"连接工具"转向"治理工具"——谁有权调、调了什么、谁批准的，成为新的工程命题。</p>
+    <p><b>② Agent 治理三件套：审计、评分、记忆。</b>gh-aw 的 trajectory graders 回答"Agent 干得好不好"，open-code-review 回答"Agent 产出可不可信"，WeKnora 回答"Agent 记不记得住"。三者合起来，就是 Agent 从 Demo 走向生产的完整质量门。</p>
+    <p><b>③ 国产工具教程生态成熟。</b>Trae 出深度使用指南、Datawhale 出 16 章系统课、阿里腾讯出开源项目——中国 AI 开发者已经不只是"用海外工具"，而是在沉淀自己的工具链方法论。这是生态成熟的标志。</p>
+  </div>
+</section>
+
+<nav class="read-nav">
+  <a class="rn-item" href="2026-09-28.html">← 第 002 期（09-28）</a>
+  <a class="rn-item" href="index.html">全部教程 →</a>
+</nav>
+
+</div>
+</main>
+<footer class="site-footer">
+  <div class="wrap">
+    <div>
+      <div class="f-brand">全球文明进程重大事件日报</div>
+      <p class="f-desc">记录人类文明演进中的关键节点。以未来历史学家的视角，筛出可能改写人类轨迹的转折点。</p>
+    </div>
+    <div class="f-col">
+      <h4>浏览</h4>
+      <ul>
+        <li><a href="../index.html">网站首页</a></li>
+        <li><a href="../archive.html">日报档案</a></li>
+        <li><a href="../radar.html">趋势雷达</a></li>
+        <li><a href="index.html">AI实战教程</a></li>
+      </ul>
+    </div>
+    <div class="f-col">
+      <h4>文明分类</h4>
+      <ul>
+        <li><a href="../categories/science.html">科学、生命与地球</a></li>
+        <li><a href="../categories/politics.html">政治与文明秩序</a></li>
+        <li><a href="../categories/culture.html">思想、社会与文化</a></li>
+        <li><a href="../categories/technology.html">科技与人工智能</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="f-bottom">
+    <div class="wrap">
+      <span>© 2026 全球文明进程重大事件日报 · 全球文明进程观察站</span>
+      <span>内容由自动化智能体基于公开信息生成，仅供文明观察与研究参考。</span>
+    </div>
+  </div>
+</footer>
+<button class="backtop" type="button" aria-label="返回顶部">↑</button>
+<script src="../assets/js/main.js"></script>
+<script src="../assets/js/wechat-share.js"></script>
+<script src="../assets/js/text-to-speech.js"></script>
+</body>
+</html>
