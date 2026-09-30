@@ -1,0 +1,659 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI极客实战教程日报 · 2026-09-30（第004期）｜AgentScope Java 2.0 企业级 Agent 运行时、LangChain 1.0 中间件钩子治理</title>
+<meta name="description" content="9月30日AI极客实战：中国AI实战竞争重心从'能不能跑通Agent'移到'能不能在生产环境稳稳跑半年'。两个可复现案例——①阿里AgentScope Java 2.0+Spring Boot 3.5+通义千问，开源项目dream-scope搭出模块化单体Agent运行时（Redis分布式会话、六边形架构边界、混合RAG、MCP、子Agent）；②LangChain 1.0六大中间件钩子+阿里百炼Qwen3.7-Flash，把权限、压缩、重试、脱敏、审计、计费从业务代码剥离。">
+<meta name="keywords" content="AI极客实战,AgentScope Java,Spring Boot Agent,dream-scope,LangChain 1.0中间件,middleware钩子,企业级Agent,百炼Qwen3.7,通义千问,Redis分布式会话,MCP,多租户">
+<meta name="author" content="全球文明进程观察站">
+<meta name="robots" content="index,follow">
+<link rel="canonical" href="https://civilization-radar.com/tutorial/2026-09-30.html">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="全球文明进程重大事件日报">
+<meta property="og:title" content="AI极客实战教程日报 · 2026-09-30｜AgentScope Java 2.0与LangChain 1.0中间件治理">
+<meta property="og:description" content="Agent真正跑进企业生产环境：Java生态第一次有了能照着抄的企业级Agent运行样本；Agent的工程切面被普通开发者接管。">
+<meta property="og:url" content="https://civilization-radar.com/tutorial/2026-09-30.html">
+<meta property="og:image" content="https://civilization-radar.com/assets/images/og-cover.png">
+<meta property="og:locale" content="zh_CN">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="AI极客实战教程日报 · 2026-09-30">
+<meta name="twitter:description" content="企业级Agent运行时与中间件治理：AgentScope Java 2.0 + LangChain 1.0 钩子。">
+<meta name="twitter:image" content="https://civilization-radar.com/assets/images/og-cover.png">
+<link rel="icon" href="../assets/images/logo.svg" type="image/svg+xml">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"AI极客实战教程日报 2026-09-30","description":"企业级Agent运行时与中间件治理：AgentScope Java 2.0 + LangChain 1.0 钩子。","datePublished":"2026-09-30","dateModified":"2026-10-01","author":{"@type":"Organization","name":"全球文明进程观察站"},"publisher":{"@type":"Organization","name":"全球文明进程观察站","logo":{"@type":"ImageObject","url":"https://civilization-radar.com/assets/images/og-cover.png"}},"mainEntityOfPage":{"@type":"WebPage","@id":"https://civilization-radar.com/tutorial/2026-09-30.html"}}</script>
+<link rel="stylesheet" href="../assets/css/style.css">
+<style>
+  .tut-wrap{max-width:960px;margin:0 auto;padding:24px 20px 64px;}
+  body{background:#F7F8FA;color:#111827;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;line-height:1.7;font-size:15px;-webkit-font-smoothing:antialiased;}
+  .tut-wrap a{color:#2563EB;text-decoration:none;word-break:break-all;}
+  .tut-wrap a:hover{text-decoration:underline;}
+  .tut-wrap header.top{background:#111827;color:#F9FAFB;border-radius:14px;padding:36px 32px;margin-bottom:24px;}
+  .tut-wrap header.top .kicker{color:#93C5FD;font-size:13px;letter-spacing:2px;text-transform:uppercase;margin-bottom:10px;}
+  .tut-wrap header.top h1{font-size:30px;font-weight:800;margin-bottom:6px;color:#F9FAFB;}
+  .tut-wrap header.top .sub{color:#9CA3AF;font-size:14px;margin-bottom:20px;}
+  .meta-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;}
+  .meta-grid .m{background:#1F2937;border:1px solid #374151;border-radius:10px;padding:10px 14px;}
+  .meta-grid .m .k{font-size:11px;color:#9CA3AF;margin-bottom:2px;}
+  .meta-grid .m .v{font-size:14px;font-weight:600;color:#F9FAFB;}
+  .observe{background:#FFFFFF;border:1px solid #E5E7EB;border-left:4px solid #2563EB;border-radius:14px;padding:24px 28px;margin-bottom:24px;}
+  .observe h2{font-size:18px;margin-bottom:10px;}
+  .observe p{color:#374151;font-size:14.5px;}
+  .oneline{background:#F5F8FF;border:1px solid #BFDBFE;border-radius:14px;padding:18px 24px;margin-bottom:24px;}
+  .oneline .lab{font-size:12px;letter-spacing:1px;color:#2563EB;font-weight:700;margin-bottom:6px;}
+  .oneline p{font-size:15px;color:#111827;}
+  nav.cats{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:28px;}
+  nav.cats a{background:#FFFFFF;border:1px solid #E5E7EB;border-radius:999px;padding:6px 14px;font-size:13px;color:#374151;}
+  nav.cats a:hover{border-color:#2563EB;color:#2563EB;text-decoration:none;}
+  .card{background:#FFFFFF;border:1px solid #E5E7EB;border-radius:14px;padding:28px;margin-bottom:28px;}
+  .card-head{display:flex;align-items:flex-start;gap:14px;margin-bottom:6px;flex-wrap:wrap;}
+  .num{font-size:26px;font-weight:800;color:#2563EB;line-height:1.1;font-variant-numeric:tabular-nums;min-width:52px;}
+  .card-head h2{font-size:20px;font-weight:700;flex:1;min-width:240px;}
+  .badges{display:flex;flex-wrap:wrap;gap:6px;margin:8px 0 14px;}
+  .badge{font-size:12px;padding:3px 10px;border-radius:999px;font-weight:600;}
+  .b-cat{background:#EFF6FF;color:#2563EB;border:1px solid #BFDBFE;}
+  .b-tag{background:#F3F4F6;color:#4B5563;border:1px solid #E5E7EB;}
+  .b-date{background:#ECFDF5;color:#16A34A;border:1px solid #BBF7D0;}
+  .b-warn{background:#FFFBEB;color:#B45309;border:1px solid #FDE68A;}
+  .oneliner{background:#F9FAFB;border:1px solid #E5E7EB;border-radius:10px;padding:12px 16px;font-size:14.5px;color:#111827;margin-bottom:18px;}
+  h3.sec{font-size:14px;font-weight:700;color:#111827;margin:22px 0 8px;padding-left:10px;border-left:3px solid #2563EB;}
+  .card p,.card li{font-size:14.5px;color:#374151;}
+  .card ul,.card ol{padding-left:22px;margin:6px 0;}
+  .card li{margin-bottom:4px;}
+  .src-list{list-style:none;padding-left:0;}
+  .src-list li{margin-bottom:6px;}
+  .src-type{display:inline-block;font-size:11px;font-weight:700;color:#2563EB;background:#EFF6FF;border:1px solid #BFDBFE;border-radius:6px;padding:1px 8px;margin-right:8px;}
+  .stack{width:100%;border-collapse:collapse;margin:6px 0;}
+  .stack td{border:1px solid #E5E7EB;padding:7px 12px;font-size:13.5px;vertical-align:top;}
+  .stack td.k{background:#F9FAFB;font-weight:600;color:#111827;width:110px;white-space:nowrap;}
+  .flow{display:flex;flex-direction:column;gap:0;margin:10px 0;}
+  .flow .node{background:#F9FAFB;border:1px solid #E5E7EB;border-radius:10px;padding:9px 16px;font-size:13.5px;color:#111827;}
+  .flow .node b{color:#2563EB;}
+  .flow .arrow{text-align:center;color:#9CA3AF;font-size:14px;line-height:1.4;}
+  pre{background:#111827;color:#E5E7EB;border-radius:10px;padding:16px 18px;overflow-x:auto;font-size:13px;line-height:1.6;font-family:"SFMono-Regular",Consolas,"Liberation Mono",Menlo,monospace;margin:8px 0;}
+  code{font-family:"SFMono-Regular",Consolas,Menlo,monospace;background:#F3F4F6;color:#111827;border-radius:5px;padding:1px 6px;font-size:13px;}
+  pre code{background:transparent;color:#E5E7EB;padding:0;}
+  .pitfall{background:#FFFBEB;border:1px solid #FDE68A;border-radius:10px;padding:14px 18px;margin:8px 0;}
+  .pitfall b{color:#B45309;}
+  .truth{background:#FEF7F7;border:1px solid #FECACA;border-radius:10px;padding:14px 18px;margin:8px 0;}
+  .truth b{color:#B91C1C;}
+  .repro{display:inline-block;font-size:13px;font-weight:700;padding:4px 12px;border-radius:999px;background:#ECFDF5;color:#16A34A;border:1px solid #BBF7D0;}
+  .repro.hard{background:#FFFBEB;color:#B45309;border-color:#FDE68A;}
+  .repro.dev{background:#FEF2F2;color:#B91C1C;border-color:#FECACA;}
+  .migrate{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:8px 0;}
+  .migrate .m{background:#F9FAFB;border:1px solid #E5E7EB;border-radius:10px;padding:12px 14px;font-size:13px;color:#374151;}
+  .migrate .m b{display:block;color:#111827;margin-bottom:4px;}
+  .course{background:#F5F8FF;border:1px solid #BFDBFE;border-radius:10px;padding:16px 20px;margin:8px 0;}
+  .course table{width:100%;border-collapse:collapse;}
+  .course td{padding:4px 8px 4px 0;font-size:13.5px;vertical-align:top;color:#374151;}
+  .course td.k{font-weight:600;color:#111827;width:88px;white-space:nowrap;}
+  .trainer{border-left:3px solid #16A34A;background:#F0FDF4;border-radius:0 10px 10px 0;padding:12px 18px;font-size:14px;color:#14532D;margin:10px 0 4px;}
+  .trainer b{color:#16A34A;}
+  .verdict{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin:8px 0;}
+  .verdict .v{background:#F9FAFB;border:1px solid #E5E7EB;border-radius:10px;padding:12px;text-align:center;}
+  .verdict .v .k{font-size:11.5px;color:#6B7280;margin-bottom:4px;}
+  .verdict .v .val{font-size:17px;font-weight:800;}
+  .lv-h{color:#16A34A;} .lv-m{color:#F59E0B;} .lv-l{color:#DC2626;}
+  section.block{margin-top:40px;}
+  section.block > h2{font-size:22px;font-weight:800;margin-bottom:16px;padding-bottom:10px;border-bottom:2px solid #E5E7EB;}
+  .panel{background:#FFFFFF;border:1px solid #E5E7EB;border-radius:14px;padding:24px 28px;margin-bottom:20px;}
+  .panel h3{font-size:16px;margin-bottom:10px;}
+  .panel p,.panel li{font-size:14.5px;color:#374151;}
+  .panel ul{padding-left:22px;}
+  .panel li{margin-bottom:6px;}
+  .panel table{width:100%;border-collapse:collapse;margin:8px 0;}
+  .panel th,.panel td{border:1px solid #E5E7EB;padding:7px 10px;font-size:13px;text-align:left;vertical-align:top;}
+  .panel th{background:#F9FAFB;color:#111827;}
+  .checklist{columns:2;column-gap:32px;}
+  .checklist li{list-style:none;margin-bottom:6px;font-size:13.5px;}
+  .checklist li::before{content:"✓ ";color:#16A34A;font-weight:700;}
+  @media(max-width:640px){
+    .tut-wrap{padding:20px 12px 48px;}
+    .tut-wrap header.top{padding:24px 20px;}
+    .tut-wrap header.top h1{font-size:22px;}
+    .meta-grid{grid-template-columns:repeat(2,1fr);}
+    .card{padding:20px 16px;}
+    .migrate{grid-template-columns:1fr;}
+    .verdict{grid-template-columns:repeat(2,1fr);}
+    .checklist{columns:1;}
+    .num{min-width:auto;}
+    .panel{padding:18px 16px;}
+  }
+</style>
+</head>
+<body>
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="../index.html"><img class="mark" src="../assets/images/logo.svg" alt="文明雷达" width="32" height="32" style="width:32px;height:32px;background:none;border:0;box-shadow:none;border-radius:6px">全球文明进程重大事件日报</a>
+    <button class="nav-toggle" type="button" aria-label="菜单" aria-expanded="false">☰</button>
+    <nav class="main-nav" aria-label="主导航"><ul><li><a href="../index.html">首页</a></li><li><a href="../archive.html">日报档案</a></li><li><a href="../radar.html">趋势雷达</a></li><li><a href="index.html" class="active">AI实战</a></li><li><a href="../categories/science.html">科学</a></li><li><a href="../categories/politics.html">政治</a></li><li><a href="../categories/culture.html">文化</a></li><li><a href="../categories/technology.html">科技</a></li></ul></nav>
+  </div>
+</header>
+<main class="site-main">
+<div class="tut-wrap">
+
+<nav class="breadcrumb" aria-label="面包crumb"><a href="../index.html">首页</a><span class="sep">/</span><a href="index.html">AI实战教程</a><span class="sep">/</span><span>2026-09-30</span></nav>
+
+<header class="top">
+  <div class="kicker">China AI Builders · Real Cases · Workflows · Business</div>
+  <h1>AI 极客实战案例日报</h1>
+  <div class="sub">企业级 Agent 运行时与中间件治理 · AgentScope Java 2.0 × LangChain 1.0</div>
+  <div class="meta-grid">
+    <div class="m"><div class="k">日报日期</div><div class="v">2026-09-30</div></div>
+    <div class="m"><div class="k">执行时间</div><div class="v">2026-09-30 23:46</div></div>
+    <div class="m"><div class="k">精选案例</div><div class="v">2 个</div></div>
+    <div class="m"><div class="k">期数</div><div class="v">第 004 期</div></div>
+  </div>
+</header>
+
+<div class="oneline">
+  <div class="lab">今日一句话</div>
+  <p>昨天到今天，中国 AI 社区几乎同时把同一件事往前推了一步：<b>让 Agent 真正跑进企业生产环境</b>——阿里 ModelScope 的 AgentScope Java 2.0 冒出中文实战长文和一个能复现的开源运行样本；LangChain 1.0 的中间件钩子也被中国开发者用阿里百炼模型跑通了六大工程切面。</p>
+</div>
+
+<section class="block" style="margin-top:0">
+  <div class="observe">
+    <h2>今日 AI 实践观察（先读这段）</h2>
+    <p>今天没有"新模型发布"，也没有"融资新闻"。值得花时间的，是两件很具体的事：<b>① Java 生态第一次有了"能照着抄"的企业级 Agent 运行样本。</b>阿里通义实验室的 AgentScope Java 2.0（当前 2.0.3）在 09-29 与 09-30 两天内，出现了两条独立的中文实战连载，其中一条来自一个真实可跑的开源项目 dream-scope：JDK 21 + Spring Boot 3.5.5 + AgentScope 2.0.3 + Redis 分布式会话 + DashScope 通义千问，作者用它在自己的 Dream-SaaS 站点上跑代码审查、混合 RAG、多 Agent 编排。这是国内少见的"Java + 国产模型 + 六边形架构边界 + 可复现"的完整组合。<b>② Agent 的"工程切面"正在被普通开发者接管。</b>同一时间，LangChain 1.0 的六大中间件钩子被写成了带完整可运行代码的中文教程，直接适配阿里百炼 Qwen3.7-Flash，把权限校验、上下文压缩、重试熔断、数据脱敏、Token 计费从业务代码里剥离出来。两个案例指向同一条主线：<b>2026 年 9 月底，中国 AI 实战的竞争重心已经不在"能不能跑通 Agent"，而在"这个 Agent 能不能在公司的生产环境里稳稳跑半年、并且被审计、被计量、被复用"。</b></p>
+  </div>
+
+  <nav class="cats">
+    <a href="#c1">案例 01 · AgentScope Java</a>
+    <a href="#c2">案例 02 · LangChain 中间件</a>
+    <a href="#radar">商业机会雷达</a>
+    <a href="#personal">个人变现</a>
+    <a href="#observation">今日观察</a>
+    <a href="#sources">原始资料</a>
+    <a href="#truth">真实性说明</a>
+  </nav>
+</section>
+
+<!-- ==================== 案例 01 ==================== -->
+<div class="card" id="c1">
+  <div class="card-head">
+    <div class="num">01</div>
+    <h2>用 AgentScope Java 2.0 + Spring Boot 3.5 + 通义千问，搭一个"能上线跑"的多 Agent 运行时（开源项目 dream-scope）</h2>
+  </div>
+  <div class="badges">
+    <span class="badge b-cat">企业级 Agent 基础设施</span>
+    <span class="badge b-tag">🇨🇳 中国开源主线</span>
+    <span class="badge b-tag">☕ Java 生态</span>
+    <span class="badge b-tag">🔁 完整可复现</span>
+    <span class="badge b-tag">💰 强商业交付属性</span>
+    <span class="badge b-date">相关文章 2026-09-28 / 09-29 / 09-30</span>
+  </div>
+  <div class="oneliner"><b>一句话结论：</b>这是目前少见的"中国开源框架 + 国产模型 + 完整工程边界 + 单人可复现"的企业级 Agent 样板——把 JVM 变成 Agent 的第一等公民，而不是继续写 Python 胶水。</div>
+
+  <h3 class="sec">01 ｜ 案例是什么？</h3>
+  <p>一个叫 <b>dream-scope</b> 的开源项目，用阿里 ModelScope 出品的 <b>AgentScope Java 2.0</b> 当内核，加 Spring Boot 3.5 做外壳，搭出了一套"模块化单体"的 Agent 运行时。它对外只暴露两个 HTTP 接口（同步 <code>POST /api/agents/invoke</code> 和流式 SSE <code>POST /api/agents/stream</code>），对内把模型、消息编解码、分布式会话（Redis）、长期记忆压缩、混合检索（向量 + 关键词 RRF 融合）、MCP 工具、文件声明的子 Agent 全部装配好。同一时间，掘金上出现了两条独立的中文实战连载——一条来自项目作者「宋哥转AI」的逐层拆解（02/03 篇），一条来自公众号「栈知见」的 16 篇系列开篇——把"Java 怎么写生产级 Agent"这件事第一次讲成了可复制的操作手册。</p>
+
+  <h3 class="sec">02 ｜ 为什么今天值得关注？</h3>
+  <ul>
+    <li><b>为什么是现在：</b>AgentScope Java 2.0 于 <b>2026 年 7 月 GA</b>（此前 5–6 月连发 RC1–RC5），到 9 月社区才真正沉淀出"照着做能跑"的中文工程样本。09-28（02 篇 Harness 层）、09-29（03 篇知识工具层）、09-30（另一条系列的开篇）三天连续输出，说明学习曲线刚被趟平。</li>
+    <li><b>为什么以前不容易：</b>过去把 Agent 接进 Java 系统，要么用 HTTP 桥一层 Python 网关（多一跳、难排障），要么用偏"链式编排"的 Java 框架（分布式会话、多租户隔离、沙箱、压缩要自己造）。</li>
+    <li><b>为什么现在变容易：</b>框架把"上线前看不见、上线后绕不开"的坑做成了内核一等公民——分布式会话、多租户隔离、沙箱、OpenTelemetry 观测、A2A 协议；而国产模型（DashScope / DeepSeek）已经是内置 provider，不需要改代码就能切换。</li>
+    <li><b>对谁最有价值：</b>中国有海量 Java 后端团队和存量 Spring Boot 系统。这批人"想接 AI 却不想推倒技术栈"的需求，长期缺配套基础设施——今天它出现了。</li>
+  </ul>
+
+  <h3 class="sec">03 ｜ 案例的前世今生</h3>
+  <p><b>前世。</b>AgentScope 最早是阿里通义实验室开源的 Python 多智能体框架，解决的是"多 Agent 之间的消息通信、编排、记忆、工具调用每次都要手写"的问题。同期 Java 侧只能用 LangChain4j / Spring AI 这类"以链和流程编排为主"的框架，Agent 的自主推理循环、分布式运行设施都要自己拼。</p>
+  <p><b>发展。</b>Java 版从 1.0 的 ReActAgent 内核起步；2026-05 发 v2.0.0-RC1，重做了事件流、消息模型、中间件与 HITL；RC2–RC5 陆续补上无状态 Agent、一行式 DistributedBackend、Channel IM 集成（钉钉 / 飞书 / 企业微信）、A2A / AG-UI 协议、异步工具执行、模型 provider 模块化、原生结构化输出、腾讯云 COS 状态持久化；<b>2026-07 v2.0.0 正式 GA</b>；2026-08 又给出 AgentScope Service（Agent 控制平面 + Dashboard，兼容 LangChain / ADK / Claude / Qoder）。当前稳定线为 2.0.3。</p>
+  <p><b>今生。</b>框架能力齐了，缺的是"别人怎么用"。09-28 到 09-30 三天里，中文社区同时补上了这一环：dream-scope 作者把 Harness 工程层、三层检索链路、MCP 三传输、子 Agent 两路声明逐层写出（含真实源码路径），另一位作者则给出 16 篇的大纲总览。再加上 dream-scope 本身在 GitHub 开源（Apache-2.0）、Dream-SaaS 站点已上线可注册体验，这个案例从"框架文档"变成了"可对照复现的工程样本"。</p>
+  <p><b>下一步可能怎么发展（分析 / 推演，非事实）：</b>① AgentScope Java 很可能成为国内"企业 Agent 中台"的默认选型之一，与 Spring AI Alibaba 形成互补；② dream-scope 这类"参考实现"会演化成可售卖的行业模板（金融 / 制造 / 政企）；③ Java Agent 交付能力会变成外包与咨询市场的硬通货。</p>
+
+  <h3 class="sec">04 ｜ 原始资料</h3>
+  <ul class="src-list">
+    <li><span class="src-type">实战长文</span><a href="https://juejin.cn/post/7690494760705261583" target="_blank" rel="noopener">《AgentScope Java 实战 03：知识与工具层——给 Agent 装上手和书架》（作者：宋哥转AI，2026-09-29）</a></li>
+    <li><span class="src-type">实战长文</span><a href="https://juejin.cn/post/7689742195037306931" target="_blank" rel="noopener">《AgentScope Java 实战 02：Harness 工程层，把内核装进生产边界》（作者：宋哥转AI，2026-09-28）</a></li>
+    <li><span class="src-type">系列开篇</span><a href="https://juejin.cn/post/7691132455893975082" target="_blank" rel="noopener">《01-开篇-AgentScope-Java 是什么》（作者：公众号「栈知见」，2026-09-30）</a></li>
+    <li><span class="src-type">开源项目</span><a href="https://github.com/logosssss/dream-scope" target="_blank" rel="noopener">github.com/logosssss/dream-scope —— 基于 AgentScope Java 2.0 的模块化单体 Agent 运行时（Apache-2.0）</a></li>
+    <li><span class="src-type">开源项目</span><a href="https://github.com/logosssss/dream-ai" target="_blank" rel="noopener">github.com/logosssss/dream-ai —— Agent 运行时核心（Java 模块化单体，Apache-2.0）</a></li>
+    <li><span class="src-type">在线产品</span><a href="https://dream-saas.com/" target="_blank" rel="noopener">dream-saas.com —— Dream-SaaS，作者已上线的多 Agent 实战平台</a></li>
+    <li><span class="src-type">官方仓库</span><a href="https://github.com/agentscope-ai/agentscope-java" target="_blank" rel="noopener">github.com/agentscope-ai/agentscope-java —— AgentScope Java 官方仓库</a></li>
+  </ul>
+
+  <h3 class="sec">05 ｜ 作者是谁？</h3>
+  <p><b>dream-scope / Dream-SaaS 作者：</b>掘金用户「宋哥转AI」（对应公众号「Java宋转AI」，GitHub 账号 <code>logosssss</code>）。从文章内容判断为一线 Java 后端 / 架构实践者，独立完成了从框架选型、六模块拆分、Redis 会话、三层检索到上线部署的完整链路，并自建 Dream-SaaS 站点做验证。其真实姓名与所在公司未公开，不做猜测。</p>
+  <p><b>另一条系列的作者：</b>公众号「栈知见」，2026-09-30 起发布 16 篇 AgentScope Java 连载开篇，自述面向"有 Spring Boot 经验的 Java 工程师"。身份未进一步披露。</p>
+
+  <h3 class="sec">06 ｜ 解决了什么真实问题？</h3>
+  <p>从需求说起，而不是从技术说起。中国大量企业的核心业务系统跑在 Java / Spring Boot 上，这些团队想上 AI 时会撞上五堵墙：</p>
+  <ul>
+    <li><b>会话活不下来：</b>Agent 的对话状态放在内存里，进程一重启全丢，多副本部署直接串号。</li>
+    <li><b>多租户隔离靠自觉：</b>同一进程服务多个用户 / 部门时，谁的数据谁能看，靠业务代码自己记得写。</li>
+    <li><b>上下文越聊越炸：</b>多轮对话只增不减，早晚撞模型窗口，成本一路涨。</li>
+    <li><b>知识检索答不准：</b>专有名词、产品型号这类强字面信号，纯向量检索拉不开距离，答案缺引用来源。</li>
+    <li><b>工具能把主机搞坏：</b>Agent 拿到文件读写和 Shell，HTTP 进程里跑一条命令就可能毁掉开发机。</li>
+  </ul>
+  <p>dream-scope 的价值在于：它把上面五件事都给出了有源码位置的具体答案（Redis 分布式会话、<code>(userId, sessionId)</code> 寻址、Compaction 按条数压缩、向量+BM25+RRF 混合检索、运行期禁用 stdio 并关闭文件/Shell 工具），而不是停在"建议你这么设计"。</p>
+
+  <h3 class="sec">07 ｜ 完整技术栈</h3>
+  <table class="stack">
+    <tr><td class="k">模型</td><td>默认 <code>dashscope:qwen-plus</code>（通义千问）；支持 <code>deepseek:</code> / <code>openai:</code> / <code>anthropic:</code> / <code>gemini:</code> / <code>ollama:</code> 前缀切换；视觉场景可换 qwen-vl-plus</td></tr>
+    <tr><td class="k">Agent 框架</td><td>AgentScope Java <b>2.0.3</b>（core + harness + extensions-redis + extensions-model-dashscope）</td></tr>
+    <tr><td class="k">语言 / 构建</td><td>Java 21，Maven 3.9+</td></tr>
+    <tr><td class="k">应用框架</td><td>Spring Boot 3.5.5（Jakarta），Spring Cloud Alibaba 2025.0.0.0（Nacos Config + Discovery，默认关闭）</td></tr>
+    <tr><td class="k">协议 / 接口</td><td>REST（<code>/api/agents/invoke</code>）、SSE（<code>/api/agents/stream</code>）、MCP（streamableHttp / sse）、A2A（Agent Card + <code>/a2a</code>）</td></tr>
+    <tr><td class="k">数据 / 中间件</td><td>Redis 7（分布式会话，必选，Docker Compose 一键起）；PostgreSQL + pgvector（可选，生产检索）；Nacos 3.x（可选，需 gRPC 9848）；Jedis</td></tr>
+    <tr><td class="k">观测</td><td>Actuator（health / info / metrics / prometheus）+ OpenTelemetry（OtelTracingMiddleware）+ 自定义 LoggingMiddleware</td></tr>
+    <tr><td class="k">前端</td><td>dream-scope-ui：Vue + Vite（开发端口 5173）</td></tr>
+    <tr><td class="k">部署</td><td>Docker Compose；默认端口 8091（主路径） / 8092（官方 starter 对照入口） / 8093（内置演示 MCP）</td></tr>
+    <tr><td class="k">许可证</td><td>Apache License 2.0</td></tr>
+  </table>
+
+  <h3 class="sec">08 ｜ 完整 Workflow</h3>
+  <div class="flow">
+    <div class="node"><b>用户输入</b>：HTTP POST <code>/api/agents/invoke</code>（或 SSE <code>/stream</code>），body 含 input / imageUrls / agentId / sessionId / userId</div>
+    <div class="arrow">↓</div>
+    <div class="node"><b>契约层（domain）</b>：AgentInvokeRequest 进入 Agent 注册表，按 agentId 路由（默认 chat；knowledge 为纯检索出口，不调模型）——本层禁止依赖 io.agentscope.*</div>
+    <div class="arrow">↓</div>
+    <div class="node"><b>Agent 装配（adapter）</b>：ScopeChatAgent 构造 HarnessAgent —— 权限模式 BYPASS、Plan Mode 默认开启、关闭 read_file/write_file/shell、注册 getCurrentTime/calculate/httpGet/retrieve 四个工具</div>
+    <div class="arrow">↓</div>
+    <div class="node"><b>中间件横切</b>：onAgent → onReasoning →（onSystemPrompt → onModelCall）→ onActing 洋葱式包裹；日志、鉴权、脱敏、耗时统计在这里发生</div>
+    <div class="arrow">↓</div>
+    <div class="node"><b>推理 + 工具调用</b>：模型决定是否调用工具；@Tool 注解方法被反射执行，未被 @ToolParam 标注的参数（如 UserContext）由 RuntimeContext 直接注入，<b>不经模型之手</b></div>
+    <div class="arrow">↓</div>
+    <div class="node"><b>检索（可选）</b>：retrieve 工具 → embed + pgvector/内存 ∥ 关键词索引 → RRF 融合（K=60）→ 可选问句改写 + 精排（gte-rerank-v2）→ 返回带 [1][2] 编号的资料</div>
+    <div class="arrow">↓</div>
+    <div class="node"><b>状态持久化</b>：(userId, sessionId) 成对传入时写入 Redis（key-prefix: dream-scope:）；消息数达 30 条触发 Compaction，压缩后保留最近 10 条原文</div>
+    <div class="arrow">↓</div>
+    <div class="node"><b>输出</b>：output + inputTokens/outputTokens + planActive；SSE 侧事件为 textDelta / toolCall / toolResult / hint / done / error</div>
+  </div>
+
+  <h3 class="sec">09 ｜ 它到底是怎么实现的？</h3>
+  <ul>
+    <li><b>ReAct + Harness 双层，只叠加不替换。</b>底层 ReActAgent 只管"推理—行动—回填"循环；上层 HarnessAgent 是一层薄包装，用 builder 挂点把 workspace、分布式存储、记忆压缩、子 Agent、中间件、计划模式叠在循环外围。业务从 ReActAgent 起步，需要长期运行时可无缝迁到 HarnessAgent。</li>
+    <li><b>三个共享对象 = 全部衔接面。</b>RuntimeContext（本次调用的身份）、Workspace（约定文件读写）、AgentStateStore / DistributedStore（跨调用状态恢复）。Harness 的各项能力互不依赖，只通过这三个对象通信。</li>
+    <li><b>六边形边界靠构建期强制。</b>模块拆成 bom / domain / adapter / knowledge / web / boot / ui；dream-scope-domain 禁止 import io.agentscope.*，检索逻辑因此可以脱离框架单测。</li>
+    <li><b>只有装配点做条件分支。</b>"用 distributedStore 还是 stateStore"的二选一只出现在 ScopeChatAgent 构造器里；运行期不散落 if-else。</li>
+    <li><b>失败路径全部有归宿。</b>Redis 连接启动即 ping，失败直接抛错让进程起不来（fail fast）；检索 provider 分 auto / pg / simple / keyword 四档，auto 档的降级链是 pg → 内存向量 → 关键词。</li>
+  </ul>
+
+  <h3 class="sec">10 ｜ 手把手复现</h3>
+  <ol>
+    <li><b>Step 1 · 环境</b>：JDK 21、Maven 3.9+、Docker（Redis 必选）；Node 20+（只在跑前端时需要）。</li>
+    <li><b>Step 2 · 拉代码</b>：<code>git clone https://github.com/logosssss/dream-scope.git && cd dream-scope</code>，并 <code>cp .env.example .env</code>（进程不会自动加载 .env）。</li>
+    <li><b>Step 3 · 起 Redis</b>：<code>docker compose up -d redis</code>。</li>
+    <li><b>Step 4 · 配 Key</b>：设置 <code>DASHSCOPE_API_KEY</code>；可选 DREAM_SCOPE_MODEL_CHAT=dashscope:qwen-plus。</li>
+    <li><b>Step 5 · 跑测试再启动</b>：<code>mvn -q test</code> → <code>mvn -pl dream-scope-web -am spring-boot:run</code>（默认 8091）。</li>
+    <li><b>Step 6 · 冒烟调用</b>：<code>curl -s http://localhost:8091/api/agents/invoke -H "Content-Type: application/json" -d '{"input":"你好"}'</code>。</li>
+    <li><b>Step 7 · 起前端（可选）</b>：cd dream-scope-ui && npm install && npm run dev，浏览器开 http://127.0.0.1:5173。</li>
+    <li><b>Step 8 · 对照实验（强烈建议）</b>：<code>mvn -pl dream-scope-boot -am spring-boot:run</code> 起 8092 端口，这是官方 starter 装配的 ReActAgent（内存 Memory、空 Toolkit、无 Redis / 无子 Agent）。同一台机器上对比 8091 与 8092，能直观理解"Harness 层到底加了什么"。</li>
+  </ol>
+
+  <h3 class="sec">11 ｜ Prompt / Code / Config（原文公开的部分）</h3>
+  <p>Maven 依赖（官方 README 公开）：</p>
+  <pre><code>&lt;dependency&gt;
+  &lt;groupId&gt;io.agentscope&lt;/groupId&gt;
+  &lt;artifactId&gt;agentscope-harness&lt;/artifactId&gt;
+  &lt;version&gt;2.0.3&lt;/version&gt;
+&lt;/dependency&gt;
+&lt;dependency&gt;
+  &lt;groupId&gt;io.agentscope&lt;/groupId&gt;
+  &lt;artifactId&gt;agentscope-extensions-model-dashscope&lt;/artifactId&gt;
+  &lt;version&gt;2.0.3&lt;/version&gt;
+&lt;/dependency&gt;</code></pre>
+  <p>官方最小 Agent（README 公开，Java 21）：</p>
+  <pre><code>HarnessAgent agent = HarnessAgent.builder()
+    .name("assistant")
+    .sysPrompt("You are a helpful AI assistant.")
+    .model("dashscope:qwen-plus")     // 自动读 DASHSCOPE_API_KEY
+    .workspace(Paths.get(".agentscope/workspace"))
+    .build();
+
+RuntimeContext ctx = RuntimeContext.builder()
+    .sessionId("demo").userId("alice").build();</code></pre>
+  <p>工具定义与"业务上下文不过模型手"（作者 03 篇公开）：</p>
+  <pre><code>public record UserContext(String tenantId, String userId) {}
+
+@Tool(name = "list_my_orders", description = "查询当前用户的订单")
+public String listOrders(UserContext ctx,        // 无 @ToolParam → 框架从 RuntimeContext 注入
+                         @ToolParam(name = "status", required = false) String status) {
+    return query(ctx.tenantId(), ctx.userId(), status);
+}</code></pre>
+  <p>Compaction 配置（作者 02 篇公开）：</p>
+  <pre><code>CompactionConfig.builder()
+    .triggerMessages(30)   // 30 条触发压缩
+    .keepMessages(10)      // 保留最近 10 条原文
+    .keepTokens(0)         // 显式关闭 token 阈值，避免两个阈值互相打架
+    .build();</code></pre>
+
+  <h3 class="sec">12 ｜ 踩坑（来自作者原文与 README）</h3>
+  <div class="pitfall">
+    <p><b>坑 1 · MiddlewareBase 从抽象类变成了接口。</b>2.0.3 里它是 interface，不是 abstract class。从 1.x 迁移时旧代码用 <code>extends</code> 会直接编译失败，得改成 <code>implements</code>。</p>
+    <p><b>坑 2 · 子 Agent 的 tools 白名单不生效。</b>在 2.0.3 里，<code>tools: "[]"</code>（空列表）与完全不写 <code>tools</code> 效果一样，都会继承父 Agent 的工具。想收紧权限必须写非空白名单。</p>
+    <p><b>坑 3 · Redis 连不上 = 进程起不来。</b>设计上故意 fail fast。本地开发忘了 docker compose up -d redis，会看到 redis required but unreachable。</p>
+    <p><b>坑 4 · Nacos 2.x 会启动探活失败。</b>AgentScope 的 AI 能力走 Nacos 3.x 的 gRPC 9848，只开 8848 的 2.x 配置中心不行。</p>
+    <p><b>坑 5 · .env 不会被自动加载。</b>要么用环境变量，要么写 application-local.yml 并加 --spring.profiles.active=local。</p>
+    <p><b>坑 6 · 多通道检索会打架。</b>框架内置的 ReActAgent.knowledge() 会自动注入检索（旧版 GenericRAGHook，已标 @Deprecated）。如果同时用自动注入 + retrieve 工具，同一轮里模型会看到两份来源不同、格式不同的资料。作者的取舍是只留工具化检索一条通道。</p>
+  </div>
+
+  <h3 class="sec">13 ｜ 中国用户能不能直接做？</h3>
+  <table class="stack">
+    <tr><td class="k">国内访问</td><td>✅ 完全可用。模型走阿里云百炼 DashScope；依赖全部来自 Maven 中央仓，可配国内镜像加速。</td></tr>
+    <tr><td class="k">注册</td><td>阿里云账号 + 百炼开通，国内手机号即可；无需海外信用卡。</td></tr>
+    <tr><td class="k">API</td><td>DASHSCOPE_API_KEY 一个环境变量即可跑通；换 DeepSeek 只需改 model 前缀 + 对应 Key。</td></tr>
+    <tr><td class="k">成本</td><td>开源项目本身 0 元；主要成本是模型 token。可选本地 Ollama 把推理成本压到电费。</td></tr>
+    <tr><td class="k">技术门槛</td><td><span class="repro dev">开发者级</span> 需要 JDK 21、Maven、Docker、Redis，以及能读懂 Spring Boot 与依赖注入。有 Java 后端经验的人 1–2 天可跑通。</td></tr>
+  </table>
+
+  <h3 class="sec">14 ｜ 中国企业可以怎么用？</h3>
+  <ul>
+    <li><b>存量 Java 系统的"AI 入口"。</b>银行、制造、政企的大量核心系统是 Spring Boot。直接在既有工程里引 agentscope-harness，把 Agent 做成一个 Bean，通过 /api/agents/invoke 暴露给前端；会话状态接公司已有的 Redis。</li>
+    <li><b>企业内部知识助手（带引用）。</b>把制度文档、产品手册、接口约定灌进 pgvector，用 retrieve 工具做向量 + 关键词混合检索 + 精排，答案带 [1][2] 编号可溯源。</li>
+    <li><b>多租户 AI 中台。</b>用 (userId, sessionId) 贯通工作区路径、存储命名空间与沙箱，让一条业务线一个租户，数据隔离由框架强制而非靠代码自觉。</li>
+    <li><b>遗留系统 SOP 自动化。</b>用 Markdown 写 subagents/xxx.md 声明专职子 Agent，把"售后政策问答""报价草稿""日志初筛"等固定流程固化，不写 Java 就能加一个子 Agent。</li>
+  </ul>
+
+  <h3 class="sec">15 ｜ 如何迁移到其他行业</h3>
+  <div class="migrate">
+    <div class="m"><b>① 制造业 · 设备售后知识中台</b>把设备手册、故障码、维修知识灌入混合检索；用子 Agent 声明"故障初诊""配件清单生成"；售后工程师用企业微信侧接口提问。</div>
+    <div class="m"><b>② 金融 / 政企 · 合规问答与审计</b>用中间件统一做权限拦截与操作留痕，Plan Mode 保证多步任务先出计划再执行；数据不出内网，模型走本地 Ollama 或私有化部署。</div>
+    <div class="m"><b>③ 电商 / 跨境 · 多平台客服后台</b>把订单、物流、退换货政策做成工具与知识库；用 (userId, sessionId) 隔离不同店铺的会话，避免串号。</div>
+  </div>
+
+  <h3 class="sec">16 ｜ 培训课程设计</h3>
+  <div class="course">
+    <table>
+      <tr><td class="k">课程名称</td><td>《Java 工程师的第一堂 AI Agent 生产课：用 AgentScope Java 2.0 搭一个能上线的智能体》</td></tr>
+      <tr><td class="k">适合人群</td><td>有 Spring Boot 经验的 Java 后端 / 架构师；企业 IT 负责人</td></tr>
+      <tr><td class="k">建议时长</td><td>半天（3 小时）起，可扩展为两天训练营</td></tr>
+      <tr><td class="k">30 分钟 Demo</td><td>现场跑 8091 / 8092 两个端口，让学员亲眼看到"有 Harness 与没有 Harness"的差别</td></tr>
+      <tr><td class="k">60 分钟 Workshop</td><td>学员自己写一个 @Tool 方法（如查询工单），并用中间件给它加权限校验与耗时统计</td></tr>
+      <tr><td class="k">半天课程</td><td>六个模块边界 → Harness 与 ReAct 分工 → 三共享对象 → Redis 会话与 Compaction → 三层 RAG → 用 Markdown 加一个子 Agent</td></tr>
+      <tr><td class="k">课后作业</td><td>提交一个自定义子 Agent（Markdown 声明）与一份"哪些工具不该给它"的风险说明</td></tr>
+    </table>
+  </div>
+
+  <h3 class="sec">17 ｜ 培训师点评</h3>
+  <div class="trainer"><b>真正值得教的不是 AgentScope，而是"工程边界感"。</b>这个案例最珍贵的部分是它反复出现的取舍：条件分支只出现在装配点、工具白名单宁少勿多、stdio 在服务端直接拒绝、两个压缩阈值只留一个。教这套框架，本质是教一群 Java 工程师把"能跑通"升级成"能负责"。</div>
+
+  <h3 class="sec">18 ｜ 最终判断</h3>
+  <div class="verdict">
+    <div class="v"><div class="k">落地性</div><div class="val lv-h">高</div></div>
+    <div class="v"><div class="k">中国市场相关性</div><div class="val lv-h">高</div></div>
+    <div class="v"><div class="k">商业价值</div><div class="val lv-h">高</div></div>
+    <div class="v"><div class="k">复现难度</div><div class="val lv-m">中</div></div>
+    <div class="v"><div class="k">变现潜力</div><div class="val lv-h">高</div></div>
+  </div>
+</div>
+
+<!-- ==================== 案例 02 ==================== -->
+<div class="card" id="c2">
+  <div class="card-head">
+    <div class="num">02</div>
+    <h2>用 LangChain 1.0 中间件钩子 + 阿里百炼 Qwen3.7-Flash，给企业 Agent 补上权限、重试、脱敏、审计与 Token 计费</h2>
+  </div>
+  <div class="badges">
+    <span class="badge b-cat">Agent 工程化 / 切面治理</span>
+    <span class="badge b-tag">🇨🇳 国产模型已验证适配</span>
+    <span class="badge b-tag">🧩 代码可复制</span>
+    <span class="badge b-tag">💰 0 成本可复现</span>
+    <span class="badge b-date">发布于 2026-09-30</span>
+  </div>
+  <div class="oneliner"><b>一句话结论：</b>把权限、压缩、重试、脱敏、审计、计费这六件"每个 Agent 都要重复写一遍"的事，收进六个可插拔钩子里——这是企业 Agent 从"能演示"到"敢上线"最短的一段路，而且今天有人把代码直接写给了你。</div>
+
+  <h3 class="sec">01 ｜ 案例是什么？</h3>
+  <p>LangChain 1.0 把 Agent 的重心从"链"改成了"钩子"：核心入口只剩一个 <code>create_agent</code>，其余能力通过 middleware（中间件）在 Agent 生命周期上打点。2026-09-30，掘金作者「码农悟道」发了一篇实战文章，用<b>六大钩子</b>写出完整可运行代码，并<b>明确适配阿里百炼新版模型 qwen3.7-flash</b>：任务前置拦截（权限）、模型调用前预处理（压缩上下文/切换大小模型）、模型调用包装（重试/熔断/耗时/Token 统计）、工具调用包装（重试/入参校验/脱敏/审计）、输出后置审核（内容安全/格式修复）、任务收尾统计（全链路 Token 与工具次数归集）。它解决的是一个非常具体的工程问题：<b>Agent 业务代码正在被通用基建代码淹没。</b></p>
+
+  <h3 class="sec">02 ｜ 为什么今天值得关注？</h3>
+  <ul>
+    <li><b>为什么是现在：</b>LangChain 1.0 于 2025-10 正式 GA（GA 当晚同时推出 LangGraph 1.0），把 create_react_agent 换成 create_agent、把中间件抬为一等公民。到 2026 年 9 月，官方已内置 PIIMiddleware / SummarizationMiddleware / HumanInTheLoopMiddleware 等预置中间件——意味着"切面治理"已经是官方推荐范式，而中文实战内容才刚刚跟上。</li>
+    <li><b>为什么以前不容易：</b>1.0 之前想控制 Agent 执行的中间过程，只能用 callback handler、继承子类或 fork 预置图；企业上线时只能把权限、脱敏、计费硬塞进业务逻辑。</li>
+    <li><b>为什么现在变容易：</b>钩子把"在哪一刀切"变成声明式配置；同时国产模型的兼容性已被社区跑通——文章里百炼走的是 OpenAI 兼容端点 <code>dashscope.aliyuncs.com/compatible-mode/v1</code>，模型名直接用 <code>qwen3.7-flash-2026-07-15</code>。</li>
+  </ul>
+
+  <h3 class="sec">03 ｜ 原始资料</h3>
+  <ul class="src-list">
+    <li><span class="src-type">原文</span><a href="https://juejin.cn/post/7691136281447448603" target="_blank" rel="noopener">《LangChain Agent 切面钩子实战：解耦业务，一键复用通用能力》（作者：码农悟道，2026-09-30）</a></li>
+    <li><span class="src-type">官方文档</span><a href="https://docs.langchain.com/oss/python/releases/langchain-v1" target="_blank" rel="noopener">LangChain v1 官方发布说明（Python）：create_agent、middleware 六大钩子、预置中间件</a></li>
+    <li><span class="src-type">模型侧</span>阿里云百炼 OpenAI 兼容端点：<code>https://dashscope.aliyuncs.com/compatible-mode/v1</code></li>
+  </ul>
+
+  <h3 class="sec">04 ｜ 解决了什么真实问题？</h3>
+  <p>从企业侧的需求讲：一个 Agent 上线前，技术负责人一定会问五个问题——谁能用？聊久了会不会爆上下文？模型接口抖动会不会让流程挂掉？工具返回的手机号会不会漏？这个月谁花了多少钱？原文的痛点描述很直白：<b>"每新建一个 Agent 就重复写一遍，不仅代码臃肿冗余，各个项目的规则还参差不齐，后期维护简直是噩梦。"</b></p>
+
+  <h3 class="sec">05 ｜ 完整技术栈</h3>
+  <table class="stack">
+    <tr><td class="k">模型</td><td>阿里百炼 <code>qwen3.7-flash-2026-07-15</code>（走 OpenAI 兼容端点）</td></tr>
+    <tr><td class="k">框架</td><td>LangChain 1.0（langchain.agents.create_agent + langchain.agents.middleware）</td></tr>
+    <tr><td class="k">语言</td><td>Python（langchain_openai.ChatOpenAI 作为统一客户端）</td></tr>
+    <tr><td class="k">依赖</td><td>langchain、langchain-openai、langchain-core、python-dotenv</td></tr>
+    <tr><td class="k">关键参数</td><td>stream_usage=True（流式下拿 Token 用量）、temperature=0、max_tokens=2048</td></tr>
+  </table>
+
+  <h3 class="sec">06 ｜ 完整 Workflow</h3>
+  <div class="flow">
+    <div class="node"><b>用户输入</b>：agent.invoke({"messages":[{"role":"user","content":"查询AI中台项目员工及进度信息"}]}, context={"user_id":"admin_001"})</div>
+    <div class="arrow">↓</div>
+    <div class="node"><b>before_agent</b>（任务前置拦截）：校验 user_id 是否具备企业数据查询权限；不通过直接抛异常，<b>不触发任何 LLM 调用</b></div>
+    <div class="arrow">↓</div>
+    <div class="node"><b>before_model</b>（调用前预处理）：消息轮数 > 5 时只保留最近 3 条（上下文压缩）；同时做 Token 用量采集与防重复统计</div>
+    <div class="arrow">↓</div>
+    <div class="node"><b>wrap_model_call</b>（调用包装）：包裹真实 LLM 调用 → 失败自动重试（max_retry=2，间隔 1s）→ 记录耗时</div>
+    <div class="arrow">↓</div>
+    <div class="node"><b>Agent 决策</b>：模型选择调用业务工具（示例为 company_info_query）</div>
+    <div class="arrow">↓</div>
+    <div class="node"><b>wrap_tool_call</b>（工具包装）：打印入参 → 执行工具 → 返回内容命中手机号则替换为 ******* → 归集调用次数</div>
+    <div class="arrow">↓</div>
+    <div class="node"><b>after_model</b>（输出后置审核）：检查输出是否含"机密"字样，命中则强制改写为拒答</div>
+    <div class="arrow">↓</div>
+    <div class="node"><b>after_agent</b>（收尾统计）：输出累计总 Token 消耗与累计工具调用次数，供监控 / 计费使用</div>
+  </div>
+
+  <h3 class="sec">07 ｜ 它到底是怎么实现的？</h3>
+  <ul>
+    <li><b>核心机制是"洋葱包裹 + next 短路"。</b>每个钩子拿到本次的 request 和一个 handler（next）。调用 handler(request) 才会继续往下走；不调用就是短路——这正是中间件能"拦截"的原因。</li>
+    <li><b>官方钩子语义：</b>before_agent（调 Agent 前，载入记忆 / 校验输入）、before_model（每次 LLM 调用前，改提示词 / 裁剪消息）、wrap_model_call（包裹每次 LLM 调用）、wrap_tool_call（包裹每次工具调用）、after_model（每次 LLM 响应后，校验输出 / 加护栏）、after_agent（Agent 完成后，保存结果 / 清理）。</li>
+    <li><b>为什么能省 Token：</b>入口拦截无效请求（一次 LLM 都不调），以及调用前压缩上下文（长会话不再把全部历史带过去）。</li>
+    <li><b>为什么脱敏要放在工具出口：</b>数据是在工具返回值里出现的，不是在模型输出里生成的。在 wrap_tool_call 拦截返回内容，能在数据进入上下文之前就把它改掉。</li>
+    <li><b>为什么计费要放在收尾：</b>不管 Agent 正常结束还是中途异常终止，收尾钩子都会百分百触发，保证"每一次调用都有账可查"。</li>
+  </ul>
+
+  <h3 class="sec">08 ｜ Prompt / Code / Config</h3>
+  <pre><code>from langchain_openai import ChatOpenAI
+from langchain.agents import create_agent
+from langchain.agents.middleware import (wrap_model_call, wrap_tool_call,
+                                        before_model, ModelRequest, ToolCallRequest)
+
+llm = ChatOpenAI(
+    model="qwen3.7-flash-2026-07-15",
+    base_url="https://dashscope.aliyuncs.com/compatible-mode/v1",
+    api_key="你的API_KEY",
+    temperature=0, stream_usage=True, max_tokens=2048,
+)
+
+@before_model                                   # ① 权限拦截（原文示例）
+def before_agent_permission(state, runtime):
+    if runtime.context.get("user_id") != "admin_001":
+        raise Exception("【权限拦截】无企业数据查询权限")
+    return state
+
+@before_model                                   # ② 上下文精简
+def model_trim_middleware(state, runtime):
+    msgs = state.get("messages", [])
+    if len(msgs) > 5: state["messages"] = msgs[-3:]
+    return state
+
+@wrap_model_call                                # ③ 重试 / 熔断 / 耗时
+def model_retry_middleware(request, handler):
+    ...  # max_retry=2，失败 sleep(1) 后重试
+
+@wrap_tool_call                                 # ④ 工具脱敏 + 审计
+def tool_secure_middleware(request, handler):
+    result = handler(request)
+    if isinstance(result, ToolMessage) and "13800138000" in result.content:
+        result.content = result.content.replace("13800138000", "*******")
+    return result
+
+agent = create_agent(
+    model=llm, tools=tools,
+    middleware=[before_agent_permission, model_trim_middleware,
+                model_retry_middleware, tool_secure_middleware, ...],
+    system_prompt="简洁准确回答用户问题",
+)</code></pre>
+  <p><b>Token 统计的关键一行</b>（原文强调的国产模型适配点）：百炼新版 qwen3.7-flash 在 <code>response_metadata["token_usage"]</code> 里<b>只返回总 Token、没有输入/输出细分字段</b>，作者用 total_tokens 采集并加了防重复统计标记。</p>
+
+  <h3 class="sec">09 ｜ 踩坑</h3>
+  <div class="pitfall">
+    <p><b>坑 1 · 国产模型的 Token 字段不完整。</b>百炼新版模型只返回总 Token，没有 prompt / completion 细分，直接照抄 GPT 的统计代码会拿到 0。</p>
+    <p><b>坑 2 · 中间件执行时序。</b>多个中间件叠加时，谁先谁后会实际影响结果（例如权限校验必须先于 Token 采集），这是最容易在真实项目里翻车的地方。</p>
+    <p><b>坑 3 · 计数器会重复累加。</b>Agent 原生就是 ReAct 循环，同一段历史会被多次读取。原文专门加了 _token_counted 标记做防重复。</p>
+    <p><b>坑 4 · 上下文裁剪会破坏工具调用链。</b>文章用"保留最近 3 条"做压缩，而官方推荐的是 SummarizationMiddleware（把历史摘要化而非直接丢弃）。粗暴裁剪可能切断 tool_call 与 tool_result 的配对。</p>
+    <p><b>坑 5 · 钩子命名与实现存在错配（务必自行核对）。</b>原文示例中函数名标为 before_agent_permission 却用 @before_model 装饰、agent_finish_stat 也用 @before_model 实现。代码可运行，但语义与实际钩子不一致，复制到生产前建议对照官方文档改名或改为 AgentMiddleware 子类实现。</p>
+    <p><b>坑 6 · 部分自研件与官方预置件功能重叠。</b>脱敏、摘要、人工审批官方已有 PIIMiddleware / SummarizationMiddleware / HumanInTheLoopMiddleware。建议：通用能力用官方件，业务规则才自研。</p>
+  </div>
+
+  <h3 class="sec">10 ｜ 中国用户能不能直接做？</h3>
+  <table class="stack">
+    <tr><td class="k">国内访问</td><td>✅ 可用。百炼端点在境内；pip 安装可用清华等镜像加速。</td></tr>
+    <tr><td class="k">注册</td><td>阿里云账号 + 百炼开通，国内手机号即可，无需海外支付方式。</td></tr>
+    <tr><td class="k">成本</td><td><span class="repro">0 元可试</span> 代码本身 0 成本，用免费额度即可跑通全部六个钩子；转生产后按 token 计费。</td></tr>
+    <tr><td class="k">技术门槛</td><td><span class="repro hard">有一定门槛</span> 需要会 Python、理解 Agent 循环与装饰器；不需要 GPU、不需要 Docker、不需要服务器。</td></tr>
+  </table>
+
+  <h3 class="sec">11 ｜ 企业场景</h3>
+  <ul>
+    <li><b>内部数据查询助手的权限门禁。</b>不同部门查不同库。用 before_agent 做入口拦截（一次 LLM 都不调就拒绝），用 before_model 按角色动态改提示词与可用工具。</li>
+    <li><b>数据脱敏与合规输出。</b>在 wrap_tool_call 统一对返回内容做脱敏（手机号、身份证、地址），在 after_model 做输出侧敏感词拦截。形成"进也拦、出也拦"的双层合规。</li>
+    <li><b>Agent 成本核算与部门分摊。</b>把收尾钩子采集的 Token 数与工具次数写进日志系统，按 user_id 归集——这是"AI 成本能不能说清楚"的问题。</li>
+    <li><b>多 Agent 复用同一套规范。</b>新做一个 Agent 时，直接挂上同一组中间件，天然继承权限、脱敏、计费规则。</li>
+  </ul>
+
+  <h3 class="sec">12 ｜ 如何迁移到其他行业</h3>
+  <div class="migrate">
+    <div class="m"><b>① 金融 / 理财</b>强合规行业：入口按岗位拦截、输出必须过合规审核钩子、所有调用留痕可回溯，Token 成本按部门归集。</div>
+    <div class="m"><b>② 医疗 / 健康</b>患者信息在工具返回处统一脱敏，会话加摘要压缩以支撑长病程随访；输出侧加医学术语纠正与免责声明。</div>
+    <div class="m"><b>③ 电商 / 客服</b>把"售后规则校验""超时未发货筛查"做成工具级审计，订单号与收件人信息在出口脱敏；按店铺维度归集 Token。</div>
+  </div>
+
+  <h3 class="sec">13 ｜ 培训师点评</h3>
+  <div class="trainer"><b>这个案例真正值得教的，是"在哪里切一刀"的判断力。</b>六个钩子只是六个位置，难的是把权限放在入口而不是输出、把脱敏放在工具出口而不是模型出口、把计费放在一定会触发的收尾。学会这套位置感，换任何一个 Agent 框架（AgentScope、Spring AI、Dify）都能重新装一遍。</div>
+
+  <h3 class="sec">14 ｜ 最终判断</h3>
+  <div class="verdict">
+    <div class="v"><div class="k">落地性</div><div class="val lv-h">高</div></div>
+    <div class="v"><div class="k">中国市场相关性</div><div class="val lv-h">高</div></div>
+    <div class="v"><div class="k">商业价值</div><div class="val lv-m">中高</div></div>
+    <div class="v"><div class="k">复现难度</div><div class="val lv-h">低</div></div>
+    <div class="v"><div class="k">变现潜力</div><div class="val lv-m">中</div></div>
+  </div>
+</div>
+
+<section class="block" id="observation">
+  <h2>今日 AI 实战观察</h2>
+  <div class="panel">
+    <p>今天这两个案例指向的是同一件事：<b>中国 AI 实战的竞争线，已经从"模型能不能用"移到了"Agent 能不能管"。</b></p>
+    <p>先看事实。案例 01 里，AgentScope Java 2.0 把分布式会话、多租户隔离、安全沙箱、上下文压缩、可观测性从"业务自己想办法"改成了"框架的内核一等公民"；dream-scope 又进一步划出六边形边界，把框架类型关在 adapter 里。案例 02 里，LangChain 1.0 干脆用六个钩子把权限、压缩、重试、脱敏、审计、计费从业务代码里连根拔起。两件事发生的时间相差不到 24 小时，方向完全一致：<b>行业正在为"Agent 上线之后"补齐基础设施。</b></p>
+    <p>再看变化本身。第一个变化是<b>治理能力开始前移</b>——权限校验放在入口、脱敏放在工具出口、计费放在一定会触发的收尾，而不是散落在事后。第二个变化是<b>Java 生态回来了</b>：AgentScope Java 2.0 在 2026 年 7 月 GA 后，到 9 月底终于出现中文实战长文与可跑通的参考实现。第三个变化是<b>国产模型进入"被适配"阶段</b>：文章里百炼 Qwen3.7-Flash 需要专门处理 Token 字段差异，这不是缺陷，而是信号——社区已经深入到"逐个字段对齐"的工程层。</p>
+    <p>还有一点值得注意：这两个案例都<b>不是新闻</b>。没有新模型发布，没有融资，没有榜单。它们是一个框架的版本沉淀，加一个开发者把自己半夜踩的坑写了出来。这恰恰是当下最值得关注的一类信号——<b>真正改变产业曲线的，往往不是发布会的聚光灯，而是一群人默默把"能跑通"改写成"能负责"。</b></p>
+  </div>
+</section>
+
+<section class="block" id="radar">
+  <h2>今日商业机会雷达</h2>
+  <div class="panel">
+    <h3>机会 1 · 「Java 存量系统 AI 接入」实施服务</h3>
+    <ul>
+      <li><b>客户：</b>有 Spring Boot 存量系统、想上 AI 又不想换技术栈的中大型企业（银行、制造、政企、SaaS 厂商）。</li>
+      <li><b>实现方式：</b>AgentScope Java 2.0 + 国产模型（通义千问 / DeepSeek）+ 企业已有 Redis / 数据库。</li>
+      <li><b>可能商业模式：</b>AI 实施服务（项目制）+ 年度运维。</li>
+      <li><b>为什么是现在：</b>框架刚 GA 三个月、中文参考实现刚出现，市场上"会做"的人还很少。</li>
+    </ul>
+  </div>
+  <div class="panel">
+    <h3>机会 2 · 企业 Agent「治理层」交付与体检</h3>
+    <ul>
+      <li><b>客户：</b>已经在跑 Agent、但被合规或成本问题卡住的团队（金融、医疗、政企优先）。</li>
+      <li><b>实现方式：</b>六大中间件钩子（权限 / 压缩 / 重试 / 脱敏 / 审核 / 计费）+ 检查清单。</li>
+      <li><b>可能商业模式：</b>低价体检（建立信任）→ 中间件交付（项目制）→ 长期治理运维（订阅）。</li>
+    </ul>
+  </div>
+  <div class="panel">
+    <h3>机会 3 · 行业 Agent 模板 / 培训（面向 Java 人群的 AI 转型）</h3>
+    <ul>
+      <li><b>客户：</b>① 想要现成脚手架的企业；② 想转型 AI 的 Java 工程师（人群规模巨大，市面课程 90% 是 Python 向）。</li>
+      <li><b>实现方式：</b>把 dream-scope 这类参考实现按行业裁剪成模板；把"框架 + 工程边界"沉淀成 1 天或 2 天课程。</li>
+      <li><b>可能商业模式：</b>模板授权 + 企业内训 + 训练营。</li>
+    </ul>
+  </div>
+  <p style="font-size:13px;color:#6B7280">以上均为基于案例结构的商业模式分析，<b>不代表已经验证的商业成功</b>。</p>
+</section>
+
+<section class="block" id="sources">
+  <h2>原始资料</h2>
+  <div class="panel">
+    <h3>案例 01 · AgentScope Java 2.0 / dream-scope</h3>
+    <ul class="src-list">
+      <li><span class="src-type">原文</span><a href="https://juejin.cn/post/7690494760705261583" target="_blank" rel="noopener">AgentScope Java 实战 03：知识与工具层（宋哥转AI，2026-09-29）</a></li>
+      <li><span class="src-type">原文</span><a href="https://juejin.cn/post/7689742195037306931" target="_blank" rel="noopener">AgentScope Java 实战 02：Harness 工程层（宋哥转AI，2026-09-28）</a></li>
+      <li><span class="src-type">代码</span><a href="https://github.com/logosssss/dream-scope" target="_blank" rel="noopener">github.com/logosssss/dream-scope（Apache-2.0）</a></li>
+      <li><span class="src-type">产品</span><a href="https://dream-saas.com/" target="_blank" rel="noopener">dream-saas.com（作者已上线平台）</a></li>
+      <li><span class="src-type">官方</span><a href="https://github.com/agentscope-ai/agentscope-java" target="_blank" rel="noopener">github.com/agentscope-ai/agentscope-java</a></li>
+    </ul>
+    <h3 style="margin-top:16px">案例 02 · LangChain 1.0 中间件钩子</h3>
+    <ul class="src-list">
+      <li><span class="src-type">原文</span><a href="https://juejin.cn/post/7691136281447448603" target="_blank" rel="noopener">LangChain Agent 切面钩子实战（码农悟道，2026-09-30）</a></li>
+      <li><span class="src-type">官方</span><a href="https://docs.langchain.com/oss/python/releases/langchain-v1" target="_blank" rel="noopener">LangChain v1 官方发布说明（Python）</a></li>
+    </ul>
+  </div>
+</section>
+
+<section class="block" id="truth">
+  <h2>数据真实性说明</h2>
+  <div class="truth">
+    <p><b>本期需要特别说明：</b></p>
+    <ol>
+      <li><b>关于发布日期。</b>日报日期为 2026-09-30，数据窗口为 2026-09-29 12:00 至 2026-09-30 23:46（GMT+8）。案例 01 的核心实操长文发布于 09-28 与 09-29，案例 01 的另一条系列开篇与案例 02 均发布于 09-30。本期未把与窗口无关的旧内容包装成"昨日新案例"。</li>
+      <li><b>关于内容农场。</b>本期检索过程中，"尧图"系内容农场站点大面积污染了搜索结果排名。上述站点内容一律未被采信、未被引用，请读者以官方文档为准。</li>
+      <li><b>关于作者自述数据。</b>"4C8G 单机运行 12 个 AI Agent 模块""月 LLM 成本可压在数百元量级"等来自 dream-saas.com 站点自述；"彻底根治中间件时序 BUG"等来自原文作者自述——本报告均无法独立验证，已在正文标注。</li>
+    </ol>
+  </div>
+</section>
+
+<nav class="read-nav">
+  <a class="rn-item" href="2026-09-29.html">← 第 003 期（09-29）</a>
+  <a class="rn-item" href="index.html">全部教程 →</a>
+</nav>
+
+</div>
+</main>
+<footer class="site-footer">
+  <div class="wrap">
+    <div>
+      <div class="f-brand">全球文明进程重大事件日报</div>
+      <p class="f-desc">记录人类文明演进中的关键节点。以未来历史学家的视角，筛出可能改写人类轨迹的转折点。</p>
+    </div>
+    <div class="f-col">
+      <h4>浏览</h4>
+      <ul>
+        <li><a href="../index.html">网站首页</a></li>
+        <li><a href="../archive.html">日报档案</a></li>
+        <li><a href="../radar.html">趋势雷达</a></li>
+        <li><a href="index.html">AI实战教程</a></li>
+        <li><a href="../assets/images/og-cover.png" target="_blank">站点封面</a></li>
+      </ul>
+    </div>
+    <div class="f-col">
+      <h4>文明分类</h4>
+      <ul>
+        <li><a href="../categories/science.html">科学、生命与地球</a></li>
+        <li><a href="../categories/politics.html">政治与文明秩序</a></li>
+        <li><a href="../categories/culture.html">思想、社会与文化</a></li>
+        <li><a href="../categories/technology.html">科技与人工智能</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="f-bottom">
+    <div class="wrap">
+      <span>© 2026 全球文明进程重大事件日报 · 全球文明进程观察站</span>
+      <span>内容由自动化智能体基于公开信息生成，仅供文明观察与研究参考。</span>
+    </div>
+  </div>
+</footer>
+<button class="backtop" type="button" aria-label="返回顶部">↑</button>
+<script src="../assets/js/main.js"></script>
+<script src="../assets/js/wechat-share.js"></script>
+<script src="../assets/js/text-to-speech.js"></script>
+</body>
+</html>
