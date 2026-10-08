@@ -1,0 +1,853 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI极客实战教程日报 · 2026-10-03（第007期）｜用一个 Agent Skill + 自带渲染 CLI，把 A、用「浏览器扩展 + 本地 helper」把网页、视频、播客变</title>
+<meta name="description" content="10月3日AI极客实战案例：今日一句话
+今天的两个案例都在做同一件事——把「内容消费」变成「可沉淀的资产」：一个把 Agent 的长回答从终端文字变成一页能读的 HTML，一个把网页、视频、播客变成 Obsidian 里可检索的笔记。它们共同的判断是：AI 时代最贵的">
+<meta name="keywords" content="AI极客实战,用一个 Agent ,用「浏览器扩展 + ">
+<meta name="author" content="全球文明进程观察站">
+<meta name="robots" content="index,follow">
+<link rel="canonical" href="https://civilization-radar.com/tutorial/2026-10-03.html">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="全球文明进程重大事件日报">
+<meta property="og:title" content="AI极客实战教程日报 · 2026-10-03｜用一个 Agent Skill + 自带渲染 CLI，把 A">
+<meta property="og:description" content="10月3日AI极客实战案例：今日一句话
+今天的两个案例都在做同一件事——把「内容消费」变成「可沉淀的资产」：一个把 Agent 的长回答从终端文字变成一页能读的 HTML，一个把网页、视频、播客变成 Obsidian 里可检索的笔记。它们共">
+<meta property="og:url" content="https://civilization-radar.com/tutorial/2026-10-03.html">
+<meta property="og:image" content="https://civilization-radar.com/assets/images/og-cover.png">
+<meta property="og:locale" content="zh_CN">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="AI极客实战教程日报 · 2026-10-03">
+<meta name="twitter:description" content="今日一句话
+今天的两个案例都在做同一件事——把「内容消费」变成「可沉淀的资产」：一个把 Agent 的长回答从终端文字变成一页能读的 HTML，一个把网页、视频">
+<meta name="twitter:image" content="https://civilization-radar.com/assets/images/og-cover.png">
+<link rel="icon" href="../assets/images/logo.svg" type="image/svg+xml">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"AI极客实战教程日报 2026-10-03","description":"今日一句话\n今天的两个案例都在做同一件事——把「内容消费」变成「可沉淀的资产」：一个把 Agent 的长回答从终端文字变成一页能读的 HTML，一个把网页、视频、播客变成 Obsidian 里可检索的笔记。它们共同的判断是：AI 时代最贵的","datePublished":"2026-10-03","dateModified":"2026-10-03","author":{"@type":"Organization","name":"全球文明进程观察站"},"publisher":{"@type":"Organization","name":"全球文明进程观察站","logo":{"@type":"ImageObject","url":"https://civilization-radar.com/assets/images/og-cover.png"}},"mainEntityOfPage":{"@type":"WebPage","@id":"https://civilization-radar.com/tutorial/2026-10-03.html"}}</script>
+
+<link rel="stylesheet" href="../assets/css/style.css">
+<style>
+
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body {
+    background:#F7F8FA; color:#111827;
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;
+    line-height:1.7; font-size:15px;
+  }
+  .tut-wrap { max-width:960px; margin:0 auto; padding:32px 20px 64px; }
+  a { color:#2563EB; text-decoration:none; word-break:break-all; }
+  a:hover { text-decoration:underline; }
+
+  header.top {
+    background:#111827; color:#F9FAFB; border-radius:14px; padding:36px 32px; margin-bottom:24px;
+  }
+  header.top .kicker { color:#93C5FD; font-size:13px; letter-spacing:2px; text-transform:uppercase; margin-bottom:10px; }
+  header.top h1 { font-size:30px; font-weight:800; margin-bottom:6px; }
+  header.top .sub { color:#9CA3AF; font-size:14px; margin-bottom:20px; }
+  .meta-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:12px; }
+  .meta-grid .m { background:#1F2937; border:1px solid #374151; border-radius:10px; padding:10px 14px; }
+  .meta-grid .m .k { font-size:11px; color:#9CA3AF; margin-bottom:2px; }
+  .meta-grid .m .v { font-size:14px; font-weight:600; color:#F9FAFB; }
+
+  .oneline {
+    background:#F5F8FF; border:1px solid #BFDBFE; border-radius:14px;
+    padding:18px 24px; margin-bottom:24px;
+  }
+  .oneline .lab { font-size:12px; letter-spacing:1px; color:#2563EB; font-weight:700; margin-bottom:6px; }
+  .oneline p { font-size:15px; color:#111827; }
+
+  nav.cats { display:flex; flex-wrap:wrap; gap:8px; margin-bottom:28px; }
+  nav.cats a {
+    background:#FFFFFF; border:1px solid #E5E7EB; border-radius:999px;
+    padding:6px 14px; font-size:13px; color:#374151;
+  }
+  nav.cats a:hover { border-color:#2563EB; color:#2563EB; text-decoration:none; }
+
+  .card {
+    background:#FFFFFF; border:1px solid #E5E7EB; border-radius:14px;
+    padding:28px; margin-bottom:28px;
+  }
+  .card-head { display:flex; align-items:flex-start; gap:14px; margin-bottom:6px; flex-wrap:wrap; }
+  .num {
+    font-size:26px; font-weight:800; color:#2563EB; line-height:1.1;
+    font-variant-numeric:tabular-nums; min-width:52px;
+  }
+  .card-head h2 { font-size:20px; font-weight:700; flex:1; min-width:240px; }
+  .badges { display:flex; flex-wrap:wrap; gap:6px; margin:8px 0 14px; }
+  .badge { font-size:12px; padding:3px 10px; border-radius:999px; font-weight:600; }
+  .b-cat { background:#EFF6FF; color:#2563EB; border:1px solid #BFDBFE; }
+  .b-tag { background:#F3F4F6; color:#4B5563; border:1px solid #E5E7EB; }
+  .b-date { background:#ECFDF5; color:#16A34A; border:1px solid #BBF7D0; }
+  .b-warn { background:#FFFBEB; color:#B45309; border:1px solid #FDE68A; }
+
+  .oneliner {
+    background:#F9FAFB; border:1px solid #E5E7EB; border-radius:10px;
+    padding:12px 16px; font-size:14.5px; color:#111827; margin-bottom:18px;
+  }
+
+  h3.sec {
+    font-size:14px; font-weight:700; color:#111827; margin:22px 0 8px;
+    padding-left:10px; border-left:3px solid #2563EB;
+  }
+  .card p, .card li { font-size:14.5px; color:#374151; }
+  .card ul, .card ol { padding-left:22px; margin:6px 0; }
+  .card li { margin-bottom:4px; }
+
+  .src-list { list-style:none; padding-left:0; }
+  .src-list li { margin-bottom:6px; }
+  .src-type {
+    display:inline-block; font-size:11px; font-weight:700; color:#2563EB;
+    background:#EFF6FF; border:1px solid #BFDBFE; border-radius:6px;
+    padding:1px 8px; margin-right:8px;
+  }
+
+  .stack { width:100%; border-collapse:collapse; margin:6px 0; }
+  .stack td { border:1px solid #E5E7EB; padding:7px 12px; font-size:13.5px; vertical-align:top; }
+  .stack td.k { background:#F9FAFB; font-weight:600; color:#111827; width:110px; white-space:nowrap; }
+
+  .flow { display:flex; flex-direction:column; gap:0; margin:10px 0; }
+  .flow .node {
+    background:#F9FAFB; border:1px solid #E5E7EB; border-radius:10px;
+    padding:9px 16px; font-size:13.5px; color:#111827;
+  }
+  .flow .node b { color:#2563EB; }
+  .flow .arrow { text-align:center; color:#9CA3AF; font-size:14px; line-height:1.4; }
+
+  pre {
+    background:#111827; color:#E5E7EB; border-radius:10px;
+    padding:16px 18px; overflow-x:auto; font-size:13px; line-height:1.6;
+    font-family:"SFMono-Regular",Consolas,"Liberation Mono",Menlo,monospace;
+    margin:8px 0;
+  }
+  code {
+    font-family:"SFMono-Regular",Consolas,Menlo,monospace;
+    background:#F3F4F6; color:#111827; border-radius:5px; padding:1px 6px; font-size:13px;
+  }
+  pre code { background:transparent; color:#E5E7EB; padding:0; }
+
+  .pitfall { background:#FFFBEB; border:1px solid #FDE68A; border-radius:10px; padding:14px 18px; margin:8px 0; }
+  .pitfall b { color:#B45309; }
+  .truth { background:#FEF7F7; border:1px solid #FECACA; border-radius:10px; padding:14px 18px; margin:8px 0; }
+  .truth b { color:#B91C1C; }
+
+  .repro { display:inline-block; font-size:13px; font-weight:700; padding:4px 12px; border-radius:999px; background:#ECFDF5; color:#16A34A; border:1px solid #BBF7D0; }
+  .repro.hard { background:#FFFBEB; color:#B45309; border-color:#FDE68A; }
+  .repro.dev { background:#FEF2F2; color:#B91C1C; border-color:#FECACA; }
+
+  .migrate { display:grid; grid-template-columns:repeat(3,1fr); gap:10px; margin:8px 0; }
+  .migrate .m {
+    background:#F9FAFB; border:1px solid #E5E7EB; border-radius:10px; padding:12px 14px; font-size:13px; color:#374151;
+  }
+  .migrate .m b { display:block; color:#111827; margin-bottom:4px; }
+
+  .course {
+    background:#F5F8FF; border:1px solid #BFDBFE; border-radius:10px; padding:16px 20px; margin:8px 0;
+  }
+  .course table { width:100%; border-collapse:collapse; }
+  .course td { padding:4px 8px 4px 0; font-size:13.5px; vertical-align:top; color:#374151; }
+  .course td.k { font-weight:600; color:#111827; width:88px; white-space:nowrap; }
+
+  .trainer {
+    border-left:3px solid #16A34A; background:#F0FDF4; border-radius:0 10px 10px 0;
+    padding:12px 18px; font-size:14px; color:#14532D; margin:10px 0 4px;
+  }
+  .trainer b { color:#16A34A; }
+
+  .verdict { display:grid; grid-template-columns:repeat(5,1fr); gap:10px; margin:8px 0; }
+  .verdict .v {
+    background:#F9FAFB; border:1px solid #E5E7EB; border-radius:10px; padding:12px; text-align:center;
+  }
+  .verdict .v .k { font-size:11.5px; color:#6B7280; margin-bottom:4px; }
+  .verdict .v .val { font-size:17px; font-weight:800; }
+  .lv-h { color:#16A34A; }
+  .lv-m { color:#F59E0B; }
+  .lv-l { color:#DC2626; }
+
+  section.block { margin-top:40px; }
+  section.block > h2 {
+    font-size:22px; font-weight:800; margin-bottom:16px; padding-bottom:10px;
+    border-bottom:2px solid #E5E7EB;
+  }
+  .panel { background:#FFFFFF; border:1px solid #E5E7EB; border-radius:14px; padding:24px 28px; margin-bottom:20px; }
+  .panel h3 { font-size:16px; margin-bottom:10px; }
+  .panel p, .panel li { font-size:14.5px; color:#374151; }
+  .panel ul { padding-left:22px; }
+  .panel li { margin-bottom:6px; }
+  .panel table { width:100%; border-collapse:collapse; margin:8px 0; }
+  .panel th, .panel td { border:1px solid #E5E7EB; padding:7px 10px; font-size:13px; text-align:left; vertical-align:top; }
+  .panel th { background:#F9FAFB; color:#111827; }
+
+  .checklist { columns:2; column-gap:32px; }
+  .checklist li { list-style:none; margin-bottom:6px; font-size:13.5px; }
+  .checklist li::before { content:"✓ "; color:#16A34A; font-weight:700; }
+
+  .gapnote {
+    background:#FFFBEB; border:1px solid #FDE68A; border-radius:10px;
+    padding:14px 18px; font-size:13.5px; color:#7C2D12; margin-bottom:24px;
+  }
+  .gapnote b { color:#B45309; }
+
+  footer { text-align:center; color:#9CA3AF; font-size:12.5px; margin-top:40px; }
+
+  @media(max-width:640px) {
+    header.top { padding:24px 20px; }
+    header.top h1 { font-size:22px; }
+    .meta-grid { grid-template-columns:repeat(2,1fr); }
+    .card { padding:20px 16px; }
+    .migrate { grid-template-columns:1fr; }
+    .verdict { grid-template-columns:repeat(2,1fr); }
+    .checklist { columns:1; }
+    .num { min-width:auto; }
+    .panel { padding:18px 16px; }
+    .stack td.k { width:82px; }
+  }
+
+</style>
+</head><body>
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="../index.html"><img class="mark" src="../assets/images/logo.svg" alt="文明雷达" width="32" height="32" style="width:32px;height:32px;background:none;border:0;box-shadow:none;border-radius:6px">全球文明进程重大事件日报</a>
+    <button class="nav-toggle" type="button" aria-label="菜单" aria-expanded="false">☰</button>
+    <nav class="main-nav" aria-label="主导航"><ul><li><a href="../index.html">首页</a></li><li><a href="../archive.html">日报档案</a></li><li><a href="../radar.html">趋势雷达</a></li><li><a href="../tutorial/index.html" class="active">AI实战</a></li><li><a href="../categories/science.html">科学</a></li><li><a href="../categories/politics.html">政治</a></li><li><a href="../categories/culture.html">文化</a></li><li><a href="../categories/technology.html">科技</a></li></ul></nav>
+  </div>
+</header>
+<main class="site-main">
+<div class="tut-wrap">
+  <nav class="breadcrumb" aria-label="面包屑"><a href="../index.html">首页</a><span class="sep">/</span><a href="index.html">AI实战教程</a><span class="sep">/</span><span>2026-10-03</span></nav>
+<header class="top">
+  <div class="kicker">China AI Builders · Real Cases · Workflows · Business</div>
+  <h1>AI极客实战案例日报</h1>
+  <div class="sub">China AI Builders · Real Cases · Workflows · Agents · Open Source · Business</div>
+  <div class="meta-grid">
+    <div class="m"><div class="k">日报日期</div><div class="v">2026-10-03</div></div>
+    <div class="m"><div class="k">生成时间</div><div class="v">2026-10-08（补做）</div></div>
+    <div class="m"><div class="k">精选案例</div><div class="v">2 个（宁缺毋滥）</div></div>
+    <div class="m"><div class="k">数据窗口</div><div class="v">10-02 12:00 → 10-03 12:00</div></div>
+  </div>
+</header>
+
+<div class="gapnote">
+  <b>关于本期的生成方式：</b>这是一份<b>补做</b>的日报。2026-10-03 当天的定时任务未执行，故在 2026-10-08 按当日应有的数据窗口回溯补做。数据窗口严格限定为 <b>2026-10-02 12:00 → 2026-10-03 12:00（北京时间）</b>，所有时间戳均由 GitHub API 原始数据换算，未把窗口外的旧内容包装成「新案例」。当期无法二次核实的平台热度数据，本文一律标注为作者自述或未验证。
+</div>
+
+<div class="oneline">
+  <div class="lab">今日一句话</div>
+  <p>今天的两个案例都在做同一件事——把「内容消费」变成「可沉淀的资产」：一个把 Agent 的长回答从终端文字变成一页能读的 HTML，一个把网页、视频、播客变成 Obsidian 里可检索的笔记。它们共同的判断是：<b>AI 时代最贵的不是生成，而是生成之后没人愿意再看第二眼。</b></p>
+</div>
+
+<nav class="cats">
+  <a href="#case01">案例 01｜让 Agent 输出一页 HTML</a>
+  <a href="#case02">案例 02｜乔木剪藏</a>
+  <a href="#observe">今日观察</a>
+  <a href="#radar">商业机会雷达</a>
+  <a href="#personal">个人变现机会</a>
+  <a href="#sources">原始资料</a>
+  <a href="#truth">真实性说明</a>
+</nav>
+
+<!-- ===================== 案例 01 ===================== -->
+<div class="card" id="case01">
+  <div class="card-head">
+    <div class="num">01</div>
+    <h2>用一个 Agent Skill + 自带渲染 CLI，把 Agent 的复杂回答从「一屏终端文字」变成「一页可读的 HTML」</h2>
+  </div>
+  <div class="badges">
+    <span class="badge b-cat">Agent Skill</span>
+    <span class="badge b-cat">AI + 知识呈现</span>
+    <span class="badge b-cat">Token 经济学</span>
+    <span class="badge b-date">仓库创建 10-02 17:57（北京时间）</span>
+    <span class="badge b-tag">开源 MIT</span>
+    <span class="badge b-warn">性能数据均为作者自测</span>
+  </div>
+
+  <div class="oneliner">
+    <b>一句话结论：</b>它把「排版」这件重复劳动从模型手里拿走交给程序，于是模型只需要写 1/8 的内容——这是 Skill 真正该有的样子。
+  </div>
+
+  <h3 class="sec">01｜案例是什么？</h3>
+  <p>中文开发者 QingYunA 开源了一个 Agent Skill：<b>Answer me with HTML</b>（MIT）。装进 Claude Code、Codex、Cursor、OpenCode 等 Agent 之后，你照常提问——「解释 TCP 三次握手」「把这个仓库的模块关系画出来」「Redis 还是 Memcached」——Agent 不会把答案糊成一屏终端文字，而是先写一份<b>简短的 Markdown 草稿</b>，交给 skill 自带的命令行工具，约 50 毫秒后输出一页<b>单文件 HTML</b>：带 SVG 示意图、排版和配色，离线也能打开。它不是让模型手写网页，而是让模型只写内容、把渲染交给确定性程序。</p>
+
+  <h3 class="sec">02｜为什么今天值得关注？</h3>
+  <ul>
+    <li><b>窗口内的事实（可用 API 核实）：</b>该仓库创建于 <b>2026-10-02T09:57:40Z</b>，即北京时间 <b>10-02 17:57</b>，正落在本期窗口（10-02 12:00 → 10-03 12:00）之内。窗口之后它持续高频迭代——从 10-05 的 v0.4.8 到 10-08 的 v0.4.15，几乎每天数个版本。</li>
+    <li><b>它回答了一个具体问题：</b>「既然模型能写 HTML，为什么还要一个 skill？」作者的答案是用 token 计数证明的——他统计了模型手写 9 个页面的用量，平均 4,893 token，其中 <b>SVG 坐标 47% + CSS 15% + HTML 标签 17% = 79% 都不是内容</b>。</li>
+    <li><b>为什么以前不容易做：</b>过去要「好看的答案」，要么请人做前端模板，要么让模型自己写 HTML——后者又贵又不稳定（坐标算错、样式崩）。这不是能力问题，是经济学问题。</li>
+    <li><b>为什么现在变得容易：</b>Agent Skills 规范在 2025–2026 年成为事实标准，一个 skill 可以打包 SKILL.md + 脚本 + 模板；Node CLI 让「渲染」变成一条命令。于是「模型写内容、程序管呈现」的分工第一次变得可以随手安装。</li>
+  </ul>
+
+  <h3 class="sec">03｜案例的前世今生</h3>
+  <p><b>前世。</b>最早期的做法是让模型直接输出 Markdown——终端里能看，但没有图、没有排版，长回答依然难读。进阶做法是要求模型「用 HTML 回答」，模型确实写得出来，但代价是每一页都要重新算一遍 SVG 坐标、写一遍 CSS、补一遍标签，绝大多数 token 花在「搬砖」上。</p>
+  <p><b>发展。</b>两条线慢慢成熟：① Agent Skills 把「可复用的作业规范」变成可安装的包（SKILL.md 定义何时触发、怎么用）；② 本地 CLI 的普及让「确定性计算」可以随时被 Agent 调用。两者一合，就出现了「模型只产出内容、程序负责呈现」的分工。</p>
+  <p><b>今生。</b>本项目把这个分工做成了一个可安装的 skill：模型只写约 612 token 的 Markdown 草稿，其余交给自带 CLI。作者并给出了可复现的基准：仓库里带 <code>bench/corpus/tokens.json</code> 与 <code>bench/corpus.mjs</code>，同一份计数脚本可以跑出同样的数字。</p>
+  <p><b>下一步可能怎么发展（分析 / 推演）。</b>「模型只写内容、程序负责呈现」很可能从单点 skill 扩散成一类基础设施：PPT、图表、报告、周报都可能出现同样的分工——模型产出结构化内容，渲染器负责美化。更进一步，可能出现「组织内统一的呈现规范 skill」，让全公司的 AI 输出长得像一个团队做的。以上为推演，非事实。</p>
+
+  <h3 class="sec">04｜原始资料</h3>
+  <ul class="src-list">
+    <li><span class="src-type">开源仓库</span>QingYunA/answer-me-with-html（MIT，JavaScript，建于 2026-10-02T09:57:40Z = 北京时间 10-02 17:57）<br><a href="https://github.com/QingYunA/answer-me-with-html" target="_blank" rel="noopener">https://github.com/QingYunA/answer-me-with-html</a></li>
+    <li><span class="src-type">发布记录</span>Releases（窗口后连续迭代：v0.4.8 → v0.4.15）<br><a href="https://github.com/QingYunA/answer-me-with-html/releases" target="_blank" rel="noopener">https://github.com/QingYunA/answer-me-with-html/releases</a></li>
+    <li><span class="src-type">官方文档</span>项目官网<br><a href="https://answer-me-with-html.com/" target="_blank" rel="noopener">https://answer-me-with-html.com/</a></li>
+    <li><span class="src-type">官方文档</span>中文说明 README.zh-CN.md<br><a href="https://github.com/QingYunA/answer-me-with-html/blob/main/README.zh-CN.md" target="_blank" rel="noopener">github.com/QingYunA/answer-me-with-html/blob/main/README.zh-CN.md</a></li>
+    <li><span class="src-type">安装说明</span>INSTALL.md（专为 Agent 编写，可让 Agent 自行安装）<br><a href="https://raw.githubusercontent.com/QingYunA/answer-me-with-html/main/INSTALL.md" target="_blank" rel="noopener">raw.githubusercontent.com/QingYunA/answer-me-with-html/main/INSTALL.md</a></li>
+    <li><span class="src-type">基准数据</span>bench/README.md 与 bench/corpus/tokens.json（token 计数可复现）<br><a href="https://github.com/QingYunA/answer-me-with-html/blob/main/bench" target="_blank" rel="noopener">github.com/QingYunA/answer-me-with-html/tree/main/bench</a></li>
+  </ul>
+
+  <h3 class="sec">05｜作者是谁？</h3>
+  <p>GitHub 账号 <b>QingYunA</b>（显示名 Cyan），公开资料显示 40 个仓库、39 个关注者。除此之外没有可核实的身份信息（公司、所在地、职业）。<b>本文不猜。</b>可以确认的是：这是一个长期在 GitHub 上活跃、且把「用中英双语写 README」当默认习惯的独立开发者。</p>
+
+  <h3 class="sec">06｜解决了什么真实问题？</h3>
+  <p>从需求侧看，不是「AI 不会画图」，而是<b>「开发者的 AI 回答用完即弃」</b>：</p>
+  <ul>
+    <li><b>需求一（个人开发 / 学习者）。</b>用 CLI Agent 问一个稍复杂的问题（协议原理、架构关系、技术选型），得到的是一大坨 Markdown。当时读得懂，第二天回看就找不到重点，也没法直接发给别人。</li>
+    <li><b>需求二（要交付的人）。</b>技术评审、方案说明、给非技术同事的解释——都需要一页能直接看的材料，而不是抄一段聊天记录。</li>
+    <li>两者的共同点：<b>不是不会问 AI，而是 AI 的输出形态不适合被「保存、回看、转发」。</b></li>
+  </ul>
+
+  <h3 class="sec">07｜完整技术栈</h3>
+  <table class="stack">
+    <tr><td class="k">模型</td><td><b>项目本身不绑定模型。</b>作者给出的基准使用 Claude Sonnet 5.5（评测环境为「一个普通的 Claude Code 环境」），但项目可装进 Claude Code / Codex / Cursor / OpenCode / Pi 等 Agent，也就是说用哪个模型由你正在用的 Agent 决定。<b>本文不编造未出现的型号。</b></td></tr>
+    <tr><td class="k">形态</td><td>Agent Skill（SKILL.md 定义行为）+ 内置 Node CLI（负责渲染）</td></tr>
+    <tr><td class="k">运行环境</td><td>Node.js 20 或更新；<b>无 npm install 步骤</b>（CLI 打包在 skill 内）</td></tr>
+    <tr><td class="k">安装器</td><td>vercel-labs/skills（<code>npx skills add</code>），官方称支持 70+ 种 Agent；Claude Code 另有官方插件市场方式</td></tr>
+    <tr><td class="k">输出物</td><td>单文件 HTML（内含 SVG 与 CSS，离线可读）</td></tr>
+    <tr><td class="k">语言</td><td>JavaScript</td></tr>
+    <tr><td class="k">许可</td><td>MIT</td></tr>
+  </table>
+
+  <h3 class="sec">08｜完整 Workflow</h3>
+  <div class="flow">
+    <div class="node"><b>① 用户提问</b>　「解释 TCP 三次握手」/「Redis 还是 Memcached」——用平时的方式提问</div>
+    <div class="arrow">↓</div>
+    <div class="node"><b>② Agent 判定触发</b>　skill 的 description 匹配「需要一页可读回答」的场景，加载 SKILL.md 规范</div>
+    <div class="arrow">↓</div>
+    <div class="node"><b>③ 模型只写 Markdown 草稿</b>　约 612 token——只写内容，不写 SVG 坐标、不写 CSS、不写标签</div>
+    <div class="arrow">↓</div>
+    <div class="node"><b>④ 自带 CLI 渲染</b>　约 50 毫秒，把草稿套进模板，生成 SVG 图、样式与语义标签</div>
+    <div class="arrow">↓</div>
+    <div class="node"><b>⑤ 产出单文件 HTML</b>　一页可滚动、可离线打开、可转发的答案</div>
+    <div class="arrow">↓</div>
+    <div class="node"><b>⑥ （可选）always-on 模式</b>　让「一页 HTML」成为默认输出形态，而不是每次手动触发</div>
+  </div>
+
+  <h3 class="sec">09｜它到底是怎么实现的？</h3>
+  <p>剥掉包装，这套东西的技术内核只有一条，但它被量化得很干净：</p>
+  <p><b>机制：把「非内容」的部分从模型手里拿走。</b>作者统计了模型手写 HTML 一页的 token 构成：</p>
+  <table class="stack">
+    <tr><td class="k">SVG 图（坐标与路径）</td><td>47% —— <b>交给 CLI 生成</b></td></tr>
+    <tr><td class="k">CSS</td><td>15% —— <b>交给 CLI 生成</b></td></tr>
+    <tr><td class="k">HTML 标签</td><td>17% —— <b>交给 CLI 生成</b></td></tr>
+    <tr><td class="k">正文文字</td><td>21% —— 只有这块由模型写，且写的是 Markdown</td></tr>
+  </table>
+  <p>结果是同一批问题，模型要写的量从平均 4,893 token 降到 <b>612 token（约 1/8）</b>，作者给出的耗时中位数是 31 秒 → 12 秒（约 2.6× 快）。</p>
+  <p><b>一条容易被忽略的诚实之处：</b>作者明确写了「账单降幅小于写作降幅，大约只降 15%」——因为每一轮对话无论用不用这个 skill，都要读系统提示、你的问题和历史对话。这句话本身就是很好的工程素养示范：<b>优化输出 token ≠ 优化总成本。</b></p>
+  <p><b>为什么它可以工作？</b>因为网页的「好看」本来就不是靠模型的创造力，而是靠固定的模板、间距、配色和图形语法。这些是确定性知识，应该由程序承担；模型的价值在于「读懂问题、组织内容」。把两者分开，双方都变强。</p>
+
+  <h3 class="sec">10｜手把手复现</h3>
+  <div class="truth"><b>以下 Step 1–4 整理自项目 README / INSTALL.md 明确写出的做法；Step 5–6 为原文推荐的验证与开启方式；Step 7 为本文补充建议，已单独标注。</b></div>
+  <p><b>Step 1（原文）。</b>准备环境：安装 Node.js 20 或更新版本。项目<b>不需要 npm install</b>，CLI 已打包在 skill 里。</p>
+  <p><b>Step 2（原文·推荐）。</b>让 Agent 自己装：把这句话粘给你常用的 Agent——「Install Answer me with HTML: read https://raw.githubusercontent.com/QingYunA/answer-me-with-html/main/INSTALL.md and follow it.」INSTALL.md 是专为 Agent 写的，会自动区分 Claude Code 插件与其它 Agent 的 skill 安装，不向你提问。</p>
+  <p><b>Step 3（原文·备选）。</b>一条命令安装：<code>npx skills add QingYunA/answer-me-with-html</code>（会询问装进哪个 Agent）。Claude Code 用户还可以走官方插件市场：<code>/plugin marketplace add QingYunA/answer-me-with-html</code>。</p>
+  <p><b>Step 4（原文）。</b>手动安装：把仓库里的 <code>skills/answer-me-with-html</code> 目录复制进你所用 Agent 的 skills 目录（Claude Code 为 <code>~/.claude/skills/</code>）。</p>
+  <p><b>Step 5（原文）。</b>验证：问一句「Explain the TCP three-way handshake」，按 INSTALL.md 的说法，安装流程最终会以这一页作为自检。</p>
+  <p><b>Step 6（原文）。</b>开 always-on 模式，让「一页 HTML」成为默认形态，而不是每次手动召唤。</p>
+  <p><b>Step 7（本文补充的建议）。</b>把它接到国产模型上：Skill 与渲染 CLI 都和具体模型无关，只要你的 Agent 能读写文件、能执行命令即可。国内用户可以在 TRAE / 通义灵码 / CodeBuddy / Qoder 这类客户端里挂国产模型，再把该 skill 装进去。此路径为本文推导，未经作者确认。</p>
+
+  <h3 class="sec">11｜Prompt / Code / Config</h3>
+  <p><b>原作者公开的内容（可直接引用）：</b></p>
+  <ul>
+    <li><b>SKILL.md</b>——定义触发条件与使用方式（仓库 <code>skills/answer-me-with-html/</code> 下）</li>
+    <li><b>INSTALL.md</b>——面向 Agent 的安装说明（含 Claude Code 插件路径与通用 skill 路径）</li>
+    <li><b>bench/corpus/tokens.json</b> 与 <b>bench/corpus.mjs</b>——token 计数数据集与可复现脚本，<code>node bench/corpus.mjs</code> 可跑出同样的数字</li>
+    <li><b>bench-corpus-2026-10-07.zip</b>——基准用的页面成片（随 Release v0.4.14 分发）</li>
+  </ul>
+  <p><b>本文根据原文总结的结构：</b>「模型写 Markdown 草稿 → CLI 套模板渲染 → 单文件 HTML」三段式；以及 README 给出的安装命令。<b>系统提示词全文、模板库的完整实现细节，作者未在 README 中逐行公开，本文不编造。</b></p>
+
+  <h3 class="sec">12｜踩坑</h3>
+  <div class="pitfall">
+    <p><b>以下为项目 README / ISSUE 层面已公开的已知限制与注意事项，本文未独立复现：</b></p>
+    <ul>
+      <li><b>必须有 Node.js 20+。</b>版本不够会让 CLI 起不来；项目没有 npm install 兜底，环境是硬门槛。</li>
+      <li><b>Agent 必须能读链接或能执行 npx。</b>若你的 Agent 既打不开网页、也不允许执行命令，就无法自动安装，只得手动复制目录。</li>
+      <li><b>去重成本别算错。</b>作者自己提醒：省的是「输出 token」，读系统提示与对话上下文的那部分成本照旧，「账单只降约 15%」。把 1/8 直接当成成本降到 1/8 是误读。</li>
+      <li><b>「作者自测」不等于普遍结论。</b>8× token、2.6× 速度均来自作者自己的一小组基准（3 个主题 × 3 次运行），换模型、换问题类型结果可能不同。</li>
+      <li><b>仓库在窗口后仍高速迭代。</b>核实窗口内（10-02 至 10-03）该仓库只有创建事件；v0.4.x 的密集发布发生在 10-05 之后。本文引用的是后续公开内容，已在文中标注时间。</li>
+    </ul>
+  </div>
+
+  <h3 class="sec">13｜中国用户能不能直接做？</h3>
+  <ul>
+    <li><b>国内访问：</b>有限制——仓库、Release、raw 文档均托管在 GitHub，直连不稳定，通常需要加速或镜像。</li>
+    <li><b>注册：</b>无需注册，纯本地 skill，无账号体系。</li>
+    <li><b>API：</b>项目本身<b>不需要额外的 API Key</b>；成本发生在你使用的 Agent 模型上，用国产模型即可绕开境外 API。</li>
+    <li><b>成本：</b>skill 本体免费开源；实际成本 = 所用模型开销，用国产模型可压到很低。</li>
+    <li><b>技术门槛：</b><span class="repro hard">有一定门槛</span> 需要 Node.js 20+、会用命令行、理解 Agent 的 skills 目录。</li>
+  </ul>
+
+  <h3 class="sec">14｜国产替代方案</h3>
+  <table class="stack">
+    <tr><td class="k">原方案</td><td>Claude Code / Codex / Cursor / OpenCode / Pi + 该 Skill + Node CLI</td></tr>
+    <tr><td class="k">中国用户方案</td><td><b>DeepSeek / Qwen / GLM / Kimi</b> 作为背后模型，装入 <b>TRAE / 通义灵码 / CodeBuddy / Qoder / OpenClaw</b> 等支持 skills 的客户端；渲染 CLI 与模型无关，理论上完全可用</td></tr>
+    <tr><td class="k">替代性质</td><td><b>理论替代（本文推导）。</b>Skill 与模型解耦是项目自身设计（可装 5+ 种 Agent），但作者未验证过国产客户端；<b>不能写成「已验证兼容」。</b></td></tr>
+  </table>
+
+  <h3 class="sec">15｜中国企业可以怎么用？</h3>
+  <ul>
+    <li><b>企业场景 1｜内部技术文档。</b>让工程 Agent 把「模块关系」「调用链」「变更说明」直接输出成一页 HTML，贴进内部 Wiki 或发群，比截图和聊天记录都清楚。</li>
+    <li><b>企业场景 2｜评审与决策材料。</b>产品评审、方案选型、故障复盘——把「AI 给的结论」变成一页可以拿去开会的材料，减少「口头传达 → 二次整理」的损耗。</li>
+    <li><b>企业场景 3｜数据分析结论页。</b>把数据分析 Agent 的结论渲染成带图的一页，供运营、销售这类非技术角色直接阅读。</li>
+  </ul>
+
+  <h3 class="sec">16｜中国消费者可以怎么用？</h3>
+  <ul>
+    <li><b>学习笔记：</b>把「解释一下某个概念」变成一页带图的说明页，存进本地，考前回看。</li>
+    <li><b>决策对比：</b>选手机、选课程、选保险——把 AI 的对比分析渲染成一页，和家人一起看。</li>
+    <li><b>内容素材：</b>自媒体作者可以先让 AI 生成一页「知识点图谱」，作为图文或视频的结构底稿。</li>
+  </ul>
+
+  <h3 class="sec">17｜如何变成一个赚钱的项目？</h3>
+  <p><b>产品化：</b>把「呈现规范」做成可订阅的模板库——行业模板（财报解读、体检报告、教育讲义）+ 一键输出，卖模板而不是卖 skill 本身。</p>
+  <p><b>服务化：</b>给企业做「AI 输出标准化」的落地服务：定义一套公司统一的 HTML 呈现规范，包装成内部 skill，交付后按月维护模板。</p>
+  <p><b>咨询化：</b>帮企业判断「哪些 AI 输出值得被沉淀成资产」，属于 AI 工作流咨询的一个细分切口。</p>
+  <p><b>培训化：</b>「从会问到会被记住：用 Skill 把 AI 输出变成资产」——半天工作坊即可交付一个可运行的模板。</p>
+  <p><b>内容化：</b>拆解 token 经济学（79% 不是内容）本身就是极好的图文/视频选题，适合 B 站、公众号、掘金。</p>
+
+  <h3 class="sec">18｜变现路径</h3>
+  <table class="stack">
+    <tr><td class="k">路径</td><td><b>客户</b> ｜ 产品/服务 ｜ 收费方式 ｜ 难度</td></tr>
+    <tr><td class="k">模板订阅</td><td>个人/企业 ｜ 行业 HTML 呈现模板库 ｜ 订阅 ｜ 中</td></tr>
+    <tr><td class="k">企业服务</td><td>企业 ｜ AI 输出标准化 + 内部 skill 交付 ｜ 项目制 ｜ 中</td></tr>
+    <tr><td class="k">咨询</td><td>企业 ｜ AI 输出资产化咨询 ｜ 项目制 ｜ 高</td></tr>
+    <tr><td class="k">培训</td><td>企业/个人 ｜ 半天 Skill 工作坊 ｜ 按场/按人 ｜ 低</td></tr>
+    <tr><td class="k">内容</td><td>开发者 ｜ 拆解文章/视频/Newsletter ｜ 广告/付费 ｜ 低</td></tr>
+  </table>
+  <p><b>注意：</b>以上是基于案例结构的<b>潜在商业模式分析</b>，不是已验证的商业成功。作者本人未公开任何收入信息。</p>
+
+  <h3 class="sec">19｜如果我是一个中国独立开发者（7 天 MVP）</h3>
+  <ol>
+    <li><b>Day 1：</b>装 Node 20+，把 skill 装进国产 Agent（TRAE / CodeBuddy 等），用国产模型跑通「一页 HTML」。</li>
+    <li><b>Day 2：</b>选定一个垂直场景（建议：给中小企业做「经营数据周报页」），把默认模板改成该场景的排版。</li>
+    <li><b>Day 3：</b>把数据入口做小：一个 CSV / Excel 丢进去 → 一页经营周报（用国产模型做文字解读）。</li>
+    <li><b>Day 4：</b>封装成一条命令（脚本 + 模板目录），让别人无需懂 skill 也能跑。</li>
+    <li><b>Day 5：</b>找 3 个真实小企业主试用，记录他们最想改的 3 个地方。</li>
+    <li><b>Day 6：</b>按反馈改模板，加「导出 PDF / 分享链接」这两个最刚需的出口。</li>
+    <li><b>Day 7：</b>做一个落地页，写清「输入什么、输出什么、多少钱」，开始接触第一批付费意向。</li>
+  </ol>
+
+  <h3 class="sec">20｜如何迁移到其他行业</h3>
+  <div class="migrate">
+    <div class="m"><b>① 教育培训</b>把任意一节课的知识点渲染成「一页讲义」，学生可打印、可离线看。</div>
+    <div class="m"><b>② 医疗/体检解读</b>把化验指标解读成一页带图说明，降低患者理解门槛（须严守合规）。</div>
+    <div class="m"><b>③ 电商运营</b>把竞品对比、卖点分析渲染成一页，直接给主播或客服当话术底稿。</div>
+  </div>
+
+  <h3 class="sec">21｜培训课程设计</h3>
+  <div class="course">
+    <table>
+      <tr><td class="k">课程名称</td><td>《让你的 AI 输出被记住：Agent Skill 与 token 经济学》</td></tr>
+      <tr><td class="k">适合人群</td><td>用 AI 写代码/写文档的职场人、独立开发者、企业效率负责人</td></tr>
+      <tr><td class="k">建议时长</td><td>半天（3 小时）</td></tr>
+      <tr><td class="k">30 分钟 Demo</td><td>同一个问题用「直接问」和「用 skill」各输出一次，现场对比可读性与耗时</td></tr>
+      <tr><td class="k">60 分钟 Workshop</td><td>学员把自己最常问的 3 个问题，做成自己的呈现模板</td></tr>
+      <tr><td class="k">半天课程</td><td>上午讲 Skill 机制与 token 经济学，下午各自产出一个可交付的行业模板</td></tr>
+      <tr><td class="k">课程目标</td><td>学员能够解释「为什么 79% 的 token 不该由模型写」，并独立装好、改好一个 Skill</td></tr>
+      <tr><td class="k">现场 Demo</td><td>TCP 三次握手 → 一页 HTML</td></tr>
+      <tr><td class="k">学员练习</td><td>为「本周工作汇报」做一个专属模板</td></tr>
+      <tr><td class="k">课后作业</td><td>把过去一个月最有价值的 AI 回答，全部沉淀成一页 HTML 档案</td></tr>
+      <tr><td class="k">企业迁移</td><td>为企业定义一套统一的「AI 输出呈现规范」并交付内部 skill</td></tr>
+    </table>
+  </div>
+
+  <h3 class="sec">22｜培训师点评</h3>
+  <div class="trainer"><b>这个案例真正值得教的是什么？</b>不是「怎么装 skill」，而是<b>「把可确定的事从模型手里拿走」</b>这条判断。79% 的 token 花在了本该由程序做的事上——学会提这个问题，比学会任何一个工具都值钱。</div>
+
+  <h3 class="sec">23｜最终判断</h3>
+  <div class="verdict">
+    <div class="v"><div class="k">落地性</div><div class="val lv-h">高</div></div>
+    <div class="v"><div class="k">中国市场相关性</div><div class="val lv-m">中</div></div>
+    <div class="v"><div class="k">商业价值</div><div class="val lv-m">中</div></div>
+    <div class="v"><div class="k">复现难度</div><div class="val lv-m">中</div></div>
+    <div class="v"><div class="k">变现潜力</div><div class="val lv-m">中</div></div>
+  </div>
+  <p style="font-size:13px;color:#6B7280;margin-top:8px;">说明：以上是案例属性描述，不是排名。「中国市场相关性中」是因为它更偏开发者工具而非直接的中国本地场景；但它的方法论（确定性交程序、不确定性交模型）对中国开发者迁移价值很高。</p>
+</div>
+
+<!-- ===================== 案例 02 ===================== -->
+<div class="card" id="case02">
+  <div class="card-head">
+    <div class="num">02</div>
+    <h2>用「浏览器扩展 + 本地 helper」把网页、视频、播客变成 Obsidian 笔记：一条从「消费」到「沉淀」的完整链</h2>
+  </div>
+  <div class="badges">
+    <span class="badge b-cat">AI + 内容</span>
+    <span class="badge b-cat">个人知识库</span>
+    <span class="badge b-cat">浏览器扩展</span>
+    <span class="badge b-date">仓库创建 10-02 18:02（北京时间）</span>
+    <span class="badge b-tag">开源 MIT</span>
+    <span class="badge b-warn">Star 266，热度中等</span>
+  </div>
+
+  <div class="oneliner">
+    <b>一句话结论：</b>它押注的是一个正在成形的共识——AI 时代的内容消费必须「读的时候就顺手存下来」，而不是「先收藏，以后再整理」。
+  </div>
+
+  <h3 class="sec">01｜案例是什么？</h3>
+  <p>中文开发者「向阳乔木」（GitHub ID <b>joeseesun</b>）开源的浏览器扩展 <b>乔木剪藏 · Qiaomu Clipper</b>（Chrome Manifest V3，MIT）：它把「内容消费」和「知识沉淀」压进同一条链路。读文章时按 <code>aaa</code> 进阅读页、划线、向 AI 提问，按 <code>eee</code> 编辑 Markdown 后剪藏；看 YouTube / B站 / TED / 小宇宙时进学习播放器，加载或生成字幕、做双语对照、点时间戳回看；随时按 <code>N</code> 记下自己的理解，通过可选的本地 helper 直接追加进 Obsidian 的当日日记。界面完整支持简体中文、繁体中文、英文。</p>
+
+  <h3 class="sec">02｜为什么今天值得关注？</h3>
+  <ul>
+    <li><b>窗口内的事实（可用 API 核实）：</b>该仓库创建于 <b>2026-10-02T10:02:23Z</b>，即北京时间 <b>10-02 18:02</b>，落在本期窗口内；此后持续高频迭代（10-07 的 1.14.4 到 10-08 的 1.15.6）。</li>
+    <li><b>为什么以前不容易做：</b>「网页剪藏」是老赛道（Readwise、简悦、Obsidian 官方 Web Clipper 都做过），但过去它只解决「正文转 Markdown」这一件事——视频、播客、字幕、AI 问答、日记追加这几段是断的。</li>
+    <li><b>为什么现在变得容易：</b>① 浏览器扩展可以调本地进程（native messaging / helper），让「静默写入笔记库」成为可能；② 本机 ASR（MLX Whisper / Qwen3-ASR / faster-whisper）让「没有字幕的视频也能变成文稿」不再需要云端；③ LLM 让「围绕当前内容提问」变成随手可做。</li>
+    <li><b>为什么值得花时间：</b>「AI + 个人知识库」是中国用户需求密度极高、但一手开源作品稀缺的方向。这个项目把「读—看—听—问—记—存」串成了一条完整的工程链，而不是又一个收藏夹。</li>
+  </ul>
+
+  <h3 class="sec">03｜案例的前世今生</h3>
+  <p><b>前世。</b>第一代剪藏工具（2013–2019）解决的是「网页正文怎么干净地变成 Markdown」，本质是「HTML 解析 + 模板」。它假设：你要保存的内容是文字，而且你有时间后来整理。</p>
+  <p><b>发展。</b>三件事改变了前提：① 内容形态变了——大量知识在视频和播客里，而不是在网页里；② ASR 成本崩了——本机小模型就能把音频转文字；③ Obsidian 这类「本地优先」的笔记工具流行，让「笔记属于我自己」成为刚需，同时也带来了「怎么把东西写进去」的工程问题。</p>
+  <p><b>今生。</b>乔木剪藏的做法是「把断掉的每一段都补上」：内容侧补齐视频/播客/字幕，理解侧补上 AI 问答与双语翻译，落库侧用本地 helper 直接写进 Obsidian。作者甚至在 README 里给出安装建议，直言「Chrome 商店公开版仍是 1.7.1，1.15.6 已提交审核，想现在就体验就把安装 prompt 交给有终端权限的 Agent」——这是一种很务实的开源交付姿态。</p>
+  <p><b>下一步可能怎么发展（分析 / 推演）。</b>这类工具的走向大概率是「从剪藏到理解」：不只是把内容存下来，而是自动生成结构化笔记（要点、疑问、与已有笔记的关联），让「读过的」真正变成「记住的」。同时「local-first + 本地 ASR + 本地模型」的组合，会让它天然适合对数据外流敏感的行业用户。以上为推演，非事实。</p>
+
+  <h3 class="sec">04｜原始资料</h3>
+  <ul class="src-list">
+    <li><span class="src-type">开源仓库</span>joeseesun/qiaomu-clipper（MIT，TypeScript，建于 2026-10-02T10:02:23Z = 北京时间 10-02 18:02）<br><a href="https://github.com/joeseesun/qiaomu-clipper" target="_blank" rel="noopener">https://github.com/joeseesun/qiaomu-clipper</a></li>
+    <li><span class="src-type">发布记录</span>Releases（窗口后密集迭代：1.14.4 → 1.15.6）<br><a href="https://github.com/joeseesun/qiaomu-clipper/releases" target="_blank" rel="noopener">https://github.com/joeseesun/qiaomu-clipper/releases</a></li>
+    <li><span class="src-type">官方文档</span>功能文档站（含截图说明与插画图集）<br><a href="https://joeseesun.github.io/qiaomu-clipper/" target="_blank" rel="noopener">https://joeseesun.github.io/qiaomu-clipper/</a></li>
+    <li><span class="src-type">本地助手文档</span>native/README.md（helper 安装与识别引擎说明）<br><a href="https://github.com/joeseesun/qiaomu-clipper/blob/main/native/README.md" target="_blank" rel="noopener">github.com/joeseesun/qiaomu-clipper/blob/main/native/README.md</a></li>
+    <li><span class="src-type">扩展商店</span>Chrome 应用商店页（公开版 1.7.1）<br><a href="https://chromewebstore.google.com/detail/jniolfihillilkoajpnonlbkhfkiicoo" target="_blank" rel="noopener">chromewebstore.google.com/detail/…/jniolfihillilkoajpnonlbkhfkiicoo</a></li>
+    <li><span class="src-type">相关项目</span>作者主页（GitHub · joeseesun，225 个仓库）<br><a href="https://github.com/joeseesun" target="_blank" rel="noopener">https://github.com/joeseesun</a></li>
+  </ul>
+
+  <h3 class="sec">05｜作者是谁？</h3>
+  <p>GitHub 账号 <b>joeseesun</b>，显示名「<b>向阳乔木</b>」，自我描述为「爱钓鱼、喜欢听摇滚乐、每天洗冷水澡的 PM」，Twitter/X ID <code>vista8</code>；公开资料显示 225 个仓库、2,126 个关注者，属于长期活跃的中文独立开发者。README 里出现的是简体中文、繁體中文、English 三语界面，且附带自建文档站——开发者即可作者本人。<b>除此之外的身份信息（公司、团队规模、是否商业化）未公开，本文不猜。</b></p>
+
+  <h3 class="sec">06｜解决了什么真实问题？</h3>
+  <p>从需求侧看，痛点是<b>「知识消费过剩 + 沉淀缺失」</b>：</p>
+  <ul>
+    <li><b>需求一（学习者）。</b>一篇文章读完了，收藏进浏览器书签就再也没打开；一个两小时的访谈视频看完，想回到「刚才那句话」却找不到时间点。</li>
+    <li><b>需求二（外语内容消费者）。</b>外语视频看得慢，需要原文与译文对照，但字幕工具和笔记工具是两套系统，来回切。</li>
+    <li><b>需求三（本地优先的笔记用户）。</b>用 Obsidian 的人最在意「数据在我手里」，但大多数剪藏工具要求登录云端账号、把内容先上传再同步。</li>
+    <li>共同点：<b>不是「没有工具」，而是工具之间是断的——阅读一个、字幕一个、问答一个、笔记一个。</b></li>
+  </ul>
+
+  <h3 class="sec">07｜完整技术栈</h3>
+  <table class="stack">
+    <tr><td class="k">模型</td><td><b>不绑定模型。</b>AI 提问与翻译使用「用户自己的服务与凭证」，需在 AI 模型设置中自行配置（可保存多套服务）。原文未点名具体模型厂商。</td></tr>
+    <tr><td class="k">载体</td><td>Chrome / Chromium 浏览器扩展（Manifest V3）；界面支持简体中文 / 繁體中文 / English</td></tr>
+    <tr><td class="k">本地助手</td><td>可选 helper（native 进程）：负责静默写入笔记库、追加学习日记、获取音频并生成字幕。macOS 版打包为带签名的 <code>.pkg</code>，<b>自带 Python</b>，无需另装环境；Windows / Linux 需按文档源码安装</td></tr>
+    <tr><td class="k">ASR 引擎</td><td>本机识别：Apple 芯片可选 MLX Whisper 或 <b>Qwen3-ASR</b>，其他环境可用 faster-whisper；云端识别：在设置里配置 ASR 服务与 Key，可保存多套并覆盖</td></tr>
+    <tr><td class="k">目标平台</td><td>文章类网页；视频：YouTube / B站 / TED；音频：小宇宙、SoundCloud 等；另支持粘贴媒体链接或本地音视频</td></tr>
+    <tr><td class="k">笔记出口</td><td>Obsidian（URI 方式或 helper 直接写入）；日记要求数字日期格式，且需开启 Obsidian「日记」核心插件</td></tr>
+    <tr><td class="k">语言</td><td>TypeScript（扩展本体）</td></tr>
+    <tr><td class="k">许可</td><td>MIT</td></tr>
+  </table>
+
+  <h3 class="sec">08｜完整 Workflow</h3>
+  <div class="flow">
+    <div class="node"><b>① 消费内容</b>　打开文章 / 视频 / 播客页面，连按三次 <code>A</code>（或点扩展弹窗「阅读」）</div>
+    <div class="arrow">↓</div>
+    <div class="node"><b>② 阅读 / 学习</b>　文章进阅读页（调字体、划线）；视频进学习播放器（字幕栏、时间戳、双语对照）</div>
+    <div class="arrow">↓</div>
+    <div class="node"><b>③ 获取字幕（如需）</b>　优先读官方字幕；没有则调 helper 取音频 → 本机 ASR 或云端 ASR → 带时间的文稿</div>
+    <div class="arrow">↓</div>
+    <div class="node"><b>④ AI 问答</b>　围绕全文或选中段落提问；AI 回答可一并加入笔记卡片</div>
+    <div class="arrow">↓</div>
+    <div class="node"><b>⑤ 记录自己的理解</b>　学习页按 <code>N</code>、任意网页按 <code>iii</code>，打开笔记卡片（可带摘录与来源、时间点）</div>
+    <div class="arrow">↓</div>
+    <div class="node"><b>⑥ 编辑与剪藏</b>　按 <code>eee</code> 进整页 Markdown 编辑器，改标题/属性/正文，再复制、下载或剪藏</div>
+    <div class="arrow">↓</div>
+    <div class="node"><b>⑦ 落库</b>　helper 将笔记追加到今天的 Obsidian 日记；<b>不提交到 RSS</b>（作者明确说明）</div>
+    <div class="arrow">↓</div>
+    <div class="node"><b>⑧ 回看</b>　在 Obsidian 中检索、链接、形成自己的知识网络</div>
+  </div>
+
+  <h3 class="sec">09｜它到底是怎么实现的？</h3>
+  <p>这个案例的技术含量不在「剪藏」，而在<b>把四段原本互不相干的工程拼成了一条链</b>：</p>
+  <p><b>① 内容侧的形态适配。</b>文章、视频、播客三种内容，走的是同一条抽象：先拿到「可读的文本」（正文 / 字幕 / 转写文稿），再统一进入阅读或学习界面。所以同一个 <code>aaa</code> 快捷键在文章页进阅读器、在媒体页进学习播放器。</p>
+  <p><b>② 音频侧的本地优先。</b>没有字幕时，helper 取音频交给所选引擎。作者特意区分了「本机识别（不上传云端）」与「云端识别（按服务计费）」两条路，并支持把标题、作者、简介作为识别背景来改善人名与术语的准确率——这是一个很实际的工程细节。</p>
+  <p><b>③ 落库侧的 native 通道。</b>浏览器扩展本身受沙箱限制，无法静默写本地文件；helper 作为本地进程补上这个能力。作者还在 macOS 上把它打成自带 Python、已签名并通过 Apple 公证的 <code>.pkg</code>——<b>「让不懂 Python 的人也能装」本身就是产品决策</b>。</p>
+  <p><b>④ 数据边界的克制。</b>README 明确写了「学习笔记追加到 Obsidian 日记，<b>不会提交到 RSS</b>」。在一个普遍默认「上云同步」的赛道里，主动划清数据边界，是 local-first 用户最在意的信号。</p>
+
+  <h3 class="sec">10｜手把手复现</h3>
+  <div class="truth"><b>以下 Step 1–5 整理自项目 README 明确写出的做法；Step 6–7 为原文给出的完整体验路径；Step 8 为本文补充建议。</b></div>
+  <p><b>Step 1（原文）。</b>准备 Obsidian：安装 Obsidian 并创建或打开一个笔记库；若要用日记功能，需启用 Obsidian「日记」核心插件。</p>
+  <p><b>Step 2（原文·当前推荐）。</b>让 Agent 帮你装：把 README 顶部那段安装 prompt 复制给 Codex、Claude Code 等有本机终端权限的 Agent，它会按仓库文档同时装扩展与 helper。</p>
+  <p><b>Step 3（原文·备选）。</b>手动安装：下载最新 Release 里的 <code>-chrome-local.zip</code> 解压，在 <code>chrome://extensions</code> 开启「开发者模式」→「加载已解压的扩展程序」；macOS 再双击安装 <code>qiaomu-clipper-helper.pkg</code>。</p>
+  <p><b>Step 4（原文·源码构建）。</b>开发者路径：<code>git clone</code> → <code>npm ci</code> → <code>npm run build:local</code>，然后加载 <code>dist_local</code> 目录。</p>
+  <p><b>Step 5（原文）。</b>连接笔记库：扩展设置 →「剪藏与保存」→「笔记保存到」，从下拉列表选择 Obsidian 库（列表读取 Obsidian 已记录的库，也可选其他文件夹）。</p>
+  <p><b>Step 6（原文）。</b>配 AI：在「AI 模型设置」里配置自己的服务与模型（提问、翻译）；如需云端字幕识别，在「ASR 语音识别」里配置服务与 Key。</p>
+  <p><b>Step 7（原文·完整流程演练）。</b>打开文章按 <code>aaa</code> 阅读并提问 → 打开一个视频进学习页搜索字幕、点时间戳 → 按 <code>N</code> 写下理解并保存到日记。</p>
+  <p><b>Step 8（本文补充的建议）。</b>先把默认 ASR 引擎设成本机识别（如 Qwen3-ASR / MLX Whisper），确认「音频不上传」；确认整条链路满意后，再决定是否切换云端引擎追求更高质量。此建议为本文推导。</p>
+
+  <h3 class="sec">11｜Prompt / Code / Config</h3>
+  <p><b>原作者公开的内容（可直接引用）：</b></p>
+  <ul>
+    <li><b>安装 prompt</b>（README 顶部完整文本）：指示 Agent 先读 README.md 与 native/README.md，按系统与浏览器下载 Release 的 <code>-chrome-local.zip</code> 与对应版本 helper，最后检查扩展与助手连接。</li>
+    <li><b>源码构建命令：</b><code>git clone</code> / <code>npm ci</code> / <code>npm run build:local</code> / <code>npm run build:chrome</code>（作者并明确说明：<code>build:chrome</code> 产物<b>不含本地版音视频下载功能</b>）。</li>
+    <li><b>快捷键约定：</b><code>aaa</code> 阅读、<code>eee</code> 编辑、<code>N</code> 记笔记、<code>iii</code> 任意网页记笔记。</li>
+    <li><b>编辑器/落库约束：</b>日记要求数字日期格式，且未配置日记模板。</li>
+  </ul>
+  <p><b>原作者未公开的内容：</b>扩展的完整源码结构说明、native helper 的内部实现细节、AI 提示词模板。<b>本文不编造。</b></p>
+
+  <h3 class="sec">12｜踩坑</h3>
+  <div class="pitfall">
+    <p><b>以下均为项目 README 自述的已知限制，本文未独立复现：</b></p>
+    <ul>
+      <li><b>升级扩展必须同时升级 helper。</b>「仅重新加载扩展不会更新 helper」——这是最容易踩的坑，表现为「功能明明写了却没用」。</li>
+      <li><b>商店版与源码版功能不一致。</b>Chrome 商店公开版仍是 1.7.1，不含 1.15.x 的全部功能；且新版本用了新扩展 ID，<b>旧 ID 的数据不会自动迁移</b>，升级前要先备份。</li>
+      <li><b>平台兼容不保证。</b>B站字幕通常需要登录；抖音、TikTok、X、Vimeo 等的解析「取决于网站、登录状态和网络」；直播、DRM 与部分流媒体不保证可用。</li>
+      <li><b>Windows 助手尚待真机验证。</b>作者明确写了「Windows 助手已有实现和自动测试，尚待真机验证」——这是很坦诚的自述。</li>
+      <li><b>日记约束。</b>需要 helper + Obsidian「日记」核心插件，且要求数字日期格式、未配置日记模板。</li>
+    </ul>
+  </div>
+
+  <h3 class="sec">13｜中国用户能不能直接做？</h3>
+  <ul>
+    <li><b>国内访问：</b>扩展与 helper 从 GitHub Release 下载，直连不稳定；但项目本身定位中文用户（含简体/繁體界面、B站与抖音入口），并非为国内访问设置的障碍。</li>
+    <li><b>注册：</b>无需注册，无账号体系；笔记落在本地 Obsidian 库。</li>
+    <li><b>API：</b>AI 提问/翻译与云端 ASR 需自备 Key；<b>不配也能用</b>——阅读、复制正文、复制已有字幕无需 AI。</li>
+    <li><b>成本：</b>扩展与 helper 免费开源；本机 ASR（如 Qwen3-ASR）不产生 API 费用，只吃本地算力；云端 ASR 与 LLM 按所用服务计费。</li>
+    <li><b>技术门槛：</b><span class="repro">普通用户可上手</span>（走商店或 pkg 安装）／<span class="repro hard">开发者级</span>（源码构建与 Windows/Linux 助手）。</li>
+  </ul>
+
+  <h3 class="sec">14｜国产替代方案</h3>
+  <table class="stack">
+    <tr><td class="k">原方案</td><td>浏览器扩展 + 本地 helper + 自带 ASR 引擎（MLX Whisper / Qwen3-ASR / faster-whisper）+ Obsidian</td></tr>
+    <tr><td class="k">中国用户方案</td><td><b>本项目本身就面向中国用户</b>：默认支持简体中文界面、B站/小宇宙/抖音入口；ASR 已内置 <b>Qwen3-ASR</b>（阿里通义系）；AI 问答可接 DeepSeek / Qwen / GLM / Kimi</td></tr>
+    <tr><td class="k">替代性质</td><td>ASR 侧的 Qwen3-ASR 为<b>项目 README 明示支持</b>；LLM 侧为<b>用户自行配置的通用 OpenAI 兼容接口</b>，可指向国产模型（属社区/通用能力，作者未逐一点名验证）</td></tr>
+  </table>
+
+  <h3 class="sec">15｜中国企业可以怎么用？</h3>
+  <ul>
+    <li><b>企业场景 1｜行业情报与竞品监测。</b>运营/市场人员每天看大量文章与访谈视频，用扩展把它们变成统一格式的笔记库，团队共用一套 Obsidian 库做沉淀（本地库，数据不出内网）。</li>
+    <li><b>企业场景 2｜培训素材加工。</b>把内部培训录播、公开课视频转成带时间戳的文稿并剪藏，作为课件底稿或知识库素材。</li>
+    <li><b>企业场景 3｜访谈与会议复盘。</b>访谈录音 / 会议音频 → 本机 ASR 转写 → 结构化笔记，避免敏感内容上传云端（须评估合规）。</li>
+  </ul>
+
+  <h3 class="sec">16｜中国消费者可以怎么用？</h3>
+  <ul>
+    <li><b>学一门新课：</b>把网课、播客做成可检索、可回看的文稿，用 <code>N</code> 随手记自己的理解。</li>
+    <li><b>追一个领域：</b>长期把看过的文章剪藏进 Obsidian，慢慢长出属于自己的知识网络。</li>
+    <li><b>外语内容：</b>用双语字幕对照看外语视频，剪藏时选「原文 / 译文 / 双语」。</li>
+  </ul>
+
+  <h3 class="sec">17｜如何变成一个赚钱的项目？</h3>
+  <p><b>产品化：</b>把「读—看—听—记」这套流程做成面向特定人群的垂直版：例如「考研党版」「自媒体选题版」「行业研究员版」，卖的是预设的笔记模板与工作流，而不是剪藏功能本身。</p>
+  <p><b>服务化：</b>为企业做「内部知识库搭建」服务：部署一套自托管的笔记库 + 剪藏工具链 + 标签体系，交付规范与培训。</p>
+  <p><b>咨询化：</b>帮团队设计「信息输入 → 加工 → 复用」的流程，属于知识管理咨询在 AI 时代的新形态。</p>
+  <p><b>培训化：</b>《用 AI 搭建你的个人知识库》——目标明确、见效快，适合 2 小时的公开课。</p>
+  <p><b>内容化：</b>「我怎么把三年读的东西变成能查的知识库」是天然的内容选题（B站/小红书/公众号）。</p>
+
+  <h3 class="sec">18｜变现路径</h3>
+  <table class="stack">
+    <tr><td class="k">路径</td><td><b>客户</b> ｜ 产品/服务 ｜ 收费方式 ｜ 难度</td></tr>
+    <tr><td class="k">垂直模版包</td><td>个人/学生 ｜ 行业笔记模板与工作流 ｜ 一次性/订阅 ｜ 低</td></tr>
+    <tr><td class="k">企业部署</td><td>企业 ｜ 本地知识库搭建与交付 ｜ 项目制 ｜ 中</td></tr>
+    <tr><td class="k">知识管理咨询</td><td>团队 ｜ 信息流程设计 ｜ 项目制 ｜ 高</td></tr>
+    <tr><td class="k">培训</td><td>个人/企业 ｜ 个人知识库工作坊 ｜ 按场/按人 ｜ 低</td></tr>
+    <tr><td class="k">内容</td><td>知识工作者 ｜ 方法论内容与社群 ｜ 会员/广告 ｜ 低</td></tr>
+  </table>
+  <p><b>注意：</b>以上为基于案例结构的<b>潜在商业模式分析</b>，非已验证的商业成功；作者未公开任何收入信息。</p>
+
+  <h3 class="sec">19｜如果我是一个中国独立开发者（7 天 MVP）</h3>
+  <ol>
+    <li><b>Day 1：</b>装好扩展 + helper + Obsidian，把默认 ASR 设为本机 Qwen3-ASR，跑通「视频 → 文稿 → 剪藏」。</li>
+    <li><b>Day 2：</b>选一个垂直人群（建议：考研 / 考公人群），设计一套「听课笔记模板」。</li>
+    <li><b>Day 3：</b>把模板固化成 Obsidian 的目录结构 + 模板文件，写一份「五步上手」文档。</li>
+    <li><b>Day 4：</b>录一条 3 分钟实操视频（从打开视频到笔记落库），作为获客素材。</li>
+    <li><b>Day 5：</b>在目标人群的社群免费发 10 份模板，收 3 个真实反馈。</li>
+    <li><b>Day 6：</b>按反馈改模板；加上「周复习清单」这个高粘性功能。</li>
+    <li><b>Day 7：</b>把「模板包 + 上手文档 + 社群答疑」打包定价，开始小范围收费。</li>
+  </ol>
+
+  <h3 class="sec">20｜如何迁移到其他行业</h3>
+  <div class="migrate">
+    <div class="m"><b>① 企业培训</b>把培训录播转成可检索文稿，剪藏进内部知识库，新人可自助查。</div>
+    <div class="m"><b>② 内容创作</b>把竞品视频、行业访谈全部转文稿并归档，作为选题与金句素材库。</div>
+    <div class="m"><b>③ 法律 / 咨询</b>把听证、访谈、会议录音本机转写后结构化归档，兼顾效率与数据边界。</div>
+  </div>
+
+  <h3 class="sec">21｜培训课程设计</h3>
+  <div class="course">
+    <table>
+      <tr><td class="k">课程名称</td><td>《把看过的变成拥有的：用 AI 搭建个人知识库》</td></tr>
+      <tr><td class="k">适合人群</td><td>学生、知识工作者、需要长期跟进某领域的人</td></tr>
+      <tr><td class="k">建议时长</td><td>半天（3 小时）</td></tr>
+      <tr><td class="k">30 分钟 Demo</td><td>一条 B站视频 → 文稿 → 划线提问 → 笔记落进 Obsidian 日记</td></tr>
+      <tr><td class="k">60 分钟 Workshop</td><td>学员各自把自己最近读的 3 篇内容剪藏入库并建立链接</td></tr>
+      <tr><td class="k">半天课程</td><td>上午搭环境与工作流，下午设计自己的笔记结构与标签体系</td></tr>
+      <tr><td class="k">课程目标</td><td>学员能够独立搭建「阅读—字幕—提问—落库—复用」的完整闭环</td></tr>
+      <tr><td class="k">现场 Demo</td><td>外语视频双语对照 + 时间戳回看</td></tr>
+      <tr><td class="k">学员练习</td><td>为本周读到的一篇长文写一张「三句话 + 一个问题」的笔记卡</td></tr>
+      <tr><td class="k">课后作业</td><td>连续 7 天，每天剪藏一条内容并写下自己的理解</td></tr>
+      <tr><td class="k">企业迁移</td><td>为企业设计团队共用的输入—加工—复用知识流程</td></tr>
+    </table>
+  </div>
+
+  <h3 class="sec">22｜培训师点评</h3>
+  <div class="trainer"><b>这个案例真正值得教的是什么？</b>不是「怎么装扩展」，而是<b>「把消费和沉淀放到同一个动作里」</b>。所有「先收藏、以后整理」的设计最终都会失败，因为这个案例把那条从内容到知识的断链，一段一段焊上了。</div>
+
+  <h3 class="sec">23｜最终判断</h3>
+  <div class="verdict">
+    <div class="v"><div class="k">落地性</div><div class="val lv-h">高</div></div>
+    <div class="v"><div class="k">中国市场相关性</div><div class="val lv-h">高</div></div>
+    <div class="v"><div class="k">商业价值</div><div class="val lv-m">中</div></div>
+    <div class="v"><div class="k">复现难度</div><div class="val lv-l">低</div></div>
+    <div class="v"><div class="k">变现潜力</div><div class="val lv-m">中</div></div>
+  </div>
+  <p style="font-size:13px;color:#6B7280;margin-top:8px;">说明：以上是案例属性描述，不是排名。「复现难度低」指普通用户走商店/安装包即可用；「商业价值中」是因为它是一个优秀工具而非商业产品，变现要靠在其之上做垂直方案。</p>
+</div>
+
+<!-- ===================== 今日观察 ===================== -->
+<section class="block" id="observe">
+  <h2>今日 AI 实战观察</h2>
+  <div class="panel">
+    <p>从 10-03 这一天的两个案例看，中文开源圈正在出现的不是「更强的模型」，而是<b>一组关于「AI 输出该怎么被消化」的工程共识</b>。</p>
+    <p><b>第一，AI 的瓶颈正在从「生成」转向「接收」。</b>案例 01 的用户痛点是「问到了但读不下去、存不下来」，案例 02 的痛点是「看过了但记不住、找不回」。两个项目都不是在提升模型能力，而是在优化「人怎么接收 AI 与世界给的信息」。这是一条非常中国化的主线——中国用户不缺工具，缺的是「用得下去」的工具。</p>
+    <p><b>第二，「确定性交给程序、不确定性交给模型」正在成为默认设计。</b>案例 01 把 79% 的 token（SVG 坐标、CSS、标签）从模型手里拿走，只让模型写 21% 的内容；案例 02 把「写入文件」交给 native helper，把「理解内容」交给模型。两个案例都不约而同地做了同一件事：<b>让模型只做它真正不可替代的部分。</b>这比「换个更强的模型」务实得多。</p>
+    <p><b>第三，Agent Skill 正在变成一个真实的软件形态。</b>案例 01 是纯 skill（SKILL.md + CLI），这说明 2025 年出现的 skill 规范已经从「提示词技巧」进化成「可分发的软件包」——它可以带二进制、带模板、带基准测试。这对中国开发者的意义是：<b>你不需要做一个 App，也能做一个可安装的能力。</b></p>
+    <p><b>第四，本地优先重新变得重要。</b>案例 02 的内置 ASR 用 Qwen3-ASR 且强调「本机识别不上传」，笔记落在本地 Obsidian。在云服务普及十年之后，「数据在哪里」再一次成为产品差异点——这对做企业侧 AI 的团队是明确信号。</p>
+  </div>
+</section>
+
+<!-- ===================== 商业机会雷达 ===================== -->
+<section class="block" id="radar">
+  <h2>今日商业机会雷达</h2>
+  <div class="panel">
+    <h3>机会 1｜AI 输出的「呈现标准化」服务</h3>
+    <ul>
+      <li><b>客户：</b>已大量使用 AI 但输出散乱的中小企业（研发、咨询、SaaS）</li>
+      <li><b>实现方式：</b>企业内部 Skill + 统一 HTML/文档模板库（基于案例 01 的方法）</li>
+      <li><b>可能商业模式：</b>一次性交付 + 模板维护订阅</li>
+    </ul>
+    <h3>机会 2｜个人 / 团队知识库搭建服务</h3>
+    <ul>
+      <li><b>客户：</b>知识密集型团队（研究、咨询、内容、培训）</li>
+      <li><b>实现方式：</b>本地优先笔记库 + 剪藏/转写工具链 + 标签与模板体系（基于案例 02）</li>
+      <li><b>可能商业模式：</b>项目制部署 + 后续培训与维护</li>
+    </ul>
+    <h3>机会 3｜「AI 输出资产化」培训</h3>
+    <ul>
+      <li><b>客户：</b>个人职场人、企业内训</li>
+      <li><b>实现方式：</b>半天工作坊，交付一个可直接用的模板与工作流</li>
+      <li><b>可能商业模式：</b>按场 / 按人收费，配合社群复购</li>
+    </ul>
+    <p style="font-size:13px;color:#6B7280;">以上均是基于案例结构的<b>商业模式分析</b>，不代表已验证的商业成功。</p>
+  </div>
+</section>
+
+<!-- ===================== 个人变现机会 ===================== -->
+<section class="block" id="personal">
+  <h2>今日「个人变现机会」</h2>
+  <div class="panel">
+    <p>如果一个人每天投入 <b>2–4 小时</b>，这两个案例可以这样长出个人业务：</p>
+    <ul>
+      <li><b>做垂直模板包。</b>案例 01 的「呈现规范」和案例 02 的「笔记结构」都是「一次做好、长期复用」的资产。选定一个人群（考研、外贸、研究员），做一套模板定价出售。</li>
+      <li><b>接知识库搭建单。</b>帮小团队把「看的东西」变成「能查的库」，交付期 3–5 天，是典型的低资本、单人可启动的服务。</li>
+      <li><b>做内容产品。</b>把这两个案例的方法论写成系列文章或短视频（token 经济学、消费即沉淀），长期积累个人品牌，再转化咨询与课程。</li>
+      <li><b>做行业解决方案。</b>把「视频转文稿 + 结构化归档」打包成某个行业的固定交付（如律师访谈归档、培训课件加工）。</li>
+    </ul>
+    <p><b>提醒：</b>以上是低资本、单人可启动的机会方向，<b>不构成收益承诺</b>，也不代表一定能赚钱。真正的分水岭在于「你选的垂直场景是否有人愿意付钱」。</p>
+  </div>
+</section>
+
+<!-- ===================== 原始资料汇总 ===================== -->
+<section class="block" id="sources">
+  <h2>原始资料</h2>
+  <div class="panel">
+    <h3>案例 01 · Answer me with HTML</h3>
+    <ul>
+      <li>仓库：<a href="https://github.com/QingYunA/answer-me-with-html" target="_blank" rel="noopener">github.com/QingYunA/answer-me-with-html</a></li>
+      <li>Releases：<a href="https://github.com/QingYunA/answer-me-with-html/releases" target="_blank" rel="noopener">github.com/QingYunA/answer-me-with-html/releases</a></li>
+      <li>官网：<a href="https://answer-me-with-html.com/" target="_blank" rel="noopener">answer-me-with-html.com</a></li>
+      <li>基准数据：<a href="https://github.com/QingYunA/answer-me-with-html/blob/main/bench" target="_blank" rel="noopener">bench/ 目录（含 tokens.json 与复现脚本）</a></li>
+      <li>安装说明：<a href="https://raw.githubusercontent.com/QingYunA/answer-me-with-html/main/INSTALL.md" target="_blank" rel="noopener">INSTALL.md</a></li>
+    </ul>
+    <h3>案例 02 · 乔木剪藏</h3>
+    <ul>
+      <li>仓库：<a href="https://github.com/joeseesun/qiaomu-clipper" target="_blank" rel="noopener">github.com/joeseesun/qiaomu-clipper</a></li>
+      <li>Releases：<a href="https://github.com/joeseesun/qiaomu-clipper/releases" target="_blank" rel="noopener">github.com/joeseesun/qiaomu-clipper/releases</a></li>
+      <li>文档站：<a href="https://joeseesun.github.io/qiaomu-clipper/" target="_blank" rel="noopener">joeseesun.github.io/qiaomu-clipper</a></li>
+      <li>助手文档：<a href="https://github.com/joeseesun/qiaomu-clipper/blob/main/native/README.md" target="_blank" rel="noopener">native/README.md</a></li>
+      <li>扩展商店：<a href="https://chromewebstore.google.com/detail/jniolfihillilkoajpnonlbkhfkiicoo" target="_blank" rel="noopener">Chrome 应用商店页</a></li>
+    </ul>
+    <h3>明确排除的来源</h3>
+    <p>本期检索过程中，以下站点的内容经核实为 SEO 内容农场（同一批模板化文章在多域名重复分发，无一手作者、无可验证项目），<b>全部剔除，未作为任何案例或引用的来源</b>：mhpq.cn、tzjp.cn、xxmr.cn、hqwc.cn、mwwr.cn、kwkr.cn、qwbw.cn、lpqz.cn（统称「尧图系」）。</p>
+  </div>
+</section>
+
+<!-- ===================== 数据真实性说明 ===================== -->
+<section class="block" id="truth">
+  <h2>数据真实性说明</h2>
+  <div class="panel">
+    <h3>已核实的事实（可通过 GitHub API 复核）</h3>
+    <ol>
+      <li><b>案例 01：</b>QingYunA/answer-me-with-html 创建于 2026-10-02T09:57:40Z（北京时间 10-02 17:57），MIT 许可，主语言 JavaScript；Releases 在窗口后持续发布（v0.4.8 于 10-05 起）。</li>
+      <li><b>案例 02：</b>joeseesun/qiaomu-clipper 创建于 2026-10-02T10:02:23Z（北京时间 10-02 18:02），MIT 许可，主语言 TypeScript；Releases 在窗口后持续发布（1.14.4 于 10-07 起）。</li>
+      <li>两案例的窗口内事件均为「<b>仓库创建</b>」；文中的 Release 版本号与时间均来自 GitHub API 原始数据，已换算为北京时间。</li>
+    </ol>
+    <h3>来自作者自述、本文未独立验证</h3>
+    <ul>
+      <li><b>案例 01：</b>「模型手写平均 4,893 token / 用 skill 后 612 token / 约 1/8」「31 秒 → 12 秒」「账单只降约 15%」——均为作者自测（自述为 3 个主题 × 3 次运行、Claude Sonnet 5.5 环境下的中位数），本文按原文口径转述，<b>未独立复现</b>。</li>
+      <li><b>案例 02：</b>各项功能的能力边界（B站需登录、部分流媒体不保证可用、Windows 助手尚待真机验证等）均为作者 README 自述，<b>未在本文中逐项实测</b>。</li>
+    </ul>
+    <h3>本文的分析与推演</h3>
+    <ul>
+      <li>「前世今生」「下一步可能怎么发展」「企业/消费者场景」「迁移方向」「7 天 MVP」「课程设计」等，均为基于公开资料的<b>分析与推演</b>，已逐处标注；不代表项目作者的观点或计划。</li>
+      <li>商业与变现部分的全部内容均为<b>潜在模式分析</b>，不是已验证的收入事实。</li>
+    </ul>
+    <h3>已做与未做的验证</h3>
+    <ul class="checklist">
+      <li>原作者账号存在（API 可查）</li>
+      <li>仓库创建时间已核实</li>
+      <li>Release 时间线已核实</li>
+      <li>许可类型已核实</li>
+      <li>README 原文已逐段核对</li>
+      <li>未伪造作者未提供的步骤</li>
+      <li>已区分事实 / 自述 / 推演</li>
+      <li>已剔除内容农场来源</li>
+      <li>未实测功能效果</li>
+      <li>未核实 Star 增长曲线</li>
+      <li>未联系作者求证</li>
+      <li>窗口内仅创建事件，无社区反馈</li>
+    </ul>
+  </div>
+</section>
+</div>
+</main>
+<footer class="site-footer">
+  <div class="wrap">
+    <div>
+      <div class="f-brand">全球文明进程重大事件日报</div>
+      <p class="f-desc">记录人类文明演进中的关键节点。以未来历史学家的视角，筛出可能改写人类轨迹的转折点——一个长期记录人类文明发展轨迹的数字档案馆。</p>
+    </div>
+    <div class="f-col">
+      <h4>浏览</h4>
+      <ul>
+        <li><a href="../index.html">网站首页</a></li>
+        <li><a href="../archive.html">日报档案</a></li><li><a href="../radar.html">趋势雷达</a></li><li><a href="../tutorial/index.html">AI实战</a></li>
+        <li><a href="../assets/images/og-cover.png" target="_blank">站点封面</a></li>
+      </ul>
+    </div>
+    <div class="f-col">
+      <h4>文明分类</h4>
+      <ul>
+        <li><a href="../categories/science.html">科学、生命与地球</a></li>
+        <li><a href="../categories/politics.html">政治与文明秩序</a></li>
+        <li><a href="../categories/culture.html">思想、社会与文化</a></li>
+        <li><a href="../categories/technology.html">科技与人工智能</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="f-bottom">
+    <div class="wrap">
+      <span>© 2026 全球文明进程重大事件日报 · 全球文明进程观察站</span>
+      <span>内容由自动化智能体基于公开信息生成，仅供文明观察与研究参考，不构成任何投资、政策或法律建议。</span>
+    </div>
+  </div>
+</footer>
+<button class="backtop" type="button" aria-label="返回顶部">↑</button>
+<script src="../assets/js/main.js"></script>
+<script src="../assets/js/wechat-share.js"></script>
+<script src="../assets/js/text-to-speech.js"></script>
+</body>
+</html>

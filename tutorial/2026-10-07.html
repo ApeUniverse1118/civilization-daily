@@ -1,0 +1,986 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI极客实战教程日报 · 2026-10-07（第011期）｜用一个开源浏览器 Agent（ReAct + MCP + 多、面向中文规程文档的本地知识库 Agent：混合检索 + RR</title>
+<meta name="description" content="10月7日AI极客实战案例：今日一句话
+今天两个案例把「AI 能动手」推到了两个极端——一个让浏览器 Agent 替你点下发布按钮，一个让本地知识库 Agent 替你回答电力规程；共同点也很清楚：它们比的都不是模型有多强，而是证据链有多完整。">
+<meta name="keywords" content="AI极客实战,用一个开源浏览器 A,面向中文规程文档的本">
+<meta name="author" content="全球文明进程观察站">
+<meta name="robots" content="index,follow">
+<link rel="canonical" href="https://civilization-radar.com/tutorial/2026-10-07.html">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="全球文明进程重大事件日报">
+<meta property="og:title" content="AI极客实战教程日报 · 2026-10-07｜用一个开源浏览器 Agent（ReAct + MCP + 多">
+<meta property="og:description" content="10月7日AI极客实战案例：今日一句话
+今天两个案例把「AI 能动手」推到了两个极端——一个让浏览器 Agent 替你点下发布按钮，一个让本地知识库 Agent 替你回答电力规程；共同点也很清楚：它们比的都不是模型有多强，而是证据链有多完整">
+<meta property="og:url" content="https://civilization-radar.com/tutorial/2026-10-07.html">
+<meta property="og:image" content="https://civilization-radar.com/assets/images/og-cover.png">
+<meta property="og:locale" content="zh_CN">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="AI极客实战教程日报 · 2026-10-07">
+<meta name="twitter:description" content="今日一句话
+今天两个案例把「AI 能动手」推到了两个极端——一个让浏览器 Agent 替你点下发布按钮，一个让本地知识库 Agent 替你回答电力规程；共同点也">
+<meta name="twitter:image" content="https://civilization-radar.com/assets/images/og-cover.png">
+<link rel="icon" href="../assets/images/logo.svg" type="image/svg+xml">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"AI极客实战教程日报 2026-10-07","description":"今日一句话\n今天两个案例把「AI 能动手」推到了两个极端——一个让浏览器 Agent 替你点下发布按钮，一个让本地知识库 Agent 替你回答电力规程；共同点也很清楚：它们比的都不是模型有多强，而是证据链有多完整。","datePublished":"2026-10-07","dateModified":"2026-10-07","author":{"@type":"Organization","name":"全球文明进程观察站"},"publisher":{"@type":"Organization","name":"全球文明进程观察站","logo":{"@type":"ImageObject","url":"https://civilization-radar.com/assets/images/og-cover.png"}},"mainEntityOfPage":{"@type":"WebPage","@id":"https://civilization-radar.com/tutorial/2026-10-07.html"}}</script>
+
+<link rel="stylesheet" href="../assets/css/style.css">
+<style>
+
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body {
+    background:#F7F8FA; color:#111827;
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;
+    line-height:1.7; font-size:15px;
+  }
+  .tut-wrap { max-width:960px; margin:0 auto; padding:32px 20px 64px; }
+  a { color:#2563EB; text-decoration:none; word-break:break-all; }
+  a:hover { text-decoration:underline; }
+
+  header.top {
+    background:#111827; color:#F9FAFB; border-radius:14px; padding:36px 32px; margin-bottom:24px;
+  }
+  header.top .kicker { color:#93C5FD; font-size:13px; letter-spacing:2px; text-transform:uppercase; margin-bottom:10px; }
+  header.top h1 { font-size:30px; font-weight:800; margin-bottom:6px; }
+  header.top .sub { color:#9CA3AF; font-size:14px; margin-bottom:20px; }
+  .meta-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:12px; }
+  .meta-grid .m { background:#1F2937; border:1px solid #374151; border-radius:10px; padding:10px 14px; }
+  .meta-grid .m .k { font-size:11px; color:#9CA3AF; margin-bottom:2px; }
+  .meta-grid .m .v { font-size:14px; font-weight:600; color:#F9FAFB; }
+
+  .oneline {
+    background:#F5F8FF; border:1px solid #BFDBFE; border-radius:14px;
+    padding:18px 24px; margin-bottom:24px;
+  }
+  .oneline .lab { font-size:12px; letter-spacing:1px; color:#2563EB; font-weight:700; margin-bottom:6px; }
+  .oneline p { font-size:15px; color:#111827; }
+
+  nav.cats { display:flex; flex-wrap:wrap; gap:8px; margin-bottom:28px; }
+  nav.cats a {
+    background:#FFFFFF; border:1px solid #E5E7EB; border-radius:999px;
+    padding:6px 14px; font-size:13px; color:#374151;
+  }
+  nav.cats a:hover { border-color:#2563EB; color:#2563EB; text-decoration:none; }
+
+  .card {
+    background:#FFFFFF; border:1px solid #E5E7EB; border-radius:14px;
+    padding:28px; margin-bottom:28px;
+  }
+  .card-head { display:flex; align-items:flex-start; gap:14px; margin-bottom:6px; flex-wrap:wrap; }
+  .num {
+    font-size:26px; font-weight:800; color:#2563EB; line-height:1.1;
+    font-variant-numeric:tabular-nums; min-width:52px;
+  }
+  .card-head h2 { font-size:20px; font-weight:700; flex:1; min-width:240px; }
+  .badges { display:flex; flex-wrap:wrap; gap:6px; margin:8px 0 14px; }
+  .badge { font-size:12px; padding:3px 10px; border-radius:999px; font-weight:600; }
+  .b-cat { background:#EFF6FF; color:#2563EB; border:1px solid #BFDBFE; }
+  .b-tag { background:#F3F4F6; color:#4B5563; border:1px solid #E5E7EB; }
+  .b-date { background:#ECFDF5; color:#16A34A; border:1px solid #BBF7D0; }
+  .b-warn { background:#FFFBEB; color:#B45309; border:1px solid #FDE68A; }
+
+  .oneliner {
+    background:#F9FAFB; border:1px solid #E5E7EB; border-radius:10px;
+    padding:12px 16px; font-size:14.5px; color:#111827; margin-bottom:18px;
+  }
+
+  h3.sec {
+    font-size:14px; font-weight:700; color:#111827; margin:22px 0 8px;
+    padding-left:10px; border-left:3px solid #2563EB;
+  }
+  .card p, .card li { font-size:14.5px; color:#374151; }
+  .card ul, .card ol { padding-left:22px; margin:6px 0; }
+  .card li { margin-bottom:4px; }
+
+  .src-list { list-style:none; padding-left:0; }
+  .src-list li { margin-bottom:6px; }
+  .src-type {
+    display:inline-block; font-size:11px; font-weight:700; color:#2563EB;
+    background:#EFF6FF; border:1px solid #BFDBFE; border-radius:6px;
+    padding:1px 8px; margin-right:8px;
+  }
+
+  .stack { width:100%; border-collapse:collapse; margin:6px 0; }
+  .stack td { border:1px solid #E5E7EB; padding:7px 12px; font-size:13.5px; vertical-align:top; }
+  .stack td.k { background:#F9FAFB; font-weight:600; color:#111827; width:110px; white-space:nowrap; }
+
+  .flow { display:flex; flex-direction:column; gap:0; margin:10px 0; }
+  .flow .node {
+    background:#F9FAFB; border:1px solid #E5E7EB; border-radius:10px;
+    padding:9px 16px; font-size:13.5px; color:#111827;
+  }
+  .flow .node b { color:#2563EB; }
+  .flow .arrow { text-align:center; color:#9CA3AF; font-size:14px; line-height:1.4; }
+
+  pre {
+    background:#111827; color:#E5E7EB; border-radius:10px;
+    padding:16px 18px; overflow-x:auto; font-size:13px; line-height:1.6;
+    font-family:"SFMono-Regular",Consolas,"Liberation Mono",Menlo,monospace;
+    margin:8px 0;
+  }
+  code {
+    font-family:"SFMono-Regular",Consolas,Menlo,monospace;
+    background:#F3F4F6; color:#111827; border-radius:5px; padding:1px 6px; font-size:13px;
+  }
+  pre code { background:transparent; color:#E5E7EB; padding:0; }
+
+  .pitfall { background:#FFFBEB; border:1px solid #FDE68A; border-radius:10px; padding:14px 18px; margin:8px 0; }
+  .pitfall b { color:#B45309; }
+  .truth { background:#FEF7F7; border:1px solid #FECACA; border-radius:10px; padding:14px 18px; margin:8px 0; }
+  .truth b { color:#B91C1C; }
+
+  .repro { display:inline-block; font-size:13px; font-weight:700; padding:4px 12px; border-radius:999px; background:#ECFDF5; color:#16A34A; border:1px solid #BBF7D0; }
+  .repro.hard { background:#FFFBEB; color:#B45309; border-color:#FDE68A; }
+  .repro.dev { background:#FEF2F2; color:#B91C1C; border-color:#FECACA; }
+
+  .migrate { display:grid; grid-template-columns:repeat(3,1fr); gap:10px; margin:8px 0; }
+  .migrate .m {
+    background:#F9FAFB; border:1px solid #E5E7EB; border-radius:10px; padding:12px 14px; font-size:13px; color:#374151;
+  }
+  .migrate .m b { display:block; color:#111827; margin-bottom:4px; }
+
+  .course {
+    background:#F5F8FF; border:1px solid #BFDBFE; border-radius:10px; padding:16px 20px; margin:8px 0;
+  }
+  .course table { width:100%; border-collapse:collapse; }
+  .course td { padding:4px 8px 4px 0; font-size:13.5px; vertical-align:top; color:#374151; }
+  .course td.k { font-weight:600; color:#111827; width:88px; white-space:nowrap; }
+
+  .trainer {
+    border-left:3px solid #16A34A; background:#F0FDF4; border-radius:0 10px 10px 0;
+    padding:12px 18px; font-size:14px; color:#14532D; margin:10px 0 4px;
+  }
+  .trainer b { color:#16A34A; }
+
+  .verdict { display:grid; grid-template-columns:repeat(5,1fr); gap:10px; margin:8px 0; }
+  .verdict .v {
+    background:#F9FAFB; border:1px solid #E5E7EB; border-radius:10px; padding:12px; text-align:center;
+  }
+  .verdict .v .k { font-size:11.5px; color:#6B7280; margin-bottom:4px; }
+  .verdict .v .val { font-size:17px; font-weight:800; }
+  .lv-h { color:#16A34A; }
+  .lv-m { color:#F59E0B; }
+  .lv-l { color:#DC2626; }
+
+  section.block { margin-top:40px; }
+  section.block > h2 {
+    font-size:22px; font-weight:800; margin-bottom:16px; padding-bottom:10px;
+    border-bottom:2px solid #E5E7EB;
+  }
+  .panel { background:#FFFFFF; border:1px solid #E5E7EB; border-radius:14px; padding:24px 28px; margin-bottom:20px; }
+  .panel h3 { font-size:16px; margin-bottom:10px; }
+  .panel p, .panel li { font-size:14.5px; color:#374151; }
+  .panel ul { padding-left:22px; }
+  .panel li { margin-bottom:6px; }
+  .panel table { width:100%; border-collapse:collapse; margin:8px 0; }
+  .panel th, .panel td { border:1px solid #E5E7EB; padding:7px 10px; font-size:13px; text-align:left; vertical-align:top; }
+  .panel th { background:#F9FAFB; color:#111827; }
+
+  .checklist { columns:2; column-gap:32px; }
+  .checklist li { list-style:none; margin-bottom:6px; font-size:13.5px; }
+  .checklist li::before { content:"✓ "; color:#16A34A; font-weight:700; }
+
+  .gapnote {
+    background:#FFFBEB; border:1px solid #FDE68A; border-radius:10px;
+    padding:14px 18px; font-size:13.5px; color:#7C2D12; margin-bottom:24px;
+  }
+  .gapnote b { color:#B45309; }
+
+  footer { text-align:center; color:#9CA3AF; font-size:12.5px; margin-top:40px; }
+
+  @media(max-width:640px) {
+    header.top { padding:24px 20px; }
+    header.top h1 { font-size:22px; }
+    .meta-grid { grid-template-columns:repeat(2,1fr); }
+    .card { padding:20px 16px; }
+    .migrate { grid-template-columns:1fr; }
+    .verdict { grid-template-columns:repeat(2,1fr); }
+    .checklist { columns:1; }
+    .num { min-width:auto; }
+    .panel { padding:18px 16px; }
+    .stack td.k { width:82px; }
+  }
+
+</style>
+</head><body>
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="../index.html"><img class="mark" src="../assets/images/logo.svg" alt="文明雷达" width="32" height="32" style="width:32px;height:32px;background:none;border:0;box-shadow:none;border-radius:6px">全球文明进程重大事件日报</a>
+    <button class="nav-toggle" type="button" aria-label="菜单" aria-expanded="false">☰</button>
+    <nav class="main-nav" aria-label="主导航"><ul><li><a href="../index.html">首页</a></li><li><a href="../archive.html">日报档案</a></li><li><a href="../radar.html">趋势雷达</a></li><li><a href="../tutorial/index.html" class="active">AI实战</a></li><li><a href="../categories/science.html">科学</a></li><li><a href="../categories/politics.html">政治</a></li><li><a href="../categories/culture.html">文化</a></li><li><a href="../categories/technology.html">科技</a></li></ul></nav>
+  </div>
+</header>
+<main class="site-main">
+<div class="tut-wrap">
+  <nav class="breadcrumb" aria-label="面包屑"><a href="../index.html">首页</a><span class="sep">/</span><a href="index.html">AI实战教程</a><span class="sep">/</span><span>2026-10-07</span></nav>
+<header class="top">
+  <div class="kicker">China AI Builders · Real Cases · Workflows · Business</div>
+  <h1>AI极客实战案例日报</h1>
+  <div class="sub">China AI Builders · Real Cases · Workflows · Agents · Open Source · Business</div>
+  <div class="meta-grid">
+    <div class="m"><div class="k">日报日期</div><div class="v">2026-10-07</div></div>
+    <div class="m"><div class="k">执行日期</div><div class="v">2026-10-08 17:56</div></div>
+    <div class="m"><div class="k">精选案例</div><div class="v">2 个（宁缺毋滥）</div></div>
+    <div class="m"><div class="k">数据窗口</div><div class="v">10-06 12:00 → 10-08 12:00</div></div>
+  </div>
+</header>
+
+<div class="gapnote">
+  <b>关于本期窗口：</b>上一期日报为 <b>2026-10-02</b> 期，其后 10-03 至 10-06 未产出日报。因此本期的数据窗口按执行时点向前放宽为 <b>约 48 小时（2026-10-06 12:00 → 2026-10-08 12:00，北京时间）</b>，并优先收录窗口内的一手发布、更新与实战记录；窗口外（10-03 至 10-06 上午）的内容不作为案例收录，仅在必要时作为背景说明。所有时间均已换算为北京时间。
+</div>
+
+<div class="oneline">
+  <div class="lab">今日一句话</div>
+  <p>今天两个案例把「AI 能动手」推到了两个极端——一个让浏览器 Agent 替你点下发布按钮，一个让本地知识库 Agent 替你回答电力规程；共同点也很清楚：它们比的都不是模型有多强，而是证据链有多完整。</p>
+</div>
+
+<nav class="cats">
+  <a href="#case01">案例 01｜浏览器 Agent 做内容分发</a>
+  <a href="#case02">案例 02｜规程知识库 Agent</a>
+  <a href="#observe">今日观察</a>
+  <a href="#radar">商业机会雷达</a>
+  <a href="#personal">个人变现机会</a>
+  <a href="#sources">原始资料</a>
+  <a href="#truth">真实性说明</a>
+</nav>
+
+<!-- ===================== 案例 01 ===================== -->
+<div class="card" id="case01">
+  <div class="card-head">
+    <div class="num">01</div>
+    <h2>用一个开源浏览器 Agent（ReAct + MCP + 多 Agent）把写好的 Markdown 自动发到掘金与知乎，并让它自己写完自己的项目 Wiki</h2>
+  </div>
+  <div class="badges">
+    <span class="badge b-cat">AI Agent / 浏览器自动化</span>
+    <span class="badge b-cat">MCP 实战</span>
+    <span class="badge b-cat">AI + 内容运营</span>
+    <span class="badge b-date">一手原文 10-06 / 10-07</span>
+    <span class="badge b-tag">开源 MIT</span>
+    <span class="badge b-warn">项目 Star 仅 13，热度低</span>
+  </div>
+
+  <div class="oneliner">
+    <b>一句话结论：</b>它真正的价值不在「能点页面」，而在于把中文编辑器那些刁钻的注入姿势一个个踩清楚并公开了。
+  </div>
+
+  <h3 class="sec">01｜案例是什么？</h3>
+  <p>一位中文独立开发者 xiwc 开源了一个浏览器扩展 <b>AI Helper</b>（Chrome / Edge，MIT）：它让大模型在你的浏览器里真的动手——点击、填表、拖拽、上传文件、跑终端命令，并通过 MCP 协议扩展能力。10-06 他写了篇实战文，讲怎么用「一个主助手 + 三个子助手」把写好的 Markdown 自动发布到掘金与知乎；10-07 另一位作者 weFri 在 InfoQ 记录：用同一个插件，让它自己把项目 Wiki 从零写成 8 页中文 + 8 页英文，并同步到 Gitee。项目在 10-08 发布 v2.0.0。</p>
+
+  <h3 class="sec">02｜为什么今天值得关注？</h3>
+  <ul>
+    <li><b>窗口内的事实（可核实）：</b>AI Helper 在 48 小时窗口内连续发布 5 个版本——v1.17.4（10-06 20:49）、v1.17.5（10-06 21:01）、v1.17.6（10-07 11:49）、v1.17.7（10-08 08:43）、<b>v2.0.0（10-08 08:56）</b>；两篇一手实战记录分别落在 10-06 与 10-07。</li>
+    <li><b>为什么以前不容易做：</b>浏览器自动化长期是「写代码的人的活」（Playwright / Selenium / 油猴脚本），选择器一变就全废，普通内容创作者根本碰不到；而中文平台各有各的富文本编辑器内核，通用方案一注入就乱码、丢字、串位。</li>
+    <li><b>为什么现在变得容易：</b>① 浏览器扩展 + LLM 把「操作网页」变成了自然语言；② ReAct 循环让 Agent 自己决定下一步调哪个工具，而不是人预先写死流程；③ MCP 让「浏览器控制 / 文件读写 / 命令执行」从内置绑定变成可插拔工具；④ 有人把中文编辑器的坑逐个踩完并写成文章。</li>
+    <li><b>为什么值得花时间：</b>「AI + 内容」这个方向在中文一手来源里长期稀缺（过去多期由内容农场垄断），这次是少见的、带真实代码与真实踩坑的执行记录。</li>
+  </ul>
+
+  <h3 class="sec">03｜案例的前世今生</h3>
+  <p><b>前世。</b>2023–2025 年，浏览器自动化的主体是程序员写的脚本：selenium 到 Playwright 再到油猴脚本，共同点是「人先假设页面长什么样，再写选择器」。页面改版 = 脚本报废。早期「AI + 浏览器」也只是让模型生成选择器，本质仍是脚本，换不来鲁棒性。</p>
+  <p><b>发展。</b>四条线先后成熟：① 长上下文与多模态让模型能读 DOM、也能看截图；② ReAct 范式（Thought → Action → Observation）把「想一步、做一步、看结果、再决定」变成可循环的工程结构；③ MCP 在 2025 年成为事实标准后，浏览器控制、文件读写、终端执行可以统一挂成工具；④ Chrome 扩展作为载体，绕开了「让普通用户先装 Python 环境」这道硬门槛。</p>
+  <p><b>今生。</b>AI Helper 没有发明新模型，做的是「把上述零件装进一个浏览器扩展，并把 AI 操作中文网页的工程细节做到可用」。作者的公开记录里有两条真实使用路径：内容分发（知乎 Draft.js / 掘金 ByteMD）与文档自动化（项目 Wiki 双语化 + Gitee 同步）。这两条路恰好一份覆盖 B 端、一份覆盖个人创作者。</p>
+  <p><b>下一步可能怎么发展（分析 / 推演）。</b>浏览器 Agent 会从「帮你点一个页面」走向「帮你守一个流程」——定时盯页面、变化告警、异常自动处理；企业侧可能出现「内部系统操作 Agent」，把没有 API 的老系统（老 ERP、老 CRM 网页端）用浏览器 Agent 兜住。以上为推演，非事实。</p>
+
+  <h3 class="sec">04｜原始资料</h3>
+  <ul class="src-list">
+    <li><span class="src-type">一手原文</span>掘金（2026-10-06）《我用 MCP + 多 Agent 搭了一条自动化内容发布流水线》，作者 xiwc<br><a href="https://juejin.cn/post/7692743968833847305" target="_blank" rel="noopener">https://juejin.cn/post/7692743968833847305</a></li>
+    <li><span class="src-type">一手原文</span>InfoQ 写作社区（2026-10-07）《AI Helper 实战：从零搭建开源项目的双语 Wiki》，作者 weFri（上海）<br><a href="https://xie.infoq.cn/article/11b0e4a51cd3d652ec2dbb4c9" target="_blank" rel="noopener">https://xie.infoq.cn/article/11b0e4a51cd3d652ec2dbb4c9</a></li>
+    <li><span class="src-type">开源仓库</span>xiweicheng/ai-helper（MIT，JavaScript，建于 2026-06-21）<br><a href="https://github.com/xiweicheng/ai-helper" target="_blank" rel="noopener">https://github.com/xiweicheng/ai-helper</a></li>
+    <li><span class="src-type">发布记录</span>Releases（窗口内 v1.17.4 → v2.0.0）<br><a href="https://github.com/xiweicheng/ai-helper/releases" target="_blank" rel="noopener">https://github.com/xiweicheng/ai-helper/releases</a></li>
+    <li><span class="src-type">项目主页</span>官方文档站<br><a href="https://xiweicheng.github.io/ai-helper/" target="_blank" rel="noopener">https://xiweicheng.github.io/ai-helper/</a></li>
+    <li><span class="src-type">作者主页</span>掘金 · xiwc<br><a href="https://juejin.cn/user/1662117310119655/posts" target="_blank" rel="noopener">https://juejin.cn/user/1662117310119655/posts</a></li>
+    <li><span class="src-type">分发渠道</span>Microsoft Edge 扩展商店页（AI Helper 网页智能助手）<br><a href="https://microsoftedge.microsoft.com/addons/detail/ai-helper-%E7%BD%91%E9%A1%B5%E6%99%BA%E8%83%BD%E5%8A%A9%E6%89%8B/kabhmgfbkhpbfhhnokaafhkdbckeipcl" target="_blank" rel="noopener">microsoftedge.microsoft.com/addons/detail/…/kabhmgfbkhpbfhhnokaafhkdbckeipcl</a></li>
+  </ul>
+
+  <h3 class="sec">05｜作者是谁？</h3>
+  <ul>
+    <li><b>开发者：</b>xiweicheng（掘金 ID <code>xiwc</code>），独立开发者。GitHub 上另有开源项目 tms（团队协作 + 轻量任务看板，387 Star），说明是长期活跃的独立开发者，而非临时起号。</li>
+    <li><b>第二位作者：</b>weFri（InfoQ 写作社区，标注所在地上海），身份是这套工具的<b>实际使用者与记录者</b>，不一定是项目开发者本人。</li>
+  </ul>
+  <div class="pitfall"><b>需要知道的一点：</b>该仓库当前 Star 仅 <b>13</b>、Fork 4；掘金那篇原文阅读量也很小（核实时点显示 54 阅读）。本案例入选的理由是「<b>一手可复现 + 中文平台工程细节稀缺</b>」，不是因为热。请勿把「Star 少」误读为「没价值」，也请勿把「作者写得细」误读为「已被大规模验证」。</div>
+
+  <h3 class="sec">06｜解决了什么真实问题？</h3>
+  <p>这个案例要从需求侧看，不从技术侧看。</p>
+  <p><b>需求一（内容创作者）。</b>一个同时维护掘金、知乎等多阵地的创作者，一篇稿子写完只是开始：复制粘贴到各平台编辑器格式经常乱、代码块要重贴一遍缩进全丢、每个平台的话题与标签规则不同、发布前还得反复核对分类封面摘要。作者的原话是这些活「重复、机械、还容易出错，典型该被自动化」——他要的不是「AI 帮我写」，而是「AI 帮我把写好的东西发出去」。</p>
+  <p><b>需求二（开源维护者）。</b>项目 Wiki 从零写到双语、还要同时维护 GitHub 与 Gitee 两套，纯手工极其耗时。InfoQ 那篇记录的场景是：Wiki 是空白页，要基于源码写一整套文档，还要英文版与跨平台同步。</p>
+  <p>两者的共同点：<b>不是「不会写」，而是「不值得人写」——重复、规则明确、量大、错了要重来。</b></p>
+
+  <h3 class="sec">07｜完整技术栈</h3>
+  <table class="stack">
+    <tr><td class="k">模型</td><td><b>作者未点名。</b>ai-helper 支持保存多个 OpenAI 兼容的 provider 配置（端点 / 密钥 / 模型列表），可接 DeepSeek、Qwen、Kimi、GLM 等。原文只提到「通过 MCP 把工具挂上去」，未写具体模型型号。<b>本文不编造型号。</b></td></tr>
+    <tr><td class="k">载体</td><td>Chrome / Chromium 扩展（开发者模式加载）与 Microsoft Edge 扩展商店版本</td></tr>
+    <tr><td class="k">Agent 形态</td><td>ReAct 推理循环（原文自述 10–1000 步可调）；主助手编排 + 子助手（浏览器自动化 / 内容处理 / 数据回收）；<b>嵌套分派最多 2 层</b></td></tr>
+    <tr><td class="k">工具层</td><td>MCP（Model Context Protocol）扩展。原文列出的能力：浏览器控制（点击 / 输入 / 执行 JS）、文件读写（read / write）、命令执行（exec）</td></tr>
+    <tr><td class="k">本地能力</td><td>可选「代理服务」（本地 Agent）：读写本地文件 + 终端命令，官方称带三级命令安全策略与 7 天回收站</td></tr>
+    <tr><td class="k">内置知识库</td><td>本地 RAG：PDF / Word / Excel / PPT / Markdown / HTML / CSV 建库，答案带可点击引用</td></tr>
+    <tr><td class="k">语言</td><td>JavaScript（扩展本体）；原文用 JS 举例注入代码</td></tr>
+    <tr><td class="k">部署</td><td>扩展装即用；本地 Agent 服务可选；发布记录由 GitHub Actions 自动构建 dist/ 打包</td></tr>
+    <tr><td class="k">协议 / 许可</td><td>MIT（已核）</td></tr>
+  </table>
+
+  <h3 class="sec">08｜完整 Workflow</h3>
+  <p><b>路径 A：内容发布流水线（源自掘金原文）</b></p>
+  <div class="flow">
+    <div class="node"><b>① 用户指令</b>　「把这篇 Markdown 发到掘金和知乎」（一句话）</div>
+    <div class="arrow">↓</div>
+    <div class="node"><b>② 主助手（编排 / 决策）</b>　理解意图 → 拆解步骤 → 把子任务 dispatch 给对应子助手</div>
+    <div class="arrow">↓</div>
+    <div class="node"><b>③ 子助手 A：浏览器自动化</b>　打开编辑器 → 注入正文 → 选话题 / 标签 → 填分类与摘要 → 点发布</div>
+    <div class="arrow">↓</div>
+    <div class="node"><b>④ 子助手 B：内容处理</b>　Markdown 转换、摘要生成</div>
+    <div class="arrow">↓</div>
+    <div class="node"><b>⑤ MCP 工具层</b>　浏览器控制（点击 / 输入 / 执行 JS）、文件读写（read / write）、命令执行（exec）</div>
+    <div class="arrow">↓</div>
+    <div class="node"><b>⑥ 目标平台编辑器</b>　知乎（Draft.js）／掘金（ByteMD，内核 CodeMirror 5）——注入姿势完全不同</div>
+    <div class="arrow">↓</div>
+    <div class="node"><b>⑦ 子助手 C：数据回收</b>　抓取阅读量、展现量</div>
+    <div class="arrow">↓</div>
+    <div class="node"><b>⑧ 人工确认</b>　作者自述：发布从「十几分钟的手工活」变成「一句话 + 一次确认」</div>
+  </div>
+  <p><b>路径 B：项目 Wiki 自动化（源自 InfoQ 原文）</b></p>
+  <div class="flow">
+    <div class="node"><b>① 通读项目</b>　读取 docs、agent/README、CHANGELOG、manifest.json、package.json，并对照 src/ 源码核实</div>
+    <div class="arrow">↓</div>
+    <div class="node"><b>② 提炼素材</b>　整理出 42KB 原始素材（616 行，按 12 章组织）作为文档底稿</div>
+    <div class="arrow">↓</div>
+    <div class="node"><b>③ 生成文档</b>　产出 8 页中文 Wiki（1834 行）→ 再用独立 slug 方案产出 8 页英文版（避免互相冲突）</div>
+    <div class="arrow">↓</div>
+    <div class="node"><b>④ 发布上线</b>　网页端创建首页启用 Wiki 仓库 → git clone → 写文件推送</div>
+    <div class="arrow">↓</div>
+    <div class="node"><b>⑤ 跨平台同步</b>　推到 Gitee Wiki（16 页全同步），并处理 Gitee 与 GitHub 的差异</div>
+    <div class="arrow">↓</div>
+    <div class="node"><b>⑥ 脚本化</b>　写 sync-wiki-to-gitee.sh + 加 npm 入口，把同步从手工变成一条命令</div>
+    <div class="arrow">↓</div>
+    <div class="node"><b>⑦ 逐页验证</b>　对照最新源码重写配置文档，浏览器里逐页核对渲染与跳转</div>
+  </div>
+
+  <h3 class="sec">09｜它到底是怎么实现的？</h3>
+  <p>剥开业务内容，这套流程真正的技术内核是三个机制（均来自原文自述）：</p>
+  <p><b>机制一：能力抽象 —— 工具原子化，流程交给 Agent。</b>原文的原话是「关键在于：把『能力』抽象成工具，把『流程』留给 Agent 自己规划。这样换一个平台，只要加一个工具，不用改整套逻辑。」这是浏览器自动化与「写死的 Playwright 脚本」最本质的分野：确定性交给工具，不确定性交给规划。</p>
+  <p><b>机制二：注入要因地制宜 —— 先侦察编辑器内核，再选方法。</b>这是原文踩坑最多、也最有迁移价值的部分。同样叫「编辑器」，底层实现天差地别，用错方法就是白干（原文给出的对照表）：</p>
+  <table class="stack">
+    <tr><td class="k">Draft.js</td><td>伪造 <code>ClipboardEvent('paste')</code>。直接改 DOM 或 <code>execCommand</code> 会和它内部状态打架，表现为文字串位、莫名删除</td></tr>
+    <tr><td class="k">CodeMirror / Monaco</td><td>拿实例调 <code>setValue()</code>。掘金切到 Markdown 模式后是 ByteMD，内核 CodeMirror 5，直接写最稳</td></tr>
+    <tr><td class="k">原生 textarea</td><td>直接赋值 + 触发 <code>input</code> 事件</td></tr>
+    <tr><td class="k">contenteditable</td><td>谨慎，优先走粘贴事件</td></tr>
+  </table>
+  <pre>// 原文给出的知乎（Draft.js）注入方式
+const dt = new DataTransfer();
+dt.setData('text/html', html);   // 保留标题、列表、链接
+dt.setData('text/plain', plain); // 兜底纯文本
+
+editor.dispatchEvent(new ClipboardEvent('paste', {
+  clipboardData: dt,
+  bubbles: true,
+  cancelable: true
+}));</pre>
+  <pre>// 原文给出的掘金（ByteMD / CodeMirror 5）注入方式
+const inst = document.querySelector('.CodeMirror').CodeMirror;
+inst.setValue(markdownText);</pre>
+  <p><b>机制三：编排要扁平 —— 平台的硬限制决定了架构形状。</b>原文明确写到：平台对子助手的嵌套分派最多 2 层（主 → 子 A → 子 B 可以，子 B 再往下派就会被拦）。所以「编排层要尽量扁平，别指望无限套娃」。这条限制直接决定了主助手必须自己承担决策，而不能层层下放。</p>
+  <p><b>此外还有一条工程纪律（来自 InfoQ 那篇）：</b>不是「生成完就交」，而是「生成完逐页核对」。作者发现原文档写 9 个标签页、实际只有 7 个，且知识库 RAG 整页漏掉——这类「文档与代码不一致」是 AI 写文档最容易出的错，所以必须回到源码交叉验证。</p>
+
+  <h3 class="sec">10｜手把手复现</h3>
+  <div class="truth"><b>以下 Step 1–3、5–6 整理自两篇原文明确写出的做法；Step 4 为原文架构图的直接还原；Step 7–9 为本文补充的建议，已单独标注。作者未提供完整的「从零到发布」编号教程。</b></div>
+  <p><b>Step 1（原文）。</b>安装扩展：Edge 用户走扩展商店；Chrome / Chromium 用户下载 Release 里的 <code>ai-helper-*.zip</code> 解压，打开 <code>chrome://extensions/</code> → 开启右上角「开发者模式」→「加载已解压的扩展程序」→ 选择解压后的文件夹。发布记录说明该产物由 GitHub Actions 自动构建。</p>
+  <p><b>Step 2（原文）。</b>配置模型 provider：在扩展里保存一个 OpenAI 兼容配置（端点 / 密钥 / 模型列表）。可选多家，切换时先选 provider 再选模型。</p>
+  <p><b>Step 3（原文）。</b>挂 MCP 工具：把「浏览器控制（点击 / 输入 / 执行 JS）」「文件读写」「命令执行」按需挂上；若要让 Agent 碰本地文件与终端，装可选的本地 Agent 服务（原文提到三级命令安全策略）。</p>
+  <p><b>Step 4（原文架构图还原）。</b>建一个主助手负责编排，再建三个子助手：A 浏览器自动化、B 内容处理、C 数据回收。注意保持扁平——不要试图三层以上嵌套。</p>
+  <p><b>Step 5（原文）。</b>先侦察目标编辑器的内核，再决定注入方式：查 <code>.CodeMirror</code> 之类特征判断是不是 CodeMirror；拿不到实例再退到伪造 paste 事件。</p>
+  <p><b>Step 6（原文）。</b>每一步都加断言：填完一步就校验 DOM，别等最后才发现某步没生效；出错优先点编辑器的「撤销」按钮回退，比强行改 DOM 安全。</p>
+  <p><b>Step 7（本文补充的建议）。</b>第一次只跑单平台、单篇文章：把「打开编辑器 → 注入 → 选标签 → 停」跑通，先不让它点发布。</p>
+  <p><b>Step 8（本文补充的建议）。</b>把发布、删除、修改状态这类不可逆动作设为人工确认。原文自己的终点也是「一句话 + 一次确认」——即最后那一下是留给人的。</p>
+  <p><b>Step 9（本文补充的建议）。</b>把中文标签映射成平台实际提交的 value（原文踩坑第 3 条），先建一张映射表再动手，而不是让 Agent 现场猜。</p>
+
+  <h3 class="sec">11｜Prompt / Code / Config</h3>
+  <p><b>原作者公开的内容（可直接引用）：</b></p>
+  <ul>
+    <li>知乎 Draft.js 注入代码：<code>DataTransfer</code> + 伪造 <code>ClipboardEvent('paste')</code>（见上）</li>
+    <li>掘金 ByteMD / CodeMirror 5 注入代码：<code>document.querySelector('.CodeMirror').CodeMirror.setValue(...)</code></li>
+    <li>「编辑器内核 → 推荐注入方式」对照表（Draft.js / CodeMirror·Monaco / 原生 textarea / contenteditable）</li>
+    <li>架构图：「主助手（编排 / 决策）→ 子助手 A / B / C」</li>
+    <li>五条踩坑清单（见下方「踩坑」）</li>
+    <li>（InfoQ 篇）<code>sync-wiki-to-gitee.sh</code> 的设计：<code>mktemp</code> 建临时目录 → 双端克隆 → <code>rsync --delete</code> 同步（排除 <code>_Sidebar</code>/<code>_Footer</code>）→ 有变化才 commit + push → <code>trap</code> 自动清理；并在 <code>package.json</code> 增加 <code>npm run sync:wiki</code></li>
+  </ul>
+  <p><b>原作者未公开的内容：</b>系统提示词全文、各子助手的完整提示词、工具清单的完整实现、扩展的构建配置细节。<b>本文不编造这些内容。</b></p>
+
+  <h3 class="sec">12｜踩坑</h3>
+  <div class="pitfall">
+    <p><b>以下均为两位作者在原文中自述的踩坑，本文未独立复现：</b></p>
+    <ul>
+      <li><b>键盘输入 ≠ 可控：</b>某些编辑器上「全选 + 输入」会清空全文，务必先确认光标位置。</li>
+      <li><b>CDP 的 <code>Input.insertText</code> 不通用：</b>对 Draft.js 无效，对 CodeMirror 却好用，别一刀切。</li>
+      <li><b>中文选项要映射成 value：</b>表单里的中文标签，实际提交的可能是英文 value，先建映射表再动手。</li>
+      <li><b>每步都要断言：</b>填完一步就校验 DOM，别等最后才发现某步没生效。</li>
+      <li><b>出错先撤销：</b>优先点编辑器的「撤销」按钮回退，比强行改 DOM 安全。</li>
+      <li><b>知乎粘贴后第 0 个块会丢文字：</b>需要事后把光标移回去补一次。</li>
+      <li><b>嵌套分派最多 2 层：</b>子助手再往下派会被拦截，编排必须扁平。</li>
+      <li><b>Gitee 与 GitHub 的 3 个差异：</b><code>_Sidebar</code>/<code>_Footer</code> 不被 Gitee 识别（被当普通页显示，只能删除）、侧边栏按字母排序无分组、带锚点 URL 不自动滚动（需点页内链接才滚动）。</li>
+      <li><b>macOS bash 3.2.57 的坑：</b><code>set -u</code> 下 <code>$VAR</code> 紧跟全角括号会把首字节并入变量名（报 <code>WORKDIR unbound variable</code>），统一改成 <code>${VAR}</code> 花括号规避。</li>
+    </ul>
+  </div>
+  <div class="truth"><b>本文补充的风险提示（非原文）：</b>这类浏览器 Agent 是<b>以你的浏览器登录态、用你的账号权限</b>在网页上操作的。它能替你点「发布」，也能替你点到别的东西——把不可逆动作纳入人工确认，不是保守，而是必须。另外，为 Agent 开启本地文件与终端能力时，请先读一遍它的三级安全策略具体拦了什么。</div>
+
+  <h3 class="sec">13｜中国用户能不能直接做？</h3>
+  <table class="stack">
+    <tr><td class="k">国内访问</td><td>可以。扩展本体在国内可下载（Edge 商店 / GitHub Releases）；本案例原生适配掘金、知乎等中文平台，不依赖境外站点。</td></tr>
+    <tr><td class="k">注册</td><td>装扩展即用，无需注册第三方服务；要「问答」类能力时再填自己的模型 API。GitHub 下载 Release 可能需要基本网络处理。</td></tr>
+    <tr><td class="k">API</td><td>任意 OpenAI 兼容端点即可。DeepSeek / Qwen / Kimi / GLM 官方均提供兼容接口，充值即用。</td></tr>
+    <tr><td class="k">成本</td><td><b>0 元可跑：</b>扩展免费 + 开源，配合各家模型的免费额度即可体验完整流程；长期成本按 token 计，公开发布类任务量不大。原文未给出具体 token 账单。</td></tr>
+    <tr><td class="k">技术门槛</td><td><span class="repro">🟢 直接用</span> 装扩展、用自然语言让它操作网页<br><span class="repro hard">🟡 有一定门槛</span> 配 provider + 挂 MCP + 装本地 Agent 服务<br><span class="repro dev">🔴 开发者级</span> 改扩展、自写 MCP 工具、做多助手指令编排</td></tr>
+  </table>
+
+  <h3 class="sec">14｜国产替代方案</h3>
+  <p><b>这个案例本身就是国产方案。</b>它的对照对象不是某个可被替换的海外产品，而是「Playwright 这类浏览器自动化框架 + 闭源商业 AI 扩展」的组合。</p>
+  <table class="stack">
+    <tr><td class="k">原方案（海外心智）</td><td>Playwright / Selenium 写脚本；或闭源商业 AI 浏览器扩展（多为订阅制）</td></tr>
+    <tr><td class="k">中国用户方案</td><td>
+      <b>项目原生支持（官方说明）：</b>中文界面、原生适配掘金 / 知乎等中文编辑器的注入方式、可保存多个 OpenAI 兼容 provider。<br>
+      <b>已验证（官方文档级）：</b>「多 provider」这一设计意味着可以接 DeepSeek / Qwen / Kimi / GLM 的兼容端点——这是项目 README 明确列出的能力，但<b>原文两篇实战文未点名具体模型</b>。<br>
+      <b>本文推测（未验证）：</b>把主力模型换成 Qwen 或 GLM 的成本对比；在国产浏览器（360 / QQ 浏览器等 Chromium 内核版本）上的扩展兼容性。<b>这两点未经核实，请自行验证。</b>
+    </td></tr>
+  </table>
+  <p class="truth"><b>必须区分的部分：</b>「项目支持 OpenAI 兼容端点」是项目能力（可核实）；「用某个具体国产模型能跑出同样的发布效果」是尚未被原文明示的结论。不要混为一谈。</p>
+
+  <h3 class="sec">15｜中国企业可以怎么用？</h3>
+  <ul>
+    <li><b>企业场景 1：多平台内容分发的运营岗。</b>公众号、知乎、小红书、掘金多阵地运营，一篇内容要按各平台规则改写并发布。把「格式适配 + 标签选择 + 发布」交出去，人只做选题与终审。这是案例本身最直接的场景。</li>
+    <li><b>企业场景 2：没有 API 的老系统批量录入。</b>大量企业内网系统（老 ERP、老 CRM、老 OA）只有网页界面、没有开放 API。浏览器 Agent 可以在人工监督下完成批量表单填写与上传——原文提到扩展能「读 Excel 逐行填表并提交」，这正是这类需求的通用解法。</li>
+    <li><b>企业场景 3：内部文档自动化。</b>把产品文档、FAQ、操作手册从源码或素材自动生成，并同步到多个内部知识库（含 GitHub / Gitee 双端）。InfoQ 那篇的流程可直接迁移到企业内部的「文档站 + 代码仓库」组合。</li>
+  </ul>
+  <div class="pitfall"><b>企业落地前先定两条红线：</b>① 涉及对外发布、数据删除、状态变更的动作一律人工确认；② 用企业账号登录态运行的 Agent，必须先做权限范围与审计评估（原文提到的本地 Agent 三级命令安全策略可作参考起点）。</div>
+
+  <h3 class="sec">16｜中国消费者可以怎么用？</h3>
+  <ol>
+    <li><b>自媒体 / 副业者：</b>写一次，自动分发到多个平台——这是原文场景的直接消费者化版本，也是最高频的真实用法。</li>
+    <li><b>个人知识整理：</b>用内置知识库把 PDF / Word / Excel / PPT 等本地资料建成本地 RAG，问问题时答案带可点击引用，比「整段丢给聊天框」可信。</li>
+    <li><b>重复性网页操作：</b>报名、申报、批量查询这类网页表单流程，交给它按规则执行、人只做最后确认。</li>
+  </ol>
+
+  <h3 class="sec">17｜如何变成一个赚钱的项目？</h3>
+  <p><b>产品化。</b>不是重做一个浏览器 Agent（那是红海），而是把「某个垂直场景的稳定操作流」做成可交付物：例如「一篇稿子自动分发到 5 个平台（含格式适配与标签规则）」的预设包 + 使用说明。交付即用、不需要服务器。</p>
+  <p><b>服务化。</b>把流程卖给内容团队与 MCN：帮他们搭「主助手 + 子助手」的发布流水线，解决的是「运营每天花两小时复制粘贴」这个具体痛点。注意：账号安全与平台规则是必须一并交付的风险说明。</p>
+  <p><b>咨询化。</b>帮企业找「哪些网页操作值得自动化」——尤其是没有 API 的老系统。这一步最难也最值钱：找错流程，Agent 就是个更慢的手动操作。</p>
+  <p><b>培训化。</b>本案例非常适合做 Demo：它有两段真实可演示的代码（Draft.js 与 CodeMirror 两种注入）、一个可当场跑通的流程、一组具体的坑。天然适合 60 分钟 Workshop。</p>
+  <p><b>内容化。</b>「中文富文本编辑器的注入姿势大全」本身就是高价值内容——它解决的是所有做工具的人都会撞上的问题，可拆成系列。</p>
+  <p><b>行业化。</b>把「编辑器内核 → 注入方式」的映射扩展成行业资产：政务系统、电商后台、医疗 HIS、教育教务系统各有自己的前端技术栈，逐个沉淀就是护城河。</p>
+  <div class="truth"><b>已验证 vs 推导：</b>可核实的只有「项目存在并开源」「窗口内发布了 v1.17.4–v2.0.0」「两篇一手实战文日期为 10-06 / 10-07」「作者公开了上述代码与踩坑」这些事实。<b>以上产品化 / 服务化 / 咨询化 / 培训化 / 内容化 / 行业化均属基于案例结构推导出的潜在商业模式，暂无任何收入证据。</b></div>
+
+  <h3 class="sec">18｜变现路径</h3>
+  <div class="panel" style="padding:0; border:none;">
+  <table>
+    <tr><th>路径</th><th>客户</th><th>产品 / 服务</th><th>收费方式</th><th>难度</th></tr>
+    <tr><td>场景预设包</td><td>内容创作者 / 小团队</td><td>垂直场景的操作流预设 + 说明</td><td>一次性 / 订阅</td><td>低</td></tr>
+    <tr><td>流程搭建服务</td><td>内容团队 / MCN</td><td>发布流水线搭建与调优</td><td>项目制</td><td>中</td></tr>
+    <tr><td>老系统自动化</td><td>传统企业</td><td>无 API 系统的网页操作 Agent</td><td>项目制 + 年费</td><td>高</td></tr>
+    <tr><td>培训</td><td>运营 / 独立开发者</td><td>Workshop：浏览器 Agent 与注入姿势</td><td>按人 / 按场</td><td>低</td></tr>
+  </table>
+  </div>
+  <p class="truth"><b>这是分析，不是保证收益。</b>本案例目前没有任何已验证的收入数据可引用。</p>
+
+  <h3 class="sec">19｜如果我是一个中国独立开发者（7 天 MVP）</h3>
+  <p>假设：1 个人、预算有限、有基础前端能力、使用国产模型 API。</p>
+  <ul>
+    <li><b>Day 1：</b>装扩展，让它真实完成一件你自己的重复劳动（把一篇稿子发到一个平台），记录失败点与耗时。</li>
+    <li><b>Day 2：</b>把流程固化成「主助手 + 子助手」的职责划分，明确哪一步由哪个助手做。</li>
+    <li><b>Day 3：</b>把「注入」这一步攻下来：写一个判断编辑器内核的小函数，覆盖 Draft.js / CodeMirror / textarea 三种情况。</li>
+    <li><b>Day 4：</b>接一家国产模型 API，跑通「一条指令 → 打开编辑器 → 注入 → 选标签 → 停下等确认」的完整链路。</li>
+    <li><b>Day 5：</b>补断言与回退：每步校验 DOM，失败先点撤销；把发布动作单独抽出来加人工确认。</li>
+    <li><b>Day 6：</b>扩到第二个平台，验证「换平台只加工具、不改逻辑」这个设计是否真的成立。</li>
+    <li><b>Day 7：</b>复盘：把踩坑写成一篇可发布的内容——这既是复盘，也是你的第一批分发素材（可以在你做的工具帮助下发布）。</li>
+  </ul>
+
+  <h3 class="sec">20｜如何迁移到其他行业</h3>
+  <div class="migrate">
+    <div class="m"><b>① 政务 / 公共服务窗口</b>大量申报、登记、查询类网页系统无 API，适合用浏览器 Agent 承接批量操作，人负责终审。</div>
+    <div class="m"><b>② 电商后台运营</b>商品上架、活动配置、订单导出这类高频后台操作，规则明确、重复度高，是最容易标准化的场景。</div>
+    <div class="m"><b>③ 医疗 / 教育行政</b>HIS、教务系统的表单录入与信息核对，量大且格式固定，但必须配套更严格的确认与审计机制。</div>
+  </div>
+
+  <h3 class="sec">21｜培训课程设计</h3>
+  <div class="course">
+    <table>
+      <tr><td class="k">课程名称</td><td>《浏览器 Agent 实战：让 AI 替你操作那些没有 API 的网页》</td></tr>
+      <tr><td class="k">适合人群</td><td>上半场：内容运营、产品经理；下半场：有前端基础的开发者</td></tr>
+      <tr><td class="k">建议时长</td><td>半天（可拆为 30 分钟 Demo + 60 分钟 Workshop）</td></tr>
+      <tr><td class="k">30 分钟 Demo</td><td>现场让它把一份 Markdown 发到一个平台：先故意用错注入方式看它翻车（丢字 / 串位），再换正确方式一次成功</td></tr>
+      <tr><td class="k">60 分钟 Workshop</td><td>学员自带一篇内容与两个平台账号，各自跑通「一条指令 → 人工确认 → 发布完成」</td></tr>
+      <tr><td class="k">半天课程</td><td>加讲四块：编辑器内核识别与注入姿势、MCP 工具抽象、嵌套层级限制与扁平编排、不可逆动作的确认与审计设计</td></tr>
+      <tr><td class="k">课程目标</td><td>学员能够独立判断一个网页「能不能自动化」，并为它写出正确的注入方式</td></tr>
+      <tr><td class="k">现场 Demo</td><td>「侦察内核 → 选择注入 → 断言校验 → 出错撤销」四段，每段可独立演示</td></tr>
+      <tr><td class="k">学员练习</td><td>为一个真实编辑器写出注入代码，并说明为什么不能用另外那种方式（这才是真正的考点）</td></tr>
+      <tr><td class="k">课后作业</td><td>把一件自己每周重复的网页操作自动化，提交一段失败与修复的记录</td></tr>
+      <tr><td class="k">企业迁移</td><td>选一个内部无 API 系统作为试点，产出「可自动化动作清单 + 必须人工确认动作清单」</td></tr>
+    </table>
+  </div>
+
+  <h3 class="sec">22｜培训师点评</h3>
+  <div class="trainer"><b>这个案例真正值得教的，不是「AI 会点网页」。</b>是那张「编辑器内核 → 注入方式」的对照表，和「先侦察、再动手」这个动作。学员带走的一句话应该是：Agent 的能力上限由工具决定，而工具能不能用，取决于你有没有先看清目标系统。</div>
+
+  <h3 class="sec">23｜最终判断</h3>
+  <div class="verdict">
+    <div class="v"><div class="k">落地性</div><div class="val lv-h">高</div></div>
+    <div class="v"><div class="k">中国市场相关性</div><div class="val lv-h">高</div></div>
+    <div class="v"><div class="k">商业价值</div><div class="val lv-m">中<br><span style="font-size:11px;color:#6B7280;">（需看场景）</span></div></div>
+    <div class="v"><div class="k">复现难度</div><div class="val lv-m">低 → 中</div></div>
+    <div class="v"><div class="k">变现潜力</div><div class="val lv-m">中高</div></div>
+  </div>
+  <p style="margin-top:10px;color:#6B7280;font-size:13px;">这是案例属性描述，不是「最佳案例排名」。装扩展门槛极低，但要把某个平台的发布流做稳定需要真正的调试功。</p>
+</div>
+
+<!-- ===================== 案例 02 ===================== -->
+<div class="card" id="case02">
+  <div class="card-head">
+    <div class="num">02</div>
+    <h2>面向中文规程文档的本地知识库 Agent：混合检索 + RRF + 重排 + GraphRAG，答案可回溯到原文块，写操作带三道闸与审计</h2>
+  </div>
+  <div class="badges">
+    <span class="badge b-cat">企业知识库 / RAG</span>
+    <span class="badge b-cat">AI Agent</span>
+    <span class="badge b-cat">法规 / 合规场景</span>
+    <span class="badge b-date">仓库创建 2026-10-07 09:29</span>
+    <span class="badge b-tag">开源 MIT</span>
+    <span class="badge b-warn">评测为自建小样本</span>
+  </div>
+
+  <div class="oneliner">
+    <b>一句话结论：</b>它把企业知识库最要命的三件事——能不能溯源、换版怎么办、写操作谁负责——当成一等需求来做，而不是当作附加功能。
+  </div>
+
+  <h3 class="sec">01｜案例是什么？</h3>
+  <p>一位中文开发者开源了 <b>agentic-kb</b>（MIT，Python）：一个面向中文规程文档的<b>本地知识库智能体</b>。它把检索做成「稠密 + 稀疏」两路并用——用 bge-m3 一次前向同时产出两路向量，服务端做 RRF 融合，再用 bge-reranker-v2-m3 重排；在此之上加了 GraphRAG 与「上下文定位语」，让答案里的 <code>[文档名 (块 3)]</code> 可以点回原文块。它还做了<b>版本化索引</b>：规程换版后旧版本默认不再召回，需要时可显式翻出废止条款。检索侧全部本地推理，只有问答与联网搜索走外部 API。</p>
+
+  <h3 class="sec">02｜为什么今天值得关注？</h3>
+  <ul>
+    <li><b>窗口内的事实（可核实）：</b>该仓库创建于 <b>2026-10-07 09:29（北京时间）</b>，同日 09:56 完成最后推送；当前 58 Star / 1 Fork；MIT 协议；带完整目录结构（agent / api / embed / eval / frontend / ingest / llm / retrieve / store）与四份文档（usage / architecture / evaluation / gotchas）。</li>
+    <li><b>为什么是现在：</b>企业 RAG 的讨论已经从「怎么检索到」转向「怎么证明它检索得对、怎么管住它的写操作」。这个项目罕见的把「评测设施」和「审计日志」当成一等公民，而不是事后补。</li>
+    <li><b>为什么以前不容易：</b>① 中文规程文档有天然难点——条款要能溯源（答错是安全事故）、换版频繁（废止条款还得能查）、代词密集（「该系统」「上述参数」单看一块判断不出在说什么）；② 通用 RAG 方案对这三件事基本不处理；③ 让 Agent 自己调写工具，企业最怕的就是「它擅自改了状态还查不出来」。</li>
+    <li><b>为什么值得花时间：</b>这是一份把「企业知识库」当成严肃工程来做的一手实现，而不是又一个「上传文档就能问答」的 Demo。</li>
+  </ul>
+
+  <h3 class="sec">03｜案例的前世今生</h3>
+  <p><b>前世。</b>2023–2024 年的企业知识库主流是「切块 → 向量化 → 余弦相似度召回 → 丢给模型」。它有一个被反复吐槽的天花板：检索不可解释（为什么召回了这一块？）、不可控（换了版本旧条款还在召回）、不可审计（谁改了什么不知道）。对规程类文档，这三条都是硬伤。</p>
+  <p><b>发展。</b>三条技术线先后成熟：① <b>混合检索</b>成为共识——稠密向量负责语义、稀疏向量负责关键词，中文术语与编号（如条款号）靠稀疏那一路才稳；② <b>重排器</b>（cross-encoder reranker）把粗排结果精排，显著改善「召回对但排得差」；③ <b>上下文增强</b>（Contextual Retrieval）在入库时给每块补一句「它在原文什么位置、讲的是哪件事」，专门救代词密集的段落；④ <b>GraphRAG</b> 补上多跳关系。</p>
+  <p><b>今生。</b>agentic-kb 把上述零件装成一个可本地运行的整体，并额外做了三件企业关心的事：<b>版本化索引</b>（status / doc_version / effective_from 落在 payload 上）、<b>可溯源问答</b>（答案里的块引用可点开原文）、<b>受控写工具</b>（默认全关 + 三道闸 + 审计日志）。作者还自建了一套评测集来量化每个改动的收益，而不是靠「感觉变好了」。</p>
+  <p><b>下一步可能怎么发展（分析 / 推演）。</b>这类「可溯源 + 可版本化 + 可审计」的知识库形态，很可能会成为企业合规与安全生产领域的基础设施；下一阶段的竞争点可能从「检索精度」转向「变更治理」——规程改版后如何自动标记影响范围、如何生成差异报告。以上为推演，非事实。</p>
+
+  <h3 class="sec">04｜原始资料</h3>
+  <ul class="src-list">
+    <li><span class="src-type">开源仓库</span>beianchuqing111/agentic-kb（MIT，Python，创建 2026-10-07）<br><a href="https://github.com/beianchuqing111/agentic-kb" target="_blank" rel="noopener">https://github.com/beianchuqing111/agentic-kb</a></li>
+    <li><span class="src-type">架构文档</span>docs/architecture.md（设计取舍：为什么图的写入不用 LlamaIndex、ReAct 为什么走文本协议而非 function calling、为什么并发被限成 1）<br><a href="https://github.com/beianchuqing111/agentic-kb/blob/main/docs/architecture.md" target="_blank" rel="noopener">…/blob/main/docs/architecture.md</a></li>
+    <li><span class="src-type">评测文档</span>docs/evaluation.md（评测设施、指标口径、四条评测规矩）<br><a href="https://github.com/beianchuqing111/agentic-kb/blob/main/docs/evaluation.md" target="_blank" rel="noopener">…/blob/main/docs/evaluation.md</a></li>
+    <li><span class="src-type">踩坑文档</span>docs/gotchas.md（作者原注：「改动前先读，失败方式几乎都是『不报错』」）<br><a href="https://github.com/beianchuqing111/agentic-kb/blob/main/docs/gotchas.md" target="_blank" rel="noopener">…/blob/main/docs/gotchas.md</a></li>
+    <li><span class="src-type">使用文档</span>docs/usage.md（起服务、全部命令、.env 配置、排错表）<br><a href="https://github.com/beianchuqing111/agentic-kb/blob/main/docs/usage.md" target="_blank" rel="noopener">…/blob/main/docs/usage.md</a></li>
+    <li><span class="src-type">接口契约</span>api/CONTRACT.md（HTTP 接口契约 + Gradio 与 React 两套界面的能力对照表）<br><a href="https://github.com/beianchuqing111/agentic-kb/blob/main/api/CONTRACT.md" target="_blank" rel="noopener">…/blob/main/api/CONTRACT.md</a></li>
+    <li><span class="src-type">评测基线</span>eval/baselines/（基线与逐题 diff，作者声明评测不调 LLM、不花钱）<br><a href="https://github.com/beianchuqing111/agentic-kb/tree/main/eval" target="_blank" rel="noopener">…/tree/main/eval</a></li>
+  </ul>
+
+  <h3 class="sec">05｜作者是谁？</h3>
+  <p><b>独立开发者 / 个人项目作者。</b>GitHub 账号 <code>beianchuqing111</code>（账号创建于 2021-04，公开仓库 69 个，关注者 1）。账号未公开真实姓名、公司与所在地。</p>
+  <div class="pitfall"><b>需要知道的一点：</b>该项目<b>没有 Release、没有 Star 历史、没有社区讨论</b>——它是 2026-10-07 一次性推送的完整仓库。这意味着：代码质量可以从仓库结构与文档严谨度侧面判断（它确实写了 architecture / evaluation / gotchas / usage 四份文档），但<b>「是否已被真实生产环境使用」无法验证</b>。本文不对其成熟度做超出证据的判断。</div>
+
+  <h3 class="sec">06｜解决了什么真实问题？</h3>
+  <p>从需求侧开始。以<b>电力行业规程</b>为例（作者自己举的例子）：一线人员遇到「绝缘子出现裂纹怎么办」这类问题，需要查规程；但规程文档有三个天然麻烦：</p>
+  <ul>
+    <li><b>条款要能溯源：</b>答错就是安全事故。所以答案必须能点回原文块，而不是模型「大概记得」。</li>
+    <li><b>换版频繁：</b>规程改版后，废止条款默认不该再被召回；但历史追溯时又需要能翻出来。</li>
+    <li><b>代词密集：</b>「该系统」「上述参数」这类指代，单看一块判断不出说的是什么，检索自然容易错。</li>
+  </ul>
+  <p>传统「向量检索 + 丢给模型」的方案对这三条基本无解。而企业真正要买的从来不是「能聊天」，是<b>「可追溯、可解释、可控、可审计」</b>。</p>
+
+  <h3 class="sec">07｜完整技术栈</h3>
+  <table class="stack">
+    <tr><td class="k">模型（检索侧）</td><td><b>bge-m3</b>（一次前向同时输出稠密与稀疏两路向量）+ <b>bge-reranker-v2-m3</b>（cross-encoder 重排）。两者均为 BAAI（智源）系列模型，本地推理</td></tr>
+    <tr><td class="k">模型（生成侧）</td><td>任意 OpenAI 兼容端点：作者 README 明确列举 <b>DeepSeek / Qwen / Kimi</b>；用于问答与「上下文定位语」的入库生成</td></tr>
+    <tr><td class="k">向量库</td><td>Qdrant（端口 6343 / 6344）—— 必需</td></tr>
+    <tr><td class="k">图库</td><td>Neo4j（7474 / 7687）—— 仅 GraphRAG 后端需要</td></tr>
+    <tr><td class="k">后端 / 接口</td><td>FastAPI（HTTP 接口契约见 api/CONTRACT.md）</td></tr>
+    <tr><td class="k">前端</td><td>React（日常界面）+ Gradio（调试界面），能力逐控件对齐</td></tr>
+    <tr><td class="k">Agent 形态</td><td>ReAct（Thought → Action → Observation），<b>走文本协议而非 function calling</b>（原因见 architecture.md）</td></tr>
+    <tr><td class="k">联网搜索</td><td>Tavily（仅问答环节可选调用）</td></tr>
+    <tr><td class="k">语言 / 环境</td><td>Python 3.10（作者用 anaconda py310）；Windows 批处理入口 kb.bat</td></tr>
+    <tr><td class="k">部署</td><td>全本地。首次联网下模型后设 <code>KB_HF_ONLINE=0</code> 即可完全离线</td></tr>
+    <tr><td class="k">许可</td><td>MIT（可商用，保留版权声明）</td></tr>
+  </table>
+
+  <h3 class="sec">08｜完整 Workflow</h3>
+  <p><b>入库侧（Ingest）</b></p>
+  <div class="flow">
+    <div class="node"><b>① 文档导入</b>　<code>kb.bat ingest &lt;路径&gt;</code>，支持 .txt / .md / .pdf / .docx；内容没变会自动跳过</div>
+    <div class="arrow">↓</div>
+    <div class="node"><b>② 统一分块</b>　<code>ingest/pipeline.py</code> 的 <code>prepare_document</code>，两条召回路径共用同一套分块（切后端不换块）</div>
+    <div class="arrow">↓</div>
+    <div class="node"><b>③ 上下文定位语</b>　每块一次 LLM 调用，把「这块在原文的位置和主题」拼进被嵌入的文本（需 LLM key）</div>
+    <div class="arrow">↓</div>
+    <div class="node"><b>④ 双路向量化</b>　bge-m3 一次前向出稠密 + 稀疏两路；GraphRAG 另建实体向量</div>
+    <div class="arrow">↓</div>
+    <div class="node"><b>⑤ 版本字段落库</b>　status / doc_version / effective_from 写进 payload</div>
+  </div>
+  <p><b>问答侧（ReAct）</b></p>
+  <div class="flow">
+    <div class="node"><b>① 用户提问</b>　例如「绝缘子出现裂纹怎么办」（<code>kb.bat ask "..." -v</code>）</div>
+    <div class="arrow">↓</div>
+    <div class="node"><b>② ReAct 循环</b>　Thought → Action → Observation，自己决定下一步</div>
+    <div class="arrow">↓</div>
+    <div class="node"><b>③ 可选动作</b>　<code>search_knowledge_base</code> 查库 ／ <code>search_web</code> 联网（Tavily）／ <code>list_documents</code> 列文档 ／ 受控写工具</div>
+    <div class="arrow">↓</div>
+    <div class="node"><b>④ 检索后端（二选一）</b><br>hybrid：稠密 + 稀疏 bge-m3 → 服务端 RRF → bge-reranker 重排<br>graphrag：实体向量 → 多跳展开 → 反查块，仍并上向量那一路</div>
+    <div class="arrow">↓</div>
+    <div class="node"><b>⑤ 版本过滤</b>　<code>status ≠ superseded</code>；需要旧版时用 <code>INCLUDE_SUPERSEDED=1</code> 或界面勾选框</div>
+    <div class="arrow">↓</div>
+    <div class="node"><b>⑥ 输出答案</b>　答案中的 <code>[文档名 (块 3)]</code> 在前端可点开看原文块</div>
+    <div class="arrow">↓</div>
+    <div class="node"><b>⑦ 写操作（受控）</b>　<code>export_report</code> / <code>mark_superseded</code> 过三道闸（白名单 → 显式确认 → 参数校验），默认全关；每次调用向 <code>logs/audit.jsonl</code> 追加 intent / result / denied 三条记录</div>
+  </div>
+
+  <h3 class="sec">09｜它到底是怎么实现的？</h3>
+  <p>四个值得抄的工程决策：</p>
+  <p><b>决策一：混合检索用「一次前向」而不是两个模型。</b>bge-m3 一次前向同时产出稠密与稀疏两路向量，服务端做 RRF 融合，再交 bge-reranker-v2-m3 重排。作者公开了自建评测集上「重排关 / 开」的差值（其余配置完全相同）：hit@1 <b>0.867 → 1.000</b>、MRR@1 0.867 → 1.000、nDCG@1 0.790 → 0.962、recall@1 0.678 → 0.811，其中 <code>contextual</code> 类题 0.500 → 1.000。</p>
+  <p><b>决策二：上下文定位语（Contextual Retrieval）单独量化。</b>只在「入库时给每块补一句位置与主题」这一个变量上做对照（重排关）：hit@1 <b>0.800 → 0.867</b>。作者的解释很朴素——代词密集的段落靠定位语补全语义、靠重排救回来。这是「为什么要多花一次 LLM 调用」的直接证据。</p>
+  <p><b>决策三：版本过滤挂在两条召回路径的共同出口上。</b>两条召回路径共用同一套分块，版本过滤同时挂在那两条上；而 <code>mark_superseded</code> 改的 <code>status</code> 字段，正是那道过滤读的那个字段。作者还处理了兼容性：加字段前入库的老数据按 <code>current</code> 处理，不报错也不漏。</p>
+  <p><b>决策四：写工具默认全关 + 三道闸 + 审计日志。</b><code>export_report</code> / <code>mark_superseded</code> 是仅有的两个写工具，需经「白名单 → 显式确认 → 参数校验」三道闸，且默认全部关闭；每次调用向 <code>logs/audit.jsonl</code> 追加 intent / result / denied 三条记录。这是把「Agent 能不能改知识库状态」这个责任问题用工程手段回答。</p>
+  <p><b>其他设计取舍（作者在 architecture.md 中说明）：</b>图的写入不用 LlamaIndex；ReAct 走文本协议而不是 function calling；<b>并发被限成 1</b>。前两条本文不转述未核实的理由，第三条与「本地单机推理、避免显存争抢」的常见工程判断一致。</p>
+
+  <h3 class="sec">10｜手把手复现</h3>
+  <div class="truth"><b>以下步骤整理自作者 README 的「快速开始」与「命令速查」（原文明确给出）；标注为「本文补充」的为建议。作者未分步编号，本文按阅读顺序重组。</b></div>
+  <p><b>Step 1（原文）。</b>准备环境：Python 3.10；Qdrant 必须（端口 6343 / 6344）；Neo4j 仅在用 graphrag 后端时需要（7474 / 7687）。显存要求：bge-m3 约 2.3G、bge-reranker-v2-m3 约 2.3G，有 CUDA 走 GPU（作者实测 RTX 5080），没有也能跑只是慢。</p>
+  <p><b>Step 2（原文）。</b>起服务（两个窗口别关）：<code>scripts\start_qdrant.bat</code>、<code>scripts\start_neo4j.bat</code>。</p>
+  <p><b>Step 3（原文）。</b>体检：<code>kb.bat health</code>。作者说明——看到「✅ 全部就绪」或「⚠️ 后端可用，但 LLM 未配置」都算正常。</p>
+  <p><b>Step 4（原文）。</b>导入你自己的文档：<code>kb.bat ingest D:\你的文档目录</code>（支持 .txt / .md / .pdf / .docx）。<b>没有 LLM key 也能导入，只是每个块缺「定位语」，召回质量下降；填上 key 后重导即可补齐。</b></p>
+  <p><b>Step 5（原文）。</b>不花钱先验检索质量：<code>kb.bat search "你确定文档里有的短语"</code>、<code>kb.bat docs</code>（只检索，不需要 LLM key）。</p>
+  <p><b>Step 6（原文）。</b>开启问答：在 <code>.env</code> 里填 <code>LLM_API_KEY</code>（DeepSeek / Qwen / Kimi 任何 OpenAI 兼容端点均可），然后 <code>kb.bat ask "绝缘子出现裂纹怎么办" -v</code>。</p>
+  <p><b>Step 7（原文）。</b>不想记命令就用 <code>webui.bat</code>，浏览器里点。全局开关 <code>--backend {hybrid,graphrag}</code> 与 <code>-v</code> 放在子命令前后都行。</p>
+  <p><b>Step 8（本文补充的建议）。</b>第一次上线前，先只读一遍 <code>docs/gotchas.md</code>——作者自己在该文档里提醒「失败方式几乎都是『不报错』」，这句话意味着排查不能靠报错日志。</p>
+  <p><b>Step 9（本文补充的建议）。</b>用自己的语料重跑一遍 <code>eval/</code>（作者说明评测脚本不调 LLM、不花钱），得到你所在行业的基线，再决定要不要开重排或换后端。</p>
+
+  <h3 class="sec">11｜Prompt / Code / Config</h3>
+  <p><b>作者公开的内容（可直接引用）：</b></p>
+  <ul>
+    <li>命令速查表：<code>kb.bat health / ingest / search / ask / docs / stats</code>，并标注每条命令是否需要 LLM key</li>
+    <li>关键环境变量与开关：<code>LLM_API_KEY</code>、<code>INCLUDE_SUPERSEDED=1</code>、<code>KB_HF_ONLINE=0</code>、<code>KB_PYTHON</code>（覆盖 kb.bat 里写死的 Python 路径）、<code>--backend {hybrid,graphrag}</code></li>
+    <li>版本字段：<code>status</code> / <code>doc_version</code> / <code>effective_from</code></li>
+    <li>写工具与闸门：<code>export_report</code> / <code>mark_superseded</code>，三道闸（白名单 → 显式确认 → 参数校验），审计落 <code>logs/audit.jsonl</code>（intent / result / denied）</li>
+    <li>评测口径：9 篇电力规程 / 61 个块 / 15 道可答题 + 5 道反例；阈值中性档（<code>rerank_min_score=0</code>、<code>rerank_min_keep=0</code>）；按题宏平均；每个数字带 n</li>
+    <li>Mermaid 架构图（见 README「架构」一节）</li>
+  </ul>
+  <p><b>作者未公开 / 本文未获取的：</b>入库时生成「定位语」的具体提示词、ReAct 的系统提示词、评测题目的具体内容。<b>本文不编造。</b></p>
+
+  <h3 class="sec">12｜踩坑</h3>
+  <div class="pitfall">
+    <p><b>作者主动写进仓库的踩坑（可信度较高——他专门建了一份 <code>docs/gotchas.md</code>，并注明「改动前先读」）：</b></p>
+    <ul>
+      <li><b>失败方式几乎都是「不报错」。</b>这是作者自己给整份踩坑文档写的一句总纲——检索质量的退化很多时候不抛异常，只是悄悄变差。这也是他为什么要建评测集的原因。</li>
+    </ul>
+  </div>
+  <div class="truth">
+    <p><b>以下为可以从仓库配置推断、但本文未逐项核实的环境类注意事项：</b></p>
+    <ul>
+      <li>显存压力：两个 bge 模型各约 2.3G，加上 Qdrant 与 Neo4j，本地机器需要留出余量；GPU 不可用时能跑但慢。</li>
+      <li>首次运行必须联网下模型；换机器时要设 <code>KB_HF_ONLINE=1</code> 跑一次导入。</li>
+      <li>GraphRAG 后端额外依赖 Neo4j，且图那一路与 hybrid <b>不共用</b>入库结果——切到 graphrag 需要额外建图。</li>
+      <li><code>kb.bat</code> 里写死了 Python 路径（anaconda py310），需要 <code>KB_PYTHON</code> 覆盖。</li>
+    </ul>
+  </div>
+  <div class="truth"><b>本文补充的风险提示（非项目原文）：</b>项目明确标注 <code>eval/corpus/</code> 下那 9 篇规程是<b>为评测自造的样例文本，不是正式发布的标准原文</b>（无标准号、无发布机关）。这意味着：报告中的提升数字来自自建语料，<b>换成你所在行业的真实规程后，效果可能不同，必须自己重跑评测</b>。</div>
+
+  <h3 class="sec">13｜中国用户能不能直接做？</h3>
+  <table class="stack">
+    <tr><td class="k">国内访问</td><td>可以。项目在 GitHub；检索侧全部本地推理（bge-m3 / bge-reranker-v2-m3），不依赖任何境外 API；仅问答环节可选调用外部 LLM 与 Tavily 联网。</td></tr>
+    <tr><td class="k">注册</td><td>无需注册。首次运行需联网下载模型权重。</td></tr>
+    <tr><td class="k">API</td><td>问答需一个 OpenAI 兼容端点：作者 README 明确列举 <b>DeepSeek / Qwen / Kimi</b>，充值即用。检索与评测不需要 key。</td></tr>
+    <tr><td class="k">成本</td><td><b>接近 0 元可验证：</b>作者说明评测脚本不调 LLM、不花钱；<code>search</code> 与 <code>ingest</code> 也不需要 key。只有「问答」与「生成定位语」产生 token 成本。本地部署省去服务器费用（但要自己的机器 / 显存）。</td></tr>
+    <tr><td class="k">技术门槛</td><td><span class="repro dev">🔴 开发者级</span> 需要会配 Qdrant / Neo4j、装 Python 环境、装 bge 系列模型、看得懂 .env 与批处理入口。这不是「下载即用」的产品，是要动手部署的工程件。</td></tr>
+  </table>
+
+  <h3 class="sec">14｜国产替代方案</h3>
+  <p><b>这个案例本身就是国产方案</b>——检索侧用的就是智源（BAAI）的 bge 系列模型，问答侧作者直接推荐 DeepSeek / Qwen / Kimi。</p>
+  <table class="stack">
+    <tr><td class="k">对照项</td><td>通用「上传文档就能问答」的 SaaS 知识库；以及 LangChain / LlamaIndex 的通用 RAG 拼装</td></tr>
+    <tr><td class="k">本案例的差异</td><td>① 检索全本地（数据不出内网）；② 版本化索引与废止条款可查；③ 答案可点回原文块；④ 写操作默认全关 + 三道闸 + 审计日志；⑤ 带自建评测设施而不是「感觉变好了」。</td></tr>
+    <tr><td class="k">说明</td><td><b>已验证（作者原文明示）：</b>bge-m3 / bge-reranker-v2-m3 本地推理、DeepSeek / Qwen / Kimi 任意 OpenAI 兼容端点。<b>本文推测（未验证）：</b>把稀疏那一路换成 BM25 单独实现、或用其他中文 embedding 模型替代 bge-m3 的可行性。请勿把推测当结论。</td></tr>
+  </table>
+
+  <h3 class="sec">15｜中国企业可以怎么用？</h3>
+  <ul>
+    <li><b>企业场景 1：安全生产 / 操作规程问答（案例本身场景）。</b>电力、化工、矿山等行业的规程文档，一线人员需要「随口一问、答案能追溯到条款」。可溯源 + 版本化 + 审计这三条，恰好对上安全管理的硬要求。</li>
+    <li><b>企业场景 2：法规 / 合规知识库。</b>法务与合规部门面对大量内外规、监管文件、行业标准。换版频繁、废止条款要能追溯，正好命中版本化索引的价值。</li>
+    <li><b>企业场景 3：SaaS / 硬件的售后与交付文档库。</b>产品手册、配置说明、FAQ 版本迭代快，且必须能回答「这个型号 / 这个版本应该怎么做」。把 <code>doc_version</code> 与产品版本对齐即可。</li>
+  </ul>
+  <div class="pitfall"><b>企业落地前先解决三件事：</b>① 用你的真实规程重跑 <code>eval/</code> 得到基线（作者的自建语料不能代表你的行业）；② 明确哪些写工具对谁开放——作者的默认全关是好起点，不要一上来就放开；③ 审计日志的保存期限与访问权限要按内部制度设计，<code>logs/audit.jsonl</code> 只是技术落点。</div>
+
+  <h3 class="sec">16｜中国消费者可以怎么用？</h3>
+  <p>这个案例的形态是本地部署的工程件，对纯消费者的直接适用性有限。但对个人有三条务实路径：</p>
+  <ol>
+    <li><b>考证 / 职业学习：</b>把大量 PDF 教材、规范、标准建成自己的本地知识库，答案是带引用的（能点回原页），比「整本丢给聊天框」更适合需要背条文的场景。</li>
+    <li><b>自由职业者的资料库：</b>咨询、法律、工程类从业者手上往往有几百份历史文档，用版本化 + 可溯源的方式管理，交活时能直接给出出处。</li>
+    <li><b>技术学习样本：</b>这套代码是学习「企业级 RAG 到底要额外做哪些事」的极佳样本——尤其是评测设施与写工具治理这两块，是多数教程不会讲的。</li>
+  </ol>
+
+  <h3 class="sec">17｜如何变成一个赚钱的项目？</h3>
+  <p><b>产品化。</b>把 agentic-kb 作为内核，做成「某行业规程知识库」的一体机 / 私有化部署包：预置该行业的文档处理规则（编号体系、条款层级、版本规则），客户导入自己的文档即可用。卖点不是「AI 问答」，是「可溯源 + 可审计」。</p>
+  <p><b>服务化。</b>给企业做知识库的实施与调优：文档清洗、分块策略、评测集共建、检索参数调优。这类服务有一个天然优势——它需要行业知识，不是纯技术外包。</p>
+  <p><b>咨询化。</b>帮企业做「知识资产治理」：哪些文档该入库、版本怎么管、废止条款怎么追溯、谁有权改状态。这是 IT 与业务部门之间的空白地带，也很少有人能做。</p>
+  <p><b>培训化。</b>课程价值极高：它可以把「企业级 RAG 与 Demo 级 RAG 的差别」讲得非常具体——混合检索为什么必要、重排为什么值那一次调用、评测集为什么必须自建、写工具为什么要三道闸。学员带走的是判断力。</p>
+  <p><b>内容化。</b>拆成系列：一次前向出双路向量是怎么做的 / 上下文定位语值不值一次 LLM 调用 / 版本化索引怎么设计 / Agent 的写工具该不该默认关闭。每一篇都是企业技术选型时会搜的问题。</p>
+  <p><b>行业化。</b>把「行业文档规则包 + 评测集 + 检索参数基线」沉淀成行业资产，一个行业一套。行业越多，复利越明显——这也是这类项目最容易形成壁垒的地方。</p>
+  <div class="truth"><b>已验证 vs 推导：</b>可核实的只有「仓库存在且 MIT 开源」「创建与推送时间在 10-07 窗口内」「作者公开了上述技术方案与自建评测数据」这些事实。<b>作者未公开任何商业使用或收入信息；以上所有变现路径均为基于案例结构推导出的潜在商业模式。</b></div>
+
+  <h3 class="sec">18｜变现路径</h3>
+  <div class="panel" style="padding:0; border:none;">
+  <table>
+    <tr><th>路径</th><th>客户</th><th>产品 / 服务</th><th>收费方式</th><th>难度</th></tr>
+    <tr><td>私有化部署包</td><td>中大型企业 / 行业客户</td><td>行业规程知识库一体交付</td><td>项目制 + 年费</td><td>高</td></tr>
+    <tr><td>知识库实施调优</td><td>已有文档资产的企业</td><td>清洗 + 分块 + 评测集 + 调参</td><td>项目制</td><td>中</td></tr>
+    <tr><td>治理咨询</td><td>合规 / 安全管理部门</td><td>知识资产与版本治理设计</td><td>咨询制</td><td>高</td></tr>
+    <tr><td>培训</td><td>企业 IT / 技术团队</td><td>《企业级 RAG 与可溯源知识库》</td><td>按人 / 按场</td><td>中</td></tr>
+  </table>
+  </div>
+  <p class="truth"><b>这是分析，不是保证收益。</b>项目本身暂无任何商业数据可引用。</p>
+
+  <h3 class="sec">19｜如果我是一个中国独立开发者（7 天 MVP）</h3>
+  <p>假设：1 个人、有机器（最好有 GPU）、有基础 Python 能力、使用国产模型 API。</p>
+  <ul>
+    <li><b>Day 1：</b>跑通官方快速开始：起 Qdrant → <code>kb.bat health</code> → 导入一小批文档 → <code>kb.bat search</code>。这一步不需要任何 API key。</li>
+    <li><b>Day 2：</b>填上 LLM key（DeepSeek / Qwen / Kimi），重导文档生成「定位语」，对比重导前后的召回差异。</li>
+    <li><b>Day 3：</b>换成<b>你自己行业</b>的 20–30 份真实文档，跑一次 <code>eval/</code> 得到你的基线数字（这一步不花钱，但决定后面所有判断）。</li>
+    <li><b>Day 4：</b>做一次「重排关 / 开」的对照，看在你自己的语料上收益有多大——如果收益不明显，就把重排那 2.3G 显存省下来。</li>
+    <li><b>Day 5：</b>问 20 个真实业务问题，逐条检查引用能不能点回正确的原文块。这一步是这类项目最该花时间的地方。</li>
+    <li><b>Day 6：</b>设计写工具的护栏与审计：谁能触发、什么条件下允许、日志给谁看。<b>先不打开写工具，只把设计写完。</b></li>
+    <li><b>Day 7：</b>复盘并决定方向：继续做通用（拼部署与调优），还是扎进某一个行业（拼行业规则包与评测集）。一个行业做透，比十个行业都浅尝更有价值。</li>
+  </ul>
+
+  <h3 class="sec">20｜如何迁移到其他行业</h3>
+  <div class="migrate">
+    <div class="m"><b>① 化工 / 矿山安全规程</b>与电力场景高度同构：条款要溯源、换版频繁、术语专业，行业规则包几乎可直接复用。</div>
+    <div class="m"><b>② 医疗器械 / 药品说明书</b>型号与版本极多，「这个版本该怎么做」是高频问题，<code>doc_version</code> 与产品版本对齐即可迁移。</div>
+    <div class="m"><b>③ 金融合规与内控</b>监管文件更新频繁、废止条款需追溯，且审计要求天然更强，与「三道闸 + 审计日志」的设计高度契合。</div>
+  </div>
+
+  <h3 class="sec">21｜培训课程设计</h3>
+  <div class="course">
+    <table>
+      <tr><td class="k">课程名称</td><td>《企业级 RAG：从「能答」到「可溯源、可版本化、可审计」》</td></tr>
+      <tr><td class="k">适合人群</td><td>企业 IT / 数据团队、AI 应用开发者、需要做技术选型的产品负责人</td></tr>
+      <tr><td class="k">建议时长</td><td>半天（可拆为 30 分钟 Demo + 60 分钟 Workshop）</td></tr>
+      <tr><td class="k">30 分钟 Demo</td><td>同一批文档、同一个问题：现场切换「重排关 / 开」，让学员亲眼看到排序变化与 hit@1 差异</td></tr>
+      <tr><td class="k">60 分钟 Workshop</td><td>学员带 10 份自己的文档入库，跑一次 <code>search</code>，逐条判断「这条为什么被捞上来」（RRF 分 / 重排分 / 两路名次都摊开可见）</td></tr>
+      <tr><td class="k">半天课程</td><td>加讲四块：混合检索与 RRF 融合、上下文定位语的价值与成本、版本化索引与废止条款、Agent 写工具的三道闸与审计设计</td></tr>
+      <tr><td class="k">课程目标</td><td>学员能够判断「我这个场景到底需不需要混合检索与重排」，并能为自己的语料建一套最小评测集</td></tr>
+      <tr><td class="k">现场 Demo</td><td>「入库 → 检索可解释 → 问答可溯源 → 写操作被闸住」四段，每段都有可见的证据</td></tr>
+      <tr><td class="k">学员练习</td><td>为一个真实业务问题写出 5 道评测题 + 1 道反例（反例是最难写、也最有价值的部分）</td></tr>
+      <tr><td class="k">课后作业</td><td>在自己的语料上完成一次「改动 → 评测 → 结论」的完整闭环，交出基线与 diff</td></tr>
+      <tr><td class="k">企业迁移</td><td>选一个部门的文档作为试点，产出该部门的「知识资产清单 + 版本规则 + 写权限清单」</td></tr>
+    </table>
+  </div>
+
+  <h3 class="sec">22｜培训师点评</h3>
+  <div class="trainer"><b>这个案例真正值得教的，是「怎么证明你的 RAG 变好了」。</b>大多数团队做知识库靠感觉调参；这个项目把评测设施、指标口径、甚至「为什么反例要独立成族」都写成了文档。学员最该带走的是一个习惯：<b>先建评测集，再改参数。</b></div>
+
+  <h3 class="sec">23｜最终判断</h3>
+  <div class="verdict">
+    <div class="v"><div class="k">落地性</div><div class="val lv-m">中高</div></div>
+    <div class="v"><div class="k">中国市场相关性</div><div class="val lv-h">高</div></div>
+    <div class="v"><div class="k">商业价值</div><div class="val lv-h">高</div></div>
+    <div class="v"><div class="k">复现难度</div><div class="val lv-l">高</div></div>
+    <div class="v"><div class="k">变现潜力</div><div class="val lv-m">中高</div></div>
+  </div>
+  <p style="margin-top:10px;color:#6B7280;font-size:13px;">这是案例属性描述，不是「最佳案例排名」。技术完成度高、企业需求真实，但要真正落地需要本地环境与行业语料的双重投入。</p>
+</div>
+
+<!-- ===================== 今日观察 ===================== -->
+<section class="block" id="observe">
+  <h2>今日 AI 实战观察</h2>
+  <div class="panel">
+    <p>今天这两个案例放在一起看，有一个共同的转向：<b>竞争点从「模型有多聪明」移到了「证据链有多完整」。</b></p>
+    <p>案例 01 里，浏览器 Agent 的价值不在「它能点页面」——能点页面的工具早就有了。真正让它可用的是那些琐碎的证据：Draft.js 只认 paste 事件、CodeMirror 直接 setValue、粘贴后第 0 个块会丢字、每步都要断言、出错先点撤销。这些不是模型能力，是工程经验。作者甚至把发布这一步留给了人工确认——终点是「一句话 + 一次确认」，而不是全自动。</p>
+    <p>案例 02 更直白。它几乎是在回答一个问题：<b>在规程这种答错就是事故的场景里，AI 凭什么可以被信任？</b> 答案不是「换更强的模型」，而是四件很笨的事：答案里的块引用能点回原文、旧版条款默认不召回但可显式翻出、写工具默认全关且过三道闸、每次调用都留审计记录。作者还自建了评测集，把「重排开了 hit@1 从 0.867 到 1.000」这种数字连同口径和小样本的局限一起摊开——这本身就是一种证据链。</p>
+    <p>更值得注意的是两边都主动承认了边界。案例 01 的作者写明了嵌套分派最多两层、写明了哪些坑他踩过；案例 02 的作者写明了评测语料是自造的、不是正式标准原文，甚至专门建了一份文档说明「失败方式几乎都是不报错」。</p>
+    <p>对个人开发者来说，这落在两件具体的事上：一是把「不确定的流程交给 Agent、把确定的动作做成工具」这个分工真正做出来；二是先建评测集再改参数。两件事门槛都不高，但都需要先接受一个前提——<b>AI 从「能演示」走到「能交付」，中间隔着的不是模型，是证据。</b></p>
+    <p style="color:#6B7280;font-size:13px;margin-top:12px;">（本段基于今日两个案例的公开资料展开；案例 02 的提升数字来自作者自建的小样本评测集，请勿外推为通用结论。）</p>
+  </div>
+</section>
+
+<!-- ===================== 商业机会雷达 ===================== -->
+<section class="block" id="radar">
+  <h2>今日商业机会雷达</h2>
+  <div class="panel">
+    <h3>机会 1｜「无 API 系统」的网页操作自动化</h3>
+    <ul>
+      <li><b>客户：</b>仍在用老 ERP / 老 CRM / 老 OA 的传统企业（尤其是制造业、政务、医药）</li>
+      <li><b>实现方式：</b>浏览器 Agent（ReAct + MCP 工具）+ 编辑器 / 表单注入适配 + 不可逆动作人工确认</li>
+      <li><b>解决的是：</b>「系统没有 API，但人每天要在这上面重复操作两小时」这个具体成本</li>
+      <li><b>可能商业模式：</b>项目制实施 + 按系统数量的年费维护</li>
+    </ul>
+
+    <h3>机会 2｜行业规程 / 合规知识库的私有化交付</h3>
+    <ul>
+      <li><b>客户：</b>安全生产、法务合规、医疗器械、金融内控等强合规行业</li>
+      <li><b>实现方式：</b>混合检索 + 重排 + 版本化索引 + 可溯源答案 + 写工具三道闸 + 审计日志</li>
+      <li><b>解决的是：</b>「答错是事故」的场景里，AI 凭什么能被采信——即责任与审计问题，而不是效率问题</li>
+      <li><b>可能商业模式：</b>私有化部署项目 + 年度运维 + 行业规则包授权</li>
+    </ul>
+
+    <h3>机会 3｜「浏览器 Agent 注入姿势」的知识产品</h3>
+    <ul>
+      <li><b>客户：</b>所有在做 RPA / 自动化 / 内部工具的技术团队</li>
+      <li><b>实现方式：</b>把「编辑器内核 → 注入方式」的映射做成可查手册与代码片段库，按系统类型持续扩充</li>
+      <li><b>解决的是：</b>自动化项目里最耗时、最不体面、也最难外包的那一段调试工作</li>
+      <li><b>可能商业模式：</b>手册 / 代码包一次性售卖 + 社群订阅 + 配套培训</li>
+    </ul>
+    <p class="truth" style="margin-top:14px;"><b>这是基于案例的商业模式分析，不代表已经验证的商业成功。</b>三个机会中没有任何一个在本文中被证明已经赚到钱。</p>
+  </div>
+</section>
+
+<!-- ===================== 个人变现机会 ===================== -->
+<section class="block" id="personal">
+  <h2>今日「个人变现机会」</h2>
+  <div class="panel">
+    <p>如果一个人每天投入 <b>2–4 小时</b>，今天这两个案例分别对应一条路径：</p>
+    <p><b>路径 A（内容侧，源自案例 01）。</b>把「浏览器 Agent + 某个平台的操作流」做稳定，然后横向复制到更多平台。这条路径的独特之处在于：<b>它不需要客户、不需要报价、不需要交付会议，你自己的账号就是第一个用户。</b>建议的起手式是——先攻克一个平台（含注入方式与校验），再横向铺开；同时把踩坑过程本身写成内容，形成第二份资产。</p>
+    <p><b>路径 B（企业侧，源自案例 02）。</b>选一个强合规行业，用 agentic-kb 这类内核 + 自己做该行业的规则包与评测集，从「帮一个部门把文档管起来」开始。这条路径的门槛更高（要本地环境、要行业语料），但<b>它的壁垒也更实——行业知识不是下载来的</b>。建议的起手式是：先用公开文档跑通全流程，再拿下一个真实部门做试点。</p>
+    <p><b>不建议做的：</b>① 同时铺开三条以上路径；② 在没建评测集的情况下反复调 RAG 参数（那只是在猜）；③ 把不可逆动作（发布、删除、改状态）交给 Agent 而没有人确认环节。</p>
+    <p class="truth"><b>不承诺收益，也不虚构收入。</b>以上为基于今日案例结构推导的方向，未经验证。</p>
+  </div>
+</section>
+
+<!-- ===================== 原始资料 ===================== -->
+<section class="block" id="sources">
+  <h2>原始资料</h2>
+  <div class="panel">
+    <h3>案例 01 · 浏览器 Agent 做内容分发（AI Helper）</h3>
+    <ul class="src-list">
+      <li><span class="src-type">一手原文</span><a href="https://juejin.cn/post/7692743968833847305" target="_blank" rel="noopener">掘金 · 我用 MCP + 多 Agent 搭了一条自动化内容发布流水线（2026-10-06，作者 xiwc）</a></li>
+      <li><span class="src-type">一手原文</span><a href="https://xie.infoq.cn/article/11b0e4a51cd3d652ec2dbb4c9" target="_blank" rel="noopener">InfoQ 写作社区 · AI Helper 实战：从零搭建开源项目的双语 Wiki（2026-10-07，作者 weFri）</a></li>
+      <li><span class="src-type">开源仓库</span><a href="https://github.com/xiweicheng/ai-helper" target="_blank" rel="noopener">github.com/xiweicheng/ai-helper（MIT）</a></li>
+      <li><span class="src-type">发布记录</span><a href="https://github.com/xiweicheng/ai-helper/releases" target="_blank" rel="noopener">Releases：v1.17.4 → v2.0.0（10-06 至 10-08）</a></li>
+      <li><span class="src-type">项目文档</span><a href="https://xiweicheng.github.io/ai-helper/" target="_blank" rel="noopener">xiweicheng.github.io/ai-helper</a></li>
+      <li><span class="src-type">分发渠道</span><a href="https://microsoftedge.microsoft.com/addons/detail/ai-helper-%E7%BD%91%E9%A1%B5%E6%99%BA%E8%83%BD%E5%8A%A9%E6%89%8B/kabhmgfbkhpbfhhnokaafhkdbckeipcl" target="_blank" rel="noopener">Microsoft Edge 扩展商店 · AI Helper 网页智能助手</a></li>
+    </ul>
+
+    <h3>案例 02 · 规程知识库 Agent（agentic-kb）</h3>
+    <ul class="src-list">
+      <li><span class="src-type">开源仓库</span><a href="https://github.com/beianchuqing111/agentic-kb" target="_blank" rel="noopener">github.com/beianchuqing111/agentic-kb（MIT，创建 2026-10-07）</a></li>
+      <li><span class="src-type">架构文档</span><a href="https://github.com/beianchuqing111/agentic-kb/blob/main/docs/architecture.md" target="_blank" rel="noopener">docs/architecture.md</a></li>
+      <li><span class="src-type">评测文档</span><a href="https://github.com/beianchuqing111/agentic-kb/blob/main/docs/evaluation.md" target="_blank" rel="noopener">docs/evaluation.md</a></li>
+      <li><span class="src-type">踩坑文档</span><a href="https://github.com/beianchuqing111/agentic-kb/blob/main/docs/gotchas.md" target="_blank" rel="noopener">docs/gotchas.md</a></li>
+      <li><span class="src-type">使用文档</span><a href="https://github.com/beianchuqing111/agentic-kb/blob/main/docs/usage.md" target="_blank" rel="noopener">docs/usage.md</a></li>
+      <li><span class="src-type">接口契约</span><a href="https://github.com/beianchuqing111/agentic-kb/blob/main/api/CONTRACT.md" target="_blank" rel="noopener">api/CONTRACT.md</a></li>
+      <li><span class="src-type">评测基线</span><a href="https://github.com/beianchuqing111/agentic-kb/tree/main/eval" target="_blank" rel="noopener">eval/（含 baselines 与逐题 diff）</a></li>
+    </ul>
+
+    <h3>窗口内信号（未计入案例，仅作背景）</h3>
+    <ul>
+      <li><b>LangBot v4.11.0-rc.1</b>（2026-10-08 16:02 北京时间）—— 落在窗口边缘。Release 说明仅含 compare 链接，缺乏可验证的变更内容，未收录。</li>
+      <li><b>Kohaku-Lab/KohakuTerrarium</b>：nightly-20261007 / nightly-20261008 于窗口内发布，另 v2.1.5 于 10-05 发布（窗口外）。属通用 Agent 框架的每日构建，未收录。</li>
+      <li><b>openEuler xiaoO</b>（GitCode，AI 智能体框架）：最新 Release v0.2.1 时间约为 09-30，<b>不在本期窗口</b>，故未收录。其 Release 说明中提到的 <code>/mcp</code> 命令、自定义工具 Manifest、Linux dyn-sandbox 等能力可作为后续跟踪对象。</li>
+      <li><b>xianyu110/ecommerce-image-skills</b>（60 Star）与 <b>ecommerce-video-skills</b>（53 Star）：AI + 电商出图 / 短视频方向，仓库建于 <b>10-04 至 10-05</b>，<b>不在本期窗口</b>。该方向（AI + 电商）是过去多期一直缺少一手来源的空白区，本期虽未收录，但值得下一期重点回访。</li>
+      <li><b>orange2ai/podcast-to-article</b>（103 Star，创建 2026-10-07 20:00 北京时间）：把多人对谈播客逐字稿整理成可发布长文的 Agent Skill，含换轴成文、人名校准、精简三分之一、去 AI 味自检与两个自检脚本。<b>窗口内、一手、可复现</b>，但「今日唯一精选」名额已给上述两个更完整的案例，故列为窗口内信号。</li>
+      <li><b>dualface/ste-zh</b>（141 Star）：约束 Agent 用受控中文汇报结果的 Agent Skill，借 ASD-STE100 原则。仓库建于 10-05（<b>窗口外</b>），且形态更接近「输出规范」而非可执行工作流，未收录。</li>
+    </ul>
+
+    <h3>明确排除的来源（内容农场，本期再次大面积污染搜索结果）</h3>
+    <p style="font-size:13.5px;color:#6B7280;">本期检索中，以下站点以「资讯详情 / 编程知识」形式批量产出措辞雷同、无一手证据、无法核实作者与发布时间的 AI 教程内容，<b>全部剔除，未作为任何案例或信号的来源</b>：<code>mhpq.cn</code>、<code>tzjp.cn</code>、<code>xxmr.cn</code>、<code>hqwc.cn</code>、<code>mwwr.cn</code>（延续此前多期记录的「尧图」系站点）。此外，多个英文「今日增长最快项目」类聚合站（如 pullrepo.com 一类）使用未标注口径的增长分数，仅作线索、不作证据。</p>
+  </div>
+</section>
+
+<!-- ===================== 真实性说明 ===================== -->
+<section class="block" id="truth">
+  <h2>数据真实性说明</h2>
+  <div class="panel">
+    <h3>哪些是事实（可核实）</h3>
+    <ul>
+      <li>xiweicheng/ai-helper 仓库存在，MIT 协议，JavaScript 项目，建于 2026-06-21，当前 13 Star / 4 Fork；窗口内发布 v1.17.4（10-06 20:49）、v1.17.5（10-06 21:01）、v1.17.6（10-07 11:49）、v1.17.7（10-08 08:43）、v2.0.0（10-08 08:56）—— 均为北京时间，通过 GitHub API 核实。</li>
+      <li>两篇一手文章的标题、作者、发布日期（掘金 2026-10-06 / InfoQ 2026-10-07）经抓取核实。</li>
+      <li>beianchuqing111/agentic-kb 仓库存在，MIT 协议，Python 项目，创建于 2026-10-07 09:29（北京时间），最后推送同日 09:56，当前 58 Star / 1 Fork；仓库根目录与 docs/ 下的文件结构经 GitHub API 核实。</li>
+      <li>案例 02 引用的技术方案、命令、环境变量、评测口径与数值，均来自该仓库 README 与 docs 目录的公开内容。</li>
+    </ul>
+
+    <h3>哪些是作者自述（本文未独立验证）</h3>
+    <ul>
+      <li><b>案例 01：</b>「发布一篇稿子从十几分钟的手工活变成一句话 + 一次确认」、「发布一篇稿子从十几分钟变一句话」这类效率描述，以及 ReAct 循环步数区间（10–1000）、「嵌套分派最多 2 层」、「三级命令安全策略」等能力描述，均来自项目文档或作者原文的<b>自述</b>，本文未独立复现验证。</li>
+      <li><b>案例 01：</b>InfoQ 篇中「8 页中文 Wiki 共 1834 行」「42KB 原始素材 / 616 行 / 12 章」「Gitee 同步 16 页」等具体数字，均为该作者在文中的记录，本文未逐项核对。</li>
+      <li><b>案例 02：</b>README 中的评测数值（hit@1 0.867 → 1.000、nDCG@1 0.790 → 0.962、recall@1 0.678 → 0.811、contextual 类 0.500 → 1.000、定位语增益 0.800 → 0.867）均为作者<b>自建评测集</b>上的结果。作者本人已明确标注口径：9 篇规程 / 61 个块 / 15 道可答题 + 5 道反例，<b>「这是自建的小评测集，不是公开 benchmark」，且在 15 道规模下单题涨跌即可让聚合值移动 0.067</b>。本文照录该口径，<b>不建议外推为通用结论</b>。</li>
+      <li><b>案例 02：</b>「检索侧全部本地推理，只有问答和联网搜索走外部 API」为项目 README 自述，本文未做网络层核验。</li>
+    </ul>
+
+    <h3>哪些是本文分析 / 推演（非事实）</h3>
+    <ul>
+      <li>两个案例的「下一步可能怎么发展」「商业价值」「变现路径」「迁移方向」「7 天 MVP」「培训课程设计」「适合谁做」等全部为<b>本文基于案例结构推导出的分析与推演</b>，不代表任何已验证的商业成功。</li>
+      <li>案例 01 中「用某个具体国产模型跑出同样发布效果」、案例 02 中「把稀疏那一路换成 BM25 或其他中文 embedding 模型」均属<b>本文推测，未经核实</b>。</li>
+      <li>「哪些平台 / 系统值得自动化」的判断为本文观点，不构成对任何平台规则合规性的背书。</li>
+    </ul>
+
+    <h3>关键数据核验清单</h3>
+    <ul class="checklist">
+      <li>原作者存在（xiweicheng / xiwc、weFri、beianchuqing111）</li>
+      <li>原始资料存在（两篇文章 + 两个仓库，链接均为具体页面）</li>
+      <li>发布时间真实（掘金 10-06、InfoQ 10-07，经抓取核实）</li>
+      <li>项目真实存在（GitHub 仓库 + 目录结构经 API 核实）</li>
+      <li>存在实际操作（含可运行代码与命令，非纯描述）</li>
+      <li>存在 Workflow（两案例均已还原为流程图）</li>
+      <li>可复现（均给出手把手步骤，并标注来源）</li>
+      <li>解决真实问题（内容分发耗时 / 规程问答需溯源）</li>
+      <li>符合中国市场需求（中文平台适配 / 强合规行业）</li>
+      <li>说明模型、工具、成本、技术门槛</li>
+      <li>说明 API Key 获取方式与是否必需</li>
+      <li>分析国产替代（并区分已验证与推测）</li>
+      <li>分析企业场景与消费者场景</li>
+      <li>分析商业价值与变现路径</li>
+      <li>区分「已验证商业模式」与「推测的商业机会」</li>
+      <li>追溯案例前世今生并解释「为什么是现在」</li>
+      <li>提取作者公开的 Prompt / Code / Config</li>
+      <li>未把理论包装成实践、未把营销包装成实测</li>
+      <li>未把旧内容包装成新内容（xiaoO / 电商 Skills 等窗口外内容已剔除）</li>
+      <li>未为凑数添加案例（严格 2 个，并说明理由）</li>
+      <li>所有引用链接指向具体页面，未使用首页或搜索结果</li>
+      <li>HTML 完整、CSS 内嵌、移动端断点已覆盖</li>
+    </ul>
+
+    <h3>本期最重要的三个提醒</h3>
+    <ol>
+      <li><b>案例 01 的 Star 数很低（13），这不代表它没价值，但确实代表它没有被大规模验证。</b>本文按「一手可复现 + 中文平台细节稀缺」收录它，而不是因为热度。</li>
+      <li><b>案例 02 的仓库是一次性推送的完整项目，没有 Release 历史与社区反馈。</b>其文档严谨度可以从侧面反映用心程度，但「是否已在生产环境使用」无法验证。</li>
+      <li><b>所有效率提升数字都请当作作者自述看待。</b>本文两处均已按原文口径转述并标注局限，未做独立测量。</li>
+    </ol>
+  </div>
+</section>
+</div>
+</main>
+<footer class="site-footer">
+  <div class="wrap">
+    <div>
+      <div class="f-brand">全球文明进程重大事件日报</div>
+      <p class="f-desc">记录人类文明演进中的关键节点。以未来历史学家的视角，筛出可能改写人类轨迹的转折点——一个长期记录人类文明发展轨迹的数字档案馆。</p>
+    </div>
+    <div class="f-col">
+      <h4>浏览</h4>
+      <ul>
+        <li><a href="../index.html">网站首页</a></li>
+        <li><a href="../archive.html">日报档案</a></li><li><a href="../radar.html">趋势雷达</a></li><li><a href="../tutorial/index.html">AI实战</a></li>
+        <li><a href="../assets/images/og-cover.png" target="_blank">站点封面</a></li>
+      </ul>
+    </div>
+    <div class="f-col">
+      <h4>文明分类</h4>
+      <ul>
+        <li><a href="../categories/science.html">科学、生命与地球</a></li>
+        <li><a href="../categories/politics.html">政治与文明秩序</a></li>
+        <li><a href="../categories/culture.html">思想、社会与文化</a></li>
+        <li><a href="../categories/technology.html">科技与人工智能</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="f-bottom">
+    <div class="wrap">
+      <span>© 2026 全球文明进程重大事件日报 · 全球文明进程观察站</span>
+      <span>内容由自动化智能体基于公开信息生成，仅供文明观察与研究参考，不构成任何投资、政策或法律建议。</span>
+    </div>
+  </div>
+</footer>
+<button class="backtop" type="button" aria-label="返回顶部">↑</button>
+<script src="../assets/js/main.js"></script>
+<script src="../assets/js/wechat-share.js"></script>
+<script src="../assets/js/text-to-speech.js"></script>
+</body>
+</html>

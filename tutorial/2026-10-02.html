@@ -1,0 +1,888 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI极客实战教程日报 · 2026-10-02（第006期）｜3个并行Agent+git worktree隔离+飞书多维表格交付12万AI客服系统、DeepSeek Harness插件市场4200+插件</title>
+<meta name="description" content="10月2日AI极客实战案例：①1人3周交付12万元企业AI客服系统——3个并行Agent实例+git worktree隔离+飞书多维表格任务队列的工程化打法；②DeepSeek官方Agent运行时Harness开放插件市场dsh-market，目录已收录4200+个插件。今日观察：AI实战从"模型有多聪明"转向"约束与分发"。">
+<meta name="keywords" content="AI极客实战,并行Agent,git worktree,飞书多维表格,AI客服系统,DeepSeek Harness,dsh-market,插件市场,Agent运行时,工程化交付">
+<meta name="author" content="全球文明进程观察站">
+<meta name="robots" content="index,follow">
+<link rel="canonical" href="https://civilization-radar.com/tutorial/2026-10-02.html">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="全球文明进程重大事件日报">
+<meta property="og:title" content="AI极客实战教程日报 · 2026-10-02｜Agent交付流水线与DeepSeek Harness插件市场">
+<meta property="og:description" content="一边有人把3个Agent实例管成一条可验收的交付流水线，一边官方Agent运行时把能力变成4200+个可一键安装的插件。">
+<meta property="og:url" content="https://civilization-radar.com/tutorial/2026-10-02.html">
+<meta property="og:image" content="https://civilization-radar.com/assets/images/og-cover.png">
+<meta property="og:locale" content="zh_CN">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="AI极客实战教程日报 · 2026-10-02">
+<meta name="twitter:description" content="3并行Agent交付12万客服系统；DeepSeek Harness插件市场4200+插件。">
+<meta name="twitter:image" content="https://civilization-radar.com/assets/images/og-cover.png">
+<link rel="icon" href="../assets/images/logo.svg" type="image/svg+xml">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"AI极客实战教程日报 2026-10-02","description":"3个并行Agent+git worktree+飞书多维表格交付12万AI客服系统；DeepSeek Harness插件市场。","datePublished":"2026-10-02","dateModified":"2026-10-02","author":{"@type":"Organization","name":"全球文明进程观察站"},"publisher":{"@type":"Organization","name":"全球文明进程观察站","logo":{"@type":"ImageObject","url":"https://civilization-radar.com/assets/images/og-cover.png"}},"mainEntityOfPage":{"@type":"WebPage","@id":"https://civilization-radar.com/tutorial/2026-10-02.html"}}</script>
+<link rel="stylesheet" href="../assets/css/style.css">
+<style>
+
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body {
+    background:#F7F8FA; color:#111827;
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;
+    line-height:1.7; font-size:15px;
+  }
+  .tut-wrap { max-width:960px; margin:0 auto; padding:32px 20px 64px; }
+  a { color:#2563EB; text-decoration:none; word-break:break-all; }
+  a:hover { text-decoration:underline; }
+
+  header.top {
+    background:#111827; color:#F9FAFB; border-radius:14px; padding:36px 32px; margin-bottom:24px;
+  }
+  header.top .kicker { color:#93C5FD; font-size:13px; letter-spacing:2px; text-transform:uppercase; margin-bottom:10px; }
+  header.top h1 { font-size:30px; font-weight:800; margin-bottom:6px; }
+  header.top .sub { color:#9CA3AF; font-size:14px; margin-bottom:20px; }
+  .meta-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:12px; }
+  .meta-grid .m { background:#1F2937; border:1px solid #374151; border-radius:10px; padding:10px 14px; }
+  .meta-grid .m .k { font-size:11px; color:#9CA3AF; margin-bottom:2px; }
+  .meta-grid .m .v { font-size:14px; font-weight:600; color:#F9FAFB; }
+
+  .oneline {
+    background:#F5F8FF; border:1px solid #BFDBFE; border-radius:14px;
+    padding:18px 24px; margin-bottom:24px;
+  }
+  .oneline .lab { font-size:12px; letter-spacing:1px; color:#2563EB; font-weight:700; margin-bottom:6px; }
+  .oneline p { font-size:15px; color:#111827; }
+
+  nav.cats { display:flex; flex-wrap:wrap; gap:8px; margin-bottom:28px; }
+  nav.cats a {
+    background:#FFFFFF; border:1px solid #E5E7EB; border-radius:999px;
+    padding:6px 14px; font-size:13px; color:#374151;
+  }
+  nav.cats a:hover { border-color:#2563EB; color:#2563EB; text-decoration:none; }
+
+  .card {
+    background:#FFFFFF; border:1px solid #E5E7EB; border-radius:14px;
+    padding:28px; margin-bottom:28px;
+  }
+  .card-head { display:flex; align-items:flex-start; gap:14px; margin-bottom:6px; flex-wrap:wrap; }
+  .num {
+    font-size:26px; font-weight:800; color:#2563EB; line-height:1.1;
+    font-variant-numeric:tabular-nums; min-width:52px;
+  }
+  .card-head h2 { font-size:20px; font-weight:700; flex:1; min-width:240px; }
+  .badges { display:flex; flex-wrap:wrap; gap:6px; margin:8px 0 14px; }
+  .badge { font-size:12px; padding:3px 10px; border-radius:999px; font-weight:600; }
+  .b-cat { background:#EFF6FF; color:#2563EB; border:1px solid #BFDBFE; }
+  .b-tag { background:#F3F4F6; color:#4B5563; border:1px solid #E5E7EB; }
+  .b-date { background:#ECFDF5; color:#16A34A; border:1px solid #BBF7D0; }
+  .b-warn { background:#FFFBEB; color:#B45309; border:1px solid #FDE68A; }
+
+  .oneliner {
+    background:#F9FAFB; border:1px solid #E5E7EB; border-radius:10px;
+    padding:12px 16px; font-size:14.5px; color:#111827; margin-bottom:18px;
+  }
+
+  h3.sec {
+    font-size:14px; font-weight:700; color:#111827; margin:22px 0 8px;
+    padding-left:10px; border-left:3px solid #2563EB;
+  }
+  .card p, .card li { font-size:14.5px; color:#374151; }
+  .card ul, .card ol { padding-left:22px; margin:6px 0; }
+  .card li { margin-bottom:4px; }
+
+  .src-list { list-style:none; padding-left:0; }
+  .src-list li { margin-bottom:6px; }
+  .src-type {
+    display:inline-block; font-size:11px; font-weight:700; color:#2563EB;
+    background:#EFF6FF; border:1px solid #BFDBFE; border-radius:6px;
+    padding:1px 8px; margin-right:8px;
+  }
+
+  .stack { width:100%; border-collapse:collapse; margin:6px 0; }
+  .stack td { border:1px solid #E5E7EB; padding:7px 12px; font-size:13.5px; vertical-align:top; }
+  .stack td.k { background:#F9FAFB; font-weight:600; color:#111827; width:110px; white-space:nowrap; }
+
+  .flow { display:flex; flex-direction:column; gap:0; margin:10px 0; }
+  .flow .node {
+    background:#F9FAFB; border:1px solid #E5E7EB; border-radius:10px;
+    padding:9px 16px; font-size:13.5px; color:#111827;
+  }
+  .flow .node b { color:#2563EB; }
+  .flow .arrow { text-align:center; color:#9CA3AF; font-size:14px; line-height:1.4; }
+
+  pre {
+    background:#111827; color:#E5E7EB; border-radius:10px;
+    padding:16px 18px; overflow-x:auto; font-size:13px; line-height:1.6;
+    font-family:"SFMono-Regular",Consolas,"Liberation Mono",Menlo,monospace;
+    margin:8px 0;
+  }
+  code {
+    font-family:"SFMono-Regular",Consolas,Menlo,monospace;
+    background:#F3F4F6; color:#111827; border-radius:5px; padding:1px 6px; font-size:13px;
+  }
+  pre code { background:transparent; color:#E5E7EB; padding:0; }
+
+  .pitfall { background:#FFFBEB; border:1px solid #FDE68A; border-radius:10px; padding:14px 18px; margin:8px 0; }
+  .pitfall b { color:#B45309; }
+  .truth { background:#FEF7F7; border:1px solid #FECACA; border-radius:10px; padding:14px 18px; margin:8px 0; }
+  .truth b { color:#B91C1C; }
+
+  .repro { display:inline-block; font-size:13px; font-weight:700; padding:4px 12px; border-radius:999px; background:#ECFDF5; color:#16A34A; border:1px solid #BBF7D0; }
+  .repro.hard { background:#FFFBEB; color:#B45309; border-color:#FDE68A; }
+  .repro.dev { background:#FEF2F2; color:#B91C1C; border-color:#FECACA; }
+
+  .migrate { display:grid; grid-template-columns:repeat(3,1fr); gap:10px; margin:8px 0; }
+  .migrate .m {
+    background:#F9FAFB; border:1px solid #E5E7EB; border-radius:10px; padding:12px 14px; font-size:13px; color:#374151;
+  }
+  .migrate .m b { display:block; color:#111827; margin-bottom:4px; }
+
+  .course {
+    background:#F5F8FF; border:1px solid #BFDBFE; border-radius:10px; padding:16px 20px; margin:8px 0;
+  }
+  .course table { width:100%; border-collapse:collapse; }
+  .course td { padding:4px 8px 4px 0; font-size:13.5px; vertical-align:top; color:#374151; }
+  .course td.k { font-weight:600; color:#111827; width:88px; white-space:nowrap; }
+
+  .trainer {
+    border-left:3px solid #16A34A; background:#F0FDF4; border-radius:0 10px 10px 0;
+    padding:12px 18px; font-size:14px; color:#14532D; margin:10px 0 4px;
+  }
+  .trainer b { color:#16A34A; }
+
+  .verdict { display:grid; grid-template-columns:repeat(5,1fr); gap:10px; margin:8px 0; }
+  .verdict .v {
+    background:#F9FAFB; border:1px solid #E5E7EB; border-radius:10px; padding:12px; text-align:center;
+  }
+  .verdict .v .k { font-size:11.5px; color:#6B7280; margin-bottom:4px; }
+  .verdict .v .val { font-size:17px; font-weight:800; }
+  .lv-h { color:#16A34A; }
+  .lv-m { color:#F59E0B; }
+  .lv-l { color:#DC2626; }
+
+  section.block { margin-top:40px; }
+  section.block > h2 {
+    font-size:22px; font-weight:800; margin-bottom:16px; padding-bottom:10px;
+    border-bottom:2px solid #E5E7EB;
+  }
+  .panel { background:#FFFFFF; border:1px solid #E5E7EB; border-radius:14px; padding:24px 28px; margin-bottom:20px; }
+  .panel h3 { font-size:16px; margin-bottom:10px; }
+  .panel p, .panel li { font-size:14.5px; color:#374151; }
+  .panel ul { padding-left:22px; }
+  .panel li { margin-bottom:6px; }
+  .panel table { width:100%; border-collapse:collapse; margin:8px 0; }
+  .panel th, .panel td { border:1px solid #E5E7EB; padding:7px 10px; font-size:13px; text-align:left; vertical-align:top; }
+  .panel th { background:#F9FAFB; color:#111827; }
+
+  .checklist { columns:2; column-gap:32px; }
+  .checklist li { list-style:none; margin-bottom:6px; font-size:13.5px; }
+  .checklist li::before { content:"✓ "; color:#16A34A; font-weight:700; }
+
+  footer { text-align:center; color:#9CA3AF; font-size:12.5px; margin-top:40px; }
+
+  @media(max-width:640px) {
+    header.top { padding:24px 20px; }
+    header.top h1 { font-size:22px; }
+    .meta-grid { grid-template-columns:repeat(2,1fr); }
+    .card { padding:20px 16px; }
+    .migrate { grid-template-columns:1fr; }
+    .verdict { grid-template-columns:repeat(2,1fr); }
+    .checklist { columns:1; }
+    .num { min-width:auto; }
+    .panel { padding:18px 16px; }
+    .stack td.k { width:82px; }
+  }
+
+</style>
+</head>
+<body>
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="../index.html"><img class="mark" src="../assets/images/logo.svg" alt="文明雷达" width="32" height="32" style="width:32px;height:32px;background:none;border:0;box-shadow:none;border-radius:6px">全球文明进程重大事件日报</a>
+    <button class="nav-toggle" type="button" aria-label="菜单" aria-expanded="false">☰</button>
+    <nav class="main-nav" aria-label="主导航"><ul><li><a href="../index.html">首页</a></li><li><a href="../archive.html">日报档案</a></li><li><a href="../radar.html">趋势雷达</a></li><li><a href="../tutorial/index.html" class="active">AI实战</a></li><li><a href="../categories/science.html">科学</a></li><li><a href="../categories/politics.html">政治</a></li><li><a href="../categories/culture.html">文化</a></li><li><a href="../categories/technology.html">科技</a></li></ul></nav>
+  </div>
+</header>
+<main class="site-main">
+<div class="tut-wrap">
+  <nav class="breadcrumb" aria-label="面包crumb"><a href="../index.html">首页</a><span class="sep">/</span><a href="../tutorial/index.html">AI实战</a><span class="sep">/</span><span>2026-10-02</span></nav>
+
+
+<header class="top">
+  <div class="kicker">China AI Builders · Real Cases · Workflows · Business</div>
+  <h1>AI极客实战案例日报</h1>
+  <div class="sub">China AI Builders · Real Cases · Workflows · Agents · Open Source · Business</div>
+  <div class="meta-grid">
+    <div class="m"><div class="k">日报日期</div><div class="v">2026-10-02</div></div>
+    <div class="m"><div class="k">执行日期</div><div class="v">2026-10-02 12:13</div></div>
+    <div class="m"><div class="k">精选案例</div><div class="v">2 个（宁缺毋滥）</div></div>
+    <div class="m"><div class="k">数据窗口</div><div class="v">10-01 12:00 → 10-02 12:00</div></div>
+  </div>
+</header>
+
+<div class="oneline">
+  <div class="lab">今日一句话</div>
+  <p>今天最值得中国 AI 从业者关注的，是两条线同时从「模型有多聪明」转向「约束与分发」：一边是有人把 3 个 Agent 实例管成一条可验收的交付流水线，一边是官方 Agent 运行时把能力变成了 4200+ 个可一键安装的插件。</p>
+</div>
+
+<nav class="cats">
+  <a href="#case01">案例 01｜Agent 交付流水线</a>
+  <a href="#case02">案例 02｜DSH 插件生态</a>
+  <a href="#observe">今日观察</a>
+  <a href="#radar">商业机会雷达</a>
+  <a href="#sources">原始资料</a>
+  <a href="#truth">真实性说明</a>
+</nav>
+
+<!-- ===================== 案例 01 ===================== -->
+<div class="card" id="case01">
+  <div class="card-head">
+    <div class="num">01</div>
+    <h2>用 3 个并行 Agent 实例 + git worktree 隔离 + 飞书多维表格任务队列，1 人 3 周交付一套 12 万的企业 AI 客服系统</h2>
+  </div>
+  <div class="badges">
+    <span class="badge b-cat">AI Coding / Agent 工程</span>
+    <span class="badge b-cat">企业交付</span>
+    <span class="badge b-date">原文 2026-10-01</span>
+    <span class="badge b-tag">一手实操</span>
+    <span class="badge b-warn">商业数字为作者自述</span>
+  </div>
+
+  <div class="oneliner">
+    <b>一句话结论：</b>它把「AI 写代码」从感受问题变成了调度问题——真正可复制的是约束设计，不是模型。
+  </div>
+
+  <h3 class="sec">01｜案例是什么？</h3>
+  <p>一位后端出身的开发者接了一套企业 AI 客服系统，报价 12 万、承诺 3 周交付。他没有招人，而是把项目切成一块块不超过 2 小时人工工作量的模块，每个模块交给一个并行运行的 AI Agent 实例，用 git worktree 给每个实例一个独立目录和分支，用一张飞书多维表格当任务队列，用 CI 当合并门禁。作者自述开发环节约八成代码由 Agent 完成；10-01 发布的这篇文章，是他对读者提问「你用的什么 Agent」的完整回答——拆开三个实例的上下文、工具与模型分档，并交代哪四类活他一条都没交出去。</p>
+
+  <h3 class="sec">02｜为什么今天值得关注？</h3>
+  <ul>
+    <li><b>两篇合起来才闭环</b>：09-30 的前作给商业结果（报价 12 万 / 交付 3 周 / 自己投入 10 天 / 成本 2–3 万），10-01 的这篇给工程细节（worktree 生命周期、乐观锁、心跳超时、CI 门禁）。「结果 + 方法」能同时公开的中文案例并不多。</li>
+    <li><b>为什么以前不容易做</b>：单个 Agent 能写代码不稀奇，难的是多个实例同时跑——谁在做哪个任务、任务做废了怎么退、实例崩了谁来收。以前这三件事要自建调度框架，维护成本比写业务还高。</li>
+    <li><b>为什么现在变得容易</b>：① 把模块切到「不超过 2 小时人工工作量」之后，验收口变成了单测 + 类型检查这种机器可判定的东西，信任被换成了可验证；② 便宜档模型足够覆盖 CRUD，作者自述一开始全用最强档，几天后发现八成任务根本用不上；③ 一张多维表格 + 几十行轮询脚本就够，不需要工作流引擎。</li>
+  </ul>
+
+  <h3 class="sec">03｜案例的前世今生</h3>
+  <p><b>前世。</b>2024–2025 年「AI 写代码」的主流粒度是函数级补全：人是主体，模型是加速器。那时的卡点不是模型不够聪明，而是三件事都缺——没有隔离（多个人或多个 Agent 会互相覆盖文件）、没有验收（改完不知道对不对）、没有回收（分支和临时目录越堆越多）。</p>
+  <p><b>发展。</b>① 长上下文与工具调用趋于稳定，模型能自己跑命令、自己读报错；② 终端型 Coding Agent 出现，把「写—跑—改」闭环交回模型自己；③ git worktree 这个 2015 年就有的 git 能力被重新发现——它是最便宜的「一个任务一个完整工作区」，比复制目录干净，比 stash 可控；④ CI 成为机器可判定的门禁，「不绿不合」这句话第一次真正可执行。</p>
+  <p><b>今生。</b>案例的作者做了两件关键的选择：把模块切分粒度绑定到「人工 2 小时」而不是「代码行数」，把并发实例数绑定到自己的 review 带宽而不是机器性能。他明确写到：加到第 4 个实例之后，产出不是变快了，而是变成排队等我看，总交付时间一点没少。这是一个来自实践的结论，不是理论推演。</p>
+  <p><b>下一步可能怎么发展（分析 / 推演）。</b>任务卡里的「验收标准」会从自然语言描述逐步走向可执行测试；「一个人管 3 个实例」的形态会走向「一个团队共享一张任务表」；这套约束有可能被包装成可复用的交付模板或服务，成为外包公司的方法论资产。以上属于推演，不是作者原文结论。</p>
+
+  <h3 class="sec">04｜原始资料</h3>
+  <ul class="src-list">
+    <li><span class="src-type">一手原文</span>本篇（2026-10-01）《读者问「你用的什么 Agent」：3 个 AI 员工的分工表和工具链》<br><a href="https://juejin.cn/post/7691203094870491176" target="_blank" rel="noopener">https://juejin.cn/post/7691203094870491176</a></li>
+    <li><span class="src-type">一手原文</span>前作（2026-09-30）《3 个 AI Agent 交付一个企业项目：4 人团队 2 个月，我 3 周做完》<br><a href="https://juejin.cn/post/7690841638806421538" target="_blank" rel="noopener">https://juejin.cn/post/7690841638806421538</a></li>
+    <li><span class="src-type">作者主页</span>王中阳讲AI · 掘金<br><a href="https://juejin.cn/user/2189882892232029/posts" target="_blank" rel="noopener">https://juejin.cn/user/2189882892232029/posts</a></li>
+  </ul>
+
+  <h3 class="sec">05｜作者是谁？</h3>
+  <p>掘金作者「王中阳讲AI」，主页自述为「技术总监 | 杭州智航星辰，12 年互联网技术老兵」。在本案例中，他的身份是<b>这套流程的实际使用者与项目交付方</b>，属于一手实践者。</p>
+  <div class="pitfall"><b>需要知道的一点：</b>该账号的文章普遍以「面试官问…」「读者问…」这类切入方式组织，带有明显的个人品牌与内容营销色彩；其企业身份、客户项目细节与商业数字均无法独立核实。本文只在「作者自述」的范围内引用这些数字。</div>
+
+  <h3 class="sec">06｜解决了什么真实问题？</h3>
+  <p>这个案例必须从需求侧理解，而不是从技术侧。</p>
+  <p>中小软件外包最常见的形态是：一家传统企业要一套管理系统或客服系统，预算 10–20 万，常规工期 1–2 个月，交付方配 4 人（2 后端 + 1 前端 + 1 测试）。<b>客户的痛点</b>是慢、贵、改不动；<b>交付方的痛点</b>是人力被钉死在确定性劳动上——真正的判断题只有一小块（架构、权限、事务边界），其余大量是 CRUD、页面、接口对接、测试用例。</p>
+  <p>作者的做法就是把这块「确定性劳动」整段交给 Agent，把判断题全部留在自己手里，并用 CI 守住质量底线。他给出的边界也很清楚：这套只适合业务逻辑清晰、CRUD 占比高、<b>且代码能被自动验证</b>的企业应用。</p>
+
+  <h3 class="sec">07｜完整技术栈</h3>
+  <table class="stack">
+    <tr><td class="k">模型</td><td><b>作者刻意不点名</b>（原文明确说明「这一层换得最快，几个月就变一次」），只给出分档原则：逻辑分支多、并发路径复杂的模块用强的一档；CRUD、管理后台页面、测试用例用便宜的一档。<b>本文不编造具体型号。</b></td></tr>
+    <tr><td class="k">工具</td><td>git worktree（工作区隔离）、飞书多维表格（任务队列）、CI（单测 + 类型检查门禁）、RAG 知识库（运维段上下文）、一个几十行的轮询回收脚本</td></tr>
+    <tr><td class="k">框架 / 语言</td><td>原文未限定；作者背景为 Go / 后端技术栈</td></tr>
+    <tr><td class="k">API</td><td>原文未提及具体接口形态</td></tr>
+    <tr><td class="k">数据库</td><td>原文未公开</td></tr>
+    <tr><td class="k">部署</td><td>原文提到「发布单 + 回滚脚本 + 流水线」，具体平台未公开</td></tr>
+    <tr><td class="k">MCP / Agent 形态</td><td>原文未使用 MCP；形态是「终端型 Coding Agent 实例 + 外部任务表」</td></tr>
+  </table>
+
+  <h3 class="sec">08｜完整 Workflow</h3>
+  <div class="flow">
+    <div class="node"><b>① 需求诊断</b>　输入：启动会录音 / 录屏　→　Agent 产出：需求文档初稿、业务流程图、架构图初稿、技术选型建议　→　人：砍需求、定终稿、客户签字</div>
+    <div class="arrow">↓</div>
+    <div class="node"><b>② 方案设计</b>　输入：确认后的需求文档　→　Agent 产出：系统架构、库表设计、接口设计、排期与风险清单　→　人：评审 + 定关键难点（作者自述初稿约三四成需返工）</div>
+    <div class="arrow">↓</div>
+    <div class="node"><b>③ 开发交付（核心环节）</b>　任务卡 → 建 worktree + 注入 AGENT_CONTEXT.md 硬约束 → Agent 在独立分支写码 → CI（单测 + 类型检查）→ 人 review → 合并 → 回收 worktree</div>
+    <div class="arrow">↓</div>
+    <div class="node"><b>④ 运维迭代</b>　输入：线上日志 + 工单历史 + 产品知识库　→　RAG 运维助手答客户小问题、改小需求并跑测出发布单　→　人：过一遍 diff；不可逆动作由人敲回车</div>
+    <div class="arrow">↓</div>
+    <div class="node"><b>⑤ 验收（每个实例交活前必须回答三问）</b>　改了哪些文件 / 怎么证明它对 / 错了怎么退</div>
+  </div>
+  <p>每一步的分工逻辑是：<b>Agent 出初稿和量，人做判断题和门禁。</b>作者反复强调，「初稿本身不值钱，值钱的是它不会累」，但评审这一步他一步没省。</p>
+
+  <h3 class="sec">09｜它到底是怎么实现的？</h3>
+  <p>剥开业务内容，这套流程真正的技术内核是三个机制：</p>
+  <p><b>机制一：隔离 —— worktree 的生命周期管理。</b>每个任务一个独立目录 + 独立分支，失败直接丢掉整个 worktree，不用回滚主干。作者踩到的两个细节：任务重跑时用 attempt 递增避免撞上旧目录；AGENT_CONTEXT.md 是未跟踪文件，<code>git worktree remove</code> 不带 <code>--force</code> 会被 git 拒绝。更重要的是回收纪律——「一个项目下来累计创建了 300 多个 worktree」，最终合进主分支约 180 个模块（作者自述占累计数六成左右）。</p>
+  <p><b>机制二：抢占 —— 状态机要做，但真正的原子手段是乐观锁。</b>任务状态只留五个取值：待分派 → 进行中 → 待评审 → 已验收 / 已阻塞。作者特别指出，状态约束本身是 read-then-write，两个实例同一瞬间读会同时看到「待分派」，挡不住重复领；真正让第二个写失败的是 <code>version</code> 字段——写回时带上读到的 version，与表里一致才写成功，不一致就重读重来。他还点出了一个容易被忽略的竞态源：<b>回收脚本和自己的人工 review 回填也是写者</b>，如果这两个写者不走 versioned write，就可能在实例刚写完结果的瞬间把状态盖掉。</p>
+  <p><b>机制三：回收 —— 心跳与超时打回。</b>心跳每 5 分钟写一次，写在单独一个「不抬 version」的字段上；30 分钟没有心跳即自动打回「待分派」，阈值取心跳间隔的 6 倍，任务跑慢一点不会被误杀。轮询间隔放到 60 秒以上，原因是表格没有 webhook，只能定时拉，且要避开接口频次限制。</p>
+  <p>此外还有一条工程纪律：合并前一律过 CI，单测加类型检查，不绿不合，Agent 写的代码和人写的走同一套门禁。作者认为这才是「敢不敢让 AI 写代码」的真正前提。</p>
+
+  <h3 class="sec">10｜手把手复现</h3>
+  <div class="truth"><b>以下步骤中，除 Step 0 为本文补充的建议外，其余均整理自作者原文（两篇）中明确给出的做法；作者对自己的示例脚本已注明「按你的项目改」。</b></div>
+  <p><b>Step 0（本文补充的建议）。</b>先确认你的项目能被自动验证：有测试、能本地跑起来、错了当天能发现。没有测试覆盖的老系统，这套流程不适用。</p>
+  <p><b>Step 1。</b>项目拆解：每个模块的粒度控制在「你自己写不超过 2 小时」。超过就继续切——这一步同时决定 worktree 的存活时间能不能按小时回收。</p>
+  <p><b>Step 2。</b>为每个模块写一张任务卡，落进一张多维表格：任务号、模块名、状态、接单实例、接单时间、心跳、version、attempt、worktree 路径、验收标准、产出分支。</p>
+  <p><b>Step 3。</b>批量建 worktree 并注入上下文：给每个实例一份 AGENT_CONTEXT.md，写清本次任务模块、验收标准与硬约束（只改本目录文件 / 接口契约见 docs/api-contract.yaml 不得自改 / 不得改权限判定与事务边界 / 完成后写回任务表且禁止自己点合并）。</p>
+  <p><b>Step 4。</b>启动实例：同一时刻最多 3 个（数量按你自己的 review 带宽定），每个实例只在被分配到的 worktree 里干活。</p>
+  <p><b>Step 5。</b>写一个几十行的轮询脚本：60 秒以上扫一次表，超过 30 分钟没心跳的任务打回「待分派」。作者强调这个脚本是纯轮询，只做扫表 + 打回，不承担编排职责。</p>
+  <p><b>Step 6。</b>合并门禁：走 CI 单测 + 类型检查，不绿不合。</p>
+  <p><b>Step 7。</b>合并后立刻回收：<code>git worktree remove --force</code> + <code>git worktree prune</code>。</p>
+  <p><b>Step 8。</b>明确划红线：权限判定 / 事务边界 / 幂等设计、架构决策、对外接口契约、不可逆操作（改 schema、删数据、首次上生产）四类不交给 Agent。</p>
+  <p><b>Step 9（本文补充的建议）。</b>数据脱敏：客户模块名与验收标准属于交付物，进第三方表格前先替换成模块代号。</p>
+
+  <h3 class="sec">11｜Prompt / Code / Config</h3>
+  <p><b>原作者公开的内容（原文直接给出）：</b></p>
+  <ul>
+    <li>worktree 创建 / 回收脚本（含幂等判断、<code>--force</code> 说明、回收后的 prune）</li>
+    <li>AGENT_CONTEXT.md 上下文注入模板（任务模块 + 验收标准 + 四条硬约束），原文以 heredoc 形式给出</li>
+    <li>任务卡 JSON 示例（含 task_id / module / status / claimed_by / claimed_at / last_heartbeat / version / attempt / worktree / 验收标准 / 产出）</li>
+    <li>回收逻辑说明：几十行轮询脚本，60 秒以上间隔，30 分钟无心跳打回</li>
+  </ul>
+  <p><b>原作者未公开的内容：</b>具体模型型号、系统提示词全文、CI 配置文件、业务代码。</p>
+  <p>硬约束原文（四条，摘自 AGENT_CONTEXT.md 示例）：</p>
+  <pre># 硬约束
+1. 只改动本目录下的文件
+2. 接口契约见 docs/api-contract.yaml，不得自行修改
+3. 不得改动权限判定与事务边界相关代码
+4. 完成后把状态写回任务表，禁止自己点合并</pre>
+  <p class="truth"><b>说明：</b>以上分类为「原作者公开」，本文未做任何补写或改写。原文中作者明确将示例标注为「示例任务卡 / 按你的项目改」。</p>
+
+  <h3 class="sec">12｜踩坑</h3>
+  <div class="pitfall">
+    <p><b>以下均为作者在原文中自述的踩坑，本文未独立复现：</b></p>
+    <ul>
+      <li>worktree 只建不删，两周就能把磁盘和 <code>git worktree list</code> 拖成一屏屏垃圾——worktree 是完整工作区检出，必须边用边回收。</li>
+      <li>AGENT_CONTEXT.md 未跟踪，<code>git worktree remove</code> 不带 <code>--force</code> 会被 git 拒绝。</li>
+      <li>状态字段的抢占是 read-then-write，挡不住同一瞬间的重复领；必须靠 version 乐观锁。</li>
+      <li>没有超时打回，实例崩在中间任务永久卡死，而你看到的还一直是「进行中」。</li>
+      <li>心跳写结论前要重读一次 version，否则任务跑几十分钟后开局读到的版本号早已过期，每次写回都失败。</li>
+      <li>全用最强档模型纯烧钱——作者自述八成任务用不上那个能力。</li>
+      <li>合规细节：客户模块名和验收标准属于交付物，进第三方表格前先脱敏成模块代号。</li>
+    </ul>
+  </div>
+  <div class="truth"><b>本文补充的观察（非作者原文）：</b>作者没有说明这套流程在「多人同时操作同一张表」时的表现，也没有公开 300 个 worktree / 180 个模块的原始记录、客户验收文件或 CI 日志，因此工程纪律部分可信度较高（细节具体、互相咬合），但<b>商业数字与交付规模无法独立验证</b>。</div>
+
+  <h3 class="sec">13｜中国用户能不能直接做？</h3>
+  <table class="stack">
+    <tr><td class="k">国内访问</td><td>可以。掘金 / 飞书 / git 托管 / CI 全部国内可用，本案例不依赖任何境外服务。</td></tr>
+    <tr><td class="k">注册</td><td>飞书多维表格需飞书账号（个人可注册）；git 平台与 CI 自选（Gitee / GitCode / 企微自建均可）。</td></tr>
+    <tr><td class="k">API</td><td>原文未点名模型。若要落地，接一家国产模型的 API 即可（DeepSeek / Kimi / GLM / Qwen 均提供 OpenAI 兼容接口，充值即用）。</td></tr>
+    <tr><td class="k">成本</td><td>工具侧近乎 0（飞书表格免费额度 + git + 自建或免费 CI）。token 成本作者自述包含在单项目 2–3 万成本内，未拆分。</td></tr>
+    <tr><td class="k">技术门槛</td><td><span class="repro dev">🔴 开发者级</span> 要会 git 分支与 worktree、要能写测试、要能配 CI。作者自己的判断是：门槛不在技术栈，在你敢不敢把项目切得足够细。</td></tr>
+  </table>
+
+  <h3 class="sec">14｜国产替代方案</h3>
+  <table class="stack">
+    <tr><td class="k">原方案</td><td>作者刻意不点名模型，可视为「强推理档 + 便宜档」的抽象分档。</td></tr>
+    <tr><td class="k">中国用户方案</td><td>
+      <b>已验证（作者原文明用）：</b>git worktree 做隔离、飞书多维表格做任务队列、CI 做门禁、心跳 + version 乐观锁 + 超时打回这套机制。<br>
+      <b>官方支持：</b>DeepSeek / Kimi / GLM / Qwen 均提供 OpenAI 兼容 API，可作为「强 / 便宜两档」的落点。<br>
+      <b>本文推测（未验证）：</b>用维格表 / 腾讯文档智能表格替代飞书多维表格；用国产 Coding Agent CLI（如 Qwen Code、CodeGeeX、TRAE 等）替代原文的终端型 Agent。
+    </td></tr>
+  </table>
+  <p class="truth"><b>必须区分的部分：</b>作者已验证的是「机制」，不是「型号」。把「强档用 DeepSeek / 便宜档用某小参数模型」写成已验证结论是错的——原文根本没写型号。</p>
+
+  <h3 class="sec">15｜中国企业可以怎么用？</h3>
+  <ul>
+    <li><b>企业场景 1：中型管理系统的乙方交付。</b>CRM、工单、审批、数据看板这类「判断题只占一小块」的项目，把 CRUD 与后台页面交给 Agent，架构与权限判定留人，用 CI 保证底线。这是案例本身的场景。</li>
+    <li><b>企业场景 2：企业 IT 的 backlog 消化。</b>用同一套任务卡机制把内部需求池里的低风险改造（表单调整、报表新增、后台页）批量推进，每个改动都过 CI 门禁；因为改动小、可回滚，风险可控。</li>
+    <li><b>企业场景 3：集成商 / 外包公司的产能放大器。</b>同一张任务表管理多个客户项目，按客户隔离 worktree 与知识库；注意作者提的脱敏要求——客户模块名和验收标准不能直接落进第三方表格。</li>
+  </ul>
+
+  <h3 class="sec">16｜中国消费者可以怎么用？</h3>
+  <p>这个案例本质是 B 端交付流程，对纯消费者的直接适用性有限。但对个人有三个务实用法：</p>
+  <ol>
+    <li><b>个人接单者（自由开发者）：</b>把同一套约束搬到自己接的小项目上——后台管理系统、数据看板、门店小程序后台，先开 1 个实例跑通，再逐步加。</li>
+    <li><b>小团队内部工具：</b>把「重复出现的运营小需求」（导出报表、字段调整、页面文案批量改）做成任务卡 + Agent 的固定流程。</li>
+    <li><b>自学者：</b>把这套流程当作真实工程训练场——它训练的不是写代码，而是切分、验收、回滚的工程判断力。</li>
+  </ol>
+
+  <h3 class="sec">17｜如何变成一个赚钱的项目？</h3>
+  <p><b>产品化。</b>最直接的「产品」不是软件，而是可复用的交付物：任务卡模板 + worktree 脚本 + CI 配置基线 + AGENT_CONTEXT.md 模板，打包成一份「Agent 交付启动包」。它不需要服务器，交付即用。</p>
+  <p><b>服务化。</b>把流程本身卖给外包公司：帮他们搭「任务表 + worktree + CI 门禁 + 超时回收」，解决的是「老板不敢让 AI 碰客户代码」这个信任问题。</p>
+  <p><b>咨询化。</b>帮企业找「哪些模块可以切出去」——这一步恰恰是最难的：切不细，Agent 就只是个贵的自动补全。</p>
+  <p><b>培训化。</b>这是本案例最顺滑的变现路径：完整的方法论 + 一段真实可演示的脚本 + 一个能当场跑出 PR 的练习，天然适合 60 分钟 Workshop。</p>
+  <p><b>内容化。</b>拆成系列内容：任务卡怎么设计 / 乐观锁为什么必要 / 什么活绝对不能交出去 / 并发上限为什么是 review 带宽。每一篇都是可独立传播的工程判断。</p>
+  <p><b>行业化。</b>把「可切模块清单 + 验收标准库」按行业沉淀——电商后台、教育教务、门店管理、SaaS 客服，各行业能切的模块并不相同。</p>
+  <div class="truth"><b>已验证 vs 推导：</b>作者自述已有一笔 12 万的单项目收入（1 人 / 3 周 / 成本 2–3 万 / 利润率自述 75% 以上）——这属于<b>作者自述、无法独立验证</b>。以上产品化 / 服务化 / 咨询化 / 培训化 / 内容化 / 行业化均属<b>基于案例结构推导出的潜在商业模式</b>，暂无收入证据。</div>
+
+  <h3 class="sec">18｜变现路径</h3>
+  <div class="panel" style="padding:0; border:none;">
+  <table>
+    <tr><th>路径</th><th>客户</th><th>产品 / 服务</th><th>收费方式</th><th>难度</th></tr>
+    <tr><td>项目交付</td><td>中小企业</td><td>AI 客服 / 管理系统</td><td>项目制（作者自述 12 万 / 单）</td><td>中</td></tr>
+    <tr><td>流程咨询</td><td>软件外包公司</td><td>搭「任务表 + worktree + CI 门禁」</td><td>项目制</td><td>中</td></tr>
+    <tr><td>模板产品</td><td>独立开发者 / 小团队</td><td>任务卡模板 + 脚本 + CI 基线包</td><td>一次性 / 订阅</td><td>低</td></tr>
+    <tr><td>培训</td><td>外包团队 / 企业 IT</td><td>Workshop / 内训</td><td>按人 / 按场</td><td>低</td></tr>
+  </table>
+  </div>
+  <p class="truth"><b>这是分析，不是保证收益。</b>除第一行为作者自述外，其余均为本文推导；不得据此承诺任何收入。</p>
+
+  <h3 class="sec">19｜如果我是一个中国独立开发者（7 天 MVP）</h3>
+  <p>假设：1 个人、预算有限、有基础编程能力、使用国产模型 API。</p>
+  <ul>
+    <li><b>Day 1：</b>选一个自己熟的小项目（后台管理 / 数据看板），确认它能跑、能加测试。不能自动验证的项目直接换掉。</li>
+    <li><b>Day 2：</b>把它切成「人工 ≤2 小时」的模块，写成任务卡表（飞书多维表格），定义五态状态机并加上 <code>version</code> 字段。</li>
+    <li><b>Day 3：</b>写 worktree 创建 / 回收脚本 + AGENT_CONTEXT.md 模板（含四条硬约束），先把建、删、prune 跑顺。</li>
+    <li><b>Day 4：</b>接一家国产模型 API，用 <b>1 个实例</b>跑 2 个 CRUD 模块，打通「领任务 → 写码 → CI → 回写状态 → 合并 → 回收」。</li>
+    <li><b>Day 5：</b>补心跳字段与 30 分钟超时打回脚本；故意 kill 一个实例，验证任务能被自动打回而不是永久卡死。</li>
+    <li><b>Day 6：</b>跑一个需要判断的模块，验证自己划的红线守不守得住（权限判定 / 事务边界 / 接口契约 / 不可逆操作）。</li>
+    <li><b>Day 7：</b>复盘账：失败模块的原因分布、每个模块实际 token 成本、review 时间占比；据此决定要不要开第 2 个实例。</li>
+  </ul>
+
+  <h3 class="sec">20｜如何迁移到其他行业</h3>
+  <div class="migrate">
+    <div class="m"><b>① 电商 / 门店后台</b>商品管理、订单导出、活动页配置这类后台需求重复度极高，最适合用任务卡批量推进。</div>
+    <div class="m"><b>② 企业内部 IT</b>HR、财务、行政的内部系统改造，改动小、可回滚、有 CI 兜底，适合作为企业内的第一块试点。</div>
+    <div class="m"><b>③ 海外远程外包</b>同一套约束，任务卡与 AGENT_CONTEXT.md 换成英文即可；需另行评估数据出境与客户合规要求。</div>
+  </div>
+
+  <h3 class="sec">21｜培训课程设计</h3>
+  <div class="course">
+    <table>
+      <tr><td class="k">课程名称</td><td>《Agent 交付流水线：把项目管理从「盯人」改成「盯任务卡」》</td></tr>
+      <tr><td class="k">适合人群</td><td>2 年以上开发经验的外包开发者、企业 IT、技术负责人</td></tr>
+      <tr><td class="k">建议时长</td><td>半天（可拆分为 30 分钟 Demo + 60 分钟 Workshop）</td></tr>
+      <tr><td class="k">30 分钟 Demo</td><td>现场把一个真实模块写成任务卡，让 Agent 写码，故意让 CI 卡住一次，再演示一次超时打回</td></tr>
+      <tr><td class="k">60 分钟 Workshop</td><td>学员自带一个小项目，切出 2 个模块，各自跑出 2 个 PR（含一次失败回收）</td></tr>
+      <tr><td class="k">半天课程</td><td>加讲四块：worktree 生命周期与回收纪律、乐观锁与心跳阈值、红线划定（哪四类活不交出去）、成本与 review 带宽核算</td></tr>
+      <tr><td class="k">课程目标</td><td>学员能够独立搭建「任务卡表 + worktree 隔离 + CI 门禁 + 超时回收」的最小流水线</td></tr>
+      <tr><td class="k">现场 Demo</td><td>任务卡设计 → 上下文注入 → CI 拦截 → 超时打回（四段，每段可独立演示）</td></tr>
+      <tr><td class="k">学员练习</td><td>为一个真实模块写出验收标准与四条硬约束（这两项是学员最容易写空的地方）</td></tr>
+      <tr><td class="k">课后作业</td><td>用 1 个实例完成一个真实模块并提交 CI 记录 + token 消耗账</td></tr>
+      <tr><td class="k">企业迁移</td><td>选定一个内部系统作为试点，产出可复用的验收标准库与红线清单</td></tr>
+    </table>
+  </div>
+
+  <h3 class="sec">22｜培训师点评</h3>
+  <div class="trainer"><b>这个案例真正值得教的，</b>不是「3 个 Agent」，而是那张任务卡上的四条硬约束，和「不加第 4 个实例」的判断力。学员最该带走的是一个动作：把信任换成可验证——CI 不绿不合，比任何提示词技巧都值钱。</div>
+
+  <h3 class="sec">23｜最终判断</h3>
+  <div class="verdict">
+    <div class="v"><div class="k">落地性</div><div class="val lv-h">高</div></div>
+    <div class="v"><div class="k">中国市场相关性</div><div class="val lv-h">高</div></div>
+    <div class="v"><div class="k">商业价值</div><div class="val lv-h">高<br><span style="font-size:11px;color:#6B7280;">（作者自述已成交）</span></div></div>
+    <div class="v"><div class="k">复现难度</div><div class="val lv-m">中高</div></div>
+    <div class="v"><div class="k">变现潜力</div><div class="val lv-h">高</div></div>
+  </div>
+  <p style="margin-top:10px;color:#6B7280;font-size:13px;">这是案例属性描述，不是「最佳案例排名」。</p>
+</div>
+
+<!-- ===================== 案例 02 ===================== -->
+<div class="card" id="case02">
+  <div class="card-head">
+    <div class="num">02</div>
+    <h2>DeepSeek Harness + dsh-market：官方 Agent 运行时里的插件市场，目录已收录 4200+ 个插件</h2>
+  </div>
+  <div class="badges">
+    <span class="badge b-cat">AI Agent 运行时</span>
+    <span class="badge b-cat">插件生态 / 分发</span>
+    <span class="badge b-date">窗口内更新 2026-10-02 00:11</span>
+    <span class="badge b-tag">开源项目（MIT）</span>
+    <span class="badge b-warn">60% 口径来自媒体转述</span>
+  </div>
+
+  <div class="oneliner">
+    <b>一句话结论：</b>官方 Agent 运行时 + 4200+ 插件目录 + 6 元赠金，中国开发者第一次有了「插件即产品」的低成本入口。
+  </div>
+
+  <h3 class="sec">01｜案例是什么？</h3>
+  <p>DeepSeek 在 8-13 开源了官方 Agent 运行时 <b>DeepSeek Harness</b>（口号是「一切皆插件」：工具是插件、终端是插件、Agent 循环是插件、连交互界面也可以是插件），9-29 发布 v0.2 预览版并把 macOS / Windows 桌面安装包放上官网，普通用户下载登录就能用。第三方开发者在它之上做出了<b>插件市场 dsh-market</b>：用户在 Harness 的设置页里就能浏览、搜索、一键安装社区插件，并管理更新、备份与还原。这个市场在 2026-10-02 00:11（北京时间）发布了 v1.66.8，其插件目录已收录 4200+ 个插件。</p>
+
+  <h3 class="sec">02｜为什么今天值得关注？</h3>
+  <ul>
+    <li><b>窗口内的事实（可核实）：</b>dsh-market v1.66.8 发布于 2026-10-01T16:11:48Z，即<b>北京时间 10-02 00:11</b>；同一窗口内多个社区外壳项目在推送：awesome-dsh-plugin（10-02 00:27）、dsh-web（10-01 18:34）、dsh-TUI（10-02 12:17）、deepseek-harness-desktop（10-02 11:06，均为北京时间）。</li>
+    <li><b>为什么是现在：</b>v0.2 把插件安装从命令行搬进了图形界面（输入 npm 包名即可装、停用、卸载），并给符合条件的用户发了 6 元体验赠金（有效期至 10-06）。插件从「开发者玩具」变成了「普通用户的使用方式」。中文媒体转述官方口径称，按模型 API 用户统计，约 60% 的 Harness 用户使用过第三方插件。</li>
+    <li><b>为什么以前不容易：</b>v0.1 只能命令行启动，用户要自己装环境、配 API Key、在终端敲指令——对开发者不算什么，对普通人是硬门槛；插件散落 GitHub 各处，不知道哪个好用、怎么装、装完怎么更新。</li>
+    <li><b>变化点：</b>插件第一次变成了有目录、有安装器、有兼容性声明、有更新与回滚语义的<b>分发对象</b>。</li>
+  </ul>
+
+  <h3 class="sec">03｜案例的前世今生</h3>
+  <p><b>前世。</b>2025 年以来的终端型 Coding Agent 把「工具调用」做成了智能体的一等公民；MCP 解决了「怎么把外部能力接进来」，但每个客户端各接各的，能力无法跨客户端分发。开发者做的小工具大多只能发个仓库求 star。</p>
+  <p><b>发展。</b>2026-08-13，DeepSeek Harness v0.1 以 MIT 协议开源（官方仓库现为 241,847 Star / 29,030 Fork）；随后社区在其上长出多种外壳——桌面端、TUI、Web 聚合、插件目录、皮肤与预设包。这段时间的主题不是「模型更强」，而是<b>补齐分发与治理</b>：兼容性怎么声明、更新怎么不误伤、来源不明怎么拦住。</p>
+  <p><b>今生。</b>v0.2 预览 + 桌面安装包 + 图形化插件管理 + 创造模式（用自然语言让 Harness 自己写插件），加上社区市场的 4200+ 插件目录，插件生态从「技术概念」走到了「用户采纳」。</p>
+  <p><b>下一步可能怎么发展（分析 / 推演）。</b>官方插件市场落地后，可能出现插件的质量分级与来源标记；企业侧会出现「私有插件市场」——把内部工具打包成插件分发给全员，并治理「谁能装、装哪个版本、怎么回滚」；插件的商业化会从「开源换 star」走向付费增强与企业定制。以上为推演，非事实。</p>
+
+  <h3 class="sec">04｜原始资料</h3>
+  <ul class="src-list">
+    <li><span class="src-type">官方仓库</span>deepseek-ai/deepseek-harness（MIT，241,847 Star / 29,030 Fork）<br><a href="https://github.com/deepseek-ai/deepseek-harness" target="_blank" rel="noopener">https://github.com/deepseek-ai/deepseek-harness</a></li>
+    <li><span class="src-type">官方发布</span>dsh-v0.2.0-rc.2 Release，发布于 2026-09-29T09:42:36Z（北京时间 09-29 17:42）<br><a href="https://github.com/deepseek-ai/deepseek-harness/releases" target="_blank" rel="noopener">https://github.com/deepseek-ai/deepseek-harness/releases</a></li>
+    <li><span class="src-type">npm 包</span>@deepseek-ai/dsh（latest 0.2.0-rc.2，2026-09-29T09:56Z 发布）<br><a href="https://www.npmjs.com/package/@deepseek-ai/dsh" target="_blank" rel="noopener">https://www.npmjs.com/package/@deepseek-ai/dsh</a></li>
+    <li><span class="src-type">官方产品页</span><a href="https://deepseek.com/harness" target="_blank" rel="noopener">https://deepseek.com/harness</a></li>
+    <li><span class="src-type">插件市场</span>dsh-market/dsh-market（MIT，5,252 Star）；v1.66.8 发布于 2026-10-01T16:11:48Z<br><a href="https://github.com/dsh-market/dsh-market" target="_blank" rel="noopener">https://github.com/dsh-market/dsh-market</a>　｜　<a href="https://dshmarket.com" target="_blank" rel="noopener">https://dshmarket.com</a></li>
+    <li><span class="src-type">插件目录</span><a href="https://awesome-dsh-plugin.com" target="_blank" rel="noopener">https://awesome-dsh-plugin.com</a>　（GitHub：<a href="https://github.com/awesome-dsh-plugin/awesome-dsh-plugin" target="_blank" rel="noopener">awesome-dsh-plugin/awesome-dsh-plugin</a>，17,560 Star）</li>
+    <li><span class="src-type">中文媒体分析</span>（二手，2026-10-01 12:51《梁文锋开始「送Token」了》）<br><a href="https://www.sohu.com/a/1083065736_360352" target="_blank" rel="noopener">https://www.sohu.com/a/1083065736_360352</a></li>
+  </ul>
+
+  <h3 class="sec">05｜作者是谁？</h3>
+  <ul>
+    <li><b>官方侧：</b>deepseek-ai/deepseek-harness 是 DeepSeek 官方仓库（MIT 协议、官方产品页 deepseek.com/harness）。项目负责人姓名、立项时间等信息来自中文媒体转述的「投资人交流会纪要」类内容，<b>本文不将其作为事实引用</b>。</li>
+    <li><b>生态侧：</b>dsh-market 由第三方组织账号维护（具体个人身份未公开确认）；社区桌面外壳有多家团队在做（anywhere-labs、dataelement、dsh-tauri 等），各自独立维护、非官方产品。无法确认的不猜。</li>
+  </ul>
+
+  <h3 class="sec">06｜解决了什么真实问题？</h3>
+  <p><b>用户侧的问题：</b>智能体「能聊不能干活」，缺的不是模型，而是可组合的能力和拿到能力的入口。企业想把自己的内部工具接进 Agent，过去要自己写工具、自己维护版本。</p>
+  <p><b>开发者侧的问题：</b>做出来的小工具有能力、没渠道——只能发仓库求 star，用户装上之后怎么更新、出问题怎么退，全都没标准。</p>
+  <p>Harness + 插件市场解决的是<b>能力的分发</b>：能力做成插件 → 进目录 → 用户在设置里一键装 → 有兼容性声明、有更新检查、有备份还原。这条链路走通之前，插件只是代码；走通之后，插件才是产品。</p>
+
+  <h3 class="sec">07｜完整技术栈</h3>
+  <table class="stack">
+    <tr><td class="k">模型</td><td>DeepSeek 官方模型；社区外壳普遍支持接入第三方模型供应商（具体清单以各项目 README 为准，本文不转述未逐项核实的清单）</td></tr>
+    <tr><td class="k">运行时</td><td>DeepSeek Harness 本体（TypeScript，MIT）</td></tr>
+    <tr><td class="k">插件市场</td><td>dsh-market（TypeScript，npm 包名 <code>dshmarket</code>，MIT）</td></tr>
+    <tr><td class="k">语言 / 环境</td><td>Node.js ≥ 20；市场要求宿主 dsh web ≥ 0.1.0-rc.6</td></tr>
+    <tr><td class="k">分发</td><td>npm（官方 CLI 包 <code>@deepseek-ai/dsh</code>；市场包 <code>dshmarket</code>）</td></tr>
+    <tr><td class="k">协议</td><td>MIT（官方仓库与 dsh-market 均为 MIT，已核）</td></tr>
+    <tr><td class="k">MCP / 插件</td><td>插件机制即 Harness 的扩展方式；<code>engines.dsh</code> 或 lockstep <code>@deepseek-ai/dsh-*</code> peers 用于声明版本要求</td></tr>
+    <tr><td class="k">部署</td><td>本地桌面端（macOS / Windows 安装包）或本地 Web UI；无云端强依赖</td></tr>
+  </table>
+
+  <h3 class="sec">08｜完整 Workflow</h3>
+  <div class="flow">
+    <div class="node"><b>① 使用侧（Harness 主流程）</b>　用户下任务 → Agent 读取工作区 → 选择工具 / 插件 → 执行 → 侧栏实时预览文件与 diff → 人审 → 产出</div>
+    <div class="arrow">↓</div>
+    <div class="node"><b>② 获取能力（插件市场）</b>　打开设置 → 插件市场 → 浏览 / 搜索 4200+ 目录（带截图、star 数、宿主版本兼容提示）→ 确认来源 → 一键安装 → 刷新页面生效</div>
+    <div class="arrow">↓</div>
+    <div class="node"><b>③ 维护（更新与还原）</b>　逐插件检查更新（npm 版本或钉住的 commit 对比 HEAD）→ 一键更新 → 备份为可读 JSON / WebDAV 每日自动备份 / 私有 Gist 同步 → 还原走合并语义（备份后新装的插件保留）</div>
+    <div class="arrow">↓</div>
+    <div class="node"><b>④ 造能力（创造模式）</b>　用自然语言描述需求 → Harness 读取插件开发 skill → 生成插件代码 → 调用插件管理器安装</div>
+    <div class="arrow">↓</div>
+    <div class="node"><b>⑤ 治理（人）</b>　确认插件来源、评估以本机权限运行的风险、必要时用安全模式排查启动问题</div>
+  </div>
+
+  <h3 class="sec">09｜它到底是怎么实现的？</h3>
+  <p>这个案例最值得抄的不是功能列表，而是三个工程决策（均来自 dsh-market 的 README 自述）：</p>
+  <p><b>决策一：兼容性「只隐藏确认不匹配的」。</b>插件卡片显示 <code>engines.dsh</code> 或 lockstep <code>@deepseek-ai/dsh-*</code> peers 声明的宿主版本要求；可选的过滤器只隐藏<b>已确认不匹配</b>的条目，未声明版本、格式错误、不可用、只在 GitHub 上的条目仍然可见——而不是替用户「猜它不兼容」。这是一个很克制的产品判断：宁可少过滤，不可误杀。</p>
+  <p><b>决策二：更新语义防「静默替换」。</b>从压缩包安装的插件，只会从它自己的来源更新；目录里一个只是同名的条目永远不会被当成它的更新。这正是 v1.66.8 修的问题（PR #770：压缩包安装的更新不再被同名 npm 包整个替换）。对一个「一键安装」的市场来说，这条语义决定了用户敢不敢点更新。</p>
+  <p><b>决策三：中国下载区域的 GitHub 路由回退。</b>README 自述：在中国下载区域，Git refs、README 内容、头像各自维护自己的回退顺序，并记住上次可用的路由。这条对国内用户有直接体感——它决定了插件市场在弱网/受限网络下是否可用。</p>
+  <p>辅助设计：备份还原是 <b>merge 语义</b>而非覆盖（备份之后装的插件不会被清掉），写入前校验、失败回滚；把「我为什么装了这个插件」的备注、分组、收藏都存本地（不发送到任何地方）；未处理的通知可以「本次启动内忽略」，而不是每次刷新都再提醒一次。</p>
+
+  <h3 class="sec">10｜手把手复现</h3>
+  <div class="truth"><b>Step 1 / 3 / 4 / 6 来自官方仓库与 dsh-market README 的原始说明；Step 5 来自中文媒体对官方演示的转述，本文未独立复现；Step 2 为两者综合。</b></div>
+  <p><b>Step 1。</b>安装 Harness：从官方产品页下载 macOS / Windows 桌面安装包，或使用 npm 包 <code>@deepseek-ai/dsh</code>。</p>
+  <p><b>Step 2。</b>配置模型：桌面端走「登录即用」；命令行模式需在设置里配置模型与 API Key。首次启动会引导选择供应商并录入密钥。</p>
+  <p><b>Step 3。</b>安装插件市场，然后重启 <code>dsh web</code>：</p>
+  <pre>dsh plugin --profile web add dshmarket</pre>
+  <p>重启后打开 <b>设置 → 插件市场</b>。注意 README 明确要求宿主 <code>dsh web ≥ 0.1.0-rc.6</code>：在更旧的宿主上市场会自我禁用并在浏览器控制台说明原因。</p>
+  <p><b>Step 4。</b>浏览目录并一键安装：关注卡片上的宿主版本兼容提示；大部分插件安装后刷新页面即可生效，无需重启。</p>
+  <p><b>Step 5。</b>用创造模式写自己的第一个插件：在 Agent 预设里进入创造模式，用自然语言描述需求（例如「给我写一个稿件检查器插件」），让它读取插件开发 skill、生成代码并安装。<b>此步骤来自媒体对官方演示的转述（演示中生成番茄钟插件用时约 5–6 分钟），本文未独立复现。</b></p>
+  <p><b>Step 6。</b>备份：把当前 profile 的插件清单与配置导出为可读 JSON，或配置 WebDAV 每日自动备份 / 私有 Gist 同步。</p>
+
+  <h3 class="sec">11｜Prompt / Code / Config</h3>
+  <p><b>项目公开的（可直接引用）：</b></p>
+  <ul>
+    <li>插件市场安装命令：<code>dsh plugin --profile web add dshmarket</code></li>
+    <li>宿主版本要求：<code>dsh web ≥ 0.1.0-rc.6</code></li>
+    <li>npm 包名：<code>dshmarket</code>（市场）、<code>@deepseek-ai/dsh</code>（官方 CLI）</li>
+    <li>插件兼容性声明字段：<code>engines.dsh</code>、lockstep <code>@deepseek-ai/dsh-*</code> peers</li>
+  </ul>
+  <p><b>未公开 / 本文未获取的：</b>插件清单（manifest）的完整字段规范、创造模式的系统提示词、目录抓取与刷新机制的具体实现。本文不编造这些细节。</p>
+
+  <h3 class="sec">12｜踩坑</h3>
+  <div class="pitfall">
+    <p><b>来自项目 README 的明确提示（可信度较高）：</b></p>
+    <ul>
+      <li><b>桌面端自带的 dsh 可能比 npm 装到的更旧</b>，导致插件市场入口不出现——README 直接点名了这个问题（对应仓库 issue #139）。遇到「设置里没有插件市场」，先查宿主版本。</li>
+      <li>市场自身也可能被第三方渠道「静默替换」：v1.66.8 修的就是「压缩包安装的更新被同名 npm 包整个替换」。</li>
+    </ul>
+  </div>
+  <div class="truth">
+    <p><b>来自第三方索引站整理、本文未独立核实（请自行验证后再采信）：</b></p>
+    <ul>
+      <li>以 git 源码方式安装插件时，pnpm ≥ 10 会拒绝执行 git 依赖的 prepare 脚本，需要在 profile 的 workspace 配置里显式授权——<b>这等于允许该包代码在你的机器上执行</b>，建议同时锁 commit。</li>
+      <li>社区插件数量庞大且质量参差，移动端与桌面端环境差异大，多数插件未必逐项适配。</li>
+    </ul>
+  </div>
+  <div class="truth"><b>本文补充的风险提示（非项目原文）：</b>插件是以<b>你的账号权限、在你的机器上</b>运行的代码。「一键安装」降低了门槛，也把供应链风险转移到了安装动作上——来源不明或要求敏感权限的插件，装之前先读一遍它的安装脚本。</div>
+
+  <h3 class="sec">13｜中国用户能不能直接做？</h3>
+  <table class="stack">
+    <tr><td class="k">国内访问</td><td>官方仓库与官网可访问。原始下载走 GitHub，国内可能不稳定——dsh-market README 自述已针对中国下载区域做 GitHub 路由回退（Git refs / README 内容 / 头像各自维护回退顺序）。此项为项目自述，本文未实测。</td></tr>
+    <tr><td class="k">注册</td><td>桌面端需登录 DeepSeek 账号；命令行模式需在设置里配置模型与 API Key。</td></tr>
+    <tr><td class="k">API</td><td>DeepSeek 开放平台充值即用。中文媒体转述：符合条件的用户可领 6 元体验赠金，有效期至 10-06。</td></tr>
+    <tr><td class="k">成本</td><td><b>0 元可跑：</b>桌面端 + 开源插件 + 赠金额度，足够体验完整的一次 Agent 任务流程。长期成本按 token 计。</td></tr>
+    <tr><td class="k">技术门槛</td><td><span class="repro">🟢 直接用</span> 桌面端 + 一键装插件部分：普通用户可上手。<br><span class="repro hard">🟡 有一定门槛</span> 命令行模式：需 Node ≥ 20 + 配置 API Key。<br><span class="repro dev">🔴 开发者级</span> 写插件 / 做私有市场：需 TypeScript 或 JS 基础。</td></tr>
+  </table>
+
+  <h3 class="sec">14｜国产替代方案</h3>
+  <p><b>这个案例本身就是国产方案。</b>它的可类比对象不是「某个可被替代的海外产品」，而是 Claude Code / Codex 系的插件与 Skill 生态、以及 MCP 的工具接入方式。</p>
+  <table class="stack">
+    <tr><td class="k">对照项</td><td>Claude Skills / MCP 生态、OpenAI Codex 与终端型 Agent 工具链</td></tr>
+    <tr><td class="k">本案例的差异</td><td>国产客户端 + 国产模型 + 国产（社区）插件市场的完整闭环：桌面安装包、登录即用的账号体系、中文界面、以及社区自建的插件目录与市场。</td></tr>
+    <tr><td class="k">说明</td><td>「谁替代谁」在这条线上并不成立。本文不做「某国产方案已完全兼容某海外生态」这类未经核实的表述。</td></tr>
+  </table>
+
+  <h3 class="sec">15｜中国企业可以怎么用？</h3>
+  <ul>
+    <li><b>企业场景 1：内部工具插件化。</b>把 HR、财务、客服团队反复要用的内部工具做成插件，放进 Harness 分发给全员，替代「每人自己配一遍工具链」。价值在于统一入口与统一版本。</li>
+    <li><b>企业场景 2：数据不出本地的桌面 Agent。</b>合同、报价、报表在本地目录里处理，Agent 在本地执行——这是桌面型 Agent 相对云端 Agent 的天然优势，对数据敏感型企业尤其相关。</li>
+    <li><b>企业场景 3：把交付物做成插件随交付给客户。</b>软件公司可以把「配置器 / 初始化器 / 数据迁移脚本」做成插件，客户在自己环境里一键装。注意：这意味着要承担插件的兼容性与更新责任。</li>
+  </ul>
+
+  <h3 class="sec">16｜中国消费者可以怎么用？</h3>
+  <ol>
+    <li><b>把 Harness 当「能动手的桌面助手」：</b>整理混乱表格、生成可编辑的汇报 PPT、批量处理本地文件（官方宣传与媒体实测均提到这类办公场景；具体效果本文未实测）。</li>
+    <li><b>用社区插件补齐具体能力：</b>按目录里的实际条目选（成本追踪、通知、图像识别等方向），一装一卸都在设置页完成。</li>
+    <li><b>用创造模式把「我每天重复的那件事」做成工具：</b>这是普通人第一次可以不写代码就自造工具——但需要能清楚描述需求与验收标准。</li>
+  </ol>
+
+  <h3 class="sec">17｜如何变成一个赚钱的项目？</h3>
+  <p><b>插件产品化。</b>找一个足够窄、足够痛的场景（某个行业的报表口径、某类文件的批处理），做成插件。路径是「免费核心 + 付费增强 / 企业定制」，而不是一上来收费。</p>
+  <p><b>企业私有市场。</b>给企业做内部插件目录与治理：谁能装、装哪个版本、怎么回滚、怎么审计。这是 IT 部门的真实需求，也是插件生态里最可能先赚到钱的位置——因为它解决的是责任问题，不是效率问题。</p>
+  <p><b>咨询与实施。</b>帮企业把现有内部工具接进 Harness，并做安装安全评估（插件是以本机权限运行的代码）。</p>
+  <p><b>培训与内容。</b>面向普通用户的「桌面 Agent 上手」课；面向开发者的「插件开发 + 兼容性声明 + 分发」课。</p>
+  <p><b>模板与预设。</b>可移植的 Agent 预设包本身就是一个可分发的商品形态——把「一套能干活的环境」做好，比单卖一个插件更有粘性。</p>
+  <div class="truth"><b>已验证 vs 推导：</b>可核实的只有「插件目录已 4200+」「官方仓库 241,847 Star」「市场 v1.66.8 于窗口内发布」这些事实。<b>以上变现路径均为基于案例结构推导的潜在商业模式，暂无任何收入证据。</b></div>
+
+  <h3 class="sec">18｜变现路径</h3>
+  <div class="panel" style="padding:0; border:none;">
+  <table>
+    <tr><th>路径</th><th>客户</th><th>产品 / 服务</th><th>收费方式</th><th>难度</th></tr>
+    <tr><td>插件产品</td><td>个人 / 团队</td><td>单点能力插件</td><td>免费 + 付费授权 / 捐赠</td><td>中</td></tr>
+    <tr><td>私有插件市场</td><td>中大型企业 IT</td><td>内部插件目录 + 版本与权限治理</td><td>项目制 + 年费</td><td>高</td></tr>
+    <tr><td>咨询实施</td><td>企业</td><td>内部工具接进 Harness + 安装安全评估</td><td>项目制</td><td>中</td></tr>
+    <tr><td>培训</td><td>个人 / 企业</td><td>上手课 / 插件开发课</td><td>按人 / 按场</td><td>低</td></tr>
+  </table>
+  </div>
+  <p class="truth"><b>这是分析，不是保证收益。</b>生态处于早期，暂无已验证的收入案例可引用。</p>
+
+  <h3 class="sec">19｜如果我是一个中国独立开发者（7 天 MVP）</h3>
+  <ul>
+    <li><b>Day 1：</b>装桌面端，让它真实完成一件你的工作（整理一份表格或生成一份 PPT），记录 token 消耗与失败点。</li>
+    <li><b>Day 2：</b>装 dsh-market，浏览目录，挑 3 个与你日常最相关的插件装上，观察它们解决的是不是你真实的问题。</li>
+    <li><b>Day 3：</b>用创造模式做第一个插件：解决一件你自己每天重复的事（越小越好）。</li>
+    <li><b>Day 4：</b>把它打磨到「别人也能装」：写清用途、默认值、最低 dsh 版本要求，处理第一次使用的空白状态。</li>
+    <li><b>Day 5：</b>确定分发方式（npm 包或 GitHub），写清安装命令；顺手做一次自检——安装时会不会请求超出需要的权限。</li>
+    <li><b>Day 6：</b>找一个真实用户（同事或社群）试用，只记录一件事：他第一次装失败在哪里。</li>
+    <li><b>Day 7：</b>决定方向：继续做通用插件（拼分发），还是转做某个行业的私有市场 / 定制（拼交付）。</li>
+  </ul>
+
+  <h3 class="sec">20｜如何迁移到其他行业</h3>
+  <div class="migrate">
+    <div class="m"><b>① 电商运营</b>商品资料批处理、竞品表格归整、活动页文案批量生成——桌面端能直接读本地文件是优势。</div>
+    <div class="m"><b>② 财税 / 法务</b>本地文档的批量抽取与口径检查，数据不出本地这一点对这类场景是硬需求。</div>
+    <div class="m"><b>③ 教育培训</b>课件与题库的生成、批改、归档，适合做成「一套预设 + 若干插件」打包给机构。</div>
+  </div>
+
+  <h3 class="sec">21｜培训课程设计</h3>
+  <div class="course">
+    <table>
+      <tr><td class="k">课程名称</td><td>《桌面 Agent 与插件：让 AI 从「会聊」变成「能干活」》</td></tr>
+      <tr><td class="k">适合人群</td><td>上半场：普通职场人；下半场：有 JS / TS 基础的开发者</td></tr>
+      <tr><td class="k">建议时长</td><td>半天（可拆为 30 分钟 Demo + 60 分钟 Workshop）</td></tr>
+      <tr><td class="k">30 分钟 Demo</td><td>装桌面端 → 装插件市场 → 一键装 2 个插件 → 用创造模式现场生成一个自己的插件</td></tr>
+      <tr><td class="k">60 分钟 Workshop</td><td>每位学员写一句话描述「我每天重复的一件事」，现场做成插件并跑通</td></tr>
+      <tr><td class="k">半天课程</td><td>加讲四块：插件分发与版本声明、更新与回滚语义、安装安全评估（插件以你的权限运行）、企业私有市场的治理设计</td></tr>
+      <tr><td class="k">课程目标</td><td>学员能够独立安装并写出一个可用的插件，并能判断「这个插件敢不敢装」</td></tr>
+      <tr><td class="k">现场 Demo</td><td>「描述 → 生成 → 安装 → 使用」四步闭环，一步不断</td></tr>
+      <tr><td class="k">学员练习</td><td>为一个插件写出正确的兼容性声明与失败提示（多数人会漏掉宿主版本）</td></tr>
+      <tr><td class="k">课后作业</td><td>发布一个自己写的插件，并收集至少一次真实用户反馈</td></tr>
+      <tr><td class="k">企业迁移</td><td>选出 3 个内部高频工具，评估哪些值得做成插件分发</td></tr>
+    </table>
+  </div>
+
+  <h3 class="sec">22｜培训师点评</h3>
+  <div class="trainer"><b>这个案例真正值得教的，是「能力的分发」。</b>把一件事做成可安装、可更新、可回滚的插件，比教会学员写多少提示词都更接近「AI 变成工具」。安全课必须一起上——插件是以你的权限跑在你机器上的。</div>
+
+  <h3 class="sec">23｜最终判断</h3>
+  <div class="verdict">
+    <div class="v"><div class="k">落地性</div><div class="val lv-h">高</div></div>
+    <div class="v"><div class="k">中国市场相关性</div><div class="val lv-h">高</div></div>
+    <div class="v"><div class="k">商业价值</div><div class="val lv-m">中<br><span style="font-size:11px;color:#6B7280;">（生态早期）</span></div></div>
+    <div class="v"><div class="k">复现难度</div><div class="val lv-l">低 → 中高</div></div>
+    <div class="v"><div class="k">变现潜力</div><div class="val lv-m">中高</div></div>
+  </div>
+  <p style="margin-top:10px;color:#6B7280;font-size:13px;">这是案例属性描述，不是「最佳案例排名」。安装门槛低，做插件与做私有市场的门槛高，两者差异很大。</p>
+</div>
+
+<!-- ===================== 今日观察 ===================== -->
+<section class="block" id="observe">
+  <h2>今日 AI 实战观察</h2>
+  <div class="panel">
+    <p>今天这两个案例放在一起看，有一个共同的转向：<b>竞争点从「模型有多聪明」移到了「约束与分发」。</b></p>
+    <p>案例 01 里，作者没有回答「你用什么模型」，而是回答「上下文、工具、模型怎么叠」。真正让他敢把约八成代码交出去的，不是模型变强，而是两件很朴素的东西：CI 不绿不合这条机器可判定的门禁，和 git worktree 带来的可回收隔离。他甚至把并发上限从机器能力改判成了自己的 review 带宽——加到第 4 个实例，产出不是变快，而是排队等他看。这句话说明 AI 编程的瓶颈已经不在生成侧，而在验收与回滚侧。</p>
+    <p>案例 02 里，官方 Harness 的价值也不在模型，而在插件：一个把「能力」变成可安装、可更新、可回滚对象的分发机制。社区市场把 4200+ 个插件收进一个目录，中文媒体转述官方口径称约 60% 的用户使用过第三方插件。这同样是约束与分发的问题——能力一旦可分发，个人开发者才第一次有了产品化的可能。</p>
+    <p>更值得注意的是两边的「不做什么」都写得很清楚：一边列出四类绝不交给 Agent 的活（权限判定、架构决策、对外契约、不可逆操作），一边给插件加上兼容性声明、更新语义和安全提醒。这种克制不是保守，恰恰是这两套东西能进入生产的原因——先写清楚边界，再谈自动化。</p>
+    <p>对个人开发者来说，这落到两件具体的事上：把交付切成可验证的小块，以及把重复劳动做成可分发的插件。两件事的门槛都不高，但都需要先承认一件事——人不再负责产出，人负责验收。</p>
+    <p style="color:#6B7280;font-size:13px;margin-top:12px;">（本段基于今日两个案例的事实展开；文中「60%」为媒体转述的官方口径，未经独立验证。）</p>
+  </div>
+</section>
+
+<!-- ===================== 商业机会雷达 ===================== -->
+<section class="block" id="radar">
+  <h2>今日商业机会雷达</h2>
+  <div class="panel">
+    <h3>机会 1｜「Agent 交付流水线」搭建服务</h3>
+    <ul>
+      <li><b>客户：</b>软件外包公司、企业 IT 部门</li>
+      <li><b>实现方式：</b>飞书/其他多维表格任务卡 + git worktree 隔离 + CI 门禁 + 心跳超时回收</li>
+      <li><b>解决的是：</b>「老板不敢让 AI 碰客户代码」这个信任问题</li>
+      <li><b>可能商业模式：</b>项目制流程搭建 + 内训</li>
+    </ul>
+
+    <h3>机会 2｜企业内部插件目录与治理</h3>
+    <ul>
+      <li><b>客户：</b>中大型企业 IT</li>
+      <li><b>实现方式：</b>Harness + 私有插件市场 + 版本/权限/回滚治理 + 安装安全评估</li>
+      <li><b>解决的是：</b>责任与审计问题，而非效率问题——所以更可能先收到钱</li>
+      <li><b>可能商业模式：</b>项目制实施 + 年费运维</li>
+    </ul>
+
+    <h3>机会 3｜行业预设包 + 插件组合</h3>
+    <ul>
+      <li><b>客户：</b>某个垂直行业的从业者</li>
+      <li><b>实现方式：</b>把「一套能干活的环境」（预设 + 若干插件 + 使用说明）打包分发</li>
+      <li><b>解决的是：</b>普通人不知道从哪个插件开始装的问题</li>
+      <li><b>可能商业模式：</b>一次性售卖 + 社群订阅</li>
+    </ul>
+    <p class="truth" style="margin-top:14px;"><b>这是基于案例的商业模式分析，不代表已经验证的商业成功。</b>三个机会中没有任何一个在本文中被证明已经赚到钱。</p>
+  </div>
+</section>
+
+<!-- ===================== 个人变现机会 ===================== -->
+<section class="block" id="personal">
+  <h2>今日「个人变现机会」</h2>
+  <div class="panel">
+    <p>如果一个人每天投入 <b>2–4 小时</b>，今天这两个案例分别对应一条路径：</p>
+    <p><b>路径 A（交付侧，源自案例 01）。</b>用「任务卡 + worktree + CI 门禁」的约束，接 1–2 万元级的小型管理系统 / 数据看板。<b>关键建议：先只开 1 个 Agent 实例跑通，再考虑加第二个</b>——因为你的 review 带宽才是真上限。省下的时间不是用来接更多单，而是用来沉淀验收标准库。</p>
+    <p><b>路径 B（生态侧，源自案例 02）。</b>在 4200+ 插件的目录里找一个「我还得手动做、目录里没人做」的空白点，做成插件；分发走 npm 或 GitHub，先用免费换真实反馈，再考虑付费增强或企业定制。这条路径的独特之处在于：它是今天少数几个「不需要客户、不需要报价、不需要交付会议」就能开始的位置。</p>
+    <p><b>不建议做的：</b>同时铺开三条以上路径，或者在没有测试覆盖的存量系统上直接上多实例并行。</p>
+    <p class="truth"><b>不承诺收益，也不虚构收入。</b>以上为基于今日案例结构推导的方向，未经验证。</p>
+  </div>
+</section>
+
+<!-- ===================== 原始资料 ===================== -->
+<section class="block" id="sources">
+  <h2>原始资料</h2>
+  <div class="panel">
+    <h3>案例 01 · Agent 交付流水线</h3>
+    <ul class="src-list">
+      <li><span class="src-type">一手原文</span><a href="https://juejin.cn/post/7691203094870491176" target="_blank" rel="noopener">掘金 · 读者问「你用的什么 Agent」：3 个 AI 员工的分工表和工具链（2026-10-01）</a></li>
+      <li><span class="src-type">一手原文</span><a href="https://juejin.cn/post/7690841638806421538" target="_blank" rel="noopener">掘金 · 3 个 AI Agent 交付一个企业项目：4 人团队 2 个月，我 3 周做完（2026-09-30）</a></li>
+      <li><span class="src-type">作者主页</span><a href="https://juejin.cn/user/2189882892232029/posts" target="_blank" rel="noopener">掘金 · 王中阳讲AI</a></li>
+    </ul>
+
+    <h3>案例 02 · DeepSeek Harness 插件生态</h3>
+    <ul class="src-list">
+      <li><span class="src-type">官方仓库</span><a href="https://github.com/deepseek-ai/deepseek-harness" target="_blank" rel="noopener">github.com/deepseek-ai/deepseek-harness</a>（MIT；241,847 Star / 29,030 Fork；创建 2026-08-13）</li>
+      <li><span class="src-type">官方发布</span><a href="https://github.com/deepseek-ai/deepseek-harness/releases/tag/dsh-v0.2.0-rc.2" target="_blank" rel="noopener">dsh-v0.2.0-rc.2</a>（2026-09-29T09:42:36Z = 北京时间 09-29 17:42）</li>
+      <li><span class="src-type">npm</span><a href="https://www.npmjs.com/package/@deepseek-ai/dsh" target="_blank" rel="noopener">@deepseek-ai/dsh</a>（latest 0.2.0-rc.2）</li>
+      <li><span class="src-type">官方产品页</span><a href="https://deepseek.com/harness" target="_blank" rel="noopener">deepseek.com/harness</a></li>
+      <li><span class="src-type">插件市场</span><a href="https://github.com/dsh-market/dsh-market" target="_blank" rel="noopener">github.com/dsh-market/dsh-market</a>（MIT；5,252 Star）｜ <a href="https://github.com/dsh-market/dsh-market/releases/tag/v1.66.8" target="_blank" rel="noopener">v1.66.8</a>（2026-10-01T16:11:48Z = 北京时间 10-02 00:11）｜ <a href="https://dshmarket.com" target="_blank" rel="noopener">dshmarket.com</a></li>
+      <li><span class="src-type">插件目录</span><a href="https://github.com/awesome-dsh-plugin/awesome-dsh-plugin" target="_blank" rel="noopener">github.com/awesome-dsh-plugin/awesome-dsh-plugin</a>（17,560 Star）｜ <a href="https://awesome-dsh-plugin.com" target="_blank" rel="noopener">awesome-dsh-plugin.com</a></li>
+      <li><span class="src-type">社区外壳</span><a href="https://github.com/anywhere-labs/dsh-desktop" target="_blank" rel="noopener">anywhere-labs/dsh-desktop</a>（29,768 Star）｜ <a href="https://github.com/dataelement/dsh-desktop" target="_blank" rel="noopener">dataelement/dsh-desktop</a>（11,494 Star）</li>
+      <li><span class="src-type">媒体分析（二手）</span><a href="https://www.sohu.com/a/1083065736_360352" target="_blank" rel="noopener">搜狐 · 梁文锋开始「送Token」了（2026-10-01 12:51）</a></li>
+    </ul>
+
+    <h3>窗口内信号（未计入案例，仅作背景）</h3>
+    <ul>
+      <li><b>qwen-code</b> v0.24.7-nightly.20261001（2026-10-01T22:01Z = 10-02 06:01 CST）——nightly 构建，非稳定发布，不构成案例。</li>
+      <li><b>LangBot</b> v4.11.0-beta.6（2026-10-01T18:50Z = 10-02 02:50 CST）——Release 说明仅含 compare 链接，无可核实的变更内容。</li>
+      <li><b>tianma-if/edgeever</b> v1.96.0（2026-10-01T15:22Z = 10-01 23:22 CST）——AI 原生知识库 + 原生 MCP，1,941 Star；体量偏小，未达收录标准。</li>
+      <li><b>Tencent/WeKnora</b>、<b>dify</b>、<b>RAGFlow</b>、<b>FastGPT</b>、<b>bisheng</b>、<b>bytedance/deer-flow</b>、<b>volcengine/OpenViking</b> 等：窗口内无新 Release（已逐仓库核查 API）。</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ===================== 真实性说明 ===================== -->
+<section class="block" id="truth">
+  <h2>数据真实性说明</h2>
+  <div class="panel">
+    <h3>一、本文核实为事实的部分（可复现的核验方式）</h3>
+    <ul>
+      <li>所有仓库的 <b>Star / Fork / 创建时间 / 最后推送时间 / 协议 / Release 发布时间</b>，均通过 GitHub REST API 直连查询获得，未依赖搜索结果或第三方站点。</li>
+      <li>deepseek-ai/deepseek-harness：MIT、241,847 Star、29,030 Fork、创建 2026-08-13T11:56:32Z、最后推送 2026-09-29T09:41:57Z。</li>
+      <li>dsh-market/dsh-market：MIT、5,252 Star、v1.66.8 发布于 2026-10-01T16:11:48Z（北京时间 10-02 00:11）。</li>
+      <li>@deepseek-ai/dsh 的 <b>全部 29 个版本及发布时间</b>来自 npm registry 原始接口；latest 为 0.2.0-rc.2（2026-09-29T09:56Z），0.2.x 首版为 0.2.0-rc.1（2026-09-28T12:34Z）。</li>
+      <li>dsh-market README 中关于「4200+ 插件」「宿主版本要求 dsh web ≥ 0.1.0-rc.6」「兼容性声明字段」「更新语义」「中国下载区域路由回退」等描述，均引自该仓库 README 原文。</li>
+      <li>掘金两篇原文的发布时间（2026-09-30 / 2026-10-01）与作者身份，均通过原作者主页交叉核对。</li>
+    </ul>
+
+    <h3>二、作者 / 项目自述、本文无法独立验证的部分</h3>
+    <ul>
+      <li><b>案例 01 的全部商业数字</b>：单项目报价 12 万、交付周期 3 周、自己投入 10 天、成本 2–3 万、利润率 75% 以上、对照传统外包 20 万 / 4 人 2 个月——<b>该数据来自作者自述，无法独立验证</b>。作者未提供合同、验收或财务凭证。</li>
+      <li><b>案例 01 的工程量数字</b>：累计创建 300 多个 worktree、最终合并约 180 个模块、开发环节约八成代码由 Agent 完成——<b>均为作者自述，无法独立验证</b>。</li>
+      <li><b>案例 02 的「约 60% 用户使用第三方插件」</b>：来源为中文媒体对「DeepSeek 官方披露」的转述，未找到官方原文，<b>按转述口径引用，未经独立验证</b>。</li>
+      <li><b>案例 02 的 6 元赠金与额度换算</b>：同样来自上述媒体转述，未在官方渠道独立核实。</li>
+      <li><b>「创造模式约 5–6 分钟生成一个插件」</b>：来自媒体对官方演示的转述，本文未复现。</li>
+      <li>项目负责人、内部立项时间、投资人交流会纪要等未经公开渠道可核实的背景信息，<b>本文一律未作为事实引用</b>。</li>
+    </ul>
+
+    <h3>三、本文的分析与推演部分</h3>
+    <ul>
+      <li>两案例的「下一步可能怎么发展」「如何变成赚钱的项目」「迁移方向」「7 天 MVP」「课程设计」——<b>均属本文分析与推演，非事实陈述。</b></li>
+      <li>案例 01 的 Step 0、Step 9、国产模型分档建议、多维表格替代品建议——均为本文补充，已在文中对应位置标注。</li>
+      <li>案例 02 的安全风险提示（插件以本机权限运行）为本文补充的通用判断。</li>
+      <li>「今日 AI 实战观察」「商业机会雷达」「个人变现机会」中的商业判断，均为基于案例结构的分析，<b>不代表已验证的商业成功</b>，不构成任何收益承诺。</li>
+    </ul>
+
+    <h3>四、明确排除的来源（内容农场与自动聚合站）</h3>
+    <p>本期检索过程中，中文搜索结果被大量 SEO 内容农场与 AI 自动聚合站污染，以下站点内容<b>全部剔除、未作为任何依据</b>：</p>
+    <ul>
+      <li><b>尧图系内容农场：</b>tzjp.cn、bryh.cn、kwkr.cn、xxmr.cn、mtrt.cn、mhpq.cn、qwbw.cn、pcrn.cn、mzlw.cn、hqwc.cn、mhpn.cn、lpqz.cn、rrmt.cn、pgsr.cn、mfbz.cn、mwwr.cn、nlpx.cn、sheratonhq.com</li>
+      <li><b>英文伪权威 / 自动生成站点：</b>chatgate.ai、heatdrop.ai、dshfind.com、aideveloper44.com、news.lavx.hu、deepusecase.com、choosely.ai、dev.to 上的疑似自动生成贴</li>
+      <li><b>判断依据：</b>这些站点的共同特征是——无作者身份、无原始资料链接、代码示例为占位符（如去掉引号的 JSON）、大量「三平台一键脚本」式伪代码、跨站点重复同一模板。其中 dshfind.com 等索引站提供的插件信息与 GitHub API 数据存在版本号矛盾（如列出 v0.4.x，而实际仓库为 v1.66.x），因此仅作线索、不作为事实依据。</li>
+      <li>另需提示：案例 01 作者所在的掘金账号，其文章带有明显的个人品牌与内容营销风格（大量「面试官问…」类选题）。本文对该账号的处理方式是：<b>工程细节部分如实引用并标注为自述，商业数字一律标注「无法独立验证」。</b></li>
+    </ul>
+
+    <h3>五、本期未收录说明</h3>
+    <p>本期严格按「宁缺毋滥」执行：在筛出的约 20 个候选条目中，除去内容农场与新闻/产品发布类内容后，剩余候选大多不满足「有 Workflow + 可实现过程 + 可复现」的底线（多数为纯项目更新、方法论文章或无一手来源的二手转述）。<b>最终收录 2 个，已达本期上限；没有第三个案例达到收录标准，也未为凑数降低标准。</b></p>
+
+    <h3>六、本期质量自检</h3>
+    <ul class="checklist">
+      <li>严格 1–2 个案例，无凑数</li>
+      <li>案例均为窗口内新内容 / 新更新</li>
+      <li>找到一手作者或官方项目</li>
+      <li>链接均指向具体页面</li>
+      <li>每案例均含 Workflow 与实现拆解</li>
+      <li>区分事实 / 自述 / 分析 / 推演</li>
+      <li>说明模型、工具、成本、门槛</li>
+      <li>分析国产替代与国内可用性</li>
+      <li>企业场景与消费者场景各 ≥ 3 条</li>
+      <li>变现路径表已标注验证状态</li>
+      <li>培训课程可落地（含时长与练习）</li>
+      <li>明确排除内容农场来源</li>
+    </ul>
+  </div>
+</section>
+
+
+
+</div>
+</main>
+<footer class="site-footer">
+  <div class="wrap">
+    <div>
+      <div class="f-brand">全球文明进程重大事件日报</div>
+      <p class="f-desc">记录人类文明演进中的关键节点。以未来历史学家的视角，筛出可能改写人类轨迹的转折点——一个长期记录人类文明发展轨迹的数字档案馆。</p>
+    </div>
+    <div class="f-col">
+      <h4>浏览</h4>
+      <ul>
+        <li><a href="../index.html">网站首页</a></li>
+        <li><a href="../archive.html">日报档案</a></li><li><a href="../radar.html">趋势雷达</a></li><li><a href="../tutorial/index.html">AI实战</a></li>
+        <li><a href="../assets/images/og-cover.png" target="_blank">站点封面</a></li>
+      </ul>
+    </div>
+    <div class="f-col">
+      <h4>文明分类</h4>
+      <ul>
+        <li><a href="../categories/science.html">科学、生命与地球</a></li>
+        <li><a href="../categories/politics.html">政治与文明秩序</a></li>
+        <li><a href="../categories/culture.html">思想、社会与文化</a></li>
+        <li><a href="../categories/technology.html">科技与人工智能</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="f-bottom">
+    <div class="wrap">
+      <span>© 2026 全球文明进程重大事件日报 · 全球文明进程观察站</span>
+      <span>内容由自动化智能体基于公开信息生成，仅供文明观察与研究参考，不构成任何投资、政策或法律建议。</span>
+    </div>
+  </div>
+</footer>
+<button class="backtop" type="button" aria-label="返回顶部">↑</button>
+<script src="../assets/js/main.js"></script>
+<script src="../assets/js/wechat-share.js"></script>
+<script src="../assets/js/text-to-speech.js"></script>
+</body>
+</html>

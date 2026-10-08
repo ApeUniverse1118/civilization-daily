@@ -1,0 +1,855 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI极客实战教程日报 · 2026-10-04（第008期）｜用 13 个 Agent Skill 把中文网文写作流程化：、用「50 篇教程 + 80 万字」把四款 AI 编程工具教成</title>
+<meta name="description" content="10月4日AI极客实战案例：今日一句话
+今天两个案例都是中文内容生产的 Agent 化：一个把「写网络小说」拆成 13 个 skill 并用文件系统管住几百章的连续性，一个把「教人用 AI 编程」重写成一套覆盖四款工具的 80 万字教程体系——它们都不再赌模型能记住一">
+<meta name="keywords" content="AI极客实战,用 13 个 Age,用「50 篇教程 +">
+<meta name="author" content="全球文明进程观察站">
+<meta name="robots" content="index,follow">
+<link rel="canonical" href="https://civilization-radar.com/tutorial/2026-10-04.html">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="全球文明进程重大事件日报">
+<meta property="og:title" content="AI极客实战教程日报 · 2026-10-04｜用 13 个 Agent Skill 把中文网文写作流程化：">
+<meta property="og:description" content="10月4日AI极客实战案例：今日一句话
+今天两个案例都是中文内容生产的 Agent 化：一个把「写网络小说」拆成 13 个 skill 并用文件系统管住几百章的连续性，一个把「教人用 AI 编程」重写成一套覆盖四款工具的 80 万字教程体系">
+<meta property="og:url" content="https://civilization-radar.com/tutorial/2026-10-04.html">
+<meta property="og:image" content="https://civilization-radar.com/assets/images/og-cover.png">
+<meta property="og:locale" content="zh_CN">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="AI极客实战教程日报 · 2026-10-04">
+<meta name="twitter:description" content="今日一句话
+今天两个案例都是中文内容生产的 Agent 化：一个把「写网络小说」拆成 13 个 skill 并用文件系统管住几百章的连续性，一个把「教人用 AI">
+<meta name="twitter:image" content="https://civilization-radar.com/assets/images/og-cover.png">
+<link rel="icon" href="../assets/images/logo.svg" type="image/svg+xml">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"AI极客实战教程日报 2026-10-04","description":"今日一句话\n今天两个案例都是中文内容生产的 Agent 化：一个把「写网络小说」拆成 13 个 skill 并用文件系统管住几百章的连续性，一个把「教人用 AI 编程」重写成一套覆盖四款工具的 80 万字教程体系——它们都不再赌模型能记住一","datePublished":"2026-10-04","dateModified":"2026-10-04","author":{"@type":"Organization","name":"全球文明进程观察站"},"publisher":{"@type":"Organization","name":"全球文明进程观察站","logo":{"@type":"ImageObject","url":"https://civilization-radar.com/assets/images/og-cover.png"}},"mainEntityOfPage":{"@type":"WebPage","@id":"https://civilization-radar.com/tutorial/2026-10-04.html"}}</script>
+
+<link rel="stylesheet" href="../assets/css/style.css">
+<style>
+
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body {
+    background:#F7F8FA; color:#111827;
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;
+    line-height:1.7; font-size:15px;
+  }
+  .tut-wrap { max-width:960px; margin:0 auto; padding:32px 20px 64px; }
+  a { color:#2563EB; text-decoration:none; word-break:break-all; }
+  a:hover { text-decoration:underline; }
+
+  header.top {
+    background:#111827; color:#F9FAFB; border-radius:14px; padding:36px 32px; margin-bottom:24px;
+  }
+  header.top .kicker { color:#93C5FD; font-size:13px; letter-spacing:2px; text-transform:uppercase; margin-bottom:10px; }
+  header.top h1 { font-size:30px; font-weight:800; margin-bottom:6px; }
+  header.top .sub { color:#9CA3AF; font-size:14px; margin-bottom:20px; }
+  .meta-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:12px; }
+  .meta-grid .m { background:#1F2937; border:1px solid #374151; border-radius:10px; padding:10px 14px; }
+  .meta-grid .m .k { font-size:11px; color:#9CA3AF; margin-bottom:2px; }
+  .meta-grid .m .v { font-size:14px; font-weight:600; color:#F9FAFB; }
+
+  .oneline {
+    background:#F5F8FF; border:1px solid #BFDBFE; border-radius:14px;
+    padding:18px 24px; margin-bottom:24px;
+  }
+  .oneline .lab { font-size:12px; letter-spacing:1px; color:#2563EB; font-weight:700; margin-bottom:6px; }
+  .oneline p { font-size:15px; color:#111827; }
+
+  nav.cats { display:flex; flex-wrap:wrap; gap:8px; margin-bottom:28px; }
+  nav.cats a {
+    background:#FFFFFF; border:1px solid #E5E7EB; border-radius:999px;
+    padding:6px 14px; font-size:13px; color:#374151;
+  }
+  nav.cats a:hover { border-color:#2563EB; color:#2563EB; text-decoration:none; }
+
+  .card {
+    background:#FFFFFF; border:1px solid #E5E7EB; border-radius:14px;
+    padding:28px; margin-bottom:28px;
+  }
+  .card-head { display:flex; align-items:flex-start; gap:14px; margin-bottom:6px; flex-wrap:wrap; }
+  .num {
+    font-size:26px; font-weight:800; color:#2563EB; line-height:1.1;
+    font-variant-numeric:tabular-nums; min-width:52px;
+  }
+  .card-head h2 { font-size:20px; font-weight:700; flex:1; min-width:240px; }
+  .badges { display:flex; flex-wrap:wrap; gap:6px; margin:8px 0 14px; }
+  .badge { font-size:12px; padding:3px 10px; border-radius:999px; font-weight:600; }
+  .b-cat { background:#EFF6FF; color:#2563EB; border:1px solid #BFDBFE; }
+  .b-tag { background:#F3F4F6; color:#4B5563; border:1px solid #E5E7EB; }
+  .b-date { background:#ECFDF5; color:#16A34A; border:1px solid #BBF7D0; }
+  .b-warn { background:#FFFBEB; color:#B45309; border:1px solid #FDE68A; }
+
+  .oneliner {
+    background:#F9FAFB; border:1px solid #E5E7EB; border-radius:10px;
+    padding:12px 16px; font-size:14.5px; color:#111827; margin-bottom:18px;
+  }
+
+  h3.sec {
+    font-size:14px; font-weight:700; color:#111827; margin:22px 0 8px;
+    padding-left:10px; border-left:3px solid #2563EB;
+  }
+  .card p, .card li { font-size:14.5px; color:#374151; }
+  .card ul, .card ol { padding-left:22px; margin:6px 0; }
+  .card li { margin-bottom:4px; }
+
+  .src-list { list-style:none; padding-left:0; }
+  .src-list li { margin-bottom:6px; }
+  .src-type {
+    display:inline-block; font-size:11px; font-weight:700; color:#2563EB;
+    background:#EFF6FF; border:1px solid #BFDBFE; border-radius:6px;
+    padding:1px 8px; margin-right:8px;
+  }
+
+  .stack { width:100%; border-collapse:collapse; margin:6px 0; }
+  .stack td { border:1px solid #E5E7EB; padding:7px 12px; font-size:13.5px; vertical-align:top; }
+  .stack td.k { background:#F9FAFB; font-weight:600; color:#111827; width:110px; white-space:nowrap; }
+
+  .flow { display:flex; flex-direction:column; gap:0; margin:10px 0; }
+  .flow .node {
+    background:#F9FAFB; border:1px solid #E5E7EB; border-radius:10px;
+    padding:9px 16px; font-size:13.5px; color:#111827;
+  }
+  .flow .node b { color:#2563EB; }
+  .flow .arrow { text-align:center; color:#9CA3AF; font-size:14px; line-height:1.4; }
+
+  pre {
+    background:#111827; color:#E5E7EB; border-radius:10px;
+    padding:16px 18px; overflow-x:auto; font-size:13px; line-height:1.6;
+    font-family:"SFMono-Regular",Consolas,"Liberation Mono",Menlo,monospace;
+    margin:8px 0;
+  }
+  code {
+    font-family:"SFMono-Regular",Consolas,Menlo,monospace;
+    background:#F3F4F6; color:#111827; border-radius:5px; padding:1px 6px; font-size:13px;
+  }
+  pre code { background:transparent; color:#E5E7EB; padding:0; }
+
+  .pitfall { background:#FFFBEB; border:1px solid #FDE68A; border-radius:10px; padding:14px 18px; margin:8px 0; }
+  .pitfall b { color:#B45309; }
+  .truth { background:#FEF7F7; border:1px solid #FECACA; border-radius:10px; padding:14px 18px; margin:8px 0; }
+  .truth b { color:#B91C1C; }
+
+  .repro { display:inline-block; font-size:13px; font-weight:700; padding:4px 12px; border-radius:999px; background:#ECFDF5; color:#16A34A; border:1px solid #BBF7D0; }
+  .repro.hard { background:#FFFBEB; color:#B45309; border-color:#FDE68A; }
+  .repro.dev { background:#FEF2F2; color:#B91C1C; border-color:#FECACA; }
+
+  .migrate { display:grid; grid-template-columns:repeat(3,1fr); gap:10px; margin:8px 0; }
+  .migrate .m {
+    background:#F9FAFB; border:1px solid #E5E7EB; border-radius:10px; padding:12px 14px; font-size:13px; color:#374151;
+  }
+  .migrate .m b { display:block; color:#111827; margin-bottom:4px; }
+
+  .course {
+    background:#F5F8FF; border:1px solid #BFDBFE; border-radius:10px; padding:16px 20px; margin:8px 0;
+  }
+  .course table { width:100%; border-collapse:collapse; }
+  .course td { padding:4px 8px 4px 0; font-size:13.5px; vertical-align:top; color:#374151; }
+  .course td.k { font-weight:600; color:#111827; width:88px; white-space:nowrap; }
+
+  .trainer {
+    border-left:3px solid #16A34A; background:#F0FDF4; border-radius:0 10px 10px 0;
+    padding:12px 18px; font-size:14px; color:#14532D; margin:10px 0 4px;
+  }
+  .trainer b { color:#16A34A; }
+
+  .verdict { display:grid; grid-template-columns:repeat(5,1fr); gap:10px; margin:8px 0; }
+  .verdict .v {
+    background:#F9FAFB; border:1px solid #E5E7EB; border-radius:10px; padding:12px; text-align:center;
+  }
+  .verdict .v .k { font-size:11.5px; color:#6B7280; margin-bottom:4px; }
+  .verdict .v .val { font-size:17px; font-weight:800; }
+  .lv-h { color:#16A34A; }
+  .lv-m { color:#F59E0B; }
+  .lv-l { color:#DC2626; }
+
+  section.block { margin-top:40px; }
+  section.block > h2 {
+    font-size:22px; font-weight:800; margin-bottom:16px; padding-bottom:10px;
+    border-bottom:2px solid #E5E7EB;
+  }
+  .panel { background:#FFFFFF; border:1px solid #E5E7EB; border-radius:14px; padding:24px 28px; margin-bottom:20px; }
+  .panel h3 { font-size:16px; margin-bottom:10px; }
+  .panel p, .panel li { font-size:14.5px; color:#374151; }
+  .panel ul { padding-left:22px; }
+  .panel li { margin-bottom:6px; }
+  .panel table { width:100%; border-collapse:collapse; margin:8px 0; }
+  .panel th, .panel td { border:1px solid #E5E7EB; padding:7px 10px; font-size:13px; text-align:left; vertical-align:top; }
+  .panel th { background:#F9FAFB; color:#111827; }
+
+  .checklist { columns:2; column-gap:32px; }
+  .checklist li { list-style:none; margin-bottom:6px; font-size:13.5px; }
+  .checklist li::before { content:"✓ "; color:#16A34A; font-weight:700; }
+
+  .gapnote {
+    background:#FFFBEB; border:1px solid #FDE68A; border-radius:10px;
+    padding:14px 18px; font-size:13.5px; color:#7C2D12; margin-bottom:24px;
+  }
+  .gapnote b { color:#B45309; }
+
+  footer { text-align:center; color:#9CA3AF; font-size:12.5px; margin-top:40px; }
+
+  @media(max-width:640px) {
+    header.top { padding:24px 20px; }
+    header.top h1 { font-size:22px; }
+    .meta-grid { grid-template-columns:repeat(2,1fr); }
+    .card { padding:20px 16px; }
+    .migrate { grid-template-columns:1fr; }
+    .verdict { grid-template-columns:repeat(2,1fr); }
+    .checklist { columns:1; }
+    .num { min-width:auto; }
+    .panel { padding:18px 16px; }
+    .stack td.k { width:82px; }
+  }
+
+</style>
+</head><body>
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="../index.html"><img class="mark" src="../assets/images/logo.svg" alt="文明雷达" width="32" height="32" style="width:32px;height:32px;background:none;border:0;box-shadow:none;border-radius:6px">全球文明进程重大事件日报</a>
+    <button class="nav-toggle" type="button" aria-label="菜单" aria-expanded="false">☰</button>
+    <nav class="main-nav" aria-label="主导航"><ul><li><a href="../index.html">首页</a></li><li><a href="../archive.html">日报档案</a></li><li><a href="../radar.html">趋势雷达</a></li><li><a href="../tutorial/index.html" class="active">AI实战</a></li><li><a href="../categories/science.html">科学</a></li><li><a href="../categories/politics.html">政治</a></li><li><a href="../categories/culture.html">文化</a></li><li><a href="../categories/technology.html">科技</a></li></ul></nav>
+  </div>
+</header>
+<main class="site-main">
+<div class="tut-wrap">
+  <nav class="breadcrumb" aria-label="面包屑"><a href="../index.html">首页</a><span class="sep">/</span><a href="index.html">AI实战教程</a><span class="sep">/</span><span>2026-10-04</span></nav>
+<header class="top">
+  <div class="kicker">China AI Builders · Real Cases · Workflows · Business</div>
+  <h1>AI极客实战案例日报</h1>
+  <div class="sub">China AI Builders · Real Cases · Workflows · Agents · Open Source · Business</div>
+  <div class="meta-grid">
+    <div class="m"><div class="k">日报日期</div><div class="v">2026-10-04</div></div>
+    <div class="m"><div class="k">生成时间</div><div class="v">2026-10-08（补做）</div></div>
+    <div class="m"><div class="k">精选案例</div><div class="v">2 个（宁缺毋滥）</div></div>
+    <div class="m"><div class="k">数据窗口</div><div class="v">10-03 12:00 → 10-04 12:00</div></div>
+  </div>
+</header>
+
+<div class="gapnote">
+  <b>关于本期的生成方式：</b>这是一份<b>补做</b>的日报。2026-10-04 当天的定时任务未执行，故在 2026-10-08 按当日应有的数据窗口回溯补做。数据窗口严格限定为 <b>2026-10-03 12:00 → 2026-10-04 12:00（北京时间）</b>。本期收录依据是「窗口内出现的提交 / Release / 新仓库」，作者自述与本文推演已逐类标注。
+</div>
+
+<div class="oneline">
+  <div class="lab">今日一句话</div>
+  <p>今天两个案例都是中文内容生产的 Agent 化：一个把「写网络小说」拆成 13 个 skill 并用文件系统管住几百章的连续性，一个把「教人用 AI 编程」重写成一套覆盖四款工具的 80 万字教程体系——<b>它们都不再赌模型能记住一切，而是把规矩写成文件。</b></p>
+</div>
+
+<nav class="cats">
+  <a href="#case01">案例 01｜网文写作 Skill 包</a>
+  <a href="#case02">案例 02｜AI Coding 中文教程</a>
+  <a href="#observe">今日观察</a>
+  <a href="#radar">商业机会雷达</a>
+  <a href="#personal">个人变现机会</a>
+  <a href="#sources">原始资料</a>
+  <a href="#truth">真实性说明</a>
+</nav>
+
+<!-- ===================== 案例 01 ===================== -->
+<div class="card" id="case01">
+  <div class="card-head">
+    <div class="num">01</div>
+    <h2>用 13 个 Agent Skill 把中文网文写作流程化：扫榜、拆文、写作、去 AI 味、封面图，并用「文件系统当记忆」扛住几百章长篇</h2>
+  </div>
+  <div class="badges">
+    <span class="badge b-cat">Agent Skill 包</span>
+    <span class="badge b-cat">AI + 内容创作</span>
+    <span class="badge b-cat">状态管理 / 工程化</span>
+    <span class="badge b-date">窗口内提交 10-03 14:11 / 16:56</span>
+    <span class="badge b-tag">开源 MIT</span>
+    <span class="badge b-warn">窗口内为分发链路对齐，非内容版本</span>
+  </div>
+
+  <div class="oneliner">
+    <b>一句话结论：</b>它给出的答案不是「让 AI 写得更好」，而是「让 AI 在一部长篇里不忘记自己写过什么」——这才是长内容真正的技术难点。
+  </div>
+
+  <h3 class="sec">01｜案例是什么？</h3>
+  <p><b>Oh Story</b>（仓库 zenstory-ai/oh-story-claudecode，MIT）是一套面向中文网络小说的 <b>Agent Skill 包</b>，覆盖长篇与短篇的全流程：扫榜选材 → 拆解爆款 → 搭大纲写正文 → 去 AI 味 → 生成封面图。它以 <b>13 个 skill</b> 的形式装进你已经在用的编程 Agent（Claude Code、Codex CLI、Google Antigravity、OpenCode、ZCode、OpenClaw、Reasonix 等），写作用的模型就是该 Agent 的模型，<b>不需要 GPU，也不需要另配模型</b>。项目自带 demo 与样例文件，可直接看到「写第 21 章」这个动作从头到尾产出了什么。</p>
+
+  <h3 class="sec">02｜为什么今天值得关注？</h3>
+  <div class="truth"><b>先把窗口内的事实说清楚：</b>本期窗口（10-03 12:00 → 10-04 12:00）内，该仓库只有 <b>2 次提交</b>，均为 ClawHub 分发链路相关（PR #455「Fix ClawHub updates and add pinned inventory reconciliation」10-03 14:11、PR #456「ci: align source Release and exact ClawHub handoff」10-03 16:56，均为北京时间）。项目<b>最近一次内容版本 v0.8.4 发布于 2026-09-27</b>，早于本窗口。本文收录它的依据是「<b>窗口内完成了分发链路对齐的实质更新</b> + 项目本身是中文内容创作 Agent 化最完整的一手案例」，而<b>不是</b>「它在 10-03 发布了新写作能力」。这一点请读者务必知悉。</div>
+  <ul>
+    <li><b>为什么以前不容易做：</b>用 AI 写长篇，最难的从来不是「写出好句子」，而是<b>连续性</b>——第 80 章不能与第 7 章的伏笔打架，角色不能突然知道他还不知道的事。靠对话记忆硬撑，上下文一压缩就丢伏笔。</li>
+    <li><b>为什么现在变得容易：</b>① Agent Skills 让「写作方法论」可以被拆成一个个可加载的文件，而不是塞进一段超长提示词；② hook（钩子）机制让「写正文前必须已有细纲」这类<b>门禁</b>可以被程序强制执行；③ 用文件系统做状态存储，不再依赖模型的记忆。</li>
+    <li><b>为什么值得花时间：</b>网文是中国独有的、体量极大的内容产业。一个能扛住几百章连续性的写作工作流，其价值不在「AI 写小说」这个噱头，而在<b>「长任务状态管理」</b>这套方法——它可以直接迁移到任何长周期、多步骤的 Agent 任务上。</li>
+  </ul>
+
+  <h3 class="sec">03｜案例的前世今生</h3>
+  <p><b>前世。</b>2023–2024 年，「AI 写小说」的主流形态是把设定和大纲塞进一段超长提示词，再让模型续写。这条路在第 10 章左右就开始崩：角色性格漂移、伏笔失踪、时间线错乱——因为模型的上下文是有限的、会被压缩的，而长篇需要的是<b>持久状态</b>。</p>
+  <p><b>发展。</b>三件事改变了做法：① RAG 与文件检索让「按需读取设定」成为可能；② Agent Skills 规范（2025–2026）让「一套写法」可以被拆成多个可加载文件、按需注入；③ hook/门禁机制让「流程约束」从「提示词里的请求」变成「程序上的必然」。</p>
+  <p><b>今生。</b>Oh Story 的做法是把长篇写作拆成四个可以独立维护的层：<b>设定、大纲、正文、追踪</b>。关键在于「追踪」层——它把连续性写进一份固定 7 栏、硬上限 12KB 的上下文文件，下一章只读这一份，且明确区分「<b>作者真相</b>」与「<b>读者已知</b>」（作者认为这是「角色提前知道答案、伏笔写飞」的主要来源）。写作前有 <code>guard-outline-before-prose.sh</code> 拦截缺细纲的章节，写完跑确定性的检查脚本（查截断、查 AI 句式、查标点），再由 <code>storyctl.py</code> 提交状态并整份重生成派生视图——<b>手改派生文件会被 check 拒绝</b>。</p>
+  <p><b>下一步可能怎么发展（分析 / 推演）。</b>这套「用文件系统承载长任务状态 + 用脚本做确定性门禁」的结构，很可能会被搬出网文领域：长周期研究报告、系列课件、产品需求文档、连续剧剧本——任何「需要记住前面写过什么」的创作都可以复用。以上为推演，非事实。</p>
+
+  <h3 class="sec">04｜原始资料</h3>
+  <ul class="src-list">
+    <li><span class="src-type">开源仓库</span>zenstory-ai/oh-story-claudecode（MIT，Python，建于 2026-04-22）<br><a href="https://github.com/zenstory-ai/oh-story-claudecode" target="_blank" rel="noopener">https://github.com/zenstory-ai/oh-story-claudecode</a></li>
+    <li><span class="src-type">项目主页</span>官方站点<br><a href="https://zenstory.ai/oh-story" target="_blank" rel="noopener">https://zenstory.ai/oh-story</a></li>
+    <li><span class="src-type">发布记录</span>Releases（最近内容版本 v0.8.4 于 2026-09-27 发布）<br><a href="https://github.com/zenstory-ai/oh-story-claudecode/releases" target="_blank" rel="noopener">github.com/zenstory-ai/oh-story-claudecode/releases</a></li>
+    <li><span class="src-type">窗口内提交</span>PR #455（10-03 14:11 北京时间）与 PR #456（10-03 16:56 北京时间）<br><a href="https://github.com/zenstory-ai/oh-story-claudecode/pulls?q=is%3Apr+is%3Aclosed" target="_blank" rel="noopener">github.com/zenstory-ai/oh-story-claudecode/pulls</a></li>
+    <li><span class="src-type">完整样例</span>demo/ 目录（含长篇续写、拆文报告、状态卡等成片文件）<br><a href="https://github.com/zenstory-ai/oh-story-claudecode/tree/main/demo" target="_blank" rel="noopener">github.com/zenstory-ai/oh-story-claudecode/tree/main/demo</a></li>
+    <li><span class="src-type">部署文档</span>docs/hosts.md（各编程 Agent 的部署差异与安装排查）<br><a href="https://github.com/zenstory-ai/oh-story-claudecode/blob/main/docs/hosts.md" target="_blank" rel="noopener">github.com/zenstory-ai/oh-story-claudecode/blob/main/docs/hosts.md</a></li>
+    <li><span class="src-type">讨论区</span>GitHub Discussions<br><a href="https://github.com/zenstory-ai/oh-story-claudecode/discussions" target="_blank" rel="noopener">github.com/zenstory-ai/oh-story-claudecode/discussions</a></li>
+  </ul>
+
+  <h3 class="sec">05｜作者是谁？</h3>
+  <p>仓库归属组织 <b>zenstory-ai</b>，配套官网域名为 <b>zenstory.ai</b>，另有 Telegram 交流群与 GitHub Discussions——属于<b>团队 / 组织级项目</b>，而非单人一次性作品。README 中出现的 demo 说明写作样例来自「项目作者自己的长篇」，可见开发者本人也是目标用户。<b>团队的具体构成、公司信息、是否已商业化，公开资料未披露，本文不猜。</b></p>
+
+  <h3 class="sec">06｜解决了什么真实问题？</h3>
+  <p>从需求侧看，痛点集中在<b>「长篇的持续性」</b>：</p>
+  <ul>
+    <li><b>需求一（网文作者）。</b>写到第 80 章，前面的伏笔、角色状态、时间线已经多到记不住。人写都容易错，让 AI 写更容易崩；而一旦崩了，改一处要牵动几十章。</li>
+    <li><b>需求二（新人入行）。</b>网文行业有明确的方法论（扫榜 → 拆文 → 商业化写作），但新手缺少「把方法论落成动作」的工具，只能靠自己摸。</li>
+    <li><b>需求三（多平台分发）。</b>同一部作品要在起点、番茄、晋江、七猫、知乎盐言等不同平台适配，格式与节奏要求不同。</li>
+    <li>共同点：<b>不是「写不出字」，而是「写长了就守不住规矩」。</b></li>
+  </ul>
+
+  <h3 class="sec">07｜完整技术栈</h3>
+  <table class="stack">
+    <tr><td class="k">模型</td><td><b>不绑定模型。</b>「写作用的模型就是该 Agent 的模型」——由你使用的编程 Agent 决定。README 提到「续写章写手改用 Opus」（v0.8.1 变更说明），但未声明硬依赖。<b>本文不编造型号。</b></td></tr>
+    <tr><td class="k">形态</td><td>Agent Skill 包（13 个 skill）+ 7 个专业 Agent + 8 个自动化 hook + 100+ 份按需加载的写作方法论</td></tr>
+    <tr><td class="k">支持的宿主</td><td>Claude Code · Codex CLI · Google Antigravity · OpenCode · ZCode · OpenClaw · Reasonix，以及能读取项目文件的通用 Web AI / Agent 环境</td></tr>
+    <tr><td class="k">状态存储</td><td><b>文件系统</b>：设定、大纲、正文、追踪各自独立维护；追踪层核心为 <code>_tracking-state.json</code> 与派生的 <code>追踪/上下文.md</code>（固定 7 栏、硬上限 12KB）</td></tr>
+    <tr><td class="k">工具脚本</td><td><code>storyctl.py</code>（chapter check / chapter commit）、<code>tracking_commit.py</code>、<code>check-ai-patterns.js</code>、<code>check-degeneration.js</code>、<code>normalize-punctuation</code>、<code>guard-outline-before-prose.sh</code></td></tr>
+    <tr><td class="k">安装方式</td><td><code>npx skills add zenstory-ai/oh-story-claudecode -y -g</code>；装后在项目根跑 <code>/story-setup</code>（Codex 用 <code>$story-setup</code>）部署 hooks / agents / references，然后新开会话</td></tr>
+    <tr><td class="k">面向平台</td><td>起点、番茄、晋江、七猫、知乎盐言等长短篇平台</td></tr>
+    <tr><td class="k">语言 / 许可</td><td>Python ｜ MIT</td></tr>
+  </table>
+
+  <h3 class="sec">08｜完整 Workflow</h3>
+  <p><b>路径 A：长篇续写（源自 README 的 demo 实录）</b></p>
+  <div class="flow">
+    <div class="node"><b>① 导入已有作品</b>　<code>/story-import</code> 把已发布的前 20 章反向重建成「可续写工程」</div>
+    <div class="arrow">↓</div>
+    <div class="node"><b>② 读追踪状态卡</b>　<code>追踪/上下文.md</code> 固定 7 栏（当前位置 / 长期约束 / 活跃伏笔 / 下一章承诺 / 连贯性风险 …），硬上限 12KB，<b>不进正文 prompt</b></div>
+    <div class="arrow">↓</div>
+    <div class="node"><b>③ 门禁：先补细纲</b>　<code>guard-outline-before-prose.sh</code> 拦住「没有细纲就想写正文」的章节</div>
+    <div class="arrow">↓</div>
+    <div class="node"><b>④ 分两批写正文</b>　由 <code>narrative-writer</code> 依据细纲产出章节正文</div>
+    <div class="arrow">↓</div>
+    <div class="node"><b>⑤ 章级确定性检查</b>　<code>storyctl.py chapter check</code> → 查字数 / AI 句式 / 退化 / 标点，输出 <code>ready</code> 或未通过</div>
+    <div class="arrow">↓</div>
+    <div class="node"><b>⑥ 一致性与读感审查</b>　<code>consistency-checker</code> 查事实与伏笔，去味审查调整读感</div>
+    <div class="arrow">↓</div>
+    <div class="node"><b>⑦ 提交状态</b>　<code>storyctl.py chapter commit</code> → <code>state_revision</code> 递增</div>
+    <div class="arrow">↓</div>
+    <div class="node"><b>⑧ 整份重生成派生视图</b>　上下文.md / 伏笔.md / 角色状态 / 时间线 / 逐章记录，全部由 state 重新渲染，<b>手改会被 check 拒绝</b></div>
+  </div>
+  <p><b>路径 B：拆文分析</b>　<code>/story-long-analyze</code> 拆解目标作品（README 以《盘龙》开篇 23 章约 6.2 万字为例），按特定读者口味逐维度打分（开篇钩子、节奏、爽感等），并要求「评分要给得出理由」。</p>
+
+  <h3 class="sec">09｜它到底是怎么实现的？</h3>
+  <p>这套系统真正的技术贡献有四点，每一点都可以脱离「网文」独立成立：</p>
+  <p><b>① 状态与展示分离（Single Source of Truth）。</b>所有派生视图（上下文、伏笔、角色状态、时间线）都由 <code>_tracking-state.json</code> 整份重新渲染，且「手改派生文件会被 <code>check</code> 拒绝」。这直接消灭了「文档和状态不一致」这类最常见的团队协作问题——人写长文档会走样，程序渲染不会。</p>
+  <p><b>② 把「连续性」压缩成固定 12KB。</b>控制上下文体积是 Agent 工程的核心约束。作者用「固定 7 栏 + 硬上限 12KB + 不进正文 prompt」三个约束，让续写只依赖一份稳定的状态快照，而不是整部作品的历史对话。</p>
+  <p><b>③ 区分「作者真相」与「读者已知」。</b>这是一个非常专业的小说工程概念：作者知道结局，读者不知道。混淆两者，就会出现「角色提前知道答案」这种崩坏。项目把它做成了两份独立的记录文件。</p>
+  <p><b>④ 用 hook 把「请求」变成「必然」。</b>「写正文前必须有细纲」如果只写在提示词里，模型可能忘；做成 <code>guard-outline-before-prose.sh</code> 钩子，就变成了流程上的硬约束。<b>这是本案例最值得迁移的一条工程经验。</b></p>
+
+  <h3 class="sec">10｜手把手复现</h3>
+  <div class="truth"><b>以下 Step 1–4 整理自项目 README 明确写出的安装步骤；Step 5–6 为 README 中 demo 展示的实际命令；Step 7–8 为本文补充建议，已单独标注。</b></div>
+  <p><b>Step 1（原文）。</b>安装 skill：<code>npx skills add zenstory-ai/oh-story-claudecode -y -g</code>。加 <code>-g</code> 为全局安装（所有目录可用），去掉则只装到当前目录；<b>更新时重新执行同一条命令即可</b>。</p>
+  <p><b>Step 2（原文）。</b>也可以直接对 Agent 说一句话：「安装这个 skill https://github.com/zenstory-ai/oh-story-claudecode」（适用于支持导入 GitHub 仓库 / skill 的平台）。</p>
+  <p><b>Step 3（原文）。</b>部署环境：在写作项目根运行 <code>/story-setup</code>（Codex 用 <code>$story-setup</code>），它会把 hooks / agents / references 部署到位。</p>
+  <p><b>Step 4（原文）。</b><b>然后新开会话。</b>升级后同样要重跑一次 <code>/story-setup</code>。</p>
+  <p><b>Step 5（原文·可选）。</b>若已有连载作品，用 <code>/story-import</code> 把已发布章节反向重建成可续写工程。</p>
+  <p><b>Step 6（原文）。</b>写下一章：<code>/story-long-write 写第21章</code>——skill 会先检查细纲是否存在，缺则先补纲，再走写作与检查链。想拆解参考作品用 <code>/story-long-analyze</code>。</p>
+  <p><b>Step 7（本文补充的建议）。</b>第一次先只跑「导入 + 拆文 + 补细纲」，<b>不写正文</b>，确认状态卡与伏笔表的结构符合你的写作习惯后，再进入正文生成。</p>
+  <p><b>Step 8（本文补充的建议）。</b>把状态卡（12KB 上限）当作你的「写作交接单」：每次收工前确认「下一章承诺」一栏写清楚了，这比让模型记住一切更可靠。此建议为本文推导。</p>
+
+  <h3 class="sec">11｜Prompt / Code / Config</h3>
+  <p><b>原作者公开的内容（可直接引用）：</b></p>
+  <ul>
+    <li><b>安装与初始化命令：</b><code>npx skills add zenstory-ai/oh-story-claudecode -y -g</code>、<code>/story-setup</code>、<code>/story-long-write 写第21章</code>、<code>/story-long-analyze</code>、<code>/story-import</code></li>
+    <li><b>状态卡结构</b>（README 给出完整示例）：固定 7 栏——当前位置 / 长期约束 / 活跃伏笔 / 下一章承诺 / 连贯性风险 等</li>
+    <li><b>门禁与检查脚本名：</b><code>guard-outline-before-prose.sh</code>、<code>storyctl.py chapter check</code>、<code>check-ai-patterns.js</code>、<code>check-degeneration.js</code>、<code>normalize-punctuation</code>、<code>tracking_commit.py check</code></li>
+    <li><b>词表与世界观词汇替换表：</b>README 提到写作前会做「工程词」检查（避免正文出现编程味表达）</li>
+    <li><b>显式发布清单：</b><code>.clawhub/publish.json</code>（ClawHub 分发用）</li>
+  </ul>
+  <p><b>原作者未公开的内容：</b>各专业 Agent 的完整系统提示词、100+ 份方法论文档的全文、hooks 的完整实现。<b>本文不编造。</b></p>
+
+  <h3 class="sec">12｜踩坑</h3>
+  <div class="pitfall">
+    <p><b>以下均为项目 README / docs/hosts.md 自述的已知限制，本文未独立复现：</b></p>
+    <ul>
+      <li><b>装完必须新开会话。</b>安装/升级后不新开会话，hooks 与 agents 不会生效——这是最容易踩的坑。</li>
+      <li><b>各宿主部署差异大。</b>README 专门列出排查项：Windows 可能报 <code>ENOENT</code>、Antigravity 需 <code>agy -p</code>、目录残留等，见 docs/hosts.md。</li>
+      <li><b>派生文件不能手改。</b>追踪状态由工具从 <code>_tracking-state.json</code> 整份重新渲染，手改 <code>上下文.md</code> 之类会被 <code>check</code> 拒绝。新手最容易在这里卡住。</li>
+      <li><b>「窗口内没有新内容版本」。</b>本期收录它的窗口事件是分发链路对齐（PR #455/#456），最近一次内容版本 v0.8.4 为 09-27。请勿误以为 10-03 发布了新的写作能力。</li>
+      <li><b>质量结论均来自项目自述。</b>demo 的成片、评分表、状态卡 diff 均为作者公开材料，本文未逐项复核。</li>
+    </ul>
+  </div>
+
+  <h3 class="sec">13｜中国用户能不能直接做？</h3>
+  <ul>
+    <li><b>国内访问：</b>有限制——仓库与 skill 通过 GitHub / npx 分发，直连不稳定，通常需要加速。</li>
+    <li><b>注册：</b>无需注册，无账号体系；项目结构完全落在本地文件系统。</li>
+    <li><b>API：</b>不额外需要 Key；成本发生在你使用的编程 Agent 与模型上。</li>
+    <li><b>成本：</b>skill 本体免费开源；主要成本是模型调用（长篇续写属于长任务，token 消耗随章数增长）。</li>
+    <li><b>技术门槛：</b><span class="repro hard">有一定门槛</span> 需要会用命令行、理解 Agent 的 skill / hook 机制；<b>不需要 GPU</b>（README 明确说明）。</li>
+  </ul>
+
+  <h3 class="sec">14｜国产替代方案</h3>
+  <table class="stack">
+    <tr><td class="k">原方案</td><td>Claude Code / Codex CLI / Antigravity / OpenCode / ZCode / OpenClaw / Reasonix + oh-story skill 包</td></tr>
+    <tr><td class="k">中国用户方案</td><td>把同类编程 Agent 换成 <b>TRAE / 通义灵码 / CodeBuddy / Qoder</b> 等支持 skill 规范的客户端，背后模型换 <b>DeepSeek / Qwen / GLM / Kimi</b>；状态文件与检查脚本（Python / Node）与模型无关，可直接沿用</td></tr>
+    <tr><td class="k">替代性质</td><td><b>理论替代（本文推导）。</b>项目自称支持「能读取项目文件的通用 Web AI / Agent 环境」，但未点名国产客户端；<b>不能写成「已验证兼容」。</b></td></tr>
+  </table>
+
+  <h3 class="sec">15｜中国企业可以怎么用？</h3>
+  <ul>
+    <li><b>企业场景 1｜内容工作室 / MCN。</b>把选题拆解、系列内容规划、跨平台改写做成类似的 skill 包，用状态文件管住长期选题库与人物设定。</li>
+    <li><b>企业场景 2｜长文档生产。</b>白皮书、系列课件、产品手册——凡是要写 50 页以上、且前后必须一致的内容，都可以复用「状态卡 + 门禁脚本 + 派生视图重生成」这套结构。</li>
+    <li><b>企业场景 3｜版权与合规审查。</b>把「本章退役登记」「作者真相 vs 读者已知」这类记录用于内容审核留痕，形成可追溯的创作过程档案。</li>
+  </ul>
+
+  <h3 class="sec">16｜中国消费者可以怎么用？</h3>
+  <ul>
+    <li><b>网文创作者：</b>用 <code>/story-import</code> 把手上连载的作品导入，让 AI 帮忙补细纲、查伏笔漏洞，而不是替你写。</li>
+    <li><b>长篇爱好者：</b>用 <code>/story-long-analyze</code> 拆解自己喜欢的作品，理解「为什么这段好看」。</li>
+    <li><b>写作新手：</b>把「扫榜 → 拆文 → 商业化写作」这条方法论当成入行地图，先学规矩再动手。</li>
+  </ul>
+
+  <h3 class="sec">17｜如何变成一个赚钱的项目？</h3>
+  <p><b>产品化：</b>不做「另一个写作工具」，而做「长篇连续性保险」——订阅制的状态管理与一致性审查服务，用户带自己的稿子进来，输出伏笔报告与风险清单。</p>
+  <p><b>服务化：</b>给内容工作室做「AI 写作流水线搭建」，交付 skill 包 + 状态规范 + 团队培训。</p>
+  <p><b>咨询化：</b>「如何让 AI 参与长篇创作而不崩」本身就是稀缺咨询：帮团队设计角色设定库、伏笔台账、审核门禁。</p>
+  <p><b>培训化：</b>《AI 辅助长篇创作实战》——面向网文作者与编剧，2 天训练营，产出可运行的写作工程。</p>
+  <p><b>内容化：</b>「我用文件系统管住了 100 章的伏笔」是天然的内容选题，适合 B站、公众号、小红书。</p>
+
+  <h3 class="sec">18｜变现路径</h3>
+  <table class="stack">
+    <tr><td class="k">路径</td><td><b>客户</b> ｜ 产品/服务 ｜ 收费方式 ｜ 难度</td></tr>
+    <tr><td class="k">状态管理订阅</td><td>网文作者/编剧 ｜ 长篇连续性审查服务 ｜ 订阅 ｜ 中</td></tr>
+    <tr><td class="k">工作室部署</td><td>MCN/内容团队 ｜ AI 写作流水线交付 ｜ 项目制 ｜ 中</td></tr>
+    <tr><td class="k">咨询</td><td>内容公司 ｜ 长篇创作流程设计 ｜ 项目制 ｜ 高</td></tr>
+    <tr><td class="k">训练营</td><td>作者/编剧 ｜ 2 天 AI 长篇创作训练营 ｜ 按人 ｜ 低</td></tr>
+    <tr><td class="k">内容</td><td>写作人群 ｜ 方法论文章/课程 ｜ 付费/广告 ｜ 低</td></tr>
+  </table>
+  <p><b>注意：</b>以上为基于案例结构的<b>潜在商业模式分析</b>，非已验证的商业成功；项目未公开任何收入信息。</p>
+
+  <h3 class="sec">19｜如果我是一个中国独立开发者（7 天 MVP）</h3>
+  <ol>
+    <li><b>Day 1：</b>装好 oh-story，用国产 Agent + 国产模型跑通「导入一部作品 → 补一章细纲」。</li>
+    <li><b>Day 2：</b>把「伏笔台账」单独抽出来做成一个可独立使用的 skill（这是最可迁移的部分）。</li>
+    <li><b>Day 3：</b>做一个最小界面：上传 TXT / Markdown 稿件 → 输出伏笔与人物一致性报告。</li>
+    <li><b>Day 4：</b>找 3 位连载作者免费试用，收集「哪条报告最有用」。 </li>
+    <li><b>Day 5：</b>按反馈收敛到 1 个杀手功能（建议：伏笔漏收提醒）。</li>
+    <li><b>Day 6：</b>写一页说明 + 一个真实案例（作者原稿前后对比），做成落地页。</li>
+    <li><b>Day 7：</b>定一个低价订阅（如按部作品收费），开始小范围推广。</li>
+  </ol>
+
+  <h3 class="sec">20｜如何迁移到其他行业</h3>
+  <div class="migrate">
+    <div class="m"><b>① 影视编剧</b>用状态卡 + 伏笔台账管理连续剧剧本的多线叙事与角色弧光。</div>
+    <div class="m"><b>② 企业知识生产</b>把「白皮书系列」的状态与口径统一管理，避免不同章节自相矛盾。</div>
+    <div class="m"><b>③ 教育培训</b>用同样的结构管理系列课程：知识点覆盖表 + 前置依赖 + 已讲/未讲状态。</div>
+  </div>
+
+  <h3 class="sec">21｜培训课程设计</h3>
+  <div class="course">
+    <table>
+      <tr><td class="k">课程名称</td><td>《AI 辅助长篇创作：用 Agent Skill 管住连续性》</td></tr>
+      <tr><td class="k">适合人群</td><td>网文作者、编剧、内容工作室主理人、AI 写作爱好者</td></tr>
+      <tr><td class="k">建议时长</td><td>2 天（12 小时）或分 4 次线上</td></tr>
+      <tr><td class="k">30 分钟 Demo</td><td>导入 20 章 → 看状态卡 → 补第 21 章细纲 → 门禁拦截演示</td></tr>
+      <tr><td class="k">60 分钟 Workshop</td><td>学员为自己的作品建一份 7 栏状态卡</td></tr>
+      <tr><td class="k">半天课程</td><td>上午讲方法论（扫榜/拆文/写作），下午实操装环境并跑通一章</td></tr>
+      <tr><td class="k">课程目标</td><td>学员能够独立用状态卡管理一部长篇的伏笔与角色状态，并解释「作者真相 vs 读者已知」为何必须分开</td></tr>
+      <tr><td class="k">现场 Demo</td><td>拆文报告生成 + 评分理由说明</td></tr>
+      <tr><td class="k">学员练习</td><td>为自己作品列出 10 条活跃伏笔并标注埋设章与计划回收章</td></tr>
+      <tr><td class="k">课后作业</td><td>连续 7 天，每天更新一次追踪状态卡</td></tr>
+      <tr><td class="k">企业迁移</td><td>为内容团队定义统一的创作状态规范与审核门禁</td></tr>
+    </table>
+  </div>
+
+  <h3 class="sec">22｜培训师点评</h3>
+  <div class="trainer"><b>这个案例真正值得教的是什么？</b>不是「AI 会写小说」，而是<b>「把长任务的状态从模型记忆里搬到文件系统」</b>，以及「把要求写成钩子，而不是写成提示词里的请求」。这两条能迁移到任何长周期 Agent 任务上。</div>
+
+  <h3 class="sec">23｜最终判断</h3>
+  <div class="verdict">
+    <div class="v"><div class="k">落地性</div><div class="val lv-h">高</div></div>
+    <div class="v"><div class="k">中国市场相关性</div><div class="val lv-h">高</div></div>
+    <div class="v"><div class="k">商业价值</div><div class="val lv-m">中</div></div>
+    <div class="v"><div class="k">复现难度</div><div class="val lv-m">中</div></div>
+    <div class="v"><div class="k">变现潜力</div><div class="val lv-h">高</div></div>
+  </div>
+  <p style="font-size:13px;color:#6B7280;margin-top:8px;">说明：以上是案例属性描述，不是排名。「变现潜力高」是因为网文/编剧人群付费意愿明确且方法论可复用于其他长内容；「复现难度中」是因为需要熟练使用 Agent 的 skill / hook 机制。</p>
+</div>
+
+<!-- ===================== 案例 02 ===================== -->
+<div class="card" id="case02">
+  <div class="card-head">
+    <div class="num">02</div>
+    <h2>用「50 篇教程 + 80 万字」把四款 AI 编程工具教成一条学习路径：Claude Code / OpenClaw / Codex / WorkBuddy 的中文教程体系</h2>
+  </div>
+  <div class="badges">
+    <span class="badge b-cat">AI Coding 教育</span>
+    <span class="badge b-cat">中文一手教程</span>
+    <span class="badge b-cat">开源教材</span>
+    <span class="badge b-date">窗口内三个版本 10-03 17:04 / 19:12 / 22:13</span>
+    <span class="badge b-tag">开源 MIT</span>
+    <span class="badge b-warn">学习效果未经验证</span>
+  </div>
+
+  <div class="oneliner">
+    <b>一句话结论：</b>它把「AI 编程工具的教学」从零散技巧变成了有版本号、有复核流程的工程产物——教程也能像软件一样发版。
+  </div>
+
+  <h3 class="sec">01｜案例是什么？</h3>
+  <p>开发者 KimYx0207 维护的开源中文教程仓库 <b>AI-Coding-Guide-Zh</b>（MIT）：把当前主流 AI 编程工具——<b>Claude Code、OpenClaw、Codex、WorkBuddy</b>——的教学内容组织成四条并行的学习路径（编程 / 助手 / Agent / 办公），目前公开的规模是「50 篇完整教程 + 1 张速查卡 + 80 万+ 内容量 + 1500+ 实操示例」。它最特别的地方不是内容多，而是<b>像软件一样管版本</b>：仓库用 Release 记录每一轮复核的范围与结论。</p>
+
+  <h3 class="sec">02｜为什么今天值得关注？</h3>
+  <ul>
+    <li><b>窗口内的事实（可用 API 核实）：</b>2026-10-03 这一天，该仓库在窗口内（10-03 12:00 → 10-04 12:00）连续发布了 <b>三个版本</b>：<b>v5.3（北京时间 17:04）「四主线全面核查与实操修正」</b>、<b>v5.4（19:12）「正文、当前功能与跟练的第二轮复核」</b>、<b>v5.5（22:13）「四工具教学补齐与近期变化复核」</b>。同一天还有 15 次提交在窗口内落地。</li>
+    <li><b>为什么以前不容易做：</b>AI 编程工具迭代极快，教程的生命周期常常只有几周——今天写的操作步骤，下个版本就失效。中文圈尤其严重：一手文档多为英文，中文教程多为转载与拼凑。</li>
+    <li><b>为什么现在变得值得做：</b>① 工具生态从「一个工具」变成「一个矩阵」（Claude Code / OpenClaw / Codex / WorkBuddy 各有所长），用户需要的是<b>选择与迁移的路径</b>，而不是单点技巧；② Agent / Skill 这些概念让「一套方法能否迁移到另一个工具」成为真实问题。</li>
+    <li><b>为什么值得花时间：</b>「教程即产品」是一种很少被认真对待的商业形态——它同时具备内容资产、社群入口、培训素材三重属性。</li>
+  </ul>
+
+  <h3 class="sec">03｜案例的前世今生</h3>
+  <p><b>前世。</b>中文 AI 工具教程的第一阶段是「翻译与搬运」：把官方文档翻一遍，配上截图。问题在于更新无机制——工具一升级，教程就成了误导。</p>
+  <p><b>发展。</b>第二阶段是「个人经验帖」：某位博主写自己怎么用某个工具解决了某个问题，可读性强但不成体系，也没人负责更新。第三阶段开始出现「仓库化的教程」——用 Git 管内容、用 Issue 收反馈、用 Release 记版本。</p>
+  <p><b>今生。</b>本项目属于第三阶段的成熟样本：它不只写内容，还建立了「复核」这个动作。窗口内一天连发三个版本，版本说明写的是「全面核查与实操修正」「第二轮复核」「四工具教学补齐」——<b>这不是新写了一章，而是对既有内容做交叉验证。</b>README 的版本说明（v5.5「四工具教学补齐与近期变化复核」）也印证了这一点。</p>
+  <p><b>下一步可能怎么发展（分析 / 推演）。</b>教程类仓库最可能的进化方向是「可执行化」：不只教你点哪里，而是把操作本身做成 skill / 脚本，读者拉下来就能跑；进一步可能出现「教程自动校验」——用程序定期跑一遍文档里的命令，失效就报警。以上为推演，非事实。</p>
+
+  <h3 class="sec">04｜原始资料</h3>
+  <ul class="src-list">
+    <li><span class="src-type">开源仓库</span>KimYx0207/AI-Coding-Guide-Zh（MIT，Python，建于 2026-02-11）<br><a href="https://github.com/KimYx0207/AI-Coding-Guide-Zh" target="_blank" rel="noopener">https://github.com/KimYx0207/AI-Coding-Guide-Zh</a></li>
+    <li><span class="src-type">发布记录</span>Releases（窗口内 v5.3 / v5.4 / v5.5，均发布于 2026-10-03）<br><a href="https://github.com/KimYx0207/AI-Coding-Guide-Zh/releases" target="_blank" rel="noopener">github.com/KimYx0207/AI-Coding-Guide-Zh/releases</a></li>
+    <li><span class="src-type">版本说明</span>v5.5「四工具教学补齐与近期变化复核」<br><a href="https://github.com/KimYx0207/AI-Coding-Guide-Zh/releases/tag/v5.5" target="_blank" rel="noopener">github.com/KimYx0207/AI-Coding-Guide-Zh/releases/tag/v5.5</a></li>
+    <li><span class="src-type">窗口内提交</span>10-03 的 15 次提交（含 4 个 PR 合并）<br><a href="https://github.com/KimYx0207/AI-Coding-Guide-Zh/commits/main" target="_blank" rel="noopener">github.com/KimYx0207/AI-Coding-Guide-Zh/commits/main</a></li>
+  </ul>
+
+  <h3 class="sec">05｜作者是谁？</h3>
+  <p>GitHub 账号 <b>KimYx0207</b>，仓库含 1,060 个 Fork、5,000+ Star，话题标签包含 <code>chinese</code>、<code>ai-tutorial</code>、<code>claude-code</code>、<code>openclaw</code>——属于<b>长期投入的中文技术内容创作者</b>。具体身份（公司、职业）未公开披露，<b>本文不猜。</b></p>
+
+  <h3 class="sec">06｜解决了什么真实问题？</h3>
+  <p>从需求侧看，痛点是<b>「学习成本与迭代速度不匹配」</b>：</p>
+  <ul>
+    <li><b>需求一（想入门的开发者）。</b>AI 编程工具太多了，不知道从哪个开始、它们有什么区别、学哪个更划算。</li>
+    <li><b>需求二（已入门的用户）。</b>学会一个工具后，想迁移到另一个（比如从 Codex 到 Claude Code），但两者的概念体系不同，找不到对照。</li>
+    <li><b>需求三（企业侧）。</b>要给团队做 AI 工具选型与培训，缺少能直接用的中文材料。</li>
+    <li>共同点：<b>不是「没有教程」，而是「没有一份跟得上工具迭代、且覆盖多个工具的对照式教程」。</b></li>
+  </ul>
+
+  <h3 class="sec">07｜完整技术栈</h3>
+  <table class="stack">
+    <tr><td class="k">内容形态</td><td>Markdown 教程仓库（Git 管理）+ 速查卡</td></tr>
+    <tr><td class="k">覆盖工具</td><td>Claude Code · OpenClaw · Codex · WorkBuddy（四条并行学习路径：编程 + 助手 + Agent + 办公）</td></tr>
+    <tr><td class="k">规模</td><td>作者自述：50 篇完整教程 + 1 张速查卡 + 80 万+ 内容量 + 1500+ 实操示例（<b>该规模为仓库自述，本文未逐篇计数</b>）</td></tr>
+    <tr><td class="k">版本机制</td><td>用 GitHub Release 记录每一轮复核的范围（如 v5.3「四主线全面核查与实操修正」）</td></tr>
+    <tr><td class="k">协作机制</td><td>Pull Request + 合并评审（窗口内出现 #32–#38 多个 PR）</td></tr>
+    <tr><td class="k">语言 / 许可</td><td>Python（仓库主语言标记）｜ MIT</td></tr>
+    <tr><td class="k">成本</td><td>免费阅读；跟着练需要自备对应工具的账号与额度</td></tr>
+  </table>
+
+  <h3 class="sec">08｜完整 Workflow</h3>
+  <p><b>读者侧（学习路径）</b></p>
+  <div class="flow">
+    <div class="node"><b>① 选择主线</b>　按自己的身份选：编程 / 助手 / Agent / 办公 四条路径之一</div>
+    <div class="arrow">↓</div>
+    <div class="node"><b>② 读速查卡</b>　1 张速查卡先建立全局印象，再进入具体教程</div>
+    <div class="arrow">↓</div>
+    <div class="node"><b>③ 按序跟练</b>　每篇教程带实操示例，跟着做一遍</div>
+    <div class="arrow">↓</div>
+    <div class="node"><b>④ 跨工具对照</b>　同一件事在四款工具里分别怎么做，降低迁移成本</div>
+    <div class="arrow">↓</div>
+    <div class="node"><b>⑤ 遇到变化回查版本</b>　工具升级后，看仓库是否有新 Release 覆盖该变化</div>
+  </div>
+  <p><b>作者侧（维护流程，源自窗口内提交记录）</b></p>
+  <div class="flow">
+    <div class="node"><b>① 拉分支</b>　按主题建分支（如 <code>docs/full-refresh-20261003</code>、<code>docs/round2-content-20261003</code>）</div>
+    <div class="arrow">↓</div>
+    <div class="node"><b>② 全面核查</b>　对照工具当前实际功能修正正文与实操步骤</div>
+    <div class="arrow">↓</div>
+    <div class="node"><b>③ 提交 PR 并合并</b>　窗口内观察到 #32 至 #38 的连续合并</div>
+    <div class="arrow">↓</div>
+    <div class="node"><b>④ 发 Release 记版本</b>　v5.3 / v5.4 / v5.5，版本说明写明本轮复核范围</div>
+  </div>
+
+  <h3 class="sec">09｜它到底是怎么实现的？</h3>
+  <p>这个案例没有模型、没有 Agent、没有代码框架，它值得研究的是<b>「内容工程化」的三条做法</b>：</p>
+  <p><b>① 把教程当软件发版。</b>「v5.3 / v5.4 / v5.5」这样的版本号，让读者知道「我看到的是哪一轮复核的结果」。对快速迭代的工具教程来说，这比内容本身更重要——它解决的是<b>可信度随时间衰减</b>的问题。</p>
+  <p><b>② 用 PR 与分支表达「这一轮改了什么」。</b>窗口内的分支命名（<code>docs/full-refresh-20261003</code>、<code>docs/round2-content-20261003</code>、<code>docs/refresh-workflows-20261003</code>）本身就是一份维护日志：第一轮全面核查、第二轮内容复核、第三轮工作流刷新。这套流程与软件团队的协作习惯一致。</p>
+  <p><b>③ 用「四工具对照」建立迁移价值。</b>单工具教程会被官方文档替代，多工具对照教程不会——因为「A 和 B 的差别在哪」是官方文档天然不会写的。</p>
+  <p><b>为什么它可以工作？</b>因为它把「更新」当成核心功能，而不是附带动作。绝大多数教程仓库死于「写了就不管」，而这个仓库用 Release 机制把「我得持续复核」变成了公开承诺。</p>
+
+  <h3 class="sec">10｜手把手复现</h3>
+  <div class="truth"><b>以下 Step 1–3 为仓库公开发布机制可直接观测的做法；Step 4–6 为本文补充建议，已单独标注，并非作者的原始步骤。</b></div>
+  <p><b>Step 1（原文/仓库可观测）。</b>clone 仓库，从速查卡开始建立全局印象，再按自己身份选一条主线（编程 / 助手 / Agent / 办公）。</p>
+  <p><b>Step 2（原文/仓库可观测）。</b>读 Releases 页，确认当前读到的是哪一轮复核后的内容；工具升级后先回到这里检查。</p>
+  <p><b>Step 3（原文/仓库可观测）。</b>按需自备四款工具的账号与额度，跟着实操示例做一遍——教程的价值在于「跟练」，不在阅读。</p>
+  <p><b>Step 4（本文补充的建议）。</b>给自己建一个「团队版」：把与你业务相关的章节摘成内部文档，标注「已在本团队验证」与「未验证」两类，避免把教程当规范。</p>
+  <p><b>Step 5（本文补充的建议）。</b>用同样的「版本号 + 复核范围」机制管理你自己的内部 AI 使用手册——很多团队的 AI 规范文档失效，就是因为没有人负责更新。</p>
+  <p><b>Step 6（本文补充的建议）。</b>把教程里出现的命令整理成一份可执行脚本清单，定期跑一遍；能自动化验证的文档才是活的文档。</p>
+
+  <h3 class="sec">11｜Prompt / Code / Config</h3>
+  <p><b>原作者公开的内容：</b></p>
+  <ul>
+    <li>50 篇教程正文与 1 张速查卡（Markdown 全文公开）</li>
+    <li>版本说明（Release Notes）：如 v5.5「四工具教学补齐与近期变化复核」</li>
+    <li>四条学习路径的结构划分：编程 / 助手 / Agent / 办公</li>
+    <li>窗口内的分支与 PR 命名（可反映其维护流程）</li>
+  </ul>
+  <p><b>本文未获取到的内容：</b>教程内容的具体章节清单、每篇的独立校验记录、作者个人的写作提示词。<b>本文不编造。</b></p>
+
+  <h3 class="sec">12｜踩坑</h3>
+  <div class="pitfall">
+    <p><b>以下为本文基于案例结构的提醒，非作者原文：</b></p>
+    <ul>
+      <li><b>教程学习效果无人验证。</b>「50 篇 / 80 万字 / 1500+ 示例」是仓库自述的规模，<b>没有任何公开数据能证明读者学完后的实际能力提升</b>。请把它当参考资料，不要当能力认证。</li>
+      <li><b>工具版本漂移是最大风险。</b>四款工具都在高速迭代；即使作者做了复核，你读到的某一页仍可能落后于你本机版本。遇到不一致，以工具官方文档为准。</li>
+      <li><b>别把「覆盖广」误读成「深度够」。</b>四条主线并行覆盖，单条路径的深度必然受限；需要解决具体问题时，仍要回到官方文档与源码。</li>
+      <li><b>Fork 数高不等于被广泛使用。</b>1,060 个 Fork 反映的是收藏与二次分发的意愿，不等于活跃学习者数量。</li>
+    </ul>
+  </div>
+
+  <h3 class="sec">13｜中国用户能不能直接做？</h3>
+  <ul>
+    <li><b>国内访问：</b>GitHub 直连不稳定，仓库内容基本为纯 Markdown，可离线阅读或镜像获取；教程本身包含 <b>WorkBuddy</b> 等国内可用的工具，方向对国内用户友好。</li>
+    <li><b>注册：</b>阅读不需要；跟练需要对应工具的账号。</li>
+    <li><b>API：</b>教程本身不需要 Key；跟练四款工具时按各自规则申请额度。</li>
+    <li><b>成本：</b>内容免费；跟练成本取决于所选工具的免费额度与付费档位。</li>
+    <li><b>技术门槛：</b><span class="repro">普通用户可以开始</span> 内容为中文、以图文为主；深入部分需要命令行基础。</li>
+  </ul>
+
+  <h3 class="sec">14｜国产替代方案</h3>
+  <table class="stack">
+    <tr><td class="k">原方案覆盖</td><td>Claude Code · OpenClaw · Codex · WorkBuddy</td></tr>
+    <tr><td class="k">中国用户方案</td><td>课程中已含 <b>WorkBuddy</b>（国内可用）；其余工具可对照阅读教程后，把方法迁移到 <b>TRAE / 通义灵码 / CodeBuddy / Qoder</b>，模型换 <b>DeepSeek / Qwen / GLM / Kimi</b></td></tr>
+    <tr><td class="k">替代性质</td><td>WorkBuddy 主线属<b>教程原生覆盖</b>；其余为<b>方法迁移（本文推导）</b>，作者未提供国产工具的对照章节</td></tr>
+  </table>
+
+  <h3 class="sec">15｜中国企业可以怎么用？</h3>
+  <ul>
+    <li><b>企业场景 1｜AI 工具选型。</b>把四工具对照章节作为内部选型的参考材料，快速判断团队该从哪个工具切入。</li>
+    <li><b>企业场景 2｜团队内训教材底稿。</b>以它为基础裁剪出一套内部培训材料，补上「我们公司的规范」这一层。</li>
+    <li><b>企业场景 3｜内部手册的版本机制。</b>直接借用「版本号 + 复核范围 + PR」的做法，管理公司自己的 AI 使用规范文档。</li>
+  </ul>
+
+  <h3 class="sec">16｜中国消费者可以怎么用？</h3>
+  <ul>
+    <li><b>个人入门：</b>照着四条路径之一，从速查卡到跟练，把一款工具真正用起来。</li>
+    <li><b>转岗 / 求职：</b>把「会用 AI 编程工具」变成可展示的技能，教程内容可作为练习清单。</li>
+    <li><b>做副业：</b>把学会的流程包装成接单能力（小工具、脚本、自动化）。</li>
+  </ul>
+
+  <h3 class="sec">17｜如何变成一个赚钱的项目？</h3>
+  <p><b>产品化：</b>把「对照式教程」升级为「企业 AI 工具能力矩阵」——按岗位输出学习路径与考核题，卖的是路径而不只是内容。</p>
+  <p><b>服务化：</b>企业 AI 工具落地的陪伴式服务：选型 + 内训 + 手册维护，按季度收费。教程版式天然适合做交付物。</p>
+  <p><b>咨询化：</b>为企业判断「该把哪些岗位的哪些工作交给 AI 工具」，属于流程咨询。</p>
+  <p><b>培训化：</b>把四条主线直接改造成企业内训课（这也是本案例最直接的变现路径）。</p>
+  <p><b>内容化：</b>拆解「教程如何像软件一样发版」，本身对做知识产品的人有很强吸引力。</p>
+
+  <h3 class="sec">18｜变现路径</h3>
+  <table class="stack">
+    <tr><td class="k">路径</td><td><b>客户</b> ｜ 产品/服务 ｜ 收费方式 ｜ 难度</td></tr>
+    <tr><td class="k">企业内训</td><td>企业 ｜ 四工具能力矩阵课程 ｜ 按场/按人 ｜ 低</td></tr>
+    <tr><td class="k">陪伴式落地</td><td>企业 ｜ 选型 + 内训 + 手册维护 ｜ 订阅/季度 ｜ 中</td></tr>
+    <tr><td class="k">训练营</td><td>个人 ｜ AI 编程实战训练营 ｜ 按人 ｜ 低</td></tr>
+    <tr><td class="k">咨询</td><td>企业 ｜ 岗位级 AI 工作流设计 ｜ 项目制 ｜ 高</td></tr>
+    <tr><td class="k">内容</td><td>开发者 ｜ 付费专栏/社群 ｜ 订阅 ｜ 低</td></tr>
+  </table>
+  <p><b>注意：</b>以上为基于案例结构的<b>潜在商业模式分析</b>，非已验证的商业成功；作者未公开任何收入信息。</p>
+
+  <h3 class="sec">19｜如果我是一个中国独立开发者（7 天 MVP）</h3>
+  <ol>
+    <li><b>Day 1：</b>通读速查卡与一条主线，选定一个细分人群（建议：中小企业的非技术岗，如运营/客服主管）。</li>
+    <li><b>Day 2：</b>把教程裁剪成该岗位的「10 个能用 AI 完成的具体任务」清单。</li>
+    <li><b>Day 3：</b>为其中 3 个任务做成可直接跑的操作脚本 / 提示词模板。</li>
+    <li><b>Day 4：</b>招 3 位该岗位的人免费试学，记录卡点。</li>
+    <li><b>Day 5：</b>按卡点重写材料（大概率是「术语太多」），并加上 5 分钟视频讲解。</li>
+    <li><b>Day 6：</b>做一个落地页 + 微信/飞书答疑群，先聚人再收费。</li>
+    <li><b>Day 7：</b>推出「岗位版 AI 提效课」，低价试卖，验证付费意愿。</li>
+  </ol>
+
+  <h3 class="sec">20｜如何迁移到其他行业</h3>
+  <div class="migrate">
+    <div class="m"><b>① 企业内部培训</b>把同样的「多工具对照 + 版本复核」模式用在办公软件、数据分析工具的培训上。</div>
+    <div class="m"><b>② 高校 / 职教</b>把 AI 工具教学做成有版本号的课程包，避免教材一出版就过期。</div>
+    <div class="m"><b>③ 跨境服务</b>把中文教程体系翻译成英文/东南亚语言，服务出海团队的工具培训需求。</div>
+  </div>
+
+  <h3 class="sec">21｜培训课程设计</h3>
+  <div class="course">
+    <table>
+      <tr><td class="k">课程名称</td><td>《AI 编程工具四线速通：选型、上手、迁移》</td></tr>
+      <tr><td class="k">适合人群</td><td>开发者、技术管理者、企业内训负责人</td></tr>
+      <tr><td class="k">建议时长</td><td>1 天（6 小时）或 4 次线上</td></tr>
+      <tr><td class="k">30 分钟 Demo</td><td>同一任务在四款工具里的不同做法对照</td></tr>
+      <tr><td class="k">60 分钟 Workshop</td><td>学员用其中一款工具完成一个小需求并提交</td></tr>
+      <tr><td class="k">半天课程</td><td>上午讲概念矩阵与选型，下午分组实操并互评</td></tr>
+      <tr><td class="k">课程目标</td><td>学员能够判断自己的岗位该选哪款工具，并完成一次跨工具迁移</td></tr>
+      <tr><td class="k">现场 Demo</td><td>速查卡的用法演示</td></tr>
+      <tr><td class="k">学员练习</td><td>把教程里的一个示例改成自己工作中的真实任务</td></tr>
+      <tr><td class="k">课后作业</td><td>用一周时间把 3 个日常工作流程交给 AI 工具完成</td></tr>
+      <tr><td class="k">企业迁移</td><td>输出企业版《AI 工具使用规范 v1.0》，含版本复核机制</td></tr>
+    </table>
+  </div>
+
+  <h3 class="sec">22｜培训师点评</h3>
+  <div class="trainer"><b>这个案例真正值得教的是什么？</b>不是工具本身，而是<b>「内容也要有版本号」</b>这个纪律。绝大多数教程死于「写完就不管」；而这个仓库用 Release 把「我会持续复核」变成了公开承诺——这是做知识产品最稀缺的能力。</div>
+
+  <h3 class="sec">23｜最终判断</h3>
+  <div class="verdict">
+    <div class="v"><div class="k">落地性</div><div class="val lv-h">高</div></div>
+    <div class="v"><div class="k">中国市场相关性</div><div class="val lv-h">高</div></div>
+    <div class="v"><div class="k">商业价值</div><div class="val lv-h">高</div></div>
+    <div class="v"><div class="k">复现难度</div><div class="val lv-l">低</div></div>
+    <div class="v"><div class="k">变现潜力</div><div class="val lv-h">高</div></div>
+  </div>
+  <p style="font-size:13px;color:#6B7280;margin-top:8px;">说明：以上是案例属性描述，不是排名。「复现难度低」指作为一个内容资产模型极易复制（会写、会维护即可）；「不变现风险」在于内容品类竞争激烈，需要明确的受众切分。</p>
+</div>
+
+<!-- ===================== 今日观察 ===================== -->
+<section class="block" id="observe">
+  <h2>今日 AI 实战观察</h2>
+  <div class="panel">
+    <p>10-04 这一天的两个案例都不是「新模型」「新产品」，而是同一种现象的两个切面：<b>中文内容生产正在被「工程化」。</b></p>
+    <p><b>第一，AI 写作的瓶颈不在生成，在于「记住」。</b>案例 01 用 12KB 的状态卡和一份 <code>_tracking-state.json</code> 解决长篇连续性，这说明业界已经意识到：让 AI 写得好不难，难的是让它<b>在一百次对话之后仍然保持一致</b>。这个认知对整个 Agent 领域都成立。</p>
+    <p><b>第二，「把要求写成钩子，而不是写成提示词」正在成为共识。</b>「写正文前必须有细纲」如果只写在提示词里，模型可能忘；做成 <code>guard-outline-before-prose.sh</code>，就变成了流程上的必然。这是本日最值得带走的一条工程经验——<b>凡是不能失败的约束，都不该交给模型自觉。</b></p>
+    <p><b>第三，教程也在变成产品。</b>案例 02 一天连发三个版本，版本说明是「全面核查与实操修正」「第二轮复核」。在中文化语境里，这是一种很新的做法：把「持续更新」从道德要求变成版本制度。它解决的是一个更普遍的问题——<b>在工具每周都在变的时代，「我读过的最新一版」是有价格的。</b></p>
+    <p><b>第四，两个案例都选择了「不依赖单一工具」。</b>案例 01 支持 8 款编程 Agent，案例 02 覆盖 4 款工具。这不是巧合，而是对现实的判断：工具会换、模型会换，能被沉淀下来的是<b>流程、状态结构和判断标准</b>。对于做 AI 落地的人来说，这是一个明确的信号——不要把资产建在工具上，要建在流程上。</p>
+  </div>
+</section>
+
+<!-- ===================== 商业机会雷达 ===================== -->
+<section class="block" id="radar">
+  <h2>今日商业机会雷达</h2>
+  <div class="panel">
+    <h3>机会 1｜长篇内容的「连续性保险」</h3>
+    <ul>
+      <li><b>客户：</b>网文作者、编剧、内容工作室</li>
+      <li><b>实现方式：</b>状态卡 + 伏笔台账 + 一致性检查（基于案例 01 结构）</li>
+      <li><b>可能商业模式：</b>按部作品订阅审校服务</li>
+    </ul>
+    <h3>机会 2｜企业 AI 工具能力矩阵与内训</h3>
+    <ul>
+      <li><b>客户：</b>想系统引入 AI 工具的中小企业</li>
+      <li><b>实现方式：</b>四工具对照教程裁剪为岗位级课程（基于案例 02）</li>
+      <li><b>可能商业模式：</b>内训按场收费 + 手册维护订阅</li>
+    </ul>
+    <h3>机会 3｜「文档活起来」的版本化服务</h3>
+    <ul>
+      <li><b>客户：</b>有大量内部规范文档的团队</li>
+      <li><b>实现方式：</b>把「版本号 + 复核范围 + PR 流程」搬进企业文档体系</li>
+      <li><b>可能商业模式：</b>咨询 + 工具化交付</li>
+    </ul>
+    <p style="font-size:13px;color:#6B7280;">以上均是基于案例结构的<b>商业模式分析</b>，不代表已验证的商业成功。</p>
+  </div>
+</section>
+
+<!-- ===================== 个人变现机会 ===================== -->
+<section class="block" id="personal">
+  <h2>今日「个人变现机会」</h2>
+  <div class="panel">
+    <p>如果一个人每天投入 <b>2–4 小时</b>，这两个案例可以这样长出个人业务：</p>
+    <ul>
+      <li><b>做「长篇审校」服务。</b>第 01 个案例最可迁移的是「伏笔台账」这件事。帮连载作者做一致性检查，交付周期短、需求稳定、复购率高。</li>
+      <li><b>做「岗位版 AI 课」。</b>第 02 个案例证明「把教程剪成特定人群能用的样子」有市场。选定一个岗位（运营、客服、财务、HR），做出 10 个具体任务的操作课。</li>
+      <li><b>做内部文档顾问。</b>帮团队建立「AI 文档的版本复核机制」，是介于咨询与培训之间的小生意，交付清晰、可标准化。</li>
+      <li><b>做内容资产。</b>把「状态卡怎么用」「教程怎么发版」写成系列内容，长期吸引想认真做 AI 落地的人。</li>
+    </ul>
+    <p><b>提醒：</b>以上是低资本、单人可启动的机会方向，<b>不构成收益承诺</b>。真正的分水岭在于「受众是否愿意为这个具体的痛付费」。</p>
+  </div>
+</section>
+
+<!-- ===================== 原始资料汇总 ===================== -->
+<section class="block" id="sources">
+  <h2>原始资料</h2>
+  <div class="panel">
+    <h3>案例 01 · Oh Story（网文写作 Skill 包）</h3>
+    <ul>
+      <li>仓库：<a href="https://github.com/zenstory-ai/oh-story-claudecode" target="_blank" rel="noopener">github.com/zenstory-ai/oh-story-claudecode</a></li>
+      <li>项目主页：<a href="https://zenstory.ai/oh-story" target="_blank" rel="noopener">zenstory.ai/oh-story</a></li>
+      <li>Releases：<a href="https://github.com/zenstory-ai/oh-story-claudecode/releases" target="_blank" rel="noopener">github.com/zenstory-ai/oh-story-claudecode/releases</a></li>
+      <li>完整样例：<a href="https://github.com/zenstory-ai/oh-story-claudecode/tree/main/demo" target="_blank" rel="noopener">demo/ 目录</a></li>
+      <li>部署排查：<a href="https://github.com/zenstory-ai/oh-story-claudecode/blob/main/docs/hosts.md" target="_blank" rel="noopener">docs/hosts.md</a></li>
+    </ul>
+    <h3>案例 02 · AI-Coding-Guide-Zh</h3>
+    <ul>
+      <li>仓库：<a href="https://github.com/KimYx0207/AI-Coding-Guide-Zh" target="_blank" rel="noopener">github.com/KimYx0207/AI-Coding-Guide-Zh</a></li>
+      <li>Releases：<a href="https://github.com/KimYx0207/AI-Coding-Guide-Zh/releases" target="_blank" rel="noopener">github.com/KimYx0207/AI-Coding-Guide-Zh/releases</a></li>
+      <li>v5.5 版本说明：<a href="https://github.com/KimYx0207/AI-Coding-Guide-Zh/releases/tag/v5.5" target="_blank" rel="noopener">releases/tag/v5.5</a></li>
+    </ul>
+    <h3>明确排除的来源</h3>
+    <p>本期检索中，以下站点内容经核实为同一批模板化文章的重复分发（无一手作者、无可验证项目），<b>全部剔除</b>：mhpq.cn、tzjp.cn、hqwc.cn、qwbw.cn、lpqz.cn（「尧图系」）。</p>
+  </div>
+</section>
+
+<!-- ===================== 数据真实性说明 ===================== -->
+<section class="block" id="truth">
+  <h2>数据真实性说明</h2>
+  <div class="panel">
+    <h3>已核实的事实（可通过 GitHub API 复核）</h3>
+    <ol>
+      <li><b>案例 01：</b>zenstory-ai/oh-story-claudecode，MIT，Python，建于 2026-04-22；窗口内（10-03 12:00 → 10-04 12:00 北京时间）有 2 次提交（PR #455 于 10-03 14:11、PR #456 于 10-03 16:56），均为 ClawHub 分发相关；最近内容版本 v0.8.4 发布于 2026-09-27（<b>窗口外</b>）。</li>
+      <li><b>案例 02：</b>KimYx0207/AI-Coding-Guide-Zh，MIT，建于 2026-02-11；窗口内发布 v5.3（10-03 17:04）、v5.4（10-03 19:12）、v5.5（10-03 22:13）三个版本，另有 15 次提交落在窗口内。</li>
+      <li>所有时间戳来自 GitHub API 原始返回，已换算为北京时间；「窗口外」的事件已明确标注，未被包装成「新案例」。</li>
+    </ol>
+    <h3>来自作者自述、本文未独立验证</h3>
+    <ul>
+      <li><b>案例 01：</b>13 个 skill 的实际效果、7 个专业 Agent 与 8 个 hook 的完整行为、demo 中「第 21 章」的产出质量、拆文评分表——均为项目公开材料，<b>本文未独立复现或评估</b>。</li>
+      <li><b>案例 02：</b>「50 篇完整教程 / 80 万+ 内容量 / 1500+ 实操示例」为仓库自述规模，<b>本文未逐篇计数</b>；学习效果无任何公开验证数据。</li>
+    </ul>
+    <h3>本文的分析与推演</h3>
+    <ul>
+      <li>「前世今生」「下一步可能怎么发展」「企业/消费者场景」「迁移方向」「7 天 MVP」「课程设计」等均为基于公开资料的<b>分析与推演</b>，不代表项目作者的观点或计划。</li>
+      <li>商业与变现部分全部为<b>潜在模式分析</b>，不是已验证的收入事实。</li>
+    </ul>
+    <h3>已做与未做的验证</h3>
+    <ul class="checklist">
+      <li>作者/组织账号存在</li>
+      <li>窗口内提交时间已核实</li>
+      <li>Release 时间线已核实</li>
+      <li>许可类型已核实</li>
+      <li>已区分窗口内 / 窗口外事件</li>
+      <li>未伪造作者未提供的步骤</li>
+      <li>已区分事实 / 自述 / 推演</li>
+      <li>已剔除内容农场来源</li>
+      <li>未实测 skill 效果</li>
+      <li>未核实教程内容质量</li>
+      <li>未联系作者求证</li>
+      <li>未核实 Star 增长曲线</li>
+    </ul>
+  </div>
+</section>
+</div>
+</main>
+<footer class="site-footer">
+  <div class="wrap">
+    <div>
+      <div class="f-brand">全球文明进程重大事件日报</div>
+      <p class="f-desc">记录人类文明演进中的关键节点。以未来历史学家的视角，筛出可能改写人类轨迹的转折点——一个长期记录人类文明发展轨迹的数字档案馆。</p>
+    </div>
+    <div class="f-col">
+      <h4>浏览</h4>
+      <ul>
+        <li><a href="../index.html">网站首页</a></li>
+        <li><a href="../archive.html">日报档案</a></li><li><a href="../radar.html">趋势雷达</a></li><li><a href="../tutorial/index.html">AI实战</a></li>
+        <li><a href="../assets/images/og-cover.png" target="_blank">站点封面</a></li>
+      </ul>
+    </div>
+    <div class="f-col">
+      <h4>文明分类</h4>
+      <ul>
+        <li><a href="../categories/science.html">科学、生命与地球</a></li>
+        <li><a href="../categories/politics.html">政治与文明秩序</a></li>
+        <li><a href="../categories/culture.html">思想、社会与文化</a></li>
+        <li><a href="../categories/technology.html">科技与人工智能</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="f-bottom">
+    <div class="wrap">
+      <span>© 2026 全球文明进程重大事件日报 · 全球文明进程观察站</span>
+      <span>内容由自动化智能体基于公开信息生成，仅供文明观察与研究参考，不构成任何投资、政策或法律建议。</span>
+    </div>
+  </div>
+</footer>
+<button class="backtop" type="button" aria-label="返回顶部">↑</button>
+<script src="../assets/js/main.js"></script>
+<script src="../assets/js/wechat-share.js"></script>
+<script src="../assets/js/text-to-speech.js"></script>
+</body>
+</html>

@@ -1,0 +1,863 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI极客实战教程日报 · 2026-10-05（第009期）｜自托管的 AI 盯盘系统 PanWatch：把九 Agent、把 Codex 的独占生图能力接出来给任何 Agent 用：</title>
+<meta name="description" content="10月5日AI极客实战案例：今日一句话
+今天两个案例都在做「把强能力从围墙里搬出来」：一个把九人 AI 研究团队搬进自托管面板，专门盯 A股、港股、美股；一个把 Codex 的独占生图能力接出来，让任何 Agent 都能做小红书封面。共同点是：能力不再被锁在某个产品的">
+<meta name="keywords" content="AI极客实战,自托管的 AI 盯盘,把 Codex 的独">
+<meta name="author" content="全球文明进程观察站">
+<meta name="robots" content="index,follow">
+<link rel="canonical" href="https://civilization-radar.com/tutorial/2026-10-05.html">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="全球文明进程重大事件日报">
+<meta property="og:title" content="AI极客实战教程日报 · 2026-10-05｜自托管的 AI 盯盘系统 PanWatch：把九 Agent">
+<meta property="og:description" content="10月5日AI极客实战案例：今日一句话
+今天两个案例都在做「把强能力从围墙里搬出来」：一个把九人 AI 研究团队搬进自托管面板，专门盯 A股、港股、美股；一个把 Codex 的独占生图能力接出来，让任何 Agent 都能做小红书封面。共同点">
+<meta property="og:url" content="https://civilization-radar.com/tutorial/2026-10-05.html">
+<meta property="og:image" content="https://civilization-radar.com/assets/images/og-cover.png">
+<meta property="og:locale" content="zh_CN">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="AI极客实战教程日报 · 2026-10-05">
+<meta name="twitter:description" content="今日一句话
+今天两个案例都在做「把强能力从围墙里搬出来」：一个把九人 AI 研究团队搬进自托管面板，专门盯 A股、港股、美股；一个把 Codex 的独占生图能力">
+<meta name="twitter:image" content="https://civilization-radar.com/assets/images/og-cover.png">
+<link rel="icon" href="../assets/images/logo.svg" type="image/svg+xml">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"AI极客实战教程日报 2026-10-05","description":"今日一句话\n今天两个案例都在做「把强能力从围墙里搬出来」：一个把九人 AI 研究团队搬进自托管面板，专门盯 A股、港股、美股；一个把 Codex 的独占生图能力接出来，让任何 Agent 都能做小红书封面。共同点是：能力不再被锁在某个产品的","datePublished":"2026-10-05","dateModified":"2026-10-05","author":{"@type":"Organization","name":"全球文明进程观察站"},"publisher":{"@type":"Organization","name":"全球文明进程观察站","logo":{"@type":"ImageObject","url":"https://civilization-radar.com/assets/images/og-cover.png"}},"mainEntityOfPage":{"@type":"WebPage","@id":"https://civilization-radar.com/tutorial/2026-10-05.html"}}</script>
+
+<link rel="stylesheet" href="../assets/css/style.css">
+<style>
+
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body {
+    background:#F7F8FA; color:#111827;
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;
+    line-height:1.7; font-size:15px;
+  }
+  .tut-wrap { max-width:960px; margin:0 auto; padding:32px 20px 64px; }
+  a { color:#2563EB; text-decoration:none; word-break:break-all; }
+  a:hover { text-decoration:underline; }
+
+  header.top {
+    background:#111827; color:#F9FAFB; border-radius:14px; padding:36px 32px; margin-bottom:24px;
+  }
+  header.top .kicker { color:#93C5FD; font-size:13px; letter-spacing:2px; text-transform:uppercase; margin-bottom:10px; }
+  header.top h1 { font-size:30px; font-weight:800; margin-bottom:6px; }
+  header.top .sub { color:#9CA3AF; font-size:14px; margin-bottom:20px; }
+  .meta-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:12px; }
+  .meta-grid .m { background:#1F2937; border:1px solid #374151; border-radius:10px; padding:10px 14px; }
+  .meta-grid .m .k { font-size:11px; color:#9CA3AF; margin-bottom:2px; }
+  .meta-grid .m .v { font-size:14px; font-weight:600; color:#F9FAFB; }
+
+  .oneline {
+    background:#F5F8FF; border:1px solid #BFDBFE; border-radius:14px;
+    padding:18px 24px; margin-bottom:24px;
+  }
+  .oneline .lab { font-size:12px; letter-spacing:1px; color:#2563EB; font-weight:700; margin-bottom:6px; }
+  .oneline p { font-size:15px; color:#111827; }
+
+  nav.cats { display:flex; flex-wrap:wrap; gap:8px; margin-bottom:28px; }
+  nav.cats a {
+    background:#FFFFFF; border:1px solid #E5E7EB; border-radius:999px;
+    padding:6px 14px; font-size:13px; color:#374151;
+  }
+  nav.cats a:hover { border-color:#2563EB; color:#2563EB; text-decoration:none; }
+
+  .card {
+    background:#FFFFFF; border:1px solid #E5E7EB; border-radius:14px;
+    padding:28px; margin-bottom:28px;
+  }
+  .card-head { display:flex; align-items:flex-start; gap:14px; margin-bottom:6px; flex-wrap:wrap; }
+  .num {
+    font-size:26px; font-weight:800; color:#2563EB; line-height:1.1;
+    font-variant-numeric:tabular-nums; min-width:52px;
+  }
+  .card-head h2 { font-size:20px; font-weight:700; flex:1; min-width:240px; }
+  .badges { display:flex; flex-wrap:wrap; gap:6px; margin:8px 0 14px; }
+  .badge { font-size:12px; padding:3px 10px; border-radius:999px; font-weight:600; }
+  .b-cat { background:#EFF6FF; color:#2563EB; border:1px solid #BFDBFE; }
+  .b-tag { background:#F3F4F6; color:#4B5563; border:1px solid #E5E7EB; }
+  .b-date { background:#ECFDF5; color:#16A34A; border:1px solid #BBF7D0; }
+  .b-warn { background:#FFFBEB; color:#B45309; border:1px solid #FDE68A; }
+
+  .oneliner {
+    background:#F9FAFB; border:1px solid #E5E7EB; border-radius:10px;
+    padding:12px 16px; font-size:14.5px; color:#111827; margin-bottom:18px;
+  }
+
+  h3.sec {
+    font-size:14px; font-weight:700; color:#111827; margin:22px 0 8px;
+    padding-left:10px; border-left:3px solid #2563EB;
+  }
+  .card p, .card li { font-size:14.5px; color:#374151; }
+  .card ul, .card ol { padding-left:22px; margin:6px 0; }
+  .card li { margin-bottom:4px; }
+
+  .src-list { list-style:none; padding-left:0; }
+  .src-list li { margin-bottom:6px; }
+  .src-type {
+    display:inline-block; font-size:11px; font-weight:700; color:#2563EB;
+    background:#EFF6FF; border:1px solid #BFDBFE; border-radius:6px;
+    padding:1px 8px; margin-right:8px;
+  }
+
+  .stack { width:100%; border-collapse:collapse; margin:6px 0; }
+  .stack td { border:1px solid #E5E7EB; padding:7px 12px; font-size:13.5px; vertical-align:top; }
+  .stack td.k { background:#F9FAFB; font-weight:600; color:#111827; width:110px; white-space:nowrap; }
+
+  .flow { display:flex; flex-direction:column; gap:0; margin:10px 0; }
+  .flow .node {
+    background:#F9FAFB; border:1px solid #E5E7EB; border-radius:10px;
+    padding:9px 16px; font-size:13.5px; color:#111827;
+  }
+  .flow .node b { color:#2563EB; }
+  .flow .arrow { text-align:center; color:#9CA3AF; font-size:14px; line-height:1.4; }
+
+  pre {
+    background:#111827; color:#E5E7EB; border-radius:10px;
+    padding:16px 18px; overflow-x:auto; font-size:13px; line-height:1.6;
+    font-family:"SFMono-Regular",Consolas,"Liberation Mono",Menlo,monospace;
+    margin:8px 0;
+  }
+  code {
+    font-family:"SFMono-Regular",Consolas,Menlo,monospace;
+    background:#F3F4F6; color:#111827; border-radius:5px; padding:1px 6px; font-size:13px;
+  }
+  pre code { background:transparent; color:#E5E7EB; padding:0; }
+
+  .pitfall { background:#FFFBEB; border:1px solid #FDE68A; border-radius:10px; padding:14px 18px; margin:8px 0; }
+  .pitfall b { color:#B45309; }
+  .truth { background:#FEF7F7; border:1px solid #FECACA; border-radius:10px; padding:14px 18px; margin:8px 0; }
+  .truth b { color:#B91C1C; }
+
+  .repro { display:inline-block; font-size:13px; font-weight:700; padding:4px 12px; border-radius:999px; background:#ECFDF5; color:#16A34A; border:1px solid #BBF7D0; }
+  .repro.hard { background:#FFFBEB; color:#B45309; border-color:#FDE68A; }
+  .repro.dev { background:#FEF2F2; color:#B91C1C; border-color:#FECACA; }
+
+  .migrate { display:grid; grid-template-columns:repeat(3,1fr); gap:10px; margin:8px 0; }
+  .migrate .m {
+    background:#F9FAFB; border:1px solid #E5E7EB; border-radius:10px; padding:12px 14px; font-size:13px; color:#374151;
+  }
+  .migrate .m b { display:block; color:#111827; margin-bottom:4px; }
+
+  .course {
+    background:#F5F8FF; border:1px solid #BFDBFE; border-radius:10px; padding:16px 20px; margin:8px 0;
+  }
+  .course table { width:100%; border-collapse:collapse; }
+  .course td { padding:4px 8px 4px 0; font-size:13.5px; vertical-align:top; color:#374151; }
+  .course td.k { font-weight:600; color:#111827; width:88px; white-space:nowrap; }
+
+  .trainer {
+    border-left:3px solid #16A34A; background:#F0FDF4; border-radius:0 10px 10px 0;
+    padding:12px 18px; font-size:14px; color:#14532D; margin:10px 0 4px;
+  }
+  .trainer b { color:#16A34A; }
+
+  .verdict { display:grid; grid-template-columns:repeat(5,1fr); gap:10px; margin:8px 0; }
+  .verdict .v {
+    background:#F9FAFB; border:1px solid #E5E7EB; border-radius:10px; padding:12px; text-align:center;
+  }
+  .verdict .v .k { font-size:11.5px; color:#6B7280; margin-bottom:4px; }
+  .verdict .v .val { font-size:17px; font-weight:800; }
+  .lv-h { color:#16A34A; }
+  .lv-m { color:#F59E0B; }
+  .lv-l { color:#DC2626; }
+
+  section.block { margin-top:40px; }
+  section.block > h2 {
+    font-size:22px; font-weight:800; margin-bottom:16px; padding-bottom:10px;
+    border-bottom:2px solid #E5E7EB;
+  }
+  .panel { background:#FFFFFF; border:1px solid #E5E7EB; border-radius:14px; padding:24px 28px; margin-bottom:20px; }
+  .panel h3 { font-size:16px; margin-bottom:10px; }
+  .panel p, .panel li { font-size:14.5px; color:#374151; }
+  .panel ul { padding-left:22px; }
+  .panel li { margin-bottom:6px; }
+  .panel table { width:100%; border-collapse:collapse; margin:8px 0; }
+  .panel th, .panel td { border:1px solid #E5E7EB; padding:7px 10px; font-size:13px; text-align:left; vertical-align:top; }
+  .panel th { background:#F9FAFB; color:#111827; }
+
+  .checklist { columns:2; column-gap:32px; }
+  .checklist li { list-style:none; margin-bottom:6px; font-size:13.5px; }
+  .checklist li::before { content:"✓ "; color:#16A34A; font-weight:700; }
+
+  .gapnote {
+    background:#FFFBEB; border:1px solid #FDE68A; border-radius:10px;
+    padding:14px 18px; font-size:13.5px; color:#7C2D12; margin-bottom:24px;
+  }
+  .gapnote b { color:#B45309; }
+
+  footer { text-align:center; color:#9CA3AF; font-size:12.5px; margin-top:40px; }
+
+  @media(max-width:640px) {
+    header.top { padding:24px 20px; }
+    header.top h1 { font-size:22px; }
+    .meta-grid { grid-template-columns:repeat(2,1fr); }
+    .card { padding:20px 16px; }
+    .migrate { grid-template-columns:1fr; }
+    .verdict { grid-template-columns:repeat(2,1fr); }
+    .checklist { columns:1; }
+    .num { min-width:auto; }
+    .panel { padding:18px 16px; }
+    .stack td.k { width:82px; }
+  }
+
+</style>
+</head><body>
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="../index.html"><img class="mark" src="../assets/images/logo.svg" alt="文明雷达" width="32" height="32" style="width:32px;height:32px;background:none;border:0;box-shadow:none;border-radius:6px">全球文明进程重大事件日报</a>
+    <button class="nav-toggle" type="button" aria-label="菜单" aria-expanded="false">☰</button>
+    <nav class="main-nav" aria-label="主导航"><ul><li><a href="../index.html">首页</a></li><li><a href="../archive.html">日报档案</a></li><li><a href="../radar.html">趋势雷达</a></li><li><a href="../tutorial/index.html" class="active">AI实战</a></li><li><a href="../categories/science.html">科学</a></li><li><a href="../categories/politics.html">政治</a></li><li><a href="../categories/culture.html">文化</a></li><li><a href="../categories/technology.html">科技</a></li></ul></nav>
+  </div>
+</header>
+<main class="site-main">
+<div class="tut-wrap">
+  <nav class="breadcrumb" aria-label="面包屑"><a href="../index.html">首页</a><span class="sep">/</span><a href="index.html">AI实战教程</a><span class="sep">/</span><span>2026-10-05</span></nav>
+<header class="top">
+  <div class="kicker">China AI Builders · Real Cases · Workflows · Business</div>
+  <h1>AI极客实战案例日报</h1>
+  <div class="sub">China AI Builders · Real Cases · Workflows · Agents · Open Source · Business</div>
+  <div class="meta-grid">
+    <div class="m"><div class="k">日报日期</div><div class="v">2026-10-05</div></div>
+    <div class="m"><div class="k">生成时间</div><div class="v">2026-10-08（补做）</div></div>
+    <div class="m"><div class="k">精选案例</div><div class="v">2 个（宁缺毋滥）</div></div>
+    <div class="m"><div class="k">数据窗口</div><div class="v">10-04 12:00 → 10-05 12:00</div></div>
+  </div>
+</header>
+
+<div class="gapnote">
+  <b>关于本期的生成方式：</b>这是一份<b>补做</b>的日报。2026-10-05 当天的定时任务未执行，故在 2026-10-08 按当日应有的数据窗口回溯补做。数据窗口严格限定为 <b>2026-10-04 12:00 → 2026-10-05 12:00（北京时间）</b>。所有时间戳由 GitHub API 原始数据换算，窗口外事件一律不作为案例收录。
+</div>
+
+<div class="oneline">
+  <div class="lab">今日一句话</div>
+  <p>今天两个案例都在做「把强能力从围墙里搬出来」：一个把九人 AI 研究团队搬进自托管面板，专门盯 A股、港股、美股；一个把 Codex 的独占生图能力接出来，让任何 Agent 都能做小红书封面。<b>共同点是：能力不再被锁在某个产品的界面里。</b></p>
+</div>
+
+<nav class="cats">
+  <a href="#case01">案例 01｜AI 盯盘 PanWatch</a>
+  <a href="#case02">案例 02｜Codex 生图接出来</a>
+  <a href="#observe">今日观察</a>
+  <a href="#radar">商业机会雷达</a>
+  <a href="#personal">个人变现机会</a>
+  <a href="#sources">原始资料</a>
+  <a href="#truth">真实性说明</a>
+</nav>
+
+<!-- ===================== 案例 01 ===================== -->
+<div class="card" id="case01">
+  <div class="card-head">
+    <div class="num">01</div>
+    <h2>自托管的 AI 盯盘系统 PanWatch：把九 Agent 研究团队装进自己的服务器，盯 A股 / 港股 / 美股并推送到飞书与企微</h2>
+  </div>
+  <div class="badges">
+    <span class="badge b-cat">AI Agent</span>
+    <span class="badge b-cat">AI + 金融</span>
+    <span class="badge b-cat">自托管 / MCP</span>
+    <span class="badge b-date">窗口内 Release 0.17.3（10-04 19:28）与 0.17.4（10-04 23:48）</span>
+    <span class="badge b-tag">开源 MIT</span>
+    <span class="badge b-warn">投资类工具，非投资建议</span>
+  </div>
+
+  <div class="oneliner">
+    <b>一句话结论：</b>它把「一个能自己跑来跑去的投研团队」做成了一个 Docker 容器——这是自托管 AI Agent 落地在金融场景里完成度相当高的一个样本。
+  </div>
+
+  <h3 class="sec">01｜案例是什么？</h3>
+  <p><b>PanWatch（盯盘侠）</b>是一个自托管的 AI 选股与盯盘系统（MIT，Python）：一条 <code>docker run</code> 起在自己服务器上，然后在网页里建账号、配 AI 服务与通知渠道即可用。它同时覆盖 <b>A股、港股、美股</b>，核心是基于开源项目 <b>TradingAgents</b> 的「九 Agent 研究团队」——从一个持仓出发，让牛熊双方辩论、风险审查、最终给出 PM（组合经理）决策备忘录与完整推理链，并通过 Telegram、企业微信、钉钉、飞书、Bark 或 Webhook 在 3–5 分钟内推送到你的手机。此外还有定时 Agent（盘前 / 盘中 / 收盘）、组合式价格提醒、机会榜、模拟盘（Paper Trading）与 PWA 移动端。</p>
+
+  <h3 class="sec">02｜为什么今天值得关注？</h3>
+  <ul>
+    <li><b>窗口内的事实（可用 API 核实）：</b>在 2026-10-04 12:00 → 10-05 12:00（北京时间）内，项目发布了 <b>0.17.3（10-04 19:28）</b> 与 <b>0.17.4（10-04 23:48）</b> 两个版本，并有多次实质提交，包括「让 TradingAgents 深度分析的超时时间可配置」「保留已配置的超时并暴露 provider 错误」「加速多平台镜像构建」等。</li>
+    <li><b>它解决的是一个具体痛点：</b>做股票研究的复杂度不在「查到数据」，而在「把技术面、消息面、基本面、风险审查串成一条能解释的推理链」并持续盯住。人工做这件事成本极高，而云端产品又要求你把持仓数据交出去。</li>
+    <li><b>为什么现在变得容易：</b>① TradingAgents 这类多 Agent 投研框架开源了；② 国产模型（项目话题里就含 <b>deepseek</b>）让长推理链条的成本降下来；③ MCP 与 akshare 之类数据接口让「A股数据」可以合法低成本获取；④ Docker 让自托管变成一条命令。</li>
+    <li><b>为什么值得花时间：</b>这是极少数<b>同时具备「中国本地市场覆盖 + 自托管数据主权 + 多 Agent 真实编排 + 通知渠道接地气」</b>的 AI 金融开源项目。通知走飞书、企微、钉钉，这一点已经说明了它的目标用户是谁。</li>
+  </ul>
+
+  <h3 class="sec">03｜案例的前世今生</h3>
+  <p><b>前世。</b>个人量化与盯盘的第一阶段是「写脚本 + 看 Excel」：用 tushare / akshare 拉数据、算指标、定阈值发提醒。这条路可靠但只能做机械判断，遇到「这条消息算利好还是利空」就无能为力。</p>
+  <p><b>发展。</b>两件事接连发生：① LLM 让「读新闻、写研报、辩论多空」变得可能；② 多 Agent 编排框架（如 TradingAgents）把「研究员 → 辩论 → 风险审查 → 决策」这条流程做成了可复用的结构。与此同时，「自托管」的价值在数据敏感场景里被不断放大。</p>
+  <p><b>今生。</b>PanWatch 做的是「把上述零件装成一个能长期运行的产品」：Web 界面、账号体系、多账户持仓管理、定时任务、通知渠道、移动端 PWA——这些「不性感」的工程恰恰是把 Demo 变成可用系统的那部分。窗口内的提交（超时可配置、provider 错误暴露、镜像构建加速）也说明它正处在「从能跑向跑得稳」的阶段。</p>
+  <p><b>下一步可能怎么发展（分析 / 推演）。</b>这类系统的演进方向大概率是「更少的人工介入、更强的可解释性」：Agent 自己发现值得研究的标的、自动生成研究档案、并把「为什么这么判断」完整留痕。同时，随着合规要求收紧，它也可能走向「只做研究与提醒、不碰交易执行」。以上为推演，非事实。</p>
+
+  <h3 class="sec">04｜原始资料</h3>
+  <ul class="src-list">
+    <li><span class="src-type">开源仓库</span>TNT-Likely/PanWatch（MIT，Python，建于 2026-01-23，话题含 a-share / deepseek / langgraph / mcp / akshare）<br><a href="https://github.com/TNT-Likely/PanWatch" target="_blank" rel="noopener">https://github.com/TNT-Likely/PanWatch</a></li>
+    <li><span class="src-type">发布记录</span>Releases（窗口内 0.17.3 / 0.17.4）<br><a href="https://github.com/TNT-Likely/PanWatch/releases" target="_blank" rel="noopener">https://github.com/TNT-Likely/PanWatch/releases</a></li>
+    <li><span class="src-type">快速开始</span>README「Quick Start」章节（含 Docker / Docker Compose 两种方式）<br><a href="https://github.com/TNT-Likely/PanWatch#quick-start" target="_blank" rel="noopener">github.com/TNT-Likely/PanWatch#quick-start</a></li>
+    <li><span class="src-type">容器镜像</span>Docker Hub · sunxiao0721/panwatch<br><a href="https://hub.docker.com/r/sunxiao0721/panwatch" target="_blank" rel="noopener">hub.docker.com/r/sunxiao0721/panwatch</a></li>
+    <li><span class="src-type">上游框架</span>TauricResearch/TradingAgents（多 Agent 金融交易研究框架）<br><a href="https://github.com/TauricResearch/TradingAgents" target="_blank" rel="noopener">github.com/TauricResearch/TradingAgents</a></li>
+    <li><span class="src-type">窗口内提交</span>0.17.3 → 0.17.4 相关 PR（#176 / #177 等）<br><a href="https://github.com/TNT-Likely/PanWatch/commits/main" target="_blank" rel="noopener">github.com/TNT-Likely/PanWatch/commits/main</a></li>
+  </ul>
+
+  <h3 class="sec">05｜作者是谁？</h3>
+  <p>仓库归属 <b>TNT-Likely</b>，Docker 镜像发布账号为 <b>sunxiao0721</b>，可从仓库的 FUNDING 配置看到其在 10-05 窗口内补充了赞助渠道（Ko-fi / PayPal），说明这是<b>由个人或小团队持续投入的开源项目</b>。README 提供简体中文与英文双语，界面同样支持中文——目标用户明确包含中文用户。<b>作者的完整身份（机构、是否为从业者）未公开披露，本文不猜。</b></p>
+
+  <h3 class="sec">06｜解决了什么真实问题？</h3>
+  <p>从需求侧看，痛点是<b>「研究成本」而非「信息获取」</b>：</p>
+  <ul>
+    <li><b>需求一（个人投资者）。</b>同时看 A股、港股、美股时，数据工具、新闻源、提醒渠道是三套系统；想给一只票做一次完整分析，需要手工查技术指标、翻新闻、再自己权衡多空——每次至少一小时。</li>
+    <li><b>需求二（数据敏感用户）。</b>把持仓交给云端 SaaS 意味着暴露自己的仓位与策略；自托管是这类用户的硬需求。</li>
+    <li><b>需求三（想系统化的人）。</b>需要的不只是「一个信号」，而是「这个结论是怎么推出来的」——推理链本身才是可学习、可复盘的东西。</li>
+    <li>共同点：<b>不是「看不到数据」，而是「没人帮我把它想清楚，还得天天想」。</b></li>
+  </ul>
+
+  <h3 class="sec">07｜完整技术栈</h3>
+  <table class="stack">
+    <tr><td class="k">模型</td><td><b>用户自配。</b>设置里填写 OpenAI 兼容 API，README 明确举例 <b>DeepSeek</b>、智谱 AI（GLM）与 Ollama（本地模型）。项目话题中也含 <code>deepseek</code>。<b>本文不编造默认型号。</b></td></tr>
+    <tr><td class="k">核心 Agent</td><td>基于 <b>TradingAgents</b> 的多 Agent 研究团队（README 表述为「nine-agent」九 Agent）：技术面 / 情绪面 / 新闻 / 基本面分析 → 多空辩论 → 风险审查 → PM 决策备忘录</td></tr>
+    <tr><td class="k">数据源</td><td>话题含 <code>akshare</code>（A股常用数据接口）；覆盖 A股 / 港股 / 美股，并按交易所日历运行</td></tr>
+    <tr><td class="k">后端 / 前端</td><td>Python + FastAPI；Web 界面；<b>PWA</b> 可添加到手机主屏</td></tr>
+    <tr><td class="k">通知渠道</td><td>Telegram · 企业微信 · 钉钉 · 飞书 · Bark · Webhook</td></tr>
+    <tr><td class="k">部署</td><td>Docker（单条 <code>docker run</code>）或 Docker Compose；镜像含 Playwright 系统依赖；数据卷 <code>panwatch_data</code></td></tr>
+    <tr><td class="k">功能模块</td><td>多账户组合管理 · 定时 Agent（盘前/盘中/收盘）· 组合式价格提醒（AND/OR、冷却、每日上限、有效期）· 机会榜 · 模拟盘 · 技术指标（MACD/RSI/KDJ）</td></tr>
+    <tr><td class="k">语言 / 许可</td><td>Python ｜ MIT</td></tr>
+  </table>
+
+  <h3 class="sec">08｜完整 Workflow</h3>
+  <p><b>路径 A：一次深度研究（源自 README 的 demo 描述）</b></p>
+  <div class="flow">
+    <div class="node"><b>① 起点：一个持仓</b>　从组合里的某只票出发</div>
+    <div class="arrow">↓</div>
+    <div class="node"><b>② 九 Agent 研究团队启动</b>　技术面 / 情绪面 / 新闻 / 基本面并行分析</div>
+    <div class="arrow">↓</div>
+    <div class="node"><b>③ 多空辩论</b>　看多方与看空方各自陈述，暴露分歧点</div>
+    <div class="arrow">↓</div>
+    <div class="node"><b>④ 风险审查</b>　对结论做风险复核</div>
+    <div class="arrow">↓</div>
+    <div class="node"><b>⑤ PM 决策备忘录</b>　给出结论 + <b>完整推理链</b></div>
+    <div class="arrow">↓</div>
+    <div class="node"><b>⑥ 推送到手机</b>　经飞书 / 企微 / 钉钉 / Telegram / Bark / Webhook，3–5 分钟内到达</div>
+  </div>
+  <p><b>路径 B：日常自动盯盘</b></p>
+  <div class="flow">
+    <div class="node"><b>① 定时 Agent 按交易所日历触发</b>　盘前 / 盘中 / 收盘三个时点</div>
+    <div class="arrow">↓</div>
+    <div class="node"><b>② 条件提醒判定</b>　组合式条件（AND/OR）+ 冷却时间 + 每日上限 + 有效期，避免通知轰炸</div>
+    <div class="arrow">↓</div>
+    <div class="node"><b>③ 机会榜更新</b>　AI 打分排序，附入场位、目标位与风险上下文</div>
+    <div class="arrow">↓</div>
+    <div class="node"><b>④ 模拟盘验证</b>　按信号做模拟进出，跟踪净值曲线</div>
+    <div class="arrow">↓</div>
+    <div class="node"><b>⑤ 推送与复盘</b>　结果进手机；推理链留档，供事后复盘</div>
+  </div>
+
+  <h3 class="sec">09｜它到底是怎么实现的？</h3>
+  <p>这个项目的技术价值在于<b>四个「不性感但决定成败」的工程决定</b>：</p>
+  <p><b>① 把「研究」做成有结构的 Agent 编排，而不是一次提问。</b>九 Agent + 多空辩论 + 风险审查的结构，本质上是在用<b>对抗</b>换取推理质量——单一模型容易被一个叙事带跑，而被迫站在反方陈述会逼出分歧点。这是多 Agent 相比单 Agent 最实在的收益。</p>
+  <p><b>② 把「数据主权」当成产品前提。</b>自托管 + 自配模型（可指向本地 Ollama）= 持仓与推理过程不出你的服务器。对金融场景，这不是加分项，是准入门槛。</p>
+  <p><b>③ 通知渠道做了本地化。</b>飞书 / 企微 / 钉钉 / Bark 都在列表里，说明作者清楚「中国用户的手机通知入口在哪里」。这一点比多加十个指标更有价值。</p>
+  <p><b>④ 在「跑得稳」上持续投入。</b>窗口内的提交——「让深度分析的超时时间可配置」「保留已配置的超时并暴露 provider 错误」「加速多平台镜像构建」——全都是典型的运维与可靠性工作。<b>能把超时和 provider 错误当成一等公民的项目，通常已经在真实使用中出现过这些问题。</b></p>
+
+  <h3 class="sec">10｜手把手复现</h3>
+  <div class="truth"><b>以下 Step 1–4 整理自 README「Quick Start」明确写出的做法；Step 5–6 为 README 中「Initial setup」的四步；Step 7 为本文补充建议，已单独标注。</b></div>
+  <p><b>Step 1（原文）。</b>起服务（最简方式）：</p>
+  <pre>docker run -d \
+  --name panwatch \
+  --restart unless-stopped \
+  -p 8000:8000 \
+  -v panwatch_data:/app/data \
+  sunxiao0721/panwatch:latest</pre>
+  <p><b>Step 2（原文）。</b>打开 <code>http://localhost:8000</code>，创建你的登录凭证。</p>
+  <p><b>Step 3（原文）。</b>想让配置更规整就用 Docker Compose（README 提供了完整 <code>docker-compose.yml</code>，含镜像、端口、卷与 <code>restart: unless-stopped</code>）。</p>
+  <p><b>Step 4（原文）。</b>注意：镜像已包含 Playwright 的系统依赖；首次启动与浏览器安装相关说明见 README 折叠段。</p>
+  <p><b>Step 5（原文）。</b>配 AI：<b>Settings → AI Services</b>，填一个 OpenAI 兼容 API——README 举例 OpenAI、智谱 AI、DeepSeek、Ollama。</p>
+  <p><b>Step 6（原文）。</b>配通知：<b>Settings → Notification Channels</b>，添加 Telegram 或其他渠道；再到 <b>Portfolio → Add Stock</b> 加入自选并启用对应 Agent。</p>
+  <p><b>Step 7（本文补充的建议）。</b>先把模拟盘（Paper Trading）跑一周，观察它给出的推理链是否与你的判断习惯相容，再决定是否让定时 Agent 常驻。金融类工具「先验证再信任」的顺序不该被省掉。此建议为本文推导，非作者原文。</p>
+
+  <h3 class="sec">11｜Prompt / Code / Config</h3>
+  <p><b>原作者公开的内容（可直接引用）：</b></p>
+  <ul>
+    <li><b>Docker 启动命令</b>与 <b>docker-compose.yml</b> 全文（README Quick Start）</li>
+    <li><b>首次配置四步</b>：建账号 → Settings → AI Services（OpenAI 兼容：DeepSeek / 智谱 / Ollama）→ Settings → Notification Channels → Portfolio → Add Stock</li>
+    <li><b>通知渠道清单</b>：Telegram / 企业微信 / 钉钉 / 飞书 / Bark / Webhook</li>
+    <li><b>核心功能矩阵</b>：Portfolio / AI research / Scheduled agents / Price alerts / Opportunities / Paper trading / Notifications / Mobile(PWA)</li>
+  </ul>
+  <p><b>原作者未在 README 中逐行公开的内容：</b>九 Agent 的完整提示词、辩论协议的实现细节、打分模型的具体算法。<b>本文不编造。</b></p>
+
+  <h3 class="sec">12｜踩坑</h3>
+  <div class="pitfall">
+    <p><b>以下为依据项目公开信息整理的提醒，本文未独立复现：</b></p>
+    <ul>
+      <li><b>这是一款「研究辅助」工具，不是投资建议。</b>九 Agent 的结论同样可能错，且错得很有说服力。任何把它当信号源直接下单的用法，风险自负。</li>
+      <li><b>深度分析有时长。</b>窗口内作者专门在修「超时时间可配置」「暴露 provider 错误」——说明长链条推理在弱网络或慢模型下容易超时；<b>弱模型 + 长链条是最容易出问题的地方。</b></li>
+      <li><b>数据源依赖第三方。</b>A股数据依赖 akshare 一类接口，接口变更或限流会直接影响功能；交易日历判断也需要正确配置。</li>
+      <li><b>自托管意味着你要自己运维。</b>服务器安全、镜像更新、数据卷备份都归你——这既是它的优点（数据主权），也是它的成本。</li>
+      <li><b>通知量需要节制。</b>项目本身提供了冷却、每日上限与有效期，说明作者预期到「提醒过多会让人关掉它」；使用前应先把这些参数设好。</li>
+    </ul>
+  </div>
+
+  <h3 class="sec">13｜中国用户能不能直接做？</h3>
+  <ul>
+    <li><b>国内访问：</b>GitHub 与 Docker Hub 直连不稳定，通常需要镜像加速。运行起来之后全部在本地，无境外依赖。</li>
+    <li><b>注册：</b>无需注册；首次访问时自己在网页里创建本地账号。</li>
+    <li><b>API：</b>需要自备一个 OpenAI 兼容的模型服务——<b>用 DeepSeek / 智谱 / 本地 Ollama 即可，不必用境外 API</b>。</li>
+    <li><b>成本：</b>软件免费；成本主要是「服务器（或用你自己的机器）+ 模型调用」。本地 Ollama 可把模型成本压到接近零（代价是速度与质量）。</li>
+    <li><b>技术门槛：</b><span class="repro hard">有一定门槛</span> 需要会跑 Docker、能配模型 API 与通知渠道；<b>不需要 GPU</b>（除非本地跑大模型）。</li>
+  </ul>
+
+  <h3 class="sec">14｜国产替代方案</h3>
+  <table class="stack">
+    <tr><td class="k">原方案的境外依赖</td><td>上游框架 TradingAgents（开源，可自托管）、Docker Hub 镜像分发、部分通知渠道（Telegram）</td></tr>
+    <tr><td class="k">中国用户方案</td><td>模型换 <b>DeepSeek / 智谱 GLM / Ollama 本地模型</b>（README 明确列出）；数据用 <b>akshare</b>（项目话题已包含）；通知走 <b>企业微信 / 钉钉 / 飞书 / Bark</b>（README 明确支持）；镜像可自建</td></tr>
+    <tr><td class="k">替代性质</td><td><b>作者已原生支持</b>（README 点名 DeepSeek、智谱、Ollama，通知含三家国内 IM）——这是本案例对中国用户最友好的一点</td></tr>
+  </table>
+
+  <h3 class="sec">15｜中国企业可以怎么用？</h3>
+  <ul>
+    <li><b>企业场景 1｜投研团队的研究加速器。</b>分析师把「初筛 + 基本面速览 + 多空分歧点梳理」交给系统，自己聚焦在判断与决策上。</li>
+    <li><b>企业场景 2｜私域数据不出内网。</b>自托管 + 本地模型，让持仓与策略讨论留在公司内网，满足数据合规要求。</li>
+    <li><b>企业场景 3｜培训与复盘素材。</b>系统留存的推理链可作为投研新人的学习材料——「这个结论是怎么推出来的」比结论本身更有教学价值。</li>
+  </ul>
+
+  <h3 class="sec">16｜中国消费者可以怎么用？</h3>
+  <ul>
+    <li><b>个人盯盘：</b>把自选股交给定时 Agent，收盘后收到一份带推理链的复盘，减少「盯盘焦虑」。</li>
+    <li><b>学习投资逻辑：</b>用模拟盘 + 推理链，理解多空双方各自的理由，而不是只看结论。</li>
+    <li><b>管理多账户：</b>把不同券商账户汇总成一个组合视图，看清真实仓位与盈亏。</li>
+  </ul>
+
+  <h3 class="sec">17｜如何变成一个赚钱的项目？</h3>
+  <p><b>产品化：</b>不做通用盯盘，而做「某个细分策略的自托管研究助手」——例如专注红利股、专注港股通、专注行业轮动，卖的是内置的研究框架而非软件本身。</p>
+  <p><b>服务化：</b>为企业做「投研 AI 助手」的私有化部署与调优服务（模型选型、提示词调优、数据接入、通知集成）。</p>
+  <p><b>咨询化：</b>帮机构设计「AI 参与投研的边界」——哪些环节可以交给 Agent、哪些必须人工签字，这在强合规行业是刚需。</p>
+  <p><b>培训化：</b>《用多 Agent 做投研初筛》——面向个人投资者与投研新人，重点教「怎么读推理链」。</p>
+  <p><b>内容化：</b>拆解「九 Agent 如何辩论」本身极具传播性，适合公众号、B站、雪球。</p>
+
+  <h3 class="sec">18｜变现路径</h3>
+  <table class="stack">
+    <tr><td class="k">路径</td><td><b>客户</b> ｜ 产品/服务 ｜ 收费方式 ｜ 难度</td></tr>
+    <tr><td class="k">SaaS / 私有化</td><td>机构/个人 ｜ 细分策略研究助手 ｜ 订阅 ｜ 高</td></tr>
+    <tr><td class="k">部署服务</td><td>企业 ｜ 私有化部署 + 模型与数据接入 ｜ 项目制 ｜ 中</td></tr>
+    <tr><td class="k">咨询</td><td>机构 ｜ AI 投研边界与流程设计 ｜ 项目制 ｜ 高</td></tr>
+    <tr><td class="k">培训</td><td>个人/机构 ｜ 多 Agent 投研初筛课 ｜ 按人 ｜ 低</td></tr>
+    <tr><td class="k">内容</td><td>投资者 ｜ 拆解内容与社群 ｜ 会员/广告 ｜ 低</td></tr>
+  </table>
+  <p><b>合规提示：</b>金融信息服务在中国受严格监管，涉及荐股、代客理财等行为有明确资质要求。<b>本文所有变现分析仅为模式探讨，不构成合规意见；从事相关业务前请咨询专业人士。</b></p>
+
+  <h3 class="sec">19｜如果我是一个中国独立开发者（7 天 MVP）</h3>
+  <ol>
+    <li><b>Day 1：</b>Docker 起一套 PanWatch，配 DeepSeek + 飞书机器人，跑通一只自选股的深度分析。</li>
+    <li><b>Day 2：</b>把它限制到一个人群（建议：只做红利股 / 只做一只宽基成分股），砍掉多余功能。</li>
+    <li><b>Day 3：</b>把「推理链 → 一份结构化复盘」做成固定输出模板（这是最有价值的产物）。</li>
+    <li><b>Day 4：</b>找 3 位有真实持仓的朋友试用，问「哪一段推理链对你有用」。</li>
+    <li><b>Day 5：</b>按反馈收敛：只保留他们愿意每天看的那一份报告。</li>
+    <li><b>Day 6：</b>写一页说明 + 一个真实（脱敏）样例报告，做成落地页。</li>
+    <li><b>Day 7：</b>推出「每日研究简报」订阅，低价验证付费意愿（并同步咨询合规边界）。</li>
+  </ol>
+
+  <h3 class="sec">20｜如何迁移到其他行业</h3>
+  <div class="migrate">
+    <div class="m"><b>① 供应链 / 大宗商品</b>把九 Agent 辩论结构迁移到价格与库存的研究：多头逻辑 vs 空头逻辑 + 风险审查。</div>
+    <div class="m"><b>② 企业竞争情报</b>用同样的编排盯竞品动作，每天输出一份带推理链的简报。</div>
+    <div class="m"><b>③ 政策与合规监测</b>把「多空辩论」换成「支持/反对解读」+ 风险审查，用于政策影响评估。</div>
+  </div>
+
+  <h3 class="sec">21｜培训课程设计</h3>
+  <div class="course">
+    <table>
+      <tr><td class="k">课程名称</td><td>《多 Agent 投研实战：让 AI 给出「能解释」的判断》</td></tr>
+      <tr><td class="k">适合人群</td><td>个人投资者、投研新人、金融科技产品经理</td></tr>
+      <tr><td class="k">建议时长</td><td>1 天（6 小时）</td></tr>
+      <tr><td class="k">30 分钟 Demo</td><td>从一只持仓到一份带推理链的 PM 备忘录</td></tr>
+      <tr><td class="k">60 分钟 Workshop</td><td>学员自建一套自托管环境并配置通知渠道</td></tr>
+      <tr><td class="k">半天课程</td><td>上午讲多 Agent 编排原理，下午讲「怎么读推理链、怎么识别它在骗你」</td></tr>
+      <tr><td class="k">课程目标</td><td>学员能够独立部署、配置并用它做一份可复盘的个股研究</td></tr>
+      <tr><td class="k">现场 Demo</td><td>同一个标的换 DeepSeek 与本地 Ollama，对比结论与耗时差异</td></tr>
+      <tr><td class="k">学员练习</td><td>对同一只票写下自己的判断，再与系统结论对照，找出分歧点</td></tr>
+      <tr><td class="k">课后作业</td><td>连续一周用模拟盘跟踪系统信号，记录「对与错的理由」</td></tr>
+      <tr><td class="k">企业迁移</td><td>为投研团队设计 AI 辅助研究的边界与留痕规范</td></tr>
+    </table>
+  </div>
+
+  <h3 class="sec">22｜培训师点评</h3>
+  <div class="trainer"><b>这个案例真正值得教的是什么？</b>不是「AI 会不会选股」（大概率不会），而是<b>「如何用多 Agent 的对抗结构逼出分歧点」</b>，以及「如何把一条推理链留痕，让判断可以被复盘」。这两件事在任何需要严谨决策的场景都成立。</div>
+
+  <h3 class="sec">23｜最终判断</h3>
+  <div class="verdict">
+    <div class="v"><div class="k">落地性</div><div class="val lv-h">高</div></div>
+    <div class="v"><div class="k">中国市场相关性</div><div class="val lv-h">高</div></div>
+    <div class="v"><div class="k">商业价值</div><div class="val lv-h">高</div></div>
+    <div class="v"><div class="k">复现难度</div><div class="val lv-m">中</div></div>
+    <div class="v"><div class="k">变现潜力</div><div class="val lv-m">中</div></div>
+  </div>
+  <p style="font-size:13px;color:#6B7280;margin-top:8px;">说明：以上是案例属性描述，不是排名。「变现潜力中（而非高）」是出于合规考量——金融信息服务门槛高、监管严，个人开发者在其上直接变现的路径受限，做工具与培训更稳妥。</p>
+</div>
+
+<!-- ===================== 案例 02 ===================== -->
+<div class="card" id="case02">
+  <div class="card-head">
+    <div class="num">02</div>
+    <h2>把 Codex 的独占生图能力接出来给任何 Agent 用：先给四个风格方向、你选定后再出图（MCP + CLI + Skill 三形态）</h2>
+  </div>
+  <div class="badges">
+    <span class="badge b-cat">MCP 实战</span>
+    <span class="badge b-cat">Agent Skill</span>
+    <span class="badge b-cat">AI + 内容设计</span>
+    <span class="badge b-date">仓库创建 10-04 16:47；窗口内 Release v0.2.0 / v0.3.0</span>
+    <span class="badge b-tag">开源 MIT</span>
+    <span class="badge b-warn">依赖 Codex 生图，可能有账号门槛</span>
+  </div>
+
+  <div class="oneliner">
+    <b>一句话结论：</b>它示范了一条很实用的路子——<b>当一个好用的能力被锁在某个产品的界面里，就把它包成 MCP / CLI / Skill 三件套接出来。</b>
+  </div>
+
+  <h3 class="sec">01｜案例是什么？</h3>
+  <p>中文开发者「向阳乔木」（<b>joeseesun</b>）开源了 <b>乔木 Codex 生图</b>（qiaomu-codex-imagegen，MIT）：Codex 的内置生图工具只在 Codex 里能用，这个项目把它接出来，做成<b>一个 MCP 服务、一个命令行、一个 Agent Skill</b>，三者共用同一套核心。于是 Claude Code、Codex、Cursor 或任何能执行命令的 Agent，都能「说一句『做一张小红书配图』就拿到图片文件」。它最有特色的不是生图本身，而是流程：<b>每次生图会先给出至少四个机制不同的风格方向，你选定后再展开提示词、生成、并按验收条件自检。</b></p>
+
+  <h3 class="sec">02｜为什么今天值得关注？</h3>
+  <ul>
+    <li><b>窗口内的事实（可用 API 核实）：</b>该仓库创建于 <b>2026-10-04T08:47:02Z</b>（北京时间 10-04 16:47），当天 <b>16:49 发布 v0.2.0、17:34 发布 v0.3.0</b>，两次发布都落在本期窗口（10-04 12:00 → 10-05 12:00）内。</li>
+    <li><b>为什么以前不容易做：</b>好用的 AI 能力往往被绑在特定产品里（生图在 Codex、检索在某个搜索产品……）。想跨工具用，要么等官方开 API，要么自己重做一遍。</li>
+    <li><b>为什么现在变得容易：</b>MCP 成为事实标准后，「把一个能力包成工具挂给任意 Agent」有了统一插座；Skill 规范让「怎么用这个能力」也可以随能力一起分发。于是「能力搬运」从重工程变成了小工程。</li>
+    <li><b>为什么值得花时间：</b>它的价值不在生图，而在<b>「能力封装」这一模式</b>——中国有大量开发者正在做「把某个模型/工具的能力接到自己的工作流里」这件事，这个案例把标准答案展示了一遍，而且连「防止 AI 编造事实、乱写文字」的规则都写进去了。</li>
+  </ul>
+
+  <h3 class="sec">03｜案例的前世今生</h3>
+  <p><b>前世。</b>设计素材生产的老路径是：找设计师排期 → 提需求 → 改稿 → 交付。AI 生图出现后，变成「自己写提示词抽卡」——快，但结果不可控，而且大多数人根本不知道该怎么描述风格。</p>
+  <p><b>发展。</b>三件事逐步到位：① 生图质量跨过「能用」的临界点；② MCP / Skill 让「能力 + 用法」可以一起打包分发；③ 社区开始沉淀「提示词方法论」——不再靠玄学，而是按机制分类（文字主导、平面结构、摄影人物、产品近摄、材料空间等）。</p>
+  <p><b>今生。</b>这个项目把三者结合起来，且解决了一个被普遍忽略的问题：<b>用户不知道该要什么风格</b>。它的做法是「先给四个机制不同的方向让你选，而不是直接抽一张」——把「抽卡」变成「选方案」。这也更接近真实的设计流程：先对齐方向，再出稿。</p>
+  <p><b>下一步可能怎么发展（分析 / 推演）。</b>「能力搬运 + 方向先行」这套模式很可能复用到其他被锁住的能力上：把某个产品里的语音、视频、检索、分析能力分别包成 MCP，让 Agent 自由编排。同时，「先给方案再执行」也可能成为 Agent 与人类协作的默认礼仪——任何不可逆的操作，都该先给选项。以上为推演，非事实。</p>
+
+  <h3 class="sec">04｜原始资料</h3>
+  <ul class="src-list">
+    <li><span class="src-type">开源仓库</span>joeseesun/qiaomu-codex-imagegen（MIT，JavaScript，建于 2026-10-04T08:47:02Z = 北京时间 10-04 16:47）<br><a href="https://github.com/joeseesun/qiaomu-codex-imagegen" target="_blank" rel="noopener">https://github.com/joeseesun/qiaomu-codex-imagegen</a></li>
+    <li><span class="src-type">发布记录</span>Releases（窗口内 v0.2.0 / v0.3.0）<br><a href="https://github.com/joeseesun/qiaomu-codex-imagegen/releases" target="_blank" rel="noopener">github.com/joeseesun/qiaomu-codex-imagegen/releases</a></li>
+    <li><span class="src-type">样例数据</span>docs/samples/prompts.json（每张样例图的提示词与参数）<br><a href="https://github.com/joeseesun/qiaomu-codex-imagegen/blob/main/docs/samples/prompts.json" target="_blank" rel="noopener">github.com/joeseesun/qiaomu-codex-imagegen/blob/main/docs/samples/prompts.json</a></li>
+    <li><span class="src-type">作者主页</span>GitHub · joeseesun（同作者另有乔木剪藏等项目）<br><a href="https://github.com/joeseesun" target="_blank" rel="noopener">https://github.com/joeseesun</a></li>
+  </ul>
+
+  <h3 class="sec">05｜作者是谁？</h3>
+  <p>与本期前一天日报中「乔木剪藏」是<b>同一位作者</b>——GitHub 账号 <b>joeseesun</b>，显示名「向阳乔木」，自我描述为 PM，225 个仓库、2,126 个关注者。这个案例是他的第二条产品线：从「内容消费与沉淀」延伸到「内容素材生产」。<b>除此之外的身份信息未公开，本文不猜。</b></p>
+
+  <h3 class="sec">06｜解决了什么真实问题？</h3>
+  <p>从需求侧看，痛点是<b>「有 AI 生图能力，但用不起来」</b>：</p>
+  <ul>
+    <li><b>需求一（内容创作者）。</b>每天要做小红书配图、视频封面、公众号头图。有工具可用，但每次都要现想提示词，结果随机；且不同平台的尺寸、安全区、视觉重心要求完全不同。</li>
+    <li><b>需求二（跨工具用户）。</b>喜欢某个产品的生图效果，但自己的工作流在另一个 Agent 里。能力被锁住，只能来回切工具。</li>
+    <li><b>需求三（不想学提示词的人）。</b>他们的问题不是「不会写」，而是「不知道该要什么」。需要有人先给方向。</li>
+    <li>共同点：<b>不是「生不出图」，而是「生出来不可控、不专业、还得重来」。</b></li>
+  </ul>
+
+  <h3 class="sec">07｜完整技术栈</h3>
+  <table class="stack">
+    <tr><td class="k">模型</td><td><b>生图依赖 Codex 内置的生图能力</b>（这是项目的核心依赖，也是它的门槛）；文本侧由调用它的 Agent 模型负责。<b>本文不编造模型型号。</b></td></tr>
+    <tr><td class="k">三种形态</td><td>MCP 服务 · 命令行（CLI）· Agent Skill——<b>三者共用同一套核心</b>，不是三份实现</td></tr>
+    <tr><td class="k">内容资产</td><td>24 类场景模板（48 个预设）· 20 位 Mondo 海报设计师风格 · 本地 689 条参考提示词（可检索）</td></tr>
+    <tr><td class="k">流程工具</td><td><code>suggest_directions</code>（给方向）· <code>compose_prompt</code>（展开提示词）· 生成 · 验收自检</td></tr>
+    <tr><td class="k">平台预设</td><td>视频封面（16:9）· 小红书配图（3:4）· 公众号头图 · X 封面 · 朋友圈海报 · 书籍封面 · 专辑封面</td></tr>
+    <tr><td class="k">附加能力</td><td>参考图改图（图生图）· 风格锁 · 排除项与验收条件</td></tr>
+    <tr><td class="k">语言 / 许可</td><td>JavaScript ｜ MIT</td></tr>
+  </table>
+
+  <h3 class="sec">08｜完整 Workflow</h3>
+  <div class="flow">
+    <div class="node"><b>① 你说需求</b>　「给这期视频做一张封面」/「做一张小红书配图，主题清晨读书」</div>
+    <div class="arrow">↓</div>
+    <div class="node"><b>② 推荐方向</b>　<code>suggest_directions</code> 给出<b>至少四个机制各异</b>的方向（来自文字主导 / 平面结构 / 摄影人物 / 产品近摄 / 材料空间 / Mondo 设计师等不同家族），每个方向带风格锁、需要你补的信息与参考缩略图</div>
+    <div class="arrow">↓</div>
+    <div class="node"><b>③ 你来选</b>　选一个、几个，或说「你定」；想更多就排除这几个再推荐</div>
+    <div class="arrow">↓</div>
+    <div class="node"><b>④ 展开提示词</b>　<code>compose_prompt</code> 把变量填成完整提示词，同时给出<b>避免项、验收条件、假设与缺失信息</b></div>
+    <div class="arrow">↓</div>
+    <div class="node"><b>⑤ 生成</b>　每个选中方向出一张；图旁留一份 JSON，记录实际提示词，便于复现与做系列</div>
+    <div class="arrow">↓</div>
+    <div class="node"><b>⑥ 验收</b>　Agent 看图，对验收条件逐条检查；不合格就<b>只改对应那一句</b>再生成一次</div>
+    <div class="arrow">↓</div>
+    <div class="node"><b>⑦ 交付</b>　返回文件路径与像素尺寸</div>
+  </div>
+
+  <h3 class="sec">09｜它到底是怎么实现的？</h3>
+  <p>这个案例最值得拆的是它<b>把「设计流程」而不是「生图命令」做进了工具</b>：</p>
+  <p><b>① 方向先行，对抗抽卡。</b><code>suggest_directions</code> 的关键约束是「至少四个<b>机制不同</b>的方向」。它防止的是「同一张图换个滤镜」——因为方向来自不同家族（文字主导 / 物象破框 / 纸雕与织物地貌 / 巨物微缩剧场 / Mondo 丝网印），出来的东西才有真正的选择价值。</p>
+  <p><b>② 把「验收」写进流程。</b><code>compose_prompt</code> 输出的不只是提示词，还有<b>避免项与验收条件</b>；生成后由 Agent 逐条核对，不合格只改对应那一句。这是把设计师的「改稿」动作结构化了——避免「整个重来」。</p>
+  <p><b>③ 用 JSON 留存提示词，让系列化成为可能。</b>每张图旁边留一份 JSON 记录实际提示词，意味着「同系列再做十张」是有依据的，而不是重新抽卡。</p>
+  <p><b>④ 一套核心、三种外壳。</b>MCP / CLI / Skill 三形态共用核心，这是一个很成熟的工程决定：MCP 面向「能被 Agent 调用」，CLI 面向「能被脚本调用」，Skill 面向「能被 Agent 理解怎么用」。<b>同能力多入口，而不是多份实现。</b></p>
+
+  <h3 class="sec">10｜手把手复现</h3>
+  <div class="truth"><b>以下 Step 1–4 整理自项目 README 公开描述（三种形态与调用方式）；Step 5–6 为 README 示例中的典型用法；Step 7–8 为本文补充建议，已单独标注。</b></div>
+  <p><b>Step 1（原文）。</b>确认前提：你需要能使用 <b>Codex 的内置生图</b>（这是核心依赖），以及一个能执行命令或挂载 MCP 的 Agent（Claude Code / Codex / Cursor 等）。</p>
+  <p><b>Step 2（原文）。</b>选择接入形态：如果你的 Agent 支持 MCP，挂 <b>MCP 服务</b>；如果只支持命令，用 <b>CLI</b>；如果支持 Skill 规范，装 <b>Skill</b>。三者共用同一套核心，可按需组合。</p>
+  <p><b>Step 3（原文）。</b>调用时直接说需求，例如「给这期视频做一张 16:9 封面」——它会先走 <code>suggest_directions</code> 给你四个方向。</p>
+  <p><b>Step 4（原文）。</b>选定方向后由 <code>compose_prompt</code> 展开提示词并生成；若你已指定风格（如「用 Mondo 风格」「T03」）或直接说「直接出」，会跳过选择步骤。</p>
+  <p><b>Step 5（原文）。</b>做小红书配图：「做一张小红书配图，主题清晨读书」→ 选 <code>xiaohongshu</code> 预设（3:4 竖版、视觉重心偏上、顶部留标题位）。</p>
+  <p><b>Step 6（原文）。</b>做系列：「用 Mondo 风格做《沙丘》海报，三个设计师各来一张」→ 三个方向并行生成、各自保存。</p>
+  <p><b>Step 7（本文补充的建议）。</b>先只用它出一个「方向板」（四个方向 + 缩略图），把它拿给需要审稿的同事看一眼——对齐方向之后再生成，能省掉最多的时间。此建议为本文推导。</p>
+  <p><b>Step 8（本文补充的建议）。</b>把每次生成的 JSON 提示词归档，逐步积累属于你自己/你团队的「偏好库」，比每次重新抽卡稳定得多。</p>
+
+  <h3 class="sec">11｜Prompt / Code / Config</h3>
+  <p><b>原作者公开的内容（可直接引用）：</b></p>
+  <ul>
+    <li><b>两个核心工具名与职责</b>：<code>suggest_directions</code>（给至少四个机制不同的方向）、<code>compose_prompt</code>（展开完整提示词 + 避免项 + 验收条件 + 假设 + 缺失信息）</li>
+    <li><b>预设清单</b>：24 类场景模板 / 48 个预设 / 20 位 Mondo 设计师风格；平台预设含视频封面、小红书、公众号头图、X 封面、朋友圈海报、书籍封面、专辑封面</li>
+    <li><b>六步流程</b>：推荐方向 → 你来选 → 展开提示词 → 生成 → 验收 → 交付</li>
+    <li><b>样例提示词与参数</b>：docs/samples/prompts.json（作者明确说明样例中的活动、品牌、人物与文案<b>全部为虚构示例</b>）</li>
+    <li><b>参考库</b>：本地 689 条参考提示词可检索，返回缩略图与原文</li>
+  </ul>
+  <p><b>原作者未逐行公开的内容：</b>MCP 服务的实现、完整模板库文件、Codex 生图的调用细节。<b>本文不编造。</b></p>
+
+  <h3 class="sec">12｜踩坑</h3>
+  <div class="pitfall">
+    <p><b>以下为依据项目公开信息整理的提醒，本文未独立复现：</b></p>
+    <ul>
+      <li><b>核心依赖是 Codex 的内置生图。</b>没有可用的 Codex 生图权限，这套工具基本跑不起来——这是它最大的前提条件，也是最容易被忽略的一条。</li>
+      <li><b>「先给方向」会增加一轮交互。</b>想要一次出一张的人会觉得慢；好在作者提供了「直接出」的跳过路径。</li>
+      <li><b>样例中的人与品牌是虚构的。</b>作者明确声明样例里的活动、品牌、人物、文案均为虚构示例——<b>不要把样例里的品牌信息当成真实案例引用。</b></li>
+      <li><b>项目很新。</b>仓库创建于窗口内（10-04），当天发布两个版本，<b>没有长期使用反馈可参考</b>；除作者自述外，无第三方验证。</li>
+      <li><b>风格库的效果是主观的。</b>「24 类模板、20 位 Mondo 风格」是作者的分类与命名，其产出质量与你的审美偏好直接相关，需要自己试。</li>
+    </ul>
+  </div>
+
+  <h3 class="sec">13｜中国用户能不能直接做？</h3>
+  <ul>
+    <li><b>国内访问：</b>GitHub 直连不稳定；更关键的是<b>依赖 Codex 生图能力</b>，其可用性受账号与网络条件限制。</li>
+    <li><b>注册：</b>无额外注册；门槛在 Codex 侧。</li>
+    <li><b>API：</b>项目本身不额外要求 Key；核心依赖已在 Codex 侧。</li>
+    <li><b>成本：</b>软件免费；实际成本取决于 Codex 的额度与计费方式。</li>
+    <li><b>技术门槛：</b><span class="repro hard">有一定门槛</span> 需要会用命令行或挂 MCP，且要能访问 Codex 生图。</li>
+  </ul>
+
+  <h3 class="sec">14｜国产替代方案</h3>
+  <table class="stack">
+    <tr><td class="k">原方案</td><td>Codex 内置生图 + MCP / CLI / Skill 三形态封装</td></tr>
+    <tr><td class="k">中国用户方案</td><td><b>思路可整体迁移</b>：把国产生图服务（如通义万相、即梦、可灵等）的 API 按同样的三形态封装，并沿用「先给方向、再出图、后验收」的流程设计与平台预设（小红书 3:4、公众号头图、视频封面）</td></tr>
+    <tr><td class="k">替代性质</td><td><b>理论替代（本文推导）。</b>作者未提供任何国产生图的适配；本项目对 Codex 的依赖为硬依赖，无法直接换成国产模型。<b>可迁移的是「设计流程」，不是「这个仓库」。</b></td></tr>
+  </table>
+
+  <h3 class="sec">15｜中国企业可以怎么用？</h3>
+  <ul>
+    <li><b>企业场景 1｜电商与社媒素材流水线。</b>把「商品主图 / 小红书配图 / 视频封面」做成固定的方向 + 预设，让运营不依赖设计师排期出图。</li>
+    <li><b>企业场景 2｜品牌视觉一致性。</b>用「风格锁 + 验收条件」把品牌规范写进流程，避免不同人出图风格各异。</li>
+    <li><b>企业场景 3｜营销活动快速出稿。</b>活动海报一次生成多个机制不同的方向，内部先选方向再出终稿。</li>
+  </ul>
+
+  <h3 class="sec">16｜中国消费者可以怎么用？</h3>
+  <ul>
+    <li><b>自媒体配图：</b>给视频/图文做封面与配图，自带小红书、公众号、朋友圈预设比例。</li>
+    <li><b>个人纪念品：</b>做专辑封面、书籍封面、生日海报等个人用途的设计稿。</li>
+    <li><b>学习设计：</b>通过「四个方向对比」理解不同设计机制，比看教程更快建立审美判断。</li>
+  </ul>
+
+  <h3 class="sec">17｜如何变成一个赚钱的项目？</h3>
+  <p><b>产品化：</b>做「垂直行业的视觉素材工厂」——例如只服务电商，内置类目化的方向库与平台预设，卖的是「出图即合规可用」。</p>
+  <p><b>服务化：</b>帮企业把品牌规范封装成一套「风格锁 + 验收条件」，交付后按季度维护。</p>
+  <p><b>咨询化：</b>帮品牌解决「AI 出图风格不稳定」的问题，本质是把设计规范翻译成可执行的提示词约束。</p>
+  <p><b>培训化：</b>《不懂设计也能出好图：用「先给方向」的工作流做营销素材》——对运营岗吸引力极强。</p>
+  <p><b>内容化：</b>「同一个主题的五个方向」这类对比图本身就是极好的内容素材。</p>
+
+  <h3 class="sec">18｜变现路径</h3>
+  <table class="stack">
+    <tr><td class="k">路径</td><td><b>客户</b> ｜ 产品/服务 ｜ 收费方式 ｜ 难度</td></tr>
+    <tr><td class="k">垂直素材工具</td><td>电商/自媒体 ｜ 类目化出图工具 ｜ 订阅 ｜ 中</td></tr>
+    <tr><td class="k">品牌规范封装</td><td>企业 ｜ 风格锁 + 验收条件交付 ｜ 项目制 + 维护 ｜ 中</td></tr>
+    <tr><td class="k">咨询</td><td>品牌 ｜ AI 出图稳定性方案 ｜ 项目制 ｜ 高</td></tr>
+    <tr><td class="k">培训</td><td>运营/市场 ｜ 半天出图工作坊 ｜ 按场 ｜ 低</td></tr>
+    <tr><td class="k">内容</td><td>设计/运营 ｜ 方向拆解与素材库 ｜ 会员/广告 ｜ 低</td></tr>
+  </table>
+  <p><b>注意：</b>以上为基于案例结构的<b>潜在商业模式分析</b>，非已验证的商业成功；作者未公开任何收入信息。</p>
+
+  <h3 class="sec">19｜如果我是一个中国独立开发者（7 天 MVP）</h3>
+  <ol>
+    <li><b>Day 1：</b>把「先给方向 → 选定 → 出图 → 验收」这条流程写成一页规范（这一步不写代码）。</li>
+    <li><b>Day 2：</b>接一个国产生图 API，把流程跑通，先做「小红书配图」一个预设。</li>
+    <li><b>Day 3：</b>为这个预设写 6 个机制不同的方向模板（不是 6 个滤镜）。</li>
+    <li><b>Day 4：</b>找 3 位电商/自媒体朋友试用，看他们选方向的偏好。</li>
+    <li><b>Day 5：</b>补上「验收条件」（尺寸、留白、主体位置），减少返工。</li>
+    <li><b>Day 6：</b>做一个极简界面或 MCP 服务，让不会写提示词的人也能用。</li>
+    <li><b>Day 7：</b>定一个按张/按月的价格，先用一个小众类目（如零食、宠物）验证。</li>
+  </ol>
+
+  <h3 class="sec">20｜如何迁移到其他行业</h3>
+  <div class="migrate">
+    <div class="m"><b>① 电商主图</b>用同样的「方向先行 + 平台预设」做商品主图，重点是把类目规范写进验收条件。</div>
+    <div class="m"><b>② 教育培训</b>做课件插图与课程封面，用「四个方向」帮助老师对齐表达意图。</div>
+    <div class="m"><b>③ 企业品牌</b>把 VI 规范封装为风格锁与验收条件，让全员出图不跑偏。</div>
+  </div>
+
+  <h3 class="sec">21｜培训课程设计</h3>
+  <div class="course">
+    <table>
+      <tr><td class="k">课程名称</td><td>《AI 视觉素材工作流：不懂设计也能出可用图》</td></tr>
+      <tr><td class="k">适合人群</td><td>电商运营、自媒体作者、市场/品牌岗</td></tr>
+      <tr><td class="k">建议时长</td><td>半天（3 小时）</td></tr>
+      <tr><td class="k">30 分钟 Demo</td><td>同一主题出四个方向，现场投票选方向再出终稿</td></tr>
+      <tr><td class="k">60 分钟 Workshop</td><td>学员为自己的账号做一套配图预设（含尺寸与留白）</td></tr>
+      <tr><td class="k">半天课程</td><td>上午讲「方向 vs 滤镜」，下午各自产出 3 张可发布的图</td></tr>
+      <tr><td class="k">课程目标</td><td>学员能够独立完成「选方向 → 出图 → 按验收条件自检」的完整流程</td></tr>
+      <tr><td class="k">现场 Demo</td><td>小红书配图 vs 视频封面：不同比例的构图差异</td></tr>
+      <tr><td class="k">学员练习</td><td>为同一篇文章做两个机制完全不同的封面方案</td></tr>
+      <tr><td class="k">课后作业</td><td>连续 5 天，每天用「先给方向」的方式为一条内容配图</td></tr>
+      <tr><td class="k">企业迁移</td><td>输出《品牌 AI 出图规范》，含风格锁与验收条件</td></tr>
+    </table>
+  </div>
+
+  <h3 class="sec">22｜培训师点评</h3>
+  <div class="trainer"><b>这个案例真正值得教的是什么？</b>不是生图，而是<b>「给方案再执行」和「能力搬运」</b>这两件事。前者是 Agent 与人类协作的正确姿势（尤其对不可逆操作），后者是 MCP 时代最实用的一项技能——把锁在别处的强能力，接到自己的工作流里。</div>
+
+  <h3 class="sec">23｜最终判断</h3>
+  <div class="verdict">
+    <div class="v"><div class="k">落地性</div><div class="val lv-m">中</div></div>
+    <div class="v"><div class="k">中国市场相关性</div><div class="val lv-h">高</div></div>
+    <div class="v"><div class="k">商业价值</div><div class="val lv-h">高</div></div>
+    <div class="v"><div class="k">复现难度</div><div class="val lv-m">中</div></div>
+    <div class="v"><div class="k">变现潜力</div><div class="val lv-m">中</div></div>
+  </div>
+  <p style="font-size:13px;color:#6B7280;margin-top:8px;">说明：以上是案例属性描述，不是排名。「落地性中」是因为它硬依赖 Codex 生图权限，中国用户直接使用受限；但它的<b>流程设计与封装思路</b>迁移价值很高，「中国市场相关性高」指的是它所服务的场景（小红书/公众号/电商出图）。</p>
+</div>
+
+<!-- ===================== 今日观察 ===================== -->
+<section class="block" id="observe">
+  <h2>今日 AI 实战观察</h2>
+  <div class="panel">
+    <p>10-05 这一天的两个案例，指向同一个趋势：<b>能力正在从产品里被「拆出来」。</b></p>
+    <p><b>第一，自托管正在成为 AI Agent 落地的重要形态。</b>PanWatch 用一条 <code>docker run</code> 把「九 Agent 研究团队 + 定时任务 + 多账户持仓 + 通知渠道」装进用户自己的服务器。它满足的是中国用户最实际的两个诉求：<b>数据不出门</b>和<b>通知进手机</b>（飞书、企微、钉钉）。这也解释了为什么它能把 ★2,040 拿到手——它不是 Demo，是一个能长期跑的系统。</p>
+    <p><b>第二，多 Agent 的真正价值是「对抗」而非「分工」。</b>PanWatch 的九 Agent 结构里最关键的一环是<b>多空辩论</b>。分工只提升速度，对抗才提升质量——被迫站在反方陈述，会逼出单模型容易忽略的反面证据。这条经验可以直接迁移到任何高风险决策场景。</p>
+    <p><b>第三，MCP 正在从「协议」变成「能力搬运工具」。</b>案例 02 做的事很直白：Codex 的生图只在 Codex 里能用，那就把它包成 MCP / CLI / Skill 三件套接出来。这说明 MCP 的实际价值不只是「让 Agent 能调工具」，而是<b>让「能力」和「界面」解耦</b>——能力可以脱离它出生的产品，被任何 Agent 编排。</p>
+    <p><b>第四，「先给方案再执行」正在成为 Agent 交互的默认礼仪。</b>案例 02 的「四个方向先给你选」、案例 01 的「先说清推理链再给结论」，本质上是同一个原则：<b>对不可逆、有偏好的动作，先给选项而不是直接做。</b>这比「模型更强」更能决定用户是否信任一个 Agent 系统。</p>
+    <p>合起来看，今天两个案例提示的是同一件事：<b>AI 落地的竞争点，正在从「谁的能力强」转向「谁的能力能被安全、可控、本地化地使用」。</b></p>
+  </div>
+</section>
+
+<!-- ===================== 商业机会雷达 ===================== -->
+<section class="block" id="radar">
+  <h2>今日商业机会雷达</h2>
+  <div class="panel">
+    <h3>机会 1｜自托管 AI 研究助手（企业私有化）</h3>
+    <ul>
+      <li><b>客户：</b>对数据敏感的投研、投资、咨询团队</li>
+      <li><b>实现方式：</b>基于多 Agent 编排的自托管研究系统 + 国产模型 + 本地数据（参考案例 01）</li>
+      <li><b>可能商业模式：</b>私有化部署项目 + 运维订阅</li>
+    </ul>
+    <h3>机会 2｜「能力封装」服务：把锁住的能力接给 Agent</h3>
+    <ul>
+      <li><b>客户：</b>想把某个外部能力接进自己工作流的团队</li>
+      <li><b>实现方式：</b>MCP / CLI / Skill 三形态封装（参考案例 02 的工程结构）</li>
+      <li><b>可能商业模式：</b>按封装数量与复杂度项目制收费</li>
+    </ul>
+    <h3>机会 3｜垂直行业的「AI 出图规范」</h3>
+    <ul>
+      <li><b>客户：</b>电商、品牌、MCN</li>
+      <li><b>实现方式：</b>把品牌 VI 与平台规范翻译成风格锁 + 验收条件（参考案例 02）</li>
+      <li><b>可能商业模式：</b>规范交付 + 季度维护</li>
+    </ul>
+    <p style="font-size:13px;color:#6B7280;">以上均是基于案例结构的<b>商业模式分析</b>，不代表已验证的商业成功。金融相关业务请另行评估合规性。</p>
+  </div>
+</section>
+
+<!-- ===================== 个人变现机会 ===================== -->
+<section class="block" id="personal">
+  <h2>今日「个人变现机会」</h2>
+  <div class="panel">
+    <p>如果一个人每天投入 <b>2–4 小时</b>，这两个案例可以这样长出个人业务：</p>
+    <ul>
+      <li><b>做自托管部署服务。</b>「帮企业把 AI 系统装进自己的服务器」是明确的技术服务需求，PanWatch 这类项目刚好提供了成熟底座，交付可标准化。</li>
+      <li><b>做「能力封装」接单。</b>会写 MCP / Skill 是当下稀缺技能。把客户想要的外部能力封装成可被 Agent 调用的工具，单价高、周期短。</li>
+      <li><b>做垂直出图服务。</b>选一个小类目（宠物、零食、家居），用「方向先行」的流程做配图外包，用 AI 提效但按设计服务收费。</li>
+      <li><b>做多 Agent 编排咨询。</b>把「多空辩论」这类对抗式结构讲清楚并帮客户落地，是一个门槛不高但需求真实的方向。</li>
+    </ul>
+    <p><b>提醒：</b>以上是低资本、单人可启动的机会方向，<b>不构成收益承诺</b>。涉及金融的业务尤其要注意合规边界。</p>
+  </div>
+</section>
+
+<!-- ===================== 原始资料汇总 ===================== -->
+<section class="block" id="sources">
+  <h2>原始资料</h2>
+  <div class="panel">
+    <h3>案例 01 · PanWatch（盯盘侠）</h3>
+    <ul>
+      <li>仓库：<a href="https://github.com/TNT-Likely/PanWatch" target="_blank" rel="noopener">github.com/TNT-Likely/PanWatch</a></li>
+      <li>Releases：<a href="https://github.com/TNT-Likely/PanWatch/releases" target="_blank" rel="noopener">github.com/TNT-Likely/PanWatch/releases</a></li>
+      <li>快速开始：<a href="https://github.com/TNT-Likely/PanWatch#quick-start" target="_blank" rel="noopener">README · Quick Start</a></li>
+      <li>镜像：<a href="https://hub.docker.com/r/sunxiao0721/panwatch" target="_blank" rel="noopener">hub.docker.com/r/sunxiao0721/panwatch</a></li>
+      <li>上游框架：<a href="https://github.com/TauricResearch/TradingAgents" target="_blank" rel="noopener">TauricResearch/TradingAgents</a></li>
+    </ul>
+    <h3>案例 02 · 乔木 Codex 生图</h3>
+    <ul>
+      <li>仓库：<a href="https://github.com/joeseesun/qiaomu-codex-imagegen" target="_blank" rel="noopener">github.com/joeseesun/qiaomu-codex-imagegen</a></li>
+      <li>Releases：<a href="https://github.com/joeseesun/qiaomu-codex-imagegen/releases" target="_blank" rel="noopener">github.com/joeseesun/qiaomu-codex-imagegen/releases</a></li>
+      <li>样例提示词：<a href="https://github.com/joeseesun/qiaomu-codex-imagegen/blob/main/docs/samples/prompts.json" target="_blank" rel="noopener">docs/samples/prompts.json</a></li>
+    </ul>
+    <h3>明确排除的来源</h3>
+    <p>本期检索中，以下站点内容经核实为同一批模板化文章的重复分发（无一手作者、无可验证项目），<b>全部剔除</b>：mhpq.cn、tzjp.cn、hqwc.cn、qwbw.cn、lpqz.cn（「尧图系」）。</p>
+  </div>
+</section>
+
+<!-- ===================== 数据真实性说明 ===================== -->
+<section class="block" id="truth">
+  <h2>数据真实性说明</h2>
+  <div class="panel">
+    <h3>已核实的事实（可通过 GitHub API 复核）</h3>
+    <ol>
+      <li><b>案例 01：</b>TNT-Likely/PanWatch，MIT，Python，建于 2026-01-23；窗口内发布 0.17.3（北京时间 10-04 19:28）与 0.17.4（10-04 23:48），并有 TradingAgents 超时配置、provider 错误暴露、镜像构建加速等实质提交。</li>
+      <li><b>案例 02：</b>joeseesun/qiaomu-codex-imagegen，MIT，JavaScript，建于 2026-10-04T08:47:02Z（北京时间 10-04 16:47）；同日发布 v0.2.0（16:49）与 v0.3.0（17:34）。</li>
+      <li>两案例的窗口内事件均落在 <b>2026-10-04 12:00 → 10-05 12:00（北京时间）</b> 之内；所有时间戳由 API 原始数据换算。</li>
+    </ol>
+    <h3>来自作者自述、本文未独立验证</h3>
+    <ul>
+      <li><b>案例 01：</b>「九 Agent 研究团队在 3–5 分钟内产出 PM 决策备忘录与完整推理链」——来自 README 描述，<b>本文未实际运行验证</b>；其结论的准确性、延迟表现均未经第三方评测。</li>
+      <li><b>案例 02：</b>「24 类场景模板 / 48 个预设 / 20 位 Mondo 设计师 / 689 条参考提示词」的规模与效果——来自 README 自述，本文未逐项清点；样例图的质量评价属主观。</li>
+    </ul>
+    <h3>本文的分析与推演</h3>
+    <ul>
+      <li>「前世今生」「下一步可能怎么发展」「企业/消费者场景」「迁移方向」「7 天 MVP」「课程设计」等均为基于公开资料的<b>分析与推演</b>，不代表项目作者的观点或计划。</li>
+      <li>商业与变现部分全部为<b>潜在模式分析</b>，不是已验证的收入事实。<b>金融相关部分不构成投资建议或合规意见。</b></li>
+    </ul>
+    <h3>已做与未做的验证</h3>
+    <ul class="checklist">
+      <li>作者/组织账号存在</li>
+      <li>窗口内 Release 时间已核实</li>
+      <li>窗口内提交已核实</li>
+      <li>许可类型已核实</li>
+      <li>README 原文已逐段核对</li>
+      <li>未伪造作者未提供的步骤</li>
+      <li>已区分事实 / 自述 / 推演</li>
+      <li>已剔除内容农场来源</li>
+      <li>未实际运行两个项目</li>
+      <li>未验证 AI 判断准确率</li>
+      <li>未联系作者求证</li>
+      <li>未核实 Star 增长曲线</li>
+    </ul>
+  </div>
+</section>
+</div>
+</main>
+<footer class="site-footer">
+  <div class="wrap">
+    <div>
+      <div class="f-brand">全球文明进程重大事件日报</div>
+      <p class="f-desc">记录人类文明演进中的关键节点。以未来历史学家的视角，筛出可能改写人类轨迹的转折点——一个长期记录人类文明发展轨迹的数字档案馆。</p>
+    </div>
+    <div class="f-col">
+      <h4>浏览</h4>
+      <ul>
+        <li><a href="../index.html">网站首页</a></li>
+        <li><a href="../archive.html">日报档案</a></li><li><a href="../radar.html">趋势雷达</a></li><li><a href="../tutorial/index.html">AI实战</a></li>
+        <li><a href="../assets/images/og-cover.png" target="_blank">站点封面</a></li>
+      </ul>
+    </div>
+    <div class="f-col">
+      <h4>文明分类</h4>
+      <ul>
+        <li><a href="../categories/science.html">科学、生命与地球</a></li>
+        <li><a href="../categories/politics.html">政治与文明秩序</a></li>
+        <li><a href="../categories/culture.html">思想、社会与文化</a></li>
+        <li><a href="../categories/technology.html">科技与人工智能</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="f-bottom">
+    <div class="wrap">
+      <span>© 2026 全球文明进程重大事件日报 · 全球文明进程观察站</span>
+      <span>内容由自动化智能体基于公开信息生成，仅供文明观察与研究参考，不构成任何投资、政策或法律建议。</span>
+    </div>
+  </div>
+</footer>
+<button class="backtop" type="button" aria-label="返回顶部">↑</button>
+<script src="../assets/js/main.js"></script>
+<script src="../assets/js/wechat-share.js"></script>
+<script src="../assets/js/text-to-speech.js"></script>
+</body>
+</html>

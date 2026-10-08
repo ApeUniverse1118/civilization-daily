@@ -1,0 +1,863 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI极客实战教程日报 · 2026-10-06（第010期）｜EEO：给 154 万个品牌建「AI 时代的名片」，并审计它、用便宜 99% 的判定模型做论文筛选：dailypaper-</title>
+<meta name="description" content="10月6日AI极客实战案例：今日一句话
+今天两个案例都在造「尺子」：一个给品牌量「你在 AI 的回答里排第几」（GEO 审计），一个给论文量「哪篇跟你有关」（用便宜的判定模型做相关性打分）。当 AI 开始替人做筛选，能定义「怎么量」的人就拿到了定价权。">
+<meta name="keywords" content="AI极客实战,EEO：给 154 ,用便宜 99% 的判">
+<meta name="author" content="全球文明进程观察站">
+<meta name="robots" content="index,follow">
+<link rel="canonical" href="https://civilization-radar.com/tutorial/2026-10-06.html">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="全球文明进程重大事件日报">
+<meta property="og:title" content="AI极客实战教程日报 · 2026-10-06｜EEO：给 154 万个品牌建「AI 时代的名片」，并审计它">
+<meta property="og:description" content="10月6日AI极客实战案例：今日一句话
+今天两个案例都在造「尺子」：一个给品牌量「你在 AI 的回答里排第几」（GEO 审计），一个给论文量「哪篇跟你有关」（用便宜的判定模型做相关性打分）。当 AI 开始替人做筛选，能定义「怎么量」的人就拿">
+<meta property="og:url" content="https://civilization-radar.com/tutorial/2026-10-06.html">
+<meta property="og:image" content="https://civilization-radar.com/assets/images/og-cover.png">
+<meta property="og:locale" content="zh_CN">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="AI极客实战教程日报 · 2026-10-06">
+<meta name="twitter:description" content="今日一句话
+今天两个案例都在造「尺子」：一个给品牌量「你在 AI 的回答里排第几」（GEO 审计），一个给论文量「哪篇跟你有关」（用便宜的判定模型做相关性打分）">
+<meta name="twitter:image" content="https://civilization-radar.com/assets/images/og-cover.png">
+<link rel="icon" href="../assets/images/logo.svg" type="image/svg+xml">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"AI极客实战教程日报 2026-10-06","description":"今日一句话\n今天两个案例都在造「尺子」：一个给品牌量「你在 AI 的回答里排第几」（GEO 审计），一个给论文量「哪篇跟你有关」（用便宜的判定模型做相关性打分）。当 AI 开始替人做筛选，能定义「怎么量」的人就拿到了定价权。","datePublished":"2026-10-06","dateModified":"2026-10-06","author":{"@type":"Organization","name":"全球文明进程观察站"},"publisher":{"@type":"Organization","name":"全球文明进程观察站","logo":{"@type":"ImageObject","url":"https://civilization-radar.com/assets/images/og-cover.png"}},"mainEntityOfPage":{"@type":"WebPage","@id":"https://civilization-radar.com/tutorial/2026-10-06.html"}}</script>
+
+<link rel="stylesheet" href="../assets/css/style.css">
+<style>
+
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body {
+    background:#F7F8FA; color:#111827;
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;
+    line-height:1.7; font-size:15px;
+  }
+  .tut-wrap { max-width:960px; margin:0 auto; padding:32px 20px 64px; }
+  a { color:#2563EB; text-decoration:none; word-break:break-all; }
+  a:hover { text-decoration:underline; }
+
+  header.top {
+    background:#111827; color:#F9FAFB; border-radius:14px; padding:36px 32px; margin-bottom:24px;
+  }
+  header.top .kicker { color:#93C5FD; font-size:13px; letter-spacing:2px; text-transform:uppercase; margin-bottom:10px; }
+  header.top h1 { font-size:30px; font-weight:800; margin-bottom:6px; }
+  header.top .sub { color:#9CA3AF; font-size:14px; margin-bottom:20px; }
+  .meta-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:12px; }
+  .meta-grid .m { background:#1F2937; border:1px solid #374151; border-radius:10px; padding:10px 14px; }
+  .meta-grid .m .k { font-size:11px; color:#9CA3AF; margin-bottom:2px; }
+  .meta-grid .m .v { font-size:14px; font-weight:600; color:#F9FAFB; }
+
+  .oneline {
+    background:#F5F8FF; border:1px solid #BFDBFE; border-radius:14px;
+    padding:18px 24px; margin-bottom:24px;
+  }
+  .oneline .lab { font-size:12px; letter-spacing:1px; color:#2563EB; font-weight:700; margin-bottom:6px; }
+  .oneline p { font-size:15px; color:#111827; }
+
+  nav.cats { display:flex; flex-wrap:wrap; gap:8px; margin-bottom:28px; }
+  nav.cats a {
+    background:#FFFFFF; border:1px solid #E5E7EB; border-radius:999px;
+    padding:6px 14px; font-size:13px; color:#374151;
+  }
+  nav.cats a:hover { border-color:#2563EB; color:#2563EB; text-decoration:none; }
+
+  .card {
+    background:#FFFFFF; border:1px solid #E5E7EB; border-radius:14px;
+    padding:28px; margin-bottom:28px;
+  }
+  .card-head { display:flex; align-items:flex-start; gap:14px; margin-bottom:6px; flex-wrap:wrap; }
+  .num {
+    font-size:26px; font-weight:800; color:#2563EB; line-height:1.1;
+    font-variant-numeric:tabular-nums; min-width:52px;
+  }
+  .card-head h2 { font-size:20px; font-weight:700; flex:1; min-width:240px; }
+  .badges { display:flex; flex-wrap:wrap; gap:6px; margin:8px 0 14px; }
+  .badge { font-size:12px; padding:3px 10px; border-radius:999px; font-weight:600; }
+  .b-cat { background:#EFF6FF; color:#2563EB; border:1px solid #BFDBFE; }
+  .b-tag { background:#F3F4F6; color:#4B5563; border:1px solid #E5E7EB; }
+  .b-date { background:#ECFDF5; color:#16A34A; border:1px solid #BBF7D0; }
+  .b-warn { background:#FFFBEB; color:#B45309; border:1px solid #FDE68A; }
+
+  .oneliner {
+    background:#F9FAFB; border:1px solid #E5E7EB; border-radius:10px;
+    padding:12px 16px; font-size:14.5px; color:#111827; margin-bottom:18px;
+  }
+
+  h3.sec {
+    font-size:14px; font-weight:700; color:#111827; margin:22px 0 8px;
+    padding-left:10px; border-left:3px solid #2563EB;
+  }
+  .card p, .card li { font-size:14.5px; color:#374151; }
+  .card ul, .card ol { padding-left:22px; margin:6px 0; }
+  .card li { margin-bottom:4px; }
+
+  .src-list { list-style:none; padding-left:0; }
+  .src-list li { margin-bottom:6px; }
+  .src-type {
+    display:inline-block; font-size:11px; font-weight:700; color:#2563EB;
+    background:#EFF6FF; border:1px solid #BFDBFE; border-radius:6px;
+    padding:1px 8px; margin-right:8px;
+  }
+
+  .stack { width:100%; border-collapse:collapse; margin:6px 0; }
+  .stack td { border:1px solid #E5E7EB; padding:7px 12px; font-size:13.5px; vertical-align:top; }
+  .stack td.k { background:#F9FAFB; font-weight:600; color:#111827; width:110px; white-space:nowrap; }
+
+  .flow { display:flex; flex-direction:column; gap:0; margin:10px 0; }
+  .flow .node {
+    background:#F9FAFB; border:1px solid #E5E7EB; border-radius:10px;
+    padding:9px 16px; font-size:13.5px; color:#111827;
+  }
+  .flow .node b { color:#2563EB; }
+  .flow .arrow { text-align:center; color:#9CA3AF; font-size:14px; line-height:1.4; }
+
+  pre {
+    background:#111827; color:#E5E7EB; border-radius:10px;
+    padding:16px 18px; overflow-x:auto; font-size:13px; line-height:1.6;
+    font-family:"SFMono-Regular",Consolas,"Liberation Mono",Menlo,monospace;
+    margin:8px 0;
+  }
+  code {
+    font-family:"SFMono-Regular",Consolas,Menlo,monospace;
+    background:#F3F4F6; color:#111827; border-radius:5px; padding:1px 6px; font-size:13px;
+  }
+  pre code { background:transparent; color:#E5E7EB; padding:0; }
+
+  .pitfall { background:#FFFBEB; border:1px solid #FDE68A; border-radius:10px; padding:14px 18px; margin:8px 0; }
+  .pitfall b { color:#B45309; }
+  .truth { background:#FEF7F7; border:1px solid #FECACA; border-radius:10px; padding:14px 18px; margin:8px 0; }
+  .truth b { color:#B91C1C; }
+
+  .repro { display:inline-block; font-size:13px; font-weight:700; padding:4px 12px; border-radius:999px; background:#ECFDF5; color:#16A34A; border:1px solid #BBF7D0; }
+  .repro.hard { background:#FFFBEB; color:#B45309; border-color:#FDE68A; }
+  .repro.dev { background:#FEF2F2; color:#B91C1C; border-color:#FECACA; }
+
+  .migrate { display:grid; grid-template-columns:repeat(3,1fr); gap:10px; margin:8px 0; }
+  .migrate .m {
+    background:#F9FAFB; border:1px solid #E5E7EB; border-radius:10px; padding:12px 14px; font-size:13px; color:#374151;
+  }
+  .migrate .m b { display:block; color:#111827; margin-bottom:4px; }
+
+  .course {
+    background:#F5F8FF; border:1px solid #BFDBFE; border-radius:10px; padding:16px 20px; margin:8px 0;
+  }
+  .course table { width:100%; border-collapse:collapse; }
+  .course td { padding:4px 8px 4px 0; font-size:13.5px; vertical-align:top; color:#374151; }
+  .course td.k { font-weight:600; color:#111827; width:88px; white-space:nowrap; }
+
+  .trainer {
+    border-left:3px solid #16A34A; background:#F0FDF4; border-radius:0 10px 10px 0;
+    padding:12px 18px; font-size:14px; color:#14532D; margin:10px 0 4px;
+  }
+  .trainer b { color:#16A34A; }
+
+  .verdict { display:grid; grid-template-columns:repeat(5,1fr); gap:10px; margin:8px 0; }
+  .verdict .v {
+    background:#F9FAFB; border:1px solid #E5E7EB; border-radius:10px; padding:12px; text-align:center;
+  }
+  .verdict .v .k { font-size:11.5px; color:#6B7280; margin-bottom:4px; }
+  .verdict .v .val { font-size:17px; font-weight:800; }
+  .lv-h { color:#16A34A; }
+  .lv-m { color:#F59E0B; }
+  .lv-l { color:#DC2626; }
+
+  section.block { margin-top:40px; }
+  section.block > h2 {
+    font-size:22px; font-weight:800; margin-bottom:16px; padding-bottom:10px;
+    border-bottom:2px solid #E5E7EB;
+  }
+  .panel { background:#FFFFFF; border:1px solid #E5E7EB; border-radius:14px; padding:24px 28px; margin-bottom:20px; }
+  .panel h3 { font-size:16px; margin-bottom:10px; }
+  .panel p, .panel li { font-size:14.5px; color:#374151; }
+  .panel ul { padding-left:22px; }
+  .panel li { margin-bottom:6px; }
+  .panel table { width:100%; border-collapse:collapse; margin:8px 0; }
+  .panel th, .panel td { border:1px solid #E5E7EB; padding:7px 10px; font-size:13px; text-align:left; vertical-align:top; }
+  .panel th { background:#F9FAFB; color:#111827; }
+
+  .checklist { columns:2; column-gap:32px; }
+  .checklist li { list-style:none; margin-bottom:6px; font-size:13.5px; }
+  .checklist li::before { content:"✓ "; color:#16A34A; font-weight:700; }
+
+  .gapnote {
+    background:#FFFBEB; border:1px solid #FDE68A; border-radius:10px;
+    padding:14px 18px; font-size:13.5px; color:#7C2D12; margin-bottom:24px;
+  }
+  .gapnote b { color:#B45309; }
+
+  footer { text-align:center; color:#9CA3AF; font-size:12.5px; margin-top:40px; }
+
+  @media(max-width:640px) {
+    header.top { padding:24px 20px; }
+    header.top h1 { font-size:22px; }
+    .meta-grid { grid-template-columns:repeat(2,1fr); }
+    .card { padding:20px 16px; }
+    .migrate { grid-template-columns:1fr; }
+    .verdict { grid-template-columns:repeat(2,1fr); }
+    .checklist { columns:1; }
+    .num { min-width:auto; }
+    .panel { padding:18px 16px; }
+    .stack td.k { width:82px; }
+  }
+
+</style>
+</head><body>
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="../index.html"><img class="mark" src="../assets/images/logo.svg" alt="文明雷达" width="32" height="32" style="width:32px;height:32px;background:none;border:0;box-shadow:none;border-radius:6px">全球文明进程重大事件日报</a>
+    <button class="nav-toggle" type="button" aria-label="菜单" aria-expanded="false">☰</button>
+    <nav class="main-nav" aria-label="主导航"><ul><li><a href="../index.html">首页</a></li><li><a href="../archive.html">日报档案</a></li><li><a href="../radar.html">趋势雷达</a></li><li><a href="../tutorial/index.html" class="active">AI实战</a></li><li><a href="../categories/science.html">科学</a></li><li><a href="../categories/politics.html">政治</a></li><li><a href="../categories/culture.html">文化</a></li><li><a href="../categories/technology.html">科技</a></li></ul></nav>
+  </div>
+</header>
+<main class="site-main">
+<div class="tut-wrap">
+  <nav class="breadcrumb" aria-label="面包屑"><a href="../index.html">首页</a><span class="sep">/</span><a href="index.html">AI实战教程</a><span class="sep">/</span><span>2026-10-06</span></nav>
+<header class="top">
+  <div class="kicker">China AI Builders · Real Cases · Workflows · Business</div>
+  <h1>AI极客实战案例日报</h1>
+  <div class="sub">China AI Builders · Real Cases · Workflows · Agents · Open Source · Business</div>
+  <div class="meta-grid">
+    <div class="m"><div class="k">日报日期</div><div class="v">2026-10-06</div></div>
+    <div class="m"><div class="k">生成时间</div><div class="v">2026-10-08（补做）</div></div>
+    <div class="m"><div class="k">精选案例</div><div class="v">2 个（宁缺毋滥）</div></div>
+    <div class="m"><div class="k">数据窗口</div><div class="v">10-05 12:00 → 10-06 12:00</div></div>
+  </div>
+</header>
+
+<div class="gapnote">
+  <b>关于本期的生成方式：</b>这是一份<b>补做</b>的日报。2026-10-06 当天的定时任务未执行，故在 2026-10-08 按当日应有的数据窗口回溯补做。数据窗口严格限定为 <b>2026-10-05 12:00 → 2026-10-06 12:00（北京时间）</b>。所有时间戳由 GitHub API 原始数据换算，窗口外事件一律不作为案例收录。
+</div>
+
+<div class="oneline">
+  <div class="lab">今日一句话</div>
+  <p>今天两个案例都在造「尺子」：一个给品牌量「你在 AI 的回答里排第几」（GEO 审计），一个给论文量「哪篇跟你有关」（用便宜的判定模型做相关性打分）。<b>当 AI 开始替人做筛选，能定义「怎么量」的人就拿到了定价权。</b></p>
+</div>
+
+<nav class="cats">
+  <a href="#case01">案例 01｜品牌 AI 可见度审计 EEO</a>
+  <a href="#case02">案例 02｜论文流水线 dailypaper-skills</a>
+  <a href="#observe">今日观察</a>
+  <a href="#radar">商业机会雷达</a>
+  <a href="#personal">个人变现机会</a>
+  <a href="#sources">原始资料</a>
+  <a href="#truth">真实性说明</a>
+</nav>
+
+<!-- ===================== 案例 01 ===================== -->
+<div class="card" id="case01">
+  <div class="card-head">
+    <div class="num">01</div>
+    <h2>EEO：给 154 万个品牌建「AI 时代的名片」，并审计它们在大模型回答里到底排第几（GEO / AEO 的可复现度量）</h2>
+  </div>
+  <div class="badges">
+    <span class="badge b-cat">GEO / AEO</span>
+    <span class="badge b-cat">AI + 品牌营销</span>
+    <span class="badge b-cat">数据工程 + 评测</span>
+    <span class="badge b-date">仓库创建 10-05 20:24（北京时间）</span>
+    <span class="badge b-tag">Apache-2.0 / CC BY 4.0</span>
+    <span class="badge b-warn">数据集规模均为项目自述</span>
+  </div>
+
+  <div class="oneliner">
+    <b>一句话结论：</b>它把「AI 推荐谁」这件原本说不清的事，变成了有快照、有置信区间、有共识度（kappa）的可复核分数——这一点比它的数据量更值钱。
+  </div>
+
+  <h3 class="sec">01｜案例是什么？</h3>
+  <p><b>EEO</b> 是 <i>Everything Engine Optimization</i> 的缩写，它是这个社区给 SEO、AEO、GEO、LLMO 起的统称（Apache-2.0，Node 18+，零依赖）。项目做三件事：<b>①</b> 建一个全球品牌目录（e<code>eo.brand.v1</code> 结构，含网站、行业、国家、LEI 法人识别码等字段）；<b>②</b> 提供一套「审计工具」，向真实的 AI 引擎提出真实买家会问的问题、把每次原始回答存档、再给品牌的可见度打分——工具以<b>六种形态</b>分发（单文件网页、CLI、自托管服务、MCP 服务、GitHub Action、浏览器扩展），内置 26 个引擎预设，其中 11 个是中国本土引擎；<b>③</b> 让品牌通过公开 PR 完成域名验证，「认领」自己的名片。所有判定文件都存档在仓库里可供逐行审计。</p>
+
+  <h3 class="sec">02｜为什么今天值得关注？</h3>
+  <ul>
+    <li><b>窗口内的事实（可用 API 核实）：</b>该仓库创建于 <b>2026-10-05T12:24:03Z</b>，即北京时间 <b>10-05 20:24</b>，落在本期窗口（10-05 12:00 → 10-06 12:00）内；此后持续推送（至 10-08）。</li>
+    <li><b>它回答了一个正在变成刚需的问题：</b>当买家问 AI「推荐几个奶茶品牌」，模型的回答是从它读过的内容里拼出来的，而<b>品牌自己的说法很少以结构化形式进入模型</b>。这个项目就是冲着这个缺口去的。</li>
+    <li><b>为什么以前不容易做：</b>「AI 可见度」这件事过去只能靠手工问几句、截图留证——分数不稳定、无法比较、更无法证明改进有效。它本质上缺的是<b>度量方法</b>，不是一个工具。</li>
+    <li><b>为什么现在值得花时间：</b>它同时做了两件稀缺的事——把<b>中国本土引擎</b>放进预设（11 个），把<b>度量方法</b>写成了可复现的流程（冻结引擎快照、双引擎采样、双裁判立场判定并公布 kappa=0.909、Wilson 置信区间、Bradley-Terry 排序）。对做 GEO 服务的人来说，这套方法论本身就是可交付物。</li>
+  </ul>
+
+  <h3 class="sec">03｜案例的前世今生</h3>
+  <p><b>前世。</b>SEO 时代，品牌关心的是「搜索页排第几」——这件事有确定答案，因为搜索页是固定的那一屏。品牌只要做好内容与链接，就能被看见。</p>
+  <p><b>发展。</b>生成式 AI 改变了前提：买家不再看到一屏链接，而是拿到一段结论。于是「排第几」变成了「模型提没提你、怎么提你、在什么语境下提你」。行业把它叫做 AEO / GEO / LLMO，但很长一段时间里，这些说法都停留在「刷内容、塞关键词」的玄学层面，缺少可验证的度量。</p>
+  <p><b>今生。</b>EEO 的做法是「把度量当第一性问题」：不先卖优化服务，而是先建可复现的评测——固定问题面板、冻结引擎快照、字节级可复现打分、双引擎采样、双裁判判定立场分歧（并公开 0.909 的一致性 kappa）、Wilson 置信区间、改写鲁棒性检查、Bradley-Terry 排名。作者明确说了它要回答单次审计的两个致命质疑：<b>分数不稳定</b>，以及<b>把「被提及」误当成「被推荐」</b>。</p>
+  <p><b>下一步可能怎么发展（分析 / 推演）。</b>这类「AI 可见度」评测很可能成为品牌营销的常规预算项——就像当年的 SEO 报告一样。更值得关注的是它的两个衍生方向：一是「品牌事实源」的标准之争（谁的结构被模型优先采信），二是「优化服务商的行业行为准则」（README 中提到了一份五条的服务商行为 pact）。以上为推演，非事实。</p>
+
+  <h3 class="sec">04｜原始资料</h3>
+  <ul class="src-list">
+    <li><span class="src-type">开源仓库</span>Hiteater-wzm/eeo（Apache-2.0，Node 18+，建于 2026-10-05T12:24:03Z = 北京时间 10-05 20:24）<br><a href="https://github.com/Hiteater-wzm/eeo" target="_blank" rel="noopener">https://github.com/Hiteater-wzm/eeo</a></li>
+    <li><span class="src-type">标准文档</span>docs/eeo-standard.md（含五条优化服务商行为准则，CC BY 4.0）<br><a href="https://github.com/Hiteater-wzm/eeo/blob/main/docs/eeo-standard.md" target="_blank" rel="noopener">github.com/Hiteater-wzm/eeo/blob/main/docs/eeo-standard.md</a></li>
+    <li><span class="src-type">中文说明</span>README.zh.md（中文版说明）<br><a href="https://github.com/Hiteater-wzm/eeo/blob/main/README.zh.md" target="_blank" rel="noopener">github.com/Hiteater-wzm/eeo/blob/main/README.zh.md</a></li>
+    <li><span class="src-type">数据统计</span>datasets/STATS-FULL.md（每次合并后由实时数据重新生成，为权威统计口径）<br><a href="https://github.com/Hiteater-wzm/eeo/blob/main/datasets/STATS-FULL.md" target="_blank" rel="noopener">github.com/Hiteater-wzm/eeo/blob/main/datasets/STATS-FULL.md</a></li>
+    <li><span class="src-type">评测快照</span>snapshots/panel-奶茶-v1-*（首个公开的固定问题面板快照）<br><a href="https://github.com/Hiteater-wzm/eeo/tree/main/snapshots" target="_blank" rel="noopener">github.com/Hiteater-wzm/eeo/tree/main/snapshots</a></li>
+    <li><span class="src-type">可复现命令</span>README-AI.md（度量栈与复现命令）<br><a href="https://github.com/Hiteater-wzm/eeo/blob/main/README-AI.md" target="_blank" rel="noopener">github.com/Hiteater-wzm/eeo/blob/main/README-AI.md</a></li>
+    <li><span class="src-type">目录浏览</span>社区实例（由种子集构建的静态品牌站）<br><a href="https://hiteater-wzm.github.io/eeo/" target="_blank" rel="noopener">hiteater-wzm.github.io/eeo/</a></li>
+  </ul>
+
+  <h3 class="sec">05｜作者是谁？</h3>
+  <p>GitHub 账号 <b>Hiteater-wzm</b>，显示名 <b>Hiteater</b>，个人简介为「MAKE AMAZING EEO」，公开资料显示仅有 <b>1 个仓库</b>、81 个关注者——典型的「为一个项目专开账号」。README 中「How this was made」一节明确说明：代码、文档与数据管线<b>借助 AI 完成，并由维护者审核后发布</b>。<b>其真实身份、机构背景未公开，本文不猜。</b></p>
+
+  <h3 class="sec">06｜解决了什么真实问题？</h3>
+  <p>从需求侧看，痛点是<b>「品牌在 AI 眼里是透明的」</b>：</p>
+  <ul>
+    <li><b>需求一（品牌方）。</b>花了大钱做内容与公关，但顾客现在问 AI「哪个牌子好」，答案里可能压根没有你；更糟的是，<b>你无法证明「做了之后有没有变好」</b>。</li>
+    <li><b>需求二（营销服务商）。</b>客户问「GEO 到底怎么做、效果怎么衡量」，行业里拿不出一套可复现的度量——只能凭感觉汇报。</li>
+    <li><b>需求三（买家侧的可信度）。</b>如果 AI 的回答里混入了大量品牌自己灌的水，最终受损的是使用 AI 的人。所以「品牌用结构化方式声明事实 + 可审计」，对双方都有价值。</li>
+    <li>共同点：<b>不是「AI 不提我」，而是「没人知道 AI 为什么提我，也没人能证明我改了之后有没有用」。</b></li>
+  </ul>
+
+  <h3 class="sec">07｜完整技术栈</h3>
+  <table class="stack">
+    <tr><td class="k">模型</td><td><b>审计对象是各家 AI 引擎</b>（内置 26 个引擎预设，其中 11 个为中国本土引擎），项目本身不绑定某一家模型；数据清洗环节使用「逐条目 AI 判定」。</td></tr>
+    <tr><td class="k">运行环境</td><td>Node.js 18+，<b>零依赖</b>；核心入口 <code>core.cjs</code> / <code>cli.cjs</code> / <code>server.cjs</code>，另有 <code>tools/</code> / <code>mcp/</code> / <code>action/</code> / <code>extension/</code></td></tr>
+    <tr><td class="k">六种分发形态</td><td>单文件网页（<code>eeo-local.html</code>）· CLI（<code>cli.cjs</code>）· 自托管服务（<code>server.cjs</code>）· MCP 服务 · GitHub Action · 浏览器扩展</td></tr>
+    <tr><td class="k">数据集</td><td><code>datasets/registry/</code>（13 个 JSONL 分片）；结构为 <code>eeo.brand.v1</code></td></tr>
+    <tr><td class="k">审计产物</td><td>原始回答存档 + 可见度分数 + 快照（<code>snapshots/panel-奶茶-v1-*</code>）</td></tr>
+    <tr><td class="k">度量方法</td><td>固定问题面板 · 冻结引擎快照 · 字节可复现打分 · 双引擎采样 · 双裁判立场判定（公布一致性 kappa 0.909）· Wilson 置信区间 · 改写鲁棒性 · Bradley-Terry 排名</td></tr>
+    <tr><td class="k">认领机制</td><td>域名验证在 CI 上通过公开 PR 完成，「不离开 Git」</td></tr>
+    <tr><td class="k">许可</td><td>代码 Apache-2.0；标准文档与分类法 CC BY 4.0；数据卡（Wikidata 来源）CC0</td></tr>
+  </table>
+
+  <h3 class="sec">08｜完整 Workflow</h3>
+  <p><b>路径 A：做一次品牌可见度审计（源自 README 的命令）</b></p>
+  <div class="flow">
+    <div class="node"><b>① 准备配置</b>　<code>cp config.example.json config.json</code>（填引擎 Key；<b>只看数据不需要 Key</b>）</div>
+    <div class="arrow">↓</div>
+    <div class="node"><b>② 单次检查</b>　<code>node cli.cjs check 蜜雪冰城 --industry 餐饮</code>——向引擎提出买家会问的问题</div>
+    <div class="arrow">↓</div>
+    <div class="node"><b>③ 存档原始回答</b>　每次回答原文落盘，作为可审计证据</div>
+    <div class="arrow">↓</div>
+    <div class="node"><b>④ 打分</b>　按固定面板与冻结快照计算可见度，输出带区间与排名的结果</div>
+    <div class="arrow">↓</div>
+    <div class="node"><b>⑤ 存档与复核</b>　结果进 <code>snapshots/</code>，任何人可复现；判定文件进 <code>datasets/harvest/verdicts/</code></div>
+  </div>
+  <p><b>路径 B：零门槛试用</b>　直接用浏览器打开 <code>eeo-local.html</code>——<b>不安装、不需要 Key</b>，密钥保存在浏览器 localStorage 里；也可以用 <code>docker build</code> + <code>docker run</code> 起一个社区实例浏览品牌目录。</p>
+  <p><b>路径 C：品牌认领</b>　在目录里找到自己的名片 → 按 <code>platform/README.md</code> 通过域名验证提交公开 PR → CI 校验通过后生效。</p>
+
+  <h3 class="sec">09｜它到底是怎么实现的？</h3>
+  <p>这个项目最值得拆的不是数据量，而是它<b>把「度量」当成工程问题来解决</b>的四个动作：</p>
+  <p><b>① 明确定义并解决「分数不稳定」。</b>单次问 AI 得到的答案会漂。项目的应对是：固定问题面板 + 冻结引擎快照 + 字节级可复现打分。这三者合起来，把「一次问答」变成了「一次可重复的实验」。</p>
+  <p><b>② 区分「被提及」与「被推荐」。</b>这是 GEO 评测里最容易被糊弄的地方——模型提到你的名字，不等于在推荐你（可能是反面举例）。项目用<b>双裁判判定立场</b>并公开一致性 kappa（0.909），等于把「主观判断」也纳入了可审计范围。</p>
+  <p><b>③ 统计上不打折扣。</b>Wilson 置信区间回答的是「这么小的样本量，这个排名可信吗」；Bradley-Terry 排名回答的是「两两对比如何汇总成全局顺序」；改写鲁棒性回答的是「换个说法问，结果还稳吗」。这三条一起出现，说明作者是按<b>评测集</b>的标准在要求自己，而不是按「demo 能跑就行」。</p>
+  <p><b>④ 数据质量可逐行审计。</b>1,497,628 个候选经五轮逐条目 AI 判定，剔除 46,883 个非组织实体（单场活动、个人、地点、列表页、虚构、网页与垃圾）；<b>每一份判定文件都存档在仓库里</b>，清洗规则是可读代码，并用 LEI 法人识别码交叉验证。作者还立了一条规矩：<b>数字必须与来源一起引用</b>，<code>STATS-FULL.md</code> 每次合并后从实时数据重新生成，是唯一权威统计口径。</p>
+
+  <h3 class="sec">10｜手把手复现</h3>
+  <div class="truth"><b>以下 Step 1–3 整理自 README「Quick start」明确写出的命令；Step 4–5 为 README 中的社区实例与品牌认领路径；Step 6–7 为本文补充建议，已单独标注。</b></div>
+  <p><b>Step 1（原文）。</b>零门槛试用：用浏览器直接打开仓库里的 <code>eeo-local.html</code>。<b>无需安装、无需 Key</b>，密钥保存在浏览器 localStorage 中。</p>
+  <p><b>Step 2（原文）。</b>命令行使用：<code>cp config.example.json config.json</code> 配好引擎 Key（浏览数据不需要），然后跑：</p>
+  <pre>node cli.cjs check 蜜雪冰城 --industry 餐饮</pre>
+  <p><b>Step 3（原文）。</b>自托管社区实例：<code>docker build -t eeo-community .</code> 然后 <code>docker run -p 8080:80 eeo-community</code>，得到一个由策展种子集构建的静态品牌站。</p>
+  <p><b>Step 4（原文）。</b>想要可复现的评测，按 README-AI.md 的「measurement stack」章节执行；结果对照 <code>snapshots/</code> 里的公开快照。</p>
+  <p><b>Step 5（原文）。</b>品牌认领：在目录中找到自己的名片，按 <code>platform/README.md</code> 走域名验证并提交公开 PR。</p>
+  <p><b>Step 6（本文补充的建议）。</b>先拿 3–5 个你熟悉的品牌做「人工基线」：自己问一遍引擎、记下答案，再用工具跑一遍，对比两者是否一致。这一步能帮你判断工具在你的行业里是否可用。此建议为本文推导。</p>
+  <p><b>Step 7（本文补充的建议）。</b>把审计结果做成「时间序列」而不只是单次报告——连续 4 周每周跑一次同一面板，趋势比绝对值更有说服力。此建议为本文推导。</p>
+
+  <h3 class="sec">11｜Prompt / Code / Config</h3>
+  <p><b>原作者公开的内容（可直接引用）：</b></p>
+  <ul>
+    <li><b>快速开始命令</b>：<code>cp config.example.json config.json</code>；<code>node cli.cjs check 蜜雪冰城 --industry 餐饮</code>；<code>docker build -t eeo-community .</code> / <code>docker run -p 8080:80 eeo-community</code></li>
+    <li><b>数据规模与来源口径</b>：<code>datasets/STATS-FULL.md</code>（含「数字必须与来源一起引用」的 house rule）、<code>tools/gen-stats.cjs</code></li>
+    <li><b>数据结构</b>：<code>eeo.brand.v1</code>；<code>datasets/registry/</code> 共 13 个 JSONL 分片</li>
+    <li><b>清洗与判定证据</b>：<code>tools/clean-registry.cjs</code>、<code>datasets/harvest/verdicts/</code>（逐条目判定文件）</li>
+    <li><b>标准与分类法</b>：<code>docs/eeo-standard.md</code>（含五条服务商行为 pact）、<code>standards/taxonomy/</code>（特征库与买家问题库）</li>
+    <li><b>度量方法</b>：双引擎采样、双裁判立场判定（kappa 0.909）、Wilson 置信区间、改写鲁棒性、Bradley-Terry 排名；首个快照 <code>snapshots/panel-奶茶-v1-*</code></li>
+  </ul>
+  <p><b>作者已明确声明的制作方式：</b>「代码、文档与数据管线借助 AI 完成，并由维护者审核后发布」。这一点值得称赞——它主动交代了 AI 参与的程度。<b>本文未独立复现其评测流程。</b></p>
+
+  <h3 class="sec">12｜踩坑</h3>
+  <div class="pitfall">
+    <p><b>以下为依据项目公开信息整理的提醒，本文未独立复现：</b></p>
+    <ul>
+      <li><b>数据规模是「项目自述」。</b>你会在 README 不同位置看到略有差异的条目数（如正文写 1,542,995、Numbers 表写 1,542,575）。作者自己的规矩是「数字必须与来源一起引用」，并以 <code>STATS-FULL.md</code> 为权威——<b>引用时应以该文件为准，而不是正文里的近似值。</b></li>
+      <li><b>「分数」不等于「生意」。</b>被 AI 提及度提高，与销量提升之间没有直接因果。这套工具度量的是可见度，不是商业结果。</li>
+      <li><b>引擎是会变的。</b>正因为会变，项目才用「冻结快照」——这意味着<b>跨快照版本比较需要谨慎</b>，否则会把引擎更新误读成品牌改进。</li>
+      <li><b>仓库极新且单人维护。</b>创建于窗口内（10-05），仅 1 个仓库的账号在维护；长期可持续性未经验证。</li>
+      <li><b>AI 参与制作的已知边界。</b>作者已声明数据由 AI 逐条目判定 + 人工审核；但 AI 判定必然存在误判，46,883 条被剔除的实体中是否有个别误伤，外部无法核对全部。</li>
+    </ul>
+  </div>
+
+  <h3 class="sec">13｜中国用户能不能直接做？</h3>
+  <ul>
+    <li><b>国内访问：</b>GitHub 直连不稳定；<b>但项目自提供 <code>eeo-local.html</code> 单文件形态</b>，下载一次后可离线使用，是比较友好的一点。</li>
+    <li><b>注册：</b>无需注册；密钥保存在浏览器本地。</li>
+    <li><b>API：</b>要真正跑审计需要各家引擎的访问方式；<b>只浏览数据不需要任何 Key</b>。</li>
+    <li><b>成本：</b>软件免费；成本在引擎调用与人工复核时间。零依赖 Node 18+ 意味着不需要服务器也能跑单机版。</li>
+    <li><b>技术门槛：</b><span class="repro">普通用户可以试用</span>（打开单文件网页）／<span class="repro hard">有一定门槛</span>（CLI 与评测流程）。</li>
+  </ul>
+
+  <h3 class="sec">14｜国产替代方案</h3>
+  <table class="stack">
+    <tr><td class="k">原方案的境外依赖</td><td>引擎预设中的国际模型、GitHub 分发、部分数据源（Wikidata 等）</td></tr>
+    <tr><td class="k">中国用户方案</td><td>项目<b>已内置 26 个引擎预设，其中 11 个是中国本土引擎</b>；单文件版本可离线使用；目录数据本地落盘，可在内网部署</td></tr>
+    <tr><td class="k">替代性质</td><td><b>作者已原生覆盖中国引擎</b>（README 明确说明「including all major China-native engines」）——这是本案例对中国用户最直接的价值</td></tr>
+  </table>
+
+  <h3 class="sec">15｜中国企业可以怎么用？</h3>
+  <ul>
+    <li><b>企业场景 1｜品牌 AI 可见度体检。</b>用固定面板定期审计：顾客问「这类产品推荐哪个牌子」时，自家品牌出现频率与语境（被推荐还是被提及）。</li>
+    <li><b>企业场景 2｜营销效果的新指标。</b>把传统 SEO 报表加上「AI 可见度」一栏，作为内容投放的第四类效果指标。</li>
+    <li><b>企业场景 3｜公开事实源建设。</b>参考其认领机制，把公司基本信息以结构化方式发布并验证，让模型更容易正确引用你的事实。</li>
+  </ul>
+
+  <h3 class="sec">16｜中国消费者可以怎么用？</h3>
+  <ul>
+    <li><b>核对 AI 的推荐是否靠谱：</b>用工具看看某个品类里，AI 到底提到了哪些品牌、依据是什么线索——有助于理解「AI 推荐」的局限。</li>
+    <li><b>自己创业/开店：</b>确认自家小店在 AI 眼里是否可见，以及该怎么描述自己的业务。</li>
+    <li><b>做本地探店内容：</b>用审计结果作为选题线索（「AI 眼里本地奶茶 TOP10 和我心里的差在哪」）。</li>
+  </ul>
+
+  <h3 class="sec">17｜如何变成一个赚钱的项目？</h3>
+  <p><b>产品化：</b>做垂直行业的「AI 可见度月报」——例如只做餐饮、只做宠物、只做医美，按月交付固定面板的趋势报告。这是最直接可规模化的形态。</p>
+  <p><b>服务化：</b>GEO 诊断 + 事实源建设服务：帮企业把品牌事实结构化并提交验证，再按月跟踪可见度变化。</p>
+  <p><b>咨询化：</b>帮品牌重新组织内容策略——从「写给搜索引擎」转向「写给模型读」，这是一个正在成形的咨询需求。</p>
+  <p><b>培训化：</b>《GEO 入门：当顾客开始问 AI「买哪个」》——面向品牌市场部，半天课就能讲清方法论。</p>
+  <p><b>内容化：</b>「AI 眼中的奶茶品牌排行」这类选题天然有传播力（项目自己就用「奶茶」做了首个公开面板）。</p>
+
+  <h3 class="sec">18｜变现路径</h3>
+  <table class="stack">
+    <tr><td class="k">路径</td><td><b>客户</b> ｜ 产品/服务 ｜ 收费方式 ｜ 难度</td></tr>
+    <tr><td class="k">行业月报</td><td>品牌/连锁 ｜ AI 可见度定期报告 ｜ 订阅 ｜ 中</td></tr>
+    <tr><td class="k">GEO 服务</td><td>企业 ｜ 诊断 + 事实源建设 ｜ 项目制 + 维护 ｜ 中</td></tr>
+    <tr><td class="k">咨询</td><td>品牌市场部 ｜ 面向模型的内容策略 ｜ 项目制 ｜ 高</td></tr>
+    <tr><td class="k">培训</td><td>市场/公关 ｜ GEO 半天课 ｜ 按场 ｜ 低</td></tr>
+    <tr><td class="k">内容</td><td>从业者 ｜ 行业榜单与解读 ｜ 广告/会员 ｜ 低</td></tr>
+  </table>
+  <p><b>注意：</b>以上为基于案例结构的<b>潜在商业模式分析</b>，非已验证的商业成功；项目未公开任何收入信息。</p>
+
+  <h3 class="sec">19｜如果我是一个中国独立开发者（7 天 MVP）</h3>
+  <ol>
+    <li><b>Day 1：</b>下载 <code>eeo-local.html</code> 跑通零门槛版本，用自家或朋友的品牌试一次。</li>
+    <li><b>Day 2：</b>选定一个垂直行业（建议：本地生活 / 餐饮），设计 20 个真实顾客会问的问题。</li>
+    <li><b>Day 3：</b>用一个中国本土引擎跑一遍，把结果整理成一页「可见度快照」。</li>
+    <li><b>Day 4：</b>找 3 家该行业的小老板免费出报告，问他们「哪一条最想改」。</li>
+    <li><b>Day 5：</b>把最想改的那条做成一件可执行的事（结构化介绍、常见问答页等）。</li>
+    <li><b>Day 6：</b>做落地页 + 一份脱敏样例报告，说明「怎么量、多久一次、能改什么」。</li>
+    <li><b>Day 7：</b>推出低价「行业 AI 可见度月报」，先服务 3 家验证付费意愿。</li>
+  </ol>
+
+  <h3 class="sec">20｜如何迁移到其他行业</h3>
+  <div class="migrate">
+    <div class="m"><b>① 招聘</b>把「品牌可见度」换成「企业雇主品牌在 AI 眼里的形象」，审计候选人问 AI「这家公司怎么样」时得到什么。</div>
+    <div class="m"><b>② 医疗健康</b>审计机构在 AI 健康问答中的出现情况（须严守合规与事实准确性）。</div>
+    <div class="m"><b>③ B2B 软件</b>审计「选型对比」类问题里自家产品的可见度，指导内容与文档策略。</div>
+  </div>
+
+  <h3 class="sec">21｜培训课程设计</h3>
+  <div class="course">
+    <table>
+      <tr><td class="k">课程名称</td><td>《GEO 与 AI 可见度：当顾客开始问 AI「买哪个」》</td></tr>
+      <tr><td class="k">适合人群</td><td>品牌市场部、公关、营销服务商、本地商家主理人</td></tr>
+      <tr><td class="k">建议时长</td><td>半天（3 小时）</td></tr>
+      <tr><td class="k">30 分钟 Demo</td><td>现场用一个品类跑一次审计，所有人猜「AI 会提谁」再对答案</td></tr>
+      <tr><td class="k">60 分钟 Workshop</td><td>学员为自己的品牌写 10 个买家会问的问题</td></tr>
+      <tr><td class="k">半天课程</td><td>上午讲 GEO/AEO 方法论与度量，下午各自做一次完整审计</td></tr>
+      <tr><td class="k">课程目标</td><td>学员能够独立设计问题面板、执行审计、读懂置信区间与排名结果</td></tr>
+      <tr><td class="k">现场 Demo</td><td>「被提及」与「被推荐」的区别（双裁判判定的实际意义）</td></tr>
+      <tr><td class="k">学员练习</td><td>为自己的品牌写一份「结构化事实源」草案</td></tr>
+      <tr><td class="k">课后作业</td><td>连续 4 周每周跑一次同一面板，画出趋势线</td></tr>
+      <tr><td class="k">企业迁移</td><td>输出《品牌 AI 可见度月度报告》模板与流程</td></tr>
+    </table>
+  </div>
+
+  <h3 class="sec">22｜培训师点评</h3>
+  <div class="trainer"><b>这个案例真正值得教的是什么？</b>不是「GEO 怎么做」，而是<b>「先把尺子造出来」</b>——在没有共识的领域里，能定义度量方法的人就掌握了话语权。而且它连「分数不稳定」和「提及≠推荐」这两个致命质疑都提前回答了，这是做评测最专业的态度。</div>
+
+  <h3 class="sec">23｜最终判断</h3>
+  <div class="verdict">
+    <div class="v"><div class="k">落地性</div><div class="val lv-m">中</div></div>
+    <div class="v"><div class="k">中国市场相关性</div><div class="val lv-h">高</div></div>
+    <div class="v"><div class="k">商业价值</div><div class="val lv-h">高</div></div>
+    <div class="v"><div class="k">复现难度</div><div class="val lv-l">低</div></div>
+    <div class="v"><div class="k">变现潜力</div><div class="val lv-h">高</div></div>
+  </div>
+  <p style="font-size:13px;color:#6B7280;margin-top:8px;">说明：以上是案例属性描述，不是排名。「落地性中」指完整评测流程仍需投入；「复现难度低」指单文件版本零安装即可试用。<b>「商业价值高」是就方法论而言，不构成对项目本身的评价。</b></p>
+</div>
+
+<!-- ===================== 案例 02 ===================== -->
+<div class="card" id="case02">
+  <div class="card-head">
+    <div class="num">02</div>
+    <h2>用便宜 99% 的判定模型做论文筛选：dailypaper-skills 把「追论文」做成一条可固定成本的流水线</h2>
+  </div>
+  <div class="badges">
+    <span class="badge b-cat">Agent Skill 包</span>
+    <span class="badge b-cat">AI + Research</span>
+    <span class="badge b-cat">成本工程</span>
+    <span class="badge b-date">窗口内提交 10-05 14:39 / 14:46</span>
+    <span class="badge b-tag">Apache-2.0</span>
+    <span class="badge b-warn">成本对照为单次自测</span>
+  </div>
+
+  <div class="oneliner">
+    <b>一句话结论：</b>它把「每天筛几篇论文」这件高频小事，拆成了「便宜的判定模型做初筛 + 贵的主模型做精读」——这是所有 Agent 流水线都该学的一次分工。
+  </div>
+
+  <h3 class="sec">01｜案例是什么？</h3>
+  <p><b>dailypaper-skills</b>（Apache-2.0）是一套面向研究者的 Agent Skill 包：你说一句「今日论文推荐」，它会从 HuggingFace Daily/Trending 与 arXiv 发现论文、按你配置的研究兴趣筛选（默认关注大模型 RL、RL infra、世界模型/JEPA、灵巧手操作与物理仿真）、给出<b>有态度有依据的分流</b>（必读 / 值得看 / 可跳过），再对「必读」论文生成完整笔记（含公式、图表、概念链接），全部落进你自己的本地知识库（Obsidian 或普通 Markdown 目录）。它由 7 个 skill 组成，可装进 Claude Code、Codex、Cursor、GitHub Copilot、Gemini CLI、OpenCode、OpenClaw 等。最特别的一点是它明确做了一次<b>成本工程</b>：把高频的「主题相关性打分」交给一个便宜得多的判定模型（Jev），把贵的主模型留给点评与全文精读。</p>
+
+  <h3 class="sec">02｜为什么今天值得关注？</h3>
+  <ul>
+    <li><b>窗口内的事实（可用 API 核实）：</b>该仓库在 <b>2026-10-05 14:39 与 14:46（北京时间）</b>出现两次提交——「Initial commit: daily paper research skills」与「Merge daily paper skills with Jev scoring and product documentation」，均落在本期窗口内；README 中公布的 Jev 成本对照也明确标注为「<b>2026-10-05 单次对照</b>」。</li>
+    <li><b>它给了两个具体数字：</b>同一批 30 篇候选、两组都推荐 10 篇——GPT-6 Astra 约 <b>$0.109264 / 10.35 秒</b>，Jev 1.13.0 约 <b>$0.000576408 / 0.52 秒</b>；按官方标价折算费用降低 <b>99.47%</b>，两组入选重合 9/10。</li>
+    <li><b>为什么以前不容易做：</b>「AI 追论文」的常见做法是全部交给一个强模型——效果不错，但每天都在烧钱，且相关性打分这种「重复劳动」用贵模型是浪费。</li>
+    <li><b>为什么值得花时间：</b>它把一个通用的架构问题摆到了台面上：<b>一条 Agent 流水线里，「判断相关性」和「生成内容」应该用不同的模型。</b>这个分工思路可以套用到几乎任何高频 Agent 任务上（邮件分诊、工单分类、情报筛选……）。</li>
+  </ul>
+
+  <h3 class="sec">03｜案例的前世今生</h3>
+  <p><b>前世。</b>「追论文」的第一阶段是订阅与手工：arXiv 邮件列表 + 关键词检索 + 自己判断。信息过载是常态，真正的问题不是「看不到」，而是「筛不动」。</p>
+  <p><b>发展。</b>LLM 出现后，第二阶段是「把论文丢给聊天模型问它有没有用」。可行，但有两个问题：一是成本随论文量线性增长，二是模型越强、每次问「这篇跟我有关吗」越浪费。</p>
+  <p><b>今生。</b>第三阶段出现了两个变化：① <b>Agent Skills</b> 让「一条研究工作流」可以被拆成可安装的包（抓取 / 点评 / 笔记各司其职）；② <b>判定模型</b>这类「只输出概率分布、不生成文本」的小模型，让「高频判断」的成本降到可以忽略。dailypaper-skills 正是这两者的结合——并且它把成本对照做成了公开的、可复现的文档。</p>
+  <p><b>下一步可能怎么发展（分析 / 推演）。</b>「贵模型做生成、便宜模型做判断」很可能成为 Agent 流水线的标准分工，就像数据库里「索引」与「存储」分工一样自然。进一步，这类判定模型还可能被用来做「质量门禁」——先由便宜模型把不合格的输出筛掉，再让贵的模型只处理值得处理的。以上为推演，非事实。</p>
+
+  <h3 class="sec">04｜原始资料</h3>
+  <ul class="src-list">
+    <li><span class="src-type">开源仓库</span>huangkiki/dailypaper-skills（Apache-2.0，Python）<br><a href="https://github.com/huangkiki/dailypaper-skills" target="_blank" rel="noopener">https://github.com/huangkiki/dailypaper-skills</a></li>
+    <li><span class="src-type">窗口内提交</span>10-05 14:39 / 14:46（北京时间）<br><a href="https://github.com/huangkiki/dailypaper-skills/commits/main" target="_blank" rel="noopener">github.com/huangkiki/dailypaper-skills/commits/main</a></li>
+    <li><span class="src-type">成本基准</span>docs/jev-benchmark.md（含原始请求、用量、价格来源与复现方法）<br><a href="https://github.com/huangkiki/dailypaper-skills/blob/main/docs/jev-benchmark.md" target="_blank" rel="noopener">github.com/huangkiki/dailypaper-skills/blob/main/docs/jev-benchmark.md</a></li>
+    <li><span class="src-type">使用指南</span>docs/usage.md（环境、安装目录、配置、常见问题）<br><a href="https://github.com/huangkiki/dailypaper-skills/blob/main/docs/usage.md" target="_blank" rel="noopener">github.com/huangkiki/dailypaper-skills/blob/main/docs/usage.md</a></li>
+    <li><span class="src-type">Agent 兼容</span>docs/agents.md（各 Agent 接入与验证范围）<br><a href="https://github.com/huangkiki/dailypaper-skills/blob/main/docs/agents.md" target="_blank" rel="noopener">github.com/huangkiki/dailypaper-skills/blob/main/docs/agents.md</a></li>
+    <li><span class="src-type">配套项目</span>huangkiki/zotero-ai-sidebar（PDF 阅读时即时问答、点译）<br><a href="https://github.com/huangkiki/zotero-ai-sidebar" target="_blank" rel="noopener">github.com/huangkiki/zotero-ai-sidebar</a></li>
+  </ul>
+
+  <h3 class="sec">05｜作者是谁？</h3>
+  <p>GitHub 账号 <b>huangkiki</b>，同时维护配套项目 <b>zotero-ai-sidebar</b>。默认研究兴趣集中在<b>大模型强化学习、RL 基础设施、世界模型 / JEPA、灵巧手操作与物理仿真</b>——从这份兴趣清单可以判断作者本人是相关方向的研究者或工程师。README 提到桌面环境（macOS / Windows 安装命令差异），但未披露机构与身份。<b>本文不猜。</b></p>
+
+  <h3 class="sec">06｜解决了什么真实问题？</h3>
+  <p>从需求侧看，痛点是<b>「筛选成本」而非「获取成本」</b>：</p>
+  <ul>
+    <li><b>需求一（研究者 / 研究生）。</b>每天新增论文远超可读量，真正费时间的是判断「哪些和我的研究有关、哪些值得读全文」。而这件事每天都要做一遍。</li>
+    <li><b>需求二（长期跟进者）。</b>读了以后要留下什么。「读完就忘」是普遍状态，缺少从「读过」到「能复用」的链路。</li>
+    <li><b>需求三（成本敏感的个人）。</b>用强模型每天筛论文，一个月下来账单可观；而这类判断任务其实不需要强模型。</li>
+    <li>共同点：<b>不是「找不到论文」，而是「每天都得重新判断一遍，还留不下痕迹」。</b></li>
+  </ul>
+
+  <h3 class="sec">07｜完整技术栈</h3>
+  <table class="stack">
+    <tr><td class="k">模型分工</td><td><b>两级</b>：日常主题相关性打分交给 <b>Jev 判定模型</b>（需在启动 Agent 的环境中设置 <code>TYPESAFE_API_KEY</code>）；点评与全文精读使用<b>宿主 Agent 的模型</b>。无 TypeSafe key 时可显式切换为<b>关键词筛选模式</b>。</td></tr>
+    <tr><td class="k">形态</td><td>Agent Skill 包，共 7 个 skill：<code>daily-papers</code>、<code>paper-reader</code>、<code>github-trending</code>、<code>generate-mocs</code> 为对外入口；<code>daily-papers-fetch</code> / <code>daily-papers-review</code> / <code>daily-papers-notes</code> 负责内部的抓取、点评、笔记</td></tr>
+    <tr><td class="k">支持的宿主</td><td>Claude Code · Codex · Cursor · GitHub Copilot · Gemini CLI · OpenCode · OpenClaw（<code>python3 install.py --agent &lt;name&gt;</code>）</td></tr>
+    <tr><td class="k">运行环境</td><td>Python 3.10+ · Git · curl；PDF 文字与图片提取需 <b>Poppler</b>；Obsidian 与 Zotero 均为可选</td></tr>
+    <tr><td class="k">数据来源</td><td>HuggingFace Daily / Trending 与 arXiv；另有 GitHub 周榜（日榜、月榜也可用）</td></tr>
+    <tr><td class="k">输出形态</td><td>本地 Markdown：每日推荐页 · 重点论文笔记 · 概念库与目录页（三者互相链接）；可用项目自带 Web Viewer 浏览</td></tr>
+    <tr><td class="k">配套</td><td>Obsidian 双向链接、Zotero 文献库按标题或分类读取</td></tr>
+    <tr><td class="k">许可</td><td>Apache-2.0</td></tr>
+  </table>
+
+  <h3 class="sec">08｜完整 Workflow</h3>
+  <div class="flow">
+    <div class="node"><b>① 你说一句话</b>　「今日论文推荐」（或「过去一周论文推荐」补看）</div>
+    <div class="arrow">↓</div>
+    <div class="node"><b>② 发现论文</b>　从 HuggingFace Daily/Trending 与 arXiv 拉取候选</div>
+    <div class="arrow">↓</div>
+    <div class="node"><b>③ 相关性筛选（Jev 判定模型）</b>　按你配置的研究兴趣打分，结合推荐历史去重；默认每天最多 10 篇，<b>相关论文不足时不凑数</b></div>
+    <div class="arrow">↓</div>
+    <div class="node"><b>④ 分流</b>　🔥 必读 / 👀 值得看 / 💤 可跳过，每篇都要回答「做了什么、为什么和你有关、有什么可借鉴、哪些地方值得追问」</div>
+    <div class="arrow">↓</div>
+    <div class="node"><b>⑤ 生成笔记（宿主主模型）</b>　对「必读」读全文 → 研究问题、方法、关键公式、图表、实验结果、批判性思考</div>
+    <div class="arrow">↓</div>
+    <div class="node"><b>⑥ 建概念链接</b>　遇到重要术语补充 <code>[[概念]]</code> 链接与概念笔记，并回填到推荐页、刷新目录</div>
+    <div class="arrow">↓</div>
+    <div class="node"><b>⑦ 落库</b>　全部内容保存在你配置的本地目录（Obsidian / 普通 Markdown）</div>
+  </div>
+  <p><b>另一条入口：精读。</b>「读一下这篇论文 &lt;arXiv 链接或 PDF 路径&gt;」或「读一下 Zotero 里的 Diffusion Policy」→ 走 <code>paper-reader</code>；「GitHub 周榜」→ 走 <code>github-trending</code>，汇总热门项目并标注与你研究方向的关系。</p>
+
+  <h3 class="sec">09｜它到底是怎么实现的？</h3>
+  <p>这个项目最值得学的是<b>三层分工</b>：</p>
+  <p><b>① 便宜的模型做高频判断，贵的模型做低频生成。</b>相关性打分是每天都发生、每次都很「轻」的任务；点评与精读是低频但需要高质量的任务。把前者交给判定模型（Jev），后者留给宿主主模型，成本结构立刻改变。作者给的数据是：同样 30 篇候选取 10 篇，强模型 $0.109 / 10.35 秒，Jev $0.00058 / 0.52 秒，<b>约 99.47% 的费用降幅、20 倍左右的速度差，入选重合 9/10</b>。</p>
+  <p><b>② 用「不凑数」保护信噪比。</b>README 明确写「默认每天最多 10 篇，相关论文不足时不凑数」——这是做信息产品的关键纪律。每天硬凑 10 篇只会让人取消订阅。</p>
+  <p><b>③ 把「笔记」做成可长期积累的结构。</b>推荐页 → 论文笔记 → 概念库三层互相链接；「下次读到相似方法时，可以顺着链接找到已有积累」。同时支持从 Zotero 已有文献库出发，接入用户既有的阅读习惯而不是另起一套。</p>
+  <p><b>一条值得注意的诚实之处：</b>作者在成本对照旁明确标注——「这是 2026-10-05 的单次评分测量，计入主模型缓存；不代表整个阅读流程的费用，也不是订阅账户实际扣款。重合率不等于人工质量评价。」<b>这句话本身就是一个很好的工程声明范式。</b></p>
+
+  <h3 class="sec">10｜手把手复现</h3>
+  <div class="truth"><b>以下 Step 1–4 整理自项目 README 明确写出的安装与配置步骤；Step 5–6 为 README 的使用入口；Step 7–8 为本文补充建议，已单独标注。</b></div>
+  <p><b>Step 1（原文）。</b>准备环境：一个能读写文件、执行命令、联网的 Agent，以及 <b>Python 3.10+、Git、curl</b>；PDF 文字与图片提取需要 <b>Poppler</b>（Obsidian 与 Zotero 都是可选）。</p>
+  <p><b>Step 2（原文）。</b>安装技能包：</p>
+  <pre>git clone https://github.com/huangkiki/dailypaper-skills.git
+cd dailypaper-skills
+python3 install.py --agent codex</pre>
+  <p>把 <code>codex</code> 换成你用的 Agent：<code>claude</code> / <code>cursor</code> / <code>copilot</code> / <code>gemini</code> / <code>opencode</code> / <code>openclaw</code>；Windows 可将 <code>python3</code> 换成 <code>py -3</code>。安装器会一起装好七个技能与共享依赖。</p>
+  <p><b>Step 3（原文）。</b>创建个人配置：<code>python3 skills/_shared/user_config.py --init</code>。</p>
+  <p><b>Step 4（原文）。</b>让 Agent 帮你填配置（原文给出的对话示例）：</p>
+  <pre>帮我配置 dailypaper-skills。
+我的笔记库在 /path/to/ObsidianVault。
+我关注大模型强化学习、RL infra、世界模型和 JEPA、灵巧手操作与物理仿真。
+请使用跨 Agent 的共享配置，每天最多推荐 10 篇。</pre>
+  <p><b>Step 5（原文）。</b>设置 <code>TYPESAFE_API_KEY</code> 以启用 Jev 语义评分；<b>没有该 key 时可显式选择关键词筛选模式</b>。</p>
+  <p><b>Step 6（原文）。</b>刷新或重启 Agent 会话，输入「今日论文推荐」。Agent 会依次完成筛选、点评与重点笔记，并返回产物位置。</p>
+  <p><b>Step 7（本文补充的建议）。</b>第一周先把「每天最多 10 篇」降到你真正读得完的数量（例如 3–5 篇），否则会被推荐页淹没——推荐质量高不等于你有时间读。此建议为本文推导。</p>
+  <p><b>Step 8（本文补充的建议）。</b>把它做成「只读不写」的检查习惯：先看推荐页的分流理由，只看你同意的那些，用一周时间验证它的判断是否合你的口味，再决定是否让它自动生成笔记。</p>
+
+  <h3 class="sec">11｜Prompt / Code / Config</h3>
+  <p><b>原作者公开的内容（可直接引用）：</b></p>
+  <ul>
+    <li><b>安装与配置命令</b>：<code>git clone …</code> / <code>python3 install.py --agent codex</code> / <code>python3 skills/_shared/user_config.py --init</code></li>
+    <li><b>Agent 对话指令</b>：「今日论文推荐」「过去一周论文推荐」「读一下这篇论文 &lt;arXiv 链接或 PDF 路径&gt;」「读一下 Zotero 里的 Diffusion Policy」「快速看一下这篇论文 &lt;PDF 路径&gt;」「GitHub 周榜」「更新索引」</li>
+    <li><b>七个 skill 的目录与职责</b>（<code>skills/*/SKILL.md</code>）：daily-papers / paper-reader / github-trending / generate-mocs + 内部 fetch / review / notes</li>
+    <li><b>成本对照数据</b>（docs/jev-benchmark.md）：GPT-6 Astra $0.109264 / 10.35 秒 / 11,932 token；Jev 1.13.0 $0.000576408 / 0.52 秒 / 14,198 token；费用降 99.47%；两组重合 9/10；相对首版 Jev token 用量减少 25.12%</li>
+    <li><b>笔记模板</b>：obsidian-templates/论文笔记模板.md</li>
+    <li><b>环境变量</b>：<code>TYPESAFE_API_KEY</code>（Jev 评分用）</li>
+  </ul>
+  <p><b>原作者未公开的内容：</b>Jev 判定模型的具体实现、每日推荐的具体提示词全文。<b>本文不编造。</b></p>
+
+  <h3 class="sec">12｜踩坑</h3>
+  <div class="pitfall">
+    <p><b>以下均为项目 README / docs 自述或本文据其整理的提醒：</b></p>
+    <ul>
+      <li><b>成本对照是「单次测量」，不是月度账单。</b>作者已明确标注：该数据为 2026-10-05 单次评分测量、计入主模型缓存、不代表整个阅读流程的费用、也不是账户实际扣款。<b>不要把它当成「用这个方案每月只花几厘钱」。</b></li>
+      <li><b>重合率不等于质量。</b>9/10 的重合只说明两组选出的论文高度重叠，<b>不代表推荐质量经过人工评估</b>。</li>
+      <li><b>Jev 评分需要额外的 key。</b>没有 <code>TYPESAFE_API_KEY</code> 就只能退回关键词筛选——效果会明显不同，这一点容易被忽略。</li>
+      <li><b>环境依赖不可省。</b>Python 3.10+、Git、curl 是必需；处理 PDF 还需 Poppler。纯聊天、无法读写文件或执行命令的客户端<b>不能独立运行</b>。</li>
+      <li><b>不会自动每天运行。</b>默认由你发起；需要定时得自己接系统调度，安装不会创建后台任务（Git 自动提交、推送默认关闭）。</li>
+      <li><b>仓库的时间线需要注意。</b>该仓库 <code>created_at</code> 显示为 2026-02-26，但窗口内出现了「Initial commit」与主分支合并提交（10-05 14:39 / 14:46），显示其历史在此期间发生过重建或重写。本文以窗口内提交作为收录依据，并如实标注这一点。</li>
+    </ul>
+  </div>
+
+  <h3 class="sec">13｜中国用户能不能直接做？</h3>
+  <ul>
+    <li><b>国内访问：</b>GitHub 直连不稳定；运行时需要访问 arXiv 与 HuggingFace，<b>这两处对国内网络也可能不稳定</b>，是本案例最实际的门槛。</li>
+    <li><b>注册：</b>无账号体系；Jev 评分需额外的 API key。</li>
+    <li><b>API：</b>需要 <code>TYPESAFE_API_KEY</code>（可用关键词模式绕过）；宿主 Agent 的模型由你自选，可换国产模型。</li>
+    <li><b>成本：</b>软件免费；成本 = 少量判定模型调用 + 主模型调用。这正是本案例要解决的问题（把高频判断的成本压下来）。</li>
+    <li><b>技术门槛：</b><span class="repro hard">有一定门槛</span> 需要 Python 环境、命令行操作，以及能读写文件与联网的 Agent。</li>
+  </ul>
+
+  <h3 class="sec">14｜国产替代方案</h3>
+  <table class="stack">
+    <tr><td class="k">原方案</td><td>Jev 判定模型（TypeSafe）做相关性评分 + 宿主 Agent 主模型做点评与精读</td></tr>
+    <tr><td class="k">中国用户方案</td><td>把「两级模型」的分工结构保留，将初筛换成<b>国产小模型 / 判定模型</b>（或先用关键词模式），主模型换成 <b>DeepSeek / Qwen / GLM / Kimi</b>；论文源可增加国内可达的镜像与聚合</td></tr>
+    <tr><td class="k">替代性质</td><td><b>架构可迁移（本文推导），具体实现需自行替换。</b>项目对 Jev 的调用为内置依赖，作者未提供国产判定模型的适配；<b>不能写成「已验证兼容」。</b></td></tr>
+  </table>
+
+  <h3 class="sec">15｜中国企业可以怎么用？</h3>
+  <ul>
+    <li><b>企业场景 1｜技术情报跟踪。</b>把「研究兴趣」换成「公司关注的技术方向」，每天自动产出行业技术动态摘要 + 重点条目精读，供研发与战略参考。</li>
+    <li><b>企业场景 2｜竞品与专利情报。</b>同样的两级模型结构可迁移：便宜模型做初筛、强模型做深度分析，控制情报成本。</li>
+    <li><b>企业场景 3｜内部知识库自动生长。</b>把部门里的技术资料、调研报告接入同一套「推荐页 + 笔记 + 概念库」结构，让知识库自己长起来。</li>
+  </ul>
+
+  <h3 class="sec">16｜中国消费者可以怎么用？</h3>
+  <ul>
+    <li><b>学生 / 研究者：</b>把它当成「每日阅读清单生成器」，先看分流理由再决定读哪几篇。</li>
+    <li><b>转行学习者：</b>把兴趣方向设成目标岗位所需知识，让系统把你拉回正轨。</li>
+    <li><b>知识管理爱好者：</b>参考它的「推荐页 → 笔记 → 概念库」三层结构，改造自己的知识库。</li>
+  </ul>
+
+  <h3 class="sec">17｜如何变成一个赚钱的项目？</h3>
+  <p><b>产品化：</b>做垂直领域的「每日情报简报」——不限论文，可以是行业政策、竞品动态、招投标信息。核心卖点是<b>稳定的信噪比 + 可控的成本</b>。</p>
+  <p><b>服务化：</b>给企业做「情报流水线」搭建：定义关注方向、设计初筛规则、接上内部通知渠道，交付后按月维护。</p>
+  <p><b>咨询化：</b>帮团队设计「多级模型分工」，把 AI 成本降下来——这在 AI 预算开始被审视的当下是真实需求。</p>
+  <p><b>培训化：</b>《用 Agent Skill 搭一条你自己的情报流水线》——研究者和分析师都会感兴趣。</p>
+  <p><b>内容化：</b>「如何把 AI 使用成本降 99%」本身就是极好的选题，而且有一手数据支撑。</p>
+
+  <h3 class="sec">18｜变现路径</h3>
+  <table class="stack">
+    <tr><td class="k">路径</td><td><b>客户</b> ｜ 产品/服务 ｜ 收费方式 ｜ 难度</td></tr>
+    <tr><td class="k">垂直情报简报</td><td>个人/团队 ｜ 每日情报 + 精读 ｜ 订阅 ｜ 中</td></tr>
+    <tr><td class="k">企业流水线</td><td>企业 ｜ 情报系统搭建与维护 ｜ 项目制 + 订阅 ｜ 中</td></tr>
+    <tr><td class="k">成本优化咨询</td><td>企业 ｜ 多级模型分工设计 ｜ 项目制 ｜ 高</td></tr>
+    <tr><td class="k">培训</td><td>研究者/分析师 ｜ Agent 情报流水线课 ｜ 按人 ｜ 低</td></tr>
+    <tr><td class="k">内容</td><td>AI 从业者 ｜ 成本工程拆解 ｜ 付费/广告 ｜ 低</td></tr>
+  </table>
+  <p><b>注意：</b>以上为基于案例结构的<b>潜在商业模式分析</b>，非已验证的商业成功；项目未公开任何收入信息。</p>
+
+  <h3 class="sec">19｜如果我是一个中国独立开发者（7 天 MVP）</h3>
+  <ol>
+    <li><b>Day 1：</b>装好技能包，用关键词模式先跑通「今日论文推荐」，确认链路可用。</li>
+    <li><b>Day 2：</b>把「研究兴趣」换成你的商业场景（如「AIGC 政策与监管」），调整筛选关键词。</li>
+    <li><b>Day 3：</b>设计输出模板：一页简报（最多 5 条 + 每条一句「为什么重要」）。</li>
+    <li><b>Day 4：</b>找 3 位目标读者免费订阅一周，问「哪一条你会点开」。</li>
+    <li><b>Day 5：</b>按反馈砍掉没人看的类别，只留最受关注的 2 类。</li>
+    <li><b>Day 6：</b>把流程固化（定时运行 + 自动推送），做成一页落地页。</li>
+    <li><b>Day 7：</b>推出低价订阅，先服务 10 个人验证付费与留存。</li>
+  </ol>
+
+  <h3 class="sec">20｜如何迁移到其他行业</h3>
+  <div class="migrate">
+    <div class="m"><b>① 政策与法规跟踪</b>把论文源换成政策发布与法规更新，做「每天值得关注的三条」。</div>
+    <div class="m"><b>② 招投标情报</b>把「相关性打分」用在标讯筛选上，用便宜模型初筛、强模型做机会分析。</div>
+    <div class="m"><b>③ 投研与行业动态</b>把「论文」换成公告与研报，复用「分流 + 精读 + 概念库」的结构。</div>
+  </div>
+
+  <h3 class="sec">21｜培训课程设计</h3>
+  <div class="course">
+    <table>
+      <tr><td class="k">课程名称</td><td>《用 Agent Skill 搭一条情报流水线：信噪比与成本的双重控制》</td></tr>
+      <tr><td class="k">适合人群</td><td>研究者、分析师、企业战略与情报岗、AI 应用开发者</td></tr>
+      <tr><td class="k">建议时长</td><td>1 天（6 小时）</td></tr>
+      <tr><td class="k">30 分钟 Demo</td><td>一句话生成当日情报简报（含分流与被拒理由）</td></tr>
+      <tr><td class="k">60 分钟 Workshop</td><td>学员把自己的关注方向配成筛选规则并跑一次</td></tr>
+      <tr><td class="k">半天课程</td><td>上午讲「两级模型分工」原理，下午各自搭一条流水线</td></tr>
+      <tr><td class="k">课程目标</td><td>学员能够独立搭出「初筛 + 精读 + 落库」的情报流水线，并解释为什么判断与生成要用不同模型</td></tr>
+      <tr><td class="k">现场 Demo</td><td>同一批候选用强模型与便宜模型各筛一次，对比成本与重合度</td></tr>
+      <tr><td class="k">学员练习</td><td>为自己的场景写一份「不凑数」规则（什么时候宁可少推荐）</td></tr>
+      <tr><td class="k">课后作业</td><td>连续 7 天运行并记录「哪些推荐你后来真的读了」</td></tr>
+      <tr><td class="k">企业迁移</td><td>输出《企业技术情报流水线方案》，含成本预算模型</td></tr>
+    </table>
+  </div>
+
+  <h3 class="sec">22｜培训师点评</h3>
+  <div class="trainer"><b>这个案例真正值得教的是什么？</b>是<b>「判断与生成应当用不同的模型」</b>这条分工原则，以及作者标注成本数据时的那份克制——「单次测量、不代表全流程费用、重合率不等于质量」。<b>会做成本工程的人很多，会诚实标注边界的人很少。</b></div>
+
+  <h3 class="sec">23｜最终判断</h3>
+  <div class="verdict">
+    <div class="v"><div class="k">落地性</div><div class="val lv-m">中</div></div>
+    <div class="v"><div class="k">中国市场相关性</div><div class="val lv-m">中</div></div>
+    <div class="v"><div class="k">商业价值</div><div class="val lv-h">高</div></div>
+    <div class="v"><div class="k">复现难度</div><div class="val lv-h">中</div></div>
+    <div class="v"><div class="k">变现潜力</div><div class="val lv-h">高</div></div>
+  </div>
+  <p style="font-size:13px;color:#6B7280;margin-top:8px;">说明：以上是案例属性描述，不是排名。「中国市场相关性中」指其默认场景（英文学术论文）偏海外；但「两级模型分工」的方法在中国企业的情报场景中迁移价值很高，故「商业价值高」。</p>
+</div>
+
+<!-- ===================== 今日观察 ===================== -->
+<section class="block" id="observe">
+  <h2>今日 AI 实战观察</h2>
+  <div class="panel">
+    <p>10-06 这一天的两个案例，主题都是「造尺子」——一个量品牌的 AI 可见度，一个量论文与你的相关性。它们共同揭示了一个正在发生的变化：<b>当 AI 开始替人做筛选，能定义「怎么衡量」的人就掌握了主动。</b></p>
+    <p><b>第一，GEO 正在从玄学变成可审计的工程。</b>EEO 的难得之处不在于它有 154 万条品牌数据，而在于它回答了单次 AI 审计的两个致命质疑：分数不稳定（用冻结快照 + 固定面板解决）、把提及当成推荐（用双裁判立场判定 + 公开 kappa 解决）。当一个新兴服务品类有了这样的度量标准，它就具备了被采购、被验收的条件——<b>这是「GEO 能不能成为一门正经生意」的关键一步。</b>值得注意的是，它的 26 个引擎预设里有 11 个是中国本土引擎，说明这个方法论的需求在中国同样成立。</p>
+    <p><b>第二，「判断用便宜模型、生成用贵模型」是 Agent 流水线的通用分工。</b>dailypaper-skills 给出的成本对照（$0.109 → $0.00058，约 20 倍速度差）虽然只是单次测量，但它指向的结构性问题是真的：<b>每天都在发生的判断，不该由最强的模型来做。</b>这条原则可以套用到邮件分诊、工单分类、情报筛选、线索评分——几乎所有企业级 Agent 场景。</p>
+    <p><b>第三，两个案例都选择了「公开方法与数据」而不是「藏起来卖服务」。</b>EEO 把逐条判定文件存档在仓库里，dailypaper-skills 把成本基准连同「这是单次测量、不代表全流程费用」的说明一起公开。<b>在一个「效果全靠一张嘴」的赛道里，可复现本身就是最强的主张。</b>这也给做 AI 服务的中国团队一个提示：客户越来越不吃「我们效果很好」这套说法，他们要的是「你怎么量的、我能不能自己验一遍」。</p>
+    <p><b>第四，专业门槛正在被「流程化」抹平。</b>品牌营销里的 GEO、学术研究里的文献筛选，过去都依赖资深人士的判断力。今天它们都被拆成了「固定面板 + 分流规则 + 结构化输出」——<b>不是让外行变成专家，而是让专家的判断标准可以被复制。</b></p>
+  </div>
+</section>
+
+<!-- ===================== 商业机会雷达 ===================== -->
+<section class="block" id="radar">
+  <h2>今日商业机会雷达</h2>
+  <div class="panel">
+    <h3>机会 1｜垂直行业的「AI 可见度」月报</h3>
+    <ul>
+      <li><b>客户：</b>连锁品牌、本地生活商家、B2B 软件厂商</li>
+      <li><b>实现方式：</b>固定问题面板 + 每月审计 + 趋势报告（参考案例 01 的度量方法）</li>
+      <li><b>可能商业模式：</b>按月订阅的行业报告 + 改进建议</li>
+    </ul>
+    <h3>机会 2｜企业情报流水线搭建</h3>
+    <ul>
+      <li><b>客户：</b>研发、战略、市场情报团队</li>
+      <li><b>实现方式：</b>两级模型分工（便宜模型初筛 + 强模型精读）+ 本地知识库（参考案例 02）</li>
+      <li><b>可能商业模式：</b>项目制交付 + 订阅维护</li>
+    </ul>
+    <h3>机会 3｜「AI 成本工程」咨询与培训</h3>
+    <ul>
+      <li><b>客户：</b>AI 预算开始被审视的企业</li>
+      <li><b>实现方式：</b>审计现有 Agent 流水线，把高频判断环节换成便宜模型（参考案例 02 的方法论）</li>
+      <li><b>可能商业模式：</b>咨询项目 + 成本节省分成</li>
+    </ul>
+    <p style="font-size:13px;color:#6B7280;">以上均是基于案例结构的<b>商业模式分析</b>，不代表已验证的商业成功。</p>
+  </div>
+</section>
+
+<!-- ===================== 个人变现机会 ===================== -->
+<section class="block" id="personal">
+  <h2>今日「个人变现机会」</h2>
+  <div class="panel">
+    <p>如果一个人每天投入 <b>2–4 小时</b>，这两个案例可以这样长出个人业务：</p>
+    <ul>
+      <li><b>做行业 GEO 月报。</b>第 01 个案例已经提供了可用的度量方法，个人只需聚焦一个行业——门槛低、交付标准化、按月复购。</li>
+      <li><b>做垂直情报简报。</b>第 02 个案例证明「稳定信噪比 + 可控成本」是可以做到的。选一个细分领域（如宠物医疗、跨境电商合规），做每天三条的简报。</li>
+      <li><b>做「AI 成本优化」顾问。</b>帮企业把 Agent 流水线里的模型分工重新设计一遍，交付一份可量化的成本对照表。这是当前少有人做但需求真实的方向。</li>
+      <li><b>做内容产品。</b>「我是怎么把 AI 使用成本降 99% 的」「AI 眼里的品牌排行」——两个都是天然带传播力的选题。</li>
+    </ul>
+    <p><b>提醒：</b>以上是低资本、单人可启动的机会方向，<b>不构成收益承诺</b>。做评测类业务时要注意：度量结果会直接影响客户决策，方法论的严谨性与表述的克制同样重要。</p>
+  </div>
+</section>
+
+<!-- ===================== 原始资料汇总 ===================== -->
+<section class="block" id="sources">
+  <h2>原始资料</h2>
+  <div class="panel">
+    <h3>案例 01 · EEO</h3>
+    <ul>
+      <li>仓库：<a href="https://github.com/Hiteater-wzm/eeo" target="_blank" rel="noopener">github.com/Hiteater-wzm/eeo</a></li>
+      <li>标准文档：<a href="https://github.com/Hiteater-wzm/eeo/blob/main/docs/eeo-standard.md" target="_blank" rel="noopener">docs/eeo-standard.md</a></li>
+      <li>数据统计（权威口径）：<a href="https://github.com/Hiteater-wzm/eeo/blob/main/datasets/STATS-FULL.md" target="_blank" rel="noopener">datasets/STATS-FULL.md</a></li>
+      <li>评测快照：<a href="https://github.com/Hiteater-wzm/eeo/tree/main/snapshots" target="_blank" rel="noopener">snapshots/（首个公开面板）</a></li>
+      <li>目录浏览：<a href="https://hiteater-wzm.github.io/eeo/" target="_blank" rel="noopener">hiteater-wzm.github.io/eeo/</a></li>
+    </ul>
+    <h3>案例 02 · dailypaper-skills</h3>
+    <ul>
+      <li>仓库：<a href="https://github.com/huangkiki/dailypaper-skills" target="_blank" rel="noopener">github.com/huangkiki/dailypaper-skills</a></li>
+      <li>成本基准：<a href="https://github.com/huangkiki/dailypaper-skills/blob/main/docs/jev-benchmark.md" target="_blank" rel="noopener">docs/jev-benchmark.md</a></li>
+      <li>使用指南：<a href="https://github.com/huangkiki/dailypaper-skills/blob/main/docs/usage.md" target="_blank" rel="noopener">docs/usage.md</a></li>
+      <li>配套项目：<a href="https://github.com/huangkiki/zotero-ai-sidebar" target="_blank" rel="noopener">huangkiki/zotero-ai-sidebar</a></li>
+    </ul>
+    <h3>明确排除的来源</h3>
+    <p>本期检索中，以下站点内容经核实为同一批模板化文章的重复分发（无一手作者、无可验证项目），<b>全部剔除</b>：mhpq.cn、tzjp.cn、hqwc.cn、qwbw.cn、lpqz.cn（「尧图系」）。</p>
+  </div>
+</section>
+
+<!-- ===================== 数据真实性说明 ===================== -->
+<section class="block" id="truth">
+  <h2>数据真实性说明</h2>
+  <div class="panel">
+    <h3>已核实的事实（可通过 GitHub API 复核）</h3>
+    <ol>
+      <li><b>案例 01：</b>Hiteater-wzm/eeo，Apache-2.0，主语言 JavaScript，建于 2026-10-05T12:24:03Z（北京时间 10-05 20:24），落在窗口内；后续持续推送至 10-08。</li>
+      <li><b>案例 02：</b>huangkiki/dailypaper-skills，Apache-2.0，主语言 Python；窗口内（10-05 12:00 → 10-06 12:00 北京时间）出现两次提交（14:39 / 14:46）。仓库 <code>created_at</code> 为 2026-02-26，窗口内提交为初期提交与主分支合并，<b>显示历史在此期间被重建</b>——本文已如实标注。</li>
+      <li>所有时间戳由 GitHub API 原始数据换算为北京时间；窗口外事件未作为案例收录。</li>
+    </ol>
+    <h3>来自作者自述、本文未独立验证</h3>
+    <ul>
+      <li><b>案例 01：</b>数据规模（注册条目 1,542,575、含网站 393,446、含描述 1,493,297、覆盖 170 个国家/地区、6,137 个行业标签、26 个引擎预设中含 11 个中国本土引擎）、清洗过程（五轮判定覆盖 1,497,628 候选、剔除 46,883 非组织实体）、评测方法（双裁判一致性 kappa 0.909）——<b>均为项目自述，本文未独立复现或抽样核对</b>。且 README 正文与 Numbers 表中的条目数存在少量差异（已在「踩坑」中提示以 STATS-FULL.md 为准）。</li>
+      <li><b>案例 02：</b>Jev 成本对照（GPT-6 Astra $0.109264 / 10.35 秒 vs Jev $0.000576408 / 0.52 秒，费用降 99.47%，重合 9/10）——作者已标注为「2026-10-05 单次评分测量、计入主模型缓存、不代表整个阅读流程的费用、不是实际扣款、重合率不等于人工质量评价」，<b>本文按原文口径转述，未独立复现</b>。</li>
+    </ul>
+    <h3>本文的分析与推演</h3>
+    <ul>
+      <li>「前世今生」「下一步可能怎么发展」「企业/消费者场景」「迁移方向」「7 天 MVP」「课程设计」等均为基于公开资料的<b>分析与推演</b>，不代表项目作者的观点或计划。</li>
+      <li>商业与变现部分全部为<b>潜在模式分析</b>，不是已验证的收入事实。</li>
+    </ul>
+    <h3>已做与未做的验证</h3>
+    <ul class="checklist">
+      <li>作者账号存在</li>
+      <li>仓库创建/提交时间已核实</li>
+      <li>许可类型已核实</li>
+      <li>README 原文已逐段核对</li>
+      <li>已区分窗口内 / 窗口外</li>
+      <li>未伪造作者未提供的步骤</li>
+      <li>已标注数据口径冲突</li>
+      <li>已剔除内容农场来源</li>
+      <li>未复现评测流程</li>
+      <li>未抽样核对数据集</li>
+      <li>未联系作者求证</li>
+      <li>未验证券商/引擎可用性</li>
+    </ul>
+  </div>
+</section>
+</div>
+</main>
+<footer class="site-footer">
+  <div class="wrap">
+    <div>
+      <div class="f-brand">全球文明进程重大事件日报</div>
+      <p class="f-desc">记录人类文明演进中的关键节点。以未来历史学家的视角，筛出可能改写人类轨迹的转折点——一个长期记录人类文明发展轨迹的数字档案馆。</p>
+    </div>
+    <div class="f-col">
+      <h4>浏览</h4>
+      <ul>
+        <li><a href="../index.html">网站首页</a></li>
+        <li><a href="../archive.html">日报档案</a></li><li><a href="../radar.html">趋势雷达</a></li><li><a href="../tutorial/index.html">AI实战</a></li>
+        <li><a href="../assets/images/og-cover.png" target="_blank">站点封面</a></li>
+      </ul>
+    </div>
+    <div class="f-col">
+      <h4>文明分类</h4>
+      <ul>
+        <li><a href="../categories/science.html">科学、生命与地球</a></li>
+        <li><a href="../categories/politics.html">政治与文明秩序</a></li>
+        <li><a href="../categories/culture.html">思想、社会与文化</a></li>
+        <li><a href="../categories/technology.html">科技与人工智能</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="f-bottom">
+    <div class="wrap">
+      <span>© 2026 全球文明进程重大事件日报 · 全球文明进程观察站</span>
+      <span>内容由自动化智能体基于公开信息生成，仅供文明观察与研究参考，不构成任何投资、政策或法律建议。</span>
+    </div>
+  </div>
+</footer>
+<button class="backtop" type="button" aria-label="返回顶部">↑</button>
+<script src="../assets/js/main.js"></script>
+<script src="../assets/js/wechat-share.js"></script>
+<script src="../assets/js/text-to-speech.js"></script>
+</body>
+</html>
