@@ -1,0 +1,1112 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI极客实战教程日报 · 2026-10-08（第012期）｜用一个「绑定系列」的短剧 Agent，把一句话点子…、用 Dify + faster-whisper +…</title>
+<meta name="description" content="10月8日AI极客实战案例：今天最值得中国 AI 从业者关注的，是「Agent 终于开始管状态了」——一个把「一部短剧」当作有状态的长流程来跑（续集、接镜、断点续跑），一个把「一次入库」当作有状态的长任务来跑（异步受理、任务状态机、质量闸门）；两者都不靠更强的模型，靠的是把工程边界画清楚。">
+<meta name="keywords" content="AI极客实战,用一个「绑定系列」的短…,用 Dify + fa…">
+<meta name="author" content="全球文明进程观察站">
+<meta name="robots" content="index,follow">
+<link rel="canonical" href="https://civilization-radar.com/tutorial/2026-10-08.html">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="全球文明进程重大事件日报">
+<meta property="og:title" content="AI极客实战教程日报 · 2026-10-08｜用一个「绑定系列」的短剧 Agent，…">
+<meta property="og:description" content="10月8日AI极客实战案例：今天最值得中国 AI 从业者关注的，是「Agent 终于开始管状态了」——一个把「一部短剧」当作有状态的长流程来跑（续集、接镜、断点续跑），一个把「一次入库」当作有状态的长任务来跑（异步受理、任务状态机、质量闸门）；两者都不靠更强的模型，靠的是把工程边界画清楚。">
+<meta property="og:url" content="https://civilization-radar.com/tutorial/2026-10-08.html">
+<meta property="og:image" content="https://civilization-radar.com/assets/images/og-cover.png">
+<meta property="og:locale" content="zh_CN">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="AI极客实战教程日报 · 2026-10-08">
+<meta name="twitter:description" content="10月8日AI极客实战案例：今天最值得中国 AI 从业者关注的，是「Agent 终于开始管状态了」——一个把「一部短剧」当作有状态的长流程来跑（续集、接镜、断点续跑），一个把「一次入库」当作…">
+<meta name="twitter:image" content="https://civilization-radar.com/assets/images/og-cover.png">
+<link rel="icon" href="../assets/images/logo.svg" type="image/svg+xml">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"AI极客实战教程日报·2026-10-08｜用一个「绑定系列」的短剧Agent，…","description":"10月8日AI极客实战案例：今天最值得中国AI从业者关注的，是「Agent终于开始管状态了」——一个把「一部短剧」当作有状态的长流程来跑（续集、接镜、断点续跑），一个把「一次入库」当作有状态的长任务来跑（异步受理、任务状态机、质量闸门）；两者都不靠更强的模型，靠的是把工程边界画清楚。","datePublished":"2026-10-08","dateModified":"2026-10-09","inLanguage":"zh-CN","author":{"@id":"https://civilization-radar.com/#org"},"publisher":{"@id":"https://civilization-radar.com/#org"},"image":{"@type":"ImageObject","url":"https://civilization-radar.com/assets/images/og-cover.png"},"mainEntityOfPage":{"@type":"WebPage","@id":"https://civilization-radar.com/tutorial/2026-10-08.html"},"isAccessibleForFree":true}</script>
+
+<link rel="stylesheet" href="../assets/css/style.css">
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body {
+    background:#F7F8FA; color:#111827;
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;
+    line-height:1.7; font-size:15px;
+  }
+  .tut-wrap { max-width:960px; margin:0 auto; padding:32px 20px 64px; }
+  a { color:#2563EB; text-decoration:none; word-break:break-all; }
+  a:hover { text-decoration:underline; }
+
+  header.top {
+    background:#111827; color:#F9FAFB; border-radius:14px; padding:36px 32px; margin-bottom:24px;
+  }
+  header.top .kicker { color:#93C5FD; font-size:13px; letter-spacing:2px; text-transform:uppercase; margin-bottom:10px; }
+  header.top h1 { font-size:30px; font-weight:800; margin-bottom:6px; }
+  header.top .sub { color:#9CA3AF; font-size:14px; margin-bottom:20px; }
+  .meta-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:12px; }
+  .meta-grid .m { background:#1F2937; border:1px solid #374151; border-radius:10px; padding:10px 14px; }
+  .meta-grid .m .k { font-size:11px; color:#9CA3AF; margin-bottom:2px; }
+  .meta-grid .m .v { font-size:14px; font-weight:600; color:#F9FAFB; }
+
+  .oneline {
+    background:#F5F8FF; border:1px solid #BFDBFE; border-radius:14px;
+    padding:18px 24px; margin-bottom:24px;
+  }
+  .oneline .lab { font-size:12px; letter-spacing:1px; color:#2563EB; font-weight:700; margin-bottom:6px; }
+  .oneline p { font-size:15px; color:#111827; }
+
+  nav.cats { display:flex; flex-wrap:wrap; gap:8px; margin-bottom:28px; }
+  nav.cats a {
+    background:#FFFFFF; border:1px solid #E5E7EB; border-radius:999px;
+    padding:6px 14px; font-size:13px; color:#374151;
+  }
+  nav.cats a:hover { border-color:#2563EB; color:#2563EB; text-decoration:none; }
+
+  .card {
+    background:#FFFFFF; border:1px solid #E5E7EB; border-radius:14px;
+    padding:28px; margin-bottom:28px;
+  }
+  .card-head { display:flex; align-items:flex-start; gap:14px; margin-bottom:6px; flex-wrap:wrap; }
+  .num {
+    font-size:26px; font-weight:800; color:#2563EB; line-height:1.1;
+    font-variant-numeric:tabular-nums; min-width:52px;
+  }
+  .card-head h2 { font-size:20px; font-weight:700; flex:1; min-width:240px; }
+  .badges { display:flex; flex-wrap:wrap; gap:6px; margin:8px 0 14px; }
+  .badge { font-size:12px; padding:3px 10px; border-radius:999px; font-weight:600; }
+  .b-cat { background:#EFF6FF; color:#2563EB; border:1px solid #BFDBFE; }
+  .b-tag { background:#F3F4F6; color:#4B5563; border:1px solid #E5E7EB; }
+  .b-date { background:#ECFDF5; color:#16A34A; border:1px solid #BBF7D0; }
+  .b-warn { background:#FFFBEB; color:#B45309; border:1px solid #FDE68A; }
+
+  .oneliner {
+    background:#F9FAFB; border:1px solid #E5E7EB; border-radius:10px;
+    padding:12px 16px; font-size:14.5px; color:#111827; margin-bottom:18px;
+  }
+
+  h3.sec {
+    font-size:14px; font-weight:700; color:#111827; margin:22px 0 8px;
+    padding-left:10px; border-left:3px solid #2563EB;
+  }
+  .card p, .card li { font-size:14.5px; color:#374151; }
+  .card ul, .card ol { padding-left:22px; margin:6px 0; }
+  .card li { margin-bottom:4px; }
+
+  .src-list { list-style:none; padding-left:0; }
+  .src-list li { margin-bottom:6px; }
+  .src-type {
+    display:inline-block; font-size:11px; font-weight:700; color:#2563EB;
+    background:#EFF6FF; border:1px solid #BFDBFE; border-radius:6px;
+    padding:1px 8px; margin-right:8px;
+  }
+
+  .stack { width:100%; border-collapse:collapse; margin:6px 0; }
+  .stack td { border:1px solid #E5E7EB; padding:7px 12px; font-size:13.5px; vertical-align:top; }
+  .stack td.k { background:#F9FAFB; font-weight:600; color:#111827; width:110px; white-space:nowrap; }
+
+  .flow { display:flex; flex-direction:column; gap:0; margin:10px 0; }
+  .flow .node {
+    background:#F9FAFB; border:1px solid #E5E7EB; border-radius:10px;
+    padding:9px 16px; font-size:13.5px; color:#111827;
+  }
+  .flow .node b { color:#2563EB; }
+  .flow .arrow { text-align:center; color:#9CA3AF; font-size:14px; line-height:1.4; }
+
+  pre {
+    background:#111827; color:#E5E7EB; border-radius:10px;
+    padding:16px 18px; overflow-x:auto; font-size:13px; line-height:1.6;
+    font-family:"SFMono-Regular",Consolas,"Liberation Mono",Menlo,monospace;
+    margin:8px 0;
+  }
+  code {
+    font-family:"SFMono-Regular",Consolas,Menlo,monospace;
+    background:#F3F4F6; color:#111827; border-radius:5px; padding:1px 6px; font-size:13px;
+  }
+  pre code { background:transparent; color:#E5E7EB; padding:0; }
+
+  .pitfall { background:#FFFBEB; border:1px solid #FDE68A; border-radius:10px; padding:14px 18px; margin:8px 0; }
+  .pitfall b { color:#B45309; }
+  .truth { background:#FEF7F7; border:1px solid #FECACA; border-radius:10px; padding:14px 18px; margin:8px 0; }
+  .truth b { color:#B91C1C; }
+
+  .repro { display:inline-block; font-size:13px; font-weight:700; padding:4px 12px; border-radius:999px; background:#ECFDF5; color:#16A34A; border:1px solid #BBF7D0; }
+  .repro.hard { background:#FFFBEB; color:#B45309; border-color:#FDE68A; }
+  .repro.dev { background:#FEF2F2; color:#B91C1C; border-color:#FECACA; }
+
+  .migrate { display:grid; grid-template-columns:repeat(3,1fr); gap:10px; margin:8px 0; }
+  .migrate .m {
+    background:#F9FAFB; border:1px solid #E5E7EB; border-radius:10px; padding:12px 14px; font-size:13px; color:#374151;
+  }
+  .migrate .m b { display:block; color:#111827; margin-bottom:4px; }
+
+  .course {
+    background:#F5F8FF; border:1px solid #BFDBFE; border-radius:10px; padding:16px 20px; margin:8px 0;
+  }
+  .course table { width:100%; border-collapse:collapse; }
+  .course td { padding:4px 8px 4px 0; font-size:13.5px; vertical-align:top; color:#374151; }
+  .course td.k { font-weight:600; color:#111827; width:88px; white-space:nowrap; }
+
+  .trainer {
+    border-left:3px solid #16A34A; background:#F0FDF4; border-radius:0 10px 10px 0;
+    padding:12px 18px; font-size:14px; color:#14532D; margin:10px 0 4px;
+  }
+  .trainer b { color:#16A34A; }
+
+  .verdict { display:grid; grid-template-columns:repeat(5,1fr); gap:10px; margin:8px 0; }
+  .verdict .v {
+    background:#F9FAFB; border:1px solid #E5E7EB; border-radius:10px; padding:12px; text-align:center;
+  }
+  .verdict .v .k { font-size:11.5px; color:#6B7280; margin-bottom:4px; }
+  .verdict .v .val { font-size:17px; font-weight:800; }
+  .lv-h { color:#16A34A; }
+  .lv-m { color:#F59E0B; }
+  .lv-l { color:#DC2626; }
+
+  section.block { margin-top:40px; }
+  section.block > h2 {
+    font-size:22px; font-weight:800; margin-bottom:16px; padding-bottom:10px;
+    border-bottom:2px solid #E5E7EB;
+  }
+  .panel { background:#FFFFFF; border:1px solid #E5E7EB; border-radius:14px; padding:24px 28px; margin-bottom:20px; }
+  .panel h3 { font-size:16px; margin-bottom:10px; }
+  .panel p, .panel li { font-size:14.5px; color:#374151; }
+  .panel ul { padding-left:22px; }
+  .panel li { margin-bottom:6px; }
+  .panel table { width:100%; border-collapse:collapse; margin:8px 0; }
+  .panel th, .panel td { border:1px solid #E5E7EB; padding:7px 10px; font-size:13px; text-align:left; vertical-align:top; }
+  .panel th { background:#F9FAFB; color:#111827; }
+
+  .checklist { columns:2; column-gap:32px; }
+  .checklist li { list-style:none; margin-bottom:6px; font-size:13.5px; }
+  .checklist li::before { content:"✓ "; color:#16A34A; font-weight:700; }
+
+  .gapnote {
+    background:#FFFBEB; border:1px solid #FDE68A; border-radius:10px;
+    padding:14px 18px; font-size:13.5px; color:#7C2D12; margin-bottom:24px;
+  }
+  .gapnote b { color:#B45309; }
+
+  footer { text-align:center; color:#9CA3AF; font-size:12.5px; margin-top:40px; }
+
+  @media(max-width:640px) {
+    header.top { padding:24px 20px; }
+    header.top h1 { font-size:22px; }
+    .meta-grid { grid-template-columns:repeat(2,1fr); }
+    .card { padding:20px 16px; }
+    .migrate { grid-template-columns:1fr; }
+    .verdict { grid-template-columns:repeat(2,1fr); }
+    .checklist { columns:1; }
+    .num { min-width:auto; }
+    .panel { padding:18px 16px; }
+    .stack td.k { width:82px; }
+  }
+</style></head><body>
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="../index.html"><img class="mark" src="../assets/images/logo.svg" alt="文明雷达" width="32" height="32" style="width:32px;height:32px;background:none;border:0;box-shadow:none;border-radius:6px">全球文明进程重大事件日报</a>
+    <button class="nav-toggle" type="button" aria-label="菜单" aria-expanded="false">☰</button>
+    <nav class="main-nav" aria-label="主导航"><ul><li><a href="../index.html">首页</a></li><li><a href="../archive.html">日报档案</a></li><li><a href="../radar.html">趋势雷达</a></li><li><a href="../tutorial/index.html" class="active">AI实战</a></li><li><a href="../categories/science.html">科学</a></li><li><a href="../categories/politics.html">政治</a></li><li><a href="../categories/culture.html">文化</a></li><li><a href="../categories/technology.html">科技</a></li></ul></nav>
+  </div>
+</header>
+<main class="site-main">
+<div class="tut-wrap">
+  <nav class="breadcrumb" aria-label="面包屑"><a href="../index.html">首页</a><span class="sep">/</span><a href="index.html">AI实战教程</a><span class="sep">/</span><span>2026-10-08</span></nav>
+<header class="top">
+  <div class="kicker">China AI Builders · Real Cases · Workflows · Business</div>
+  <h1>AI极客实战案例日报</h1>
+  <div class="sub">China AI Builders · Real Cases · Workflows · Agents · Open Source · Business</div>
+  <div class="meta-grid">
+    <div class="m"><div class="k">日报日期</div><div class="v">2026-10-08</div></div>
+    <div class="m"><div class="k">执行日期</div><div class="v">2026-10-09 15:50</div></div>
+    <div class="m"><div class="k">精选案例</div><div class="v">2 个（宁缺毋滥）</div></div>
+    <div class="m"><div class="k">数据窗口</div><div class="v">10-08 10:30 → 10-09 10:35</div></div>
+  </div>
+</header>
+
+<div class="gapnote">
+  <b>关于本期窗口：</b>上一期为 <b>2026-10-07</b> 期（执行于 10-08，窗口已覆盖至 10-08 12:00）。本期起回归标准节奏：数据窗口为 <b>2026-10-08 10:30 → 2026-10-09 10:35（北京时间）</b>，优先收录窗口内的一手发布、开源上线、实测量化与实战记录。所有时间均已换算为北京时间；仓库创建时间、首次提交时间、Release 时间与文章发布时间在案例内分别标注，不做混同。本期未发现第三个达到收录线的案例，已如实声明。
+</div>
+
+<div class="oneline">
+  <div class="lab">今日一句话</div>
+  <p>今天最值得中国 AI 从业者关注的，是「Agent 终于开始管状态了」——一个把「一部短剧」当作有状态的长流程来跑（续集、接镜、断点续跑），一个把「一次入库」当作有状态的长任务来跑（异步受理、任务状态机、质量闸门）；两者都不靠更强的模型，靠的是把工程边界画清楚。</p>
+</div>
+
+<nav class="cats">
+  <a href="#case01">案例 01｜短剧系列 Agent</a>
+  <a href="#case02">案例 02｜视频知识库入库流水线</a>
+  <a href="#observe">今日观察</a>
+  <a href="#radar">商业机会雷达</a>
+  <a href="#personal">个人变现机会</a>
+  <a href="#signals">窗口内信号</a>
+  <a href="#sources">原始资料</a>
+  <a href="#truth">真实性说明</a>
+</nav>
+
+<!-- ===================== 案例 01 ===================== -->
+<div class="card" id="case01">
+  <div class="card-head">
+    <div class="num">01</div>
+    <h2>用一个「绑定系列」的短剧 Agent，把一句话点子跑成竖屏短剧成片：立项 → 写集 → 定妆 → MiniMax H3 本地出片，并按集续跑、自动接镜</h2>
+  </div>
+  <div class="badges">
+    <span class="badge b-cat">AI Agent / 内容生产</span>
+    <span class="badge b-cat">国产视频模型</span>
+    <span class="badge b-cat">ComfyUI 本地部署</span>
+    <span class="badge b-date">窗口内开源 10-08 15:26</span>
+    <span class="badge b-tag">Apache-2.0 / Python</span>
+    <span class="badge b-warn">需自备 ComfyUI + H3 权重，硬件门槛高</span>
+  </div>
+
+  <div class="oneliner">
+    <b>一句话结论：</b>真正稀缺的不是「AI 能出一段视频」，而是有人把「一部 50–100 集短剧」的续集、接镜、断点续跑与重做范围，写成了可运行的工程结构。
+  </div>
+
+  <h3 class="sec">01｜案例是什么？</h3>
+  <p>一位中文开发者 binwu1 在 GitHub 开源了 <b>Drama Series Agent</b>（内称 runtime 为 Hermes）：它把「做一部短剧」当成一个有状态的系列任务来做。你在同一个系列对话里依次说「立项 / 写第 1 集」「出片第 1 集」，Agent 就自动写出系列设定（大纲、世界观、角色、画风、分集目录）和单集剧本，把「谁出现在哪一镜」写进分镜任务表，生成可渲染文件交给<b>本机 ComfyUI + MiniMax H3 Ref2VA</b> 排队渲成视频，再用 ffmpeg 抽尾帧当下一镜首帧自动接片，最后拼成 <code>master.mp4</code>。中途断了可以按集从断点续跑；某一镜不满意只重渲那一镜；改了设定则只作废需要重做的下游步骤。项目 10-08 15:26（北京时间）首次公开建仓，Apache-2.0。</p>
+
+  <h3 class="sec">02｜为什么今天值得关注？</h3>
+  <ul>
+    <li><b>窗口内的事实（可核实）：</b>仓库创建于 <b>2026-10-08 15:26:51（北京时间）</b>，窗口内连续提交 <code>feat: ship workbench Jobs UI, skills layout, and bilingual docs</code>（10-08 15:45）、双语 README 与 demo 视频嵌入（10-08 15:54 / 16:02 / 16:23），10-09 09:45 仍在补充文档。</li>
+    <li><b>为什么以前不容易做：</b>AI 出视频长期是「一镜一 Prompt」——每次都要重新描述角色长相、场景、画风，前后镜对不上脸、接不上镜；想连拍一集，等于让一个人手工管几十个任务的进度、素材和重跑范围。</li>
+    <li><b>为什么现在变得容易：</b>① 参考图驱动的 Ref2VA（参考图 → 视频）让角色一致性从「靠 Prompt 硬撑」变成「靠一张定妆图」；② ComfyUI 把视频模型变成可编排的 API 图，工作流可分档（加速 / LoRA / 极速 / 质量）；③ Agent + SKILL 结构可以把「编剧方法论」和「渲染任务」拆成不同技能分别加载；④ 国产视频模型（MiniMax H3）与国产 LLM 端点（ModelScope 免费额度、通义百炼 Qwen、DeepSeek）同时可用。</li>
+    <li><b>为什么值得花时间：</b>「AI + 内容」在中文一手来源里长期稀缺，多数是「生成一张图 / 一段视频」的演示；这次是一套<b>把内容生产按「系列」单元组织起来的工程实现</b>，并且把付费短剧的创作方法论（钩子、节奏曲线、付费点、反派设计）一并开源进来了。</li>
+  </ul>
+
+  <h3 class="sec">03｜案例的前世今生</h3>
+  <p><b>前世。</b>2023–2025 年，AI 视频生成的主体是「文生视频模型 + 单次生成」：给一段提示词，出一段几秒的片段。创作者的真实困境不在「能不能生成」，而在三件事：<b>角色不连贯</b>（下一镜主角的脸变了）、<b>镜头接不上</b>（前后镜之间跳跃）、<b>没法管进度</b>（一集几十镜，靠人脑记哪个镜重跑过）。当时的可行解法只有「人工 + 剪辑软件」，成本高、不可复制。</p>
+  <p><b>发展。</b>三条线先后成熟：① 参考图驱动 / 首尾帧续接类能力（README 中的 Ref2VA、fl2va 与「尾帧抽出来当下一镜首帧」）把「一致性」从提示词工程变成了素材工程；② ComfyUI 成为视频模型的事实标准编排层，工作流可导出为 JSON 由外部程序提交，这为「Agent 驱动出片」提供了接口；③ Agent 的 SKILL / 记忆分层结构成熟，可以承载「编剧方法论」这种长文档知识，而不必把它塞进系统提示词。</p>
+  <p><b>今生。</b>这个项目没有发明新模型，做的是「把上述零件组织成一个有状态的系列容器」。它的关键设计不是渲染，而是 <b><code>series_id</code> 作为状态锚点</b>：系列设定、角色定妆、每集进度、任务轨迹全部挂在同一个系列上，于是「下一集接着往下做」在结构上成为默认行为。窗口内它新增了工作台的任务视图（Jobs UI）、技能目录布局与双语文档，并首次公开了 demo 视频——也就是说，它从「一个人的私有工具」变成了「别人能看懂、能尝试的项目」。</p>
+  <p><b>下一步可能怎么发展（分析 / 推演）。</b>三条可推演方向：① 从「单机自渲染」走向「渲染队列化 / 云端出片」，因为本地显卡是当前最大的落地瓶颈；② 从「剧本 + 出片」延伸到「批量投流素材」——同一部剧自动切出几十条投放切片，这已经是短剧行业的标准动作；③ 从「个人创作」走向「小型工作室流水线」，把选角、定妆、出片拆给不同角色并行。以上为推演，非事实，也非作者声明。</p>
+
+  <h3 class="sec">04｜原始资料</h3>
+  <ul class="src-list">
+    <li><span class="src-type">开源仓库</span>binwu1/drama-series-agent（Apache-2.0，Python，创建于 2026-10-08 15:26 北京时间）<br><a href="https://github.com/binwu1/drama-series-agent" target="_blank" rel="noopener">https://github.com/binwu1/drama-series-agent</a></li>
+    <li><span class="src-type">一手文档</span>中文 README（含工作流分工、分层记忆、环境要求、CLI 用法）<br><a href="https://github.com/binwu1/drama-series-agent/blob/main/README.zh-CN.md" target="_blank" rel="noopener">…/blob/main/README.zh-CN.md</a></li>
+    <li><span class="src-type">Demo</span>仓库内嵌演示视频与工作台截图（docs/assets/demo.mp4、main.png、showcase-still.jpg）<br><a href="https://github.com/binwu1/drama-series-agent/tree/main/docs/assets" target="_blank" rel="noopener">…/tree/main/docs/assets</a></li>
+    <li><span class="src-type">技能包</span>微短剧编剧 Skill（SKILL.md + 8 份方法论 references，MIT，源自 0xsline/short-drama）<br><a href="https://github.com/binwu1/drama-series-agent/blob/main/skills/0xsline-short-drama/SKILL.md" target="_blank" rel="noopener">…/blob/main/skills/0xsline-short-drama/SKILL.md</a></li>
+    <li><span class="src-type">上游来源</span>0xsline/short-drama（该 Skill 的原始出处）<br><a href="https://github.com/0xsline/short-drama" target="_blank" rel="noopener">https://github.com/0xsline/short-drama</a></li>
+    <li><span class="src-type">工作流</span>ComfyUI API 图（4 档：fast / lora 4-step / turbo / 质量档 fl2va）<br><a href="https://github.com/binwu1/drama-series-agent/tree/main/workflows/selfhost" target="_blank" rel="noopener">…/tree/main/workflows/selfhost</a></li>
+    <li><span class="src-type">依赖</span>pyproject.toml（入口 <code>drama-series-api</code> / <code>drama-series-render</code>）<br><a href="https://github.com/binwu1/drama-series-agent/blob/main/pyproject.toml" target="_blank" rel="noopener">…/blob/main/pyproject.toml</a></li>
+    <li><span class="src-type">上游依赖</span>ComfyUI（渲染编排层，需自行安装，README 明示「不附带」）<br><a href="https://github.com/comfyanonymous/ComfyUI" target="_blank" rel="noopener">https://github.com/comfyanonymous/ComfyUI</a></li>
+    <li><span class="src-type">技能索引</span>skills/README.md（4 个 Skill 与代码接线对照表）<br><a href="https://github.com/binwu1/drama-series-agent/blob/main/skills/README.md" target="_blank" rel="noopener">…/blob/main/skills/README.md</a></li>
+  </ul>
+
+  <h3 class="sec">05｜作者是谁？</h3>
+  <ul>
+    <li><b>项目作者：</b>GitHub 账号 <code>binwu1</code>（个人账号资料显示 name 为「kelala」），注册于 2021-02-22，公开仓库 3 个、关注者 2 人，仓库署名统一为「Drama Series Agent Contributors」。<b>身份背景无法确认（无公司、无博客、无简介）——本文不猜。</b>从账号年龄与提交节奏看，更像「长期潜水后集中开源」的个人开发者项目，而非临时起号，但这是推断，不是事实。</li>
+    <li><b>技能包来源：</b>编剧 Skill 目录内保留独立 MIT 许可与版权声明「Copyright (c) 2025 0xsline」，SKILL.md 顶部明确标注来源 <a href="https://github.com/0xsline/short-drama" target="_blank" rel="noopener">0xsline/short-drama</a>。也就是说，<b>「微短剧爆款方法论」这一块知识不是 binwu1 原创，而是被集成方</b>——这一点在原文中被明确写出，值得肯定。</li>
+  </ul>
+  <div class="pitfall"><b>需要知道的一点：</b>仓库当前 Star <b>83</b>、Fork 3（核实时点）。更关键的是<b>代码首次提交在 2026-09-28（比建仓早 10 天）</b>，说明它是一个先在私有环境跑通、再对外开源的项目，而非「昨天现写」。本期把它列入窗口案例的依据是：<b>窗口内完成了公开开源 + 工作台任务视图 + 双语文档 + demo 发布</b>，即「从私有到可复现」的这一步发生在窗口内。请不要把「Star 少」误读为「没价值」，也不要把「作者写得细」误读为「已大规模验证」。</div>
+
+  <h3 class="sec">06｜解决了什么真实问题？</h3>
+  <p>从需求侧看，而不是从技术侧看。</p>
+  <p><b>需求一（短剧创作者 / 小团队）：量产能力缺口。</b>微短剧是「集数换留存」的内容形态：一部剧 50–100 集，靠前几集的钩子拉付费。创作者真正的瓶颈不是「写不出一个好点子」，而是<b>把一个点子稳定地摊成几十集，并且每集都能对上脸、接上镜</b>。手工状态下，这一层的成本随集数线性上升。</p>
+  <p><b>需求二（个人创作者）：状态管理缺口。</b>「我今天做到第几集、哪几镜渲过、改了设定之后哪些要重做」——这些问题过去只能靠人脑或表格维护。README 把这件事说得很直白：改了设定或重写剧本，系统<b>只作废需要重做的下游步骤，而不是默认整集重来</b>。这就是把「项目管理」内建进了 Agent。</p>
+  <p><b>需求三（行业方法论）：把爆款经验结构化成可执行技能。</b>编剧 Skill 给出了 8 份方法论文件：钩子设计（hook-design）、开篇规则（opening-rules）、节奏曲线（rhythm-curve）、爽感矩阵（satisfaction-matrix）、反派设计（villain-design）、付费点设计（paywall-design）、赛道指南（genre-guide）、合规清单（compliance-checklist）。<b>付费点设计被单独列为一等公民</b>——这意味着技能作者理解短剧的商业本质是「在哪一集、因为什么、让人付费」，而不是「写一个完整的故事」。</p>
+
+  <h3 class="sec">07｜完整技术栈</h3>
+  <table class="stack">
+    <tr><td class="k">视频模型</td><td><b>MiniMax H3</b>（README 描述为负责「把一镜渲成视频」），通过 ComfyUI 的 Ref2VA（参考图 → 视频）工作流运行。README 的模型清单示例包含 <code>minimax_h3_ref2va_pruned_int8_convrot.safetensors</code>（UNET/Ref2VA，含 fast / lora / turbo）、<code>minimax_h3_fl2va_pruned_int8_convrot.safetensors</code>（质量档）、<code>qwen3vl_32b_minimax_h3_nvfp4_awq.safetensors</code>（文本编码 / CLIP）、视频与音频 VAE，以及 Lightning LoRA。权重需自行下载。</td></tr>
+    <tr><td class="k">对话 LLM</td><td>OpenAI 兼容端点可选：<b>ModelScope（作者标注免费额度友好）、通义百炼 Qwen、DeepSeek、Moonshot、本机 Ollama</b>，另列 OpenAI / Claude。配置项为 <code>LLM_API_KEY</code> / <code>LLM_BASE_URL</code> / <code>LLM_MODEL</code>。<b>作者没有点名「默认用哪个模型」——本文不代填。</b></td></tr>
+    <tr><td class="k">Agent 形态</td><td>Series-scoped Agent（绑定系列的会话内 Agent）；4 个 Skill 分别负责进件、立项、写集、H3 接线（见 skills/README.md 对照表）</td></tr>
+    <tr><td class="k">记忆分层</td><td>5 层：<code>memory/chat.jsonl</code>（对话）、<code>memory/PROJECT.md</code>（项目摘要）、<code>dramas/{系列}/</code>（系列设定）、<code>series_runtime.json</code>（每集进度 / 续跑点 / 使用的工作流）、<code>memory/traces.jsonl</code>（工具调用轨迹）</td></tr>
+    <tr><td class="k">语言 / 框架</td><td>Python ≥3.10（FastAPI、uvicorn、pydantic v2、openai SDK、loguru、httpx）；可选渲染依赖 <code>comfykit≥0.1.12</code>；前端 React + Vite 工作台</td></tr>
+    <tr><td class="k">渲染与剪辑</td><td>ComfyUI（本机 :8188）+ ffmpeg（抽尾帧、拼接镜头；解析顺序 <code>FFMPEG_PATH</code> → 系统 PATH → pip 自带 imageio-ffmpeg）</td></tr>
+    <tr><td class="k">接口</td><td>本地 API（默认 :8000，OpenAPI 文档 /docs）+ React 工作台（Vite 默认 :5173）；另有 CLI <code>drama-series-render</code> 直接渲一集</td></tr>
+    <tr><td class="k">协议 / MCP</td><td>仓库内<b>未发现</b> MCP 相关配置。技能采用 SKILL.md 形态，注明「不绑死某一款编辑器」，并提供 Cursor 技能链接脚本（<code>scripts/link_cursor_skills.ps1|sh</code>）。</td></tr>
+    <tr><td class="k">数据 / 部署</td><td>无数据库依赖；数据落本地目录（<code>data/cast/{系列}/</code> 定妆图与音色、<code>projects/</code>、<code>templates/</code>、<code>output/</code>）。部署为本机运行（Windows / macOS / Linux，含 start.ps1 与 start.sh）</td></tr>
+    <tr><td class="k">许可</td><td>Apache-2.0（已核对 LICENSE 正文）；内置编剧 Skill 单独为 MIT（0xsline）</td></tr>
+  </table>
+
+  <h3 class="sec">08｜完整 Workflow</h3>
+  <div class="flow">
+    <div class="node"><b>① 你给一句话</b>　例如「立项 / 写第 1 集」——不写结构化参数，要的是自然语言</div>
+    <div class="arrow">↓</div>
+    <div class="node"><b>② 进件 Skill（drama-intake）</b>　把点子变成可开工的系列条目（Stage 1）</div>
+    <div class="arrow">↓</div>
+    <div class="node"><b>③ 立项 Skill（drama-series-develop）</b>　产出系列设定：大纲、世界观、角色、画风、分集目录 → 写入 <code>dramas/{系列}/</code></div>
+    <div class="arrow">↓</div>
+    <div class="node"><b>④ 写集 Skill（0xsline-short-drama）</b>　按「选题 → 创作方案 → 角色档案 → 分集目录 → 单集剧本 → 质量审查 → 合规审核」出文学剧本；产物写 <code>dramas/{系列}/episodes/epNNN.md</code></div>
+    <div class="arrow">↓</div>
+    <div class="node"><b>⑤ 定妆与验收（人工）</b>　<code>data/cast/{系列}/{角色}.png</code>（可选 <code>voices/{角色}.wav</code>）。README 明确写着：「定妆图放好并验收」之后才进入下一步</div>
+    <div class="arrow">↓</div>
+    <div class="node"><b>⑥ 分镜接线 Skill（h3-r2v-prompts + adapters/r2v）</b>　把「谁出现在哪一镜」写进分镜任务表，生成可渲染文件 <code>EP00X.episode-run.jsonl</code> + <code>episode-meta.json</code></div>
+    <div class="arrow">↓</div>
+    <div class="node"><b>⑦ ComfyUI 出片</b>　读取 <code>workflows/selfhost/</code> 指定档位（fast / lora 4-step / turbo / 质量档），提交 MiniMax H3 Ref2VA 任务排队渲染</div>
+    <div class="arrow">↓</div>
+    <div class="node"><b>⑧ ffmpeg 接镜</b>　抽每个镜头的<b>尾帧</b> → 作为下一镜的<b>首帧</b> → 依次拼接（分镜拼接时带短片头裁切）</div>
+    <div class="arrow">↓</div>
+    <div class="node"><b>⑨ 人类验收 / 重做</b>　在「生成进度」里按集查状态；断点续跑；某一镜不满意<b>只重渲那一镜</b>；改设定只作废下游步骤</div>
+    <div class="arrow">↓</div>
+    <div class="node"><b>⑩ 输出</b>　<code>templates/{系列}/output/{EP}/master.mp4</code></div>
+  </div>
+  <p><b>状态机在哪：</b><code>series_runtime.json</code> 记录「每集走到哪一步（剧本 / 定妆 / 出片）、从哪一镜续跑、用哪条工作流」——这就是整个案例真正区别于「一次性出片 Demo」的地方。</p>
+
+  <h3 class="sec">09｜它到底是怎么实现的？</h3>
+  <p>剥开业务内容，有四个可迁移的工程机制（均来自作者 README 自述，非本文推测）：</p>
+  <p><b>机制一：把「系列」而不是「一次生成」当作状态单元。</b>所有产物都挂在同一个 <code>series_id</code> 下：系列设定是共享上下文，分集是系列下的条目，进度是系列下的运行时状态。好处是「第 2 集」天然继承「第 1 集」的世界观、角色与画风，而不需要每次都重新灌一遍背景。</p>
+  <p><b>机制二：角色一致性靠「素材」而不是「提示词」。</b>这是短剧工作流与普通文生视频最本质的分野。README 的写法是：H3 出片提示等放在 skills/，<b>分镜表里带「角色图 / 音色引用」</b>，渲染时以定妆图作为参考图输入。也就是把「这个人长什么样」从文本描述变成了图像条件——文本描述漂移，图像条件不漂移。</p>
+  <p><b>机制三：镜头之间用「帧」物理接续，而不是靠剪辑对齐。</b>抽上一镜尾帧 → 当作下一镜首帧，这是把「连续性」从一个创作问题降级成一个 ffmpeg 命令。README 把它列为功能亮点，原文表述为「上镜尾帧 → 下镜首帧，自动接片，<b>无需手动剪辑</b>」。</p>
+  <p><b>机制四：增量失效，而不是整集重算。</b>「改了设定或重生剧情时，只作废需要重做的下游步骤，尽量少重渲。」这需要一个显式的依赖图（哪些步骤消费了哪一版设定），否则无法判断下游。作者没有在 README 里给出依赖图的实现细节，<b>本文不推测其数据结构</b>。</p>
+  <div class="truth"><b>技术边界的诚实提示：</b>README 非常明确：仓库<b>不附带 ComfyUI，也不附带 MiniMax H3 权重</b>；未装好时「仍可在工作台做立项 / 写集 / 定妆——<b>视频任务会失败</b>」。因此这个案例应被理解为「一条被工程化的生产链」，而不是「装完就能出片的软件」。作者也提示：请用 <code>start.sh</code>/<code>start.bat</code> 启动以便断点续跑与恢复。</div>
+
+  <h3 class="sec">10｜手把手复现</h3>
+  <p>以下 <b>Step 1–4 直接整理自作者 README（原步骤，非推导）</b>；Step 5–6 为本文依据 README 结构整理的「先跑通、再上渲染」建议路径，已标注。</p>
+  <p><b>Step 1｜确认环境（README 原文要求）</b></p>
+  <ul>
+    <li>Python <b>3.10+</b>；<b>ffmpeg</b>（Windows 可用 <code>winget install --id Gyan.FFmpeg -e</code>，macOS <code>brew install ffmpeg</code>，Linux <code>apt install ffmpeg</code>）；可选 Node 18+（React 工作台）；可选 OpenAI 兼容 LLM。</li>
+    <li>提示：pip 依赖里已含 <code>imageio-ffmpeg</code>，无系统 ffmpeg 时可用它兜底。</li>
+  </ul>
+  <p><b>Step 2｜克隆并安装（README 原文）</b></p>
+  <pre><code>git clone https://github.com/binwu1/drama-series-agent.git
+cd drama-series-agent
+python -m venv .venv
+# Windows: .venv\Scripts\activate   /  macOS·Linux: source .venv/bin/activate
+python -m pip install -U pip
+pip install -e ".[render,dev]"
+copy .env.example .env    # Windows（macOS/Linux 用 cp）
+# 编辑 .env → COMFYUI_URL / LLM_* / 可选 FFMPEG_PATH</code></pre>
+  <p><b>Step 3｜自检（README 原文）</b></p>
+  <pre><code>python scripts/doctor.py
+# 应看到 ffmpeg、skills、comfykit、API 路由、CLI 均为 [OK]</code></pre>
+  <p><b>Step 4｜启动（README 原文）</b></p>
+  <pre><code># Windows：API + Vite 前端
+.\start.ps1 -WithWeb
+# macOS / Linux
+./start.sh --with-web
+# API 文档 http://127.0.0.1:8000/docs ｜ 工作台 http://localhost:5173/</code></pre>
+  <p><b>Step 5｜先只做「不用显卡」的半段（本文整理的建议路径）</b>：在工作台完成立项与写集（这两步只依赖对话 LLM，不依赖 ComfyUI），把系列设定、角色档案、分集目录、前几集剧本跑出来。这一步用来验证「Agent 是否能理解你的题材与节奏」，成本最低。</p>
+  <p><b>Step 6｜再上渲染（本文整理的建议路径，需自备显卡与权重）</b>：自行安装 ComfyUI 并保持运行（默认 <code>http://127.0.0.1:8188</code>）→ 安装 MiniMax H3 Ref2VA 相关自定义节点 → 按 <code>workflows/selfhost/</code> 里的 JSON 文件名下载全部模型 → 在 ComfyUI 中确认<b>无红色缺失节点/模型</b> → 回填 <code>COMFYUI_URL</code> → 用 <code>drama-series-render</code> 先渲<b>一集、先渲一镜</b>验证链路。</p>
+  <pre><code>drama-series-render \
+  --project templates/&lt;series&gt; \
+  --episode EP001 \
+  --cast-series &lt;series&gt; \
+  --context-ir off \
+  --comfyui-url http://127.0.0.1:8188
+# 输出：templates/&lt;series&gt;/output/EP001/master.mp4</code></pre>
+  <div class="pitfall"><b>以上 Step 5 / Step 6 的先后顺序是本文的复现建议，不是作者原始步骤。</b>作者的 README 并未规定「先跑文本半段再上渲染」；这样建议的理由是：把「Agent 是否好用」和「渲染环境是否装对」两个独立变量分开验证，避免同时调试两件事。</div>
+
+  <h3 class="sec">11｜Prompt / Code / Config</h3>
+  <p><b>（A）公开的配置模板（作者原文，已提取）</b></p>
+  <pre><code># .env.example（原文）
+DRAMA_SERIES_ROOT=
+COMFYUI_URL=http://127.0.0.1:8188
+# ffmpeg: tail-frame extract + shot concat (chain continuity)
+# Resolve order: FFMPEG_PATH → PATH → imageio-ffmpeg (bundled with pip install)
+# FFMPEG_PATH=C:\ffmpeg\bin\ffmpeg.exe
+LLM_API_KEY=
+LLM_BASE_URL=
+LLM_MODEL=</code></pre>
+  <p><b>（B）公开的 Skill 触发词结构（作者原文，已提取）</b>：编剧 Skill 的 SKILL.md 头部用自然语言声明触发方式，斜杠命令为 <code>/start</code>、<code>/plan</code>、<code>/characters</code>、<code>/outline</code>、<code>/episode</code>、<code>/review</code>、<code>/compliance</code>、<code>/export</code>、<code>/overseas</code>——分别对应选题立项、创作方案、角色设计、分集目录、分集撰写、质量审查、合规审核、排版导出、海外格式导出。</p>
+  <p><b>（C）公开的工作流档位（作者原文，已提取）</b></p>
+  <table class="stack">
+    <tr><td class="k">fast</td><td><code>selfhost/video_minimax_h3_r2v_fast.json</code>　默认加速档（20 step + 加速节点）</td></tr>
+    <tr><td class="k">lora</td><td><code>selfhost/video_minimax_h3_r2v_lora.json</code>　Lightning LoRA 4-step</td></tr>
+    <tr><td class="k">turbo</td><td><code>selfhost/video_minimax_h3_r2v_turbo.json</code>　极速 / 实验档</td></tr>
+    <tr><td class="k">quality</td><td><code>selfhost/video_minimax_h3_r2v.json</code>　质量档 / fl2va</td></tr>
+  </table>
+  <p>档位可在系统配置页或 <code>config.json</code> → <code>comfyui.video.default_workflow</code> 中切换。</p>
+  <p><b>（D）Skill 的分层结构（作者原文）</b>：<code>drama-intake</code>=Stage1 进件；<code>drama-series-develop</code>=立项/大纲/世界观/角色/画风；<code>0xsline-short-drama</code>=文学写集；<code>drama-series-h3-r2v-prompts</code>=H3 Ref2VA 接线。每行都标注了对应代码接线（如 <code>drama.literary_skill</code> · <code>run_literary_generate</code>）。</p>
+  <div class="pitfall"><b>未公开的部分（本文不编造）：</b>作者<b>没有</b>公开具体的系统提示词全文、依赖失效图的数据结构、以及任何实测的性能 / 成本数据（例如「渲染一集要多久、花多少钱」）。本报告不代其推测。</div>
+
+  <h3 class="sec">12｜踩坑</h3>
+  <p>仓库未启用 Issues 讨论（核实时点 open issues 为 0），README 也未单独设「踩坑」章节。以下为<b>作者文档中明示的失败模式</b>（有据），以及<b>本文依据其结构推断的高风险点</b>（已标注）。</p>
+  <table class="stack">
+    <tr><td class="k">作者明示</td><td><b>未装 ComfyUI / 未下模型 → 视频任务直接失败。</b>README 原文：「未装好 ComfyUI 与模型时，仍可在工作台做立项 / 写集 / 定妆——视频任务会失败，直到上述步骤完成。」这是本项目最容易「看起来装好了其实没装好」的地方。</td></tr>
+    <tr><td class="k">作者明示</td><td><b>启动方式错会导致续跑与恢复失效。</b>README 专门提示要用 <code>start.sh</code> / <code>start.bat</code>，不要直接跑 <code>./artex</code> 式的裸二进制——因为守护脚本负责异常重启与断点恢复。</td></tr>
+    <tr><td class="k">作者明示</td><td><b>工作流 JSON 里的文件名必须与本地模型文件一致。</b>README 要求「按工作流 JSON 里出现的文件名，自行下载全部模型」，并在 ComfyUI 中确认无红色缺失节点 → 文件名不一致是典型失败点。</td></tr>
+    <tr><td class="k">作者明示</td><td><b>ffmpeg 缺失 → 接镜断链。</b>接镜依赖「抽尾帧 + 拼接」，作者给出三级解析顺序与三平台安装方式，说明这一步被真实踩过。</td></tr>
+    <tr><td class="k">作者明示</td><td><b>工作台能开但对话/配置失败</b> → 多半是 :8000 的 API 没起来；可用 <code>VITE_HERMES_API_BASE</code> 覆盖。</td></tr>
+    <tr><td class="k">本文推断</td><td>显存不足会表现为「长镜头生成不完整或直接爆显存」，进而使「尾帧接镜」拿到残缺尾帧，产生画面跳变。<b>此为推断，作者未在此仓库说明。</b>建议先用最短时长、最低分辨率渲通一镜再加码。</td></tr>
+  </table>
+
+  <h3 class="sec">13｜中国用户能不能直接做？</h3>
+  <table class="stack">
+    <tr><td class="k">国内访问</td><td><span class="repro hard">有限制</span>　GitHub 克隆需代理或镜像加速；ComfyUI 与模型权重体积大，下载是主要障碍。</td></tr>
+    <tr><td class="k">注册</td><td>无平台注册需求（本机运行）。若接 LLM，ModelScope / 百炼需实名注册，均属常规流程。</td></tr>
+    <tr><td class="k">API</td><td>对话 LLM 建议走<b>国产端点</b>（README 明示支持 ModelScope、通义百炼 Qwen、DeepSeek、Moonshot、Ollama）；视频侧<b>不调远程 API</b>，全部本地渲染。</td></tr>
+    <tr><td class="k">成本</td><td><b>软件 0 元</b>（Apache-2.0 + MIT）。<b>但硬件不是 0 元</b>：需要能跑 MiniMax H3 的显卡（作者<b>未给出最低显存要求</b>，本文不编造）。对话部分若用 ModelScope 免费额度或本机 Ollama，可压到接近 0。</td></tr>
+    <tr><td class="k">技术门槛</td><td><span class="repro dev">开发者级</span>　需要 Python 环境、命令行、ComfyUI 自定义节点安装、模型文件管理、ffmpeg。README 也提醒：请使用自有剧本与授权素材。</td></tr>
+    <tr><td class="k">最短路径</td><td>若只想要「方法论」而非「出片」：<b>单独把 skills/0xsline-short-drama 拿出来用</b>（MIT，纯文本方法论 + 命令），配任意国产模型即可产出选题、分集目录与前几集剧本——<b>这条路径不需要显卡</b>。</td></tr>
+  </table>
+
+  <h3 class="sec">14｜国产替代方案</h3>
+  <p><b>原方案：</b>ComfyUI + MiniMax H3 Ref2VA（本地渲染）；对话 LLM 可选 OpenAI / Claude。</p>
+  <p><b>中国用户方案：</b></p>
+  <table class="stack">
+    <tr><td class="k">对话 LLM</td><td><b>官方支持（README 明示）</b>：ModelScope、通义百炼 Qwen、DeepSeek、Moonshot、本机 Ollama 均在列，且只要接口兼容 OpenAI 就能接。这是「已验证兼容」等级，不是理论替代。</td></tr>
+    <tr><td class="k">视频模型</td><td>本项目已选<b>国产模型</b>（MiniMax H3），因此不存在「要换成国产」的问题。若换成别的视频模型，需要重做 ComfyUI API 图与分镜接线——<b>属理论可行、未见验证</b>。</td></tr>
+    <tr><td class="k">编排层</td><td>ComfyUI 为开源工具，非「海外商业服务」，在国内可正常使用；无强制替代需求。</td></tr>
+    <tr><td class="k">编辑器</td><td>作者注明「Skill 不绑死某一款编辑器」，并提供 Cursor 技能链接脚本 → <b>可迁移到 TRAE / 通义灵码 / CodeBuddy 等国产 IDE 的 Skill 目录，但作者未提供对应脚本，属本文推断。</b></td></tr>
+  </table>
+
+  <h3 class="sec">15｜中国企业可以怎么用？</h3>
+  <p><b>企业场景 1｜短剧 / 微短剧制作公司：把「剧本立项」变成一条可审的流水线。</b>现实痛点不是「AI 能不能写」，而是产能与一致性：一部剧 50–100 集，编剧团队最大的成本是「设定漂移」——第 30 集的人物性格和第 3 集对不上。本案例的系列设定 + 角色档案 + 分集目录结构，正是把「设定」显式化、可版本化，让后续集数只能继承、不能随意发挥。<b>可先用「无显卡」的文本半段落地</b>：立项与写集不依赖渲染，投入极低。</p>
+  <p><b>企业场景 2｜品牌内容团队：把「分镜表」变成可交付物。</b>本项目产出的分镜任务表（含角色图/音色引用）本身就是一份标准化的制片文档。即便渲染外包给供应商，分镜表 + 定妆图 + 尾帧接镜规则也能显著降低沟通成本与返工率。</p>
+  <p><b>企业场景 3｜出海短剧 / 本地化：把「海外格式导出」当成一等需求。</b>编剧 Skill 里存在 <code>/export</code> 与 <code>/overseas</code> 两条命令（导出与海外格式），说明该方法论已考虑交付格式问题。对做出海短剧的团队，这意味着「一套设定 → 多平台格式」的雏形。</p>
+  <div class="truth"><b>反面提醒：</b>本案例的作者<b>未提供任何企业客户、产能数据或商业结果</b>。以上三个场景是<b>基于公开结构的可行性分析</b>，不是已验证案例。企业引入前应先跑通「文本半段」并自行评估产线适配成本。</div>
+
+  <h3 class="sec">16｜中国消费者可以怎么用？</h3>
+  <ol>
+    <li><b>个人短剧创作者：</b>用编剧 Skill 的 8 份方法论（钩子、开篇、节奏曲线、爽感矩阵、付费点、反派设计）当作「写作检查表」——即使不出片，也能显著提高剧本的留存设计质量。这是零成本用法。</li>
+    <li><b>「一人工作室」：</b>把「立项 → 写集 → 定妆 → 出片」做成个人产线，做出前几集给平台或投流方看样片。轻量路径是不渲全片，只渲关键 3–5 镜做样片。</li>
+    <li><b>AI 内容学习者：</b>把它当作「有状态 Agent」的学习样本——分层记忆、续跑点、增量失效，这三个概念比任何「出片 Demo」都更通用。</li>
+  </ol>
+
+  <h3 class="sec">17｜如何变成一个赚钱的项目？</h3>
+  <ul>
+    <li><b>产品化：</b>把「立项 + 分集目录 + 前 10 集剧本」包装成标准化交付物（例如一份可评审的立项包），本质是把技能变成「按时交付的策划服务」，而不是卖软件。</li>
+    <li><b>服务化：</b>做「短剧前期开发外包」——客户给一句话与题材，你给系列设定、角色档案、分集目录与首集剧本。<b>这一步不需要显卡，是当下最现实的服务切口。</b></li>
+    <li><b>咨询化：</b>帮有编剧团队的公司建立「设定版本管理」流程：什么该写进系列设定、什么该写在单集、改设定时的重做范围如何界定。这是纯粹的流程咨询，价值在于减少返工。</li>
+    <li><b>培训化：</b>把 8 份方法论 references 拆成一门「微短剧留存设计」课（钩子 → 开篇 → 节奏 → 付费点），配现场 Demo。素材已在 MIT 许可下公开，可合法引用（需保留版权声明）。</li>
+    <li><b>内容化：</b>复现过程的踩坑（ComfyUI 节点缺失、模型文件名不一致、尾帧接镜跳变）本身是高需求内容——这类「排错型教程」的收藏率通常高于「效果展示」。</li>
+    <li><b>行业化：</b>把同一套结构迁移到其他「系列化内容」：连载漫画分镜、教育课程视频、企业产品演示系列、有声书配图。</li>
+  </ul>
+
+  <h3 class="sec">18｜变现路径</h3>
+  <table class="stack">
+    <tr><td class="k">路径</td><td class="k">客户</td><td class="k">产品/服务</td><td class="k">收费方式</td><td class="k">难度</td></tr>
+    <tr><td>策划服务</td><td>短剧公司 / MCN</td><td>立项包 + 分集目录 + 首集剧本</td><td>按项目 / 按集</td><td>中</td></tr>
+    <tr><td>知识库培训</td><td>编剧 / 内容团队</td><td>微短剧留存设计课（钩子/节奏/付费点）</td><td>按人 / 按场</td><td>低</td></tr>
+    <tr><td>流程咨询</td><td>有编剧团队的企业</td><td>设定版本管理 + 重做范围界定</td><td>项目制</td><td>高</td></tr>
+    <tr><td>私有化部署</td><td>有显卡的内容公司</td><td>本地出片流水线搭建与调优</td><td>项目制 + 运维</td><td>高</td></tr>
+    <tr><td>内容/IP</td><td>AI 学习者 / 创作者</td><td>复现教程、排错手册、社群</td><td>订阅 / 课程</td><td>低</td></tr>
+  </table>
+  <p><b>重要声明：</b>上表为<b>基于案例结构推导的潜在变现路径</b>，不构成任何收益承诺。本案例<b>没有已验证的商业结果</b>（作者未披露）。上文已如实区分：<b>「已验证」= 无</b>；<b>「推导」= 全部</b>。</p>
+
+  <h3 class="sec">19｜如果我是一个中国独立开发者</h3>
+  <p>前提：1 个人、预算有限、有基础编程能力、使用国产模型。<b>先说结论：不要在 7 天内碰「本地出片」，先做能交付文本的 MVP。</b></p>
+  <div class="flow">
+    <div class="node"><b>Day 1｜选题验证。</b>把 <code>skills/0xsline-short-drama</code>（MIT）与 8 份 references 通读，选定 1 个赛道（如逆袭 / 战神 / 年代 / 豪门）。产出：赛道选择理由 + 3 个备选选题。</div>
+    <div class="arrow">↓</div>
+    <div class="node"><b>Day 2｜跑通「立项」半段。</b>用任意国产模型（DeepSeek / Qwen / ModelScope）按 Skill 的方法论产出 1 份系列设定：世界观、角色档案、分集目录（先写 20 集目录）。<b>不装 ComfyUI。</b></div>
+    <div class="arrow">↓</div>
+    <div class="node"><b>Day 3｜写前 3 集。</b>按单集格式写 ep001–ep003，重点检查钩子位置、每集结尾的付费/追更动机、反派推进。</div>
+    <div class="arrow">↓</div>
+    <div class="node"><b>Day 4｜做「检查表」，而不是靠感觉。</b>把 references 里的开篇规则、节奏曲线、爽感矩阵整理成一张可勾选的验收表，逐项给前 3 集打分，标出不合格项。</div>
+    <div class="arrow">↓</div>
+    <div class="node"><b>Day 5｜补「合规」这一环。</b>按其 compliance-checklist 过一遍内容风险点。这一步在国内是刚需，也是最容易被忽视的一环。</div>
+    <div class="arrow">↓</div>
+    <div class="node"><b>Day 6｜做一份「样片替代品」。</b>没有显卡就不要渲全片：用定妆图 + 分镜表 + 2 个关键镜头的静态画面（甚至只是分镜描述）做成一份可评审的 PDF/网页，让客户看到「这部剧长什么样」。</div>
+    <div class="arrow">↓</div>
+    <div class="node"><b>Day 7｜找 3 个客户验证付费意愿。</b>把「立项包 + 前 3 集 + 分集目录（20 集）」当作交付物去问短剧团队 / MCN / 独立制片人：这份东西值多少钱、缺什么。<b>第 7 天的产出不是产品，是反馈。</b></div>
+  </div>
+  <p><b>为什么这样排：</b>第 5–6 天之前的所有工作都不依赖显卡，可在一台普通笔记本上完成；而渲染链路的搭建（ComfyUI + 几十 GB 权重）在预算有限时属于高风险投入，应等验证付费意愿之后再上。这是本文的排期建议，不是作者方案。</p>
+
+  <h3 class="sec">20｜如何迁移到其他行业</h3>
+  <div class="migrate">
+    <div class="m"><b>① 连载漫画 / 条漫</b>把「系列设定 → 角色档案 → 分集目录」映射为「作品设定 → 人设卡 → 分话脚本」；尾帧接镜换成page-to-page 的连续性检查。</div>
+    <div class="m"><b>② 教育课程视频</b>把「分集」换成「课时」，把「定妆图」换成「讲师形象与课件模板」，把「付费点设计」换成「学习动机与测验点设计」。</div>
+    <div class="m"><b>③ 企业产品演示系列</b>同一产品做多版本 / 多语种演示片：系列设定承担「品牌调性」，分集承担「功能模块」，一致性要求比短剧更高。</div>
+    <div class="m"><b>④ 有声书 / 播客视觉化</b>角色音色引用（voices/<code>{角色}.wav</code>）这一设计可直接迁移为「多角色配音 + 配图」的连续内容生产。</div>
+    <div class="m"><b>⑤ 电商短视频脚本</b>「分集目录」变成「选题排期」，「付费点」变成「转化钩子（第几秒讲价格、第几秒讲优惠）」。</div>
+    <div class="m"><b>⑥ 出海内容本地化</b>利用其 <code>/overseas</code> 导出能力，把一套设定适配多语言发布格式。</div>
+  </div>
+
+  <h3 class="sec">21｜培训课程设计</h3>
+  <div class="course">
+    <table>
+      <tr><td class="k">课程名称</td><td>《微短剧留存设计与人机协作写作》——从钩子到付费点的可执行方法论</td></tr>
+      <tr><td class="k">适合人群</td><td>短剧编剧 / 内容策划 / MCN 内容团队 / 想进入短剧行业的个人创作者；<b>不需要编程基础</b></td></tr>
+      <tr><td class="k">建议时长</td><td>半天（3.5 小时），可拆成 2 次</td></tr>
+      <tr><td class="k">30 分钟 Demo</td><td>现场输入一句话点子 → 产出系列设定 + 分集目录（20 集）→ 写第 1 集；重点是让学员看到「结构在哪一步被固定下来」</td></tr>
+      <tr><td class="k">60 分钟 Workshop</td><td>学员分 3–4 组，各写 1 个选题的立项包 + 前 3 集，互评打分（用节奏曲线与爽感矩阵当评分卡）</td></tr>
+      <tr><td class="k">半天课程</td><td>钩子设计（45min）→ 开篇与前 3 集留存（45min）→ 节奏与爽感矩阵（45min）→ 付费点设计（45min）→ 合规清单与红线（30min）</td></tr>
+      <tr><td class="k">课程目标</td><td>学员最终能够：① 独立产出可评审的立项包；② 用检查表而非感觉判断剧本留存设计质量；③ 用 AI 协作把「想点子 → 摊成 20 集」的耗时显著压缩</td></tr>
+      <tr><td class="k">现场 Demo</td><td>立项 → 分集目录 → 单集剧本 全流程；<b>不演示出片</b>（避免把课堂变成环境安装现场）</td></tr>
+      <tr><td class="k">学员练习</td><td>给自己的选题写 3 集剧本 + 自评表</td></tr>
+      <tr><td class="k">课后作业</td><td>完成 10 集分集目录 + 2 集剧本，并提交合规自查表</td></tr>
+      <tr><td class="k">企业迁移</td><td>把检查表替换为企业自己的题材库与审稿标准，形成内部「剧本立项规范」</td></tr>
+    </table>
+  </div>
+
+  <h3 class="sec">22｜培训师点评</h3>
+  <div class="trainer"><b>真正值得教的是什么？</b>不是「AI 能出片」，而是「把一件长周期创作拆成能验证的步骤，并让每一步的产物可被下一个人接手」。付费点被当成一等公民、设定被显式版本化、重做范围被精确圈定——这三件事放到任何内容产线都成立。</div>
+
+  <h3 class="sec">23｜最终判断</h3>
+  <div class="verdict">
+    <div class="v"><div class="k">落地性</div><div class="val lv-m">中</div></div>
+    <div class="v"><div class="k">中国市场相关性</div><div class="val lv-h">高</div></div>
+    <div class="v"><div class="k">商业价值</div><div class="val lv-h">高</div></div>
+    <div class="v"><div class="k">复现难度</div><div class="val lv-m">高（硬件端）</div></div>
+    <div class="v"><div class="k">变现潜力</div><div class="val lv-h">高</div></div>
+  </div>
+  <p><b>说明：</b>「落地性 = 中」的原因是视频渲染依赖自备显卡与数十 GB 权重；但<b>文本半段（立项 / 写集 / 方法论）落地性为高且零硬件门槛</b>，所以本案例的落地价值应按「两条路径」分别理解。「商业价值」高，来自微短剧本身就是一个成熟且付费意愿强的内容市场。「复现难度」在文档完整度上不高（README 步骤清晰），但在环境搭建上偏高。</p>
+</div>
+
+<!-- ===================== 案例 02 ===================== -->
+<div class="card" id="case02">
+  <div class="card-head">
+    <div class="num">02</div>
+    <h2>用 Dify + faster-whisper + Qdrant 把抖音 / 小红书 / B站视频变成可问答知识库：异步入库、5 道质量闸门、零 API 成本</h2>
+  </div>
+  <div class="badges">
+    <span class="badge b-cat">AI Automation / Dify</span>
+    <span class="badge b-cat">AI Research / 知识库</span>
+    <span class="badge b-cat">全本地 · 零 API 成本</span>
+    <span class="badge b-date">窗口内建仓 10-08 19:05</span>
+    <span class="badge b-tag">Python / MIT（见说明）</span>
+    <span class="badge b-warn">1 Star、作者身份无法确认、数据均为自述</span>
+  </div>
+
+  <div class="oneliner">
+    <b>一句话结论：</b>它最有价值的部分不是「把视频转成文字」，而是那条被真实踩出来的工程判断——<b>Dify 同步工作流 60 秒超时，所以长视频入库必须拆成「受理 + 后台异步」</b>，以及一套「怎么知道它坏了」的质量闸门。
+  </div>
+
+  <h3 class="sec">01｜案例是什么？</h3>
+  <p>一个面向中文短视频平台的知识库入库流水线：你把抖音 / 小红书 / B站 的<b>视频链接</b>丢进 Dify 的一个对话框，系统自动判断你是「要入库」还是「要提问」，入库时先回一句「收到，任务编号 xxx」，然后在后台把视频下载、抽音频、用 <b>faster-whisper</b> 本地转写、用 LLM 分块纠错、做合规过滤、切成向量存进 <b>Qdrant</b>；之后你就可以直接提问，答案带来源标注。<b>整套 ASR 与向量检索都在本机跑，作者标注为零 API 成本</b>。作者给出的实测是：11 分 37 秒的视频，从粘贴链接到可以提问耗时 <b>147.2 秒</b>（该数据为作者自述，无法独立验证）。</p>
+
+  <h3 class="sec">02｜为什么今天值得关注？</h3>
+  <ul>
+    <li><b>窗口内的事实（可核实）：</b>仓库首次提交在 <b>2026-10-08 19:05（北京时间）</b>，建仓时间 10-08 19:40，末次推送 10-08 22:22。窗口内提交包含 <code>feat: 质量保障层 + B站分P + 内容去重 + 评测体系</code>、重做架构图（加入质量保障层）、补齐技术文档「坑 27–33」。也就是说：<b>它是一个在窗口内被集中补全到「可交付」状态的工程</b>。</li>
+    <li><b>为什么以前不容易做：</b>「视频 → 知识库」这个需求长期存在，但三座山挡着：① 语音转写要钱（云 ASR 按分钟计费），转 100 条视频的成本不可忽略；② 长视频入库慢，而 Dify 的工作流是<b>同步</b>的、默认超时 60 秒，长视频<b>必然失败</b>；③ 转写稿质量参差——口头语噪音、专名被「纠错」改错、LLM 输出被 max_tokens 截断导致内容整段丢失，而<b>没有任何机制告诉你它坏了</b>。</li>
+    <li><b>为什么现在变得容易：</b>① faster-whisper 让本地 ASR 到了一台普通机器可用的程度；② Ollama 提供了本地 embedding（本案例用 nomic-embed-text）与本地 LLM 选项；③ Dify 提供了可视化的意图分流 + 知识库混合检索，把「工程」压缩成「编排」；④ 也是最重要的：<b>有人把「怎么知道它坏了」这件事做成了 5 道闸门与 3 层评测</b>，这才是从 Demo 到可交付的分界线。</li>
+    <li><b>为什么值得花时间：</b>「AI + 内容 / Research」方向在中文一手来源里长期被内容农场占据（大量复读式「10 个工具」），而这份材料是<b>带评测集、带基线、带 30+ 条踩坑记录的工程复盘</b>，且主动处理了合规问题。这类一手程度在近期很少见。</li>
+  </ul>
+
+  <h3 class="sec">03｜案例的前世今生</h3>
+  <p><b>前世。</b>「让内容可被检索」的第一代方案是人工做笔记：看完视频，手打摘要。第二代是平台自带的字幕 / 文字稿，但它不可检索、不可跨视频提问。第三代是「云 ASR + 向量库」的组合，问题在于按量付费与同步阻塞——转一条 10 分钟视频等几分钟，转 100 条就是几小时与一笔账单，而且要自己盯着有没有转错。<b>更根本的问题是「信任」：转写稿错了，你不知道，检索结果就一直是错的。</b></p>
+  <p><b>发展。</b>四条线汇合：① faster-whisper 把 ASR 从「云服务」变成「本机函数」，边际成本归零；② 分块 + map-reduce 的纠错范式出现，让 LLM 能处理长转写稿而不会被上下文截断；③ Dify 把「意图分流 + 知识库检索」变成可视化编排，使「对话式入库」成为可能；④ 音频指纹去重、专名漂移检查这类<b>质量工程</b>手段开始被引入个人项目。</p>
+  <p><b>今生。</b>这个项目没有发明任何新技术，它做的是<b>把「一次性转写」升级成「可运营的知识库入库服务」</b>：把入库拆成独立进程（零依赖 Python 标准库 http.server，端口 8090，<code>POST /ingest</code> 立刻返回 202 + job_id，后台线程跑完整链路），并给出任务状态机（queued → running，进度 5% 下载 / 25% 转写 / 60% 纠错 / 80% 入库 → done / failed），任务落盘（<code>_ingest-jobs.json</code>）以便重启后历史仍在。窗口内它补齐了评测体系、去重与架构图——也就是<b>把「我知道它能跑」变成了「我知道它什么时候坏」</b>。</p>
+  <p><b>下一步可能怎么发展（分析 / 推演）。</b>① 从「个人知识库」走向「团队知识库」需要一个权限模型（谁能问、谁能入库、什么内容不该入库）——目前是单机单库。② 「质量闸门」这套思路很有机会被抽成独立组件，用于其他长文本 LLM 流水线（合同、论文、会议记录）。③ 一旦素材规模上千，检索侧需要增量索引与主题治理。以上为推演，非事实。</p>
+
+  <h3 class="sec">04｜原始资料</h3>
+  <ul class="src-list">
+    <li><span class="src-type">开源仓库</span>hy3630667/video-to-knowledge-base（首提交 2026-10-08 19:05 北京时间）<br><a href="https://github.com/hy3630667/video-to-knowledge-base" target="_blank" rel="noopener">https://github.com/hy3630667/video-to-knowledge-base</a></li>
+    <li><span class="src-type">一手文档</span>README（实测性能表、架构图、合规设计、导入注意事项）<br><a href="https://github.com/hy3630667/video-to-knowledge-base/blob/main/README.md" target="_blank" rel="noopener">…/blob/main/README.md</a></li>
+    <li><span class="src-type">一手文档</span>docs/技术文档.md（作者称含 30+ 条真实踩坑，含源码行号）<br><a href="https://github.com/hy3630667/video-to-knowledge-base/blob/main/docs/%E6%8A%80%E6%9C%AF%E6%96%87%E6%A1%A3.md" target="_blank" rel="noopener">…/blob/main/docs/技术文档.md</a></li>
+    <li><span class="src-type">一手文档</span>docs/质量保障层.md（5 道闸门 / 专名漂移 / 内容去重 / 评测体系）<br><a href="https://github.com/hy3630667/video-to-knowledge-base/blob/main/docs/%E8%B4%A8%E9%87%8F%E4%BF%9D%E9%9A%9C%E5%B1%82.md" target="_blank" rel="noopener">…/blob/main/docs/质量保障层.md</a></li>
+    <li><span class="src-type">工作流</span>两个 Dify 工作流 DSL 可直接导入（转写稿纠错 / 视频知识库问答）<br><a href="https://github.com/hy3630667/video-to-knowledge-base/tree/main/workflows" target="_blank" rel="noopener">…/tree/main/workflows</a></li>
+    <li><span class="src-type">评测</span>evaluation/（评测集、基线、路由测试集与打分脚本）<br><a href="https://github.com/hy3630667/video-to-knowledge-base/tree/main/evaluation" target="_blank" rel="noopener">…/tree/main/evaluation</a></li>
+    <li><span class="src-type">测试</span>tests/（6 个测试文件：内容去重 / 评测打分 / B站管线 / 分块 / 纠错 / 专名漂移）<br><a href="https://github.com/hy3630667/video-to-knowledge-base/tree/main/tests" target="_blank" rel="noopener">…/tree/main/tests</a></li>
+    <li><span class="src-type">主脚本</span>scripts/one-click-pipeline.py 与 scripts/ingest-service.py（零依赖入库服务）<br><a href="https://github.com/hy3630667/video-to-knowledge-base/tree/main/scripts" target="_blank" rel="noopener">…/tree/main/scripts</a></li>
+    <li><span class="src-type">可交互架构图</span>docs/架构图.html（含明暗主题 / 语义视图 / 导出）<br><a href="https://github.com/hy3630667/video-to-knowledge-base/blob/main/docs/%E6%9E%B6%E6%9E%84%E5%9B%BE.html" target="_blank" rel="noopener">…/blob/main/docs/架构图.html</a></li>
+    <li><span class="src-type">上游依赖</span>Dify 自托管部署文档（本案例的运行前提）<br><a href="https://docs.dify.ai/getting-started/install-self-hosted" target="_blank" rel="noopener">https://docs.dify.ai/getting-started/install-self-hosted</a></li>
+    <li><span class="src-type">上游依赖</span>抖音 / TikTok 下载 API（作者指定镜像 V4.1.2）<br><a href="https://github.com/evil0ctal/douyin_tiktok_download_api" target="_blank" rel="noopener">https://github.com/evil0ctal/douyin_tiktok_download_api</a></li>
+    <li><span class="src-type">上游依赖</span>小红书下载器（作者列为可选）<br><a href="https://github.com/JoeanAmier/XHS-Downloader" target="_blank" rel="noopener">https://github.com/JoeanAmier/XHS-Downloader</a></li>
+  </ul>
+
+  <h3 class="sec">05｜作者是谁？</h3>
+  <ul>
+    <li><b>账号：</b><code>hy3630667</code>。账号注册于 2023-06-16，<b>无昵称、无简介、无博客、无公司字段，公开仓库仅 1 个、关注者 0</b>。</li>
+  </ul>
+  <div class="truth"><b>身份无法确认——本文不做任何推测。</b>既不推断其为某公司员工，也不推断其为「新号」。可以确认的只有：该账号下这个仓库包含 58 个文件、6 个测试文件、独立的评测集与基线文件、以及两份系统级文档（技术文档 / 质量保障层）与一次架构图重做提交记录。<b>这些是工程痕迹，不是身份证明。</b>请读者把它当作「一份写得非常细的技术材料」来评估，而不是当作「一个可信赖的主体」来信任。</div>
+
+  <h3 class="sec">06｜解决了什么真实问题？</h3>
+  <p>先看需求，不看技术。</p>
+  <p><b>需求一（个人学习者）：视频里的知识「不可回查」。</b>作者对痛点的描述非常具体：「看技术视频时想回看某个点，得拖进度条一段段找。11 分钟的视频，想定位到『他讲显存那段』，基本靠运气。」这不是「想要 AI」，而是<b>想要一个能按语义找时间的搜索框</b>——而平台不提供这个功能。</p>
+  <p><b>需求二（内容 / 培训团队）：素材散落，无法跨视频检索。</b>几十个课程视频、直播回放、选题参考躺在收藏夹里，人和人之间的知识传递方式是「你再去看一遍那个视频」。把视频统一入库后，一次提问可以跨视频取答案并标注来源。</p>
+  <p><b>需求三（被大多数人忽略的）：怎么知道它坏了？</b>这是这个项目真正与众不同的地方。作者的表述是：质量保障层「不参与数据流，只回答一个问题：<b>怎么知道它坏了</b>」。5 道闸门各自治一类具体病：规则清洗治 ASR 句首口头语；分块 map-reduce 纠错治「LLM 输出被 max_tokens 截断导致内容全丢」；<b>校验闸门（真检查）</b>治「有标题但标题下没内容」的假通过并<b>拒绝入库</b>；专名漂移检查治「LLM 纠错反而把正确专名改错（Act → Actor）」；内容去重（音频指纹）治同一节课被重复投稿按链接入库两次。<b>这四类病，恰恰是所有「视频转知识库」教程都不会提的。</b></p>
+
+  <h3 class="sec">07｜完整技术栈</h3>
+  <table class="stack">
+    <tr><td class="k">LLM</td><td>工作流 DSL 中写明使用 <b>DeepSeek</b>（<code>langgenius/deepseek/deepseek</code> 与 <code>deepseek-flash</code>），作者在导入说明中要求「改选你有的模型」。作者同时给出本地选项（Ollama）。</td></tr>
+    <tr><td class="k">ASR</td><td><b>faster-whisper</b>（本机运行）。作者特别说明：faster-whisper 1.1.0 / 1.2.1 存在 PyAV 兼容 bug，因此单独写了 <code>test-asr2.py</code>，「用 ffmpeg 自己抽音频、转成 numpy 数组直接喂模型，绕过了 <code>decode_audio</code>」。</td></tr>
+    <tr><td class="k">向量库</td><td><b>Qdrant</b>（README 摘要口径为「全本地」）。知识库检索配置为 <b>混合检索</b>：<code>hybrid_search</code> + <code>reranking_mode: weighted_score</code>，向量权重 0.5 / 关键词权重 0.5，<code>top_k: 10</code>。</td></tr>
+    <tr><td class="k">Embedding</td><td><b>Ollama + nomic-embed-text</b>（作者指定）</td></tr>
+    <tr><td class="k">编排平台</td><td><b>Dify</b>（自托管）——负责意图分流、链接提取、HTTP 受理、知识库检索与作答；两个工作流以 DSL 形式提供</td></tr>
+    <tr><td class="k">入库服务</td><td>独立进程，<b>零第三方依赖</b>（仅 Python 标准库 <code>http.server</code>），端口 8090。端点：<code>POST /ingest</code>（202 + job_id）、<code>GET /jobs/&lt;id&gt;</code>、<code>GET /jobs</code>、<code>GET /health</code>（五项依赖健康检查）。任务状态落盘 <code>_ingest-jobs.json</code>。</td></tr>
+    <tr><td class="k">抓取</td><td>抖音：<code>evil0ctal/douyin_tiktok_download_api:V4.1.2</code>（Docker，:8080）；小红书：<code>JoeanAmier/XHS-Downloader</code>（API 模式，:5556，可选）；B站：管线内支持，且窗口内新增「多分P」处理</td></tr>
+    <tr><td class="k">音频处理</td><td>ffmpeg（抽音频 / 降噪）；音频指纹（内容去重）</td></tr>
+    <tr><td class="k">语言</td><td>Python（主脚本与入库服务）+ Node（Dify 桥接脚本）+ PowerShell（Windows 启动脚本）</td></tr>
+    <tr><td class="k">部署</td><td>Docker（Dify + 抓取服务）+ 本机进程（入库服务、Ollama）。作者列出「Windows 11 实测」与 PS1 脚本，另有 Linux/macOS 路径。</td></tr>
+    <tr><td class="k">协议 / MCP</td><td>本案例<b>未使用 MCP</b>：Dify 与入库服务之间走的是 HTTP（<code>host.docker.internal:8090</code>）。这正是本案例的一个要点——<b>不是所有 Agent 化都需要 MCP，异步 HTTP 受理同样成立</b>。</td></tr>
+    <tr><td class="k">许可</td><td>README 与仓库结构标注 <b>MIT</b>（仓库根目录存在 LICENSE 文件）。<b>说明：</b>GitHub API 未能自动识别其许可证类型（返回 NOASSERTION），本文以仓库自述为准，未逐字核对 LICENSE 全文，特此标注。</td></tr>
+  </table>
+
+  <h3 class="sec">08｜完整 Workflow</h3>
+  <p><b>路径 A：对话式入库（作者原文的架构图结构）</b></p>
+  <div class="flow">
+    <div class="node"><b>① 员工只面对一个对话框</b>　粘贴视频链接，或直接提问——没有第二个入口</div>
+    <div class="arrow">↓</div>
+    <div class="node"><b>② 意图判断（LLM 输出 1 / 2 / 3）</b>　1 = 查库　2 = 直答（闲聊）　3 = 入库</div>
+    <div class="arrow">↓</div>
+    <div class="node"><b>③ 分支：3 = 入库</b>　代码节点用正则提取 URL → HTTP 节点 POST 到 <code>host.docker.internal:8090/ingest</code> → 立即返回 <b>202 + job_id</b>（<b>不等</b>）→ 组装话术回复「收到，任务编号 xxx」</div>
+    <div class="arrow">↓</div>
+    <div class="node"><b>④ 入库服务（独立进程 :8090，不随 Docker 启停）</b>　后台线程跑完整链路，任务状态机 <code>queued → running(5% 下载 → 25% 转写 → 60% 纠错 → 80% 入库) → done / failed</code>；状态落盘，重启后历史仍在</div>
+    <div class="arrow">↓</div>
+    <div class="node"><b>⑤ 链接解析 → 视频下载（支持 B站多分P）→ 音频提取（含降噪）</b></div>
+    <div class="arrow">↓</div>
+    <div class="node"><b>⑥ 音频指纹去重</b>　同一节课的重复投稿按链接入库两次 → 拦住</div>
+    <div class="arrow">↓</div>
+    <div class="node"><b>⑦ 语音转文字（faster-whisper）→ 规则清洗（句首口头语）</b></div>
+    <div class="arrow">↓</div>
+    <div class="node"><b>⑧ 分块 map-reduce 纠错 + 校验闸门 + 专名漂移检查</b>　纠错输出分节；校验闸门发现「有标题没内容」的假通过 → <b>拒绝入库</b></div>
+    <div class="arrow">↓</div>
+    <div class="node"><b>⑨ 合规过滤 + 事实摘录</b>　只保留「知识点 / 问答对 / 关键参数摘录（≤700 字）」，<b>丢弃他人完整原文</b></div>
+    <div class="arrow">↓</div>
+    <div class="node"><b>⑩ 切片向量化（Ollama nomic-embed-text）→ 元数据入库（Qdrant）</b>　同时写入「主题」元数据字段供过滤</div>
+  </div>
+  <p><b>路径 B：提问（作者原文的架构图结构）</b></p>
+  <div class="flow">
+    <div class="node"><b>① 意图 = 1（查库）</b>　把用户问题<b>改写为检索式</b> → 判断主题</div>
+    <div class="arrow">↓</div>
+    <div class="node"><b>② 混合检索（向量 + 关键词）+ 主题过滤</b></div>
+    <div class="arrow">↓</div>
+    <div class="node"><b>③ 评估「够不够」</b>　够 → 作答；不够 → <b>换角度重检</b>（而不是硬答）</div>
+    <div class="arrow">↓</div>
+    <div class="node"><b>④ 作答 + 标注来源</b>　作者给出的验收项里包含「防幻觉：问知识库里没有的内容 → 正确回答『没有』并引导入库」</div>
+  </div>
+
+  <h3 class="sec">09｜它到底是怎么实现的？</h3>
+  <p>三个机制值得单独讲（均来自作者文档自述）：</p>
+  <p><b>机制一：异步受理，把「重活」移出同步工作流。</b>这是本案例最有迁移价值的一条工程判断。作者把两条约束摆在一起：① 员工不会用命令行 → 入库必须走对话；② 入库慢到不能同步等（11 分钟视频要 147 秒，而 Dify 工作流默认 60 秒超时）→ 必须有异步。<b>两条约束合起来只剩一条路：Dify 只做「受理 + 回执」，真正的重活在外面跑。</b>于是入库被拆成独立进程，用 202 + job_id 立刻应答。还有一个细节值得学：<b>作者刻意没有为 4 个端点引入 FastAPI</b>，理由是「机器上没装，而服务只有 4 个端点……为了 4 个端点去装一个框架、还会污染 Python 环境，不划算」。<b>这是很罕见的、反「技术堆料」的取舍。</b></p>
+  <p><b>机制二：质量保障层与数据流解耦。</b>质量层「不参与数据流，只回答一个问题：怎么知道它坏了」。5 道闸门对应 5 类具体故障（口头语 / 截断 / 假通过 / 专名漂移 / 重复入库）。这里最关键的是<b>校验闸门是 fail-closed 的</b>——发现「有标题但标题下没内容」就直接拒绝入库，而不是写进去再说。作者用一句话点了要害：<b>「怎么知道它坏了」比「怎么让它跑起来」更难，也更能决定这个系统能不能被信任。</b></p>
+  <p><b>机制三：合规不是声明，是数据流设计。</b>作者搬出著作权法的「思想 / 表达二分法」：结构、知识点是「思想」不受保护；他人具体说的话是「表达」受保护。据此把纠错输出改成三段式，<b>默认只入库「知识点 + 问答对 + 关键参数摘录」，丢弃「校对稿」（他人完整原文）</b>。并给出三条限制防止变相保留全文：只摘含数值或已知参数名的句子（纯观点句不摘）、总长封顶 700 字、明确标注「原文摘录」。作者还特意指出一个反直觉结论：「就算是『只给一家公司内部用』也不构成豁免」。<b>另一个意外收获：去掉原文后检索反而更准——问答对的命中得分（0.489）比原文（0.455）还高。</b></p>
+  <div class="truth"><b>诚实提示（来自作者）与本文补充：</b>作者已明确标注哪些是自测数据（性能表、检索通过率、命中得分）。<b>本文补充：</b>这些数字均为作者单机自述，<b>无第三方复现，也无法独立验证</b>；评测集与基线文件虽在仓库中，但本文未实际运行。请按「作者自述」而非「已复现结论」引用。</div>
+
+  <h3 class="sec">10｜手把手复现</h3>
+  <p>作者给了三条路径（<b>以下 Step 序列整理自其 README「快速开始」，为作者原始步骤</b>）。<b>建议按 A → B → C 的顺序推进</b>，这与作者的路径划分一致。</p>
+  <p><b>路径 A｜只看代码和设计（作者原文，零部署）</b></p>
+  <ol>
+    <li><code>docs/技术文档.md</code>——作者自称「最有价值」：30+ 个真实踩坑记录，含源码行号</li>
+    <li><code>scripts/one-click-pipeline.py</code>（含大量「为什么这样做」注释）与 <code>scripts/ingest-service.py</code>（零依赖入库服务）</li>
+    <li><code>workflows/</code> 两个 Dify 工作流 DSL（可导入）</li>
+    <li><code>docs/架构图.html</code>（可交互）与 <code>samples/输出格式示例.md</code></li>
+  </ol>
+  <p><b>路径 B｜只跑通 ASR（作者原文，只需 Python + ffmpeg）</b></p>
+  <pre><code>pip install faster-whisper opencc numpy requests
+python scripts/test-asr2.py your-video.mp4 small
+# 输出：音频时长、转写耗时、实时倍率、带时间戳的转写结果</code></pre>
+  <p><b>路径 C｜跑通全链路（作者原文，需 Docker + Dify + Ollama）</b></p>
+  <pre><code># 1. 部署 Dify（官方 docker compose）
+#    见 https://docs.dify.ai/getting-started/install-self-hosted
+
+# 2. 部署抖音抓取服务
+docker run -d --name dtk-v4 -p 8080:80 --restart unless-stopped \
+  evil0ctal/douyin_tiktok_download_api:V4.1.2
+
+# 3. 部署小红书抓取（可选）
+#    https://github.com/JoeanAmier/XHS-Downloader
+#    python main.py API      # 监听 :5556
+
+# 4. 导入两个工作流（Dify 工作室 → 创建 → 导入 DSL → 选 workflows/*.yml）
+#    ⚠️ 导入后必须手工重选知识库
+
+# 5. 建知识库 + 把检索方式改成 hybrid_search
+
+# 6. 配模型：Embedding 用 Ollama + nomic-embed-text；LLM 用 DeepSeek（或改选你有的）
+
+# 7. 配置
+cp scripts/config.example.py scripts/config.py
+# 编辑 config.py 填入：Dify 地址、知识库 ID、工作流 app ID、ffmpeg 路径
+
+# 8. 命令行入库
+python scripts/one-click-pipeline.py "https://v.douyin.com/xxxxx/"
+
+# 或起入库服务（对话式入库用）
+cd scripts && ./入库服务.ps1        # Windows
+python ingest-service.py           # Linux / macOS</code></pre>
+
+  <h3 class="sec">11｜Prompt / Code / Config</h3>
+  <p><b>（A）导入工作流后「必须手工做的 7 件事」（作者原文，这是最有价值的一段操作说明）</b></p>
+  <table class="stack">
+    <tr><td class="k">1</td><td><b>重新选知识库</b>——Dify 导出 DSL 时会剥离 <code>dataset_ids</code>，必须在「知识检索」节点重选。</td></tr>
+    <tr><td class="k">2</td><td><b>重新选模型</b>——DSL 里写的是 DeepSeek；没配则节点显示「不兼容」。</td></tr>
+    <tr><td class="k">3</td><td><b>重建「主题判断」提示词</b>——DSL 里是模板占位符，需替换为知识库真实内容，作者<b>提供了脚本</b>：<code>node sync-topic-prompt.mjs --dry-run</code> / <code>--publish</code>。作者给出的实测教训：<b>手写的泛泛分类 4 题全错；改成从知识库自动生成后 0/4 → 4/4。</b>且「每次加新视频后都要重跑」。</td></tr>
+    <tr><td class="k">4</td><td><b>改元数据字段 ID</b>——DSL 里两处 <code>REPLACE_WITH_YOUR_TOPIC_METADATA_ID</code>。</td></tr>
+    <tr><td class="k">5</td><td><b>建「主题」元数据字段 + 给文档打标签</b>——作者直接给出 curl 命令（<code>POST /console/api/datasets/&lt;id&gt;/metadata</code> 建字段，<code>POST .../documents/metadata</code> 打标签）。</td></tr>
+    <tr><td class="k">6</td><td><b>知识库要开混合检索</b>（作者给出完整 JSON）：<code>search_method: hybrid_search</code>、<code>reranking_mode: weighted_score</code>、<code>reranking_enable: true</code>、<code>vector_weight 0.5 / keyword_weight 0.5</code>、<code>top_k 10</code>。<b>且作者特意警告：要改「知识库级」的 <code>retrieval_model</code>，改工作流节点没用——因为 Dify 的检索参数读的是知识库配置。</b></td></tr>
+    <tr><td class="k">7</td><td><b>允许 Dify 访问本机</b>——Dify 的 Squid 代理默认不允许访问内网，需在 <code>.env</code> 加白名单：<code>SSRF_PROXY_ALLOW_PRIVATE_IPS=172.19.0.250/32,192.168.65.254/32</code>；取 IP 用 <code>docker exec docker-api-1 getent ahosts host.docker.internal</code>（要用 IPv4）。</td></tr>
+  </table>
+  <p><b>（B）合规控制开关（作者原文）</b></p>
+  <pre><code># 默认（合规）：只留 知识点 + 问答对 + 事实摘录  —— 不设变量即可
+# 回退（三节全存，仅本地测试用）
+export KEEP_SECTIONS="校对稿,知识点,问答对"</code></pre>
+  <p><b>（C）入库服务的接口契约（作者原文）</b>：<code>POST /ingest</code> → <code>202 + {job_id, status:"queued"}</code>；<code>GET /jobs/&lt;id&gt;</code> → <code>{status, stage, progress, title, doc_id, logs}</code>；<code>GET /jobs</code> → 最近 20 个任务；<code>GET /health</code> → 逐项检查 Ollama / Dify / ffmpeg / node / 抓取服务。</p>
+  <div class="pitfall"><b>未公开的部分（本文不编造）：</b>完整的纠错提示词全文、主题判断提示词模板的实际内容、以及抓取层对平台反爬策略的处理细节，作者均未在 README 中展开（部分应在 <code>docs/技术文档.md</code> 内，本文未逐页摘录）。请勿以本文推测代替原文。</div>
+
+  <h3 class="sec">12｜踩坑</h3>
+  <p>作者自称技术文档含 30+ 条踩坑，README 中明示了以下几条（<b>均为作者原文，非本文推测</b>）：</p>
+  <table class="stack">
+    <tr><td class="k">坑 1</td><td><b>faster-whisper 的 PyAV 兼容 bug</b>：1.1.0 / 1.2.1 的 <code>av.open(..., metadata_errors=...)</code> 参数在某些 PyAV 版本上不存在 → 作者单写脚本，用 ffmpeg 抽音频转 numpy 绕过 <code>decode_audio</code>。</td></tr>
+    <tr><td class="k">坑 2</td><td><b>Dify 检索参数改错位置</b>：必须改知识库级 <code>retrieval_model</code>，改工作流节点无效。这是最容易「改了没效果」的坑。</td></tr>
+    <tr><td class="k">坑 3</td><td><b>主题判断靠提示词，提示词要与内容同步</b>：手写分类全错，从知识库自动生成后正确率反转；<b>新增视频后必须重跑同步脚本</b>，否则新视频判不出主题。</td></tr>
+    <tr><td class="k">坑 4</td><td><b>DSL 导出会剥离 dataset_ids 与模型绑定</b>：导入后必然要手工重配，这不是参数问题而是 Dify 的导出机制。</td></tr>
+    <tr><td class="k">坑 5</td><td><b>Dify 的 SSRF 代理拦截内网访问</b>：需要显式加白名单，且要用 IPv4（<code>getent ahosts</code> 会同时返回 IPv6）。</td></tr>
+    <tr><td class="k">坑 6</td><td><b>LLM 输出被 max_tokens 截断 → 内容整段丢失</b>：靠分块 map-reduce + 校验闸门兜住，否则「有标题没内容」会静默入库。</td></tr>
+    <tr><td class="k">坑 7</td><td><b>LLM 纠错会把正确专名改错</b>（原文举例 <code>Act</code> → <code>Actor</code>）：需要专门的漂移检查，不能盲信纠错。</td></tr>
+  </table>
+  <p>另有两条来自作者验收表格的自述结果：<b>「意图分流（该查库 / 该直答 / 该入库）8/8 正确」</b>与<b>「防幻觉测试：问知识库里没有的内容 → 正确回答『没有』并引导入库」</b>。这两条<b>均为作者自述，无法独立验证</b>。</p>
+
+  <h3 class="sec">13｜中国用户能不能直接做？</h3>
+  <table class="stack">
+    <tr><td class="k">国内访问</td><td><span class="repro hard">可行但需代理</span>　Dify / Qdrant / faster-whisper 均为可本地部署的开源件；GitHub 克隆与部分模型下载需代理或镜像。<b>运行过程本身不依赖任何境外服务。</b></td></tr>
+    <tr><td class="k">注册</td><td>无需任何平台注册（全本地）。若要用云 LLM（如 DeepSeek）则需常规实名注册；也可全程用 Ollama 本机模型做到零注册。</td></tr>
+    <tr><td class="k">API</td><td><b>不需要付费 API</b>：ASR 本地、Embedding 本地（Ollama nomic-embed-text）、向量库本地；仅「纠错 / 意图判断 / 作答」这一步需要 LLM，可用 DeepSeek 或本机 Ollama。<b>这是本案例对中国用户最友好的一点。</b></td></tr>
+    <tr><td class="k">成本</td><td>作者口径为<b>「全程零 API 成本」</b>。需注意这是<b>作者自述</b>，且前提是「本机跑 ASR + 本机 embedding」；若用云 LLM 做纠错，长视频会产生实际 token 费用（作者未给成本估算）。硬件侧需一台能跑 faster-whisper 的机器（CPU 亦可，只是更慢）。</td></tr>
+    <tr><td class="k">技术门槛</td><td><span class="repro dev">开发者级</span>　需要 Docker、Dify 自托管、Python 环境、多个本机服务（Ollama / 入库服务 / 抓取服务）联调；导入工作流后还有 7 项手工配置。作者也明说了这一点（把「只想看代码」列为推荐路径）。</td></tr>
+    <tr><td class="k">合规风险</td><td><span class="repro hard">需自行评估</span>　抓取他人视频并转写，涉及平台服务条款与著作权。作者已做了数据流层面的规避设计（丢弃原文、只存知识点与摘录），<b>但这不构成法律意见</b>；企业使用前应自行评估。</td></tr>
+  </table>
+
+  <h3 class="sec">14｜国产替代方案</h3>
+  <p><b>原方案：</b>Dify + faster-whisper + Qdrant + Ollama(nomic-embed-text) + DeepSeek。<b>注意：这套方案本身就高度国产化，需要替代的部分很少。</b></p>
+  <table class="stack">
+    <tr><td class="k">LLM</td><td><b>官方支持（DSL 内已用）</b>：DeepSeek。可换通义千问 / GLM / Kimi / 豆包，只要 Dify 里配了对应模型；<b>属 Dify 通用能力，非本案例专门验证</b>。</td></tr>
+    <tr><td class="k">Embedding</td><td>可换 <b>bge-m3 / bge-large-zh</b>（国产常用中文向量模型）或通义 embedding。<b>本文未验证与 Qdrant 配置签名的兼容性，属理论替代。</b></td></tr>
+    <tr><td class="k">ASR</td><td>可换 <b>FunASR / Paraformer（阿里达摩院开源，中文场景常用）</b>或通义听悟。<b>属理论替代，需自行替换管线中的转写步骤。</b></td></tr>
+    <tr><td class="k">编排平台</td><td>Dify 已是国产开源（langgenius），无需替代。若偏好其他，可迁移到 Coze / n8n，但需重做两个工作流。</td></tr>
+    <tr><td class="k">视频来源</td><td>本案例原生支持<b>抖音 / 小红书 / B站</b>三个国内平台，本身就是「中国本地化」的实现，无需替代。</td></tr>
+  </table>
+
+  <h3 class="sec">15｜中国企业可以怎么用？</h3>
+  <p><b>企业场景 1｜培训与知识管理团队：把内部直播 / 培训视频变成可检索资产。</b>企业每年产出大量培训直播与会议回放，命中率极低。用这套管线把视频转为可提问知识库，员工问「去年那场培训里讲的报销额度是多少」即可得到带来源的答案。<b>本案例的「关键参数摘录 ≤700 字」设计恰好适合这类「问数字、问参数」的高频企业问答。</b>需注意：涉及内部资料时应关闭对外抓取，只处理自有素材。</p>
+  <p><b>企业场景 2｜内容 / 电商团队：竞品与素材研究自动化。</b>把同类账号的公开视频批量入库，形成「竞品话术库」，用于选题与话术参考。<b>但这一条合规风险最高</b>：作者的设计已尽量规避「复制表达」，企业若采用应先做法律评估，并优先只入库自有或已授权素材。</p>
+  <p><b>企业场景 3｜把「质量闸门」本身当成可复用资产。</b>这套闸门不绑定视频场景：任何「长文本 → LLM 处理 → 入库」的流水线都会遇到同样的四类病（截断 / 假通过 / 专名漂移 / 重复入库）。合同解析、论文综述、会议纪要管线都可以直接借鉴。<b>对企业的价值可能大于「视频知识库」本身。</b></p>
+  <div class="truth"><b>反面提醒：</b>本案例<b>无任何企业客户、无部署案例、无商业结果</b>；作者身份亦无法确认。上表为基于公开结构的<b>可行性分析</b>，不是已验证的落地经验。企业引入前必须自行做安全与合规评估。</div>
+
+  <h3 class="sec">16｜中国消费者可以怎么用？</h3>
+  <ol>
+    <li><b>备考 / 自学：</b>把自己的网课视频、公开课回放批量入库，考前直接问「这块知识点讲了什么、参数是多少」。这是最直接、也最无合规争议的用法（素材为自己购买或公开授权内容）。</li>
+    <li><b>内容创作者：</b>建立自己的「选题素材库」——把行业相关视频入库，写作时跨视频检索，替代反复拖进度条。</li>
+    <li><b>AI 学习者：</b>把它当作「长任务工程化」的范本：异步受理、任务状态机、失败可观测。这三个概念可以直接搬到自己的任何 LLM 项目里。</li>
+  </ol>
+
+  <h3 class="sec">17｜如何变成一个赚钱的项目？</h3>
+  <ul>
+    <li><b>产品化：</b>做成「企业内部视频知识库」的私有化交付包——Docker Compose 一键起 + 预置闸门 + 主题治理脚本。卖点不是「能问答」，而是<b>「出错了会告诉你」</b>与<b>「零 API 成本、数据不出内网」</b>。</li>
+    <li><b>服务化：</b>面向讲师 / MCN / 培训机构做「内容资产化」项目：把存量视频批量入库 + 交付检索入口 + 培训使用。按项目收费。</li>
+    <li><b>咨询化：</b>把「质量保障层」单独立项——为已有 RAG 系统的企业做<b>失效检测设计</b>：你的流水线怎么知道它坏了？这类咨询的稀缺度高于「帮你搭一个 RAG」。</li>
+    <li><b>培训化：</b>一门「长文本 LLM 流水线的可靠性工程」课：异步受理、断点与状态机、fail-closed 闸门、评测集与基线。学员是已有 RAG 但被「静默错误」困扰的开发者。</li>
+    <li><b>内容化：</b>「我怎么知道我的知识库坏了」系列——这类「失效与诊断」题材的传播效率通常高于「我又搭了一个知识库」。</li>
+    <li><b>行业化：</b>迁移到合同 / 论文 / 会议纪要 / 客服录音等所有「长语音 + 长文本 → 知识」的场景。</li>
+  </ul>
+
+  <h3 class="sec">18｜变现路径</h3>
+  <table class="stack">
+    <tr><td class="k">路径</td><td class="k">客户</td><td class="k">产品/服务</td><td class="k">收费方式</td><td class="k">难度</td></tr>
+    <tr><td>私有化部署</td><td>企业培训 / 知识管理部门</td><td>内网视频知识库交付包</td><td>项目制 + 年度运维</td><td>高</td></tr>
+    <tr><td>内容资产化服务</td><td>讲师 / MCN / 培训机构</td><td>存量视频批量入库 + 检索入口</td><td>按量 / 按项目</td><td>中</td></tr>
+    <tr><td>可靠性咨询</td><td>已有 RAG 的企业</td><td>失效检测与质量闸门设计</td><td>项目制 / 顾问</td><td>高</td></tr>
+    <tr><td>培训课程</td><td>AI 开发者</td><td>长文本流水线可靠性工程</td><td>按人 / 按场</td><td>中</td></tr>
+    <tr><td>内容/IP</td><td>AI 爱好者 / 开发者</td><td>「知识库为什么会坏」系列内容</td><td>订阅 / 社群</td><td>低</td></tr>
+  </table>
+  <p><b>重要声明：</b>上表为<b>基于案例结构推导的潜在变现路径，不构成收益承诺</b>。本案例<b>没有已验证的商业结果</b>；同时存在现实约束：① 抓取第三方内容的合规风险需自行评估；② 作者身份无法确认，若以其代码做商业交付，建议先自行通读审计。</p>
+
+  <h3 class="sec">19｜如果我是一个中国独立开发者</h3>
+  <p>前提：1 个人、预算有限、有基础编程能力、使用国产模型。7 天 MVP（<b>以下排期为本文设计，不是作者方案</b>）：</p>
+  <div class="flow">
+    <div class="node"><b>Day 1｜只跑 ASR。</b>照 README 路径 B：<code>pip install faster-whisper opencc numpy requests</code> + <code>test-asr2.py</code>，用<b>自己拍摄或已授权</b>的一段视频跑通。目标：确认本机算力够、知道自己机器的实时倍率。</div>
+    <div class="arrow">↓</div>
+    <div class="node"><b>Day 2｜起 Dify + Ollama。</b>官方 docker compose 部署 Dify；Ollama 拉 nomic-embed-text；建一个空知识库，把检索方式改成 <code>hybrid_search</code>（含权重配置）。目标：拿到知识库 ID 与元数据字段 ID。</div>
+    <div class="arrow">↓</div>
+    <div class="node"><b>Day 3｜导入两个工作流并补齐 7 项手工配置。</b>这一步是集中踩坑日：重选知识库、重选模型、建「主题」字段、打标签、改元数据 ID、配 SSRF 白名单。目标：问答工作流能返回结果（哪怕内容还很少）。</div>
+    <div class="arrow">↓</div>
+    <div class="node"><b>Day 4｜跑通命令行入库。</b>先不接对话式入库，直接用 <code>one-click-pipeline.py</code> 入 3–5 条视频。目标：看到 <code>done(100%)</code>，并在知识库里看到带主题标签的文档。</div>
+    <div class="arrow">↓</div>
+    <div class="node"><b>Day 5｜加「闸门自检」。</b>故意制造两类故障：<b>① 问一个知识库里没有的问题</b>（验证会不会硬答）；<b>② 入库一条极短、信息量极低的视频</b>（验证校验闸门会不会拦住「有标题没内容」）。<b>这一天是这个 MVP 的价值核心</b>——它证明你交付的东西「坏了会说话」。</div>
+    <div class="arrow">↓</div>
+    <div class="node"><b>Day 6｜做主题治理脚本 + 交付模板。</b>把 <code>sync-topic-prompt.mjs</code> 的流程固化成一条命令；写一份「客户自己加视频后要做什么」的一页纸说明（否则客户加完新视频就再也检索不到）。</div>
+    <div class="arrow">↓</div>
+    <div class="node"><b>Day 7｜找 3 个使用者验证。</b>优先找<b>自有视频存量多、且不涉及第三方版权</b>的对象（培训机构 / 讲师 / 企业培训负责人）。给他们做一个真实的知识库，观察第一个真实提问是什么。<b>第 7 天要拿到的是「真实问题」，而不是「好评」。</b></div>
+  </div>
+  <p><b>为什么把「闸门自检」放在第 5 天而不是最后：</b>这类项目的失败模式不是「跑不起来」，而是「跑起来了但没人知道它是错的」。先建立可观测性，再扩规模，是这个案例教给我们的最实用的一课。</p>
+
+  <h3 class="sec">20｜如何迁移到其他行业</h3>
+  <div class="migrate">
+    <div class="m"><b>① 会议 / 培训录音</b>把「视频链接」换成「录音文件」，同一套 ASR + 纠错 + 闸门 + 入库；「关键参数摘录」变成「决议项与数字」。</div>
+    <div class="m"><b>② 客服通话质检</b>音频指纹去重可直接用于「同一通录音重复上传」；但要从「知识库」改为「质检标签 + 结构化字段抽取」。</div>
+    <div class="m"><b>③ 论文 / 长文档</b>把 ASR 换成 PDF 解析；分块 map-reduce 纠错、专名漂移检查、fail-closed 校验闸门三条设计<b>原样可用</b>。</div>
+    <div class="m"><b>④ 合同审查</b>「关键参数摘录 ≤700 字」的思路可迁移为「关键条款摘录」；但合同场景对「漏项」的容忍度极低，需把 fail-closed 做得更严。</div>
+    <div class="m"><b>⑤ 医疗 / 法律长文归档</b>合规设计部分需要重做（行业有专门规范），但「异步受理 + 状态机 + 可观测」的骨架不变。</div>
+    <div class="m"><b>⑥ 内容出海</b>把入库后的知识点/问答对做多语翻译，形成可检索的多语知识库——这一层不涉及原文，合规压力小。</div>
+  </div>
+
+  <h3 class="sec">21｜培训课程设计</h3>
+  <div class="course">
+    <table>
+      <tr><td class="k">课程名称</td><td>《长文本 LLM 流水线的可靠性工程》——从「跑起来」到「坏了会说话」</td></tr>
+      <tr><td class="k">适合人群</td><td>已搭过 RAG / 知识库但被「静默错误」困扰的开发者；企业 AI 应用负责人；<b>需要 Python 与 Docker 基础</b></td></tr>
+      <tr><td class="k">建议时长</td><td>半天（3.5 小时），可扩展为一天实战工作坊</td></tr>
+      <tr><td class="k">30 分钟 Demo</td><td>现场演示：发一条链接 → 立刻收到「已受理」回执 → 后台进度推进 → 入库后提问并看到来源标注。重点展示<b>「为什么不能同步等」</b>这一个判断</td></tr>
+      <tr><td class="k">60 分钟 Workshop</td><td>学员故意注入 3 类故障（截断 / 假通过 / 专名漂移），观察系统是否报警；再讨论「如果你当时没设计闸门，几天后才发现会是多大代价」</td></tr>
+      <tr><td class="k">半天课程</td><td>异步受理与状态机（50min）→ fail-closed 闸门设计（50min）→ 评测集与基线怎么建（50min）→ 合规：思想/表达二分法在数据流上怎么落（50min）</td></tr>
+      <tr><td class="k">课程目标</td><td>学员最终能够：① 判断自己的 LLM 流水线该同步还是异步；② 为自己的流水线写出至少 3 道 fail-closed 闸门；③ 建一套可复现的评测集与基线</td></tr>
+      <tr><td class="k">现场 Demo</td><td>受理回执 + 进度查询 + 故障注入三件套（<b>刻意不演示「效果惊艳的问答」</b>）</td></tr>
+      <tr><td class="k">学员练习</td><td>为一条自选链路写出「怎么知道它坏了」的检查清单（不少于 5 项）</td></tr>
+      <tr><td class="k">课后作业</td><td>在自己项目里落地 1 道 fail-closed 闸门 + 1 个评测基线，并记录它第一次成功拦截的案例</td></tr>
+      <tr><td class="k">企业迁移</td><td>以企业的真实长文本流程（合同 / 纪要 / 培训）为载体，做一次完整的失效分析</td></tr>
+    </table>
+  </div>
+
+  <h3 class="sec">22｜培训师点评</h3>
+  <div class="trainer"><b>真正值得教的是什么？</b>不是「如何把视频转成文字」——那是调库。真正值得教的是那三句话：<b>「入库慢到不能同步等，所以必须异步受理」、「怎么知道它坏了，比怎么让它跑起来更重要」、「为了 4 个端点装一个框架不划算」</b>。第一句是架构判断，第二句是工程责任，第三句是克制。</div>
+
+  <h3 class="sec">23｜最终判断</h3>
+  <div class="verdict">
+    <div class="v"><div class="k">落地性</div><div class="val lv-m">中（需 Docker 联调）</div></div>
+    <div class="v"><div class="k">中国市场相关性</div><div class="val lv-h">高</div></div>
+    <div class="v"><div class="k">商业价值</div><div class="val lv-m">中高</div></div>
+    <div class="v"><div class="k">复现难度</div><div class="val lv-m">中高</div></div>
+    <div class="v"><div class="k">变现潜力</div><div class="val lv-m">中</div></div>
+  </div>
+  <p><b>说明：</b>本案例的<b>方法论价值显著高于其代码价值</b>——它的架构判断（异步受理）、可靠性设计（fail-closed 闸门）与合规处理（思想/表达二分法）都是可直接迁移的，且作者把限制条件讲得很清楚。但两点必须打折扣：<b>① 作者身份无法确认；② 全部数据为单机自述、无第三方复现。</b>因此「商业价值」与「变现潜力」评为中高/中，而非高——它的可变现基础主要是「可复用的工程判断」，而不是「已被验证的产品」。</p>
+</div>
+
+<!-- ===================== 今日观察 ===================== -->
+<section class="block" id="observe">
+  <h2>今日 AI 实战观察</h2>
+  <div class="panel">
+    <p>今天这两个案例，行业属性完全不同——一个是短剧内容生产，一个是视频知识库入库——但它们其实在回答同一个问题：<b>当一项 AI 任务的周期从「几秒」拉长到「几十集」或「几百条素材」时，工程上的关键是什么？</b>两个案例给出的答案高度一致，而且都不在模型层。</p>
+    <p><b>第一，Agent 正在从「会话」变成「有状态的流程」。</b>短剧 Agent 把状态锚在 <code>series_id</code> 上：系列设定、角色定妆、每集进度、工具轨迹分层存放，于是「下一集继承上一集」与「断点续跑」成为默认行为。视频知识库把状态锚在「任务」上：202 + job_id、queued→running→done 状态机、任务落盘。两者都在做同一件事——<b>把「我记得我做到哪了」从人的脑子里搬进系统里</b>。</p>
+    <p><b>第二，真正拉开差距的是「失败可见性」，而不是生成质量。</b>短剧 Agent 的 <code>series_runtime.json</code> 让「改设定后哪些要重做」可被精确圈定；视频知识库的质量保障层更直接——它不参与数据流，只回答「怎么知道它坏了」，并且是 fail-closed 的。这标志着一个成熟度拐点：<b>中国 AI 实战正在从「能不能做出来」转向「做出来了能不能被信任」。</b></p>
+    <p><b>第三，合规开始进入数据流设计，而不只是免责声明。</b>视频知识库把纠错稿改成三段式、默认丢弃他人完整原文、只留知识点与限额摘录——这不是文案层面的规避，而是数据流层面的重构。短剧项目则把「合规审核」做成了一个独立 Skill 命令。当一个项目开始<b>为了合规而改变自己的数据结构</b>时，说明它已经越过了 Demo 阶段。</p>
+    <p><b>一个必须泼的冷水：</b>这两个案例的验证强度都不高。短剧项目无性能与成本数据、无企业验证；知识库项目是 1 Star、作者身份不可确认、全部数字为自述。今天更准确的说法是——<b>中国 AI 实战正在出现「工程纪律」的样本，而不是出现「已被验证的商业成果」。</b>对从业者来说，值得拿走的是那几条判断（异步受理、fail-closed、有状态容器、克制），而不是它们的效果截图。</p>
+  </div>
+</section>
+
+<!-- ===================== 商业机会雷达 ===================== -->
+<section class="block" id="radar">
+  <h2>今日商业机会雷达</h2>
+  <div class="panel">
+    <p><b>声明：</b>以下为<b>基于今日案例结构推导的商业模式分析</b>，不代表已验证的商业成功，也不构成收益承诺。</p>
+    <h3>机会 1｜微短剧「前期开发」外包</h3>
+    <ul>
+      <li><b>客户：</b>中小短剧制作团队、出海 MCN、独立制片人</li>
+      <li><b>痛点：</b>一部 50–100 集的剧，最大成本是「设定漂移」与前期开发人力；真正缺的是可评审的立项包</li>
+      <li><b>实现方式：</b>编剧方法论（MIT 可合规引用）+ 任意国产模型（DeepSeek / Qwen / ModelScope）产出立项包、分集目录、首集剧本——<b>不需要显卡</b></li>
+      <li><b>可能商业模式：</b>按剧 / 按集交付的策划服务；或转向培训</li>
+      <li><b>窗口优势：</b>技术门槛与硬件门槛今天都处在低位，且方法论刚刚以开源许可公开</li>
+    </ul>
+    <h3>机会 2｜企业内网「音视频资产化」私有化交付</h3>
+    <ul>
+      <li><b>客户：</b>企业培训部门、知识管理团队、连锁机构（大量标准化培训视频）</li>
+      <li><b>痛点：</b>培训视频命中率极低，人只能反复看；云 ASR 按分钟计费，长视频不经济；数据不能出内网</li>
+      <li><b>实现方式：</b>Dify + faster-whisper + Ollama + Qdrant 全本地，附质量闸门</li>
+      <li><b>可能商业模式：</b>私有化部署实施（项目制）+ 年度运维；差异化卖点是「零 API 成本 + 数据不出内网 + 坏了会报警」</li>
+      <li><b>现实约束：</b>只处理企业自有素材，避免第三方版权风险</li>
+    </ul>
+    <h3>机会 3｜LLM 流水线的「失效检测」专项服务</h3>
+    <ul>
+      <li><b>客户：</b>已经上线 RAG / 知识库 / 抽取流水线的企业</li>
+      <li><b>痛点：</b>系统「跑得挺好」，但没人知道它在哪一刻开始给错答案</li>
+      <li><b>实现方式：</b>照今日案例的闸门范式（截断 / 假通过 / 专名漂移 / 重复）做失效分析，把所有闸门改成 fail-closed，并建评测集与基线</li>
+      <li><b>可能商业模式：</b>专项咨询 + 后续可靠性培训。<b>稀缺度高于「帮你搭一个 RAG」</b></li>
+      <li><b>为什么现在：</b>过去两年企业完成了「搭起来」，接下来一年会集中面对「搭起来了但不敢信」</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ===================== 个人变现机会 ===================== -->
+<section class="block" id="personal">
+  <h2>今日个人变现机会</h2>
+  <div class="panel">
+    <p>假设一个人每天投入 <b>2–4 小时</b>，可以用今天的两个案例分别切出低资本、单人可启动的路径。<b>以下为实现路径分析，不承诺收益。</b></p>
+    <h3>路径 1｜从「不需要显卡」的那一半开始（推荐入门）</h3>
+    <ul>
+      <li><b>做什么：</b>只做短剧的「文本半段」——选题、系列设定、分集目录、前 3 集剧本、合规自查表</li>
+      <li><b>为什么先做这个：</b>零硬件投入、零环境搭建，当天就能出样；方法论已 MIT 开源，可合法引用（保留版权声明）</li>
+      <li><b>怎么收钱：</b>先做 1–2 个免费样片建立案例，再按「立项包 + 前 3 集」定价接单</li>
+      <li><b>启动周期：</b>约 1 周可出第一份可展示交付物</li>
+    </ul>
+    <h3>路径 2｜做「一人视频知识库服务商」</h3>
+    <ul>
+      <li><b>做什么：</b>为讲师 / 培训机构 / 内容团队搭建私有视频知识库（含质量闸门）</li>
+      <li><b>为什么成立：</b>目标客户「素材存量多、但完全不会 Docker」，而你只需要跑通一次环境就能复制交付</li>
+      <li><b>关键动作：</b>把 7 项手工配置写成自己的交付清单；把主题同步脚本固化成一条命令</li>
+      <li><b>风险提示：</b>涉及第三方素材的合规问题必须前置澄清；建议只接自有素材客户</li>
+    </ul>
+    <h3>路径 3｜卖「失效检测」而不是卖「效果」</h3>
+    <ul>
+      <li><b>做什么：</b>写「我如何发现我的知识库一直在骗我」这类实战文；做一次公开的故障注入演示</li>
+      <li><b>为什么有效：</b>「效果展示」内容已经严重同质化，而「失效与诊断」在中文技术社区供给极少</li>
+      <li><b>延伸：</b>内容 → 咨询 → 培训，这条链条比「内容 → 卖工具」短，也更容易验证付费意愿</li>
+    </ul>
+    <div class="truth"><b>必须说清楚的两件事：</b>① 今天两个案例<b>都没有已验证的商业结果</b>，以上全部是基于结构的推演；② 两个案例都涉及内容版权边界（短剧素材、视频抓取），个人接单前应先把合规前提讲清楚，不要用「技术能跑」代替「业务能接」。</div>
+  </div>
+</section>
+
+<!-- ===================== 窗口内信号 ===================== -->
+<section class="block" id="signals">
+  <h2>窗口内信号（未计入案例）</h2>
+  <div class="panel">
+    <p>以下为窗口内出现、但未达到收录线的项目与材料，如实列出供参考。<b>列名不等于推荐。</b></p>
+    <table>
+      <tr><th>项目 / 材料</th><th>窗口内时间（北京时间）</th><th>为什么未收录</th></tr>
+      <tr>
+        <td><b>Hugo-DDT/EAF</b>（企业 Agent 平台：统一接入层，REST / MCP / 受限 A2A，持久任务、权限、审批、Human-in-the-loop；Java + PostgreSQL）<br><a href="https://github.com/Hugo-DDT/EAF" target="_blank" rel="noopener">github.com/Hugo-DDT/EAF</a><br>一手长文：<a href="https://juejin.cn/post/7693451894564438016" target="_blank" rel="noopener">掘金《面向企业工作效率的 Agent 平台：EAF 如何打通 Agent 接入、能力与知识经验孤岛》</a>（2026-10-08）</td>
+        <td>仓库创建 10-07 16:39；推送 10-07 21:28；<b>长文发布 10-08</b></td>
+        <td><b>技术深度与一手程度今天最高，但落地验证维度不足，故未收录。</b>仓库建仓与代码提交均在前一窗口；作者本人明确声明：仅为「可本地运行的工程实现与合成数据检查」，「<b>不等于项目已经部署进企业，也不代表已经测出实际效率收益</b>」，「真实第三方 Agent、生产身份系统、真实 CRM/服务台和业务效率收益都没有由这些检查证明」。Star 1、无第三方复现。按「宁缺毋滥」原则列为候选而未收录，<b>强烈建议作为深度技术阅读材料</b>（其本地检查口径很规范：两个 JVM 共用隔离 PostgreSQL、1000 个合成任务、69.6 秒、约 14.38 任务/秒，且明示为确定性替身而非真实 Provider）。</td>
+      </tr>
+      <tr>
+        <td><b>jeszhou/motion-explainer</b>（一套让 AI 动效视频更好看的规则 + 可运行代码引擎，逐帧绘制 + 合成配乐，输出 30–60 秒竖版短片）<br><a href="https://github.com/jeszhou/motion-explainer" target="_blank" rel="noopener">github.com/jeszhou/motion-explainer</a></td>
+        <td>创建 10-08 11:23</td>
+        <td>窗口内新仓库，方向（程序化动效视频）有价值，但核实时点信息量不足以支撑 23 节拆解，且与案例 01 的内容生产主题重叠，按「同类择优」让位。</td>
+      </tr>
+      <tr>
+        <td><b>oldfacekg26/laolian-gzh-benchmark-hunter</b>（公众号对标爆款猎手：赛道对标与爆款筛选、公开文章正文配图归档、合集下载；中文 Codex Skill，MIT）<br><a href="https://github.com/oldfacekg26/laolian-gzh-benchmark-hunter" target="_blank" rel="noopener">github.com/oldfacekg26/laolian-gzh-benchmark-hunter</a></td>
+        <td>创建 10-08 16:54</td>
+        <td>方向（公众号竞品分析）中国市场相关性强，但涉及第三方内容批量归档，合规边界需要作者说明；本次未见对合规处理的交代，暂不收录，建议持续观察。</td>
+      </tr>
+      <tr>
+        <td><b>liaosiliangCodeLife/harness-mate-plat</b>（端到端智能体平台：把本机 AI Agent 变成人人可用的 Web 产品，Vue 3 + Flask + Go WS 网关 + Docker）<br><a href="https://github.com/liaosiliangCodeLife/harness-mate-plat" target="_blank" rel="noopener">github.com/liaosiliangCodeLife/harness-mate-plat</a></td>
+        <td>创建 10-08 10:03</td>
+        <td>主题（把 Agent 产品化）不错，但核实时点缺乏可验证的实现细节与文档厚度。</td>
+      </tr>
+      <tr>
+        <td><b>yueyezhufeng/ontoquery</b>（基于本体实现的智能问数平台）<br><a href="https://github.com/yueyezhufeng/ontoquery" target="_blank" rel="noopener">github.com/yueyezhufeng/ontoquery</a></td>
+        <td>创建 10-08 23:57</td>
+        <td>「本体 + 问数」在中国企业（尤其 BI / 数据治理）有真实需求，但窗口内信息不足以评估可复现性。</td>
+      </tr>
+      <tr>
+        <td><b>MrLaoGe/x2Stock</b>（开源 A 股研究工作台：独立数据底座、多 Agent 研究与量化验证）<br><a href="https://github.com/MrLaoGe/x2Stock" target="_blank" rel="noopener">github.com/MrLaoGe/x2Stock</a></td>
+        <td>创建 10-08 17:08</td>
+        <td>项目自述「<b>当前为整体设计文档阶段</b>」——按本日报规则（无实现过程、无 Workflow 可复现者不收录），排除。列此以记录「金融 + 多 Agent」方向的活跃度。</td>
+      </tr>
+      <tr>
+        <td><b>hitechhamster/coze-stickman-video-workbench</b>（Coze 彩色火柴人工作流本地版：文案 → 分镜 → 配图 → 配音 → 字幕 → 音效，直接生成可编辑剪映草稿）<br><a href="https://github.com/hitechhamster/coze-stickman-video-workbench" target="_blank" rel="noopener">github.com/hitechhamster/coze-stickman-video-workbench</a></td>
+        <td>创建 10-09 09:58</td>
+        <td>「生成剪映草稿」这一交付形态对国内短视频团队非常实用（可直接二次剪辑），是本期值得留意的新信号；但落在窗口末缘且核实时点内容极薄，下期重点回访。</td>
+      </tr>
+    </table>
+  </div>
+</section>
+
+<!-- ===================== 原始资料 ===================== -->
+<section class="block" id="sources">
+  <h2>原始资料汇总</h2>
+  <div class="panel">
+    <h3>案例 01｜短剧系列 Agent</h3>
+    <ul>
+      <li>仓库：<a href="https://github.com/binwu1/drama-series-agent" target="_blank" rel="noopener">github.com/binwu1/drama-series-agent</a>（Apache-2.0）</li>
+      <li>中文 README：<a href="https://github.com/binwu1/drama-series-agent/blob/main/README.zh-CN.md" target="_blank" rel="noopener">…/blob/main/README.zh-CN.md</a></li>
+      <li>编剧 Skill：<a href="https://github.com/binwu1/drama-series-agent/blob/main/skills/0xsline-short-drama/SKILL.md" target="_blank" rel="noopener">…/skills/0xsline-short-drama/SKILL.md</a>（MIT，上游 <a href="https://github.com/0xsline/short-drama" target="_blank" rel="noopener">0xsline/short-drama</a>）</li>
+      <li>ComfyUI 工作流：<a href="https://github.com/binwu1/drama-series-agent/tree/main/workflows/selfhost" target="_blank" rel="noopener">…/tree/main/workflows/selfhost</a></li>
+      <li>技能索引：<a href="https://github.com/binwu1/drama-series-agent/blob/main/skills/README.md" target="_blank" rel="noopener">…/blob/main/skills/README.md</a></li>
+      <li>依赖与入口：<a href="https://github.com/binwu1/drama-series-agent/blob/main/pyproject.toml" target="_blank" rel="noopener">…/blob/main/pyproject.toml</a></li>
+      <li>上游渲染层：<a href="https://github.com/comfyanonymous/ComfyUI" target="_blank" rel="noopener">github.com/comfyanonymous/ComfyUI</a></li>
+    </ul>
+    <h3>案例 02｜视频知识库入库流水线</h3>
+    <ul>
+      <li>仓库：<a href="https://github.com/hy3630667/video-to-knowledge-base" target="_blank" rel="noopener">github.com/hy3630667/video-to-knowledge-base</a>（README 标注 MIT）</li>
+      <li>README（实测表 / 架构 / 合规设计）：<a href="https://github.com/hy3630667/video-to-knowledge-base/blob/main/README.md" target="_blank" rel="noopener">…/blob/main/README.md</a></li>
+      <li>技术文档（30+ 踩坑）：<a href="https://github.com/hy3630667/video-to-knowledge-base/blob/main/docs/%E6%8A%80%E6%9C%AF%E6%96%87%E6%A1%A3.md" target="_blank" rel="noopener">…/blob/main/docs/技术文档.md</a></li>
+      <li>质量保障层：<a href="https://github.com/hy3630667/video-to-knowledge-base/blob/main/docs/%E8%B4%A8%E9%87%8F%E4%BF%9D%E9%9A%9C%E5%B1%82.md" target="_blank" rel="noopener">…/blob/main/docs/质量保障层.md</a></li>
+      <li>Dify 工作流 DSL：<a href="https://github.com/hy3630667/video-to-knowledge-base/tree/main/workflows" target="_blank" rel="noopener">…/tree/main/workflows</a></li>
+      <li>评测与基线：<a href="https://github.com/hy3630667/video-to-knowledge-base/tree/main/evaluation" target="_blank" rel="noopener">…/tree/main/evaluation</a>｜测试：<a href="https://github.com/hy3630667/video-to-knowledge-base/tree/main/tests" target="_blank" rel="noopener">…/tree/main/tests</a></li>
+      <li>主脚本与入库服务：<a href="https://github.com/hy3630667/video-to-knowledge-base/tree/main/scripts" target="_blank" rel="noopener">…/tree/main/scripts</a></li>
+      <li>Dify 自托管：<a href="https://docs.dify.ai/getting-started/install-self-hosted" target="_blank" rel="noopener">docs.dify.ai/getting-started/install-self-hosted</a></li>
+    </ul>
+    <h3>窗口内信号（未计入案例）</h3>
+    <ul>
+      <li>EAF：<a href="https://github.com/Hugo-DDT/EAF" target="_blank" rel="noopener">github.com/Hugo-DDT/EAF</a>｜一手长文：<a href="https://juejin.cn/post/7693451894564438016" target="_blank" rel="noopener">juejin.cn/post/7693451894564438016</a></li>
+      <li>motion-explainer：<a href="https://github.com/jeszhou/motion-explainer" target="_blank" rel="noopener">github.com/jeszhou/motion-explainer</a></li>
+      <li>laolian-gzh-benchmark-hunter：<a href="https://github.com/oldfacekg26/laolian-gzh-benchmark-hunter" target="_blank" rel="noopener">github.com/oldfacekg26/laolian-gzh-benchmark-hunter</a></li>
+      <li>x2Stock（设计文档阶段）：<a href="https://github.com/MrLaoGe/x2Stock" target="_blank" rel="noopener">github.com/MrLaoGe/x2Stock</a></li>
+      <li>coze-stickman-video-workbench：<a href="https://github.com/hitechhamster/coze-stickman-video-workbench" target="_blank" rel="noopener">github.com/hitechhamster/coze-stickman-video-workbench</a></li>
+    </ul>
+    <h3>明确排除的来源</h3>
+    <ul>
+      <li><b>内容农场（尧图系及同族）</b>：hqwc.cn、mhpq.cn、mhpq.cn、trdm.cn、tzjp.cn、xxmr.cn、bryh.cn、mtrt.cn、mzlw.cn、kwkr.cn、pgsr.cn、qwbw.cn、lpqz.cn、rwkt.cn、mwwr.cn、nlpx.cn、pcrn.cn、sheratonhq.com、netorginfo.com、mfbz.cn 等。本期以「MiniMax H3 部署」「AI Agent 实战」「Dify 教程」为关键词检索时，首页结果几乎被该族站点垄断；其内容为模板化复读、无作者、无原始出处，<b>全部剔除，未作为任何事实来源</b>。</li>
+      <li><b>英文伪权威站点</b>：aibars.net、chatgate.ai、heatdrop.ai、dshfind.com、deepusecase.com、choosely.ai 等聚合站，仅用于发现线索，未引用其结论。</li>
+      <li><b>某攻防 / 渗透测试类开源项目</b>：窗口内出现高热度仓库，但涉及境外网络安全事件、原仓库已下线，且与本日报「中国市场需求 + 可合法落地商业化」的收录标准存在根本冲突，按<b>敏感议题 + 商业落地双重排除</b>处理，本期不作展开、不作背景引用。</li>
+      <li><b>毕设 / 作业类仓库</b>：窗口内多个以「2022 收计算机毕设」为描述的仓库，非实战案例，剔除。</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ===================== 真实性说明 ===================== -->
+<section class="block" id="truth">
+  <h2>数据真实性说明</h2>
+  <div class="panel">
+    <h3>一、可核实的事实（已通过 GitHub API 或页面原文核对）</h3>
+    <ul>
+      <li><b>案例 01：</b>仓库 <code>binwu1/drama-series-agent</code> 创建时间 2026-10-08T07:26:51Z（北京时间 15:26）；末次推送 2026-10-09T01:58:57Z（09:58）；Star 83 / Fork 3；语言 Python；LICENSE 正文核对为 Apache-2.0；代码首次提交为 2026-09-28（早于建仓）；<code>skills/0xsline-short-drama/</code> 内为 MIT 且版权署名 0xsline。</li>
+      <li><b>案例 02：</b>仓库 <code>hy3630667/video-to-knowledge-base</code> 首次提交 2026-10-08T11:05:53Z（北京时间 19:05）；建仓 11:40:46Z（19:40）；末次推送 14:22:04Z（22:22）；Star 1；文件 58 个；含 6 个测试文件、evaluation/ 与 workflows/ 目录；账号 hy3630667 无昵称/简介/博客，公开仓库 1 个、关注者 0。</li>
+      <li><b>窗口内信号：</b>EAF 仓库创建 2026-10-07T08:39:37Z、推送 13:28:58Z、Star 1、Java、Apache-2.0；其掘金长文页面显示发布时间为 2026-10-08。x2Stock、motion-explainer、laolian-gzh-benchmark-hunter、coze-stickman-video-workbench 的创建时间同上表。</li>
+    </ul>
+    <h3>二、作者自述（无法独立验证，已标注）</h3>
+    <ul>
+      <li><b>案例 01：</b>「上镜尾帧 → 下镜首帧，自动接片，无需手动剪辑」、「中途断了可按集从断点续跑」、「改设定只作废需重做的下游步骤」——均为作者 README 的功能声明。作者<b>未提供</b>渲染耗时、单集成本、显存要求、成品质量对比或任何效率数据。<b>本报告未代其补充。</b></li>
+      <li><b>案例 02：</b>实测性能表（27 秒→15.1s、87 秒→31.6s、145 秒→61.1s、174 秒→66.6s、234 秒→80.4s、697 秒→147.2s）、「全程零 API 成本」、「转写倍率 3.34x–6.86x」、验收测试 8 项全通过、检索通过率 5/6 → 7/8、问答对命中得分 0.489 vs 原文 0.455、主题判断「手写 0/4 → 自动 4/4」、合规改造后「含他人原文段落数 0」——<b>全部为作者单机自述。本报告未运行其评测脚本，无第三方复现记录，无法独立验证。</b></li>
+      <li><b>信号区 EAF：</b>1000 个合成任务 / 两个 JVM / 69.6 秒 / 约 14.38 任务/秒——作者本人已注明「使用确定性替身，不会请求真实 Provider」「不能据此推导多机容量、生产吞吐」。</li>
+    </ul>
+    <h3>三、本文分析（基于公开结构的判断）</h3>
+    <ul>
+      <li>案例 01 的「机制一至机制四」（系列作为状态单元、一致性靠素材、帧级接续、增量失效）系本文对作者 README 的归纳；「显存不足会导致尾帧残缺」为<b>本文推断</b>，非作者说明。</li>
+      <li>案例 02 的「三段式合规改造降低检索噪音」「闸门思路可迁移到合同 / 论文 / 会议纪要」为本文分析；作者本人仅提供了视频场景下的数据。</li>
+      <li>两个案例的全部<b>变现路径、企业场景、消费者场景、7 天 MVP、行业迁移、课程设计</b>均为本文基于公开结构的推演，<b>案例本身没有任何已验证的商业结果</b>。文中已逐处标注。</li>
+      <li>案例 01 的复现步骤中，Step 1–4 为作者原文，<b>Step 5–6 的顺序安排为本文建议</b>，已在正文明确标注。</li>
+      <li>案例 02 的 7 天 MVP 排期为本文设计，<b>非作者方案</b>。</li>
+    </ul>
+    <h3>四、明确未做与不确定的部分</h3>
+    <ul>
+      <li>未实测运行两个项目的任何代码；未验证 MiniMax H3 的显存要求与生成质量；未验证案例 02 的性能数字。</li>
+      <li>案例 02 的许可证：README 与仓库结构标注 MIT，但 GitHub API 返回 NOASSERTION，<b>本文未逐字核对 LICENSE 全文</b>，特此标注。</li>
+      <li>案例 01 与案例 02 的作者身份均<b>无法确认</b>，本文未作任何身份推测。</li>
+      <li>案例 02 涉及对第三方视频内容的抓取与转写，其合规设计为作者的数据流层规避，<b>不构成法律意见</b>。</li>
+      <li>本期未发现第三个达到收录标准（≥80 分）的案例。EAF 为最接近的候选，未收录理由已单列说明。</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ===================== 质量自检 ===================== -->
+<section class="block" id="check">
+  <h2>本期质量自检</h2>
+  <div class="panel">
+    <ul class="checklist">
+      <li>案例数严格为 2（宁缺毋滥，未凑数）</li>
+      <li>窗口为过去约 24 小时（10-08 10:30 → 10-09 10:35）</li>
+      <li>已区分建仓 / 首提交 / 推送 / 文章发布时间</li>
+      <li>两个案例均有一手资料（作者文档 + 代码）</li>
+      <li>两个案例均有具体页面级链接</li>
+      <li>两个案例均有完整 Workflow</li>
+      <li>两个案例均给出技术栈（未编造型号）</li>
+      <li>已说明模型与工具清单</li>
+      <li>已说明成本（含「作者自述」标注）</li>
+      <li>已说明技术门槛（三级标注）</li>
+      <li>已说明 LLM 端点 / API Key 需求</li>
+      <li>已给出国产替代分析并标注验证等级</li>
+      <li>已分析企业场景（各 3 个）</li>
+      <li>已分析消费者场景（各 1–3 个）</li>
+      <li>已分析商业价值与变现路径</li>
+      <li>已区分「已验证」与「推导」</li>
+      <li>已追溯前世 → 发展 → 今生 → 未来</li>
+      <li>已解释「为什么是现在」</li>
+      <li>已提取作者公开的配置 / Skill / 工作流结构</li>
+      <li>已标注作者自述数据不可独立验证</li>
+      <li>未把推测写成事实</li>
+      <li>未把新闻 / Demo 包装成实战</li>
+      <li>所有链接指向具体页面（非首页）</li>
+      <li>CSS 完整、移动端断点齐备</li>
+    </ul>
+  </div>
+</section>
+
+
+</div>
+</main>
+<footer class="site-footer">
+  <div class="wrap">
+    <div>
+      <div class="f-brand">全球文明进程重大事件日报</div>
+      <p class="f-desc">记录人类文明演进中的关键节点。以未来历史学家的视角，筛出可能改写人类轨迹的转折点——一个长期记录人类文明发展轨迹的数字档案馆。</p>
+    </div>
+    <div class="f-col">
+      <h4>浏览</h4>
+      <ul>
+        <li><a href="../index.html">网站首页</a></li>
+        <li><a href="../archive.html">日报档案</a></li><li><a href="../radar.html">趋势雷达</a></li><li><a href="../tutorial/index.html">AI实战</a></li>
+        <li><a href="../assets/images/og-cover.png" target="_blank">站点封面</a></li>
+      </ul>
+    </div>
+    <div class="f-col">
+      <h4>文明分类</h4>
+      <ul>
+        <li><a href="../categories/science.html">科学、生命与地球</a></li>
+        <li><a href="../categories/politics.html">政治与文明秩序</a></li>
+        <li><a href="../categories/culture.html">思想、社会与文化</a></li>
+        <li><a href="../categories/technology.html">科技与人工智能</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="f-bottom">
+    <div class="wrap">
+      <span>© 2026 全球文明进程重大事件日报 · 全球文明进程观察站</span>
+      <span>内容由自动化智能体基于公开信息生成，仅供文明观察与研究参考，不构成任何投资、政策或法律建议。</span>
+    </div>
+  </div>
+</footer><button class="backtop" type="button" aria-label="返回顶部">↑</button><script src="../assets/js/main.js"></script>
+<script src="../assets/js/wechat-share.js"></script>
+<script src="../assets/js/text-to-speech.js"></script>
+</body>
+</html>
