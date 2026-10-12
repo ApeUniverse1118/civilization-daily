@@ -1,0 +1,1015 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI极客实战教程日报 · 2026-10-09（第013期）｜把麦当劳中国官方 MCP 装进 Agent：品牌方把「点餐…、把「热点日报站」做成可复制的引擎：…</title>
+<meta name="description" content="10月9日AI极客实战案例：昨天中国 AI 实战最重要的变化，不是又出了一个新模型，而是「能力正在被标准化」：麦当劳中国把点餐、到店、团餐、活动、积分这整套业务开放成 35 个官方 MCP 工具并开赛让开发者造 Skill；与此同时，一个把「热点日报站」做成可复制引擎的项目把 25 份提示词和入选门槛全部公开。一个是企业把业…">
+<meta name="keywords" content="AI极客实战,把麦当劳中国官方 …,把「热点日报站」做…">
+<meta name="author" content="全球文明进程观察站">
+<meta name="robots" content="index,follow">
+<link rel="canonical" href="https://civilization-radar.com/tutorial/2026-10-09.html">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="全球文明进程重大事件日报">
+<meta property="og:title" content="AI极客实战教程日报 · 2026-10-09（第013期）｜把麦当劳中国官方 MCP 装进 Agent：品牌方把「点餐…、把「热点日报站」做成可复制的引擎：…">
+<meta property="og:description" content="10月9日AI极客实战案例：昨天中国 AI 实战最重要的变化，不是又出了一个新模型，而是「能力正在被标准化」：麦当劳中国把点餐、到店、团餐、活动、积分这整套业务开放成 35 个官方 MCP 工具并开赛让开发者造 Skill；与此同时，一个把「热点日报站」做成可复制引擎的项目把 25 份提示词和入选门槛全部公开。一个是企业把业…">
+<meta property="og:url" content="https://civilization-radar.com/tutorial/2026-10-09.html">
+<meta property="og:image" content="https://civilization-radar.com/assets/images/og-cover.png">
+<meta property="og:locale" content="zh_CN">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="AI极客实战教程日报 · 2026-10-09（第013期）｜把麦当劳中国官方 MCP 装进 Agent：品牌方把「点餐…、把「热点日报站」做成可复制的引擎：…">
+<meta name="twitter:description" content="10月9日AI极客实战案例：昨天中国 AI 实战最重要的变化，不是又出了一个新模型，而是「能力正在被标准化」：麦当劳中国把点餐、到店、团餐、活动、积分这整套业务开放成 35 个官方 MCP 工具并开赛让开发者造 Skill；与此同时，一个把「热点日报站」做成可复制引擎的项目把 25 份提示词和入选门槛全部公开。一个是企业把业…">
+<meta name="twitter:image" content="https://civilization-radar.com/assets/images/og-cover.png">
+<link rel="icon" href="../assets/images/logo.svg" type="image/svg+xml">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"AI极客实战教程日报 · 2026-10-09（第013期）｜把麦当劳中国官方 MCP 装进 Agent：品牌方把「点餐…、把「热点日报站」做成可复制的引擎：…","description":"10月9日AI极客实战案例：昨天中国 AI 实战最重要的变化，不是又出了一个新模型，而是「能力正在被标准化」：麦当劳中国把点餐、到店、团餐、活动、积分这整套业务开放成 35 个官方 MCP 工具并开赛让开发者造 Skill；与此同时，一个把「热点日报站」做成可复制引擎的项目把 25 份提示词和入选门槛全部公开。一个是企业把业…","datePublished":"2026-10-09","dateModified":"2026-10-12","inLanguage":"zh-CN","author":{"@id":"https://civilization-radar.com/#org"},"publisher":{"@id":"https://civilization-radar.com/#org"},"image":{"@type":"ImageObject","url":"https://civilization-radar.com/assets/images/og-cover.png"},"mainEntityOfPage":{"@type":"WebPage","@id":"https://civilization-radar.com/tutorial/2026-10-09.html"},"isAccessibleForFree":true}</script>
+
+<link rel="stylesheet" href="../assets/css/style.css">
+
+<style>
+
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body {
+    background:#F7F8FA; color:#111827;
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;
+    line-height:1.7; font-size:15px;
+  }
+  .tut-wrap { max-width:960px; margin:0 auto; padding:32px 20px 64px; }
+  a { color:#2563EB; text-decoration:none; word-break:break-all; }
+  a:hover { text-decoration:underline; }
+
+  header.top {
+    background:#111827; color:#F9FAFB; border-radius:14px; padding:36px 32px; margin-bottom:24px;
+  }
+  header.top .kicker { color:#93C5FD; font-size:13px; letter-spacing:2px; text-transform:uppercase; margin-bottom:10px; }
+  header.top h1 { font-size:30px; font-weight:800; margin-bottom:6px; }
+  header.top .sub { color:#9CA3AF; font-size:14px; margin-bottom:20px; }
+  .meta-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:12px; }
+  .meta-grid .m { background:#1F2937; border:1px solid #374151; border-radius:10px; padding:10px 14px; }
+  .meta-grid .m .k { font-size:11px; color:#9CA3AF; margin-bottom:2px; }
+  .meta-grid .m .v { font-size:14px; font-weight:600; color:#F9FAFB; }
+
+  .oneline {
+    background:#F5F8FF; border:1px solid #BFDBFE; border-radius:14px;
+    padding:18px 24px; margin-bottom:24px;
+  }
+  .oneline .lab { font-size:12px; letter-spacing:1px; color:#2563EB; font-weight:700; margin-bottom:6px; }
+  .oneline p { font-size:15px; color:#111827; }
+
+  nav.cats { display:flex; flex-wrap:wrap; gap:8px; margin-bottom:28px; }
+  nav.cats a {
+    background:#FFFFFF; border:1px solid #E5E7EB; border-radius:999px;
+    padding:6px 14px; font-size:13px; color:#374151;
+  }
+  nav.cats a:hover { border-color:#2563EB; color:#2563EB; text-decoration:none; }
+
+  .card {
+    background:#FFFFFF; border:1px solid #E5E7EB; border-radius:14px;
+    padding:28px; margin-bottom:28px;
+  }
+  .card-head { display:flex; align-items:flex-start; gap:14px; margin-bottom:6px; flex-wrap:wrap; }
+  .num {
+    font-size:26px; font-weight:800; color:#2563EB; line-height:1.1;
+    font-variant-numeric:tabular-nums; min-width:52px;
+  }
+  .card-head h2 { font-size:20px; font-weight:700; flex:1; min-width:240px; }
+  .badges { display:flex; flex-wrap:wrap; gap:6px; margin:8px 0 14px; }
+  .badge { font-size:12px; padding:3px 10px; border-radius:999px; font-weight:600; }
+  .b-cat { background:#EFF6FF; color:#2563EB; border:1px solid #BFDBFE; }
+  .b-tag { background:#F3F4F6; color:#4B5563; border:1px solid #E5E7EB; }
+  .b-date { background:#ECFDF5; color:#16A34A; border:1px solid #BBF7D0; }
+  .b-warn { background:#FFFBEB; color:#B45309; border:1px solid #FDE68A; }
+
+  .oneliner {
+    background:#F9FAFB; border:1px solid #E5E7EB; border-radius:10px;
+    padding:12px 16px; font-size:14.5px; color:#111827; margin-bottom:18px;
+  }
+
+  h3.sec {
+    font-size:14px; font-weight:700; color:#111827; margin:22px 0 8px;
+    padding-left:10px; border-left:3px solid #2563EB;
+  }
+  .card p, .card li { font-size:14.5px; color:#374151; }
+  .card ul, .card ol { padding-left:22px; margin:6px 0; }
+  .card li { margin-bottom:4px; }
+
+  .src-list { list-style:none; padding-left:0; }
+  .src-list li { margin-bottom:6px; }
+  .src-type {
+    display:inline-block; font-size:11px; font-weight:700; color:#2563EB;
+    background:#EFF6FF; border:1px solid #BFDBFE; border-radius:6px;
+    padding:1px 8px; margin-right:8px;
+  }
+
+  .stack { width:100%; border-collapse:collapse; margin:6px 0; }
+  .stack td { border:1px solid #E5E7EB; padding:7px 12px; font-size:13.5px; vertical-align:top; }
+  .stack td.k { background:#F9FAFB; font-weight:600; color:#111827; width:110px; white-space:nowrap; }
+
+  .flow { display:flex; flex-direction:column; gap:0; margin:10px 0; }
+  .flow .node {
+    background:#F9FAFB; border:1px solid #E5E7EB; border-radius:10px;
+    padding:9px 16px; font-size:13.5px; color:#111827;
+  }
+  .flow .node b { color:#2563EB; }
+  .flow .arrow { text-align:center; color:#9CA3AF; font-size:14px; line-height:1.4; }
+
+  pre {
+    background:#111827; color:#E5E7EB; border-radius:10px;
+    padding:16px 18px; overflow-x:auto; font-size:13px; line-height:1.6;
+    font-family:"SFMono-Regular",Consolas,"Liberation Mono",Menlo,monospace;
+    margin:8px 0; white-space:pre-wrap; word-break:break-word;
+  }
+  code {
+    font-family:"SFMono-Regular",Consolas,Menlo,monospace;
+    background:#F3F4F6; color:#111827; border-radius:5px; padding:1px 6px; font-size:13px;
+  }
+  pre code { background:transparent; color:#E5E7EB; padding:0; }
+
+  .pitfall { background:#FFFBEB; border:1px solid #FDE68A; border-radius:10px; padding:14px 18px; margin:8px 0; }
+  .pitfall b { color:#B45309; }
+  .truth { background:#FEF7F7; border:1px solid #FECACA; border-radius:10px; padding:14px 18px; margin:8px 0; }
+  .truth b { color:#B91C1C; }
+
+  .repro { display:inline-block; font-size:13px; font-weight:700; padding:4px 12px; border-radius:999px; background:#ECFDF5; color:#16A34A; border:1px solid #BBF7D0; }
+  .repro.hard { background:#FFFBEB; color:#B45309; border-color:#FDE68A; }
+  .repro.dev { background:#FEF2F2; color:#B91C1C; border-color:#FECACA; }
+
+  .migrate { display:grid; grid-template-columns:repeat(3,1fr); gap:10px; margin:8px 0; }
+  .migrate .m {
+    background:#F9FAFB; border:1px solid #E5E7EB; border-radius:10px; padding:12px 14px; font-size:13px; color:#374151;
+  }
+  .migrate .m b { display:block; color:#111827; margin-bottom:4px; }
+
+  .course {
+    background:#F5F8FF; border:1px solid #BFDBFE; border-radius:10px; padding:16px 20px; margin:8px 0;
+  }
+  .course table { width:100%; border-collapse:collapse; }
+  .course td { padding:4px 8px 4px 0; font-size:13.5px; vertical-align:top; color:#374151; }
+  .course td.k { font-weight:600; color:#111827; width:88px; white-space:nowrap; }
+
+  .trainer {
+    border-left:3px solid #16A34A; background:#F0FDF4; border-radius:0 10px 10px 0;
+    padding:12px 18px; font-size:14px; color:#14532D; margin:10px 0 4px;
+  }
+  .trainer b { color:#16A34A; }
+
+  .verdict { display:grid; grid-template-columns:repeat(5,1fr); gap:10px; margin:8px 0; }
+  .verdict .v {
+    background:#F9FAFB; border:1px solid #E5E7EB; border-radius:10px; padding:12px; text-align:center;
+  }
+  .verdict .v .k { font-size:11.5px; color:#6B7280; margin-bottom:4px; }
+  .verdict .v .val { font-size:17px; font-weight:800; }
+  .lv-h { color:#16A34A; }
+  .lv-m { color:#F59E0B; }
+  .lv-l { color:#DC2626; }
+
+  section.block { margin-top:40px; }
+  section.block > h2 {
+    font-size:22px; font-weight:800; margin-bottom:16px; padding-bottom:10px;
+    border-bottom:2px solid #E5E7EB;
+  }
+  .panel { background:#FFFFFF; border:1px solid #E5E7EB; border-radius:14px; padding:24px 28px; margin-bottom:20px; }
+  .panel h3 { font-size:16px; margin-bottom:10px; }
+  .panel p, .panel li { font-size:14.5px; color:#374151; }
+  .panel ul { padding-left:22px; }
+  .panel li { margin-bottom:6px; }
+  .panel table { width:100%; border-collapse:collapse; margin:8px 0; }
+  .panel th, .panel td { border:1px solid #E5E7EB; padding:7px 10px; font-size:13px; text-align:left; vertical-align:top; }
+  .panel th { background:#F9FAFB; color:#111827; }
+
+  .checklist { columns:2; column-gap:32px; }
+  .checklist li { list-style:none; margin-bottom:6px; font-size:13.5px; }
+  .checklist li::before { content:"✓ "; color:#16A34A; font-weight:700; }
+
+  .gapnote {
+    background:#FFFBEB; border:1px solid #FDE68A; border-radius:10px;
+    padding:14px 18px; font-size:13.5px; color:#7C2D12; margin-bottom:24px;
+  }
+  .gapnote b { color:#B45309; }
+
+  footer { text-align:center; color:#9CA3AF; font-size:12.5px; margin-top:40px; }
+
+  @media(max-width:640px) {
+    header.top { padding:24px 20px; }
+    header.top h1 { font-size:22px; }
+    .meta-grid { grid-template-columns:repeat(2,1fr); }
+    .card { padding:20px 16px; }
+    .migrate { grid-template-columns:1fr; }
+    .verdict { grid-template-columns:repeat(2,1fr); }
+    .checklist { columns:1; }
+    .num { min-width:auto; }
+    .panel { padding:18px 16px; }
+    .stack td.k { width:82px; }
+  }
+
+</style>
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="../index.html"><img class="mark" src="../assets/images/logo.svg" alt="文明雷达" width="32" height="32" style="width:32px;height:32px;background:none;border:0;box-shadow:none;border-radius:6px">全球文明进程重大事件日报</a>
+    <button class="nav-toggle" type="button" aria-label="菜单" aria-expanded="false">☰</button>
+    <nav class="main-nav" aria-label="主导航"><ul><li><a href="../index.html">首页</a></li><li><a href="../archive.html">日报档案</a></li><li><a href="../radar.html">趋势雷达</a></li><li><a href="../tutorial/index.html" class="active">AI实战</a></li><li><a href="../categories/science.html">科学</a></li><li><a href="../categories/politics.html">政治</a></li><li><a href="../categories/culture.html">文化</a></li><li><a href="../categories/technology.html">科技</a></li></ul></nav>
+  </div>
+</header>
+<main class="site-main">
+<div class="tut-wrap">
+<header class="top">
+  <div class="kicker">China AI Builders · Daily Case Report</div>
+  <h1>AI极客实战案例日报</h1>
+  <div class="sub">China AI Builders · Real Cases · Workflows · Business</div>
+  <div class="meta-grid">
+    <div class="m"><div class="k">日报日期</div><div class="v">2026-10-09</div></div>
+    <div class="m"><div class="k">执行日期</div><div class="v">2026-10-10</div></div>
+    <div class="m"><div class="k">收录案例</div><div class="v">2 个</div></div>
+    <div class="m"><div class="k">数据更新时间</div><div class="v">2026-10-10 20:06</div></div>
+  </div>
+</header>
+
+<div class="gapnote">
+  <b>窗口说明：</b>本期日报日期为 <b>2026-10-09</b>，采集窗口 <b>2026-10-09 10:35 → 2026-10-10 20:06（北京时间，约 33.5 小时）</b>，与上一期（10-08 期，窗口 10-08 10:30 → 10-09 10:35）首尾相接、不重叠不留空。全部时间为北京时间；GitHub 返回的 UTC 时间已换算并标注。本期收录 <b>2 个</b>案例，已声明：当日没有第三个达到收录标准（80 分）的案例，宁缺毋滥。
+</div>
+
+<div class="oneline">
+  <div class="lab">今日一句话</div>
+  <p><b>昨天中国 AI 实战最重要的变化，不是又出了一个新模型，而是「能力正在被标准化」：麦当劳中国把点餐、到店、团餐、活动、积分这整套业务开放成 35 个官方 MCP 工具并开赛让开发者造 Skill；与此同时，一个把「热点日报站」做成可复制引擎的项目把 25 份提示词和入选门槛全部公开。一个是企业把业务开放出来，一个是个人把工作流沉淀下来——两条路都通向同一件事：AI 从「用一下」变成「用得起、接得上、卖得掉」。</b></p>
+</div>
+
+<nav class="cats">
+  <a href="#case1">案例 01 · 麦当劳中国官方 MCP</a>
+  <a href="#case2">案例 02 · AIHOT 热点日报引擎</a>
+  <a href="#observe">今日 AI 实战观察</a>
+  <a href="#radar">商业机会雷达</a>
+  <a href="#personal">个人变现机会</a>
+  <a href="#signals">窗口内信号</a>
+  <a href="#sources">原始资料</a>
+  <a href="#truth">数据真实性说明</a>
+  <a href="#check">质量自检</a>
+</nav>
+
+<!-- ===================== CASE 01 ===================== -->
+<div class="card" id="case1">
+  <div class="card-head">
+    <div class="num">01</div>
+    <h2>把麦当劳中国官方 MCP 装进 Agent：品牌方把「点餐—到店—团餐—活动—积分」开放成 35 个 MCP 工具，开发者当天就能做出可用的 Agent Skill</h2>
+  </div>
+  <div class="badges">
+    <span class="badge b-cat">MCP · 企业开放能力</span>
+    <span class="badge b-tag">中国企业</span>
+    <span class="badge b-tag">Agent Skill</span>
+    <span class="badge b-tag">消费品牌</span>
+    <span class="badge b-date">窗口内：报名开启 + 报名波次</span>
+    <span class="badge b-warn">商业授权受限</span>
+  </div>
+
+  <div class="oneliner">
+    <b>【一句话结论】</b>这是中国企业第一次把一整条消费业务链路（点餐/到店/团餐/活动/积分）以官方 MCP 的形式开放给外部开发者，并且用一场 GitHub Star 排行赛把「做 Skill」变成了可衡量的动作——中国开发者今天申请一个 Token 就能开始做，做完还能投稿参赛。
+  </div>
+
+  <h3 class="sec">01｜案例是什么？</h3>
+  <p>麦当劳中国做了一个叫「麦当劳 MCP」的官方服务：一个远程托管的 <b>MCP Server</b>，地址是 <code>https://mcp.mcd.cn</code>，走 <b>Streamable HTTP</b>，用 <code>Authorization: Bearer &lt;Token&gt;</code> 认证。开发者到官方开放平台 <a href="https://open.mcd.cn/mcp" target="_blank">open.mcd.cn/mcp</a> 用手机号登录、点「激活」就能拿到 Token。</p>
+  <p>拿到 Token 之后，任何支持 MCP 的客户端（WorkBuddy、Cherry Studio、Cursor、TRAE、VS Code……）都能让 AI 去查当天有哪些活动、查门店能卖什么、算价格、下单、取消订单、查积分、领券、抽奖、预约生日派对。官方文档列出的工具覆盖麦乐送点餐、到店取餐、团餐、积分兑换券、活动日历等场景。</p>
+  <p>2026 年 10 月 9 日 10:30，麦当劳中国同时开启了「<b>麦当劳程序员创意开发大赛</b>」：开发者用这套 MCP 做 Skill（套餐推荐、省钱助手、活动推荐等），开源到 GitHub，按 <b>公开 Star 数</b>排名，前 100 名进榜获奖。WorkBuddy（腾讯）是本次活动的官方合作伙伴。</p>
+
+  <h3 class="sec">02｜为什么今天值得关注？</h3>
+  <ul>
+    <li><b>因为报名窗口正好在昨天开：</b>大赛报名及排名期为 <b>2026-10-09 10:30 → 2026-10-25 23:59</b>，本期采集窗口的起点就是活动开始的那一刻。这不是「旧事重提」，而是赛事刚刚起跑。</li>
+    <li><b>因为作品已经成批落地了：</b>窗口内（10-10 上午）报名 Issue 密集刷屏，我们在采集时看到的连续编号为 #343～#350，标题从「控卡点餐助手」「麦力 McDaily」「麦麦省钱决策引擎」到「麦麦拼餐师」；仓库开放 Issue 数已达 <b>310</b>。</li>
+    <li><b>因为排行榜已经跑起来了：</b>官方 <code>RANKING.md</code> 更新时间戳为 <b>2026-10-10 20:00:22</b>，榜首 <code>mcd-event-radar</code> 已到 68 ★，第 100 名附近约 4～5 ★——这意味着<b>参赛成本极低、竞争者还很少</b>。</li>
+    <li><b>因为这件事以前做不了：</b>一年前，一个独立开发者想做一个「帮我点麦当劳」的应用，需要抓包、逆向、伪造请求，随时会被风控；现在品牌方自己把接口标准化成 MCP，合规路径被官方打通了。</li>
+  </ul>
+
+  <h3 class="sec">03｜案例的前世今生</h3>
+  <p><b>前世（为什么要做这个？）</b>消费品牌的数字化服务长期停留在「App / 小程序 / 公众号」三种形态：用户必须<b>到品牌的场子里用品牌给的界面</b>。AI 时代出现了一个新问题——用户开始用 AI 助手直接说「帮我订个麦当劳」，而 Agent 没有眼睛也没有手指，它只能调接口。品牌如果不开接口，就会被第三方用爬虫和逆向「代劳」，既不可控也不安全。MCP 在 2025 年被 Anthropic 提出并被各大厂商迅速接受后，给了品牌方一个标准答案：<b>与其被逆向，不如主动开放。</b></p>
+  <p><b>发展（时间线，均来自官方文档）</b></p>
+  <ul>
+    <li><b>2025-12-09</b>：MCP Server v1.0.0，只有「麦麦日历」和「麦麦省领券」两个能力。</li>
+    <li><b>2025-12-25</b>：活动规则中注明，这一天是「麦当劳 MCP 正式上线」的日期（注意：与版本日志首版日期 12-09 并不一致，两个日期都是官方口径，我们如实并列）。</li>
+    <li><b>2026-01-23 → 2026-09-10</b>：v1.0.1 → v1.0.9，依次加进营养信息、麦乐送点餐与积分兑券、到店取餐与团餐、积分兑实物与得来速、套餐定制、历史订单、随单买卡、派对/品鉴会预约、积分抽奖、取消订单与餐具选择……<b>九个版本，把业务一条条搬上 MCP。</b></li>
+    <li><b>2026-09-23</b>：官方开大赛仓库 <code>M-China/mcd-developer-innovation-challenge</code>，公布参赛规范（必须含 README.md / CONTEST_DECLARATION.md / MCP_INTEGRATION.md / mcp-config.example.json / workbuddy.md）。</li>
+    <li><b>2026-10-09 10:30</b>：报名开启，排行榜机制（公开 Star 排行、前 100 进榜、10-26 00:00 定榜）正式生效。</li>
+  </ul>
+  <p><b>今生（为什么是现在？）</b>三个条件在同一周凑齐了：① MCP 已成为国内客户端的事实标准（WorkBuddy、Cherry Studio、TRAE、Cursor、VS Code 全部内置支持）；② 品牌方把接口做完了（35 个工具，覆盖下单闭环）；③ 出现了一个<b>公开、可衡量、还给奖励的竞技场</b>（Star 榜 + 巨无霸兑换券 + WorkBuddy 积分）。于是「做一个能用的消费级 Agent」的门槛，从「要拿到商务合作」降到了「贴一次 Token」。</p>
+  <p><b>下一步可能怎么发展（分析 / 推演，非事实）</b></p>
+  <ul>
+    <li>10-25 定榜后，前 100 名项目会成为一批<b>可被直接复用的公开 Skill 样板</b>，可能催生「Agent Skill 外包 / 代做」的第一批自由职业者。</li>
+    <li>如果这次赛事数据好看，其他连锁消费品牌（咖啡、茶饮、便利店、连锁餐饮）大概率会复制同一套打法：开放 MCP → 办星数赛 → 借开发者做功。这可能是 2026 年 Q4 到 2027 年最值得盯的一个模式。</li>
+    <li>风险同样存在：官方服务条款明确「未经书面授权，不得将本仓库内容用于商业售卖、付费分发、引流变现或暗示官方背书」。<b>这个案例的商机在「能力供给」，不在「转售接口」</b>——推演成立的前提是拿到品牌方的商业授权，或把价值做在品牌方业务之外。</li>
+  </ul>
+
+  <h3 class="sec">04｜原始资料</h3>
+  <ul class="src-list">
+    <li><span class="src-type">官方</span>麦当劳 MCP Server 使用指南（工具清单 + 版本日志 + 各客户端接入教程）：<a href="https://github.com/M-China/mcd-mcp-server" target="_blank">github.com/M-China/mcd-mcp-server</a></li>
+    <li><span class="src-type">官方</span>麦当劳 MCP 开放平台（申请 Token）：<a href="https://open.mcd.cn/mcp" target="_blank">open.mcd.cn/mcp</a> · 文档页 <a href="https://open.mcd.cn/mcp/doc" target="_blank">open.mcd.cn/mcp/doc</a></li>
+    <li><span class="src-type">官方</span>大赛主仓库（规则 + 排行榜）：<a href="https://github.com/M-China/mcd-developer-innovation-challenge" target="_blank">M-China/mcd-developer-innovation-challenge</a></li>
+    <li><span class="src-type">官方</span>完整活动规则：<a href="https://github.com/M-China/mcd-developer-innovation-challenge/blob/main/activityGuidelines.md" target="_blank">activityGuidelines.md</a></li>
+    <li><span class="src-type">官方</span>实时排行榜（采集时更新于 2026-10-10 20:00:22）：<a href="https://github.com/M-China/mcd-developer-innovation-challenge/blob/main/RANKING.md" target="_blank">RANKING.md</a></li>
+    <li><span class="src-type">官方</span>报名 Issue 列表（含官方自动化的报名校验回复）：<a href="https://github.com/M-China/mcd-developer-innovation-challenge/issues" target="_blank">issues</a></li>
+    <li><span class="src-type">一手</span>当前榜首作品 McEvent Radar（作者 Zafer-Liu）：<a href="https://github.com/Zafer-Liu/mcd-event-radar" target="_blank">github.com/Zafer-Liu/mcd-event-radar</a></li>
+    <li><span class="src-type">一手</span>它的 MCP 接入说明（含线上实测工具名与调用链）：<a href="https://github.com/Zafer-Liu/mcd-event-radar/blob/main/MCP_INTEGRATION.md" target="_blank">MCP_INTEGRATION.md</a></li>
+    <li><span class="src-type">Demo</span>免安装在线演示地图：<a href="https://app-ezf35mw5oq9t.miaoda.online/map" target="_blank">app-ezf35mw5oq9t.miaoda.online/map</a></li>
+    <li><span class="src-type">Demo</span>3 分 52 秒完整演示视频（13.4 MB，1080p）：<a href="https://github.com/Zafer-Liu/mcd-event-radar/releases/download/demo-video/mcd-event-radar-demo.mp4" target="_blank">mcd-event-radar-demo.mp4</a></li>
+    <li><span class="src-type">官方</span>麦当劳 MCP 服务规则：<a href="https://cdn.mcd.cn/cms/pages/MCPServerRules.html" target="_blank">MCPServerRules.html</a></li>
+    <li><span class="src-type">官方</span>WorkBuddy 连接器文档（大赛指定的开发方式）：<a href="https://www.workbuddy.cn/docs/workbuddy/From-Beginner-to-Expert-Guide/Function-Description/Connector" target="_blank">workbuddy.cn 连接器文档</a></li>
+  </ul>
+
+  <h3 class="sec">05｜作者是谁？</h3>
+  <p>这个案例有<b>两个主体</b>，必须分开说：</p>
+  <ul>
+    <li><b>能力提供方：麦当劳中国</b>。活动规则中明确组织者为「金拱门（中国）有限公司」。官方 GitHub 组织账号为 <code>M-China</code>，名下只有两个仓库：MCP Server 指南（190 ★）与本次大赛主仓库（88 ★）。这是可核验的企业官方账号，不是社区模拟。</li>
+    <li><b>开发者一侧：目前由独立开发者主导。</b>以当前榜首 <code>Zafer-Liu</code> 为例：昵称 Zafer_Liu，主页 <a href="https://www.zaferliu.me" target="_blank">zaferliu.me</a>，45 个公开仓库、54 个 followers、bio 为 "Looking for reality."。属于「个人开发者 / 独立开发者」，从仓储结构与文档完备度看更像是习惯开源交付的人，但<b>其职业身份无法从公开信息确认，不做推测</b>。</li>
+  </ul>
+  <p>本次采集未对 310 个报名 Issue 的参与者做整体画像统计，理由：报名仍在进行中，样本会持续变化，此时下结论会失真。</p>
+
+  <h3 class="sec">06｜解决了什么真实问题？</h3>
+  <p>从<b>用户需求</b>而不是从 AI 技术讲起，这条链路原本卡在三处：</p>
+  <ul>
+    <li><b>用户侧：点餐前的决策成本。</b>「今天吃什么、有什么活动、我有什么券、券后多少钱、哪家店还有名额」——要把这些拼起来，用户得在 App、公众号、活动页之间来回跳。麦当劳自己的活动尤其如此：生日派对、读书会、品鉴会这类「场次 + 名额」型活动，信息分散且时效性强，用户很难自己扫完。</li>
+    <li><b>开发者侧：合规的接入路径缺失。</b>想做一个「帮我点麦当劳」的小工具，私人开发者唯一的路径是逆向，随时可能失效、且明确违规。</li>
+    <li><b>品牌侧：AI 流量入口的失位。</b>当越来越多用户的第一入口变成 AI 助手，品牌如果没有可以被 Agent 调用的标准接口，就会在这场迁移里彻底隐身。</li>
+  </ul>
+  <p>官方 MCP 一次性回应了三方：用户得到「一句话问出结果」，开发者得到合规接口，品牌得到进入 Agent 生态的入口。</p>
+
+  <h3 class="sec">07｜完整技术栈</h3>
+  <table class="stack">
+    <tr><td class="k">协议</td><td>MCP（Model Context Protocol），传输层为 <b>Streamable HTTP</b>；官方说明接入客户端必须支持 Streamable HTTP</td></tr>
+    <tr><td class="k">服务地址</td><td><code>https://mcp.mcd.cn</code>（远程托管，官方运维，开发者不自建）</td></tr>
+    <tr><td class="k">鉴权</td><td>请求头 <code>Authorization: Bearer YOUR_MCP_TOKEN</code>；Token 由官方平台手机号登录后一键申请</td></tr>
+    <tr><td class="k">限流</td><td>官方文档明确：每个 Token 每分钟最多 <b>600 次请求</b>，超限返回 <b>429</b></td></tr>
+    <tr><td class="k">工具数</td><td>官方文档列出约 30+ 个工具（点餐/订单/券/积分/商城/活动/抽奖）；参赛者实测 <code>tools/list</code> 返回 <b>35 个</b>（2026-10-09 实测）</td></tr>
+    <tr><td class="k">客户端</td><td>WorkBuddy、Cherry Studio、Cursor、Kiro、TRAE、VS Code（官方文档逐平台给了接入教程）</td></tr>
+    <tr><td class="k">模型</td><td><b>官方未指定</b>。由客户端自带模型决定，因此该案例天然不锁定任何一家模型厂商</td></tr>
+    <tr><td class="k">Skill 侧技术</td><td>以榜首作品为例：Node.js（<code>package.json</code>）+ <code>setup-connector.mjs</code> / <code>check-connector.mjs</code> / <code>locate.mjs</code> / <code>live.mjs</code> / <code>radar.mjs</code>；输出自包含 HTML（不依赖在线地图服务）</td></tr>
+    <tr><td class="k">数据存储</td><td>不涉及服务端数据库；配置落在本机 <code>~/.workbuddy/mcp.json</code>，执行记录以脱敏 JSON 落盘</td></tr>
+    <tr><td class="k">部署</td><td>免部署。MCP 在云端，Skill 装进客户端即可</td></tr>
+    <tr><td class="k">未披露</td><td>官方未公开后端架构、QPS 上限以外的容量数据、内部模型选型。<b>本报告不编造。</b></td></tr>
+  </table>
+
+  <h3 class="sec">08｜完整 Workflow</h3>
+  <div class="flow">
+    <div class="node"><b>用户输入</b>：「这个周末附近哪家麦麦有生日派对还有名额？」（自然语言）</div>
+    <div class="arrow">↓</div>
+    <div class="node"><b>Agent（Skill）</b>：识别意图 → 判定需要「城市 + 日期 + 活动类型」→ 缺城市则先做 IP 级城市定位并请用户确认</div>
+    <div class="arrow">↓</div>
+    <div class="node"><b>Tool 调用链（MCP）</b>：<code>campaign-calendar</code> 找活动线索 → <code>mall-points-products</code> → <code>mall-product-detail</code> 拿 <code>spuId</code> → <code>query-party-city</code> → <code>query-party-store</code>（返回门店名/地址/经纬度/营业状态）</div>
+    <div class="arrow">↓</div>
+    <div class="node"><b>Tool 调用链（续）</b>：<code>query-party-store-date</code> 查可预约日期 → <code>query-party-store-session</code> 查场次；<b>只有 <code>leftNum &gt; 0</code> 才标「有名额」</b></div>
+    <div class="arrow">↓</div>
+    <div class="node"><b>规则层（确定性，不交给模型）</b>：日期/城市/关键词筛选、去重、价格单位核对、把「只有活动日历」的结果降级为「待核实」</div>
+    <div class="arrow">↓</div>
+    <div class="node"><b>输出</b>：单文件自包含 HTML 卡通活动地图（门店按官方经纬度线性投影、辖区与道路为卡通示意并明确标注「示意图」）+ 活动卡片，可筛选、可导出 <code>.ics</code> 日历</div>
+    <div class="arrow">↓</div>
+    <div class="node"><b>Human-in-the-loop</b>：<code>party-order-create</code>（下单）<b>默认不调用</b>，必须用户明确确认；不自动支付</div>
+  </div>
+  <p>注：以上调用链整理自榜首作品的 <code>MCP_INTEGRATION.md</code>（作者公开文档），不是我们的推导。工具清单与顺序均按其文档所述。</p>
+
+  <h3 class="sec">09｜它到底是怎么实现的？</h3>
+  <p>把「为什么它能工作」拆成四层来看：</p>
+  <ul>
+    <li><b>第一层｜能力层（官方负责）：</b>把业务原子化成幂等的工具。<code>query-meals</code> 查菜单、<code>calculate-price</code> 算价、<code>create-order</code> 下单、<code>cancel-order</code> 取消、<code>query-my-coupons</code> 查券——每个工具只做一件事，参数与返回结构由官方定义。这正好对应企业 Agent 设计的核心原则：<b>模型负责不确定的语言，系统负责确定的事实。</b></li>
+    <li><b>第二层｜编排层（Skill 负责）：</b>把「用户的一句话」翻译成一串有依赖顺序的工具调用。<code>spuId</code> 必须来自上一步真实返回，不能从标题猜；门店经纬度只用于地图投影，不做逆地理编码。这一层的价值不在于模型多聪明，而在于<b>依赖关系被显式建模</b>。</li>
+    <li><b>第三层｜不变量层（阈值与闸门）：</b>「可预约」= 官方接口返回的 <code>leftNum &gt; 0</code>；价格单位未核实就不换算；只有活动日历线索时展示「待核实」。这类「不变量」是 Agent 不产生幻觉的真正原因——<b>把结论收敛到可核验的字段上</b>。</li>
+    <li><b>第四层｜交付层：</b>输出不是一段文字，而是<b>一个可交互的单文件页面</b>。这是《AI 极客实战》系列一直强调的趋势：Agent 的交付物正在从「回答」变成「可直接使用的产物」。</li>
+  </ul>
+  <p>顺带看一个很重要的负面信号：作者公开指出，官方文档页把两个工具写作 <code>query-partystore-date</code> / <code>query-partystore-session</code>，而线上 <code>tools/list</code> 实测为 <code>query-party-store-date</code> / <code>query-party-store-session</code>。<b>文档与线上不一致，在 MCP 生态里是常态</b>——所以成熟的做法是运行时读取工具 schema，而不是把字段名硬编码进提示词。</p>
+
+  <h3 class="sec">10｜手把手复现</h3>
+  <p>以下 Step 1–2 来自官方文档原文，Step 3–6 来自榜首作品的公开文档，Step 7 为本报告整理。</p>
+  <p><b>Step 1（官方原文）· 申请 Token</b><br>浏览器打开 <a href="https://open.mcd.cn/mcp" target="_blank">open.mcd.cn/mcp</a> → 右上角【登录】→ 手机号验证码登录 → 点【控制台】→ 点【激活】→ 同意服务协议 → 一键复制 Token。</p>
+  <p><b>Step 2（官方原文）· 把 MCP 配进客户端</b><br>官方给了通用 JSON，粘进客户端的 MCP 配置即可：</p>
+<pre><code>{
+  "mcpServers": {
+    "mcd-mcp": {
+      "type": "streamablehttp",
+      "url": "https://mcp.mcd.cn",
+      "headers": { "Authorization": "Bearer YOUR_MCP_TOKEN" }
+    }
+  }
+}</code></pre>
+  <p class="pitfall"><b>官方特别提示：</b>一定记得把 <code>YOUR_MCP_TOKEN</code> 换成真实 Token；确保客户端支持 Streamable HTTP；Token 妥善保管，不要泄露。</p>
+  <p><b>Step 3–6（来自参赛作品公开文档）· 用 WorkBuddy 装载 Skill 并跑通</b></p>
+  <ul>
+    <li>Step 3：在 WorkBuddy 对话框里直接说「帮我安装这个技能：&lt;仓库地址&gt;，把 <code>skill/&lt;name&gt;</code> 复制到 <code>~/.workbuddy/skills/</code>」；或下载仓库的 <code>dist/*-skill.zip</code> 走图形界面「技能 → 添加技能 → 上传技能」导入。</li>
+    <li>Step 4：<b>新开一轮会话</b>（Skill 目录扫描在会话启动时进行，不重开会话不生效——这是最常见的第一次失败原因）。</li>
+    <li>Step 5：对 Skill 说一句自然语言（如「查附近的活动」），它会先确认城市，再开跑。</li>
+    <li>Step 6：首次使用贴一次 Token，Skill 内置的 <code>setup-connector.mjs</code> 会写前备份、保留其他服务器条目、不回显 Token、在线验证后提示「Trust → 启用 → 重开会话」。之后免配置。</li>
+  </ul>
+  <p><b>Step 7（本报告整理，非作者原文）· 投稿参赛</b><br>按下述文件清单整理仓库 → 公开 → 按官方 Issue 模板发一条【参赛申请】→ 等官方自动化校验回帖 → 之后 Star 数被定时采集进 RANKING.md。</p>
+  <p class="truth"><b>必须标注：</b>Step 1–2 为官方文档原文；Step 3–6 转述自榜首作品的公开文档（<code>README.md</code> / <code>MCP_INTEGRATION.md</code>），<b>本报告未实际执行该流程做端到端验证</b>；Step 7 为本报告基于官方活动规则的整理。</p>
+
+  <h3 class="sec">11｜Prompt / Code / Config</h3>
+  <p><b>官方公开（可直接使用）：</b>MCP 配置 JSON（见上）、各客户端接入步骤截图与文字、完整工具清单与说明、版本日志。</p>
+  <p><b>参赛作品公开（以榜首为例）：</b><code>mcp-config.example.json</code>（只含环境变量占位符，不含凭证）、<code>install.sh</code> / <code>install.ps1</code>、<code>SKILL.md</code>、<code>MCP_INTEGRATION.md</code>（9 个工具逐一说明作用与边界）、<code>workbuddy.md</code>（WorkBuddy 对话上下文，用于专项奖励核验）。</p>
+  <p><b>设计意图（从公开文档提炼，非作者原文）：</b>这份 <code>MCP_INTEGRATION.md</code> 是一份很好的「工具边界说明书」模板——每个工具都标注了「它返回什么」和「它<b>不</b>代表什么」。例如 <code>campaign-calendar</code> 只代表「有活动线索」，<b>不代表</b>某门店有名额；<code>mall-points-products</code> 只代表「该商品可预约」，<b>不代表</b>用户城市有位置。这种「能力边界表」是防止 Agent 过度推断的实用手段。</p>
+  <p class="pitfall"><b>本文核对：</b>上述提炼来自作者公开文档的事实陈述；<b>本报告未获得作者的提示词原文</b>，因此不引用任何未公开的 Prompt。</p>
+
+  <h3 class="sec">12｜踩坑</h3>
+  <div class="pitfall">
+    <p><b>坑 1｜官方文档与线上工具名不一致。</b>文档写作 <code>query-partystore-date</code>/<code>query-partystore-session</code>，线上实测为 <code>query-party-store-date</code>/<code>query-party-store-session</code>。<b>解法：</b>不硬编码工具名与字段名，运行时读取连接器实际 schema。（来源：参赛作品公开文档，作者原话）</p>
+    <p><b>坑 2｜装完 Skill 不生效。</b>Skill 目录在会话启动时扫描，装完必须新开一轮会话。（来源：参赛作品公开文档）</p>
+    <p><b>坑 3｜Token 是唯一的身份凭证，泄露 = 别人用你的账号下单。</b>官方要求妥善保管；项目做法是配置文件写前备份、不回显 Token、示例文件只放环境变量占位符。（来源：官方文档 + 参赛作品公开文档）</p>
+    <p><b>坑 4｜限流。</b>600 次/分钟/Toke，超限 429。多轮工具链（一次查询可能串 7 个工具）很容易把频率打上去，尤其在批量扫城市/门店时。（来源：官方文档原文）</p>
+    <p><b>坑 5｜「有活动」不等于「有名额」。</b>这是最容易让 Agent 说错话的地方。官方活动类目（生日派对 <code>1&gt;6&gt;20</code>、主题派对 <code>1&gt;6&gt;21</code>、体验营 <code>1&gt;6&gt;22</code>、品鉴会 <code>1&gt;6&gt;25</code>、读书会 <code>1&gt;6&gt;34</code>）只是线索，必须走到 <code>query-party-store-session</code> 才能确认名额。（来源：参赛作品公开文档）</p>
+  </div>
+  <p class="truth"><b>说明：</b>本节全部来自官方文档原文与参赛作品公开文档，未经我们独立实测复现；标为「坑」的是<b>公开文档中已明示的失败点</b>，不是我们的踩坑记录。我们未在任何社区评论或 Issue 中检索到额外的失败反馈（该作品 Issue 区仅 1 条讨论，且为作者自述的演示说明）。</p>
+
+  <h3 class="sec">13｜中国用户能不能直接做？</h3>
+  <ul>
+    <li><b>国内访问：</b>可以。服务在中国大陆境内，官方明确「面向中国大陆地区（不含港澳台）使用」。</li>
+    <li><b>注册：</b>很方便。手机号验证码登录，无需企业资质，个人即可申请 Token。</li>
+    <li><b>API：</b>容易获得。登录后点「激活」即得 Token，一键复制。</li>
+    <li><b>成本：</b><b>MCP 服务本身官方未公布计费</b>——截至采集时点，官方文档与活动规则中均未提及收费。<b>我们不假设它永久免费</b>，使用者应以官方条款为准。其余成本主要是客户端与模型费用。</li>
+    <li><b>技术门槛：</b> <span class="repro">普通用户可上手</span> —— 只想用的话，配好 JSON、粘 Token 就能在对话里点餐、查券、查活动；<span class="repro hard">AI 用户可做 Skill</span> —— 要做成可复用的 Skill，需要理解 MCP 工具边界与文件结构；<span class="repro dev">开发者做产品</span> —— 要做成独立产品需 Node.js / 前端能力。</li>
+    <li><b>参赛资格：</b>必须是中国大陆合法居民、年龄 ≥18 周岁（未满 18 需监护人同意）；项目仓库必须公开可访问；项目创建时间需落在 2025-12-25 00:00 至 2026-10-25 23:59 之间。</li>
+  </ul>
+
+  <h3 class="sec">14｜国产替代方案</h3>
+  <table class="stack">
+    <tr><td class="k">原方案</td><td>麦当劳中国官方 MCP（<code>mcp.mcd.cn</code>）+ 任意支持 Streamable HTTP 的 MCP 客户端</td></tr>
+    <tr><td class="k">中国用户方案</td><td>本身即国产：服务方麦当劳中国（金拱门），官方推荐客户端含 WorkBuddy（腾讯）、TRAE（字节）、Cherry Studio（国内开源）。<b>不存在「需要替换」的问题。</b></td></tr>
+    <tr><td class="k">模型侧</td><td>官方不锁定模型，客户端自带即可。这意味着 <b>DeepSeek / Qwen / GLM / Kimi / 豆包 / MiniMax 都能直接配</b>，因为约束在 MCP 协议层，不在模型层。<b>属「协议中立、理论可用」，本报告未逐一实测。</b></td></tr>
+    <tr><td class="k">同类中国案例</td><td>该模式的先例可在国内其他开放 MCP 的品牌/平台中寻找（如各类生活服务、票务、政务类开放平台）；本报告本期未完成同口径横向核查，<b>故只给方向不给结论</b>。</td></tr>
+  </table>
+
+  <h3 class="sec">15｜中国企业可以怎么用？</h3>
+  <p><b>企业场景 1｜连锁餐饮 / 零售：把「活动 + 库存 + 权益」做成 Agent 可调用能力。</b>麦当劳已经示范了完整链路：活动日历 → 商品目录 → 门店与场次 → 名额核验 → 下单。任何有「门店 × 场次 × 名额」结构的业务（餐饮、健身、影院、医美、教培试听、连锁门店预约）都能照搬这个工具切分方式。</p>
+  <p><b>企业场景 2｜企业内部系统接入 MCP，替代「写死的工作流」。</b>把 CRM 查客户、ERP 查库存、工单系统建单封装成 MCP 工具，让不同 Agent（客服、销售、运营）共用同一套能力，而不是每个场景重写一遍 API 调用。</p>
+  <p><b>企业场景 3｜用「公开 Star 排行」这种机制低成本征集外部创意。</b>本次大赛的组织方式（开源 + 公开排行 + 小额奖励 + 官方自动化报名校验）是一套<b>极低成本的外部创新征集模板</b>——用 Issue 机器人做合规校验、用 Star 数做公开排序、用少量品牌权益做奖励。活动规则还把「内容合规」「原创性」「不得诋毁品牌」全部前置到参赛声明文件里，法务成本被大幅摊薄。</p>
+
+  <h3 class="sec">16｜中国消费者可以怎么用？</h3>
+  <ol>
+    <li><b>省钱场景：</b>让 AI 先查「我有什么券」+「当前门店能卖什么」+「券后价」，再决定点不点——把「领券 → 算价 → 对比套餐」合并成一句话。</li>
+    <li><b>活动场景：</b>查询附近门店的生日派对、读书会、品鉴会场次与名额，导出 <code>.ics</code> 进日历。这是传统 App 里最难找、最容易被忽略的信息。</li>
+    <li><b>家庭/团队场景：</b>多人点餐、拼单分账、按热量或预算选套餐——这类「多约束求解」正好是模型擅长的，而人类自己在菜单上做很累。</li>
+  </ol>
+
+  <h3 class="sec">17｜如何变成一个赚钱的项目？</h3>
+  <p><b>先说清楚边界：官方条款明确禁止「商业售卖、付费分发、引流变现、暗示官方背书」。</b>所以下面所有路径<b>都必须建立在「拿到品牌授权」或「把价值做在品牌业务之外」这两个前提上</b>，否则不建议做。</p>
+  <p><b>产品化：</b>把「场景化点餐决策」做成一个轻量 Web / 小程序工具（多人拼单、热量预算、活动日历聚合）。核心资产不是接口，而是<b>交互设计与规则沉淀</b>。</p>
+  <p><b>服务化：</b>更现实的路径是<b>「MCP/Skill 交付服务」</b>——把「把企业某个业务封装成 MCP 工具 + 写一份 Skill + 做工具边界说明书」做成标准化交付。本次大赛产出的 <code>MCP_INTEGRATION.md</code> 结构，本身就是一份很好的交付物范本。</p>
+  <p><b>咨询化：</b>帮消费品企业做「品牌能力 MCP 化」的方案设计：哪些业务适合原子化成工具、工具边界怎么划、如何用排行榜机制做外部征集。</p>
+  <p><b>培训化：</b>「从 0 做一个 MCP Skill」是最好的入门级 Workshop 题材——门槛低、有真接口、当天能出成果、还能顺手参赛。详见第 21 节。</p>
+  <p><b>内容化：</b>「我用官方 MCP 做了个 XX」是天然的实操内容题材（B站 / 小红书 / 公众号），尤其是「一句话查出附近还有名额的生日派对」这类有画面感的结果。</p>
+  <p><b>行业化：</b>把「活动 × 门店 × 名额 × 下单」这套模式抽象出来，复用到连锁服务业的任意细分——这是本次案例最值钱的抽象。</p>
+
+  <h3 class="sec">18｜变现路径</h3>
+  <table class="stack">
+    <tr><td class="k">路径</td><td><b>客户</b>／<b>产品·服务</b>／<b>收费方式</b>／<b>难度</b></td></tr>
+    <tr><td class="k">A｜Skill 交付</td><td>想接 MCP 但没人做的中小企业 ／ 业务能力 MCP 化 + Skill 开发 + 文档 ／ 项目制 ／ <b>中</b>（需企业侧接口权限）</td></tr>
+    <tr><td class="k">B｜行业解决方案</td><td>连锁餐饮/零售/教培/健身 ／ 「活动+门店+名额+下单」Agent 方案 ／ 项目制 + 年维 ／ <b>中高</b></td></tr>
+    <tr><td class="k">C｜培训 / Workshop</td><td>企业内训、高校、AI 训练营 ／ 「一天做一个 MCP Skill」 ／ 按人 / 按场 ／ <b>低</b></td></tr>
+    <tr><td class="k">D｜内容 / IP</td><td>开发者社群、B站/小红书受众 ／ 实操教程、源码解析、参赛复盘 ／ 流量 + 咨询转化 ／ <b>低</b></td></tr>
+    <tr><td class="k">E｜参赛获奖</td><td>官方（本次赛事） ／ 第 1 名 = 巨无霸 50 次免费兑换券 + 10240 WorkBuddy 积分；入榜 = 汉堡回车键玩具 + 程序员节徽章；提交 workbuddy.md 的前 100 名另得 3000 WorkBuddy 积分 ／ 名次制 ／ <b>低</b></td></tr>
+  </table>
+  <div class="truth"><b>重要区分：</b>上表中，<b>E（参赛获奖）是已经验证的确定性回报</b>——奖励内容与规则由官方文件公开载明；<b>A/B/C/D 全部属于基于案例结构推导的潜在商业模式，不是已验证的商业成功</b>，且 A/B 受官方商业条款限制，需取得授权。本报告不承诺任何收益。</div>
+
+  <h3 class="sec">19｜如果我是一个中国独立开发者</h3>
+  <p>假设：1 个人、预算有限、有基础编程能力、使用国产模型。目标：<b>7 天做出一个能参赛、也能留在作品集里的最小可行版本（MVP）</b>。</p>
+  <ul>
+    <li><b>Day 1｜拿 Token，跑通最小闭环。</b>申请 Token → 配进客户端 → 只调用一个工具（如 <code>query-meals</code>），确认能拿到真实菜单。<b>验收：</b>一句话问出今天的菜单。</li>
+    <li><b>Day 2｜画工具边界表。</b>把要用到的 5～8 个工具列出来，每个写清「返回什么 / 不代表什么」。这一步决定后面会不会说错话。</li>
+    <li><b>Day 3｜定义不变量。</b>确定哪些结论必须来自字段（如「有名额」= <code>leftNum &gt; 0</code>），哪些必须降级为「待核实」。把这些写成硬规则，不交给模型。</li>
+    <li><b>Day 4｜串第一条多步链。</b>活动日历 → 商品 → 城市 → 门店 → 日期 → 场次，跑一遍真实数据，记录每一步的真实返回结构（不要照抄文档字段名）。</li>
+    <li><b>Day 5｜做交付物。</b>把结果渲染成一个自包含的单文件 HTML（可筛选、可导出 <code>.ics</code>），而不是只输出一段文字。</li>
+    <li><b>Day 6｜补异常路径。</b>限流 429、Token 失效、工具名不符、字段缺失、无结果——每一条都要有明确提示，而不是让模型猜。</li>
+    <li><b>Day 7｜打包 + 写文档 + 报名。</b>整理 README.md / CONTEST_DECLARATION.md / MCP_INTEGRATION.md / mcp-config.example.json；写 <code>workbuddy.md</code>；发报名 Issue。</li>
+  </ul>
+  <p class="pitfall"><b>现实提醒：</b>这份 7 天计划假设你每天能投入 2–4 小时，且当天就能拿到 Token。真正的瓶颈通常不在写代码，而在 <b>Day 3 的不变量设计</b>——想清楚「什么话绝对不能说」，比多加两个工具重要得多。</p>
+
+  <h3 class="sec">20｜如何迁移到其他行业</h3>
+  <div class="migrate">
+    <div class="m"><b>① 连锁服务预约</b>医美 / 健身 / 教培试听 / 摄影：把「门店 × 项目 × 可约时段 × 名额」原子化成工具，Agent 负责一句话履约。</div>
+    <div class="m"><b>② 票务与展会</b>演出 / 展览 / 赛事：活动日历 → 场次 → 余票 → 下单，与本案结构几乎一一对应。</div>
+    <div class="m"><b>③ 企业内部自助服务</b>IT 报修 / 行政申请 / 会议室预订：把审批流封装成 MCP 工具，HR/IT/行政共用一个 Agent 入口。</div>
+  </div>
+  <p>迁移的关键不是「找一个也用 MCP 的品牌」，而是<b>识别业务里是否存在「多条件筛选 + 实时余量 + 一次性提交」这个结构</b>——只要有，这套方法就能直接搬。</p>
+
+  <h3 class="sec">21｜培训课程设计</h3>
+  <div class="course">
+    <table>
+      <tr><td class="k">课程名称</td><td>《一天做出你的第一个 MCP Skill：从官方 MCP 到可交付 Agent》</td></tr>
+      <tr><td class="k">适合人群</td><td>有基础编程能力的开发者、AI 产品经理、想把业务接口 MCP 化的企业技术人员、准备参赛的选手</td></tr>
+      <tr><td class="k">建议时长</td><td>半天（3.5 小时）为主，可拆成 30 分钟 Demo / 60 分钟 Workshop</td></tr>
+      <tr><td class="k">30 分钟 Demo</td><td>现场申请 Token → 配进客户端 → 一句话问出「附近还有名额的活动」→ 生成活动地图。让学员先看到<b>结果</b>。</td></tr>
+      <tr><td class="k">60 分钟 Workshop</td><td>学员自己走一遍 Step 1–6；讲师强调两个关键点：装完要重开会话、结论必须来自字段。</td></tr>
+      <tr><td class="k">半天课程</td><td>上半场：MCP 是什么、为什么品牌要开放能力（15 分钟）→ 动手跑通（45 分钟）。下半场：工具边界设计（45 分钟）→ 不变量与异常路径（45 分钟）→ 产出包装与投稿（30 分钟）。</td></tr>
+      <tr><td class="k">课程目标</td><td>学员最终能够：独立完成一次 Token 申请与客户端配置；把一条业务链路拆成 5–8 个工具；写出「能力 / 边界」对照表；交付一个可交互的产物。</td></tr>
+      <tr><td class="k">现场 Demo</td><td>「这个周末附近哪家麦麦有生日派对还有名额？」——从提问到地图的完整链路。</td></tr>
+      <tr><td class="k">学员练习</td><td>把一个自己熟悉的业务（哪怕是公司内部系统）拆成工具清单 + 边界表，不上线，只交设计。</td></tr>
+      <tr><td class="k">课后作业</td><td>基于官方 MCP 做一个单场景 Skill，附 README 与 MCP_INTEGRATION.md，可直接投稿参赛。</td></tr>
+      <tr><td class="k">企业迁移</td><td>把课程主体换成「企业自有系统的 MCP 化」：如何选工具粒度、如何做权限与审计、如何与现有审批流共存。</td></tr>
+    </table>
+  </div>
+
+  <h3 class="sec">22｜培训师点评</h3>
+  <div class="trainer">
+    <b>点评：</b>这个案例真正值得教的不是「怎么调 API」，而是<b>「工具边界表」与「不变量」这两个动作</b>——为什么 <code>campaign-calendar</code> 有结果不能等于「有名额」，为什么「可预约」必须落在 <code>leftNum &gt; 0</code> 这唯一一个字段上。学员学完这一课，能拿走的是一套可迁移到任何企业 Agent 的工程直觉：<b>模型负责不确定的语言，系统负责确定的事实。</b>
+  </div>
+
+  <h3 class="sec">23｜最终判断</h3>
+  <div class="verdict">
+    <div class="v"><div class="k">落地性</div><div class="val lv-h">高</div></div>
+    <div class="v"><div class="k">中国市场相关性</div><div class="val lv-h">高</div></div>
+    <div class="v"><div class="k">商业价值</div><div class="val lv-m">中高</div></div>
+    <div class="v"><div class="k">复现难度</div><div class="val lv-h">低</div></div>
+    <div class="v"><div class="k">变现潜力</div><div class="val lv-m">中</div></div>
+  </div>
+  <p><b>为什么商业价值标「中高」而不是「高」：</b>能力供给端毫无疑问是高的（中国企业第一次把整条业务链路 MCP 化），但<b>官方商业条款明确限制了转售与引流变现</b>，所以对普通开发者而言，可变现的接口是「做服务」而不是「卖产品」。这个扣分是刻意的。</p>
+</div>
+
+<!-- ===================== CASE 02 ===================== -->
+<div class="card" id="case2">
+  <div class="card-head">
+    <div class="num">02</div>
+    <h2>把「热点日报站」做成可复制的引擎：AIHOT 开源全部 25 份提示词与入选门槛，一个人就能给自己的行业搭一个日报站</h2>
+  </div>
+  <div class="badges">
+    <span class="badge b-cat">AI + 内容 / Research 完整 Workflow</span>
+    <span class="badge b-tag">开源引擎</span>
+    <span class="badge b-tag">RSS + 微信公众号信源</span>
+    <span class="badge b-tag">Docker 一键部署</span>
+    <span class="badge b-date">窗口内：15 次提交</span>
+    <span class="badge b-warn">无 Release · 数据自述</span>
+  </div>
+
+  <div class="oneliner">
+    <b>【一句话结论】</b>它把「选题 → 预筛 → 两次独立评分 → 写作 → 聚簇 → 热度 → 成刊」这条链路做成了开源引擎，并把提示词和入选门槛全部公开——这是「日报自动化」第一次从个人脚本变成可被复制的产品级框架。
+  </div>
+
+  <h3 class="sec">01｜案例是什么？</h3>
+  <p>AIHOT 是一个「自己找热点、自己写日报」的网站框架。它每天从一批信源里收资料，用大模型先筛一遍、再<b>独立打两次分</b>，挑出真正值得看的，写成中文标题和摘要；把不同来源说的同一件事聚成一个「事件」，按有多少人在说排热度，每天早上出一份日报。</p>
+  <p>作者把<b>引擎本身</b>开源了：网站、后台、精选流程、聚簇与热度算法、以及<b>全部提示词原文和入选门槛</b>，都在仓库里。他自己在 README 里说得很直白：「把信源换成你的，把精选标准换成你的 KnowHow，它就是你的行业热点站。」</p>
+  <p>仓库自带 18 个公开的海外 AI 资讯源做示范，够跑起来看效果；真正的信源和运营数据不在仓库里。</p>
+
+  <h3 class="sec">02｜为什么今天值得关注？</h3>
+  <ul>
+    <li><b>因为它正在被「工程化」而不是被「展示」。</b>窗口内（10-09 → 10-10 UTC）该仓库有 <b>15 次提交</b>，集中在引擎侧的质量控制：撤下/补齐导航隐藏入口、修复「首个日报之前结束的周/月报不该出刊」的排期 bug、给「读者用词替换」补齐步骤说明、把撤回过的报道从聚簇证据里排除、隐藏掉桥接证据被撤销后的关联事件。这些改动说明它已经从「能跑」进入「跑得稳」阶段。</li>
+    <li><b>因为它的成本被压到了个人可承受。</b>部署只需要 Docker + Node 24 + 一个 OpenAI 兼容的模型 Key，<b>默认按 DeepSeek 配置</b>，README 明确支持千问、智谱。一条命令起站。</li>
+    <li><b>因为它是「AI + 内容」方向少见的完整闭环。</b>本系列连续多期找不到合格的「AI + 内容创作」一手案例，多被内容农场占据。这一个不是教程、不是工具推荐，而是<b>一条可部署的完整流水线，附全部提示词</b>。</li>
+  </ul>
+  <p class="pitfall"><b>如实说明本期的窗口证据强度：</b>AIHOT 在窗口内<b>没有发布新版本（该仓库不使用 GitHub Releases）</b>，窗口事件是 15 次引擎提交，属渐进式更新而非重大版本。我们仍将其收录，因为：① 「新更新」本身符合收录口径；② 其可复现性、一手程度与可迁移性在当日候选中最高；③ 当日没有第三个案例达到收录标准。<b>我们同时提示一个指标异常：7022 ★ 对应 1723 Fork，而仅有 22 个 Watcher，Star/Fork 比例明显高于开源项目常态，其增长质量无法独立验证。</b></p>
+
+  <h3 class="sec">03｜案例的前世今生</h3>
+  <p><b>前世（为什么会出现？）</b>「把信息汇总成日报」这件事，过去十年经历了三代：第一代是 RSS 阅读器（人自己筛），第二代是爬虫 + 关键词（规则筛，误报多、重复多），第三代是 LLM 摘要（一句话总结，但没有取舍——所以每天都能生成一份「什么都说了等于什么都没说」的日报）。<b>真正没被解决的那个问题，是「取舍标准」本身。</b></p>
+  <p><b>发展（这个项目自己讲的很清楚）</b></p>
+  <ul>
+    <li>作者自述是设计师出身，「半年前还看不太懂代码」，这套代码是他和 AI 一起重写的——<b>这是典型的 2026 年现象：非传统程序员用 AI 做出了产品级系统。</b>（来源：作者 README 原文，属自述）</li>
+    <li><b>关键转变是「把标准外置」。</b>大多数类似项目把筛选逻辑写死在代码里；AIHOT 把每一步的提示词放进 <code>industry/prompts/</code>，「改标准不用改代码」。这一步让它从「一个网站」变成了「一个可被改造的框架」。</li>
+    <li><b>然后是「可校准」。</b>它提供 <code>SelectBench</code>，用你自己标注的样本去校准评分门槛；仓库里还带 <code>gold.example.jsonl</code>、<code>relation-gold.example.jsonl</code>、<code>story-digest-eval.example.jsonl</code> 等评测样例文件。</li>
+    <li><b>接着是「需求外溢」。</b>作者原话：这半年「很多做法律、做 HR、做金融、做贵金属的朋友问我，能不能也给他们的行业做一个」——他做不了，因为他不懂那些行业，所以选择把引擎开源出去。（来源：作者 README 原文，属自述）</li>
+  </ul>
+  <p><b>今生（为什么现在值得关注？）</b>三件事同时具备了：① 模型成本降到「一天几百条信源打分」个人付得起；② Agent 编程能力让「非专业开发者重写一整套产品」第一次成为现实；③ 行业信源（尤其<b>微信公众号</b>）第一次可以在同一个流水线里和 RSS、X、JSON 接口并列处理。当「标准可以外置 + 信源可以自选 + 部署只要一条命令」三件事凑齐，它就从个人作品变成了<b>可以被上百个行业各自改造的模板</b>。</p>
+  <p><b>下一步可能怎么发展（分析 / 推演，非事实）</b></p>
+  <ul>
+    <li>最可能的形态是「<b>模板创业</b>」：一批垂直行业热点站出现（法律、HR、金融、贵金属、宠物、母婴……），商业模式从「自己运营」转向「卖定制的站 + 代运营」。</li>
+    <li>第二批机会在「<b>校准服务</b>」：门槛怎么定、什么算重要，这是行业 KnowHow，正好是可以收费的部分——作者自己已经点了这个痛点。</li>
+    <li>风险：模板被大量复制后，<b>同质化与信源版权/合规</b>会成为主要约束；此外作者明确要求「不要用 AIHOT 的名字和 Logo」，说明他对品牌稀释是有防备的。</li>
+  </ul>
+
+  <h3 class="sec">04｜原始资料</h3>
+  <ul class="src-list">
+    <li><span class="src-type">一手</span>项目仓库（MIT，TypeScript）：<a href="https://github.com/KKKKhazix/AIHOT" target="_blank">github.com/KKKKhazix/AIHOT</a></li>
+    <li><span class="src-type">一手</span>线上站（同源引擎，生产环境）：<a href="https://aihot.news" target="_blank">aihot.news</a></li>
+    <li><span class="src-type">一手</span>全部提示词原文目录（25 个 .md）：<a href="https://github.com/KKKKhazix/AIHOT/tree/main/industry/prompts" target="_blank">industry/prompts/</a></li>
+    <li><span class="src-type">一手</span>精选与校准文档（门槛、两次评分、去重规则）：<a href="https://github.com/KKKKhazix/AIHOT/blob/main/docs/selection.md" target="_blank">docs/selection.md</a></li>
+    <li><span class="src-type">一手</span>改成你的行业（行业改造指南）：<a href="https://github.com/KKKKhazix/AIHOT/blob/main/docs/customize.md" target="_blank">docs/customize.md</a></li>
+    <li><span class="src-type">一手</span>部署文档（中国大陆/域名/HTTPS/WSL2）：<a href="https://github.com/KKKKhazix/AIHOT/blob/main/docs/deploy.md" target="_blank">docs/deploy.md</a></li>
+    <li><span class="src-type">一手</span>示范信源配置（18 个公开源，含 tier 分级字段）：<a href="https://github.com/KKKKhazix/AIHOT/blob/main/industry/sources.json" target="_blank">industry/sources.json</a></li>
+    <li><span class="src-type">一手</span>窗口内提交记录（10-09 → 10-10，15 次）：<a href="https://github.com/KKKKhazix/AIHOT/commits/main" target="_blank">commits/main</a></li>
+    <li><span class="src-type">社区</span>Discussions 交流区：<a href="https://github.com/KKKKhazix/AIHOT/discussions" target="_blank">discussions</a></li>
+  </ul>
+
+  <h3 class="sec">05｜作者是谁？</h3>
+  <ul>
+    <li><b>GitHub：</b><code>KKKKhazix</code>，昵称 Khazix。账号注册于 <b>2025-10-22</b>，公开仓库 <b>4 个</b>，followers <b>4065</b>，未填写公司、博客、Twitter、bio。<b>没有任何可核验的实名或职业信息。</b></li>
+    <li><b>作者自述：</b>「我不是专业的开发者。我是设计师出身，半年前还看不太懂代码。这套代码是我和 AI 一起重写的。」（引自 README 原文 —— <b>这是作者自述，本报告无法独立验证</b>）</li>
+    <li><b>可核验的客观事实：</b>他确实拥有一个稳定运行的线上站（aihot.news），确实开源了 4 万行级别的完整工程（Dockerfile、docker-compose.yml、packages/、modules/、database/、deploy/、tests/、25 份提示词），也确实在持续迭代（窗口内 15 次提交）。<b>至于「半年前看不懂代码」这一细节，属自述，存疑即存疑。</b></li>
+  </ul>
+
+  <h3 class="sec">06｜解决了什么真实问题？</h3>
+  <p>从<b>用户需求</b>讲起，不是从技术讲起：</p>
+  <ul>
+    <li><b>「我盯的这个行业，每天发生的事我根本看不过来。」</b>一个律师要盯法规动态与判例，一个 HR 要盯劳动政策，一个做贵金属的要盯行情与政策。这些信息散在几十个信源里，其中一部分只存在于<b>微信公众号</b>——最难聚合的那一类。</li>
+    <li><b>「看不过来」的下一层是「看错了」。</b>同一个消息，官网发一篇、媒体转十篇、朋友圈刷一天。<b>人真正的负担不是信息量，而是去重与判断重要性。</b>AIHOT 对这个问题的回答是把「事件」而不是「文章」当作基本单位：48 小时内每个独立来源只算一次热度、24 小时减半——<b>所以排名靠前的是真正有很多人在说的事，而不是某家媒体发得最多的事。</b></li>
+    <li><b>「我不需要一个 AI 帮我总结，我需要一个 AI 帮我取舍。」</b>这是本项目与「RSS + 大模型摘要」的根本区别：摘要解决「看懂」，取舍解决「值不值得看」。而取舍标准，是可配置、可校准、可用自己标注的样本去验证的。</li>
+  </ul>
+
+  <h3 class="sec">07｜完整技术栈</h3>
+  <table class="stack">
+    <tr><td class="k">运行时</td><td>Node.js 24（运行 <code>init-env</code> 生成配置需要）</td></tr>
+    <tr><td class="k">数据库</td><td>PostgreSQL 17</td></tr>
+    <tr><td class="k">部署</td><td>Docker + docker-compose（仓库含 <code>Dockerfile</code> / <code>docker-compose.yml</code> / <code>deploy/</code>）</td></tr>
+    <tr><td class="k">语言</td><td>TypeScript（<code>tsconfig.base.json</code>，含 <code>packages/</code> 多包结构）</td></tr>
+    <tr><td class="k">模型</td><td>任意 <b>OpenAI 兼容</b>接口。<b>默认按 DeepSeek 配置</b>；README 明确说明可用「千问、智谱等」——即 Qwen / GLM 属官方支持范围</td></tr>
+    <tr><td class="k">模型路由</td><td>后台支持「<b>每一步单独换模型</b>」；聚簇复核可单独指定 <code>GROUP_REVIEW_MODEL</code>；推理模型需设 <code>LLM_REASONING_TOKENS</code> 预留输出额度</td></tr>
+    <tr><td class="k">信源</td><td><b>六种</b>：RSS、网页列表、JSON 接口、X 账号、<b>微信公众号</b>、自定义脚本推送</td></tr>
+    <tr><td class="k">信源分级</td><td>三级 <code>T1</code> 官方一手 / <code>T2</code> 官方账号与准官方 / <code>T3</code> 媒体与个人，<b>各级入选门槛不同</b>；抓取频率按产出自动调整</td></tr>
+    <tr><td class="k">对外接口</td><td>RSS（精选/全部/全文/日报/周报/月报）、公开 API（<code>/openapi-v1.json</code>）、<b>MCP</b>、Agent Markdown、<code>llms.txt</code></td></tr>
+    <tr><td class="k">后台</td><td><code>/admin</code>：信源管理与试抓、内容诊断与人工评分更正、精选评测、预算熔断、运行记录与告警</td></tr>
+    <tr><td class="k">提示词</td><td><code>industry/prompts/</code> 下 <b>25 个 .md</b>，其中 <code>selection-score.md</code> 9.7 KB、<code>structure.md</code> 7.3 KB、<code>rules-domain.md</code> 3.9 KB、<code>content-understanding.md</code> 6.3 KB；另有 <code>industry/wording.ts</code>（用词表）、<code>taxonomy.ts</code>、<code>topics.json</code></td></tr>
+    <tr><td class="k">许可</td><td>MIT</td></tr>
+  </table>
+
+  <h3 class="sec">08｜完整 Workflow</h3>
+  <div class="flow">
+    <div class="node"><b>信源层</b>：RSS / 网页列表 / JSON / X / 微信公众号 / 自定义脚本推送 → 同一网址同一内容只留一份</div>
+    <div class="arrow">↓</div>
+    <div class="node"><b>预筛</b>（<code>prefilter.md</code>）：这是不是本行业的事。<b>宽进</b>——只拦明显无关的；只有标题没正文的先等材料，<b>不评分、不凭标题写文案</b></div>
+    <div class="arrow">↓</div>
+    <div class="node"><b>评分</b>（<code>selection-score.md</code>）：<b>同一份评分标准独立打两次分（0–100）</b>，两次之和 ≥ 2 × 门槛才够分；门槛按信源分级（T1/T2/T3）不同；页面上显示的是两次的平均（向下取整）</div>
+    <div class="arrow">↓</div>
+    <div class="node"><b>结构化</b>（<code>structure.md</code>）：分类/标签/主体公司；判断是「一条具体新闻」「综合稿」还是「说不清」；抽出「谁、做了什么、对什么、什么时候」与原文出处</div>
+    <div class="arrow">↓</div>
+    <div class="node"><b>写作</b>（<code>content-understanding.md</code> 等）：中文标题、<b>答案先行</b>的摘要、推荐理由；用词表命中的词让模型只改一次（<code>mend-wording.md</code>）</div>
+    <div class="arrow">↓</div>
+    <div class="node"><b>归组与去重</b>（<code>group-*.md</code>）：不同来源的同一件事聚成一个「事件」；用标题摘要向量（未配向量服务则比文字重合度）找候选 → 模型判断「同一件事 / 后续进展 / 两件事」→ 写入前再让模型复核一遍</div>
+    <div class="arrow">↓</div>
+    <div class="node"><b>热度</b>：按<b>事件</b>算，不按文章算。48 小时内每个独立来源只算一次，24 小时减半；和 6 小时前比涨得快的标「上升」</div>
+    <div class="arrow">↓</div>
+    <div class="node"><b>成刊</b>：日报（默认 08:00）→ 周报（周一 10:00）→ 月报（每月 1 日 10:30），从日报汇编，<b>编排出刊不调模型</b>，模型只写总述与栏目导读</div>
+  </div>
+
+  <h3 class="sec">09｜它到底是怎么实现的？</h3>
+  <p>这套系统里真正有技术含量的，不是「调模型写摘要」，而是三个反直觉的设计：</p>
+  <ul>
+    <li><b>① 两次独立评分，而不是一次打分。</b>单次 LLM 打分方差大，同一个条目今天说 80 分明天说 55 分。它用「同一份标准独立打两次，两次之和 ≥ 2 × 门槛」来对抗这种抖动。<b>这是把「模型的随机性」当成工程参数处理，而不是靠调提示词祈祷。</b></li>
+    <li><b>② 门槛按信源分级，而不是一刀切。</b>T1（官方一手）容忍低分——官方发的就是重要的；T3（媒体与个人）要求高分——因为噪音大。这等于把<b>「信任度」显式建模成了评分函数的输入</b>。</li>
+    <li><b>③ 热度按事件算，每个来源只算一次。</b>如果按文章数算热度，一家媒体发十篇就赢了。按「独立来源数」算，只有一个来源反复报道的事件不会进榜。这条规则直接决定了榜单的<b>信息价值</b>，而不是它的工作量。</li>
+  </ul>
+  <p>另外两个工程细节值得单独记下来：</p>
+  <ul>
+    <li><b>「旧文不刷屏」：</b>没有可信发布时间的资料先不公开，读到原文日期后再判断新旧——这是自动日报最容易被忽略的失真源。</li>
+    <li><b>「有正文才写文案」：</b>X 帖子没有正文或只有链接时，<b>保留原帖的链接、图片和引用，不调用写作或翻译模型</b>。这一条把一个高风险的幻觉路径直接砍掉了。</li>
+  </ul>
+
+  <h3 class="sec">10｜手把手复现</h3>
+  <p>以下 <b>Step 1–4 来自作者 README 原文</b>（命令逐字照抄）；Step 5–7 为本报告整理。</p>
+  <p><b>Step 1（原文）· 拿代码</b><br>想创建独立站点可直接点仓库的 <code>Use this template</code> 生成自己的仓库；想持续合并上游更新建议先 Fork。</p>
+  <p><b>Step 2（原文）· 生成配置</b><br>需要 Docker、Node.js 24，和一个 OpenAI 兼容的模型 API Key（DeepSeek、千问、智谱都可以）：</p>
+<pre><code>git clone https://github.com/KKKKhazix/AIHOT.git myhot
+cd myhot
+node scripts/init-env.ts --llm-key &lt;你的模型 API Key&gt;
+docker compose up -d --build</code></pre>
+  <p>打开 <code>http://localhost:3000</code>，后台在 <code>/admin</code>，管理员密码在 <code>.env</code> 的 <code>ADMIN_PASSWORD</code> 里。<b>作者原文：</b>「一两分钟后开始有内容，第一次导入的资料大约半小时处理完。」</p>
+  <p><b>Step 3（原文）· 换成别家模型</b><br><code>init-env</code> 默认按 DeepSeek 配置；用千问、智谱等，照 <code>.env.example</code> 改 <code>LLM_BASE_URL</code>、<code>LLM_MODEL</code> 和 <code>LLM_EXTRA_JSON</code>；用推理模型时还要设 <code>LLM_REASONING_TOKENS</code> 给推理留出输出额度。</p>
+  <p><b>Step 4（原文）· 改成你的行业</b><br>作者给的最省事办法是把仓库直接交给你的编程 Agent：</p>
+<pre><code>请读 AGENTS.md 和 docs/customize.md，把这个站改成「XX 行业」的热点站。
+我关心的是：……（写你想盯的信源、你觉得什么消息重要、什么不重要，越具体越好）。
+改完帮我跑 npm run typecheck、npm test 和 node scripts/smoke.ts，
+并告诉我还需要我自己决定哪些事。</code></pre>
+  <p>要改的东西几乎都在 <code>site/</code> 和 <code>industry/</code> 两个目录里，代码基本不用动（站名、出刊时间 <code>EDITION_TIMES</code>、信源、提示词、用词表、分类）</p>
+  <p><b>Step 5（本报告整理）· 增信源</b><br>在 <code>/admin</code> 的「信源」里新建（或修改示范的 <code>industry/sources.json</code>）：选 kind（rss / 网页列表 / json / x / 微信公众号 / 脚本）、给 tier（T1/T2/T3）、给 interval_minutes。先用「试抓」验证，再启用。</p>
+  <p><b>Step 6（本报告整理）· 校准门槛</b><br>自己标注一批样本（结构参考仓库里的 <code>industry/gold.example.jsonl</code>），在 SelectBench 里把现有提示词与候选提示词并排比较，再决定门槛。作者明确说门槛是「可以改的」。</p>
+  <p><b>Step 7（本报告整理）· 接给 Agent</b><br>站点跑起来后打开 <code>/agent</code> 复制 MCP / RSS / API 接入方式；只能读网页的 Agent 从 <code>/api/v1/agent</code> 开始。</p>
+  <p class="truth"><b>必须标注：</b>Step 1–4 与三处引号内文字均为作者 README 原文；Step 5–7 为本报告基于其公开文档（<code>docs/selection.md</code>、<code>docs/customize.md</code>、<code>industry/sources.json</code>）的整理。<b>本报告未实际部署该系统做端到端验证。</b></p>
+
+  <h3 class="sec">11｜Prompt / Code / Config</h3>
+  <p><b>这是本案例最有价值的部分：提示词是公开的。</b>仓库 <code>industry/prompts/</code> 下有 25 个 Markdown 提示词文件，包括：</p>
+  <ul>
+    <li><b>筛选链</b>：<code>prefilter.md</code>（预筛）、<code>selection-score.md</code>（评分，9.7 KB，最大的一份）、<code>identity-context.md</code>、<code>understand.md</code></li>
+    <li><b>写作链</b>：<code>content-understanding.md</code>、<code>structure.md</code>、<code>summarize-article.md</code> 及针对「长帖/短帖/引用/空正文」的多个变体、<code>translate-body.md</code>、<code>mend-wording.md</code></li>
+    <li><b>规则层</b>：<code>rules-domain.md</code>（行业规则，3.9 KB）、<code>rules-answer-first-summary.md</code>（答案先行）、<code>rules-anti-hallucination.md</code>（反幻觉）、<code>rules-self-contained-title.md</code>（自足标题）</li>
+    <li><b>聚簇链</b>：<code>group-definitions.md</code>、<code>group-method.md</code>、<code>group-pair.md</code>、<code>group-batch.md</code>、<code>group-signal.md</code>、<code>story-digest.md</code>（事件综述）</li>
+    <li><b>成刊</b>：<code>report-period.md</code> 及其带/不带栏目两个变体</li>
+  </ul>
+  <p><b>配置类：</b><code>.env.example</code>（LLM_BASE_URL / LLM_MODEL / LLM_EXTRA_JSON / LLM_REASONING_TOKENS / GROUP_REVIEW_MODEL / ADMIN_PASSWORD）、<code>industry/sources.json</code>（信源，含 <code>tier</code> / <code>owner_entity_id</code> / <code>participation_mode</code> / <code>interval_minutes</code>）、<code>industry/wording.ts</code>（不想出现的词表）、<code>industry/taxonomy.ts</code>、<code>industry/topics.json</code>（主题）、<code>site/site.ts</code>（站名、<code>EDITION_TIMES</code>、<code>NAV.hidden</code>）。</p>
+  <p><b>评测类：</b><code>gold.example.jsonl</code>、<code>relation-gold.example.jsonl</code>、<code>story-digest-eval.example.jsonl</code> —— 这是「可校准」的落地形态。</p>
+  <p class="pitfall"><b>本文核对：</b>以上目录与文件均为我们在仓库中实际读取到的一手内容（文件名、体积、字段名均照实记录）。<b>本报告只做结构总结，未逐字翻译或复述提示词正文。</b>请注意 <code>rules-domain.md</code>、<code>taxonomy.ts</code>、<code>topics.json</code> 目前是<b>AI 行业的版本</b>，改成你的行业时必须重写。</p>
+
+  <h3 class="sec">12｜踩坑</h3>
+  <div class="pitfall">
+    <p><b>坑 1｜把「摘要」当成了「取舍」。</b>很多人做自动日报的第一反应是「抓下来让模型总结」。结果每天都能生成一份内容，但读者依然不知道什么重要。<b>解法：</b>先定义门槛，再定义摘要。（来源：项目设计逻辑，本报告归纳）</p>
+    <p><b>坑 2｜只有标题就敢让模型写文案。</b>这是幻觉的高发区。项目的处理是硬规则：只有标题/摘要的普通文章先等待材料，<b>不评分、不写文案</b>；X 帖子无正文时保留原帖链接与图片，不调用写作或翻译模型。（来源：<code>docs/selection.md</code>）</p>
+    <p><b>坑 3｜旧文刷屏。</b>没有可信发布时间的资料如果直接公开，会把几个月前的旧闻当成今天的新闻推。项目的处理是「旧文不刷屏」：读到原文日期后再判断新旧。（来源：<code>docs/selection.md</code>）</p>
+    <p><b>坑 4｜单次 LLM 打分的方差。</b>同一个条目两次打分可能差 20 分以上。<b>解法：</b>独立打两次、要求和 ≥ 2 × 门槛。（来源：<code>docs/selection.md</code>）</p>
+    <p><b>坑 5｜按文章数算热度 → 一家媒体刷榜。</b><b>解法：</b>按事件算，48 小时内每个独立来源只算一次，24 小时减半。（来源：作者 README）</p>
+    <p><b>坑 6｜出刊排期边界。</b>窗口内的一次提交正是修这个 bug：「在第一个日报之前结束的周/月不该出刊」——月中建站时会凭空生成一份空周报。（来源：窗口内提交记录，10-09）</p>
+    <p><b>坑 7｜「读者用词」改不干净。</b>作者自述曾在一个分支统计过：入选的 166 条里，靠提示词里写「不要用某些词」并不能真的让模型不写。<b>解法：</b>写完之后按行业用词表<b>再让模型只改这些词一次</b>（独立的 <code>mend-wording.md</code> 步骤）。（来源：窗口内提交记录中的说明文字，属作者自述）</p>
+  </div>
+
+  <h3 class="sec">13｜中国用户能不能直接做？</h3>
+  <ul>
+    <li><b>国内访问：</b>代码与文档在 GitHub，<b>需要自备网络条件访问</b>；部署本身可在国内服务器完成（README 专门有一节讲「服务器在中国大陆、要配域名和 HTTPS」）。</li>
+    <li><b>注册：</b>无需注册任何平台账号（不是 SaaS，是自托管）。需要一个模型 API Key。</li>
+    <li><b>API：</b>只需一个 OpenAI 兼容接口。<b>默认就是 DeepSeek</b>，千问、智谱官方支持——对国内用户非常友好。</li>
+    <li><b>成本：</b>软件本身 MIT 免费。<b>真实成本 = 模型 API 调用量 + 服务器 + 可能的向量服务</b>。作者提到后台有「付费服务的预算熔断」。<b>作者未公布单站月成本，我们不估算、不编造。</b></li>
+    <li><b>技术门槛：</b> <span class="repro hard">有一定门槛（AI 用户可做）</span> —— 需要会 Docker、看得懂 <code>.env</code>； <span class="repro dev">开发者级（做定制）</span> —— 改行业规则、调门槛、写自定义信源脚本需要 TypeScript 能力。作者自述「不要求你是专业人员」，其本人也是设计师出身。</li>
+  </ul>
+
+  <h3 class="sec">14｜国产替代方案</h3>
+  <table class="stack">
+    <tr><td class="k">原方案</td><td>AIHOT 引擎 + 任意 OpenAI 兼容模型</td></tr>
+    <tr><td class="k">国产替代</td><td><b>不需要替代——项目本身就是国产项目，且默认配置就是国产模型（DeepSeek）。</b>README 明确写出「DeepSeek、千问、智谱都可以」，属<b>官方支持</b>（非理论推测）。</td></tr>
+    <tr><td class="k">模型替换</td><td>后台支持<b>每一步单独换模型</b>：筛选用便宜模型、写作用好模型、聚簇复核再换一家（<code>GROUP_REVIEW_MODEL</code>）。这是国产多模型混搭的实用样板。</td></tr>
+    <tr><td class="k">信源替换</td><td>六种信源里包含<b>微信公众号</b>——这是海外同类项目通常不支持的。对做中国行业情报站是决定性优势。</td></tr>
+    <tr><td class="k">同类国产方案</td><td>若只想做「RAG + 摘要」而不需要取舍与聚簇，Dify / Coze 的工作流足以覆盖；若需要「事件聚类 + 热度」这一层，本次采集未找到同口径的国产开源替代，<b>故不做横向对比结论</b>。</td></tr>
+  </table>
+
+  <h3 class="sec">15｜中国企业可以怎么用？</h3>
+  <p><b>企业场景 1｜垂直行业情报站（对外获客）。</b>律所、HR SaaS、财税服务商、券商研究所、大宗商品贸易商：做一个本行业的热点日报站，用「每日精选」做持续获客，用「事件时间线」做客户教育。这不是营销页，是有复用价值的工具型内容资产。</p>
+  <p><b>企业场景 2｜企业内部舆情 / 竞品情报台（对内）。</b>把信源换成竞品官网、行业媒体、政策发布平台、社交账号，产出一份每天早上 8 点到岗的内部简报。<b>关键收益是把「人肉搜 + 群转发」替换成一条固定流水线</b>，且每条都带原文出处。</p>
+  <p><b>企业场景 3｜销售 / 采购线索雷达（对外作战）。</b>本案的「事件聚类 + 独立来源数计热度」正好对应「一件事有多少人在说」——这在采购线索、招投标信息、政策变动预警上，比关键词匹配准确得多。</p>
+
+  <h3 class="sec">16｜中国消费者可以怎么用？</h3>
+  <ol>
+    <li><b>自建个人「信息减负」站：</b>把关注的公众号、垂媒、政策发布源接进来，每天早上只看一份，不再刷群。</li>
+    <li><b>自建「备考 / 求职」情报站：</b>把信源换成本专业院校通知、行业招聘、政策发布，用「事件」形式看趋势而不是看零散帖子。</li>
+    <li><b>自建家庭 / 小区信息站：</b>把本地政务、交通、天气预警、业主群公告聚成一份日报——技术上是同一套。</li>
+  </ol>
+
+  <h3 class="sec">17｜如何变成一个赚钱的项目？</h3>
+  <p><b>产品化：</b>「<b>模板 + 托管</b>」是最直接的形态：给某个行业起一个站，作者原话是「换上你自己的名字，它就是你的站」。可做独立站订阅，也可以做成只读的公开站 + 会员看历史与全文。</p>
+  <p><b>服务化：</b>「<b>帮你做一个你行业的 AIHOT</b>」——交付范围清晰（选信源、定门槛、调提示词、部署上线、跑通日报），因为引擎开源，交付成本远低于从零开发。作者本人说「做不了，我不懂你们的行业」——<b>这句话本身就是市场需求证明，也是差异化壁垒所在</b>。</p>
+  <p><b>咨询化：</b>门槛与「什么算重要」是行业 KnowHow，这部分最贵。可以做「信源审计 + 取舍标准设计」的轻咨询，也可做长期的月度校准服务。</p>
+  <p><b>培训化：</b>「用开源引擎搭一个你行业的 AI 日报」是极好的实操课，学员当天能看到自己的站在跑。详见第 21 节。</p>
+  <p><b>内容化：</b>项目本身就是一个内容题材（「我用 AI 做了个行业日报站，每天只看 10 分钟」），而站本身又是内容载体——内容与产品互相导流。</p>
+  <p><b>行业化：</b>本案例最典型的「多行业复制」结构，同一份引擎可以长出 N 个垂直站。</p>
+
+  <h3 class="sec">18｜变现路径</h3>
+  <table class="stack">
+    <tr><td class="k">路径</td><td><b>客户</b>／<b>产品·服务</b>／<b>收费方式</b>／<b>难度</b></td></tr>
+    <tr><td class="k">A｜行业站 SaaS</td><td>垂直行业读者（法务/HR/金融/大宗） ／ 行业热点站 + 会员 ／ 订阅 ／ <b>中</b>（获客是难点）</td></tr>
+    <tr><td class="k">B｜建站交付服务</td><td>需要行业情报能力的中小企业 ／ 「你的行业 AIHOT」一次性交付 ／ 项目制 ／ <b>低中</b>（引擎已开源）</td></tr>
+    <tr><td class="k">C｜门槛校准咨询</td><td>已有站但精选质量差的团队 ／ 信源审计 + 取舍标准设计 + 评测 ／ 咨询费 / 月度 ／ <b>高</b>（要行业 KnowHow）</td></tr>
+    <tr><td class="k">D｜企业内训 / 训练营</td><td>企业内容团队、媒体、咨询公司 ／ 「搭你行业的信息流水线」 ／ 按场 / 按人 ／ <b>低</b></td></tr>
+    <tr><td class="k">E｜内容 / IP</td><td>开发者与自媒体受众 ／ 教程、源码解析、运营复盘 ／ 流量 + 服务转化 ／ <b>低</b></td></tr>
+  </table>
+  <div class="truth"><b>重要区分：</b>目前<b>唯一可被视作「已验证需求信号」的是作者自述的一段话</b>——半年内有做法律、HR、金融、贵金属的朋友主动问他能否给这些行业做，<b>这是作者自述、无法独立验证，且不是成交记录</b>。A–E 五条路径全部属于<b>基于案例结构推导的潜在商业模式</b>，本报告不承诺收益。</div>
+
+  <h3 class="sec">19｜如果我是一个中国独立开发者</h3>
+  <p>假设：1 个人、预算有限、有基础编程能力、使用国产模型。目标：<b>7 天上线一个垂直行业热点站</b>。</p>
+  <ul>
+    <li><b>Day 1｜选行业，不选技术。</b>选一个你<b>真正懂取舍</b>的细分行业（法律、宠物、母婴、地方政务、某个制造业）。判断标准：你能说出「什么算重要」。</li>
+    <li><b>Day 2｜列信源清单。</b>列出 15–25 个源，按 T1/T2/T3 分级。重点补<b>微信公众号</b>类源——这是别人抄不走的壁垒。</li>
+    <li><b>Day 3｜部署跑通。</b><code>git clone</code> → <code>node scripts/init-env.ts --llm-key &lt;DeepSeek Key&gt;</code> → <code>docker compose up -d --build</code>，先看示范信源的默认效果。</li>
+    <li><b>Day 4｜换信源 + 换站名。</b>改 <code>industry/sources.json</code>、<code>site/site.ts</code>、<code>taxonomy.ts</code>；按 <code>docs/customize.md</code> 走一遍。</li>
+    <li><b>Day 5｜改取舍标准。</b>重写 <code>rules-domain.md</code>、调 <code>selection-score.md</code> 与门槛。这是工作量最大也最值钱的一天。</li>
+    <li><b>Day 6｜标注样本校准 + 配用词表。</b>标 30–50 条样本进 SelectBench；把不想出现的词写进 <code>wording.ts</code>。</li>
+    <li><b>Day 7｜上线 + 铺分发。</b>部署 + 域名 + HTTPS，打开 <code>/agent</code> 拿到 MCP / RSS 接入方式，把 RSS 挂到自己的分发渠道。</li>
+  </ul>
+  <p class="pitfall"><b>现实提醒：</b>这份计划里唯一不能压缩的是 <b>Day 5</b>。技术部署一天就够，取舍标准一周都未必够。<b>真正的护城河不在代码，在「什么算重要」这个判断上。</b></p>
+
+  <h3 class="sec">20｜如何迁移到其他行业</h3>
+  <div class="migrate">
+    <div class="m"><b>① 法规合规情报</b>法规发布平台 + 判例 + 监管公众号 → 每日合规简报，服务律所、财税、企业法务。</div>
+    <div class="m"><b>② 招投标 / 采购线索</b>招投标公告 + 行业媒体 + 政府发布 → 事件化线索雷达，服务销售与代理商。</div>
+    <div class="m"><b>③ 跨境电商选品情报</b>平台政策 + 品类趋势 + 竞品社交账号 → 每日选品与合规预警，服务卖家与代运营。</div>
+  </div>
+  <p>迁移方法完全一致：<b>换信源清单 → 重写行业规则提示词 → 重新标注样本调门槛 → 换站名上线</b>。代码不动，这也是本案最值得抄的地方。</p>
+
+  <h3 class="sec">21｜培训课程设计</h3>
+  <div class="course">
+    <table>
+      <tr><td class="k">课程名称</td><td>《给你的行业做一个 AI 日报站：从信源到取舍标准》</td></tr>
+      <tr><td class="k">适合人群</td><td>独立开发者、内容/媒体从业者、想做垂直情报产品的产品经理、企业市场与战略岗</td></tr>
+      <tr><td class="k">建议时长</td><td>半天（3.5–4 小时），可拆出 30 分钟 Demo 与 60 分钟 Workshop</td></tr>
+      <tr><td class="k">30 分钟 Demo</td><td>现场 <code>git clone</code> + 一条命令起站，让学员看示范信源跑出的每日精选与事件时间线。</td></tr>
+      <tr><td class="k">60 分钟 Workshop</td><td>学员各自列 10 个行业信源并分级，改 <code>sources.json</code> 后试抓，看自己的信源进来后精选质量如何。</td></tr>
+      <tr><td class="k">半天课程</td><td>上半场：自动日报的三代演进、为什么「取舍」比「摘要」难（30 分钟）→ 部署动手（60 分钟）。下半场：两次评分与信源分级（45 分钟）→ 聚簇与热度（30 分钟）→ 门槛校准与用词表（45 分钟）→ 上线与分发（30 分钟）。</td></tr>
+      <tr><td class="k">课程目标</td><td>学员最终能够：独立部署一个站；按 tier 给自己的行业信源分级；说清「两次评分」「按事件算热度」为什么必要；标注样本完成一次门槛校准。</td></tr>
+      <tr><td class="k">现场 Demo</td><td>「同一件事，官网发一篇、媒体转十篇」——现场演示聚簇如何把它们折成一个事件、热度只算一次独立来源。</td></tr>
+      <tr><td class="k">学员练习</td><td>给自己的行业写 10 条「什么算重要 / 什么不算」的判断，作为 <code>rules-domain.md</code> 的草稿。</td></tr>
+      <tr><td class="k">课后作业</td><td>上线一个自己行业的只读站，产出连续 3 天的日报截图，并交一份门槛调整记录。</td></tr>
+      <tr><td class="k">企业迁移</td><td>把课程主体换成企业内部情报台：信源怎么选、权限怎么管、与现有内容流程怎么并存、如何避免变成又一个没人看的日报。</td></tr>
+    </table>
+  </div>
+
+  <h3 class="sec">22｜培训师点评</h3>
+  <div class="trainer">
+    <b>点评：</b>这个案例真正值得教的是<b>「把判断标准外置并允许校准」</b>这个动作。两次独立评分是为了对抗模型抖动，按信源分级定门槛是为了把「信任度」写进函数，按事件算热度是为了防止刷榜——三条都是可迁移的工程直觉。而它最值钱的一课其实与代码无关：<b>先定义什么算重要，再让 AI 去执行。</b>
+  </div>
+
+  <h3 class="sec">23｜最终判断</h3>
+  <div class="verdict">
+    <div class="v"><div class="k">落地性</div><div class="val lv-h">高</div></div>
+    <div class="v"><div class="k">中国市场相关性</div><div class="val lv-h">高</div></div>
+    <div class="v"><div class="k">商业价值</div><div class="val lv-m">中高</div></div>
+    <div class="v"><div class="k">复现难度</div><div class="val lv-m">中</div></div>
+    <div class="v"><div class="k">变现潜力</div><div class="val lv-h">高</div></div>
+  </div>
+  <p><b>为什么复现难度标「中」：</b>「装起来」是低难度（一条命令），但「改成一个真正有用的行业站」是中高难度——卡在取舍标准的重写上。把难度如实标成中，是因为<b>部署容易不等于有效</b>，这一点正是本案例最容易被误读的地方。</p>
+  <p><b>为什么商业价值标「中高」：</b>需求真实、案例结构清晰、复制成本低，但<b>「谁来为行业情报付费」这一步尚未被验证</b>，作者自述的行业咨询也未形成任何公开成交记录，因此不给满分。</p>
+</div>
+
+<!-- ===================== BLOCKS ===================== -->
+<section class="block" id="observe">
+  <h2>今日 AI 实战观察</h2>
+  <div class="panel">
+    <p>把今天这两个案例放在一起看，会看到一件比「又出了什么新模型」重要得多的事：<b>AI 实战正在从「做一个东西」转向「把能力标准化」。</b></p>
+    <p>麦当劳中国这一侧，是<b>企业把业务开放成标准件</b>。九个版本的 MCP 迭代，把点餐、到店、团餐、活动、积分逐条原子化成工具，再交给外部开发者去拼装。这件事真正的意义不在于「麦当劳支持 MCP 了」，而在于它宣告了一种新的品牌-开发者关系：品牌提供能力与规则，开发者提供创意与场景，双方用一个公开排行榜来完成筛选与激励。对开发者来说，过去做消费级 Agent 最大的门槛从来不是技术，是「拿不到合规接口」——昨天这个门槛在中国第一次被一个大型消费品牌主动拆掉了。</p>
+    <p>AIHOT 这一侧，是<b>个人把工作流沉淀成可复制的引擎</b>。它做对的关键动作不是用了什么模型，而是把「什么算重要」这条判断从代码里搬出来，变成 25 份可读、可改、可校准的提示词，外加一套用自己样本去校准门槛的机制。这让它从一个网站变成了一份可以被上百个行业各自改造的蓝本。更值得注意的是作者的画像：自述设计师出身、半年前还看不太懂代码，却交付了产品级的完整工程——<b>2026 年「谁有资格做软件」这个问题，正在被重写。</b></p>
+    <p>两条线交汇处，是一个对中国从业者很关键的判断：<b>AI 的价值正在从「模型能力」转移到「能力供给」与「流程沉淀」上。</b>模型已经是公共品——麦当劳的 MCP 不绑定任何模型，AIHOT 默认用 DeepSeek 也支持千问与智谱。当模型不再稀缺，稀缺的就变成了两样东西：<b>有没有可被调用的真实业务能力</b>，以及<b>你能不能把模糊的行业判断说清楚并固化下来</b>。</p>
+    <p>也因此，今天两个案例的变现路径都指向同一个方向：<b>不做产品，做交付。</b>把企业业务 MCP 化、帮某个行业搭一套取舍标准——这两件事的共同点是「工程可复制、KnowHow 不可复制」。这大概会是接下来一段时间，中国 AI 实战里最实在的一类机会。</p>
+  </div>
+</section>
+
+<section class="block" id="radar">
+  <h2>今日商业机会雷达</h2>
+  <div class="panel">
+    <h3>机会 1｜企业业务能力的 MCP 化交付</h3>
+    <ul>
+      <li><b>客户：</b>有门店/场次/库存/权益结构的连锁消费企业（餐饮、医美、健身、教培、影院、票务）、有内部审批流的中大型企业。</li>
+      <li><b>解决什么：</b>把「人能点的界面」变成「Agent 能调的工具」，让企业进入 AI 助手入口，同时避免被第三方逆向。</li>
+      <li><b>实现方式（参照本案）：</b>梳理业务原子操作 → 划工具边界 → 写「能力/边界对照表」（<code>MCP_INTEGRATION.md</code> 那种） → 配客户端 → 做 Demo Skill。</li>
+      <li><b>可能商业模式：</b>项目制交付 + 年维护；或「先做一个可演示的 Skill，再谈整体开放」的自证式打法。</li>
+      <li><b>为什么是现在：</b>MCP 已是国内客户端事实标准（WorkBuddy / TRAE / Cherry Studio / Cursor / VS Code 都内置），企业侧最大障碍从「技术不确定」变成了「要不要公开」。</li>
+    </ul>
+    <h3>机会 2｜垂直行业的「取舍标准」设计与校准服务</h3>
+    <ul>
+      <li><b>客户：</b>律所 / 财税 / HR SaaS / 券商研究 / 大宗商品 / 跨境电商等需要持续情报输入的机构。</li>
+      <li><b>解决什么：</b>不是缺信息，而是缺「什么算重要」的判断，且这个判断必须可复现、可交接、可校准。</li>
+      <li><b>实现方式（参照本案）：</b>用开源引擎做底座 → 重建信源清单与分级 → 重写行业规则提示词 → 标注样本做门槛校准 → 上线日报/周报。</li>
+      <li><b>可能商业模式：</b>建站交付（一次性）+ 门槛校准（周期性）；行业知识越深，议价能力越强。</li>
+      <li><b>为什么是现在：</b>引擎已经开源，交付成本骤降；而行业 KnowHow 依然稀缺——<b>技术变便宜了，判断没变便宜。</b></li>
+    </ul>
+    <h3>机会 3｜「MCP Skill 开发」正在成为一个新的接单品类</h3>
+    <ul>
+      <li><b>客户：</b>想赶上这一波但内部没有工程能力的中小企业、品牌方、以及各类开放了 MCP/API 的平台方。</li>
+      <li><b>解决什么：</b>平台方开了接口但没人做应用；企业有场景但不会做 Skill。中间是空的。</li>
+      <li><b>实现方式：</b>接单 → 按官方规范产出 README / 交付文档 / 可运行 Skill → 交付并维护。</li>
+      <li><b>为什么是现在：</b>本次赛事把「Skill」的交付标准（文件清单、边界说明、脱敏配置示例）明确写进了规则，等于行业已经有了统一的验收口径——<b>有标准，就能报价。</b></li>
+    </ul>
+    <div class="truth"><b>声明：</b>以上三条均为<b>基于当天案例结构的商业模式分析，不是已验证的商业成功</b>。案例 01 的官方条款明确禁止未授权的商业售卖与引流变现，相关机会需先取得授权。</div>
+  </div>
+</section>
+
+<section class="block" id="personal">
+  <h2>今日个人变现机会</h2>
+  <div class="panel">
+    <p>假设一个人每天投入 <b>2–4 小时</b>，从今天这两个案例出发，能启动什么：</p>
+    <ul>
+      <li><b>① 参赛 + 作品集双收（见效最快）：</b>用 7 天做一个 MCP Skill 参加到 10-25，成本≈0，回报至少是一个可开源、可写进简历的作品，且当前入榜门槛并不高（10-10 排行榜末位约 4–5 ★）。<b>这是本报告认为当天性价比最高的动作。</b></li>
+      <li><b>② 垂直行业情报站（复利最强）：</b>选一个你真正懂的细分行业，部署一套开源引擎，7 天上线。资产可累积、可订阅化、可作为获客入口。难点在持续运营，不在技术。</li>
+      <li><b>③ 内容化：</b>把上面两件事的过程做成内容（「我用官方 MCP 做了个能查活动名额的助手」「我给自己行业搭了个日报站」）。这类内容同时具备<b>结果可视</b>与<b>过程可复现</b>两个特性，转化率天然高于工具推荐。</li>
+      <li><b>④ 培训 / 内训：</b>两个案例都天然适合做「一天 Workshop」——一个教 MCP Skill，一个教信息流水线。门槛低、当天出成果、企业买单意愿明确。</li>
+      <li><b>⑤ 接单接活：</b>MCP Skill 开发、行业站搭建、门槛校准。定价可低可高，取决于你是否能提供「判断」而不只是「工程」。</li>
+    </ul>
+    <div class="truth"><b>声明：</b>以上均为方向性分析，<b>不承诺任何收益</b>。其中「参赛」的回报有官方规则可查，其余路径的可行性需要个人验证。</div>
+  </div>
+</section>
+
+<section class="block" id="signals">
+  <h2>窗口内信号（未计入案例）</h2>
+  <div class="panel">
+    <p>以下条目在窗口内出现，但<b>未达到收录标准（或与已收录案例重叠）</b>，仅作背景与后续回访线索，<b>不构成案例</b>。所有时间均为北京时间。</p>
+    <ul>
+      <li><b>麦当劳 MCP 生态的其他参赛作品（同一生态，不重复立案例）：</b>窗口内成批出现的 Skill 包括 <code>mcd-party-officer</code>（38★，榜第 2）、<code>mcd-order-calories</code>（36★）、<code>MCD-happy-meal</code>（32★）、<code>mcd-mbti</code>（32★）、<code>mcd-saver-strategist</code>（30★）、<code>mcd-fortune</code>（26★）、<code>mcd-order-memory</code>（8★）、<code>mac-Buddy</code>（11★）、<code>liubobo-f/mcd-voice-order-assistant</code>（15★）等；数据来自官方 RANKING.md（2026-10-10 20:00:22）。</li>
+      <li><b>Tulpa（fumingyang2004/Tulpa，269★，MIT，Python）</b>：通过 MCP 让桌面 Agent 访问 QQ / 微信本地数据、参与 QQ 群聊。窗口内 16 次提交（10-09 → 10-10），但最近一次 Release <code>v0.5.3</code> 发布于 <b>2026-10-08 18:12</b>（窗口外）。中国相关性极强，但涉及本地 IM 数据与群聊自动参与，合规边界未在仓库中交代 → 本期列信号，<b>建议下期重点回访其合规说明与使用场景边界</b>。</li>
+      <li><b>DSH Desktop v0.11.1（dataelement/dsh-desktop，12,899★）</b>：Release 发布于 <b>2026-10-09 17:50</b>（窗口内）。但性质接近「产品版本发布」，按排除规则不立为实战案例，仅作生态背景。</li>
+      <li><b>其他窗口内 Release：</b>FastGPT <code>v4.17.2</code>（10-09 20:04）、new-api <code>v1.0.0-rc.43</code>（10-10 14:11）、qwen-code <code>v0.25.1-preview.1</code>（10-09 13:35）、ModelScope <code>v1.40.2</code>（10-09 17:08）、langbot-app/LangBot <code>v4.11.0-rc.1</code>（10-08 16:02，窗口外）。均为常规版本迭代，无一手实战复盘。</li>
+      <li><b>窗口内新建、值得后续回访的小项目：</b><code>anyhui/agent2wechat</code>（2★，10-10 09:25，基于腾讯官方 iLink Bot API 的微信桥接服务）；<code>wddzgt/pi-reqflow</code>（6★，10-10 10:12，基于 Pi 的多 Agent AI Coding 工作台，含人工审批与版本化审计）；<code>xianjianshenqu/swk-skill</code>（4★，10-10 17:17，土木 AI 雷达 + 企业商务方案 Skill）；<code>zhiyao310/ecommerce-ai-copilot</code>（10-10，电商商品治理 + 可解释 RAG + 可观测 Agent 工作流）；<code>l3314902495-cell/xianyu-ai-customer-service</code>（10-10，闲鱼 AI 客服管理系统，多账号 + 人工接管 + 自动发货）。<b>共同问题：Star 极低、无第三方验证、部分功能以 Mock 演示为主，本期均未达线。</b></li>
+      <li><b>相关但非案例：</b>WorkBuddy 开发者沙龙·武汉站定于 2026-10-11 14:00–17:30；WorkBuddy 频道首届征文活动投稿期为 2026-10-12 → 11-02。（来源：腾讯云开发者社区公开页面）</li>
+    </ul>
+  </div>
+</section>
+
+<section class="block" id="sources">
+  <h2>原始资料</h2>
+  <div class="panel">
+    <h3>案例 01 · 麦当劳中国官方 MCP 与开发者大赛</h3>
+    <ul class="src-list">
+      <li><span class="src-type">官方</span><a href="https://github.com/M-China/mcd-mcp-server" target="_blank">github.com/M-China/mcd-mcp-server</a>（工具清单、版本日志、各客户端接入教程）</li>
+      <li><span class="src-type">官方</span><a href="https://open.mcd.cn/mcp" target="_blank">open.mcd.cn/mcp</a> · <a href="https://open.mcd.cn/mcp/doc" target="_blank">/doc</a>（Token 申请）</li>
+      <li><span class="src-type">官方</span><a href="https://github.com/M-China/mcd-developer-innovation-challenge" target="_blank">M-China/mcd-developer-innovation-challenge</a>（大赛主仓库）</li>
+      <li><span class="src-type">官方</span><a href="https://github.com/M-China/mcd-developer-innovation-challenge/blob/main/activityGuidelines.md" target="_blank">activityGuidelines.md</a> · <a href="https://github.com/M-China/mcd-developer-innovation-challenge/blob/main/RANKING.md" target="_blank">RANKING.md</a> · <a href="https://github.com/M-China/mcd-developer-innovation-challenge/issues" target="_blank">issues（报名）</a></li>
+      <li><span class="src-type">一手</span><a href="https://github.com/Zafer-Liu/mcd-event-radar" target="_blank">Zafer-Liu/mcd-event-radar</a> · <a href="https://github.com/Zafer-Liu/mcd-event-radar/blob/main/MCP_INTEGRATION.md" target="_blank">MCP_INTEGRATION.md</a></li>
+      <li><span class="src-type">Demo</span><a href="https://app-ezf35mw5oq9t.miaoda.online/map" target="_blank">在线演示地图</a> · <a href="https://github.com/Zafer-Liu/mcd-event-radar/releases/download/demo-video/mcd-event-radar-demo.mp4" target="_blank">演示视频（3:52）</a></li>
+      <li><span class="src-type">官方</span><a href="https://cdn.mcd.cn/cms/pages/MCPServerRules.html" target="_blank">麦当劳 MCP 服务规则</a> · <a href="https://www.workbuddy.cn/docs/workbuddy/From-Beginner-to-Expert-Guide/Function-Description/Connector" target="_blank">WorkBuddy 连接器文档</a></li>
+    </ul>
+    <h3>案例 02 · AIHOT 开源引擎</h3>
+    <ul class="src-list">
+      <li><span class="src-type">一手</span><a href="https://github.com/KKKKhazix/AIHOT" target="_blank">github.com/KKKKhazix/AIHOT</a> · <a href="https://aihot.news" target="_blank">线上站 aihot.news</a> · <a href="https://github.com/KKKKhazix/AIHOT/commits/main" target="_blank">commits/main</a></li>
+      <li><span class="src-type">一手</span><a href="https://github.com/KKKKhazix/AIHOT/tree/main/industry/prompts" target="_blank">industry/prompts/</a>（25 份公开提示词）</li>
+      <li><span class="src-type">一手</span><a href="https://github.com/KKKKhazix/AIHOT/blob/main/docs/selection.md" target="_blank">docs/selection.md</a>（精选与校准） · <a href="https://github.com/KKKKhazix/AIHOT/blob/main/docs/customize.md" target="_blank">docs/customize.md</a> · <a href="https://github.com/KKKKhazix/AIHOT/blob/main/docs/deploy.md" target="_blank">docs/deploy.md</a></li>
+      <li><span class="src-type">一手</span><a href="https://github.com/KKKKhazix/AIHOT/blob/main/industry/sources.json" target="_blank">industry/sources.json</a>（示范信源） · <a href="https://github.com/KKKKhazix/AIHOT/discussions" target="_blank">Discussions</a></li>
+    </ul>
+    <h3>数据核对方式</h3>
+    <p>本期所有仓库元数据（创建时间、推送时间、Star / Fork / Watcher、License、Release 发布时间与正文）均通过 <b>GitHub REST API 直连读取</b>获得，非依赖搜索结果；所有仓库文件内容（README、MCP_INTEGRATION.md、activityGuidelines.md、RANKING.md、sources.json、docs/*、prompts 目录清单）均通过 <b>GitHub Contents API 读取原始文件</b>获得。时间一律换算为北京时间。</p>
+  </div>
+</section>
+
+<section class="block" id="truth">
+  <h2>数据真实性说明</h2>
+  <div class="panel">
+    <h3>一、属于客观事实（可核验）</h3>
+    <ul>
+      <li>麦当劳中国 MCP 服务地址 <code>https://mcp.mcd.cn</code>、Streamable HTTP 协议、Bearer Token 鉴权、600 次/分钟限流、工具清单与 v1.0.0（2025-12-09）→ v1.0.9（2026-09-10）版本日志 —— 均摘自官方 README 原文。</li>
+      <li>大赛报名及排名期为 2026-10-09 10:30 → 2026-10-25 23:59（北京时间），定榜数据截止 2026-10-26 00:00，Star &gt; 0 才入榜、前 100 名进榜，组织者为金拱门（中国）有限公司 —— 摘自 activityGuidelines.md 原文。</li>
+      <li>奖励内容（第 1 名巨无霸 50 次兑换券 + 10240 WorkBuddy 积分；第 2 名 30 次；第 3 名 20 次；入榜得汉堡回车键玩具与程序员节徽章；提交 workbuddy.md 的前 100 名各得 3000 WorkBuddy 积分）—— 摘自 activityGuidelines.md「活动奖励」原文。</li>
+      <li>RANKING.md 更新时间戳 2026-10-10 20:00:22、榜首 mcd-event-radar 68 ★ —— 读取自仓库当前文件。</li>
+      <li>大赛主仓库开放 Issue 数 310（含报名 Issue）；采集时观察到的报名 Issue 连续编号为 #343–#350，创建时间集中在 2026-10-10 11:31–11:50 —— 读取自 GitHub API 与 Issue 列表。</li>
+      <li>AIHOT 仓库指标（7,022 ★ / 1,723 Fork / 22 Watcher / MIT / 创建于 2026-09-28 23:40 UTC，即北京 09-29 07:40）、窗口内 15 次提交、25 份提示词文件、Node 24 + PostgreSQL 17 + Docker、六种信源、两次评分与按事件算热度的规则 —— 读取自仓库文件与提交记录。</li>
+      <li>AIHOT 部署命令、默认 DeepSeek 配置、支持千问与智谱 —— 摘自其 README 原文。</li>
+    </ul>
+    <h3>二、属于作者 / 官方自述（无法独立验证）</h3>
+    <ul>
+      <li>参赛作品自称的 <b>620 个可预约场次、11 类活动、10 家门店</b>、「2026-10-09 真实 Token 在线验证」—— 来自作者 README 与徽章标注，<b>无第三方复现</b>。本报告引用为「作者声称」。</li>
+      <li>AIHOT 作者自述的线上性能（页面中位数 10 ms、P95 50 ms；接口中位数 6 ms、P95 12 ms）—— 属作者自述，<b>无法独立验证</b>。</li>
+      <li>AIHOT 作者自述「设计师出身、半年前还看不太懂代码」—— 属自述，无第三方佐证。</li>
+      <li>AIHOT 作者自述「很多做法律、HR、金融、贵金属的朋友来问能否做行业版」—— 属自述，<b>无成交记录、无第三方验证</b>，本报告仅作为「需求信号」引用，不作为已验证商业结果。</li>
+      <li>AIHOT 作者自述「一个分支统计过入选的 166 条里」用词替换问题 —— 属自述。</li>
+    </ul>
+    <h3>三、属于本报告的分析 / 推演</h3>
+    <ul>
+      <li>「前世今生 / 为什么是现在 / 下一步可能怎么发展」中的<b>全部推演部分</b>（如「其他连锁品牌可能复制这套打法」「会出现模板创业」「MCP Skill 接单成为品类」）—— 均为分析推演，<b>非事实陈述</b>。</li>
+      <li>商业价值、变现路径、7 天 MVP、迁移方向、培训课程设计 —— 均为本报告基于案例结构的<b>设计性推导</b>，不代表已被验证，也不构成收益承诺。</li>
+      <li>第 09 节「它到底是怎么实现的」中提炼的四层架构、第 12 节「踩坑」中标注为「本报告归纳」的条目 —— 为分析结论，非作者原文。</li>
+    </ul>
+    <h3>四、明确排除的来源（本期）</h3>
+    <ul>
+      <li><b>内容农场「尧图系」及其变体：</b>本期检索中，<code>hqwc.cn</code>（编程知识）、<code>mhpq.cn</code>、<code>tzjp.cn</code>、<code>bryh.cn</code>、<code>xxmr.cn</code>、<code>mtrt.cn</code>、<code>mzlw.cn</code>、<code>lpqz.cn</code>、<code>kwkr.cn</code>、<code>pgsr.cn</code>、<code>qwbw.cn</code> 等站点密集出现在「AI Agent 学习路线」「AI Agent 工作流」类查询中。经查验其内容为批量生成的通用教程文本、无真实项目与作者，<b>已全量剔除，未作为任何事实来源</b>。</li>
+      <li><b>以营销话术包装的「Best ... 2026」类仓库群：</b>本期扫描中出现一批标题高度雷同、描述含 "Best ... 2026" 的仓库（集中在 Roblox / 游戏辅助等方向），结构与来源可疑，<b>未纳入候选</b>。</li>
+      <li><b>与境外网络安全事件绑定的项目：</b>本期窗口内未出现需要按敏感议题排除的新仓库。若后续出现，一律按敏感议题排除，仅在排除清单中性点名。</li>
+      <li><b>安全工具类仓库：</b>窗口内新建的若干 PUBG / 鸣潮等游戏作弊与外挂类仓库（数十★），非 AI 实战案例，直接排除。</li>
+    </ul>
+    <h3>五、未完成 / 存疑项（如实标注）</h3>
+    <ul>
+      <li><b>麦当劳 MCP 是否收费：</b>截至采集时点，官方文档与活动规则中<b>均未提及计费</b>。本报告不假设其永久免费，使用者应以官方条款为准。</li>
+      <li><b>麦当劳 MCP 上线日期存在两个官方口径：</b>版本日志首版为 2025-12-09，活动规则则称 2025-12-25 为「正式上线」日期。本报告并列两个日期，不做取舍。</li>
+      <li><b>AIHOT 的 Star / Fork 增长质量无法验证：</b>7,022 ★ 对应 1,723 Fork（约 24.5%），而 Watcher 仅 22 个，这一结构与开源项目常态不符。本报告如实披露该异常，不对其增长来源作任何判断。</li>
+      <li><b>AIHOT 窗口内无 Release：</b>该仓库不使用 GitHub Releases，窗口事件为 15 次提交（渐进式引擎修复），<b>非重大版本更新</b>。已在案例 02 第 02 节显著位置声明。</li>
+      <li><b>参赛作品未做端到端复现：</b>本报告未申请麦当劳 MCP Token，因此所有工具行为、调用链、演示效果均转述自官方与作者公开文档，<b>未做独立实测</b>。</li>
+      <li><b>AIHOT 未做实际部署：</b>所有部署步骤与运行效果转述自其公开文档，<b>未做端到端验证</b>。</li>
+    </ul>
+  </div>
+</section>
+
+<section class="block" id="check">
+  <h2>质量自检</h2>
+  <div class="panel">
+    <ul class="checklist">
+      <li>今天只有 2 个案例，已声明无第三个达线</li>
+      <li>宁缺毋滥：候选 20+，剔除至 2 个</li>
+      <li>案例 01 窗口事件为报名开启（10-09 10:30）与报名波次</li>
+      <li>案例 02 窗口事件为 15 次提交，已如实标注非版本发布</li>
+      <li>已找到第一手资料（官方仓库 + 官方规则 + 线上站）</li>
+      <li>已确认作者 / 主体身份（企业官方账号 + 个人开发者）</li>
+      <li>已确认项目真实存在且可访问</li>
+      <li>所有引用链接指向具体页面，非首页 / 搜索结果</li>
+      <li>存在真实可操作步骤（Token 申请 + 部署命令）</li>
+      <li>存在完整 Workflow（两案各一张流程图）</li>
+      <li>可复现（两案均给出手把手步骤并标注来源）</li>
+      <li>解决真实问题（从用户 / 企业需求切入）</li>
+      <li>符合中国市场需求（中国品牌 + 中国行业情报）</li>
+      <li>适合中国用户（国内可访问 / 手机号注册）</li>
+      <li>已说明模型（官方不锁模型 / 默认 DeepSeek）</li>
+      <li>已说明工具（MCP 客户端 + Docker）</li>
+      <li>已说明成本（未公开即写未公开，不估算）</li>
+      <li>已说明技术门槛（三档标注）</li>
+      <li>已说明 API Key / Token 获取方式</li>
+      <li>已分析国产替代（两案均为国产或官方支持国产）</li>
+      <li>已分析中国企业场景（各 3 个）</li>
+      <li>已分析消费者场景（各 1–3 个）</li>
+      <li>已分析商业价值与变现路径表</li>
+      <li>已区分「已验证回报」与「推导的商业机会」</li>
+      <li>已追溯案例前世今生（前世 / 发展 / 今生 / 推演）</li>
+      <li>已解释为什么现在值得关注</li>
+      <li>已提取作者公开的 Prompt / Code / Config 结构</li>
+      <li>已验证关键数据来源（自述项已逐条标注）</li>
+      <li>未把推测写成事实</li>
+      <li>未为凑数添加案例</li>
+      <li>未把新闻包装成实战</li>
+      <li>未把 Demo 包装成成熟产品</li>
+      <li>未把营销文案包装成真实效果</li>
+      <li>HTML 标签闭合完整</li>
+      <li>CSS 完整且内嵌</li>
+      <li>手机端响应式可用（@media 640px）</li>
+    </ul>
+  </div>
+</section>
+
+
+</div>
+</main>
+<footer class="site-footer">
+  <div class="wrap">
+    <div>
+      <div class="f-brand">全球文明进程重大事件日报</div>
+      <p class="f-desc">记录人类文明演进中的关键节点。以未来历史学家的视角，筛出可能改写人类轨迹的转折点——一个长期记录人类文明发展轨迹的数字档案馆。</p>
+    </div>
+    <div class="f-col">
+      <h4>浏览</h4>
+      <ul>
+        <li><a href="../index.html">网站首页</a></li>
+        <li><a href="../archive.html">日报档案</a></li><li><a href="../radar.html">趋势雷达</a></li><li><a href="../tutorial/index.html" class="active">AI实战</a></li>
+        <li><a href="../assets/images/og-cover.png" target="_blank">站点封面</a></li>
+      </ul>
+    </div>
+    <div class="f-col">
+      <h4>文明分类</h4>
+      <ul>
+        <li><a href="../categories/science.html">科学、生命与地球</a></li>
+        <li><a href="../categories/politics.html">政治与文明秩序</a></li>
+        <li><a href="../categories/culture.html">思想、社会与文化</a></li>
+        <li><a href="../categories/technology.html">科技与人工智能</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="f-bottom">
+    <div class="wrap">
+      <span>© 2026 全球文明进程重大事件日报 · 全球文明进程观察站</span>
+      <span>内容由自动化智能体基于公开信息生成，仅供文明观察与研究参考，不构成任何投资、政策或法律建议。</span>
+    </div>
+  </div>
+</footer><button class="backtop" type="button" aria-label="返回顶部">↑</button><script src="../assets/js/main.js"></script>
+<script src="../assets/js/wechat-share.js"></script>
+<script src="../assets/js/text-to-speech.js"></script>
+</body>
+</html>
