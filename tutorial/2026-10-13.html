@@ -1,0 +1,1001 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI极客实战教程日报 · 2026-10-13（第017期）｜把《党政机关公文格式》国标变成可执行代码：g…；阿里把浏览器做成 AI 的本地工作台：轻舟 …</title>
+<meta name="description" content="10月13日AI极客实战案例：今天最值得中国 AI 从业者关注的是：AI 现在真正开始“进入别人已有的业务现场”——一边是阿里把浏览器做成 AI 可操作、且数据不出本机的本地工作台（轻舟，Apache-2.0）；一边是有人把《党政机关公文格式》国标变成可执行代码，让公文…">
+<meta name="keywords" content="AI极客实战,可复现,Workflow,把《党政机关公文格式…,阿里把浏览器做成 A…">
+<meta name="author" content="全球文明进程观察站">
+<meta name="robots" content="index,follow">
+<link rel="canonical" href="https://civilization-radar.com/tutorial/2026-10-13.html">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="全球文明进程重大事件日报">
+<meta property="og:title" content="AI极客实战教程日报 · 2026-10-13（第017期）｜把《党政机关公文格式》国标变成可执行代码：g…；阿里把浏览器做成 AI 的本地工作台：轻舟 …">
+<meta property="og:description" content="10月13日AI极客实战案例：今天最值得中国 AI 从业者关注的是：AI 现在真正开始“进入别人已有的业务现场”——一边是阿里把浏览器做成 AI 可操作、且数据不出本机的本地工作台（轻舟，Apache-2.0）；一边是有人把《党政机关公文格式》国标变成可执行代码，让公文…">
+<meta property="og:url" content="https://civilization-radar.com/tutorial/2026-10-13.html">
+<meta property="og:image" content="https://civilization-radar.com/assets/images/og-cover.png">
+<meta property="og:locale" content="zh_CN">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="AI极客实战教程日报 · 2026-10-13（第017期）｜把《党政机关公文格式》国标变成可执行代码：g…；阿里把浏览器做成 AI 的本地工作台：轻舟 …">
+<meta name="twitter:description" content="10月13日AI极客实战案例：今天最值得中国 AI 从业者关注的是：AI 现在真正开始“进入别人已有的业务现场”——一边是阿里把浏览器做成 AI 可操作、且数据不出本机的本地工作台（轻舟，Apache-2.0）；一边是有人把《党政机关公文格式》国标变成可执行代码，让公文…">
+<meta name="twitter:image" content="https://civilization-radar.com/assets/images/og-cover.png">
+<link rel="icon" href="../assets/images/logo.svg" type="image/svg+xml">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "AI极客实战教程日报 · 2026-10-13（第017期）｜把《党政机关公文格式》国标变成可执行代码：g…；阿里把浏览器做成 AI 的本地工作台：轻舟 …", "description": "10月13日AI极客实战案例：今天最值得中国 AI 从业者关注的是：AI 现在真正开始“进入别人已有的业务现场”——一边是阿里把浏览器做成 AI 可操作、且数据不出本机的本地工作台（轻舟，Apache-2.0）；一边是有人把《党政机关公文格式》国标变成可执行代码，让公文…", "datePublished": "2026-10-13", "dateModified": "2026-10-14", "inLanguage": "zh-CN", "author": {"@id": "https://civilization-radar.com/#org"}, "publisher": {"@id": "https://civilization-radar.com/#org"}, "image": {"@type": "ImageObject", "url": "https://civilization-radar.com/assets/images/og-cover.png"}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://civilization-radar.com/tutorial/2026-10-13.html"}, "isAccessibleForFree": true}</script>
+<link rel="stylesheet" href="../assets/css/style.css">
+
+<style>
+
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body {
+    background:#F7F8FA; color:#111827;
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;
+    line-height:1.7; font-size:15px;
+  }
+  .wrap { max-width:960px; margin:0 auto; padding:32px 20px 64px; }
+  a { color:#2563EB; text-decoration:none; word-break:break-all; }
+  a:hover { text-decoration:underline; }
+
+  header.top {
+    background:#111827; color:#F9FAFB; border-radius:14px; padding:36px 32px; margin-bottom:24px;
+  }
+  header.top .kicker { color:#93C5FD; font-size:13px; letter-spacing:2px; text-transform:uppercase; margin-bottom:10px; }
+  header.top h1 { font-size:30px; font-weight:800; margin-bottom:6px; }
+  header.top .sub { color:#9CA3AF; font-size:14px; margin-bottom:20px; }
+  .meta-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:12px; }
+  .meta-grid .m { background:#1F2937; border:1px solid #374151; border-radius:10px; padding:10px 14px; }
+  .meta-grid .m .k { font-size:11px; color:#9CA3AF; margin-bottom:2px; }
+  .meta-grid .m .v { font-size:14px; font-weight:600; color:#F9FAFB; }
+
+  .oneline {
+    background:#F5F8FF; border:1px solid #BFDBFE; border-radius:14px;
+    padding:18px 24px; margin-bottom:24px;
+  }
+  .oneline .lab { font-size:12px; letter-spacing:1px; color:#2563EB; font-weight:700; margin-bottom:6px; }
+  .oneline p { font-size:15px; color:#111827; }
+
+  nav.cats { display:flex; flex-wrap:wrap; gap:8px; margin-bottom:28px; }
+  nav.cats a {
+    background:#FFFFFF; border:1px solid #E5E7EB; border-radius:999px;
+    padding:6px 14px; font-size:13px; color:#374151;
+  }
+  nav.cats a:hover { border-color:#2563EB; color:#2563EB; text-decoration:none; }
+
+  .card {
+    background:#FFFFFF; border:1px solid #E5E7EB; border-radius:14px;
+    padding:28px; margin-bottom:28px;
+  }
+  .card-head { display:flex; align-items:flex-start; gap:14px; margin-bottom:6px; flex-wrap:wrap; }
+  .num {
+    font-size:26px; font-weight:800; color:#2563EB; line-height:1.1;
+    font-variant-numeric:tabular-nums; min-width:52px;
+  }
+  .card-head h2 { font-size:20px; font-weight:700; flex:1; min-width:240px; }
+  .badges { display:flex; flex-wrap:wrap; gap:6px; margin:8px 0 14px; }
+  .badge { font-size:12px; padding:3px 10px; border-radius:999px; font-weight:600; }
+  .b-cat { background:#EFF6FF; color:#2563EB; border:1px solid #BFDBFE; }
+  .b-tag { background:#F3F4F6; color:#4B5563; border:1px solid #E5E7EB; }
+  .b-date { background:#ECFDF5; color:#16A34A; border:1px solid #BBF7D0; }
+  .b-warn { background:#FFFBEB; color:#B45309; border:1px solid #FDE68A; }
+
+  .oneliner {
+    background:#F9FAFB; border:1px solid #E5E7EB; border-radius:10px;
+    padding:12px 16px; font-size:14.5px; color:#111827; margin-bottom:18px;
+  }
+
+  h3.sec {
+    font-size:14px; font-weight:700; color:#111827; margin:22px 0 8px;
+    padding-left:10px; border-left:3px solid #2563EB;
+  }
+  .card p, .card li { font-size:14.5px; color:#374151; }
+  .card ul, .card ol { padding-left:22px; margin:6px 0; }
+  .card li { margin-bottom:4px; }
+
+  .src-list { list-style:none; padding-left:0; }
+  .src-list li { margin-bottom:6px; }
+  .src-type {
+    display:inline-block; font-size:11px; font-weight:700; color:#2563EB;
+    background:#EFF6FF; border:1px solid #BFDBFE; border-radius:6px;
+    padding:1px 8px; margin-right:8px;
+  }
+
+  .stack { width:100%; border-collapse:collapse; margin:6px 0; }
+  .stack td { border:1px solid #E5E7EB; padding:7px 12px; font-size:13.5px; vertical-align:top; }
+  .stack td.k { background:#F9FAFB; font-weight:600; color:#111827; width:110px; white-space:nowrap; }
+
+  .flow { display:flex; flex-direction:column; gap:0; margin:10px 0; }
+  .flow .node {
+    background:#F9FAFB; border:1px solid #E5E7EB; border-radius:10px;
+    padding:9px 16px; font-size:13.5px; color:#111827;
+  }
+  .flow .node b { color:#2563EB; }
+  .flow .arrow { text-align:center; color:#9CA3AF; font-size:14px; line-height:1.4; }
+
+  pre {
+    background:#111827; color:#E5E7EB; border-radius:10px;
+    padding:16px 18px; overflow-x:auto; font-size:13px; line-height:1.6;
+    font-family:"SFMono-Regular",Consolas,"Liberation Mono",Menlo,monospace;
+    margin:8px 0; white-space:pre-wrap; word-break:break-word;
+  }
+  code {
+    font-family:"SFMono-Regular",Consolas,Menlo,monospace;
+    background:#F3F4F6; color:#111827; border-radius:5px; padding:1px 6px; font-size:13px;
+  }
+  pre code { background:transparent; color:#E5E7EB; padding:0; }
+
+  .pitfall { background:#FFFBEB; border:1px solid #FDE68A; border-radius:10px; padding:14px 18px; margin:8px 0; }
+  .pitfall b { color:#B45309; }
+  .truth { background:#FEF7F7; border:1px solid #FECACA; border-radius:10px; padding:14px 18px; margin:8px 0; }
+  .truth b { color:#B91C1C; }
+
+  .repro { display:inline-block; font-size:13px; font-weight:700; padding:4px 12px; border-radius:999px; background:#ECFDF5; color:#16A34A; border:1px solid #BBF7D0; }
+  .repro.hard { background:#FFFBEB; color:#B45309; border-color:#FDE68A; }
+  .repro.dev { background:#FEF2F2; color:#B91C1C; border-color:#FECACA; }
+
+  .migrate { display:grid; grid-template-columns:repeat(3,1fr); gap:10px; margin:8px 0; }
+  .migrate .m {
+    background:#F9FAFB; border:1px solid #E5E7EB; border-radius:10px; padding:12px 14px; font-size:13px; color:#374151;
+  }
+  .migrate .m b { display:block; color:#111827; margin-bottom:4px; }
+
+  .course {
+    background:#F5F8FF; border:1px solid #BFDBFE; border-radius:10px; padding:16px 20px; margin:8px 0;
+  }
+  .course table { width:100%; border-collapse:collapse; }
+  .course td { padding:4px 8px 4px 0; font-size:13.5px; vertical-align:top; color:#374151; }
+  .course td.k { font-weight:600; color:#111827; width:88px; white-space:nowrap; }
+
+  .trainer {
+    border-left:3px solid #16A34A; background:#F0FDF4; border-radius:0 10px 10px 0;
+    padding:12px 18px; font-size:14px; color:#14532D; margin:10px 0 4px;
+  }
+  .trainer b { color:#16A34A; }
+
+  .verdict { display:grid; grid-template-columns:repeat(5,1fr); gap:10px; margin:8px 0; }
+  .verdict .v {
+    background:#F9FAFB; border:1px solid #E5E7EB; border-radius:10px; padding:12px; text-align:center;
+  }
+  .verdict .v .k { font-size:11.5px; color:#6B7280; margin-bottom:4px; }
+  .verdict .v .val { font-size:17px; font-weight:800; }
+  .lv-h { color:#16A34A; }
+  .lv-m { color:#F59E0B; }
+  .lv-l { color:#DC2626; }
+
+  section.block { margin-top:40px; }
+  section.block > h2 {
+    font-size:22px; font-weight:800; margin-bottom:16px; padding-bottom:10px;
+    border-bottom:2px solid #E5E7EB;
+  }
+  .panel { background:#FFFFFF; border:1px solid #E5E7EB; border-radius:14px; padding:24px 28px; margin-bottom:20px; }
+  .panel h3 { font-size:16px; margin-bottom:10px; }
+  .panel p, .panel li { font-size:14.5px; color:#374151; }
+  .panel ul { padding-left:22px; }
+  .panel li { margin-bottom:6px; }
+  .panel table { width:100%; border-collapse:collapse; margin:8px 0; }
+  .panel th, .panel td { border:1px solid #E5E7EB; padding:7px 10px; font-size:13px; text-align:left; vertical-align:top; }
+  .panel th { background:#F9FAFB; color:#111827; }
+
+  .checklist { columns:2; column-gap:32px; }
+  .checklist li { list-style:none; margin-bottom:6px; font-size:13.5px; }
+  .checklist li::before { content:"✓ "; color:#16A34A; font-weight:700; }
+
+  .gapnote {
+    background:#FFFBEB; border:1px solid #FDE68A; border-radius:10px;
+    padding:14px 18px; font-size:13.5px; color:#7C2D12; margin-bottom:24px;
+  }
+  .gapnote b { color:#B45309; }
+
+  footer { text-align:center; color:#9CA3AF; font-size:12.5px; margin-top:40px; }
+
+  @media(max-width:640px) {
+    header.top { padding:24px 20px; }
+    header.top h1 { font-size:22px; }
+    .meta-grid { grid-template-columns:repeat(2,1fr); }
+    .card { padding:20px 16px; }
+    .migrate { grid-template-columns:1fr; }
+    .verdict { grid-template-columns:repeat(2,1fr); }
+    .checklist { columns:1; }
+    .num { min-width:auto; }
+    .panel { padding:18px 16px; }
+    .stack td.k { width:82px; }
+  }
+
+</style>
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="../index.html"><img class="mark" src="../assets/images/logo.svg" alt="文明雷达" width="32" height="32" style="width:32px;height:32px;background:none;border:0;box-shadow:none;border-radius:6px">全球文明进程重大事件日报</a>
+    <button class="nav-toggle" type="button" aria-label="菜单" aria-expanded="false">☰</button>
+    <nav class="main-nav" aria-label="主导航"><ul><li><a href="../index.html">首页</a></li><li><a href="../archive.html">日报档案</a></li><li><a href="../radar.html">趋势雷达</a></li><li><a href="../tutorial/index.html" class="active">AI实战</a></li><li><a href="../categories/science.html">科学</a></li><li><a href="../categories/politics.html">政治</a></li><li><a href="../categories/culture.html">文化</a></li><li><a href="../categories/technology.html">科技</a></li></ul></nav>
+  </div>
+</header><main class="site-main">
+<div class="tut-wrap">
+<header class="top">
+  <div class="kicker">AI Builders · Real Cases</div>
+  <h1>AI极客实战案例日报</h1>
+  <div class="sub">China AI Builders · Real Cases · Workflows · Business</div>
+  <div class="meta-grid">
+    <div class="m"><div class="k">日报日期</div><div class="v">2026-10-13</div></div>
+    <div class="m"><div class="k">执行日期</div><div class="v">2026-10-14 11:43 CST</div></div>
+    <div class="m"><div class="k">案例数量</div><div class="v">2 个精选</div></div>
+    <div class="m"><div class="k">数据更新时间</div><div class="v">2026-10-14 03:44 UTC</div></div>
+  </div>
+</header>
+
+<div class="gapnote">
+  <b>本期窗口说明（必读）</b>：上一期日报为 2026-10-09 期，<b>2026-10-10 / 10-11 / 10-12 三期定时任务未执行</b>，工作区无对应文件。因此本期窗口放宽为
+  <b>2026-10-10 00:00 → 2026-10-14 11:00（北京时间）</b>，覆盖上述未产出区间；日报日期仍按规则取执行日前一天（2026-10-13）。
+  窗口内所有候选项目的时间戳均已用 GitHub REST API 逐条核对并换算北京时间，首次发布 / 更新时间分开标注，未把旧项目包装成新案例。
+</div>
+
+<div class="oneline">
+  <div class="lab">今日一句话</div>
+  <p>今天最值得中国 AI 从业者关注的是：<b>AI 现在真正开始“进入别人已有的业务现场”</b>——一边是阿里把浏览器做成 AI 可操作、且数据不出本机的本地工作台（轻舟，Apache-2.0）；一边是有人把《党政机关公文格式》国标变成可执行代码，让公文出稿当场过机检（gongwen-kit）。两个案例都不炫技，但都指向同一件事：<b>能落地的 AI，赢在“合规边界 + 真实的行业规则”，而不在模型有多强。</b></p>
+</div>
+
+<nav class="cats">
+  <a href="#case01">案例 01 · 公文生成与机检</a>
+  <a href="#case02">案例 02 · 轻舟浏览器 Agent</a>
+  <a href="#observe">今日 AI 实战观察</a>
+  <a href="#radar">商业机会雷达</a>
+  <a href="#solo">个人变现机会</a>
+  <a href="#sources">原始资料</a>
+  <a href="#truth">真实性说明</a>
+  <a href="#signals">窗口内信号</a>
+</nav>
+
+<!-- ========================= CASE 01 ========================= -->
+<article class="card" id="case01">
+  <div class="card-head">
+    <div class="num">01</div>
+    <h2>把《党政机关公文格式》国标变成可执行代码：gongwen-kit 让公文出稿当场过三道机检</h2>
+  </div>
+  <div class="badges">
+    <span class="badge b-cat">垂直行业工具</span>
+    <span class="badge b-tag">Agent Skill</span>
+    <span class="badge b-tag">GB/T 9704-2012</span>
+    <span class="badge b-tag">本地离线</span>
+    <span class="badge b-date">首版 2026-10-13</span>
+    <span class="badge b-warn">24★ / 5 Fork</span>
+  </div>
+  <div class="oneliner"><b>一句话结论：</b>把“公文版式国标”从人力经验变成机器规则，写稿人只管内容、数字对不对得上交给机检——这是党政机关与央国企最刚性的场景里，第一份开源可复现的实现。</div>
+
+  <h3 class="sec">01｜案例是什么？</h3>
+  <p>gongwen-kit 是一个 Node.js 工具包（同时是一个 Agent Skill）。它做三件事：<b>生成</b>——按 GB/T 9704—2012《党政机关公文格式》产出标准 Word 公文（通知、报告、请示、函、纪要、管理办法、条例），包含红头、发文字号、签发人、版记、附件页等全部构件；<b>机检</b>——每份稿子写盘后自动跑三道机器检查（体例 / 数字自洽 / 文风），哪一道不过就非零退出，不算出稿；<b>修复</b>——手写的、旧模板出的、别人发来的 .docx 也能整份修，版式直接改、体例改动写成 Word 修订痕迹逐条接受或拒绝、数字问题只插批注不替人改数。整个过程完全在本机跑，安装后不联网。</p>
+
+  <h3 class="sec">02｜为什么今天值得关注？</h3>
+  <ul>
+    <li><b>为什么是现在：</b>2026-10-13 首次开源，<b>当天 8 次提交、连出 v0.2.1 → v0.3.1 四个版本</b>（GitHub 提交与 Release 时间戳已逐条核对），说明不是“一次性 Demo”，而是一天内被真实使用反馈推着迭代。</li>
+    <li><b>以前为什么不容易做：</b>公文工具长期卡在两处——版心、红头、双线这类尺寸“看着差不多”，但差 0.5mm 就不符合国标且没人能证明；改别人的稿子只能靠人工重排，无法把改动变成可审计的修订痕迹。这两件事都要落到 OOXML 层面才有解。</li>
+    <li><b>为什么现在变得容易：</b>① <code>docx</code> / <code>jszip</code> / <code>sax</code> 这类库已能精确控制 Word 底层结构；② Agent Skill 形态成熟，工具可以挂进 Claude Code / OpenCode / Codex 等宿主，由模型负责“写内容”、代码负责“量尺寸”；③ 涉密与内网合规让“本地离线”从加分项变成硬门槛，而本项目的定位正是“文件进文件出、不联网”。</li>
+  </ul>
+
+  <h3 class="sec">03｜案例的前世今生</h3>
+  <p><b>前世。</b>GB/T 9704—2012 是 2012 年发布的国家标准，配套依据还包括《党政机关公文处理工作条例》（中办发〔2012〕14 号）以及 GB/T 15834（标点）、GB/T 15835（数字用法）等。十几年来，公文排版的主流解法是“WPS/Word 模板 + 人力校对”：模板解决版式，错字与体例靠人一页页看；数字对不对得上（正文说“以下三点”只列了两点、表格合计与分项不符、同一指标多处取值不一致）几乎全靠经验。</p>
+  <p><b>发展。</b>过去几年，大厂与开源项目在“按国标排版”和“查错别字”上都有投入——作者自己在 README 里承认“有的版式比本仓全”，并附了一张横向对比图（标注来源为各厂商官网与公开资料、2026-10-13 核对、厂商口径）。这条赛道的缺口不在版式，而在<b>跨段落的“数字自洽”检查</b>和<b>把修改变成可审计的修订痕迹</b>。</p>
+  <p><b>今生。</b>2026-10-13，作者 imhuhe 把仓库首版开源（MIT），并在同一天把这两件事都做进了仓库：<code>checks/check-num.js</code> 做数字自洽（分段求和、比率行列不加总、跨表同一指标、正文列举条数），<code>lib/fix/revisions.js</code> 把体例修正写成 Word 修订。关键尺寸不再是“目测”，而是用渲染后量测脚本出数：版头标志上缘距版心 <b>35.05 mm</b>（标准 35）、信函双线长 <b>170.01 mm</b>（标准 170）——量测脚本与全部校准值都写在 <code>docs/版式.md</code>。</p>
+  <p><b>下一步可能怎么发展（以下为分析 / 推演，非事实）：</b>① 接入内网或本地部署模型，让“起草 + 排版 + 机检”整条链不出网，这是涉密单位唯一能接受的形式；② 机检报告落盘成合规凭据、对接 OA 流转审批；③ 从“单机工具”变成“部门级文书质量门禁”。</p>
+
+  <h3 class="sec">04｜原始资料</h3>
+  <ul class="src-list">
+    <li><span class="src-type">仓库</span><a href="https://github.com/imhuhe/gongwen-kit" target="_blank" rel="noopener">https://github.com/imhuhe/gongwen-kit</a>（Apache/MIT 见下；本仓 LICENSE 为 MIT）</li>
+    <li><span class="src-type">文档</span><a href="https://github.com/imhuhe/gongwen-kit/blob/main/README.md" target="_blank" rel="noopener">README.md（含能力清单、边界、样张表、横向对比、快速开始）</a></li>
+    <li><span class="src-type">Skill</span><a href="https://github.com/imhuhe/gongwen-kit/blob/main/SKILL.md" target="_blank" rel="noopener">SKILL.md（工作流 + GB/T 9704 要素速查 + 构件清单）</a></li>
+    <li><span class="src-type">依据</span><a href="https://github.com/imhuhe/gongwen-kit/blob/main/docs/%E4%BE%9D%E6%8D%AE.md" target="_blank" rel="noopener">docs/依据.md（国标与条例条款对照）</a></li>
+    <li><span class="src-type">版式</span><a href="https://github.com/imhuhe/gongwen-kit/blob/main/docs/%E7%89%88%E5%BC%8F.md" target="_blank" rel="noopener">docs/版式.md（量测脚本与全部校准值）</a></li>
+    <li><span class="src-type">修复</span><a href="https://github.com/imhuhe/gongwen-kit/blob/main/docs/%E4%BF%AE%E5%A4%8D.md" target="_blank" rel="noopener">docs/修复.md（三档处理规则、不改什么、已知限制）</a></li>
+    <li><span class="src-type">样张</span><a href="https://github.com/imhuhe/gongwen-kit/tree/main/docs/%E6%A0%B7%E5%BC%A0" target="_blank" rel="noopener">docs/样张/（7 份 Word 导出的 PDF：要素全览、通知、请示、信函、纪要、管理办法、企业内部报告）</a></li>
+    <li><span class="src-type">机检</span><a href="https://github.com/imhuhe/gongwen-kit/tree/main/checks" target="_blank" rel="noopener">checks/check-doc.js · check-num.js · check-style.js · style-scan.js</a></li>
+    <li><span class="src-type">模板</span><a href="https://github.com/imhuhe/gongwen-kit/blob/main/templates/complete.js" target="_blank" rel="noopener">templates/complete.js（全构件示例）</a>、<a href="https://github.com/imhuhe/gongwen-kit/blob/main/templates/notice.js" target="_blank" rel="noopener">notice.js</a>、<a href="https://github.com/imhuhe/gongwen-kit/blob/main/templates/xinhan.js" target="_blank" rel="noopener">xinhan.js</a>、<a href="https://github.com/imhuhe/gongwen-kit/blob/main/templates/jiyao.js" target="_blank" rel="noopener">jiyao.js</a>、<a href="https://github.com/imhuhe/gongwen-kit/blob/main/templates/qiye.js" target="_blank" rel="noopener">qiye.js</a></li>
+    <li><span class="src-type">发布</span><a href="https://github.com/imhuhe/gongwen-kit/releases/tag/v0.3.1" target="_blank" rel="noopener">Releases v0.3.1（发布于 2026-10-13 15:43:40 UTC）</a>，标签含 v0.2.1～v0.3.1</li>
+    <li><span class="src-type">作者</span><a href="https://github.com/imhuhe" target="_blank" rel="noopener">https://github.com/imhuhe</a> · 博客 <a href="https://mrhuanghe.com" target="_blank" rel="noopener">mrhuanghe.com</a></li>
+  </ul>
+
+  <h3 class="sec">05｜作者是谁？</h3>
+  <p>GitHub 账号 <code>imhuhe</code>，个人资料显示昵称/姓名栏为“<b>黄河 HUANGHE</b>”，自述“从事投融资和产业项目，正在构建个人 AI 体系”，博客 mrhuanghe.com；账号注册于 2020-04-23，公开仓库 6 个，Followers 0（截至 2026-10-14）。提交署名出现 <code>huanghe</code>。这更像<b>产业侧从业者自建工具并开源</b>，而非职业开源开发者或大厂团队。</p>
+  <div class="truth"><b>不猜的部分：</b>其具体单位、职务、是否有团队协作，仓库与个人资料都未说明，本报告不作推断。仓库当前公开信息中，贡献者数量、CI 运行结果均可在仓库自行核对。</div>
+
+  <h3 class="sec">06｜解决了什么真实问题？</h3>
+  <p>从用户需求出发，而不是从 AI 技术出发——三类人每天被同一件事消耗：</p>
+  <ul>
+    <li><b>机关与事业单位的文书岗：</b>一份通知退回来，往往不是内容不行，而是版心、层次序数、发文字号括号用错（该用〔〕写成【】）、成文日期编了虚位（“05 月 08 日”应为“5 月 8 日”）。改一处就要重排一遍。</li>
+    <li><b>央国企的部门写稿人：</b>日常最多的是<b>非红头</b>的企业内部报告、请示、工作方案。这类文书没有现成模板，格式全靠“前人留下的稿子”抄，抄错就一错一片。</li>
+    <li><b>所有需要“数字对得上”的人：</b>正文写“以下三个方面”，后面只列了两点；表格合计与分项对不上；同一指标在正文与表格取值不一致。这类错人力最容易漏，也最容易被上级一眼抓住。</li>
+  </ul>
+  <p>再加一条隐性刚需：<b>涉密材料不能上传到云端工具</b>。本项目的“本机运行、安装后不联网”直接命中了这条边界。</p>
+
+  <h3 class="sec">07｜完整技术栈</h3>
+  <table class="stack">
+    <tr><td class="k">运行时</td><td>Node.js ≥ 18（CI 覆盖 Node 18 / 20 / 22 × Windows / macOS）</td></tr>
+    <tr><td class="k">依赖</td><td><code>docx</code> ^9.7.1、<code>jszip</code> ^3.10.1、<code>sax</code> ^1.6.0（仅这三个生产依赖）</td></tr>
+    <tr><td class="k">语言</td><td>JavaScript（仓库主语言），另有 Python 量测/复检脚本</td></tr>
+    <tr><td class="k">可选依赖</td><td>Python + <code>pymupdf</code>（仅用于导出 PDF 后核字体与版面）</td></tr>
+    <tr><td class="k">模型</td><td>本工具本身<b>不调用任何模型</b>；由宿主 Agent 决定“起草正文”时用哪个模型（README 明确：内容去哪由你用的模型决定）</td></tr>
+    <tr><td class="k">框架 / API</td><td>无 Web 框架、无外部 API、无 MCP（纯文件进出）</td></tr>
+    <tr><td class="k">数据库</td><td>无。全部为本地文件（.docx / .json / .tsv）</td></tr>
+    <tr><td class="k">数据文件</td><td><code>data/style-words.tsv</code>（文风词表）、<code>data/yixingci.tsv</code>（异形词表，依据 GF 1001-2001）</td></tr>
+    <tr><td class="k">部署</td><td>无需部署；<code>git clone</code> + <code>npm install</code> 即用；作为 Skill 时软链到 <code>~/.claude/skills/</code> 或 <code>~/.codex/skills/</code></td></tr>
+    <tr><td class="k">字体</td><td>标题与发文机关标志默认“方正小标宋简体”，<b>需自行安装</b>（未安装有替代方案，见 docs/字体.md）</td></tr>
+  </table>
+
+  <h3 class="sec">08｜完整 Workflow</h3>
+  <div class="flow">
+    <div class="node"><b>入口 A · 起稿</b>：<code>node tools/new-doc.js --form wen --out 稿子.js</code>（行文体）或 <code>--form zhang</code>（条文体/办法条例）</div>
+    <div class="arrow">↓</div>
+    <div class="node"><b>写正文</b>：只调构件——<code>letterhead</code>、<code>title</code>、<code>zhusong</code>、<code>p</code>、<code>h1</code>～<code>h4</code>、<code>table</code>、<code>luokuan</code>、<code>fujian</code>、<code>fuzhu</code>、<code>fujianPage</code>、<code>banji</code>；不手拼 docx 元素（这一步可由 Agent 完成）</div>
+    <div class="arrow">↓</div>
+    <div class="node"><b>出稿</b>：<code>node 稿子.js</code> → 写盘成 .docx</div>
+    <div class="arrow">↓</div>
+    <div class="node"><b>自动三道机检</b>：体例（GB/T 9704 版心、层次序数、日期与发文字号、全半角）→ 数字自洽（表格合计/百分比构成/跨表同一指标/正文列举条数）→ 文风（异形词、中文里的半角标点、套话空词）</div>
+    <div class="arrow">↓</div>
+    <div class="node"><b>闸门</b>：任一道不过 → 非零退出，不算出稿；「提示」档问题不拦稿，由人核对</div>
+    <div class="arrow">↓</div>
+    <div class="node"><b>交付</b>：.docx 给用户；需要 PDF 时在 Word 里导出，可选跑 <code>tools/check-pdf.py</code> 核字体与版面</div>
+    <div class="arrow">↓</div>
+    <div class="node"><b>入口 B · 修复现成文件</b>：<code>node tools/fix-doc.js 某文件.docx</code> → 输出 <code>某文件-修订.docx</code>（原文件不动）→ 在 Word「审阅」里逐条接受/拒绝修订，批注单独看</div>
+  </div>
+
+  <h3 class="sec">09｜它到底是怎么实现的？</h3>
+  <ul>
+    <li><b>“版式可证明”靠量测，不靠目测。</b><code>tools/measure-banji.py</code>、<code>measure-letterhead.py</code>、<code>measure-xinhan.py</code> 在 Word 渲染出 PDF 后测量实际尺寸，把校准值写进 <code>docs/版式.md</code>；遇到字体回退（没装方正小标宋）时脚本<b>拒绝出数</b>，避免用错基准。</li>
+    <li><b>修复分三档，是刻意设计的安全边界。</b><code>lib/fix/</code> 下 <code>ooxml.js</code> / <code>runs.js</code> / <code>layout.js</code> / <code>revisions.js</code> / <code>comments.js</code> / <code>text-rules.js</code> 各管一层：版式直接改；体例与规范层文风写成修订痕迹；数字与需要判断的项只插批注。<b>“全部拒绝修订，正文逐字等于原文”</b>——作者把可逆性写成了硬约束。</li>
+    <li><b>机检用“双向标本”防误报。</b>每条规则都配一份“必错的标本”做负对照（规则报不出来测试就失败），靠标签匹配、可能误报的规则只提示不拦稿，另有“必过的标本”防误报。这是工程质量意识，而不是堆规则。</li>
+    <li><b>内容判断交给人。</b>README 明确边界：不做内容与政治表述校对，不做 OFD、印章图像、流转审批。数字一律不自动改——“合计错还是分项错，工具判断不了”。</li>
+  </ul>
+  <div class="pitfall"><b>核心技术取舍：</b>它选择了“文件进文件出”而不是“服务端处理”。代价是不能做协同与流程，收益是<b>涉密材料不出本机</b>。在中国政务/央企场景，这个取舍几乎是唯一的正确答案。</div>
+
+  <h3 class="sec">10｜手把手复现</h3>
+  <p><b>以下 Step 1–4、Step 6 为公司 README 公开步骤的整理；Step 5、Step 7 为本文的复现建议，并非作者原始步骤。</b></p>
+  <pre><code># Step 1（作者原文）：克隆并安装
+git clone https://github.com/imhuhe/gongwen-kit.git &amp;&amp; cd gongwen-kit
+npm install
+
+# Step 2（作者原文）：一键验证——生成七份样张，每份跑完三道机检；再跑全部必错/必过标本
+npm test
+#   产物在 samples/word/，用 Word 打开即可
+
+# Step 3（作者原文）：起一份自己的稿子
+node tools/new-doc.js --form wen --out 我的稿子.js   # 行文体；条文体用 --form zhang
+
+# Step 4（作者原文）：编辑 我的稿子.js（照 templates/complete.js 调构件），然后出稿
+node 我的稿子.js        # 写盘后自动跑三道机检，全绿才算过
+
+# Step 5（本文复现建议）：拿一份本单位的真实旧稿试“修复”
+node tools/fix-doc.js 旧通知.docx      # 输出 旧通知-修订.docx，原文件不动
+#   用 Word 打开 → 审阅 → 逐条接受/拒绝，观察批注里标出的数字问题</code></pre>
+  <pre><code># Step 6（作者原文）：只体检不改（把机检当 CI 用）
+node checks/check-doc.js   某文件.docx --strict    # 体例
+node checks/check-num.js   某文件.docx --strict    # 数字自洽
+node checks/check-style.js 某文件.docx --strict    # 文风
+
+# Step 7（本文复现建议）：把机检接进目录级批量流程
+#   遍历某目录下所有 .docx → 逐个跑三条 --strict → 汇总成 CSV 报告（谁不过、过什么）
+#   这是把它从“个人工具”变成“部门质量门禁”的最小一步</code></pre>
+
+  <h3 class="sec">11｜Prompt / Code / Config</h3>
+  <p>作者公开了完整的 <code>SKILL.md</code>（含要素速查与构件用法）、模板源码与机检脚本。<b>以下为原文提取（SKILL.md 摘要）：</b></p>
+  <pre><code># 公文要素速查（GB/T 9704—2012）—— 摘自 SKILL.md
+- 要素顺序：版头（份号／密级／紧急程度／发文机关标志／发文字号／签发人／红色分隔线）
+  → 标题 → 主送机关 → 正文 → 附件说明 → 发文机关署名和成文日期 → 附注 → 版记
+- 层次序数四层，h1～h4 自动编号：一、／（一）／1.／（1）
+- 成文日期用阿拉伯数字标全；月、日不编虚位（10 月 5 日，不是 05）
+- 发文字号：机关代字〔年份〕序号号；顺序号不加「第」字、不编虚位
+- 主送机关顶格、末尾全角冒号；正文每段左空二字
+- 结尾用语：请示用「妥否，请批示」，报告用「特此报告」
+- 勿手拼 docx 元素、不写 new Paragraph；所有构件的用法一页看全：templates/complete.js</code></pre>
+  <p>配置方面没有环境变量、没有 API Key——这是它最“反常”也最讨喜的地方。作为 Skill 使用时只需一次软链：</p>
+  <pre><code>ln -s "$(pwd)" ~/.claude/skills/gongwen-kit     # Claude Code
+# Codex 换成 ~/.codex/skills（作者标注：未实测）</code></pre>
+
+  <h3 class="sec">12｜踩坑</h3>
+  <p>仓库 GitHub Issues <b>为 0 条</b>（截至 2026-10-14 核对），因此这里的坑来自<b>作者自己的提交信息与文档</b>，不是社区反馈。</p>
+  <ul>
+    <li><b>字体问题最容易翻车。</b>标题与发文机关标志默认方正小标宋简体，需自行安装；样张 PDF 是在“没装该字体”的机器上出的，用 Songti SC Black 代替。<b>回退字体时量测脚本会拒绝出数</b>——如果你打算自己改版式，先解决字体，否则量不出可信的尺寸。</li>
+    <li><b>首行缩进是连锁反应。</b>v0.3.1 专门修了这个问题：默认样式加首行缩进后，主送机关、居中/右对齐段落、表格、文本框、红头都需要补“首行不缩进”。自己改样式时会撞到同一堵墙。</li>
+    <li><b>不要把“提示”当“报错”。</b>数字机检分拦截项与提示项；提示项（如正文取值对照）在“不同主语、不同口径”时属于正常，<b>不必为了消提示改写原文</b>。</li>
+    <li><b>量版式前先读 docs/版式.md。</b>作者的原文提醒：校准值与坑都在那里。</li>
+  </ul>
+
+  <h3 class="sec">13｜中国用户能不能直接做？</h3>
+  <table class="stack">
+    <tr><td class="k">国内访问</td><td>代码托管在 GitHub，<b>视网络条件</b>；项目本身不需要访问任何外部服务，拿到代码后完全离线运行</td></tr>
+    <tr><td class="k">注册</td><td>不需要注册任何账号；不需要 API Key</td></tr>
+    <tr><td class="k">成本</td><td><b>0 元</b>（不含让 AI 起草时的模型费用）。无云服务、无按次计费</td></tr>
+    <tr><td class="k">技术门槛</td><td><span class="repro hard">🟡 有一定门槛</span>需要 Node ≥ 18、会用命令行与 <code>npm install</code>；想完全合规出红头还需自装方正小标宋简体</td></tr>
+    <tr><td class="k">数据合规</td><td><b>本机运行、安装后不联网</b>，排版与机检不调用任何服务；只有“让 AI 起草正文”那一步的内容会发给所选模型服务商（作者已在 README 明确提示涉密材料应自写或接内网/本地模型）</td></tr>
+  </table>
+
+  <h3 class="sec">14｜国产替代方案</h3>
+  <table class="stack">
+    <tr><td class="k">原方案定位</td><td>本身就是国产方案：GB/T 9704 国标 + 本地运行 + MIT 开源，不存在“要替代谁”的问题</td></tr>
+    <tr><td class="k">模型侧（起草正文）</td><td>作者未点名任何模型，仅说明“内容去哪由你用的模型决定”。因此模型侧可换成 DeepSeek / Qwen / GLM / Kimi / 豆包（或内网部署的模型）——<b>属理论可行、需自测，不是作者已验证的兼容清单</b></td></tr>
+    <tr><td class="k">宿主侧</td><td><b>已验证：</b>Claude Code、OpenCode（作者写明“读同一个目录约定”）；<b>作者标注未实测：</b>Codex（<code>~/.codex/skills</code>）。WorkBuddy 等支持本地 Skill 目录的宿主理论上可同样接入（本文判断，未实测）</td></tr>
+    <tr><td class="k">同类替代</td><td>市面若有版式更全的商业/开源公文工具，可作为互补；本项目 README 自己承认这一点，并强调增量在“数字自洽”与“修订痕迹”</td></tr>
+  </table>
+
+  <h3 class="sec">15｜中国企业可以怎么用？</h3>
+  <ul>
+    <li><b>场景 1｜党政机关 / 事业单位的文书岗：</b>把 <code>check-doc.js --strict</code> 当“发文前最后一道闸”，退稿率直接下降。对一批历史公文跑一遍，能一次性摸清本单位最常犯的体例错。</li>
+    <li><b>场景 2｜央国企集团与三级单位：</b>集团统一 <code>templates/</code> 与文风词表，下属单位出稿必过机检——这是“公文质量门禁”的低成本实现，且完全不涉及数据出网。</li>
+    <li><b>场景 3｜所有有内控制度的单位：</b>用 <code>fix-doc.js</code> 批量修复旧模板产出的存量文件，改动以修订痕迹留痕，<b>可以当作修改审计凭据</b>——这一点在需要通过内审、外审的场景里价值很高。</li>
+  </ul>
+
+  <h3 class="sec">16｜中国消费者可以怎么用？</h3>
+  <ol>
+    <li><b>备考公考 / 事业单位的考生：</b>用 <code>npm test</code> 生成七份标准样张当“国标范本”对照练习；自己写的练手稿跑一次机检，比对着参考答案更清楚错在哪。</li>
+    <li><b>单位里的秘书 / 行政 / 办公室人员：</b>把别人发来的通知、报告拖进 <code>fix-doc.js</code>，先修格式再报领导，省掉来回返工。</li>
+    <li><b>做公文写作内容的人：</b>机检输出的错误类型（异形词、半角标点、序数错、数字不自洽）本身就是最好的选题库——每一条规则都能做成一条短视频。</li>
+  </ol>
+
+  <h3 class="sec">17｜如何变成一个赚钱的项目？</h3>
+  <ul>
+    <li><b>产品化：</b>把它包成“部署在内网的公文排版+机检服务”，前端只留上传框——目标客户是绝不能上云的单位。核心难点不是技术，而是<b>涉密资质与交付合规</b>。</li>
+    <li><b>服务化：</b>面向集团单位做“公文版式规范化 + 存量文件批量修复”项目制交付，按单位/按文件量计费。</li>
+    <li><b>咨询化：</b>帮助企业梳理“哪些环节该机检、哪些必须人判”，并把这套判断固化成规则文件——咨询的产物是可运行的规则，不是 PPT。</li>
+    <li><b>培训化：</b>“公文格式 + AI 工具实操”是本项目最自然的课程形态（见第 21 节），面向机关、国企办公室、行政岗，需求极其稳定。</li>
+    <li><b>内容化：</b>“公文退稿的 10 个高频错误”“〔〕和【】到底怎么用”这类内容天然有流量，且可以用本工具当场演示。</li>
+    <li><b>行业化：</b>同一套方法可迁移到高校/科研院所申报材料、律所函件、医疗行政材料（见第 20 节）。</li>
+  </ul>
+
+  <h3 class="sec">18｜变现路径</h3>
+  <table class="stack">
+    <tr><td class="k">路径 A · 内网工具</td><td><b>客户：</b>党政机关、央国企、涉密单位　<b>产品/服务：</b>私有化部署的公文生成与机检服务　<b>收费方式：</b>项目制 / 年度服务费　<b>难度：</b>高（需资质与合规交付）</td></tr>
+    <tr><td class="k">路径 B · 规范改造服务</td><td><b>客户：</b>集团总部办公室、下属单位　<b>产品/服务：</b>公文版式规范化 + 存量文件批量修复　<b>收费方式：</b>按单位 / 按文件量　<b>难度：</b>中</td></tr>
+    <tr><td class="k">路径 C · 培训</td><td><b>客户：</b>机关与国企办公室、行政人员、公考考生　<b>产品/服务：</b>半天工作坊 / 线上课　<b>收费方式：</b>按人 / 按场　<b>难度：</b>低</td></tr>
+    <tr><td class="k">路径 D · 咨询</td><td><b>客户：</b>有内控与审计要求的单位　<b>产品/服务：</b>公文质量门禁方案设计 + 规则固化为机检　<b>收费方式：</b>项目制　<b>难度：</b>中高</td></tr>
+    <tr><td class="k">路径 E · 内容/IP</td><td><b>客户：</b>公考人群、行政从业者　<b>产品/服务：</b>公众号/短视频/社群/工具导航页　<b>收费方式：</b>广告、课程、社群　<b>难度：</b>低</td></tr>
+  </table>
+  <div class="truth"><b>必须区分：</b>本项目<b>没有公开任何已验证的收入或付费客户</b>。以上全部为基于案例结构推导的潜在商业模式，不是已实现的商业结果。</div>
+
+  <h3 class="sec">19｜如果我是一个中国独立开发者｜7 天 MVP</h3>
+  <ul>
+    <li><b>Day 1：</b>跑通 <code>npm test</code>，把七份样张生成出来，逐个打开对着国标看一遍——先确认你信得过它的输出。</li>
+    <li><b>Day 2：</b>拿本单位/熟人单位的真实模板，改成 <code>templates/</code> 里的一个新模板，出稿过机检。</li>
+    <li><b>Day 3：</b>接国产模型（如 DeepSeek / Qwen 兼容端点）负责“起草正文”，代码负责“排版 + 机检”，打通一句话到一份稿。</li>
+    <li><b>Day 4：</b>写批量脚本：目录里所有 .docx → 三条 <code>--strict</code> 机检 → 汇总 CSV 报告。</li>
+    <li><b>Day 5：</b>做“修复演示”：准备 3 份典型烂稿（旧模板、手写、别人发来的），跑 <code>fix-doc.js</code>，看修订痕迹是否可逐条接受/拒绝。</li>
+    <li><b>Day 6：</b>录一条 3 分钟 Demo：从一句话需求 → 出稿 → 机检全绿 → Word 里看修订。视频就是你的销售材料。</li>
+    <li><b>Day 7：</b>找 2 家单位免费试用（一个机关、一个国企），只要他们给你 3 个真实文件 + 一句反馈，你的报价依据就有了。</li>
+  </ul>
+  <div class="truth"><b>提醒：</b>本案例最大的商业风险不是技术，而是<b>客户属性</b>——政务与涉密客户对供应商资质有硬要求。个人开发者更现实的切口是“培训 + 规范改造服务”，而不是直接卖内网系统。</div>
+
+  <h3 class="sec">20｜如何迁移到其他行业</h3>
+  <div class="migrate">
+    <div class="m"><b>① 高校 / 科研院所</b>申报材料、评审意见、管理制度文件的格式规范化；机检可以直接对应“材料形式审查”清单。</div>
+    <div class="m"><b>② 律所 / 会计师事务所</b>函件、法律意见书、审计报告的形式合规自查；修订痕迹留档正好对应执业留痕要求。</div>
+    <div class="m"><b>③ 医疗行政 / 等级评审</b>医院规章制度、评审材料的体例统一与数字自洽检查（“应当”条数与实际条目对不上是评审高频失分点）。</div>
+  </div>
+
+  <h3 class="sec">21｜培训课程设计</h3>
+  <div class="course">
+    <table>
+      <tr><td class="k">课程名称</td><td>《AI 公文实战：让国标帮你排版，让机检帮你查数》</td></tr>
+      <tr><td class="k">适合人群</td><td>机关/事业单位文书岗、国企办公室行政、集团总部文秘、公考备考者</td></tr>
+      <tr><td class="k">建议时长</td><td>30 分钟 Demo / 60 分钟 Workshop / 半天（3 小时）实战课</td></tr>
+      <tr><td class="k">30 分钟 Demo</td><td>一句话 → 出一份合规通知 → 现场故意改错（把〔〕写成【】、写“05 月 08 日”）→ 看机检精准报错。全场只需要演示“机检能报出来”这一件事。</td></tr>
+      <tr><td class="k">60 分钟 Workshop</td><td>学员自带电脑，安装 Node，跑 <code>npm test</code> 生成样张；再用自己的真实稿子跑一次 <code>fix-doc.js</code>，在 Word 审阅里逐个接受/拒绝修订。</td></tr>
+      <tr><td class="k">半天课程</td><td>上午：GB/T 9704 关键条款（版头、发文字号、序数四层、成文日期、版记）+ 机检三档；下午：搭自己的模板 + 批量机检脚本 + 小组互评真实稿子。</td></tr>
+      <tr><td class="k">课程目标</td><td>学员最终能够：① 独立生成一份合规公文；② 用机检自查并解释每一类错；③ 把本单位模板固化进工具。</td></tr>
+      <tr><td class="k">现场 Demo</td><td>“退稿率实验”：取 5 份真实历史稿，跑机检，统计命中率——用真实数据开场，比讲功能有说服力。</td></tr>
+      <tr><td class="k">学员练习</td><td>每人带 2 份自己的稿子：一份用于生成训练，一份用于修复训练。</td></tr>
+      <tr><td class="k">课后作业</td><td>用本工具把本单位一份存量公文规范化，并提交机检报告截图。</td></tr>
+      <tr><td class="k">企业迁移</td><td>企业版课程：把“公文质量门禁”接进现有 OA / 发文流程，输出一份可执行的规则清单。</td></tr>
+    </table>
+  </div>
+
+  <h3 class="sec">22｜培训师点评</h3>
+  <div class="trainer"><b>真正值得教的不是工具，是它的设计判断：</b>把行业规则（国标）翻译成可执行、可验证、可回滚的代码；用“证据”代替“感觉”；不碰需要人负责的判断。这三条方法，换成施工规范、财务制度、医疗病案，一样成立。</div>
+
+  <h3 class="sec">23｜最终判断</h3>
+  <div class="verdict">
+    <div class="v"><div class="k">落地性</div><div class="val lv-h">高</div></div>
+    <div class="v"><div class="k">中国市场相关性</div><div class="val lv-h">高</div></div>
+    <div class="v"><div class="k">商业价值</div><div class="val lv-h">高</div></div>
+    <div class="v"><div class="k">复现难度</div><div class="val lv-m">中</div></div>
+    <div class="v"><div class="k">变现潜力</div><div class="val lv-h">高</div></div>
+  </div>
+  <p><b>说明：</b>以上为案例属性描述，不是“最佳案例排名”。</p>
+</article>
+
+<!-- ========================= CASE 02 ========================= -->
+<article class="card" id="case02">
+  <div class="card-head">
+    <div class="num">02</div>
+    <h2>阿里把浏览器做成 AI 的本地工作台：轻舟 qz-browser-agent 开源，自带模型、数据不出本机、还能通过 MCP 把浏览器借给别的 Agent</h2>
+  </div>
+  <div class="badges">
+    <span class="badge b-cat">大厂开源 · 浏览器 Agent</span>
+    <span class="badge b-tag">Chrome 扩展（MV3）</span>
+    <span class="badge b-tag">Apache-2.0</span>
+    <span class="badge b-tag">本地优先 · BYO Model</span>
+    <span class="badge b-tag">MCP Bridge</span>
+    <span class="badge b-date">首开源 2026-10-12 · v0.1.0</span>
+    <span class="badge b-warn">40★ / 8 Fork</span>
+  </div>
+  <div class="oneliner"><b>一句话结论：</b>浏览器正在从“人看网页的窗口”变成“Agent 干活的执行层”；阿里用一份 Apache-2.0 的开源扩展给出了国内大厂的第一份完整答卷——<b>本地登录态 + 你自己的模型 + 可复用 Skill</b>。</div>
+
+  <h3 class="sec">01｜案例是什么？</h3>
+  <p>轻舟（<code>qz</code>，qingzhou）是阿里巴巴开源的 Chrome 扩展（Manifest V3），把浏览器变成 AI 可操作的“研究工作台”。它能：看 DOM 或截图操作页面、填表单、跨标签页协作、并行跑子任务并在执行中随时打断或补上下文；把表格、媒体、网页内容抽成<b>本地结构化数据集</b>，在侧边栏里预览、编辑、导出；用 <b>Skill</b> 在目标网页里跑 JavaScript（可打包指令、脚本、工具、自定义界面，甚至按站点自动启用）；模型自己选（任何支持工具调用、协议兼容的服务商，含本地模型服务）；可选 <b>MCP Bridge</b> 把浏览器工具与任务控制开放给外部 Agent。所有会话、Skill、采集数据都存在浏览器本地。</p>
+
+  <h3 class="sec">02｜为什么今天值得关注？</h3>
+  <ul>
+    <li><b>为什么是现在：</b>仓库 2026-10-12 首次开源（初始提交 09:54:22 UTC），<b>同日发布 v0.1.0</b>（11:40:11 UTC）；10-13、10-14 连续提交（依赖与安全扫描修复、CI 跨平台加固、测试夹具加固）。这不是“挂了半年突然被发现”，而是两周内的新事件。</li>
+    <li><b>最近发生了什么变化：</b>模型侧，“OpenAI 兼容 / Anthropic Messages + tool calling”已成事实标准，接自家模型变得极其便宜；浏览器侧，Chrome 的扩展权限与 CDP（<code>chrome.debugger</code>）足以支撑“真操作页面”而不是“点截图”；合规侧，企业对“浏览器自动化但登录态与数据不上云”的要求越来越硬。</li>
+    <li><b>以前为什么不容易做：</b>云端 Browser Agent 的通用做法是把浏览器托管在服务器上——数据出网、登录态托管、按次计费，且遇到验证码/复杂交互容易栽。本地做又缺三样：能真操作页面的权限通道、能落地的结构化数据层、能被外部 Agent 复用的接口。</li>
+    <li><b>为什么现在变得容易：</b>轻舟把这三样一次补齐——CDP 页面操作、本地 Data 表、MCP Bridge。并且它是扩展形态：<b>不用 Docker、不用一台服务器、不需要把账号交给第三方</b>。</li>
+  </ul>
+
+  <h3 class="sec">03｜案例的前世今生</h3>
+  <p><b>前世。</b>“让模型点网页”这件事最早由 Python 侧跑通（Playwright / browser-use 一类）：无头浏览器 + 截图或可访问性树 → 模型决定动作。它能跑，但对普通用户不友好：要装环境、登录态难维护、数据在服务器上。</p>
+  <p><b>发展。</b>随后出现两个分叉：一是<b>协议化</b>——把浏览器能力做成 MCP 工具，让任意 Agent 调用（Claude 侧 DevTools MCP 是代表）；二是<b>本地化</b>——把 Agent 放进用户自己的浏览器里，复用已登录的会话，模型由用户自带。轻舟明确站在第二个分叉上，并且把第一个分叉也接了进来（MCP Bridge）。</p>
+  <p><b>今生。</b>2026-10-12，阿里把轻舟以 Apache-2.0 开源，仓库挂在 <code>alibaba</code> 组织下，附带少见的完整文档矩阵：<code>docs/architecture.md</code>（运行时映射与任务生命周期）、<code>docs/benchmarks.md</code>（基准与可视化回归方法）、<code>docs/permissions.md</code>（19 项权限逐条说明用途）、<code>docs/providers.md</code>（如何加模型服务商）、<code>AGENTS.md</code>（开发规则）。代码量约 14MB（JS 6.3MB / TS 5.7MB / Python 1.46MB，1821 个文件），MCP Bridge 是独立 Python 服务。</p>
+  <p><b>关联信号（非同一项目，勿混淆）：</b>同期阿里云在云栖大会上联合英特尔发布“Agentic Browser”——把 Chromium 的 Blink/V8 面向 Agent 场景裁剪调优、以预编译 SDK 交付、跑在弹性基础设施上，支持一次拉起上百个浏览器实例，并提出“首次用 Agent 推理、跑通后沉淀为可复用 RPA 流程”的成本思路；官方口径称单实例内存最多降约三成、单任务成本可降百倍量级（<b>该量化口径为厂商自述，第三方分析明确提示需真实业务压测验证</b>）。轻舟与 Agentic Browser 是两个不同的东西（一个在本地端侧，一个在云侧集群），但指向同一判断：<b>浏览器是 Agent 的执行层。</b></p>
+  <p><b>下一步可能怎么发展（以下为分析 / 推演，非事实）：</b>① 能力包与 Skill 生态长起来，出现“行业 Skill 包”（招投标、比价、情报）；② 企业版：内网私有模型 + 私有 Skill + 权限策略；③ 端云协同：本地轻舟做“人机协作与登录态”，云侧做规模化并发。</p>
+
+  <h3 class="sec">04｜原始资料</h3>
+  <ul class="src-list">
+    <li><span class="src-type">仓库</span><a href="https://github.com/alibaba/qz-browser-agent" target="_blank" rel="noopener">https://github.com/alibaba/qz-browser-agent</a>（<code>alibaba</code> 组织，Apache-2.0）</li>
+    <li><span class="src-type">中文文档</span><a href="https://github.com/alibaba/qz-browser-agent/blob/main/README.zh-CN.md" target="_blank" rel="noopener">README.zh-CN.md（功能、隐私与数据流、快速开始、Skill、能力包）</a></li>
+    <li><span class="src-type">发布</span><a href="https://github.com/alibaba/qz-browser-agent/releases/tag/v0.1.0" target="_blank" rel="noopener">Release v0.1.0（published 2026-10-12T11:40:11Z）</a></li>
+    <li><span class="src-type">架构</span><a href="https://github.com/alibaba/qz-browser-agent/blob/main/docs/architecture.md" target="_blank" rel="noopener">docs/architecture.md（运行时映射 + 一次任务从提交到完成的 6 步）</a></li>
+    <li><span class="src-type">权限</span><a href="https://github.com/alibaba/qz-browser-agent/blob/main/docs/permissions.md" target="_blank" rel="noopener">docs/permissions.md（19 项权限 + &lt;all_urls&gt; 逐条用途与数据流）</a></li>
+    <li><span class="src-type">服务商</span><a href="https://github.com/alibaba/qz-browser-agent/blob/main/docs/providers.md" target="_blank" rel="noopener">docs/providers.md（如何新增 / 覆盖模型服务商）</a></li>
+    <li><span class="src-type">基准</span><a href="https://github.com/alibaba/qz-browser-agent/blob/main/docs/benchmarks.md" target="_blank" rel="noopener">docs/benchmarks.md（会话重放、表格、流式、速率基准与可视化审计）</a></li>
+    <li><span class="src-type">MCP</span><a href="https://github.com/alibaba/qz-browser-agent/blob/main/services/mcp-bridge/README.md" target="_blank" rel="noopener">services/mcp-bridge/README.md（Streamable HTTP / stdio，Bearer + 配对 token，仅绑定 loopback）</a></li>
+    <li><span class="src-type">Skill</span><a href="https://github.com/alibaba/qz-browser-agent/blob/main/src/capabilities/README.md" target="_blank" rel="noopener">src/capabilities/README.md（能力包 SDK，作者标注 API 仍属实验性）</a></li>
+    <li><span class="src-type">第三方分析</span><a href="https://thegeocommunity.com/blogs/generative-engine-optimization/alibaba-qz-browser-agent-local-first-research-extraction/print" target="_blank" rel="noopener">The GEO Community：Alibaba's qz Browser Agent Turns Chrome Into a Local-First Research and Extraction Workspace</a>（含“当前 commit 无法支撑任何抽取准确率/成功率/速度优势结论”的独立判断）</li>
+  </ul>
+
+  <h3 class="sec">05｜作者是谁？</h3>
+  <p><b>主体：</b>阿里巴巴（GitHub 组织 <code>alibaba</code>），仓库以 Apache-2.0 开源。该组织同期还有 <code>open-code-review</code>（46,966★）、<code>spring-ai-alibaba</code>（11,008★）等活跃仓库，说明这是组织级正式发布，不是个人马甲。</p>
+  <p><b>提交者：</b>截至 2026-10-14，仓库贡献者列表只有一位——<code>helei-qz</code>，8 次提交；提交署名同时出现「何磊」与「Lei He」（同一人，中英文提交环境不同）。</p>
+  <div class="truth"><b>不猜的部分：</b>团队规模、项目立项背景、以及轻舟与阿里云 Agentic Browser 的组织关系，公开资料均未说明，本报告不作推断。若把“唯一提交者”当成“唯一作者”会低估阿里内部协作的可能性——这两件事无法从公开数据区分。</div>
+
+  <h3 class="sec">06｜解决了什么真实问题？</h3>
+  <p>从企业与个人的实际工作出发：</p>
+  <ul>
+    <li><b>“网页上的活”没有 API 可调。</b>绝大多数网站（供应商报价页、政府公开信息、电商后台、行业名录）只做人看的界面。企业要做竞品监控、价格采集、信息汇总，只能靠人一页页复制。</li>
+    <li><b>买 RPA 太贵也太脆。</b>传统 RPA 靠写死的选择器，页面一改就崩；维护成本比人工还高。</li>
+    <li><b>用云端 Browser Agent 心不安。</b>数据出网、登录态托管在别人服务器上、按次计费——这三条在多数中国企业里过不了安全评审。</li>
+    <li><b>最痛的一步其实在“落地”。</b>很多工具能把信息“看到”，但抽出来的结果留在对话里或截图里，不能编辑、不能导出、不能给下一道工序用。轻舟把抽取结果直接放进本地 Data 表，这一步才是真正省人的地方。</li>
+  </ul>
+
+  <h3 class="sec">07｜完整技术栈</h3>
+  <table class="stack">
+    <tr><td class="k">形态</td><td>Chrome 扩展，Manifest V3</td></tr>
+    <tr><td class="k">运行时分区</td><td>Background service worker（任务状态与持久化）/ Side Panel（呈现）/ Content script（隔离世界读写页面 DOM）/ Offscreen + Sandbox（DOM 相关工作与隔离 Worker）/ 本地服务（MCP Bridge）</td></tr>
+    <tr><td class="k">页面操作</td><td>通过 <code>chrome.debugger</code>（CDP）操作页面、截图、检查请求、打印 PDF；<code>scripting</code> 注入内容脚本</td></tr>
+    <tr><td class="k">模型</td><td>自带（BYO Model）：支持具备工具调用能力、协议兼容的服务商，含本地模型服务；文档与代码中的服务 ID 保留了 <code>alibaba-cn</code>（对应国内服务「百炼」）与 <code>moonshotai</code>（对应国内 Kimi 服务）的稳定性约定；另有 <code>provider-codex</code> 实现（自带 Responses 适配器与 OAuth 设备登录）</td></tr>
+    <tr><td class="k">协议</td><td>OpenAI Chat Completions 兼容 / Anthropic Messages / 自定义 endpoint</td></tr>
+    <tr><td class="k">扩展机制</td><td>Skill（在目标网页跑 JS，可按站点启用）+ TypeScript 能力包（新增 Agent 工具、面板视图、设置页、模型服务商）</td></tr>
+    <tr><td class="k">MCP</td><td>可选 MCP Bridge：独立 Python 服务（<code>qz-browser-agent-mcp-bridge</code>），支持 Streamable HTTP 与 stdio；Bearer 认证 + 配对 token；<b>仅绑定 loopback</b>；对自定义路由校验 Host/Origin，只对合法 Chrome 扩展来源返回精确 CORS origin</td></tr>
+    <tr><td class="k">存储</td><td>浏览器内本地存储（<code>storage</code> + <code>unlimitedStorage</code>）：会话、Skill、采集数据集；无外部数据库</td></tr>
+    <tr><td class="k">部署</td><td>下载 release ZIP → <code>chrome://extensions</code> 开发者模式 → 加载已解压扩展；或源码构建（Node 24 LTS + <code>npm ci</code> + <code>npm run build</code>）；<b>不需要 Docker</b>，不需要云服务器</td></tr>
+    <tr><td class="k">测试</td><td>TS 类型检查 + 自动化测试与覆盖率（<code>npm run verify</code>）；视觉/交互基准（锚点漂移 ≤1px、稳定暂停期 ≤0.5px、截图差异预算 0.1% 等健康门槛）；MCP Bridge 侧 pytest</td></tr>
+  </table>
+
+  <h3 class="sec">08｜完整 Workflow</h3>
+  <div class="flow">
+    <div class="node"><b>入口</b>：用户在侧边栏下任务（例：“打开 example.com，把页面主标题提取到一张表格中”）／或外部 MCP 客户端经 Bridge 触发</div>
+    <div class="arrow">↓</div>
+    <div class="node"><b>Background API</b>：解析并关联请求（提交时按 <code>clientMessageId</code> 去重，重试复用已受理消息）</div>
+    <div class="arrow">↓</div>
+    <div class="node"><b>Session 命令队列 / 监督器</b>：每个 Session 串行；启动一次 run 或把消息排队；初始会话写入成功后才回执</div>
+    <div class="arrow">↓</div>
+    <div class="node"><b>Agent host</b>：装载仓库、模型/工具服务与<b>写租约</b>（一次 run 捕获其语言、工具目录与运行配置）</div>
+    <div class="arrow">↓</div>
+    <div class="node"><b>Agent 取上下文</b>：输入、页面内容、文件内容、Skill/MCP 资源（经共用安全检查）</div>
+    <div class="arrow">↓</div>
+    <div class="node"><b>模型网关</b>：按会话配置选服务商与模型（含限速治理与恢复策略）</div>
+    <div class="arrow">↓</div>
+    <div class="node"><b>工具运行时</b>：页面工具（DOM / 截图 / 表单 / 跨标签页）→ CDP / Content / Chrome 服务</div>
+    <div class="arrow">↓</div>
+    <div class="node"><b>完整轮次提交</b>：打断（steering）只在完整轮次边界进入；排队的后续消息按 FIFO 启新 run</div>
+    <div class="arrow">↓</div>
+    <div class="node"><b>事件投影 → 侧边栏渲染</b>：Agent 事件流入运行时与对话投影；<code>agent_end</code> 触发资源清理与终端持久化</div>
+    <div class="arrow">↓</div>
+    <div class="node"><b>输出</b>：本地 Data 表（可预览 / 编辑 / 导出）、文件与 Artifacts、对话记录</div>
+  </div>
+
+  <h3 class="sec">09｜它到底是怎么实现的？</h3>
+  <ul>
+    <li><b>“页面操作”与“任务编排”是分开的两层。</b>Background 拥有任务状态与持久化、Side Panel 只负责呈现，两者通过显式协议通信；工具处理函数跑在后台 service worker，可把动作或脚本执行委派给活动标签页。<b>好处是：页面崩了、标签页关了，任务状态还在。</b></li>
+    <li><b>“写租约 + 每 Session 串行”解决并发乱写。</b>命令进入监督器的按 Session 队列，一次 run 拿到写租约才允许提交——这是并发正确性的工程解法，也是多数玩具级 Agent 缺的东西。</li>
+    <li><b>用 CDP 而不是纯截图。</b>走 <code>chrome.debugger</code> 能操作页面、截图、检查请求、打印 PDF，比“截屏+猜坐标”稳定得多。</li>
+    <li><b>抽取结果必须“落得下来”。</b>表格、媒体、页面内容进入本地集合，可在侧边栏预览、编辑、导出——把“一次性问答”变成“可复用的数据资产”。</li>
+    <li><b>MCP Bridge 是双向的、且默认最小暴露。</b>只绑定 loopback、Bearer + 配对 token、校验 Host/Origin、扩展端拒绝 HTTP 重定向并在配对撤销后丢弃迟到的轮询命令。<b>设计取向很明确：不为了便利牺牲边界。</b></li>
+    <li><b>权限面是显式的。</b><code>docs/permissions.md</code> 逐条列出 19 项权限的用途与主要调用方（含 <code>debugger</code>、<code>&lt;all_urls&gt;</code>、<code>history</code>、<code>bookmarks</code>）——这在开源扩展里并不常见，是给企业安全评审看的。</li>
+  </ul>
+  <div class="pitfall"><b>最关键的一处取舍：</b>坚持“本地优先 + 自带模型”意味着<b>放弃了开箱即用</b>——用户必须自己准备模型服务与 Key。换来的东西很值钱：数据不出本机、登录态不出浏览器、成本由自己的模型决定。</div>
+
+  <h3 class="sec">10｜手把手复现</h3>
+  <p><b>以下 Step 1–4 为官方 README 公开步骤的整理；Step 5–6 为源码构建与 MCP Bridge 的官方文档步骤；Step 7 为本文的复现建议，并非作者原始步骤。</b></p>
+  <pre><code># Step 1（官方）：下载最新 release 的 ZIP 安装包
+#   https://github.com/alibaba/qz-browser-agent/releases/latest
+
+# Step 2（官方）：解压，然后打开 chrome://extensions，启用「开发者模式」
+
+# Step 3（官方）：点「加载已解压的扩展程序」，选择解压出的 qz-browser-agent-extension 文件夹
+
+# Step 4（官方，最简路径）：从扩展工具栏打开「轻舟」侧边栏
+#   → 设置里选服务商、填凭证（自定义接口还要填 URL 与协议）
+#   → 选模型并保存
+#   → 试一句：打开 example.com，把页面的主标题提取到一张表格中。</code></pre>
+  <pre><code># Step 5（官方）：从源码构建（需要 Node.js 24 LTS + npm）
+npm ci
+npm run build
+#   然后按 Step 3 加载 dist/extension/ 作为扩展目录
+
+# Step 6（官方）：起 MCP Bridge，让外部 Agent 用你的浏览器
+#   先生成一个随机 token（如 openssl rand -hex 32），两边填同一个值
+QINGZHOU_MCP_BRIDGE_TOKEN="&lt;random-pairing-token&gt;" \
+uv run --project services/mcp-bridge \
+  --index https://pypi.org/simple \
+  --default-index https://pypi.org/simple \
+  --locked \
+  qz-browser-agent-mcp-bridge --transport streamable-http --print-snippet
+#   在 MCP 客户端里配置：
+#   [mcp_servers.qz-browser-agent]
+#   url = "http://127.0.0.1:18765/mcp"
+#   bearer_token_env_var = "QINGZHOU_MCP_BRIDGE_TOKEN"
+#   把 --print-snippet 打印的配对片段贴进扩展 DevTools 控制台完成配对
+
+# Step 7（本文复现建议）：做一个「同一个站点的可复用 Skill」
+#   ① 选一个你每天都要看的页面（例：某行业名录 / 招投标公告列表）
+#   ② 让 Agent 跑一次抽取，确认结果进入本地 Data 表、能导出
+#   ③ 把这次的操作沉淀成站点 Skill，之后同站点自动启用
+#   ④ 用 MCP Bridge 让外部 Agent 定时触发，或改用加 <code>alarms</code> 权限的定时任务
+#   ⑤ 一周后统计：省下多少人工、抽出来的表能不能直接给下游用</code></pre>
+
+  <h3 class="sec">11｜Prompt / Code / Config</h3>
+  <p><b>官方示例 Prompt（README.zh-CN 原文提取）：</b></p>
+  <pre><code>打开 example.com，把页面的主标题提取到一张表格中。</code></pre>
+  <p>扩展如何被“扩展”——能力包入口是官方文档给出的最小契约（<b>原文提取</b>）：</p>
+  <pre><code>// src/capabilities/&lt;your-feature&gt;/index.ts
+export { default as tools } from "./tools.js";         // Agent 工具
+export { default as renderers } from "./renderers.js"; // 工具结果视图
+// 构建时会自动发现这些声明。Tool handler 跑在后台 service worker，
+// 可把操作或脚本执行委派给活动标签页；Renderer 在侧边栏挂载可交互结果卡片。</code></pre>
+  <p><b>模型服务商接入的三档粒度（docs/providers.md 原文要点）：</b>① 沿用已有协议的服务 → 只贡献一个 <code>presets</code> 映射；② 已有服务需要额外行为 → 贡献显式 <code>override: true</code> 的 preset；③ 新的请求或流式协议 → 实现 <code>ProviderAdapter</code> 并贡献 <code>providers</code> 映射。</p>
+  <div class="truth"><b>需说明：</b>上述 Prompt 与代码片段均为<b>作者公开内容</b>；本报告未虚构任何作者未给出的配置。轻舟的 <code>docs/providers.md</code> 特别提示：能力包 API 仍属实验性，兼容性约定见 CONTRIBUTING 的扩展契约。</div>
+
+  <h3 class="sec">12｜踩坑</h3>
+  <p>仓库 Issues 为 <b>0 条</b>（截至 2026-10-14 核对），所以下面这些坑来自官方文档与第三方独立分析，而非社区反馈：</p>
+  <ul>
+    <li><b>Node 版本是硬门槛。</b>构建需要 Node.js 24 LTS。第三方独立审计明确指出：其环境里是 Node 22 而非要求的 24，因此<b>没能跑完整的 JS 测试套件</b>；同时区分了“文件数量”和“通过的断言数”——不要把仓库的规模当成质量证明。</li>
+    <li><b>是开发者模式加载，不是商店安装。</b>这意味着扩展会随 Chrome 更新/策略变化而需要重新加载；企业统一分发需要自行打包策略。</li>
+    <li><b>权限面很宽，安全评审会问。</b>包含 <code>debugger</code>、<code>&lt;all_urls&gt;</code>、<code>history</code>、<code>bookmarks</code>、<code>unlimitedStorage</code>、<code>desktopCapture</code> 等 19 项。文档把用途写清楚了，但“写清楚”不等于“被接受”——企业落地前务必先过一遍 <code>docs/permissions.md</code>。</li>
+    <li><b>没有公开的对比基准结论。</b>第三方分析的原话值得引用：当前 commit <b>无法支撑任何关于抽取准确率、Agent 成功率或速度优势的主张</b>；<code>docs/benchmarks.md</code> 自陈给的是“协议与工具”，不是已公布的结果。所以任何“比 X 快 N 倍”的说法都不该从这份仓库里读出来。</li>
+    <li><b>能力包 API 仍标为实验性</b>：深度定制（尤其涉及 provider 与工具注册）要做好跟随上游变化的准备。</li>
+    <li><b>MCP Bridge 的 token 管理要小心。</b>官方提醒：token 只放本地配置、从共享日志里打码；换 token 必须重新配对。</li>
+  </ul>
+
+  <h3 class="sec">13｜中国用户能不能直接做？</h3>
+  <table class="stack">
+    <tr><td class="k">国内访问</td><td>仓库与 Release 在 GitHub，<b>视网络条件</b>；扩展本体与 MCP Bridge 都在本机运行，装好之后不依赖境外服务</td></tr>
+    <tr><td class="k">模型</td><td>自带模型：任何支持工具调用、协议兼容的服务商。代码中保留了国内服务（<code>alibaba-cn</code>「百炼」、<code>moonshotai</code>「Kimi」）的稳定服务 ID 与凭证去向约定。具体哪些国内模型已端到端跑通，仓库未给出实测清单——<b>属“官方支持 + 待自测”</b></td></tr>
+    <tr><td class="k">注册</td><td>不需要注册第三方账号；需要自行准备所选模型服务商的 API Key</td></tr>
+    <tr><td class="k">成本</td><td>软件 <b>0 元</b>（Apache-2.0）；成本主要在模型 token，具体价格由所选服务商决定，本报告不代为估算</td></tr>
+    <tr><td class="k">技术门槛</td><td><span class="repro hard">🟡 有一定门槛</span>装扩展本身很简单（点四下）；要做 Skill / 能力包 / MCP Bridge 则需要前端与 Python 基础</td></tr>
+    <tr><td class="k">合规优势</td><td>会话、Skill、采集数据<b>都存在浏览器本地</b>；不把登录态交给第三方服务器。这是否满足你所在单位的要求，需要结合实际数据分级判断</td></tr>
+  </table>
+
+  <h3 class="sec">14｜国产替代方案</h3>
+  <p>这个案例的位置比较特殊：<b>它本身就是“国产替代”的供给方</b>。所以这里反过来看“它能替代谁 / 谁替代它”。</p>
+  <table class="stack">
+    <tr><td class="k">它可替代</td><td>云端无头浏览器类 Browser Agent（数据出网、登录态托管的那类）——<b>结构性替代</b>（同目标、不同形态），但官方未发布任何对比数据，不构成性能优于的结论</td></tr>
+    <tr><td class="k">模型侧替换</td><td>原方案允许自带任意兼容模型。切换为 DeepSeek / Qwen / GLM / Kimi / 豆包：<b>属理论可行、需自测</b>；代码中明确保留国内的 <code>alibaba-cn</code>、<code>moonshotai</code> 服务 ID 与凭证去向约定，可作为“官方支持国内服务”的证据</td></tr>
+    <tr><td class="k">规模化替代</td><td>需要一次跑几十上百个并发任务时，端侧扩展并不合适——那是云侧浏览器集群（如阿里云 Agentic Browser 方向）的场域。两者是互补而非互斥</td></tr>
+    <tr><td class="k">工具链替代</td><td>如果诉求只是“自动化操作网页”而不需要 Agent 推理，传统 RPA（含国产 RPA 厂商）在稳定性上仍有优势；轻舟的加法是“不确定性交给模型”，代价是引入了模型的不确定性</td></tr>
+  </table>
+
+  <h3 class="sec">15｜中国企业可以怎么用？</h3>
+  <ul>
+    <li><b>场景 1｜电商 / 零售的竞品与价格巡检：</b>把每日要看的几个竞品页面做成站点 Skill，一条指令抽成表，导出 CSV 交给运营。数据留本地，不必上传第三方。<b>注意：抓取他人网站需自行遵守目标站条款与法律边界，本报告不提供规避手段。</b></li>
+    <li><b>场景 2｜市场 / 投研的信息作业：</b>把一次完整的“搜 → 打开 → 抽 → 存 → 引用”流程沉淀成一个可复用 Skill，每周复用，把重复劳动从“每次重做”变成“跑一次”。</li>
+    <li><b>场景 3｜企业 IT 与运营：</b>把内部系统里没有 API 的重复网页操作（报表下载、批量录入、单据核对）交给会话式 Agent，模型可指向内网部署的服务，数据不出内网。</li>
+    <li><b>场景 4（合规留痕）：</b>用 MCP Bridge 让外部 Agent 触发浏览器任务，把“谁触发了什么、抽了什么”留在固定流程里，比人工复制粘贴更可审计。</li>
+  </ul>
+
+  <h3 class="sec">16｜中国消费者可以怎么用？</h3>
+  <ol>
+    <li><b>把长网页 / 复杂表格抽成结构化数据：</b>学生整理文献表格、求职者整理招聘信息、装修比价——抽出来直接编辑导出，不用在截图和笔记之间来回倒。</li>
+    <li><b>跨标签页批量整理信息：</b>“把这 8 个页面的关键字段各抽一行合成一张表”，一次交给它做完。</li>
+    <li><b>把自己常做的网页操作做成 Skill：</b>每天要查的几个站点，做成站点 Skill 自动启用——这是“个人自动化”的最低成本入口。</li>
+  </ol>
+
+  <h3 class="sec">17｜如何变成一个赚钱的项目？</h3>
+  <ul>
+    <li><b>产品化：</b>不做通用工具，做<b>垂直 Skill 包</b>——例如“招投标信息每日雷达”“跨境电商竞品 Listing 巡检”“区域政策与补贴信息跟踪”。用户买的是现成的表，不是浏览器扩展。</li>
+    <li><b>服务化：</b>企业浏览器自动化实施交付——调研流程 → 写 Skill → 接模型 → 部署 → 培训使用方；按项目收费，后续收维护费。</li>
+    <li><b>咨询化：</b>“哪些网页流程值得自动化、哪些不该碰”的判断本身值钱（含合规边界与反爬风险的判断），交付物是流程清单 + 可运行 Skill。</li>
+    <li><b>培训化：</b>“浏览器 Agent 自动化实战”——从装扩展到写出第一个行业 Skill，半天可讲完，学员当场能跑出自己的表。</li>
+    <li><b>内容化：</b>browser agent 系列教程天然有热度（“让 AI 替你点网页”），可以做成公众号/B站/短视频系列，用真实任务做演示。</li>
+    <li><b>行业化：</b>同一套 Skill 方法复制到招投标、跨境、金融合规、地产、招聘（见第 20 节）。</li>
+  </ul>
+
+  <h3 class="sec">18｜变现路径</h3>
+  <table class="stack">
+    <tr><td class="k">路径 A · 垂直 Skill 包</td><td><b>客户：</b>电商运营、外贸、投研、招投标岗　<b>产品/服务：</b>行业专用抽取/巡检 Skill 包　<b>收费方式：</b>买断 / 订阅 / 按数据量　<b>难度：</b>中</td></tr>
+    <tr><td class="k">路径 B · 实施服务</td><td><b>客户：</b>有大量无 API 网页流程的企业　<b>产品/服务：</b>流程调研 + Skill 开发 + 部署 + 培训　<b>收费方式：</b>项目制 + 维护费　<b>难度：</b>中高</td></tr>
+    <tr><td class="k">路径 C · 培训 / Workshop</td><td><b>客户：</b>企业数字化部门、独立开发者　<b>产品/服务：</b>浏览器 Agent 实战课　<b>收费方式：</b>按人 / 按场　<b>难度：</b>低</td></tr>
+    <tr><td class="k">路径 D · 咨询</td><td><b>客户：</b>要立项 AI 自动化的企业　<b>产品/服务：</b>自动化机会盘点 + 合规边界评估　<b>收费方式：</b>按天 / 项目制　<b>难度：</b>中</td></tr>
+    <tr><td class="k">路径 E · 内容 / IP</td><td><b>客户：</b>AI 从业者、自动化爱好者　<b>产品/服务：</b>教程 / 社群 / 模板库　<b>收费方式：</b>课程、会员　<b>难度：</b>低</td></tr>
+  </table>
+  <div class="truth"><b>必须区分：</b>v0.1.0 项目<b>没有公开任何商业化案例、付费客户或收入数据</b>。以上全部为基于案例结构推导的潜在商业模式，不代表已经验证的商业成功。<b>另需重点提示：</b>用浏览器自动化采集第三方网站数据，需自行遵守目标网站条款与相关法律，本报告不提供任何规避技术保护措施的方法。</div>
+
+  <h3 class="sec">19｜如果我是一个中国独立开发者｜7 天 MVP</h3>
+  <ul>
+    <li><b>Day 1：</b>装扩展（下载 ZIP → 开发者模式 → 加载），接一个国内模型（百炼 / DeepSeek 等兼容端点）的 Key，跑通官方那句 prompt，确认能抽出表。</li>
+    <li><b>Day 2：</b>选一个你熟悉的行业站点（招投标 / 政策 / 行业名录），写第一个站点 Skill，把列表页抽成表。</li>
+    <li><b>Day 3：</b>补“闭环”：定时触发 + 导出 CSV / 落到本地文件，让它可以无人值守跑一次。</li>
+    <li><b>Day 4：</b>接 MCP Bridge，让外部 Agent（Claude Code / Codex 等）能调你的浏览器任务——这一步是后面卖“服务”的技术基础。</li>
+    <li><b>Day 5：</b>把 Skill 打包成“行业雷达包”（固定字段、固定输出格式、加一页说明），做成可交付物。</li>
+    <li><b>Day 6：</b>录 3 分钟 Demo：输入一句话 → 出表 → 导出。视频标题直接写客户关心的结果，不写技术。</li>
+    <li><b>Day 7：</b>找 3 个目标行业的人免费跑一周，只收一句话反馈和一个问题：<b>“如果它每月多给你 10 小时，你愿意付多少？”</b></li>
+  </ul>
+  <div class="truth"><b>风险提示：</b>① 目标站点的反爬与条款边界，必须逐站确认，不要默认“能抓就抓”；② v0.1.0 的 API 稳定性有限，深度定制的代码要准备跟随上游演进而改；③ 不要承诺“一定能赚钱”，本报告只描述可能路径。</div>
+
+  <h3 class="sec">20｜如何迁移到其他行业</h3>
+  <div class="migrate">
+    <div class="m"><b>① 招投标 / 资质信息监测</b>各地公告分散在不同平台、无统一 API；做成站点 Skill 后每日抽表，是典型的“时间换钱”场景。</div>
+    <div class="m"><b>② 跨境电商选品与 Listing 巡检</b>竞品页、评论、价格、库存的结构化跟踪；抽出的表可直接进选品流程。</div>
+    <div class="m"><b>③ 金融 / 合规公开信息采集留档</b>公告、监管信息按固定字段留痕，配合导出与本地存储形成可审计链路。</div>
+  </div>
+
+  <h3 class="sec">21｜培训课程设计</h3>
+  <div class="course">
+    <table>
+      <tr><td class="k">课程名称</td><td>《浏览器 Agent 实战：把你的网页重复劳动交给 AI（轻舟 qz 上手 + Skill 开发）》</td></tr>
+      <tr><td class="k">适合人群</td><td>企业 IT / 数字化部门、运营与市场岗、独立开发者、对自动化感兴趣的产品经理</td></tr>
+      <tr><td class="k">建议时长</td><td>30 分钟 Demo / 60 分钟 Workshop / 半天（3 小时）实战课</td></tr>
+      <tr><td class="k">30 分钟 Demo</td><td>现场装扩展 → 接一个国内模型 → 一句“把这张页面的表格抽出来” → 导出 CSV。全程只演示一件事：<b>不用写代码也能拿到结构化数据</b>。</td></tr>
+      <tr><td class="k">60 分钟 Workshop</td><td>学员各自选一个自己每天要看的页面，在讲师指导下做成站点 Skill，跑通一次并导出。</td></tr>
+      <tr><td class="k">半天课程</td><td>上午：浏览器 Agent 的工作原理（DOM vs 截图、CDP、为什么本地优先）；下午：Skill 开发 + 能力包入门 + MCP Bridge 让外部 Agent 调用 + 合规边界讨论。</td></tr>
+      <tr><td class="k">课程目标</td><td>学员最终能够：① 独立完成安装与模型配置；② 写出一个站点 Skill 并导出数据；③ 讲清楚本地优先方案与本地上云方案的取舍。</td></tr>
+      <tr><td class="k">现场 Demo</td><td>“人工 vs Agent 计时赛”：同一个抽取任务，学员手工做一遍，Agent 做一遍，当场对比耗时。</td></tr>
+      <tr><td class="k">学员练习</td><td>把“自己每周花 1 小时以上的网页重复操作”写成一句话需求，课堂做出来。</td></tr>
+      <tr><td class="k">课后作业</td><td>交付一个可复用的站点 Skill + 一段 1 分钟录屏说明它省了什么。</td></tr>
+      <tr><td class="k">企业迁移</td><td>企业版：盘点内部无 API 的网页流程，输出自动化机会清单 + 3 个可落地 Skill + 权限与合规评估。</td></tr>
+    </table>
+  </div>
+
+  <h3 class="sec">22｜培训师点评</h3>
+  <div class="trainer"><b>值得教的不是“让 AI 点网页”，而是三层工程判断：</b>什么该交给模型（不确定性）、什么必须写死（并发与状态）、什么绝不能替用户决定（对外部网站的合规边界）。能讲清这三层，学员做出来的才是能上生产的东西。</div>
+
+  <h3 class="sec">23｜最终判断</h3>
+  <div class="verdict">
+    <div class="v"><div class="k">落地性</div><div class="val lv-h">高</div></div>
+    <div class="v"><div class="k">中国市场相关性</div><div class="val lv-h">高</div></div>
+    <div class="v"><div class="k">商业价值</div><div class="val lv-h">高</div></div>
+    <div class="v"><div class="k">复现难度</div><div class="val lv-m">中</div></div>
+    <div class="v"><div class="k">变现潜力</div><div class="val lv-h">高</div></div>
+  </div>
+  <p><b>说明：</b>以上为案例属性描述，不是“最佳案例排名”。项目处于 v0.1.0，能力包 API 被作者标为实验性，落地前请按第 12 节的坑逐条评估。</p>
+</article>
+
+<section class="block" id="observe">
+  <h2>今日 AI 实战观察</h2>
+  <div class="panel">
+    <p>把今天这两个案例放在一起看，会发现它们在讲同一件事：<b>2026 年 10 月，中国 AI 实战的胜负手已经从“模型能力”挪到了“边界设计”。</b></p>
+    <p>gongwen-kit 面对的是中国最讲规矩的一批用户——党政机关与央国企。它没有做花哨的 RAG、没有接向量库，而是把 GB/T 9704 的版心、序数、发文字号逐条翻译成机器规则，再用“必错标本 + 必过标本”双向校准，最后把涉密这条线一刀切在“本机运行、装完不联网”。它的护城河不是算法，是<b>对行业规则的精确翻译能力 + 可证明性</b>：35.05mm 对 35mm 是量出来的，不是看出来的。这类案例的特征很清晰——技术不复杂，但商业价值极高，且几乎无法被通用大模型直接替代。</p>
+    <p>轻舟面对的是完全相反的问题：网页没有 API、登录态不能外流、模型要自带。阿里的解法是把浏览器变成“本地优先的工作台”：CDP 操作页面、数据落本地、Skill 沉淀重复流程、再通过 MCP Bridge 把浏览器借给外部 Agent。它的价值不在于“能点网页”，而在于<b>把不确定性留给模型、把正确性写进代码（按 Session 串行、写租约、去重）</b>。同时它也诚实地把局限摆出来：能力包 API 是实验性的，基准文档只给协议不给结论，第三方分析甚至明确说“当前版本支撑不了任何性能优势主张”。</p>
+    <p>更值得注意的是两件事的时间重合。轻舟在 10-12 开源，24 小时内连续提交；gongwen-kit 在 10-13 首版开源，同一天出四个版本。它们都不是大厂 PR 稿，而是能 <code>git clone</code> 就跑的东西。这提示一个重要变化：<b>企业侧的 AI 落地正在从“做一个智能体平台”转向“把一个具体行业的规则做成可执行、可验证、可回滚的代码”。</b></p>
+    <p>对个人开发者来说，今天这两个案例的价值不在于学会某个库，而在于看见一条更现实的路：<b>你不必比大厂更懂模型，你只需要比大厂更懂某个行业的规则与边界。</b>公文格式、招投标流程、页面上每天要点的那几下——这些“脏活”才是可以卖钱的地方。</p>
+  </div>
+</section>
+
+<section class="block" id="radar">
+  <h2>今日商业机会雷达</h2>
+  <div class="panel">
+    <h3>机会 1 · 行业规则代码化（以公文为例）</h3>
+    <ul>
+      <li><b>客户：</b>党政机关、央国企、高校与科研院所、律所与会计师事务所、医院行政</li>
+      <li><b>实现方式：</b>先把行业规则（国标 / 内部制度 / 评审清单）翻译成可执行检查，再配“生成 + 机检 + 修订回写”三件套；涉密场景本地部署</li>
+      <li><b>可能商业模式：</b>规范改造服务（项目制） + 内网工具私有化部署（年度服务费） + 培训（按场 / 按人）</li>
+      <li><b>为什么现在：</b>Agent Skill 形态让“规则 + 代码”可以直接挂进模型宿主，不再需要自建平台；而合规要求让本地部署成为唯一可选项，反而把门槛变成了护城河</li>
+    </ul>
+  </div>
+  <div class="panel">
+    <h3>机会 2 · 垂直 Skill 包运营（以浏览器自动化为底座）</h3>
+    <ul>
+      <li><b>客户：</b>招投标岗、电商运营、外贸、投研、政策与补贴跟踪岗</li>
+      <li><b>实现方式：</b>基于轻舟这类本地浏览器 Agent，把某行业“每日必看的页面”做成站点 Skill + 定时触发 + 导出结构化表</li>
+      <li><b>可能商业模式：</b>垂直 Skill 包（买断 / 订阅） + 企业实施交付 + 维护费</li>
+      <li><b>关键风险：</b>目标网站条款与法律边界必须逐站确认；不得提供任何规避技术保护措施的手段</li>
+    </ul>
+  </div>
+  <div class="panel">
+    <h3>机会 3 · “合规边界”咨询</h3>
+    <ul>
+      <li><b>客户：</b>想上 AI 自动化但卡在安全评审的企业</li>
+      <li><b>实现方式：</b>盘点流程 → 判定数据分级 → 决定“本地跑 / 内网跑 / 可以上云” → 输出可执行方案</li>
+      <li><b>可能商业模式：</b>按天 / 按项目咨询</li>
+      <li><b>为什么出现：</b>今天两个案例都因“本地 / 离线”而具备可落地性——说明边界判断本身就是瓶颈，而瓶颈就是生意的入口</li>
+    </ul>
+  </div>
+  <div class="truth"><b>必须说明：</b>以上为基于本期案例结构推导的商业模式分析，<b>不代表已经验证的商业成功</b>。两个案例均未公开任何收入、付费客户或商业化数据。</div>
+</section>
+
+<section class="block" id="solo">
+  <h2>今日个人变现机会</h2>
+  <div class="panel">
+    <p>如果一个人每天投入 <b>2–4 小时</b>，本期两个案例可以分别长成下面这些形态（均为潜在路径，不承诺收益）：</p>
+    <table>
+      <tr><th>方向</th><th>具体做法</th><th>启动条件</th><th>离“收钱”最近的形态</th></tr>
+      <tr><td>公文 AI 服务</td><td>帮单位做存量公文批量规范化 + 机检门禁</td><td>会用命令行、能接触到机关/国企办公室</td><td>规范改造项目（先免费做一份样稿）</td></tr>
+      <tr><td>公文 AI 培训</td><td>半天工作坊：国标 + 工具实操</td><td>讲得清 GB/T 9704 关键条款</td><td>单位内训（按场收费，单场即回本）</td></tr>
+      <tr><td>行业 Skill 包</td><td>招投标 / 跨境 / 政策信息每日雷达</td><td>懂一个行业的“每天要看什么”</td><td>订阅制数据包，先给 3 家免费跑一周</td></tr>
+      <tr><td>浏览器自动化实施</td><td>企业无 API 网页流程自动化交付</td><td>前端基础 + 会用 MCP Bridge</td><td>单流程实施（按项目报价）</td></tr>
+      <tr><td>Agent 自动化咨询</td><td>自动化机会盘点 + 合规边界评估</td><td>懂数据处理分级与流程拆解</td><td>按天咨询</td></tr>
+      <tr><td>内容 / IP</td><td>“公文避坑 100 例”“让 AI 替你点网页”系列</td><td>能稳定产出演示视频</td><td>课程 / 社群 / 企业投放</td></tr>
+    </table>
+    <p><b>本报告认为最现实的一条：</b>先从“培训 + 小交付”切入，用真实案例换反馈，再决定是否产品化。原因是这两个案例的工具都已经是开源的、0 成本可跑；个人缺的不是技术，而是<b>第一批肯给你真实文件 / 真实页面的人</b>。低资本、单人可启动的条件已经具备。</p>
+    <div class="truth"><b>不虚构成交、不虚构收入。</b>本报告未获得任何关于上述路径已产生收入的证据。</div>
+  </div>
+</section>
+
+<section class="block" id="sources">
+  <h2>原始资料汇总</h2>
+  <div class="panel">
+    <h3>案例 01 · gongwen-kit</h3>
+    <ul>
+      <li>仓库：<a href="https://github.com/imhuhe/gongwen-kit" target="_blank" rel="noopener">github.com/imhuhe/gongwen-kit</a></li>
+      <li>README：<a href="https://github.com/imhuhe/gongwen-kit/blob/main/README.md" target="_blank" rel="noopener">/blob/main/README.md</a>　·　Skill 定义：<a href="https://github.com/imhuhe/gongwen-kit/blob/main/SKILL.md" target="_blank" rel="noopener">/blob/main/SKILL.md</a></li>
+      <li>依据与版式：<a href="https://github.com/imhuhe/gongwen-kit/blob/main/docs/%E4%BE%9D%E6%8D%AE.md" target="_blank" rel="noopener">docs/依据.md</a>　·　<a href="https://github.com/imhuhe/gongwen-kit/blob/main/docs/%E7%89%88%E5%BC%8F.md" target="_blank" rel="noopener">docs/版式.md</a>　·　<a href="https://github.com/imhuhe/gongwen-kit/blob/main/docs/%E4%BF%AE%E5%A4%8D.md" target="_blank" rel="noopener">docs/修复.md</a></li>
+      <li>样张（Word 导出的 PDF）：<a href="https://github.com/imhuhe/gongwen-kit/tree/main/docs/%E6%A0%B7%E5%BC%A0" target="_blank" rel="noopener">docs/样张/</a></li>
+      <li>机检脚本：<a href="https://github.com/imhuhe/gongwen-kit/tree/main/checks" target="_blank" rel="noopener">checks/</a>　·　修复实现：<a href="https://github.com/imhuhe/gongwen-kit/tree/main/lib/fix" target="_blank" rel="noopener">lib/fix/</a></li>
+      <li>发布：<a href="https://github.com/imhuhe/gongwen-kit/releases/tag/v0.3.1" target="_blank" rel="noopener">Releases v0.3.1（2026-10-13 15:43:40 UTC）</a></li>
+      <li>作者：<a href="https://github.com/imhuhe" target="_blank" rel="noopener">github.com/imhuhe</a> · 博客 <a href="https://mrhuanghe.com" target="_blank" rel="noopener">mrhuanghe.com</a></li>
+    </ul>
+    <h3>案例 02 · qz-browser-agent（轻舟）</h3>
+    <ul>
+      <li>仓库：<a href="https://github.com/alibaba/qz-browser-agent" target="_blank" rel="noopener">github.com/alibaba/qz-browser-agent</a></li>
+      <li>中文 README：<a href="https://github.com/alibaba/qz-browser-agent/blob/main/README.zh-CN.md" target="_blank" rel="noopener">/blob/main/README.zh-CN.md</a></li>
+      <li>发布：<a href="https://github.com/alibaba/qz-browser-agent/releases/tag/v0.1.0" target="_blank" rel="noopener">Release v0.1.0（2026-10-12 11:40:11 UTC）</a></li>
+      <li>文档：<a href="https://github.com/alibaba/qz-browser-agent/blob/main/docs/architecture.md" target="_blank" rel="noopener">architecture.md</a>　·　<a href="https://github.com/alibaba/qz-browser-agent/blob/main/docs/permissions.md" target="_blank" rel="noopener">permissions.md</a>　·　<a href="https://github.com/alibaba/qz-browser-agent/blob/main/docs/providers.md" target="_blank" rel="noopener">providers.md</a>　·　<a href="https://github.com/alibaba/qz-browser-agent/blob/main/docs/benchmarks.md" target="_blank" rel="noopener">benchmarks.md</a></li>
+      <li>MCP Bridge：<a href="https://github.com/alibaba/qz-browser-agent/blob/main/services/mcp-bridge/README.md" target="_blank" rel="noopener">services/mcp-bridge/README.md</a></li>
+      <li>能力包 SDK：<a href="https://github.com/alibaba/qz-browser-agent/blob/main/src/capabilities/README.md" target="_blank" rel="noopener">src/capabilities/README.md</a>　·　开发规则：<a href="https://github.com/alibaba/qz-browser-agent/blob/main/AGENTS.md" target="_blank" rel="noopener">AGENTS.md</a></li>
+      <li>第三方独立分析：<a href="https://thegeocommunity.com/blogs/generative-engine-optimization/alibaba-qz-browser-agent-local-first-research-extraction/print" target="_blank" rel="noopener">The GEO Community 评述</a></li>
+    </ul>
+  </div>
+</section>
+
+<section class="block" id="signals">
+  <h2>窗口内信号（未计入案例）</h2>
+  <div class="panel">
+    <h3>★ 重点跟踪 · 麦当劳 MCP 创意开发大赛进入“生态爆发期”</h3>
+    <p>这是 2026-10-09 期案例 01（<a href="https://github.com/M-China/mcd-mcp-server" target="_blank" rel="noopener">M-China/mcd-mcp-server</a> + 大赛仓库）的后续演化，窗口内出现<b>成群结队的作品</b>，已经构成一个可观察的生态现象：</p>
+    <ul>
+      <li>大赛仓库 <a href="https://github.com/M-China/mcd-developer-innovation-challenge" target="_blank" rel="noopener">M-China/mcd-developer-innovation-challenge</a>：<b>135★ / 6 Fork / 583 个 open issues</b>；<code>RANKING.md</code> 更新时间戳 <b>2026-10-14 11:00:39</b>，榜首 <code>mcd-coupon-strategist</code> 278★（该仓库建于 2026-10-10 12:59，2026-10-13 仍在推送）。</li>
+      <li><b>mccarbon · 麦麦碳账本</b>（<code>w16638771062/mccarbon</code>，205★，MIT，10-12 建）：用官方 MCP 拉历史订单，按“餐品 / 包装 / 配送”三层碳核算产出单文件 HTML 碳账本 + 减排模拟器；<b>零第三方依赖</b>（只用 Python 标准库）、内置 2026 全年 mock 数据可离线跑、会员卡号默认打码、排放因子逐条可核（含免责声明“估算值、非官方披露数据”）。工程完整度很高：<code>tests/</code> 六个测试文件、<code>MCP_INTEGRATION.md</code> 画出完整调用链路、按“最长关键词优先”匹配餐品。</li>
+      <li><b>mcd-calorie-butler · 麦麦热量管家</b>（<code>WilderNoTrack/mcd-calorie-butler</code>，149★，MIT，10-13 建）：提出“味热比 = 爱吃程度 ÷ 每百大卡热量”，用官方 <code>calculate-price</code> 核价后下单；<b>用录制的真实 MCP 返回做 14 个离线测试</b>、本地 demo server、Skill + references + 计算脚本分层，明确“模型不心算任何数字”。</li>
+      <li>同批还有 <code>mcd-party-officer</code>（234★）、<code>McOracle</code>（210★）、<code>mcd-budget-meal</code>（164★）、<code>mcd-saver-strategist</code>（161★）、<code>McLife-Desk</code>（128★）等，前 20 名 Star 均在 38 以上（榜单来源：大赛官方 <code>RANKING.md</code>）。</li>
+    </ul>
+    <p><b>可迁移知识（本报告判断）：</b>“企业把业务能力 MCP 化 → 生态用 Skill 把它包装成个人工具”这条链路，已经跑出了一批可抄的工程范式：<b>零依赖 + 可离线 + 内置 mock 数据 + 录制真实响应做测试 + 单一 HTML 报告</b>。这几乎是“小团队做企业接口衍生品”的标准答案。</p>
+    <div class="truth"><b>如实标注：</b>① 官方条款禁止未授权商业售卖与引流变现，作品本身不能直接拿来卖；② 各作品的性能/效果数据多为作者自述，无第三方复现；③ 榜单 Star 数为大赛官方公开数据，本报告未独立核算。</div>
+  </div>
+  <div class="panel">
+    <h3>强烈建议深度阅读 · sweety-handdraw-video（手绘口播视频）</h3>
+    <p><code>threerocks/sweety-handdraw-video</code>（<b>276★</b> / 64 Fork，MIT，2026-10-12 建，封板 v1.2、补丁 <b>v1.2.3 于 2026-10-13</b>）：给一个主题、一篇文章或完整故事，做成“边画边讲”的有声视频。Agent 负责理解内容、写口播、设计分镜、生成插画；本地工具（Python / Pillow / SciPy / FFmpeg）负责逐笔描线、按相同顺序填色、逐字手写、配音对齐与导出。仓库内含 21 个画风入口、7 套“手部”素材与其生成提示词、多套音色、vendored 依赖（hand-drawn-styles 带隐私审计记录）、多个成片 MP4 样片与 benchmarks。</p>
+    <p><b>为何未达收录线：</b>官方明确“当前完整制作实测使用 Codex”，需要 Agent + 图像生成 + Python + FFmpeg + 中文字体 + Bun + ExifTool 一整套环境，<b>中国用户可用性与门槛需要单独评估</b>；本报告在窗口内未找到该项目的第三方复现记录。建议读者自行按 <code>docs/environment.md</code> 核对门槛后再决定投入。</p>
+  </div>
+  <div class="panel">
+    <h3>其他窗口内信号</h3>
+    <table>
+      <tr><th>项目</th><th>时间</th><th>规模</th><th>一句话</th></tr>
+      <tr><td><a href="https://github.com/dushiqi1987/codex-remote-bridge" target="_blank" rel="noopener">Dushiqi1987/codex-remote-bridge</a></td><td>10-12 建</td><td>114★ / 11F</td><td>用 SSH 反向隧道把本地 Codex 连到服务器上的 Codex CLI，面向 AutoDL 等 GPU 科研服务器；含 Python 转发器、PowerShell 隧道脚本与中文教程</td></tr>
+      <tr><td><a href="https://github.com/zhuyansen/new-term-radar" target="_blank" rel="noopener">zhuyansen/new-term-radar</a></td><td>10-12 建</td><td>884★ / 358F</td><td>新 AI 名词/模型/仓库雷达：在关键词工具收录前，从 X、Hugging Face、GitHub 与 sitemap 上先抓到</td></tr>
+      <tr><td><a href="https://github.com/yeyuxin777/baoyan-agent-benchmark" target="_blank" rel="noopener">yeyuxin777/baoyan-agent-benchmark</a></td><td>10-12 建</td><td>217★</td><td>“屿智同行 × 保研岛”开源 benchmark：评测 AI Agent 在保研咨询与申请规划上的表现——<b>中文垂直评测集</b>方向值得关注</td></tr>
+      <tr><td><a href="https://github.com/joeseesun/qiaomu-screen2video" target="_blank" rel="noopener">joeseesun/qiaomu-screen2video</a></td><td>10-13 建</td><td>13★</td><td>录屏 + 讲述 → 带中英双字幕、语义动效、音频降噪的成片（FFmpeg/ASS）。作者“乔木”为此前多期出现过的一手创作者</td></tr>
+      <tr><td><a href="https://github.com/Lucent-Snow/agent-knowledge-mcp" target="_blank" rel="noopener">Lucent-Snow/agent-knowledge-mcp</a></td><td>10-13 建</td><td>13★</td><td>给 Agent 的便携 Markdown 记忆：6 个 MCP 工具、本地与远程访问、<b>中文词法检索</b>、多设备同步</td></tr>
+      <tr><td><a href="https://github.com/RuihongY/verdi_bridge" target="_blank" rel="noopener">RuihongY/verdi_bridge</a></td><td>10-13 建</td><td>12★</td><td>通过 MCP 把 AI 接进 Synopsys Verdi 实时会话（波形、信号值、驱动追踪、RTL 源码）——<b>EDA 垂直方向的首个样本</b></td></tr>
+      <tr><td><a href="https://github.com/L110011101c/mcu-timer-calc" target="_blank" rel="noopener">L110011101c/mcu-timer-calc</a></td><td>10-13 建</td><td>32★</td><td>8051 定时器初值计算器：零第三方依赖、可全量单元测试，同时是一个 Agent Skill——“小而准的工具 + Skill 包装”的干净样本</td></tr>
+      <tr><td><a href="https://github.com/MalganisWu/red-bean-nian-gao" target="_blank" rel="noopener">MalganisWu/red-bean-nian-gao</a> + <a href="https://github.com/MalganisWu/red-bean-qing-tuan" target="_blank" rel="noopener">red-bean-qing-tuan</a></td><td>10-11 建</td><td>22★ / 16★</td><td>中文 AI Agent 对话平台（流式对话、工具调用、子 Agent 委派、定时任务、完整审计轨迹）+ 可嵌入的 TypeScript Agent Runtime（model→tool 循环、checkpoint、interrupt 屏障、零生产依赖）</td></tr>
+    </table>
+  </div>
+</section>
+
+<section class="block" id="excluded">
+  <h2>明确排除的来源</h2>
+  <div class="panel">
+    <ul>
+      <li><b>绑定境外安全 / 政治议题的仓库，一律排除。</b>本期检索到若干基于已下线项目（<code>Autumn-27/ARTEX</code>）的派生仓库与“逆向一切（REA）”类项目（如 <code>XXXXXQ-0206/focus-agent</code>、<code>songshikang0111/awesome-REA-cases</code>、<code>czcdr/dsh-plugin-rea</code>、<code>rea-githu/REA</code> 等）。此类项目与境外网络安全事件存在关联，本报告仅中性点名、<b>不作任何展开、评价与背景引用</b>，亦不作为事实来源或案例线索。</li>
+      <li><b>内容农场（“尧图系”等）继续全量剔除</b>：<code>hqwc / mhpq / tzjp / trdm / xxmr / bryh / mtrt / mzlw / kwkr / pgsr / qwbw / mwwr / rrmt / lpqz</code> 等站群，以及英文侧的伪权威聚合站。本期它们仍在“MiniMax 部署”“AI Agent 实战”“Dify 教程”类检索中密集出现，本报告未采信其任何内容。</li>
+      <li><b>不收录</b>：AI 新闻、融资新闻、模型发布公告、纯工具清单、无 Workflow 的 Demo、只有截图没有实现细节的展示型项目、旧项目仅因 Star 高而被推荐。</li>
+    </ul>
+  </div>
+</section>
+
+<section class="block" id="truth">
+  <h2>数据真实性说明</h2>
+  <div class="panel">
+    <h3>本期哪些是事实</h3>
+    <ul>
+      <li>仓库存在性、创建/推送时间、Star/Fork 数、许可证、语言构成、提交记录、Release 时间戳：均通过 <b>GitHub REST API 逐条核对</b>（核对时间 2026-10-14 03:44 UTC / 11:44 CST），时间已换算北京时间。</li>
+      <li>gongwen-kit：创建 2026-10-13 11:02:24 UTC（北京 19:02），最后推送 2026-10-13 16:35:36 UTC（北京 10-14 00:35），MIT，24★/5F，Release v0.3.1 于 15:43:40 UTC 发布；GitHub Issues 为 0。文中提到的尺寸校准值（35.05mm / 170.01mm）<b>引自作者 docs/版式.md</b>。</li>
+      <li>qz-browser-agent：创建 2026-10-12 01:31:14 UTC，初始开源提交 09:54:22 UTC，Release v0.1.0 于 11:40:11 UTC；Apache-2.0；40★/8F；仓库 1821 个文件、语言构成 JS/TS/Python/CSS/HTML；贡献者仅 <code>helei-qz</code>（8 次提交）；Issues 为 0。</li>
+      <li>麦当劳大赛数据（135★ / 583 issues / RANKING.md 更新时间与名次 Star 数）：引自大赛官方仓库公开文件。</li>
+    </ul>
+    <h3>哪些是作者自述（本报告未独立验证）</h3>
+    <ul>
+      <li>gongwen-kit 的“机检能拦住哪些错”“必错标本测试通过”等，<b>来自作者文档与提交信息</b>；本报告未实际运行 <code>npm test</code>，也未取得 CI 运行结果截图。</li>
+      <li>轻舟的“能力包 API 实验性”“基准方法有效性”等，来自官方文档；<code>docs/benchmarks.md</code> 本身即声明其给的是<b>协议与工具，不是已公布的结果</b>。第三方独立分析更进一步指出：当前 commit <b>无法支撑任何关于抽取准确率、Agent 成功率或速度优势的主张</b>。</li>
+      <li>阿里云 Agentic Browser 的“单实例内存最多降约三成”“单任务成本降百倍量级”为<b>厂商自述口径</b>，第三方文章已明确提示需真实业务压测验证；本报告作为关联行业信号引用，<b>不作为轻舟的性能依据</b>。</li>
+      <li>麦当劳生态各作品的“实测/真实调用”表述均为作者自述，无第三方复现。</li>
+    </ul>
+    <h3>哪些是本文分析与推演</h3>
+    <ul>
+      <li>每案例的第 03 节“下一步可能怎么发展”、第 17 / 18 节的变现路径、第 19 节 7 天 MVP、第 20 节迁移方向、第 21 节课程设计，以及“今日商业机会雷达”“个人变现机会”，<b>全部属于基于案例结构的分析与推演，不是已验证的商业结果</b>。</li>
+      <li>“轻舟的国内模型服务已端到端跑通”属<b>待自测</b>，本报告仅依据代码中的服务 ID 约定与官方文档表述标注为“官方支持”。</li>
+    </ul>
+    <div class="truth"><b>证据缺口（如实列出）：</b>本报告<b>未能独立复现</b>两个案例中的任何一步——未运行 gongwen-kit 的 <code>npm test</code>，未在本机安装并运行轻舟扩展。所有关于“可运行性”的判断，依据的是仓库内公开的可执行脚本、测试用例、CI 配置、样张产物与第三方独立评述。<b>Star 数低（24★ / 40★）是本期两个案例的共同特征，本报告不将其作为质量判断依据，但请读者注意社区验证样本仍然很少。</b></div>
+  </div>
+</section>
+
+<section class="block" id="checklist">
+  <h2>本期质量自检</h2>
+  <div class="panel">
+    <ul class="checklist">
+      <li>今天只有 2 个案例，已声明无第三个达线案例</li>
+      <li>宁缺毋滥，未为凑数添加低质量内容</li>
+      <li>窗口内新内容 / 新实践 / 新更新（10-10 → 10-14）</li>
+      <li>已找到第一手资料（仓库 / README / 文档 / Release）</li>
+      <li>已找到真实作者并如实标注未知项</li>
+      <li>已找到真实项目与具体原始链接</li>
+      <li>存在实际操作与可执行步骤</li>
+      <li>存在完整 Workflow</li>
+      <li>可复现（附官方步骤，推导步骤已单独标注）</li>
+      <li>解决真实问题（非“AI 很酷”）</li>
+      <li>符合中国市场需求（政务公文 / 浏览器自动化）</li>
+      <li>已说明模型、工具、成本、技术门槛</li>
+      <li>已说明 API Key 需求（案例 02 需自备模型 Key）</li>
+      <li>已分析国产替代与兼容性等级</li>
+      <li>已分析企业场景与消费者场景</li>
+      <li>已分析商业价值与变现路径</li>
+      <li>已区分“已验证”与“推测的商业机会”</li>
+      <li>已追溯前世今生并解释“为什么是现在”</li>
+      <li>已提取作者公开的 Prompt / Code / Config</li>
+      <li>已验证关键数据、区分事实与作者自述</li>
+      <li>没有把推测写成事实、没有把新闻包装成实战</li>
+      <li>所有引用链接指向具体页面</li>
+      <li>HTML 与 CSS 完整、移动端可读</li>
+    </ul>
+  </div>
+</section>
+</div>
+</main>
+<footer class="site-footer">
+  <div class="wrap">
+    <div>
+      <div class="f-brand">全球文明进程重大事件日报</div>
+      <p class="f-desc">记录人类文明演进中的关键节点。以未来历史学家的视角，筛出可能改写人类轨迹的转折点——一个长期记录人类文明发展轨迹的数字档案馆。</p>
+    </div>
+    <div class="f-col">
+      <h4>浏览</h4>
+      <ul>
+        <li><a href="../index.html">网站首页</a></li>
+        <li><a href="../archive.html">日报档案</a></li><li><a href="../radar.html">趋势雷达</a></li><li><a href="../tutorial/index.html" class="active">AI实战</a></li>
+        <li><a href="../assets/images/og-cover.png" target="_blank">站点封面</a></li>
+      </ul>
+    </div>
+    <div class="f-col">
+      <h4>文明分类</h4>
+      <ul>
+        <li><a href="../categories/science.html">科学、生命与地球</a></li>
+        <li><a href="../categories/politics.html">政治与文明秩序</a></li>
+        <li><a href="../categories/culture.html">思想、社会与文化</a></li>
+        <li><a href="../categories/technology.html">科技与人工智能</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="f-bottom">
+    <div class="wrap">
+      <span>© 2026 全球文明进程重大事件日报 · 全球文明进程观察站</span>
+      <span>内容由自动化智能体基于公开信息生成，仅供文明观察与研究参考，不构成任何投资、政策或法律建议。</span>
+    </div>
+  </div>
+</footer></footer><button class="backtop" type="button" aria-label="返回顶部">↑</button><script src="../assets/js/main.js"></script>
+<script src="../assets/js/wechat-share.js"></script>
+<script src="../assets/js/text-to-speech.js"></script>
+</body>
+</html>

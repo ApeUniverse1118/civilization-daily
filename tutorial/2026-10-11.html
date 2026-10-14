@@ -1,0 +1,962 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI极客实战教程日报 · 2026-10-11（第015期）｜用 AI 监听公开讨论找客户：零依赖、本地运…；麦当劳 MCP 上的券组合优化 Skill：…</title>
+<meta name="description" content="10月11日AI极客实战案例：今天最值得中国 AI 从业者关注的是：两个案例都在解决同一个问题——「AI 给出的答案凭什么可信」。lead-signal-listener 干脆不用 LLM 打分，把评分规则做成一份透明可改的 JSON，让每条线索的分数都能被追溯；mcd…">
+<meta name="keywords" content="AI极客实战,可复现,Workflow,用 AI 监听公开讨…,麦当劳 MCP 上的…">
+<meta name="author" content="全球文明进程观察站">
+<meta name="robots" content="index,follow">
+<link rel="canonical" href="https://civilization-radar.com/tutorial/2026-10-11.html">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="全球文明进程重大事件日报">
+<meta property="og:title" content="AI极客实战教程日报 · 2026-10-11（第015期）｜用 AI 监听公开讨论找客户：零依赖、本地运…；麦当劳 MCP 上的券组合优化 Skill：…">
+<meta property="og:description" content="10月11日AI极客实战案例：今天最值得中国 AI 从业者关注的是：两个案例都在解决同一个问题——「AI 给出的答案凭什么可信」。lead-signal-listener 干脆不用 LLM 打分，把评分规则做成一份透明可改的 JSON，让每条线索的分数都能被追溯；mcd…">
+<meta property="og:url" content="https://civilization-radar.com/tutorial/2026-10-11.html">
+<meta property="og:image" content="https://civilization-radar.com/assets/images/og-cover.png">
+<meta property="og:locale" content="zh_CN">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="AI极客实战教程日报 · 2026-10-11（第015期）｜用 AI 监听公开讨论找客户：零依赖、本地运…；麦当劳 MCP 上的券组合优化 Skill：…">
+<meta name="twitter:description" content="10月11日AI极客实战案例：今天最值得中国 AI 从业者关注的是：两个案例都在解决同一个问题——「AI 给出的答案凭什么可信」。lead-signal-listener 干脆不用 LLM 打分，把评分规则做成一份透明可改的 JSON，让每条线索的分数都能被追溯；mcd…">
+<meta name="twitter:image" content="https://civilization-radar.com/assets/images/og-cover.png">
+<link rel="icon" href="../assets/images/logo.svg" type="image/svg+xml">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "AI极客实战教程日报 · 2026-10-11（第015期）｜用 AI 监听公开讨论找客户：零依赖、本地运…；麦当劳 MCP 上的券组合优化 Skill：…", "description": "10月11日AI极客实战案例：今天最值得中国 AI 从业者关注的是：两个案例都在解决同一个问题——「AI 给出的答案凭什么可信」。lead-signal-listener 干脆不用 LLM 打分，把评分规则做成一份透明可改的 JSON，让每条线索的分数都能被追溯；mcd…", "datePublished": "2026-10-11", "dateModified": "2026-10-14", "inLanguage": "zh-CN", "author": {"@id": "https://civilization-radar.com/#org"}, "publisher": {"@id": "https://civilization-radar.com/#org"}, "image": {"@type": "ImageObject", "url": "https://civilization-radar.com/assets/images/og-cover.png"}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://civilization-radar.com/tutorial/2026-10-11.html"}, "isAccessibleForFree": true}</script>
+<link rel="stylesheet" href="../assets/css/style.css">
+
+<style>
+
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body {
+    background:#F7F8FA; color:#111827;
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;
+    line-height:1.7; font-size:15px;
+  }
+  .wrap { max-width:960px; margin:0 auto; padding:32px 20px 64px; }
+  a { color:#2563EB; text-decoration:none; word-break:break-all; }
+  a:hover { text-decoration:underline; }
+
+  header.top {
+    background:#111827; color:#F9FAFB; border-radius:14px; padding:36px 32px; margin-bottom:24px;
+  }
+  header.top .kicker { color:#93C5FD; font-size:13px; letter-spacing:2px; text-transform:uppercase; margin-bottom:10px; }
+  header.top h1 { font-size:30px; font-weight:800; margin-bottom:6px; }
+  header.top .sub { color:#9CA3AF; font-size:14px; margin-bottom:20px; }
+  .meta-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:12px; }
+  .meta-grid .m { background:#1F2937; border:1px solid #374151; border-radius:10px; padding:10px 14px; }
+  .meta-grid .m .k { font-size:11px; color:#9CA3AF; margin-bottom:2px; }
+  .meta-grid .m .v { font-size:14px; font-weight:600; color:#F9FAFB; }
+
+  .oneline {
+    background:#F5F8FF; border:1px solid #BFDBFE; border-radius:14px;
+    padding:18px 24px; margin-bottom:24px;
+  }
+  .oneline .lab { font-size:12px; letter-spacing:1px; color:#2563EB; font-weight:700; margin-bottom:6px; }
+  .oneline p { font-size:15px; color:#111827; }
+
+  nav.cats { display:flex; flex-wrap:wrap; gap:8px; margin-bottom:28px; }
+  nav.cats a {
+    background:#FFFFFF; border:1px solid #E5E7EB; border-radius:999px;
+    padding:6px 14px; font-size:13px; color:#374151;
+  }
+  nav.cats a:hover { border-color:#2563EB; color:#2563EB; text-decoration:none; }
+
+  .card {
+    background:#FFFFFF; border:1px solid #E5E7EB; border-radius:14px;
+    padding:28px; margin-bottom:28px;
+  }
+  .card-head { display:flex; align-items:flex-start; gap:14px; margin-bottom:6px; flex-wrap:wrap; }
+  .num {
+    font-size:26px; font-weight:800; color:#2563EB; line-height:1.1;
+    font-variant-numeric:tabular-nums; min-width:52px;
+  }
+  .card-head h2 { font-size:20px; font-weight:700; flex:1; min-width:240px; }
+  .badges { display:flex; flex-wrap:wrap; gap:6px; margin:8px 0 14px; }
+  .badge { font-size:12px; padding:3px 10px; border-radius:999px; font-weight:600; }
+  .b-cat { background:#EFF6FF; color:#2563EB; border:1px solid #BFDBFE; }
+  .b-tag { background:#F3F4F6; color:#4B5563; border:1px solid #E5E7EB; }
+  .b-date { background:#ECFDF5; color:#16A34A; border:1px solid #BBF7D0; }
+  .b-warn { background:#FFFBEB; color:#B45309; border:1px solid #FDE68A; }
+
+  .oneliner {
+    background:#F9FAFB; border:1px solid #E5E7EB; border-radius:10px;
+    padding:12px 16px; font-size:14.5px; color:#111827; margin-bottom:18px;
+  }
+
+  h3.sec {
+    font-size:14px; font-weight:700; color:#111827; margin:22px 0 8px;
+    padding-left:10px; border-left:3px solid #2563EB;
+  }
+  .card p, .card li { font-size:14.5px; color:#374151; }
+  .card ul, .card ol { padding-left:22px; margin:6px 0; }
+  .card li { margin-bottom:4px; }
+
+  .src-list { list-style:none; padding-left:0; }
+  .src-list li { margin-bottom:6px; }
+  .src-type {
+    display:inline-block; font-size:11px; font-weight:700; color:#2563EB;
+    background:#EFF6FF; border:1px solid #BFDBFE; border-radius:6px;
+    padding:1px 8px; margin-right:8px;
+  }
+
+  .stack { width:100%; border-collapse:collapse; margin:6px 0; }
+  .stack td { border:1px solid #E5E7EB; padding:7px 12px; font-size:13.5px; vertical-align:top; }
+  .stack td.k { background:#F9FAFB; font-weight:600; color:#111827; width:110px; white-space:nowrap; }
+
+  .flow { display:flex; flex-direction:column; gap:0; margin:10px 0; }
+  .flow .node {
+    background:#F9FAFB; border:1px solid #E5E7EB; border-radius:10px;
+    padding:9px 16px; font-size:13.5px; color:#111827;
+  }
+  .flow .node b { color:#2563EB; }
+  .flow .arrow { text-align:center; color:#9CA3AF; font-size:14px; line-height:1.4; }
+
+  pre {
+    background:#111827; color:#E5E7EB; border-radius:10px;
+    padding:16px 18px; overflow-x:auto; font-size:13px; line-height:1.6;
+    font-family:"SFMono-Regular",Consolas,"Liberation Mono",Menlo,monospace;
+    margin:8px 0; white-space:pre-wrap; word-break:break-word;
+  }
+  code {
+    font-family:"SFMono-Regular",Consolas,Menlo,monospace;
+    background:#F3F4F6; color:#111827; border-radius:5px; padding:1px 6px; font-size:13px;
+  }
+  pre code { background:transparent; color:#E5E7EB; padding:0; }
+
+  .pitfall { background:#FFFBEB; border:1px solid #FDE68A; border-radius:10px; padding:14px 18px; margin:8px 0; }
+  .pitfall b { color:#B45309; }
+  .truth { background:#FEF7F7; border:1px solid #FECACA; border-radius:10px; padding:14px 18px; margin:8px 0; }
+  .truth b { color:#B91C1C; }
+
+  .repro { display:inline-block; font-size:13px; font-weight:700; padding:4px 12px; border-radius:999px; background:#ECFDF5; color:#16A34A; border:1px solid #BBF7D0; }
+  .repro.hard { background:#FFFBEB; color:#B45309; border-color:#FDE68A; }
+  .repro.dev { background:#FEF2F2; color:#B91C1C; border-color:#FECACA; }
+
+  .migrate { display:grid; grid-template-columns:repeat(3,1fr); gap:10px; margin:8px 0; }
+  .migrate .m {
+    background:#F9FAFB; border:1px solid #E5E7EB; border-radius:10px; padding:12px 14px; font-size:13px; color:#374151;
+  }
+  .migrate .m b { display:block; color:#111827; margin-bottom:4px; }
+
+  .course {
+    background:#F5F8FF; border:1px solid #BFDBFE; border-radius:10px; padding:16px 20px; margin:8px 0;
+  }
+  .course table { width:100%; border-collapse:collapse; }
+  .course td { padding:4px 8px 4px 0; font-size:13.5px; vertical-align:top; color:#374151; }
+  .course td.k { font-weight:600; color:#111827; width:88px; white-space:nowrap; }
+
+  .trainer {
+    border-left:3px solid #16A34A; background:#F0FDF4; border-radius:0 10px 10px 0;
+    padding:12px 18px; font-size:14px; color:#14532D; margin:10px 0 4px;
+  }
+  .trainer b { color:#16A34A; }
+
+  .verdict { display:grid; grid-template-columns:repeat(5,1fr); gap:10px; margin:8px 0; }
+  .verdict .v {
+    background:#F9FAFB; border:1px solid #E5E7EB; border-radius:10px; padding:12px; text-align:center;
+  }
+  .verdict .v .k { font-size:11.5px; color:#6B7280; margin-bottom:4px; }
+  .verdict .v .val { font-size:17px; font-weight:800; }
+  .lv-h { color:#16A34A; }
+  .lv-m { color:#F59E0B; }
+  .lv-l { color:#DC2626; }
+
+  section.block { margin-top:40px; }
+  section.block > h2 {
+    font-size:22px; font-weight:800; margin-bottom:16px; padding-bottom:10px;
+    border-bottom:2px solid #E5E7EB;
+  }
+  .panel { background:#FFFFFF; border:1px solid #E5E7EB; border-radius:14px; padding:24px 28px; margin-bottom:20px; }
+  .panel h3 { font-size:16px; margin-bottom:10px; }
+  .panel p, .panel li { font-size:14.5px; color:#374151; }
+  .panel ul { padding-left:22px; }
+  .panel li { margin-bottom:6px; }
+  .panel table { width:100%; border-collapse:collapse; margin:8px 0; }
+  .panel th, .panel td { border:1px solid #E5E7EB; padding:7px 10px; font-size:13px; text-align:left; vertical-align:top; }
+  .panel th { background:#F9FAFB; color:#111827; }
+
+  .checklist { columns:2; column-gap:32px; }
+  .checklist li { list-style:none; margin-bottom:6px; font-size:13.5px; }
+  .checklist li::before { content:"✓ "; color:#16A34A; font-weight:700; }
+
+  .gapnote {
+    background:#FFFBEB; border:1px solid #FDE68A; border-radius:10px;
+    padding:14px 18px; font-size:13.5px; color:#7C2D12; margin-bottom:24px;
+  }
+  .gapnote b { color:#B45309; }
+
+  footer { text-align:center; color:#9CA3AF; font-size:12.5px; margin-top:40px; }
+
+  @media(max-width:640px) {
+    header.top { padding:24px 20px; }
+    header.top h1 { font-size:22px; }
+    .meta-grid { grid-template-columns:repeat(2,1fr); }
+    .card { padding:20px 16px; }
+    .migrate { grid-template-columns:1fr; }
+    .verdict { grid-template-columns:repeat(2,1fr); }
+    .checklist { columns:1; }
+    .num { min-width:auto; }
+    .panel { padding:18px 16px; }
+    .stack td.k { width:82px; }
+  }
+
+</style>
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="../index.html"><img class="mark" src="../assets/images/logo.svg" alt="文明雷达" width="32" height="32" style="width:32px;height:32px;background:none;border:0;box-shadow:none;border-radius:6px">全球文明进程重大事件日报</a>
+    <button class="nav-toggle" type="button" aria-label="菜单" aria-expanded="false">☰</button>
+    <nav class="main-nav" aria-label="主导航"><ul><li><a href="../index.html">首页</a></li><li><a href="../archive.html">日报档案</a></li><li><a href="../radar.html">趋势雷达</a></li><li><a href="../tutorial/index.html" class="active">AI实战</a></li><li><a href="../categories/science.html">科学</a></li><li><a href="../categories/politics.html">政治</a></li><li><a href="../categories/culture.html">文化</a></li><li><a href="../categories/technology.html">科技</a></li></ul></nav>
+  </div>
+</header><main class="site-main">
+<div class="tut-wrap">
+<header class="top">
+  <div class="kicker">AI Builders · Real Cases</div>
+  <h1>AI极客实战案例日报</h1>
+  <div class="sub">China AI Builders · Real Cases · Workflows · Business</div>
+  <div class="meta-grid">
+    <div class="m"><div class="k">日报日期</div><div class="v">2026-10-11</div></div>
+    <div class="m"><div class="k">执行日期</div><div class="v">2026-10-14（补做）</div></div>
+    <div class="m"><div class="k">案例数量</div><div class="v">2 个精选</div></div>
+    <div class="m"><div class="k">数据快照</div><div class="v">2026-10-14 04:00 UTC</div></div>
+  </div>
+</header>
+
+<div class="gapnote">
+  <b>本期为补做期（必读）</b>：2026-10-11 期定时任务未执行，本文件由 2026-10-14 补做生成。
+  窗口严格限定为 <b>2026-10-10 12:00 → 2026-10-11 12:00（北京时间）</b>，与 10-10 / 10-12 / 10-13 期互不重叠。
+  本期收录的两个案例<b>均未被其他各期收录</b>。窗口内所有时间戳均用 GitHub REST API 与仓库公开文档逐条核对并换算北京时间，首次发布 / 更新时间分开标注。
+</div>
+
+<div class="oneline">
+  <div class="lab">今日一句话</div>
+  <p>今天最值得中国 AI 从业者关注的是：<b>两个案例都在解决同一个问题——「AI 给出的答案凭什么可信」</b>。lead-signal-listener 干脆不用 LLM 打分，把评分规则做成一份透明可改的 JSON，让每条线索的分数都能被追溯；mcd-coupon-strategist 则坚持用官方接口<b>真实计价</b>而不是让模型估价格，遇到算不准的券一律标「价值未知」而不是猜。它们共同指向一个正在成形的工程共识：<b>在要付钱、要发消息、要下单的场景里，「敢说不知道」比「能编出答案」更值钱。</b></p>
+</div>
+
+<nav class="cats">
+  <a href="#case01">案例 01 · AI 销售线索发现</a>
+  <a href="#case02">案例 02 · 券组合优化 Skill</a>
+  <a href="#observe">今日 AI 实战观察</a>
+  <a href="#radar">商业机会雷达</a>
+  <a href="#solo">个人变现机会</a>
+  <a href="#sources">原始资料</a>
+  <a href="#truth">真实性说明</a>
+</nav>
+
+<!-- ========================= CASE 01 ========================= -->
+<article class="card" id="case01">
+  <div class="card-head">
+    <div class="num">01</div>
+    <h2>用 AI 监听公开讨论找客户：零依赖、本地运行的销售线索发现器，一次运行约 $0.07</h2>
+  </div>
+  <div class="badges">
+    <span class="badge b-cat">AI + 销售自动化</span>
+    <span class="badge b-tag">Lead Generation</span>
+    <span class="badge b-tag">本地优先</span>
+    <span class="badge b-tag">零第三方依赖</span>
+    <span class="badge b-date">首次开源 2026-10-10</span>
+    <span class="badge b-warn">66★ / 5 Fork</span>
+  </div>
+  <div class="oneliner"><b>一句话结论：</b>它把「找客户」这件长期靠人情和运气的事，做成了一条可配置、可审计、成本可算到分钱的生产线——而且核心逻辑不用大模型，用的是你能读懂也能改的规则。</div>
+
+  <h3 class="sec">01｜案例是什么？</h3>
+  <p>Lead Signal Listener 是一个本地的销售线索发现工具。它的定位一句话说清：<b>「在竞争对手之前，找到那些正在公开描述『你能解决的问题』的人。」</b>它监听 Reddit、X、LinkedIn 帖子、LinkedIn 招聘、Facebook 帖子与群组、Instagram 话题与 Reels、融资新闻、Hacker News、YouTube、新闻与 RSS——也包括 Treg 目录里的 3800+ 个数据端点，还能捕捉「正在招人」「刚拿到融资」这类触发信号。每条线索会被<b>打分、去重、排队</b>，你可以先看分最高的。评分规则是一份可编辑的 JSON，改完点一下就能对已有线索重新打分。整个工具跑在你本机，只监听 <code>127.0.0.1</code>，不联网托管。</p>
+
+  <h3 class="sec">02｜为什么今天值得关注？</h3>
+  <ul>
+    <li><b>为什么是现在：</b>2026-10-10 首次开源（北京 15:20），当天完成全部推送。它是本期窗口内<b>唯一一个把「AI 销售自动化」做到可运行、成本可量化、且默认配置自带真实运行数据</b>的开源项目（README 明确写出：默认关键词示例运行得到 284 条线索，花费 $0.073）。</li>
+    <li><b>以前为什么不容易做：</b>线索发现长期是两难：买现成的 B2B 数据服务（贵、且名单是通用的，不针对你的问题）；或者人工刷平台（不可能覆盖十个来源）。用 LLM 直接扫平台也走不通——<b>成本高、结果不可复现、而且你无法解释「为什么这条排第一」</b>。</li>
+    <li><b>为什么现在变得容易：</b>三个条件同时到位：① 公开内容的检索接口可以按次计费（Treg 这类聚合层把 Reddit / X / LinkedIn 等统一成一次调用 $0.0005–0.03）；② Hacker News、RSS 这些免费源本身就能承担冷启动；③ <b>规则引擎足够便宜</b>——评分不用 LLM，用关键词规则就能筛掉 90% 噪音，把 LLM 留到「需要深入判断」的最后一步。</li>
+  </ul>
+
+  <h3 class="sec">03｜案例的前世今生</h3>
+  <p><b>前世。</b>「监听公开讨论找线索」这件事本身不新——早年是舆情监控，靠关键词告警；后来是社交聆听工具，靠人工配置规则看板。痛点始终一样：<b>监控结果是一堆帖子，不是一份可跟进的名单</b>。销售拿到的还是噪音，得自己一条条看。</p>
+  <p><b>发展。</b>LLM 出现后，第一波解法是「把帖子喂给模型判断是不是线索」。这条路线的代价很快显现：按条计费成本不可控、同一批数据跑两次结果不同（不可复现）、而且没法解释排序依据。于是出现了一个反向思路——<b>把「可判定的部分」交还给规则，把「需要理解的部分」留给模型</b>。</p>
+  <p><b>今生。</b>2026-10-10，作者开源了这个项目，把上述判断落成了具体设计：评分完全基于规则（痛点短语、意图短语、人群词、互动量、是否提问、负面短语），<b>透明、免费、可编辑</b>；想更深入时，<b>导出 JSON 交给 LLM</b> 做资格判定，而不是让 LLM 从头扫一遍。同时它把成本控制做成了一等公民：单次调用上限、单次运行预算、1 小时内幂等重放不重复计费、token 失效或余额为零自动中止整次运行。<br>另一个值得记录的细节：作者在仓库里放了一份 <code>docs/showcase.html</code>，<b>完整展示了「从想法到开源发布」的一次 AI 对话记录</b>——项目本身被作者标注为「在一次 AI 对话中构建完成」（提交记录中多处共同署名为 Claude Opus 5.5）。这让本案例同时成为「AI 辅助开发」的一手样本。</p>
+  <p><b>下一步可能怎么发展（以下为分析 / 推演，非事实）：</b>① 从「通用找线索」细化为垂直行业监听器（外贸、SaaS、跨境电商各有各的痛点短语库）；② 与 CRM 打通，形成「发现 → 跟进 → 记录」闭环；③ 评分规则库可能成为可交换的资产（谁来维护「什么叫高意向」的判断标准）；④ 国内替代路径是把 Treg 换成国内数据源，做本地化版本。</p>
+
+  <h3 class="sec">04｜原始资料</h3>
+  <ul class="src-list">
+    <li><span class="src-type">仓库</span><a href="https://github.com/yangyixxxx/lead-signal-listener" target="_blank" rel="noopener">https://github.com/yangyixxxx/lead-signal-listener</a>（MIT）</li>
+    <li><span class="src-type">中文说明</span><a href="https://github.com/yangyixxxx/lead-signal-listener/blob/main/README.zh-CN.md" target="_blank" rel="noopener">README.zh-CN.md</a></li>
+    <li><span class="src-type">Agent 安装</span><a href="https://github.com/yangyixxxx/lead-signal-listener/blob/main/AGENT_SETUP.md" target="_blank" rel="noopener">AGENT_SETUP.md（让 AI 编码助手代你安装与调优）</a></li>
+    <li><span class="src-type">构建记录</span><a href="https://yangyixxxx.github.io/lead-signal-listener/showcase.html" target="_blank" rel="noopener">一次 AI 对话构建全过程（showcase）</a></li>
+    <li><span class="src-type">源码</span><a href="https://github.com/yangyixxxx/lead-signal-listener/tree/main/listener" target="_blank" rel="noopener">listener/（treg_client · sources · generic · scoring · store · runner · server · i18n）</a></li>
+    <li><span class="src-type">测试</span><code>python -m unittest discover tests</code></li>
+    <li><span class="src-type">作者</span><a href="https://github.com/yangyixxxx" target="_blank" rel="noopener">github.com/yangyixxxx</a> · X <a href="https://x.com/yangyi" target="_blank" rel="noopener">@yangyi</a>　·　背后机构：newmax.ai</li>
+    <li><span class="src-type">数据层</span><a href="https://treg.to" target="_blank" rel="noopener">treg.to（3800+ 端点聚合层）</a>（付费数据源）</li>
+  </ul>
+
+  <h3 class="sec">05｜作者是谁？</h3>
+  <p>GitHub 账号 <code>yangyixxxx</code>，X 账号 <code>@yangyi</code>；README 标注项目由 <b>newmax.ai</b> 构建，底层数据能力来自 <b>treg.to</b>（其作者 Jason Zhou，X <code>@jasonzhou1993</code>）。项目内置中英双语界面与中文说明文档，作者在开发过程中使用 Claude Opus 5.5 辅助（提交共同署名）。<br><b>说明：</b>本报告未独立核实其真实姓名、所在地与公司信息，不做推测。可确认的是作者具备完整的工程交付能力（零依赖架构、成本控制机制、测试目录、i18n）与产品意识（提供让 Agent 代装的引导文档）。</p>
+
+  <h3 class="sec">06｜解决了什么真实问题？</h3>
+  <p>从使用者视角，问题非常直白：<b>「我知道我的客户会在网上抱怨这个问题，但我没办法每天盯着十个平台看。」</b></p>
+  <ul>
+    <li><b>外贸与跨境服务：</b>买家会在 Reddit / X 上直接描述痛点（「我们的物流成本又涨了」「有人推荐靠谱的供应商吗」），但这些帖子存在时间很短，错过就没了。</li>
+    <li><b>SaaS 与 B 端服务：</b>高意向信号往往不是「我想买」，而是「谁能推荐一个工具」「我们正在找人做这件事」——这类表述有很强的时效性。</li>
+    <li><b>招聘与融资触发：</b>「正在招某个岗位」和「刚拿到融资」是最经典的采购前置信号，但需要有人持续盯着。</li>
+    <li><b>现有工具的痛点：</b>通用 B2B 名单不针对你的具体问题；舆情工具给你的是帖子不是名单；LLM 全量扫描成本不可控且不可解释。</li>
+  </ul>
+
+  <h3 class="sec">07｜完整技术栈</h3>
+  <table class="stack">
+    <tr><td class="k">语言</td><td>Python 3.10+</td></tr>
+    <tr><td class="k">依赖</td><td><b>零第三方依赖</b>（README 明确标注）</td></tr>
+    <tr><td class="k">存储</td><td>SQLite（<code>data/signals.db</code>）</td></tr>
+    <tr><td class="k">服务</td><td>本地 HTTP 服务，仅监听 <code>127.0.0.1:8787</code>；单页 UI（<code>static/index.html</code>）</td></tr>
+    <tr><td class="k">国际化</td><td>双语界面（EN / 中文），服务端消息 i18n（<code>listener/i18n.py</code>）</td></tr>
+    <tr><td class="k">字体</td><td>内置 OFL 字体，本地打包、离线可用，<b>不依赖 Google Fonts</b></td></tr>
+    <tr><td class="k">免费数据源</td><td>Hacker News（Algolia API）、RSS / Atom（Google Alerts、Reddit 的 .rss、hnrss.org、博客、招聘板，可加关键词过滤）、Import（导入 JSON）</td></tr>
+    <tr><td class="k">付费数据源</td><td>经 Treg 调用：Reddit（$0.002/次）、X（$0.00075–0.015）、LinkedIn 帖子（$0.002）、LinkedIn 招聘（$0.0005）、Facebook 帖子（$0.03）、Facebook 群组（$0.002）、Instagram 话题（$0.002）、Instagram Reels（$0.0015）、融资新闻（按结果计）等</td></tr>
+    <tr><td class="k">模型</td><td><b>核心评分不使用 LLM</b>（规则化）。README 建议：需要更深入的资格判定时，导出 JSON 交给 LLM</td></tr>
+    <tr><td class="k">协议</td><td>MIT</td></tr>
+  </table>
+
+  <h3 class="sec">08｜完整 Workflow</h3>
+  <div class="flow">
+    <div class="node"><b>① 描述你在找谁</b>（Listeners 页）：填写目标人群描述，勾选启用的来源，逐行添加关键词</div>
+    <div class="arrow">↓</div>
+    <div class="node"><b>② 抓取（Listen）</b>：按关键词并发查询各来源。免费源（HN / RSS）与付费源（经 Treg）混用；每个关键词每次运行最多抓 <code>max_pages</code> 页（Reddit / X 默认 3 页，LinkedIn 默认 2 页）</div>
+    <div class="arrow">↓</div>
+    <div class="node"><b>③ 打分（Scoring）</b>：纯规则匹配——痛点短语（如 "traffic dropped"）、意图短语（如 "looking for" "recommend an agency"）、人群词（如 SaaS vs DTC）、互动量、是否为提问、负面短语（自我推广 / 招聘贴 / 垃圾信息）</div>
+    <div class="arrow">↓</div>
+    <div class="node"><b>④ 去重入库</b>：<code>store.py</code> 写入 SQLite 并去重</div>
+    <div class="arrow">↓</div>
+    <div class="node"><b>⑤ 人工审核</b>：按分数排序，状态板切换 All / To review / Qualified / Contacted / Replied / Ignored，可加备注（Ctrl+Enter 保存）</div>
+    <div class="arrow">↓</div>
+    <div class="node"><b>⑥ 输出</b>：导出 CSV / JSON（<code>GET /api/export?fmt=csv|json</code>）</div>
+    <div class="arrow">↓</div>
+    <div class="node"><b>⑦ 反馈调优（回路）</b>：在 Listeners → Scoring rules 里用 JSON 改规则，点 <b>Rescore all leads</b> 对已有线索重新打分</div>
+    <div class="arrow">↓</div>
+    <div class="node"><b>⑧ 可选：交给 LLM 深判</b>：导出 JSON，交给 LLM 做更深入的资格判定（README 明确建议的用法）</div>
+  </div>
+  <p>内置成本控制机制（README 原文）：<b>单次调用上限</b>（由 Treg 通过 <code>X-Treg-Route-Max-Cost</code> 强制）、<b>单次运行预算</b>（达到即停止分页与后续付费调用）、<b>幂等重放</b>（同一查询 1 小时内重跑不重复计费）、<b>自动中止</b>（token 无效返回 401 或余额不足返回 402 时取消本次运行剩余部分）。花费与调用次数直接显示在 Leads 面板上。</p>
+
+  <h3 class="sec">09｜它到底是怎么实现的？</h3>
+  <p>几个关键设计值得单独拆出来：</p>
+  <ul>
+    <li><b>为什么不用 LLM 打分（本案例最重要的判断）：</b>三个理由——成本（按条调用不可控，规则免费）、可复现（同一批数据两次运行结果一致）、可解释（每条线索的分数来自哪几条规则命中，能指给人看）。<b>把 LLM 推到最后一环</b>（对已筛出的线索做深判），成本从「按条」变成「按需」。</li>
+    <li><b>免费源承担冷启动：</b>没有 Treg token 也能跑——Hacker News、RSS、Import 三条路径完全免费。这让工具可以先被试用、再决定是否付费扩容，是一处很聪明的产品设计。</li>
+    <li><b>RSS 是隐藏的万能接口：</b>README 举例说明可用 Google Alerts、<code>reddit.com/r/NAME/new/.rss</code>、<code>hnrss.org/newest?q=...</code> 等——<b>等于把任意平台的可订阅内容都变成了线索源</b>，且零成本。</li>
+    <li><b>安全设计（本地优先的完整实现）：</b>服务仅绑定 <code>127.0.0.1</code>、检查 <code>Host</code> 头（阻止 DNS rebinding 攻击）、写请求必须带 JSON Content-Type、token 在界面上掩码显示且从不写入日志、所有数据留在 <code>data/</code> 且被 git 忽略（README 明确警告「切勿提交或分享」）。</li>
+    <li><b>可审计的架构：</b>职责切得很干净——<code>treg_client.py</code>（HTTP 客户端 / 成本 / 上限 / 幂等）、<code>sources.py</code>（内置源与解析）、<code>generic.py</code>（RSS / 自定义端点 / 导入 / 目录检索）、<code>scoring.py</code>（规则评分）、<code>store.py</code>（SQLite + 去重 + 导出）、<code>runner.py</code>（一次监听）、<code>server.py</code>（本地 API + 调度）。</li>
+    <li><b>无界面也能跑：</b><code>python app.py --run-once</code> 支持放到 cron 或 Windows 任务计划里定时执行；<code>TREG_TOKEN</code> 可走环境变量，密钥永不落盘。</li>
+  </ul>
+
+  <h3 class="sec">10｜手把手复现</h3>
+  <p>以下<b>整理自项目 README 的官方快速开始</b>（非本报告推导）：</p>
+  <pre><code># 需要 Python 3.10+，无第三方依赖
+git clone https://github.com/yangyixxxx/lead-signal-listener.git
+cd lead-signal-listener
+python app.py            # 自动打开 http://127.0.0.1:8787
+# Windows 用户可直接双击 start.bat</code></pre>
+  <p><b>Step 1 · 配置</b>：Settings → 粘贴你的 Treg token → Save → Verify。<b>没有 token 也能用</b>，免费源（Hacker News、RSS、Import）照常工作。</p>
+  <p><b>Step 2 · 定义听众</b>：Listeners → 描述你在找谁 → 启用来源 → 添加关键词（一行一个）。</p>
+  <p><b>Step 3 · 运行与审核</b>：Leads → <b>Run now</b> → 按分数审核、设状态、加备注 → 导出 CSV / JSON。</p>
+  <p><b>另有一条「让 AI 帮你装」的路径</b>（README 原文提供）：把下面这段复制到 Claude Code、Codex、Cursor、NewMax 或任何 coding agent：</p>
+  <pre><code>Read AGENT_SETUP.md from https://github.com/yangyixxxx/lead-signal-listener
+and set up Lead Signal Listener for me. Walk me through choosing keywords and scoring rules.</code></pre>
+  <p>README 说明该 Agent 会「安装它、访谈你的买家画像、提出关键词与评分规则、在预算内跑第一轮、并和你一起调优结果」。<b>本报告未实际执行上述任一步骤。</b></p>
+
+  <h3 class="sec">11｜Prompt / Code / Config</h3>
+  <p>本案例公开的可复用配置主要是<b>评分规则（JSON）</b>与<b>CLI 参数</b>。评分维度（README 原文）：痛点短语、意图短语、人群词、互动量、是否提问、负面短语。规则在 Listeners → Scoring rules 里以 JSON 编辑，改完点 <b>Rescore all leads</b> 即可对存量线索重新打分——<b>这意味着「判断标准」是可版本化、可交换的资产</b>。</p>
+  <p>命令行用法（README 原文）：</p>
+  <pre><code>python app.py --port 9000                 # 换端口
+python app.py --run-once                  # 无界面单次运行（cron / 任务计划）
+python app.py --data ~/listener-data      # 自定义数据目录
+python app.py --catalog "tiktok search"   # 检索 Treg 端点目录
+python app.py --import leads.json         # 导入线索
+TREG_TOKEN=... python app.py              # token 走环境变量，不写入磁盘</code></pre>
+  <p>本地 API（仅 127.0.0.1）：<code>/api/config</code>、<code>/api/test-token</code>、<code>/api/run</code>、<code>/api/status</code>、<code>/api/signals</code>、<code>/api/signals/counts</code>、<code>/api/signals/&lt;id&gt;</code>、<code>/api/import</code>、<code>/api/rescore</code>、<code>/api/catalog</code>、<code>/api/export</code>。</p>
+  <p><b>来源标注：</b>以上全部为原作者公开内容，非本报告推导。</p>
+
+  <h3 class="sec">12｜踩坑</h3>
+  <div class="pitfall">
+    <b>坑 1 · 默认关键词只是示例。</b>README 原文明确：默认关键词与评分规则<b>只是一个例子</b>（示例场景是「找那些在 AI 搜索可见性上有困难的公司」），必须换成你自己的目标人群与问题。<b>直接拿默认配置跑，得到的线索跟你的业务无关。</b>
+  </div>
+  <div class="pitfall">
+    <b>坑 2 · 付费源的失败会中止整次运行。</b>README 原文：token 无效（401）或余额为空（402）会<b>取消本次运行剩余部分</b>。首次配置时务必先 Verify。
+  </div>
+  <div class="pitfall">
+    <b>坑 3 · 抓取深度有限。</b>每个关键词每次运行受 <code>max_pages</code> 限制（Reddit / X 默认 3 页、LinkedIn 默认 2 页）。也就是说<b>单次运行看不到全部公开讨论</b>，需要靠定时运行累积。
+  </div>
+  <div class="pitfall">
+    <b>坑 4 · 规则评分的边界。</b>评分是规则化的、不是 LLM 原生判断，因此<b>无法理解反讽、隐喻和上下文</b>。README 给出的应对是导出 JSON 交给 LLM 深判——这也意味着「最后一道判断」仍然需要人工或额外的模型环节。
+  </div>
+  <div class="pitfall">
+    <b>合规红线（README 明确写出）。</b>原文要求：只采集公开内容，遵守各平台与 Treg 提供商的条款；这是「研究与线索发现工具，<b>不是垃圾邮件加农炮</b>」；触达时必须遵守 GDPR、CAN-SPAM 等规则。界面截图使用的是<b>虚构演示数据</b>，个人昵称已打码。
+  </div>
+
+  <h3 class="sec">13｜中国用户能不能直接做？</h3>
+  <ul>
+    <li><b>国内访问：</b>GitHub 可访问（部分网络需加速）。运行时若无 Treg token，仅走 Hacker News 与 RSS——<b>这两个源在国内网络环境下也可能不稳定</b>。<span class="repro hard">需自行验证</span></li>
+    <li><b>注册：</b>工具本身零注册。付费源需在 treg.to 注册并充值（海外服务，支付需自行解决）。</li>
+    <li><b>API：</b>需要 Treg token 才能用付费源；<b>不需要任何大模型 API Key</b>（核心评分不用 LLM）。</li>
+    <li><b>成本：</b>免费源 0 元；付费源按次计费（单次调用约 $0.0005–0.03），默认配置一次运行约 <b>$0.07</b>。README 给出实测：默认示例跑出 284 条线索、花费 $0.073。</li>
+    <li><b>技术门槛：</b><span class="repro">AI 用户级</span>——<code>git clone</code> + <code>python app.py</code> 两步，零第三方依赖，且提供了让 AI 代装的引导文档。</li>
+  </ul>
+
+  <h3 class="sec">14｜国产替代方案</h3>
+  <table class="stack">
+    <tr><td class="k">原方案</td><td>中国用户方案</td></tr>
+    <tr><td class="k">Treg 付费数据层<br>（Reddit / X / LinkedIn 等）</td><td><b>国内平台线索源需整体替换</b>——<span class="badge b-warn">改造而非替换接口</span>。可对接的方向：微博、知乎、小红书、B站、贴吧、行业垂直论坛、以及各类企业信息查询平台。<b>本项目未内置任何国内源，需要自行开发解析器</b>（参考 <code>generic.py</code> 的 RSS / 自定义端点写法）。</td></tr>
+    <tr><td class="k">RSS / HN 免费源</td><td><b>天然最佳切入点</b>——RSS 是通用标准，把国内平台的 RSS（或第三方 RSS 服务）接进来即可零成本运行；这是中国用户最容易先跑通的一条路。</td></tr>
+    <tr><td class="k">DeepSeek / Qwen / GLM<br>（用于深判环节）</td><td><b>可直接使用</b>——导出 JSON 交给国产模型做资格判定，成本远低于国际模型，中文语境理解更有优势。<span class="badge b-tag">理论上完全可行</span></td></tr>
+    <tr><td class="k">评分规则</td><td><b>这是本土化的核心工作量</b>：把「中文语境下的高意向表述」写成规则（如「求推荐」「有没有靠谱的」「打算换」等），比替换技术组件更重要。</td></tr>
+    <tr><td class="k">Compliance</td><td>国内需关注《个人信息保护法》与各平台条款。README 的合规立场（只采公开内容、不群发）应当保留。</td></tr>
+  </table>
+
+  <h3 class="sec">15｜中国企业可以怎么用？</h3>
+  <ul>
+    <li><b>企业场景 1 · 外贸 / 跨境 B2B：</b>这是最直接的适配场景——海外买家确实在 Reddit / X / LinkedIn 上公开描述采购需求与痛点。用本工具建立「海外买家意向池」，销售按分数跟进。目标市场的语言与文化判断可交给国产模型做深判。</li>
+    <li><b>企业场景 2 · SaaS 与工具类产品：</b>监听「谁能推荐一个 X 工具」「有没有替代 Y 的方案」这类高意向表述，在用户主动搜索之前就触达。项目自带的「招聘 / 融资」触发信号可用于识别正在扩张的潜在客户。</li>
+    <li><b>企业场景 3 · 跨境电商服务商：</b>卖家在社群与论坛公开抱怨的问题（物流、退货、合规、税务）就是服务商的销售线索池。</li>
+    <li><b>企业场景 4 · 市场调研部门：</b>把「负面短语」维度反过来用——不做销售，做产品口碑与竞品舆情监测；导出 JSON 后交 LLM 做归因分析。</li>
+  </ul>
+
+  <h3 class="sec">16｜中国消费者可以怎么用？</h3>
+  <ol>
+    <li><b>自由职业者找单：</b>设计、开发、翻译、咨询类自由职业者的痛点高度集中在外包平台与垂直社群，把 RSS 源接到这些讨论区即可。</li>
+    <li><b>独立开发者找早期用户：</b>在发产品前先监听「这个问题有人抱怨吗、抱怨的具体措辞是什么」，这比自嗨式做需求验证可靠得多——<b>而且抱怨的原话可以直接变成落地页文案</b>。</li>
+    <li><b>知识服务与咨询：</b>把「求推荐顾问 / 有没有人做过」这类表述当作高意向信号，先私信答疑建立信任，再谈合作。</li>
+  </ol>
+
+  <h3 class="sec">17｜如何变成一个赚钱的项目？</h3>
+  <ul>
+    <li><b>产品化：</b>项目为 MIT 开源，直接转卖不可行。可行的是<b>「垂直行业的意向规则库 + 国内源适配」</b>——谁把「外贸 / 教培 / 医美 / SaaS 各自的高意向中文表述」整理成套，谁就拥有可复用资产。</li>
+    <li><b>服务化：</b>「线索发现即服务」。客户要的不是工具，是<b>每周一份可跟进的名单</b>；你可以用这个工具做交付，按周 / 按月收费。这一步的壁垒是关键词与规则调优经验，不是技术。</li>
+    <li><b>咨询化：</b>帮企业设计「高意向信号定义」——很多企业连「什么样的公开表述算我的客户」都说不清，这本身就是咨询内容。</li>
+    <li><b>培训化：</b>面向外贸团队 / SaaS 销售团队的工作坊：「如何用公开信息建立自己的意向池」。<b>强调合规边界</b>是这个课程区别于「群发工具培训」的关键。</li>
+    <li><b>内容化：</b>「我监听了 3 万个帖子，总结出 20 句真正的购买信号」是极好的内容选题，且数据来自你自己的运行。</li>
+    <li><b>行业化：</b>为某个垂直行业做定制版（如「跨境电商卖家痛点监听」「工业品采购信号监听」），卖的是行业规则库与源适配。</li>
+  </ul>
+
+  <h3 class="sec">18｜变现路径</h3>
+  <table>
+    <tr><th>路径</th><th>客户</th><th>产品 / 服务</th><th>收费方式</th><th>难度</th></tr>
+    <tr><td>线索即服务</td><td>外贸 / SaaS / 服务商</td><td>周度意向名单</td><td>月度订阅</td><td>中</td></tr>
+    <tr><td>规则库售卖</td><td>同行业从业者</td><td>行业高意向表述库</td><td>买断 / 订阅</td><td>低</td></tr>
+    <tr><td>流程咨询</td><td>中小企业销售负责人</td><td>意向信号定义 + 流程设计</td><td>项目制</td><td>中</td></tr>
+    <tr><td>培训 / 工作坊</td><td>外贸 / 销售团队</td><td>公开信息找线索实操</td><td>按场 / 按人</td><td>低</td></tr>
+    <tr><td>舆情监测转型</td><td>市场部 / 品牌方</td><td>竞品与口碑监测</td><td>项目制</td><td>中</td></tr>
+  </table>
+  <div class="truth"><b>重要说明：</b>以上为<b>基于案例结构推导的潜在商业模式</b>，不是已验证的商业结果。作者未公开任何客户、收入或变现数据。另需强调：无论是销售还是监测，<b>都必须遵守平台条款与个人信息保护相关法规，不得用于群发骚扰</b>——这一点作者在 README 中已明确写出。</div>
+
+  <h3 class="sec">19｜如果我是一个中国独立开发者</h3>
+  <p>假设 1 人、预算有限、有基础编程能力、优先使用国产模型，7 天 MVP 路线（以下为<b>本报告建议，非作者原始步骤</b>）：</p>
+  <ul>
+    <li><b>Day 1：</b>clone 并跑通，<b>不配 Treg token</b>，只用免费源（RSS / Import）——先确认「工具能跑」这件事与付费无关。</li>
+    <li><b>Day 2：</b>选定一个垂直方向（建议外贸或某个具体服务行业），写出 20 条该行业客户会说的中文原话，作为第一批关键词。</li>
+    <li><b>Day 3：</b>按 <code>generic.py</code> 的写法接入 2–3 个国内可得的信息源（行业论坛 RSS、知乎话题、社群公开内容的订阅入口），跑出第一批线索。</li>
+    <li><b>Day 4：</b>用 Day 3 的结果反向调规则：把误报（自我推广、招聘贴、无关内容）写进负面短语，把漏报补进 intent 短语，然后 Rescore 重跑。</li>
+    <li><b>Day 5：</b>接国产模型做深判——导出 JSON，让模型只回答「这条是否值得跟进、理由是什么」，记录它和你的判断差异。</li>
+    <li><b>Day 6：</b>把整条链设成每天定时运行（<code>--run-once</code> + 计划任务），产出第一份「每日意向简报」。</li>
+    <li><b>Day 7：</b>拿这份简报去找 3 个该行业的从业者，请他们评价「如果你是销售，这 10 条里你会跟进几条」——<b>这个反馈决定你的规则库值不值钱</b>。</li>
+  </ul>
+  <p><b>关键判断：</b>这个 MVP 的技术部分 3 天足够，真正的价值在 Day 2 / Day 4 / Day 7——<b>也就是「你是否真的懂这个行业的人怎么说话、以及什么样的线索值得跟进」</b>。技术门槛低意味着竞争不在技术，而在行业理解。</p>
+
+  <h3 class="sec">20｜如何迁移到其他行业</h3>
+  <div class="migrate">
+    <div class="m"><b>① 招聘行业</b>把「融资 / 扩招」信号换成「团队变动、岗位描述变化」，做候选人池与客户池的双向监听。</div>
+    <div class="m"><b>② 本地生活服务</b>监听本地社群与点评平台的公开抱怨，生成「今日可触达客户」列表（务必克制频次，避免变成骚扰）。</div>
+    <div class="m"><b>③ 工业品 / 大宗贸易</b>监听招标信息、扩产公告、供应链问题讨论，这类信号覆盖周期长、客单价高，最适合「带出处的线索池」形态。</div>
+  </div>
+  <p>迁移公式：<b>高意向表述规则库（行业知识）+ 公开源接入（合规前提）+ 成本可控的定时运行</b>。</p>
+
+  <h3 class="sec">21｜培训课程设计</h3>
+  <div class="course">
+    <table>
+      <tr><td class="k">课程名称</td><td>《用公开信息建立你自己的客户意向池》</td></tr>
+      <tr><td class="k">适合人群</td><td>外贸业务员、SaaS 销售、服务商创始人、自由职业者、市场调研岗</td></tr>
+      <tr><td class="k">建议时长</td><td>半天（3 小时）</td></tr>
+      <tr><td class="k">30 分钟 Demo</td><td>现场用免费源（RSS）跑一次监听，展示「一堆帖子」如何变成「一份带分数的名单」</td></tr>
+      <tr><td class="k">60 分钟 Workshop</td><td>学员为自己行业写 10 条关键词与 5 条负面短语，跑出第一份名单并互相点评误报</td></tr>
+      <tr><td class="k">半天课程</td><td>完整链路（源选择 → 规则 → 去重 → 审核状态 → 导出）+ 合规专题 + 深判环节接入国产模型</td></tr>
+      <tr><td class="k">课程目标</td><td>让学员理解「线索质量取决于你定义的信号，而不取决于工具」</td></tr>
+      <tr><td class="k">学员最终能够</td><td>独立搭建一条属于自己行业的线索监听线，并说清每条规则的来由</td></tr>
+      <tr><td class="k">现场 Demo</td><td>对比「规则评分」与「直接问大模型」在同一批数据上的结果差异与成本差异</td></tr>
+      <tr><td class="k">学员练习</td><td>找出 5 条误报，把它们写成负面短语，Rescore 后观察排序变化</td></tr>
+      <tr><td class="k">课后作业</td><td>连续运行 3 天，提交「线索名单 + 你的规则修改记录 + 合规边界说明」</td></tr>
+      <tr><td class="k">企业迁移</td><td>企业内训时替换为「本公司产品的意向信号定义 + 触达合规规范」</td></tr>
+    </table>
+  </div>
+
+  <h3 class="sec">22｜培训师点评</h3>
+  <div class="trainer"><b>这个案例最值得教的，是「在哪里不用 AI」。</b>所有人都在想怎么把大模型塞进流程，而它反其道而行——把可判定的部分交还给规则，把模型留到真正需要理解的一步。这个判断让成本降了一个量级，也让结果可解释、可复现。学会这条，比学会任何一个工具都值钱。</div>
+
+  <h3 class="sec">23｜最终判断</h3>
+  <div class="verdict">
+    <div class="v"><div class="k">落地性</div><div class="val lv-h">高</div></div>
+    <div class="v"><div class="k">中国市场相关性</div><div class="val lv-m">中</div></div>
+    <div class="v"><div class="k">商业价值</div><div class="val lv-h">高</div></div>
+    <div class="v"><div class="k">复现难度</div><div class="val lv-h">低</div></div>
+    <div class="v"><div class="k">变现潜力</div><div class="val lv-m">中</div></div>
+  </div>
+  <p>说明：「中国市场相关性」评为「中」而非「高」，因为<b>内置数据源全是海外平台</b>，国内用户需要自己开发源适配（工作量真实存在）。但它的<b>架构判断（规则打分 + 按需调用模型 + 成本控制 + 本地运行）是通用的</b>，且复现难度低、成本极低，因此作为方法论样本的价值很高。变现潜力评为「中」，因为「线索即服务」的交付依赖行业知识而非工具本身。</p>
+</article>
+
+<!-- ========================= CASE 02 ========================= -->
+<article class="card" id="case02">
+  <div class="card-head">
+    <div class="num">02</div>
+    <h2>麦当劳 MCP 上的券组合优化 Skill：用真实计价替代模型估价，还教 AI 学会「劝你别买」</h2>
+  </div>
+  <div class="badges">
+    <span class="badge b-cat">AI + 消费决策</span>
+    <span class="badge b-tag">MCP</span>
+    <span class="badge b-tag">零第三方依赖</span>
+    <span class="badge b-tag">约束优化</span>
+    <span class="badge b-date">首次开源 2026-10-10</span>
+    <span class="badge b-warn">278★ / 19 Fork</span>
+  </div>
+  <div class="oneliner"><b>一句话结论：</b>它是「企业开放 MCP 之后，个人开发者能做什么」这个问题目前最好的答案——不堆功能，只做一件事：把「这单到底该不该点」算清楚，并且宁可少报也绝不编造。</div>
+
+  <h3 class="sec">01｜案例是什么？</h3>
+  <p>麦麦省钱助手是一个基于麦当劳中国官方 MCP 的点餐成本优化 Skill，做两件事。<b>短期</b>——这一单怎么点最省：拉取当前门店的实时菜单与价格、拉取你账户里当前门店可用的优惠券，枚举「单品 / 套餐 / 券组合 / 加购凑单」的候选方案，然后<b>用 MCP 的 <code>calculate-price</code> 逐方案真实计价</b>（而不是猜），输出最省方案，并解释「为什么不推荐那个更便宜但你吃不饱的选项」。<b>长期</b>——你白扔了多少钱：手上几张券即将过期（沉默成本）、近几个月花了多少、客单价是否偏高、哪些单品该改成套餐。作者的立场写得很直白：<b>「别处都在帮用户花钱，我们在帮用户止损。」</b></p>
+
+  <h3 class="sec">02｜为什么今天值得关注？</h3>
+  <ul>
+    <li><b>为什么是现在：</b>2026-10-10 首次开源（北京 20:59），并于当天 13:00 提交参赛、13:59 获得官方回复「作品已成功参赛」。截至数据快照已 <b>278★ / 19 Fork</b>——在麦当劳 MCP 大赛涌现的 100+ 件作品中位居榜首（第一名）。它落在 <b>10-11 期窗口</b>内（10-10 期窗口截至 12:00，本案例创建于 20:59）。</li>
+    <li><b>为什么以前不容易做：</b>「帮你点得便宜」这类工具长期做不准，原因是<b>价格和券的可用性都是动态的</b>——不同门店不同价、券有适用范围与叠加规则、凑单要不要加购取决于你本来的消费意图。用模型去估这些数字，一定会编。</li>
+    <li><b>为什么现在变得容易：</b>麦当劳中国把点餐业务做成了 MCP（<code>mcp.mcd.cn</code>），开放了 <code>query-meals</code>、<code>order-list</code>、<code>calculate-price</code>、<code>query-my-coupons</code>、<code>available-coupons</code> 等工具。于是「价格」和「券状态」第一次变成了<b>可调用的真实数据</b>，而不是需要模型猜测的知识——这让整类「消费决策优化」应用变得可做。</li>
+  </ul>
+
+  <h3 class="sec">03｜案例的前世今生</h3>
+  <p><b>前世。</b>「怎么点最省」是个长期存在的小需求。早期解法是人工整理的「省钱攻略」帖——但攻略是静态的：券会过期、价格会调、不同门店不一样，所以攻略写完就过时。后来出现过计算器式的工具，但需要用户手工录入价格和券，录入成本高且容易错。</p>
+  <p><b>发展。</b>MCP 出现后，企业把业务能力开放成工具，出现了新可能：工具可以直接查真实菜单、真实价格、真实券包。但随之而来的是一个新问题——<b>很多团队会用模型来「估算」价格和券价值</b>，因为那样实现最简单。这恰恰是这类应用最不能犯的错：算错钱的助手比没有助手更糟。</p>
+  <p><b>今生。</b>2026-10-10，作者开源了这个 Skill，它的核心选择非常明确：<b>「杜绝模型幻觉价格」是设计前提</b>。作者把「券到底值多少钱」拆成两条可验证的路：首选是把券的商品码 + couponId 传给 <code>calculate-price</code>，返回的 discount 就是精确价值；兜底是从菜单反查原价（满减券取减免额、买一送一取商品单价、免费券取商品单价、固定价券取「菜单原价 − 固定价」）。<b>两条路都走不通时，一律取 0 并标注「价值未知」，绝不估算。</b><br>更值得注意的是它引入了一个别处少见的概念——<b>券的净价值</b>：<code>净价值 = 券面价值 − 为用这张券、你本来不会花的那部分钱</code>。由此把券分成四类：顺手可用 / 努一把 / <b>纸面富贵（明确劝退）</b>/ 无法判断。一个「帮你省钱的工具」主动劝退，这是它区别于同类的地方。</p>
+  <p><b>下一步可能怎么发展（以下为分析 / 推演，非事实）：</b>① 同样的「净价值 + 排程」框架可迁移到外卖、电商、机票、酒店、会员权益——凡是「券 / 权益 + 约束条件」的场景都适用；② 成为跨平台的消费决策层（一个地方管所有平台的券）；③ 企业侧反向应用：品牌可以用同一套净价值逻辑评估自己的券策略是否在制造「纸面富贵」。</p>
+
+  <h3 class="sec">04｜原始资料</h3>
+  <ul class="src-list">
+    <li><span class="src-type">仓库</span><a href="https://github.com/Ayzzz123/mcd-coupon-strategist" target="_blank" rel="noopener">https://github.com/Ayzzz123/mcd-coupon-strategist</a>（MIT）</li>
+    <li><span class="src-type">零配置试玩</span><code>git clone ... &amp;&amp; python demo.py</code>（不联网，读 fixtures/ 里录制的真实响应）</li>
+    <li><span class="src-type">MCP 契约</span><a href="https://github.com/Ayzzz123/mcd-coupon-strategist/blob/main/MCP_INTEGRATION.md" target="_blank" rel="noopener">MCP_INTEGRATION.md（官方文档未写的实测调用契约）</a></li>
+    <li><span class="src-type">官方 MCP</span><a href="https://open.mcd.cn/mcp" target="_blank" rel="noopener">open.mcd.cn/mcp（Token 申请）</a>　·　端点 <code>https://mcp.mcd.cn</code>（streamablehttp）</li>
+    <li><span class="src-type">源码</span><code>saver.py</code>（短期最优解）· <code>auditor.py</code>（长期浪费审计）· <code>mcd_adapter.py</code>（唯一换算层）· <code>scripts/style_check.py</code>（自研规范检查）</li>
+    <li><span class="src-type">配置示例</span><code>mcp-config.example.json</code>（MCP 连接配置模板）</li>
+    <li><span class="src-type">作者</span><a href="https://github.com/Ayzzz123" target="_blank" rel="noopener">github.com/Ayzzz123</a>（麦当劳程序员创意开发大赛参赛者，非官方产品）</li>
+    <li><span class="src-type">背景</span><a href="https://github.com/M-China/mcd-developer-innovation-challenge" target="_blank" rel="noopener">大赛官方仓库（10-09 期已收录）</a></li>
+  </ul>
+
+  <h3 class="sec">05｜作者是谁？</h3>
+  <p>GitHub 账号 <b>Ayzzz123</b>，身份为<b>麦当劳程序员创意开发大赛的独立参赛者</b>（README 与 docs 均明确声明「非麦当劳官方产品」）。<b>本报告未获得更多个人信息，不做推测。</b><br>从代码可以推断其工程习惯：项目为<b>零第三方依赖</b>（纯标准库，连开发期 linter 都不引入），并<b>自研了一个规范检查脚本</b>（<code>scripts/style_check.py</code>，基于标准库 ast + pathlib，七项检查，CI 直接跑，不达标即失败）；CI 覆盖 Python 3.8 / 3.10 / 3.12 / 3.13。愿意为了「零依赖」自造 lint 工具，说明作者的约束意识很强。</p>
+
+  <h3 class="sec">06｜解决了什么真实问题？</h3>
+  <p>从消费者视角，问题是这样的：<b>「我手里有一堆券，但我不知道哪张该现在用、哪张其实不值得为它多花钱；我甚至不知道我每个月因为券过期白扔了多少钱。」</b></p>
+  <ul>
+    <li><b>信息不对称：</b>券的价值不是面值。「满 40 减 10」看起来值 10 元，但如果你本来只想花 25 元，为了用这张券你得多花 15 元——<b>这张券的净价值可能是负的</b>。这是绝大多数「省钱工具」都算不清的地方。</li>
+    <li><b>动态数据：</b>不同门店菜单与价格不同，券的适用范围不同，所以任何静态攻略都会失效。</li>
+    <li><b>沉默成本：</b>券会过期，过期就是损失，但没人提醒你「哪张券你其实用不上了」。</li>
+    <li><b>决策疲劳：</b>套餐 / 单品 / 加购 / 券组合的排列组合很多，人算不过来。</li>
+  </ul>
+
+  <h3 class="sec">07｜完整技术栈</h3>
+  <table class="stack">
+    <tr><td class="k">语言</td><td>Python（CI 覆盖 3.8 / 3.10 / 3.12 / 3.13）</td></tr>
+    <tr><td class="k">依赖</td><td><b>零第三方依赖</b>（仅标准库）</td></tr>
+    <tr><td class="k">MCP</td><td>麦当劳中国官方 MCP：<code>https://mcp.mcd.cn</code>，类型 <code>streamablehttp</code>，Bearer Token 鉴权</td></tr>
+    <tr><td class="k">用到的官方工具</td><td><code>query-meals</code>（菜单）· <code>order-list</code>（历史订单）· <code>calculate-price</code>（真实计价）· <code>query-my-coupons</code>（我的券）· <code>available-coupons</code>（可领券）· <code>query-store-coupons</code>（门店券）· <code>auto-bind-coupons</code>（领券，写操作）</td></tr>
+    <tr><td class="k">模型</td><td><b>原文未提及使用任何大模型</b>。设计上刻意避免模型估价（「杜绝模型幻觉价格」）——这是本案例最关键的架构选择</td></tr>
+    <tr><td class="k">宿主</td><td>README 给出了在 WorkBuddy 中通过「自定义连接器 → 配置 MCP」启用的完整步骤</td></tr>
+    <tr><td class="k">测试</td><td>六套测试（<code>python src/test_*.py</code>）+ 自研规范检查（<code>python scripts/style_check.py</code>）</td></tr>
+    <tr><td class="k">协议</td><td>MIT</td></tr>
+  </table>
+
+  <h3 class="sec">08｜完整 Workflow</h3>
+  <p><b>链路 A · 这一单怎么点最省（<code>saver.py</code>）</b></p>
+  <div class="flow">
+    <div class="node"><b>① 拉真实菜单与价格</b>：<code>query-meals</code>，限定「当前门店」</div>
+    <div class="arrow">↓</div>
+    <div class="node"><b>② 拉当前门店可用券</b>：<code>query-my-coupons</code></div>
+    <div class="arrow">↓</div>
+    <div class="node"><b>③ 枚举候选方案</b>：单品 / 套餐 / 券组合 / 加购凑单</div>
+    <div class="arrow">↓</div>
+    <div class="node"><b>④ 逐方案真实计价</b>：<code>calculate-price</code>——<span style="color:#2563EB">关键：不是自家算的，是官方接口返回的</span></div>
+    <div class="arrow">↓</div>
+    <div class="node"><b>⑤ 输出最省方案 + 为什么不推荐更便宜但吃不饱的选项</b></div>
+  </div>
+  <p><b>链路 B · 你白扔了多少钱（<code>auditor.py</code>）</b></p>
+  <div class="flow">
+    <div class="node"><b>① 读历史订单</b>：<code>order-list</code> → 算总支出、客单价、结构性浪费</div>
+    <div class="arrow">↓</div>
+    <div class="node"><b>② 券包体检</b>：净价值 = 券面价值 − 为用这张券你本来不会花的钱 → 四类判定：<b>顺手可用 / 努一把 / 纸面富贵（明确劝退）/ 无法判断</b></div>
+    <div class="arrow">↓</div>
+    <div class="node"><b>③ 用券排程</b>：先推算「券全部过期前你还会点几单」，再在此约束下分配券——<b>「可实现的券，未必用得上」</b></div>
+    <div class="arrow">↓</div>
+    <div class="node"><b>④ 可领取券评估</b>：<code>available-coupons</code> 返回「已领取」与「可领取」，复用同一套净价值框架，只换问题（该不该<b>领</b>）</div>
+  </div>
+  <p>衔接层 <code>mcd_adapter.py</code> 是<b>唯一一次</b>做「分 → 元」换算、字段映射、退款过滤与券面价值反查的地方——把容易出错的换算收敛到一个文件里，这是很清晰的边界设计。</p>
+
+  <h3 class="sec">09｜它到底是怎么实现的？</h3>
+  <p>这个项目最有价值的不是算法，而是<b>三条自我约束</b>：</p>
+  <ul>
+    <li><b>约束一：不用模型估价，用官方接口计价。</b>券的价值首选走 <code>calculate-price</code>（返回 discount 即精确值）；兜底才从菜单反查原价（满减券取减免额、买一送一取商品单价、免费券取商品单价、固定价券取「原价 − 固定价」）；<b>两条路都走不通时一律取 0 并标注「价值未知」</b>。作者的原话是「宁可少报，不可编造」。</li>
+    <li><b>约束二：不知道就不说。</b>两个刻意的克制写在了 README 里：① <b>不输出券的剩余天数</b>——因为有效期未知，套用 <code>expiry_text()</code> 会把 None 说成「无期限」，那是编造；② <b>不擅自替用户领券</b>——<code>auto-bind-coupons</code> 是写操作，必须取得用户明确同意。</li>
+    <li><b>约束三：券状态不认识就排除。</b><code>available-coupons</code> 的状态只有「已领取 / 可领取」两种；<b>没见过的状态一律判「无法识别」并排除</b>——宁可漏报，不可误报。</li>
+  </ul>
+  <p>另一个值得记录的工程细节：作者在 <code>MCP_INTEGRATION.md</code> 里写出了<b>官方文档没写、但跑通链路必需的 12 条实测调用契约</b>，包括「门店查询的必传参数」「<code>calculate-price</code> 的字段名」「<b>分 vs 元：两个接口方向相反的坑</b>」。<b>这份文档本身就是本案例最有价值的可复用资产</b>——它记录的是「文档与实现之间的缝隙」，是下一个开发者最需要的东西。作者还做了自纠：文档里曾把契约条数写成 17（实际 19）、把「三种券型」写旧（实为四种：满减 / 买一送一 / 免费 / 固定价），都在后续提交中修正，并在 README 中公开了这些不一致。</p>
+
+  <h3 class="sec">10｜手把手复现</h3>
+  <p>以下<b>整理自项目 README 的官方说明</b>（非本报告推导）。</p>
+  <p><b>Step 1 · 零配置试玩</b>（不需要 Token、不联网，读 fixtures 里录制的真实响应）：</p>
+  <pre><code>git clone https://github.com/Ayzzz123/mcd-coupon-strategist.git
+cd mcd-coupon-strategist
+python demo.py</code></pre>
+  <p>作者称 <code>demo.py</code> 的输出与其 README 中列出的 12 个关键数据点<b>逐字一致</b>——这是本案例可验证性最强的一步，建议先跑这个。</p>
+  <p><b>Step 2 · 申请 MCP Token</b>：前往 <a href="https://open.mcd.cn/mcp" target="_blank" rel="noopener">open.mcd.cn/mcp</a>，手机号登录后在控制台激活并复制 Token。</p>
+  <p><b>Step 3 · 配置 MCP 连接</b>（用 <code>mcp-config.example.json</code>，把 <code>${MCD_MCP_TOKEN}</code> 换成真实 Token，<b>勿提交到公开仓库</b>）：</p>
+  <pre><code>{
+  "mcpServers": {
+    "mcd-mcp": {
+      "type": "streamablehttp",
+      "url": "https://mcp.mcd.cn",
+      "headers": { "Authorization": "Bearer ${MCD_MCP_TOKEN}" }
+    }
+  }
+}</code></pre>
+  <p><b>Step 4 · 在宿主中启用</b>：README 给出的路径是「左侧边栏【专家 · 技能 · 连接器】→【连接器】→ 右上角【自定义连接器】→【配置 MCP】→ 粘贴 JSON →【保存】→ 将 mcd-mcp 设为【启用】」。</p>
+  <p><b>Step 5 · 对话使用</b>。示例提问：「我手里有券，想吃汉堡+薯条+饮料，预算 40 元，怎么点最省？」</p>
+  <p><b>Step 6 · 跑测试</b>：<code>python src/test_*.py</code>（六套）+ <code>python scripts/style_check.py</code>。<b>本报告未实际执行上述任一步骤。</b></p>
+
+  <h3 class="sec">11｜Prompt / Code / Config</h3>
+  <p>作者公开的可复用内容有三类，均来自仓库原文：</p>
+  <p><b>① 净价值公式（本案例的核心方法论）：</b></p>
+  <pre><code>净价值 = 券面价值 − 为用这张券、你本来不会花的那部分钱
+分类：顺手可用 / 努一把 / 纸面富贵（明确劝退）/ 无法判断</code></pre>
+  <p><b>② 券面价值的两条取值路径（作者公开）：</b></p>
+  <pre><code>首选：券的商品码 + couponId → calculate-price → 返回 discount 即精确价值
+兜底：从菜单反查原价
+      · 满减券  → 直接取减免额
+      · 买一送一 → 取商品单价
+      · 免费券   → 取商品单价
+      · 固定价券 → 菜单原价 − 固定价
+两条都走不通 → 取 0 并标注「价值未知」（绝不估算）</code></pre>
+  <p><b>③ MCP 连接配置模板：</b>见上一步的 JSON。<br>此外 README 还公开了「可领取券」的四条契约（<code>available-coupons</code> 返回 Markdown 而非 JSON、不接受参数、不返回 couponId / 面值 / 有效期、状态仅有两种），这些属于实现细节，建议直接查阅原文。</p>
+
+  <h3 class="sec">12｜踩坑</h3>
+  <div class="pitfall">
+    <b>坑 1 · 官方文档没写的关键契约。</b>作者指出有 <b>12 条</b>「文档没写但跑通链路必需」的实测契约，其中包括<b>「分 vs 元」两个接口方向相反的坑</b>。这是接入任何 MCP 都会遇到的典型问题——文档描述与实现之间存在缝隙，只能靠实测补齐。建议：接入前先对着 <code>MCP_INTEGRATION.md</code> 核对，别自己重新踩一遍。
+  </div>
+  <div class="pitfall">
+    <b>坑 2 · 免费券可能被高估。</b>作者明确写出：若某张券实际要求「随单购买」，券面并无体现，<b>此时会高估净价值</b>。这条限制被写进了 docstring 与契约文档——属于作者已知但未解决的口径问题。
+  </div>
+  <div class="pitfall">
+    <b>坑 3 · 可领取券信息不完整。</b><code>available-coupons</code> 不返回 couponId、面值与有效期，因此<b>无法用带券计价实测、也无法参与用券排程</b>。作者的处理是把它降级为「该不该领」的框架复用，而不是硬塞进排程。
+  </div>
+  <div class="pitfall">
+    <b>坑 4 · 排程建立在假设之上。</b>用券排程有三条假设：窗口内本来就会点 K 单、每单最多用 1 张券、用券不改变点单次数。作者明确说明「自然消费基准」取自历史订单客单价，是<b>保守近似而非精确值</b>，且假设写在报告里。（本报告补充：依赖历史客单价意味着<b>新用户的排程结果可信度更低</b>，这一点原文未特别提示。）
+  </div>
+  <div class="pitfall">
+    <b>坑 5 · 数据口径不一致（作者已自查）。</b>README 与 <code>MCP_INTEGRATION.md</code> 中「实测调用契约」的条数曾出现 12 / 17 / 19 三处不一致，另有「三种券型」的表述过期（实为四种）。作者已在后续提交中修正并公开说明。<b>本报告在引用时采用其修正后的口径，并标注此处曾存在不一致。</b>
+  </div>
+
+  <h3 class="sec">13｜中国用户能不能直接做？</h3>
+  <ul>
+    <li><b>国内访问：</b>完全国内服务（麦当劳中国 MCP <code>mcp.mcd.cn</code>、Token 申请页 <code>open.mcd.cn</code>），无跨境障碍。<span class="repro">直接可用</span></li>
+    <li><b>注册：</b>手机号登录即可申请 MCP Token，门槛极低。</li>
+    <li><b>API：</b>需要 MCP Token（免费申请）；<b>不需要任何大模型 API Key</b>。</li>
+    <li><b>成本：</b><b>0 元</b>——项目零第三方依赖，不调用付费模型，<code>demo.py</code> 离线可跑。</li>
+    <li><b>技术门槛：</b><span class="repro">普通用户级</span>——配好 MCP 后就是对话提问；想改代码则需 Python 基础（但零依赖意味着环境不会成为障碍）。</li>
+  </ul>
+
+  <h3 class="sec">14｜国产替代方案</h3>
+  <p>本案例本身就是国产方案，不存在「替换海外依赖」的问题。真正值得讨论的是<b>反向迁移</b>——把它的方法论搬到其他国内生态：</p>
+  <table class="stack">
+    <tr><td class="k">原方案</td><td>可迁移方向</td></tr>
+    <tr><td class="k">麦当劳 MCP<br>（点餐 + 券）</td><td><b>外卖平台 MCP / 开放平台</b>、<b>电商平台开放接口</b>、<b>航空公司与酒店会员权益接口</b>、<b>运营商与视频会员权益</b>——凡是「有券 / 有权益 + 有约束条件」的生态都适用。<span class="badge b-warn">各平台开放程度不同，需逐一确认是否提供等价的可调用接口</span></td></tr>
+    <tr><td class="k">净价值公式</td><td><b>通用可移植</b>——公式本身与平台无关，是纯粹的决策框架。</td></tr>
+    <tr><td class="k">「宁可少报不可编造」原则</td><td><b>通用可移植</b>——适用于任何涉及金额、库存、库存价、时效的 AI 应用。</td></tr>
+    <tr><td class="k">宿主 Skill 形态</td><td>项目 README 已给出 WorkBuddy 的接入步骤；国产 Agent 宿主（CodeBuddy / Qoder 等）若支持 MCP 配置，理论上同样可接入，<b>本报告未验证</b>。</td></tr>
+  </table>
+
+  <h3 class="sec">15｜中国企业可以怎么用？</h3>
+  <ul>
+    <li><b>企业场景 1 · 品牌与零售（反向应用）：</b>用同一套「净价值」框架<b>评估自己的发券策略</b>——哪些券设计出来就是「纸面富贵」，用户根本用不上，反而伤害体验。这比传统的核销率分析更接近用户真实决策。</li>
+    <li><b>企业场景 2 · 本地生活服务商：</b>把「券组合优化 + 沉默成本提醒」做成商家的会员权益顾问工具，帮商家的会员管好权益，提高复购。</li>
+    <li><b>企业场景 3 · 企业采购与报销：</b>把「预算 / 约束 / 组合优化」框架迁移到企业差旅、办公采购等场景——本质都是「在多重约束下找最优组合，且必须用真实价格」。</li>
+    <li><b>企业场景 4 · 内部工具开发：</b>把它当作<b>「如何正确写一个 MCP Skill」的参考实现</b>——记录实测契约、区分读写操作、对未知状态拒绝判断、把换算收敛到单一文件。这几条可以直接作为团队的 Skill 开发规范。</li>
+  </ul>
+
+  <h3 class="sec">16｜中国消费者可以怎么用？</h3>
+  <ol>
+    <li><b>个人日常省钱：</b>出门点餐前问一句「我手里有券，想吃汉堡+薯条+饮料，预算 40，怎么点最省」，拿到一个用官方接口算过的答案，而不是一个凭感觉的推荐。</li>
+    <li><b>月度消费体检：</b>看「你白扔了多少钱」报告——券的沉默成本、客单价是否偏高、哪些单品该改套餐。这类「消费结构复盘」过去只有记账 App 能做一部分，而这里做到了券的粒度。</li>
+    <li><b>家庭与同事拼单：</b>多人点餐时的组合优化（谁的券用在哪个单上），比人工凑单更接近最优。</li>
+  </ol>
+
+  <h3 class="sec">17｜如何变成一个赚钱的项目？</h3>
+  <ul>
+    <li><b>产品化：</b>项目为 MIT 开源，且强绑定麦当劳 MCP，<b>直接转卖不可行</b>。可行的产品化方向是「跨平台权益管家」——把净价值与排程框架做成一个统一的券与会员权益管理工具（这需要逐平台对接开放接口，工作量大但护城河清晰）。</li>
+    <li><b>服务化：</b>为品牌方提供「券策略诊断」——用净价值框架分析一套券方案里有多少属于「纸面富贵」。客户是市场部与会员运营部门，付费意愿来自真实损耗。</li>
+    <li><b>咨询化：</b>把「把用户的真实决策模型写进产品」作为咨询主题——帮助企业理解为什么自己的优惠券核销率低。</li>
+    <li><b>培训化：</b>面向技术团队的工作坊：「如何写一个不会编造数字的 AI 应用」。用本案例的六条自我约束作为教材，比讲抽象原则有效得多。</li>
+    <li><b>内容化：</b>「我用手里的券算了算，发现我每个月白扔 30 块」这类内容天然有传播力，且数据来自真实运行。</li>
+    <li><b>行业化：</b>把「净价值 + 排程」框架做成某个垂直行业的权益顾问（如连锁餐饮的会员运营、航空公司的里程管理）。</li>
+  </ul>
+
+  <h3 class="sec">18｜变现路径</h3>
+  <table>
+    <tr><th>路径</th><th>客户</th><th>产品 / 服务</th><th>收费方式</th><th>难度</th></tr>
+    <tr><td>券策略诊断</td><td>品牌市场部 / 会员运营</td><td>券方案净价值体检报告</td><td>项目制</td><td>中</td></tr>
+    <tr><td>权益管家工具</td><td>消费者</td><td>跨平台券与权益管理</td><td>订阅 / 会员</td><td>高</td></tr>
+    <tr><td>Skill 开发规范咨询</td><td>企业技术团队</td><td>MCP Skill 开发规范</td><td>项目制</td><td>低</td></tr>
+    <tr><td>培训</td><td>开发者 / 产品团队</td><td>「不让 AI 编造数字」实战课</td><td>按场 / 按人</td><td>低</td></tr>
+    <tr><td>内容 IP</td><td>泛消费者</td><td>省钱方法论 / 消费复盘</td><td>课程 / 社群</td><td>低</td></tr>
+  </table>
+  <div class="truth"><b>重要说明：</b>以上为<b>基于案例结构推导的潜在商业模式</b>，不是已验证的商业结果。作者未公开任何收入数据。<b>另需注意：</b>本案例是参赛作品，大赛官方条款禁止未授权商业变现（详见 10-09 期对大赛规则的分析）；若要基于它做商业项目，应重新实现而非直接使用参赛作品。</div>
+
+  <h3 class="sec">19｜如果我是一个中国独立开发者</h3>
+  <p>假设 1 人、预算有限、有基础编程能力、优先使用国产模型，7 天 MVP 路线（以下为<b>本报告建议，非作者原始步骤</b>）：</p>
+  <ul>
+    <li><b>Day 1：</b>先跑 <code>python demo.py</code>（零配置、离线）。目标是看清 <code>fixtures/</code> 里录制的真实响应长什么样——<b>这是理解「真实数据长什么样」最快的方式</b>。</li>
+    <li><b>Day 2：</b>读完 <code>MCP_INTEGRATION.md</code> 的 12 条实测契约，尤其是「分 vs 元」那一条。把这份文档当作你接任何 MCP 的检查清单模板。</li>
+    <li><b>Day 3：</b>申请 Token 并跑通真实链路；对同一个订单，分别用「真实计价」和「让模型估算」各出一版结果，<b>把差异记录下来</b>——这就是你未来做同类项目时说服客户的证据。</li>
+    <li><b>Day 4：</b>把净价值公式提取成一个与平台无关的模块（输入：券面值、条件、你的原始消费意图；输出：净价值 + 分类）。这一步产出的东西是可复用的。</li>
+    <li><b>Day 5：</b>接第二个平台的券数据（外卖 / 电商 / 航司任选其一），验证「框架是否真的跨平台成立」。</li>
+    <li><b>Day 6：</b>把两个平台跑出来的结果做成一份「我的权益真实现状」报告，给自己用一周。</li>
+    <li><b>Day 7：</b>用这份报告做内容（「我发现我 60% 的券是纸面富贵」），测试是否有人愿意为「帮我看清自己的券」付钱。<b>先验证需求，再决定做不做产品。</b></li>
+  </ul>
+  <p><b>关键判断：</b>这条路线里最值钱的是 Day 2 和 Day 4——<b>「实测契约」与「可移植的决策框架」</b>。单纯复刻一个麦当劳助手没有商业空间（平台随时可能自己做一个），但从中学到的「如何用真实数据替代模型猜测」，是能用在任何消费决策类产品上的能力。</p>
+
+  <h3 class="sec">20｜如何迁移到其他行业</h3>
+  <div class="migrate">
+    <div class="m"><b>① 电商与外卖</b>跨店满减、店铺券、平台券的叠加优化，本质与券组合完全同构。</div>
+    <div class="m"><b>② 差旅与出行</b>机票 + 酒店 + 会员权益的组合决策，约束条件更多（时间、退改、里程），净价值框架依然适用。</div>
+    <div class="m"><b>③ 企业采购</b>供应商报价 + 账期 + 批量折扣的组合优化，且「必须用真实报价」的要求比消费场景更强。</div>
+  </div>
+  <p>迁移公式：<b>真实价格接口（拒绝模型估价）+ 净价值（区分面值与实效）+ 约束下的组合优化 + 对未知状态拒绝判断</b>。</p>
+
+  <h3 class="sec">21｜培训课程设计</h3>
+  <div class="course">
+    <table>
+      <tr><td class="k">课程名称</td><td>《写一个不会编造数字的 AI 应用：以券组合优化为例》</td></tr>
+      <tr><td class="k">适合人群</td><td>AI 应用开发者、产品经理、技术负责人、想接入 MCP 的团队</td></tr>
+      <tr><td class="k">建议时长</td><td>半天（3 小时）</td></tr>
+      <tr><td class="k">30 分钟 Demo</td><td>现场对比「让模型估算价格」与「调官方接口计价」在同一订单上的结果差异</td></tr>
+      <tr><td class="k">60 分钟 Workshop</td><td>学员跑通 <code>demo.py</code> 并改造净价值公式的参数，观察分类结果如何变化</td></tr>
+      <tr><td class="k">半天课程</td><td>完整链路（MCP 接入 → 实测契约补齐 → 组合优化 → 未知状态处理）+ 六条自我约束逐条讲解</td></tr>
+      <tr><td class="k">课程目标</td><td>建立「涉及金额与状态的应用，必须用真实数据、必须能说不知道」的工程直觉</td></tr>
+      <tr><td class="k">学员最终能够</td><td>为自己的业务写出一条「真实数据优先」的 AI 决策链路，并列出需要拒绝判断的边界</td></tr>
+      <tr><td class="k">现场 Demo</td><td>展示「券的沉默成本」——让学员看到自己手里的券有多少属于纸面富贵</td></tr>
+      <tr><td class="k">学员练习</td><td>列出自己业务中 5 个「模型会猜错」的地方，并写出对应的真实数据来源</td></tr>
+      <tr><td class="k">课后作业</td><td>接入一个真实接口，输出一份「哪些结论有据、哪些标为未知」的决策报告</td></tr>
+      <tr><td class="k">企业迁移</td><td>企业内训时替换为「本公司业务中不得由模型猜测的数据清单」</td></tr>
+    </table>
+  </div>
+
+  <h3 class="sec">22｜培训师点评</h3>
+  <div class="trainer"><b>它教的是「克制」。</b>一个省钱助手主动劝你「这张券别用」，一个价格工具遇到算不准就直接标「价值未知」——这两件事在技术上都是加个判断就行，难的是愿意放弃「看起来更聪明」的答案。学员真正该带走的是：<b>在要付钱的场景里，可信度就是产品力。</b></div>
+
+  <h3 class="sec">23｜最终判断</h3>
+  <div class="verdict">
+    <div class="v"><div class="k">落地性</div><div class="val lv-h">高</div></div>
+    <div class="v"><div class="k">中国市场相关性</div><div class="val lv-h">高</div></div>
+    <div class="v"><div class="k">商业价值</div><div class="val lv-m">中</div></div>
+    <div class="v"><div class="k">复现难度</div><div class="val lv-h">低</div></div>
+    <div class="v"><div class="k">变现潜力</div><div class="val lv-m">中</div></div>
+  </div>
+  <p>说明：中国市场相关性评为「高」——技术栈、数据源、宿主全部在国内，且手机号即可申请 Token，是本期两个案例中<b>落地阻力最小</b>的一个。商业价值与变现潜力评为「中」，原因有二：① 强绑定单一平台，平台方随时可能自己实现；② 作为参赛作品受大赛条款约束。<b>但它的方法论价值远高于其商业化价值</b>——「用真实接口替代模型猜测」这条原则，可以复用到任何涉及金额的 AI 应用上，这是本期最值得带走的一句话。</p>
+</article>
+
+<section class="block" id="observe">
+  <h2>今日 AI 实战观察</h2>
+  <div class="panel">
+    <p>把今天这两个案例放在一起看，会看到同一个问题被从两个方向回答了：<b>AI 给出的答案，凭什么可信？</b></p>
+    <p>lead-signal-listener 的回答是「把可判定的部分从模型手里拿回来」。它的评分完全基于规则——痛点短语、意图短语、人群词、互动量、是否提问、负面短语——<b>不用 LLM 打分</b>。理由很实际：按条调用模型成本不可控、同一批数据跑两次结果不同、而且没法向人解释「这条为什么排第一」。规则打分是免费、可控、可复现、可解释的；模型被推到最后一环，只对已筛出的线索做深判。这一步让整件事的成本从「按条」变成「按需」，也让「为什么是这条」这个问题有了答案。</p>
+    <p>mcd-coupon-strategist 的回答更硬核：<b>「宁可少报，不可编造。」</b>它坚持用官方接口的真实计价替代模型估价，做券的价值换算时明确接受「有两条路都走不通」的情况，此时一律取 0 并标注「价值未知」。它还主动放弃了两件「看起来更聪明」的事：不输出券的剩余天数（因为有效期未知，说了就是编）、不擅自替用户领券（那是写操作）。一个帮人省钱的工具，甚至专门设计了「纸面富贵」这一档来明确劝退用户。</p>
+    <p>两个案例的技术难度都不高，但都做出了一个在 2026 年越来越重要的判断：<b>在要付钱、要发消息、要下单的场景里，可信度本身就是产品力。</b>过去两年大家比的是「AI 能不能做到」；现在比的是「AI 敢不敢说自己做不到」——因为前者靠模型能力就能解决，后者需要设计者放弃短期的好看。</p>
+    <p>对个人开发者来说，这里有一条很具体的启示：<b>你的差异化机会，往往不在「让 AI 多做一点」，而在「让 AI 在某个地方明确停下来」。</b>算不准就不说，不确定就不判，不认识就排除——这三句话可以直接写成你项目的设计原则。</p>
+  </div>
+</section>
+
+<section class="block" id="radar">
+  <h2>今日商业机会雷达</h2>
+  <div class="panel">
+    <h3>机会 1 · 「意向名单」订阅服务</h3>
+    <ul>
+      <li><b>客户：</b>外贸公司、SaaS 销售团队、跨境服务商、自由职业者</li>
+      <li><b>实现方式：</b>用公开信息监听（本项目架构）+ 行业化的高意向表述规则库 + 每周交付一份可跟进名单</li>
+      <li><b>可能商业模式：</b>月度订阅（客户买的是名单，不是工具）；或行业规则库买断</li>
+      <li><b>为什么现在：</b>工具层面的门槛已经降到 <code>git clone</code> + 一条命令，<b>稀缺的是「这个行业的人怎么说话、什么话代表真需求」这类知识</b>，而这类知识只有做过这行的人才有</li>
+      <li><b>合规前提：</b>只采公开内容、遵守平台条款与个人信息保护法规、绝不群发。这一点必须写进交付说明</li>
+    </ul>
+  </div>
+  <div class="panel">
+    <h3>机会 2 · 「真实数据优先」的 AI 应用改造</h3>
+    <ul>
+      <li><b>客户：</b>已经做了 AI 应用、但因为「AI 算错 / 编数据」被业务方质疑的团队</li>
+      <li><b>实现方式：</b>盘点流程中所有「由模型猜测」的数字与状态，逐个替换为可调用的真实接口；无法获取的直接标注为未知</li>
+      <li><b>可能商业模式：</b>改造项目制 + 开发规范咨询</li>
+      <li><b>为什么出现：</b>本期案例 02 提供了一份可直接复用的「自我约束清单」（不用模型估价、不知道就不说、不认识就排除、读写操作分离、换算收敛到单文件、公开实测契约）。<b>这套清单本身可以成为交付物</b></li>
+    </ul>
+  </div>
+  <div class="panel">
+    <h3>机会 3 · 权益与优惠券的诊断服务</h3>
+    <ul>
+      <li><b>客户：</b>连锁餐饮 / 零售品牌的会员运营部门、会员权益平台</li>
+      <li><b>实现方式：</b>用「净价值 = 券面价值 − 为用这张券你本来不会花的钱」这一框架，反向诊断一套券策略里有多少属于「纸面富贵」</li>
+      <li><b>可能商业模式：</b>券策略体检报告（项目制）+ 后续按月复诊</li>
+      <li><b>为什么有需求：</b>传统核销率分析回答不了「为什么发了券但复购没起来」，而净价值视角能指出「你的券在诱导用户做他本来不想做的事」，这是运营真正想知道的答案</li>
+    </ul>
+  </div>
+  <div class="truth"><b>必须说明：</b>以上为基于本期案例结构推导的商业模式分析，<b>不代表已经验证的商业成功</b>。两个案例均未公开任何收入、付费客户或商业化数据。</div>
+</section>
+
+<section class="block" id="solo">
+  <h2>今日个人变现机会</h2>
+  <div class="panel">
+    <p>如果一个人每天投入 <b>2–4 小时</b>，本期两个案例可以分别长成下面这些形态（均为潜在路径，不承诺收益）：</p>
+    <table>
+      <tr><th>方向</th><th>具体做法</th><th>启动条件</th><th>离「收钱」最近的形态</th></tr>
+      <tr><td>行业意向名单</td><td>为某个垂直行业每周交付可跟进名单</td><td>懂该行业的表达习惯 + 能接国内信息源</td><td>先免费交付两周，再谈月度订阅</td></tr>
+      <tr><td>意向规则库</td><td>把「什么话代表真需求」整理成套并不断校准</td><td>有真实跟进经验（知道哪些线索转化了）</td><td>规则库买断 + 季度更新</td></tr>
+      <tr><td>AI 应用可信度改造</td><td>帮团队把「模型猜测的数字」换成真实接口</td><td>能读懂接口文档 + 有 AI 应用经验</td><td>单点改造项目（先做一个小模块证明效果）</td></tr>
+      <tr><td>券策略诊断</td><td>为品牌做「纸面富贵」体检报告</td><td>懂会员运营 + 能拿到券规则</td><td>单次报告（低客单、易复制）</td></tr>
+      <tr><td>MCP Skill 开发</td><td>为企业开放平台写配套 Skill</td><td>会写 Python + 能读懂实测契约</td><td>按 Skill 计价</td></tr>
+      <tr><td>内容 / IP</td><td>「20 句真正的购买信号」「我的券 60% 是纸面富贵」</td><td>有真实运行数据</td><td>课程 / 社群 / 企业内训</td></tr>
+    </table>
+    <p><b>本报告认为最现实的一条：</b>「行业意向名单」。理由有两点：① 交付物极其明确——客户拿到的是<b>一份名单</b>，不需要理解任何 AI 概念就能判断有没有价值；② 启动成本几乎为零（免费源就能跑），验证周期短（跑三天就知道规则准不准）。<b>它的壁垒不在技术，而在「你是否真的知道这个行业的客户会怎么说话」</b>——这恰恰是很多技术型创业者缺的东西，因此也给了懂行业的人一个切入口。</p>
+    <div class="truth"><b>不虚构成交、不虚构收入。</b>本报告未获得任何关于上述路径已产生收入的证据。<b>特别提醒：</b>意向名单类业务必须严格限定在「采集公开内容 + 人工跟进」范围内，遵守各平台条款与个人信息保护相关法规，<b>不得用于群发骚扰</b>。</div>
+  </div>
+</section>
+
+<section class="block" id="sources">
+  <h2>原始资料汇总</h2>
+  <div class="panel">
+    <h3>案例 01 · yangyixxxx/lead-signal-listener</h3>
+    <ul>
+      <li>仓库：<a href="https://github.com/yangyixxxx/lead-signal-listener" target="_blank" rel="noopener">github.com/yangyixxxx/lead-signal-listener</a>　·　中文说明：<a href="https://github.com/yangyixxxx/lead-signal-listener/blob/main/README.zh-CN.md" target="_blank" rel="noopener">README.zh-CN.md</a></li>
+      <li>Agent 代装说明：<a href="https://github.com/yangyixxxx/lead-signal-listener/blob/main/AGENT_SETUP.md" target="_blank" rel="noopener">AGENT_SETUP.md</a></li>
+      <li>构建全过程（一次 AI 对话）：<a href="https://yangyixxxx.github.io/lead-signal-listener/showcase.html" target="_blank" rel="noopener">showcase.html</a></li>
+      <li>源码目录：<a href="https://github.com/yangyixxxx/lead-signal-listener/tree/main/listener" target="_blank" rel="noopener">listener/</a>（treg_client · sources · generic · scoring · store · runner · server · i18n）</li>
+      <li>数据层：<a href="https://treg.to" target="_blank" rel="noopener">treg.to</a>（3800+ 端点聚合层，付费源）</li>
+      <li>作者：<a href="https://github.com/yangyixxxx" target="_blank" rel="noopener">github.com/yangyixxxx</a> · X <a href="https://x.com/yangyi" target="_blank" rel="noopener">@yangyi</a> · newmax.ai</li>
+    </ul>
+    <h3>案例 02 · Ayzzz123/mcd-coupon-strategist</h3>
+    <ul>
+      <li>仓库：<a href="https://github.com/Ayzzz123/mcd-coupon-strategist" target="_blank" rel="noopener">github.com/Ayzzz123/mcd-coupon-strategist</a></li>
+      <li>MCP 实测契约：<a href="https://github.com/Ayzzz123/mcd-coupon-strategist/blob/main/MCP_INTEGRATION.md" target="_blank" rel="noopener">MCP_INTEGRATION.md</a>（含 12 条官方文档未写的调用契约）</li>
+      <li>官方 MCP：<a href="https://open.mcd.cn/mcp" target="_blank" rel="noopener">open.mcd.cn/mcp（Token 申请与控制台）</a>　·　端点 <code>https://mcp.mcd.cn</code></li>
+      <li>大赛背景：<a href="https://github.com/M-China/mcd-developer-innovation-challenge" target="_blank" rel="noopener">M-China/mcd-developer-innovation-challenge</a>　·　<a href="https://github.com/M-China/mcd-mcp-server" target="_blank" rel="noopener">mcd-mcp-server</a></li>
+      <li>作者：<a href="https://github.com/Ayzzz123" target="_blank" rel="noopener">github.com/Ayzzz123</a>（独立参赛者）</li>
+    </ul>
+  </div>
+</section>
+
+<section class="block" id="signals">
+  <h2>窗口内信号（未计入案例）</h2>
+  <div class="panel">
+    <p>以下内容同样落在本期窗口（2026-10-10 12:00 → 2026-10-11 12:00 北京时间）内，但<b>未达到本期收录线</b>，仅作背景记录。时间均为北京时间，数据快照 2026-10-14 04:00 UTC。</p>
+    <table>
+      <tr><th>项目</th><th>时间</th><th>信号</th><th>未收录原因</th></tr>
+      <tr><td>rociiu/talorys</td><td>10-10 17:46</td><td>964★，MIT，TypeScript，「你自己的 Cloudflare 账号里的个人 AI Agent」，一条命令部署，<code>npx create-talorys@latest</code></td><td>海外基础设施绑定（Cloudflare），与本日两案例主题重叠度低；星标高但中国用户可用性受限</td></tr>
+      <tr><td>aindeev/agent-chrome-relay</td><td>10-10 15:38</td><td>276★，MIT，Go，「让 AI Agent 以已登录身份在后台标签页使用你的 Chrome」</td><td>与 10-13 期收录的轻舟（浏览器 Agent）方向高度重叠，避免重复</td></tr>
+      <tr><td>nateherkai/roast-room</td><td>10-11 04:38</td><td>394★，七个 AI 顾问（Bezos、Paul Graham、Hormozi 等）同台辩论你的商业决策</td><td>偏娱乐化演示形态，缺少可复现的完整工作流与业务结果</td></tr>
+      <tr><td>chekusu/yobiru</td><td>10-10 18:30</td><td>180★，MIT，Python，让 Agent 之间通过 Tailscale 传递消息、数据、文件与唤醒信号</td><td>属于 Agent 互联基础设施，偏底层；中国可用性受 Tailscale 影响</td></tr>
+      <tr><td>Atoll92/agent-standup</td><td>10-10 15:48</td><td>177★，MIT，把 Claude Code / Codex 会话变成可视化的「团队站会」</td><td>开发辅助工具，非业务案例</td></tr>
+      <tr><td>a1958749/zhiyuan-rag</td><td>10-10 18:57</td><td>16★，MIT，知源 · 个人 RAG 知识助手（自定义知识库、可追溯引用、AI 开发文档检索评测），DocsGPT 二次开发</td><td>二次开发形态、星标过少；RAG 方向本期不缺更成熟样本</td></tr>
+      <tr><td>skywalkertzh/TeachMeChat</td><td>10-10 15:49</td><td>3★，基于 WeChatMsg 二次开发的本地微信回复草稿助手：只读授权聊天、生成三条回复建议、<b>绝不自动发送</b></td><td>星标过少；但「只生成草稿、绝不自动发送」的设计边界值得记录，列下期回访</td></tr>
+      <tr><td>AI-BizOS/cross-harness</td><td>10-10 14:37</td><td>66★，Apache-2.0，「开放的跨 harness 协议」+ 终端与本地 Web 界面</td><td>定位偏协议层，落地场景未明确</td></tr>
+      <tr><td>麦当劳 MCP 大赛作品（第二批）</td><td>窗口内</td><td>chuiziyao/maimen-certification（68★，麦门认证机）、rikkely/mcd-mate（26★，预算/心情/场景推荐）、ibh4/mac-Buddy（21★，口味记忆）、Michael-4753/mcd-skill（9★，多快好省）、dickeryang/mcd-fit-coach（3★）、caojiahui123456-code/McSmart（3★）等</td><td><b>10-09 期已完整收录大赛本体与方法论</b>，本期仅收录其中一个在方法论上有独立价值、且位列榜首的作品；其余作为生态规模信号记录。官方条款禁止未授权商业变现</td></tr>
+    </table>
+    <p><b>另需说明的排除项：</b>liseami/CCBaga（2097★，北京时间 10-11 11:47，恰在本期窗口末缘）——该项目定位为「海外用户管理自己的 Claude 身份」，涉及浏览器指纹轮换、身份归档与网络环境（VPS / 住宅代理）配置，并自行声明「违反 Anthropic 官方服务条款的用途被禁止」。<b>本报告按内容与合规规则排除，仅中性点名，不展开、不作为背景引用。</b></p>
+  </div>
+</section>
+
+<section class="block" id="truth">
+  <h2>数据真实性说明</h2>
+  <div class="panel">
+    <h3>本期哪些是事实</h3>
+    <ul>
+      <li>仓库存在性、创建 / 推送时间、Star / Fork 数、许可证、语言构成：均通过 <b>GitHub 搜索与 REST API 核对</b>，核对与数据快照时间为 <b>2026-10-14 04:00 UTC（北京 12:00）</b>，时间已换算北京时间。</li>
+      <li><b>yangyixxxx/lead-signal-listener：</b>创建 2026-10-10 07:20:23 UTC（北京 <b>10-10 15:20</b>），最后推送 2026-10-10 10:04:02 UTC（北京 18:04）；MIT；<b>66★ / 5 Fork</b>；语言 Python。README 明确标注「零第三方依赖」、服务仅绑定 127.0.0.1、支持中英双语界面。</li>
+      <li><b>Ayzzz123/mcd-coupon-strategist：</b>创建 2026-10-10 12:59:19 UTC（北京 <b>10-10 20:59</b>），最后推送 2026-10-13 14:41:01 UTC；MIT；<b>278★ / 19 Fork</b>；语言 Python。作者在 GitHub Issue 中记录的参赛提交时间为 2026-10-10 13:00，官方回复「作品已成功参赛」时间为同日 13:59（均为 UTC，北京时间为 21:00 / 21:59 前后）。</li>
+      <li>两个案例的 README、MCP 契约文档、目录结构、限制说明与合规条款，均<b>直接引自仓库公开内容</b>。</li>
+      <li>本报告在本期开始前曾尝试独立核对该作品是否确为大赛榜首：该判断依据为 10-13 期报告中记录的大赛公开排行榜文件（快照时间 2026-10-14 11:00 前后，榜首星标 278）。<b>排行榜会随时间变动，此处仅作为同期快照引用。</b></li>
+    </ul>
+    <h3>哪些是作者自述（本报告未独立验证）</h3>
+    <ul>
+      <li><b>案例 01：</b>默认关键词示例运行得到「284 条线索、花费 $0.073」、单次调用价格区间、各来源的计费明细、以及「项目在一次 AI 对话中构建完成」的表述，<b>均为作者自述</b>。本报告<b>未实际运行该项目</b>，也未验证 284 条线索的质量。</li>
+      <li><b>案例 02：</b>全部量化数据（麦辣鸡腿堡三件套 33.5 元 vs 等价单点 46.5 元、中薯条买一送一价值 14.5 元、王牌小食拼 6.6 元、券包体检 名义 ¥21.1 → 可实现 ¥17.58、8 单总支出 103.5 元、客单价 12.94 元、用券排程「窗口 4 天、0.089 单/天 → 最多用掉 1 张」）<b>均为作者自述</b>。作者声明这些数据可由读者运行 <code>demo.py</code> 自行复现，<b>但本报告未执行该验证</b>。横幅宣称「一次点餐平均省 3~13 元」<b>无计算口径说明</b>，本报告不作背书。</li>
+      <li>案例 02 的「六套测试 + demo + 规范检查在 3.10 / 3.13 全通过」「README 与 demo 输出 12 个关键数据点程序化比对一致」「仓库 35 个文件无残留」等，均为作者声明，本报告未运行 CI 验证。</li>
+      <li>案例 02 的「MCP_INTEGRATION 2.3 节共 19 条实测契约」与 README 中「12 条实测调用契约」<b>两处数字不一致</b>（作者在文档其他位置亦曾写为 17）。本报告如实标注此不一致，未替作者做统一。</li>
+    </ul>
+    <h3>哪些是本文分析与推演</h3>
+    <ul>
+      <li>每案例第 03 节的「下一步可能怎么发展」、第 14 节迁移方向、第 17 / 18 节变现路径、第 19 节 7 天 MVP、第 20 节行业迁移、第 21 节课程设计，以及「今日 AI 实战观察」「商业机会雷达」「个人变现机会」，<b>全部属于基于案例结构的分析与推演，不是已验证的商业结果</b>。</li>
+      <li>「国内平台意向规则库有价值」属于<b>本报告推断</b>，未做市场验证；「券策略诊断服务有需求」同理。</li>
+    </ul>
+    <div class="truth"><b>证据缺口（如实列出）：</b>本报告<b>未能独立复现</b>两个案例中的任何一步——未运行 lead-signal-listener 的 <code>app.py</code>（无 Treg token、免费源在本环境亦未验证可用性），未运行 mcd-coupon-strategist 的 <code>demo.py</code> 或接入其真实 MCP 链路。所有关于「可运行性」的判断，依据的是仓库内公开的源码结构、依赖声明（零依赖）、测试目录、离线 fixtures 说明与作者提供的复现指引。<b>另需注意：案例 02 的券与价格数据具有强时效性，本报告引用的一切数值均为 2026-10-10 前后的快照，不应作为当下的实际价格参考。</b></div>
+  </div>
+</section>
+
+<section class="block" id="checklist">
+  <h2>本期质量自检</h2>
+  <div class="panel">
+    <ul class="checklist">
+      <li>本期只有 2 个案例，已声明无第三个达线案例</li>
+      <li>宁缺毋滥，未为凑数添加低质量内容</li>
+      <li>窗口内新内容 / 新实践 / 新更新（10-10 12:00 → 10-11 12:00）</li>
+      <li>已找到第一手资料（仓库 / README / 契约文档 / 源码）</li>
+      <li>已找到真实作者并如实标注未知项</li>
+      <li>已找到真实项目与具体原始链接</li>
+      <li>存在实际操作与离线可跑的验证路径</li>
+      <li>存在完整 Workflow（两条链路均已拆解）</li>
+      <li>可复现（官方步骤照录，本报告推导部分已单独标注）</li>
+      <li>解决真实问题（找客户 / 省钱的真实决策）</li>
+      <li>符合中国市场需求（案例 02 完全国内；案例 01 已分析本地化路径）</li>
+      <li>已说明模型、工具、成本、技术门槛（含 $0.07/次 与 0 元两档）</li>
+      <li>已说明 API Key 需求（Treg token / MCP Token，均不涉及大模型 Key）</li>
+      <li>已分析国产替代与迁移性</li>
+      <li>已分析企业场景与消费者场景</li>
+      <li>已分析商业价值与变现路径</li>
+      <li>已区分「已验证」与「推测的商业机会」</li>
+      <li>已追溯前世今生并解释「为什么是现在」</li>
+      <li>已提取作者公开的公式 / 契约 / 配置</li>
+      <li>已验证关键数据、区分事实与作者自述</li>
+      <li>已如实标注原作者文档中的数字不一致</li>
+      <li>已披露平台条款与合规边界（反骚扰、反滥用）</li>
+      <li>没有把推测写成事实、没有把新闻包装成实战</li>
+      <li>所有引用链接指向具体页面</li>
+      <li>HTML 与 CSS 完整、移动端可读</li>
+    </ul>
+  </div>
+</section>
+</div>
+</main>
+<footer class="site-footer">
+  <div class="wrap">
+    <div>
+      <div class="f-brand">全球文明进程重大事件日报</div>
+      <p class="f-desc">记录人类文明演进中的关键节点。以未来历史学家的视角，筛出可能改写人类轨迹的转折点——一个长期记录人类文明发展轨迹的数字档案馆。</p>
+    </div>
+    <div class="f-col">
+      <h4>浏览</h4>
+      <ul>
+        <li><a href="../index.html">网站首页</a></li>
+        <li><a href="../archive.html">日报档案</a></li><li><a href="../radar.html">趋势雷达</a></li><li><a href="../tutorial/index.html" class="active">AI实战</a></li>
+        <li><a href="../assets/images/og-cover.png" target="_blank">站点封面</a></li>
+      </ul>
+    </div>
+    <div class="f-col">
+      <h4>文明分类</h4>
+      <ul>
+        <li><a href="../categories/science.html">科学、生命与地球</a></li>
+        <li><a href="../categories/politics.html">政治与文明秩序</a></li>
+        <li><a href="../categories/culture.html">思想、社会与文化</a></li>
+        <li><a href="../categories/technology.html">科技与人工智能</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="f-bottom">
+    <div class="wrap">
+      <span>© 2026 全球文明进程重大事件日报 · 全球文明进程观察站</span>
+      <span>内容由自动化智能体基于公开信息生成，仅供文明观察与研究参考，不构成任何投资、政策或法律建议。</span>
+    </div>
+  </div>
+</footer></footer><button class="backtop" type="button" aria-label="返回顶部">↑</button><script src="../assets/js/main.js"></script>
+<script src="../assets/js/wechat-share.js"></script>
+<script src="../assets/js/text-to-speech.js"></script>
+</body>
+</html>
